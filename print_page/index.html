@@ -4885,9 +4885,8 @@ You'll be prompted to enter the root password that you set during the mariadb-se
 process.</p>
 <div class="admonition info">
 <p class="admonition-title">Enter Mariadb as user root</p>
-<p>Red Hat / SUSE / Ubuntu
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#ch01-zabbix-components-basic-installation-__codelineno-13-1"></a>mariadb<span class="w"> </span>-uroot<span class="w"> </span>-p
-</span></code></pre></div></p>
+</span></code></pre></div>
 </div>
 <p>Once you're logged into the MariaDB shell, run the following command to create a
 database for Zabbix:</p>
@@ -4897,7 +4896,7 @@ database for Zabbix:</p>
 </span></code></pre></div>
 </div>
 <details class="note" open="open">
-<summary>Note</summary>
+<summary>What is utf8mb4</summary>
 <p>utf8mb4 is a proper implementation of UTF-8 in MySQL/MariaDB, supporting all
  Unicode characters, including emojis. The older utf8 charset in MySQL/MariaDB
  only supports up to three bytes per character and is not a true UTF-8 implementation,
@@ -4910,16 +4909,23 @@ need to create a user that Zabbix will use to access the database. Replace passw
 with a strong password of your choice.</p>
 <div class="admonition info">
 <p class="admonition-title">Create users and grant privileges</p>
-<div class="language-mysql highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#ch01-zabbix-components-basic-installation-__codelineno-15-1"></a><span class="n">MariaDB</span><span class="w"> </span><span class="err">[</span><span class="p">(</span><span class="k">none</span><span class="p">)</span><span class="err">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;zabbix-web&#39;</span><span class="nv">@&#39;&lt;zabbix server ip&gt;&#39;</span><span class="w"> </span><span class="k">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;&lt;password&gt;&#39;</span><span class="p">;</span>
+<div class="language-mysql highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#ch01-zabbix-components-basic-installation-__codelineno-15-1"></a><span class="n">MariaDB</span><span class="w"> </span><span class="err">[</span><span class="p">(</span><span class="k">none</span><span class="p">)</span><span class="err">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;zabbix-web&#39;</span><span class="nv">@&#39;&lt;zabbix frontend ip&gt;&#39;</span><span class="w"> </span><span class="k">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;&lt;password&gt;&#39;</span><span class="p">;</span>
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#ch01-zabbix-components-basic-installation-__codelineno-15-2"></a><span class="n">MariaDB</span><span class="w"> </span><span class="err">[</span><span class="p">(</span><span class="k">none</span><span class="p">)</span><span class="err">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;zabbix-srv&#39;</span><span class="nv">@&#39;&lt;zabbix server ip&gt;&#39;</span><span class="w"> </span><span class="k">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;&lt;password&gt;&#39;</span><span class="p">;</span>
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#ch01-zabbix-components-basic-installation-__codelineno-15-3"></a><span class="n">MariaDB</span><span class="w"> </span><span class="err">[</span><span class="p">(</span><span class="k">none</span><span class="p">)</span><span class="err">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">zabbix</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;zabbix-srv&#39;</span><span class="nv">@&#39;&lt;zabbix server ip&gt;&#39;</span><span class="p">;</span>
 </span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#ch01-zabbix-components-basic-installation-__codelineno-15-4"></a><span class="n">MariaDB</span><span class="w"> </span><span class="err">[</span><span class="p">(</span><span class="k">none</span><span class="p">)</span><span class="err">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="p">,</span><span class="w"> </span><span class="k">UPDATE</span><span class="p">,</span><span class="w"> </span><span class="k">DELETE</span><span class="p">,</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">zabbix</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;zabbix-web&#39;</span><span class="nv">@&#39;&lt;zabbix server ip&gt;&#39;</span><span class="p">;</span>
 </span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#ch01-zabbix-components-basic-installation-__codelineno-15-5"></a><span class="n">MariaDB</span><span class="w"> </span><span class="err">[</span><span class="p">(</span><span class="k">none</span><span class="p">)</span><span class="err">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">FLUSH</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="p">;</span>
 </span></code></pre></div>
+<ul>
+<li>Replace <code>&lt;zabbix server ip&gt;</code> with the actual IP address of your server
+  where the Zabbix server  will be installed.</li>
+<li>Replace <code>&lt;zabbix frontend ip&gt;</code> with the actual IP address of your server
+  where the Zabbix frontend will be installed.</li>
+</ul>
+<p>If both components are installed on the same server, use the same IP address.</p>
 <details class="tip" open="open">
 <summary>Tip</summary>
-<p>If your Zabbix server and database are on the same machine, you can replace
-<code>&lt;zabbix server ip&gt;</code> with <code>localhost</code> or <code>127.0.0.1</code>.</p>
+<p>If your Zabbix server, frontend and database are on the same machine, you can replace
+<code>&lt;zabbix server ip&gt;</code> and <code>&lt;zabbix frontend ip&gt;</code> with <code>localhost</code> or <code>127.0.0.1</code>.</p>
 </details>
 </div>
 <p>This creates new users <code>zabbix-web</code> and <code>zabbix-srv</code>, grants them access to the
