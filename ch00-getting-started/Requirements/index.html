@@ -2117,22 +2117,40 @@ advantages in terms of security, flexibility, and ease of management.
 Here’s why zones are beneficial:</p>
 <ul>
 <li><strong>Granular Access Control :</strong></li>
-<li>firewalld zones allow different levels of trust for different network interfaces
-    and IP ranges. You can define which systems are allowed to connect to PostgreSQL
-    based on their trust level.</li>
-<li><strong>Simplified Rule management:</strong></li>
-<li>Instead of manually defining complex iptables rules, zones provide an organized
-    way to group and manage firewall rules based on usage scenarios.</li>
-<li><strong>Enhanced security:</strong></li>
-<li>By restricting application access to a specific zone, you prevent unauthorized
-    connections from other interfaces or networks.</li>
-<li><strong>Dynamic configuration:</strong></li>
-<li>firewalld supports runtime and permanent rule configurations, allowing changes
-    without disrupting existing connections.</li>
-<li><strong>Multi-Interface support:</strong></li>
-<li>If the server has multiple network interfaces, zones allow different security
-    policies for each interface.</li>
 </ul>
+<dl>
+<dd>Firewalld zones allow different levels of trust for different network interfaces
+and IP ranges. You can define which systems are allowed to connect to PostgreSQL
+based on their trust level.</dd>
+</dl>
+<ul>
+<li><strong>Simplified Rule management:</strong></li>
+</ul>
+<dl>
+<dd>Instead of manually defining complex iptables rules, zones provide an organized
+way to group and manage firewall rules based on usage scenarios.</dd>
+</dl>
+<ul>
+<li><strong>Enhanced security:</strong></li>
+</ul>
+<dl>
+<dd>By restricting application access to a specific zone, you prevent unauthorized
+connections from other interfaces or networks.</dd>
+</dl>
+<ul>
+<li><strong>Dynamic configuration:</strong></li>
+</ul>
+<dl>
+<dd>Firewalld supports runtime and permanent rule configurations, allowing changes
+without disrupting existing connections.</dd>
+</dl>
+<ul>
+<li><strong>Multi-Interface support:</strong></li>
+</ul>
+<dl>
+<dd>If the server has multiple network interfaces, zones allow different security
+policies for each interface.</dd>
+</dl>
 <p>Bringing everything together to add a zone for, in this example, PostgreSQL it
 would look like this:</p>
 <div class="admonition info">
