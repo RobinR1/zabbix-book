@@ -2458,37 +2458,45 @@ available:</p>
 <dd>
 <p>These are included in the software repositories of most Linux distributions 
 and are maintained by the distribution vendor.</p>
-<p><strong>Advantages:</strong>
-- <strong>Simplified installation:</strong> Packages are readily available via the
-  distribution’s package manager.
-- <strong>Vendor support:</strong> For enterprise distributions (e.g., RHEL, SLES),
-  active subscriptions include official support.
-- <strong>Compatibility:</strong> Guaranteed integration with other system packages and
-  dependencies.
-  - <strong>Distribution-specific optimizations:</strong> Includes tailored configurations
-    (e.g., logrotate, bash completion,...).
-  - <strong>Long-term maintenance:</strong> Security and bug fixes are backported by the
-    vendor for the duration of the distribution’s support lifecycle.
-<strong>Disadvantages:</strong>
-  - <strong>Version lock-in:</strong> Major distribution upgrades may automatically introduce
+<p><strong>Advantages:</strong></p>
+<ul>
+<li><strong>Simplified installation:</strong> Packages are readily available via the
+  distribution’s package manager.</li>
+<li><strong>Vendor support:</strong> For enterprise distributions (e.g., RHEL, SLES),
+  active subscriptions include official support.</li>
+<li><strong>Compatibility:</strong> Guaranteed integration with other system packages and
+  dependencies.</li>
+<li><strong>Distribution-specific optimizations:</strong> Includes tailored configurations
+    (e.g., logrotate, bash completion,...).</li>
+<li><strong>Long-term maintenance:</strong> Security and bug fixes are backported by the
+    vendor for the duration of the distribution’s support lifecycle.</li>
+</ul>
+<p><strong>Disadvantages:</strong></p>
+<ul>
+<li><strong>Version lock-in:</strong> Major distribution upgrades may automatically introduce
     newer database versions, potentially requiring compatibility checks with
-    Zabbix.
-  - <strong>Vendor modifications:</strong> Default configurations, log directories, and data
-    paths may be altered to align with distribution-specific standards.</p>
+    Zabbix.</li>
+<li><strong>Vendor modifications:</strong> Default configurations, log directories, and data
+    paths may be altered to align with distribution-specific standards.</li>
+</ul>
 </dd>
 <dt><strong>Official MariaDB/PostgreSQL Repositories</strong></dt>
 <dd>
 <p>These repositories provide packages directly from MariaDB/PostgreSQL and offer
 access to the latest stable releases.</p>
-<p><strong>Advantages:</strong>
-- <strong>Up-to-date versions:</strong> Immediate access to the latest features, security
+<p><strong>Advantages:</strong></p>
+<ul>
+<li><strong>Up-to-date versions:</strong> Immediate access to the latest features, security
   patches, and bug fixes. However, make sure Zabbix is compatible with the
-  chosen version.
-- <strong>Enterprise support:</strong> Option to purchase MariaDB Enterprise or Enterprise DB
-  respectively, which includes professional support and additional features.
-<strong>Disadvantages:</strong>
-- <strong>Manual version management:</strong> Users must proactively monitor and upgrade 
-  to new major versions to ensure continued security and bug fix coverage.</p>
+  chosen version.</li>
+<li><strong>Enterprise support:</strong> Option to purchase MariaDB Enterprise or Enterprise DB
+  respectively, which includes professional support and additional features.</li>
+</ul>
+<p><strong>Disadvantages:</strong></p>
+<ul>
+<li><strong>Manual version management:</strong> Users must proactively monitor and upgrade 
+  to new major versions to ensure continued security and bug fix coverage.</li>
+</ul>
 </dd>
 </dl>
 <p>In this chapter we will concentrate on the OS vendor-provided packages but we will
