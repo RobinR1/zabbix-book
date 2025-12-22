@@ -2397,12 +2397,13 @@ the Zabbix server and the Zabbix web front-end, while the second VM will host th
 Zabbix database.</p>
 <details class="note" open="open">
 <summary>Note</summary>
-<p>It's perfect possible to install all components on 1 single VM or every component
+<p>It is perfectly possible to install all components on one single VM or every component
 on a separate VM.
-Reason we split the DB as an example is because the database will probably be
-the first component giving you performance headaches. It's also the component
-that needs some extra attention when we split it so for this reason we have
-chosen in this example to split the database from the rest of the setup.</p>
+The reason why we split the DB in our example is because the database will probably be
+the first component giving you performance headaches. It is also the component
+that needs some extra attention when we split it from the other components,
+so for this reason we have chosen in this example to split the database 
+from the rest of the setup.</p>
 </details>
 <p>We will cover the following topics:</p>
 <ul>
@@ -2454,40 +2455,42 @@ from which you will want to install the database server. Two primary options are
 available:</p>
 <ol>
 <li><strong>Vendor-Provided Packages</strong>\
-   These are included in the software repositories of most Linux distributions 
-   and are maintained by the distribution vendor.</li>
-</ol>
-<p><strong>Advantages:</strong>
-   - <strong>Simplified installation:</strong> Packages are readily available via the 
-     distribution’s package manager.
-   - <strong>Vendor support:</strong> For enterprise distributions (e.g., RHEL, SLES), 
-     active subscriptions include official support.
-   - <strong>Compatibility:</strong> Guaranteed integration with other system packages and 
-     dependencies.
-   - <strong>Distribution-specific optimizations:</strong> Includes tailored configurations 
-     (e.g., logrotate, bash completion,...).
-   - <strong>Long-term maintenance:</strong> Security and bug fixes are backported by the 
-     vendor for the duration of the distribution’s support lifecycle.</p>
-<p><strong>Disadvantages:</strong>
-   - <strong>Version lock-in:</strong> Major distribution upgrades may automatically introduce
+These are included in the software repositories of most Linux distributions 
+and are maintained by the distribution vendor.\
+\
+<strong>Advantages:</strong></li>
+<li><strong>Simplified installation:</strong> Packages are readily available via the
+     distribution’s package manager.</li>
+<li><strong>Vendor support:</strong> For enterprise distributions (e.g., RHEL, SLES),
+     active subscriptions include official support.</li>
+<li><strong>Compatibility:</strong> Guaranteed integration with other system packages and
+     dependencies.</li>
+<li><strong>Distribution-specific optimizations:</strong> Includes tailored configurations
+     (e.g., logrotate, bash completion,...).</li>
+<li><strong>Long-term maintenance:</strong> Security and bug fixes are backported by the
+     vendor for the duration of the distribution’s support lifecycle.
+\
+<strong>Disadvantages:</strong></li>
+<li><strong>Version lock-in:</strong> Major distribution upgrades may automatically introduce
      newer database versions, potentially requiring compatibility checks with
-     Zabbix.
-   - <strong>Vendor modifications:</strong> Default configurations, log directories, and data
-     paths may be altered to align with distribution-specific standards.</p>
-<ol>
-<li><strong>Official MariaDB/PostgreSQL Repositories</strong>
-   These repositories provide packages directly from MariaDB/PostgreSQL and offer
-   access to the latest stable releases.</li>
-</ol>
-<p><strong>Advantages:</strong>
-   - <strong>Up-to-date versions:</strong> Immediate access to the latest features, security
+     Zabbix.</li>
+<li><strong>Vendor modifications:</strong> Default configurations, log directories, and data
+     paths may be altered to align with distribution-specific standards.</li>
+<li><strong>Official MariaDB/PostgreSQL Repositories</strong>\
+These repositories provide packages directly from MariaDB/PostgreSQL and offer
+access to the latest stable releases.\
+\
+<strong>Advantages:</strong></li>
+<li><strong>Up-to-date versions:</strong> Immediate access to the latest features, security
      patches, and bug fixes. However, make sure Zabbix is compatible with the
-     chosen version.
-   - <strong>Enterprise support:</strong> Option to purchase MariaDB Enterprise or Enterprise DB
-     respectively, which includes professional support and additional features.</p>
-<p><strong>Disadvantages:</strong>
-   - <strong>Manual version management:</strong> Users must proactively monitor and upgrade 
-     to new major versions to ensure continued security and bug fix coverage.</p>
+     chosen version.</li>
+<li><strong>Enterprise support:</strong> Option to purchase MariaDB Enterprise or Enterprise DB
+     respectively, which includes professional support and additional features.
+\
+<strong>Disadvantages:</strong></li>
+<li><strong>Manual version management:</strong> Users must proactively monitor and upgrade 
+     to new major versions to ensure continued security and bug fix coverage.</li>
+</ol>
 <p>In this chapter we will concentrate on the OS vendor-provided packages but we will
 point you to the instructions on how to use the official database-vendor packages
 if you want to use those.</p>
