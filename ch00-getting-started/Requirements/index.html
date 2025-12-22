@@ -644,6 +644,17 @@ specs, firewall ports, and time sync needed for a smooth installation.
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#update-the-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Update the System
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#firewall" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -663,7 +674,8 @@ specs, firewall ports, and time sync needed for a smooth installation.
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Time Server">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#verifying-chrony-synchronization" class="md-nav__link">
@@ -695,6 +707,11 @@ specs, firewall ports, and time sync needed for a smooth installation.
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1721,6 +1738,17 @@ specs, firewall ports, and time sync needed for a smooth installation.
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#update-the-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Update the System
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#firewall" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1740,7 +1768,8 @@ specs, firewall ports, and time sync needed for a smooth installation.
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Time Server">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#verifying-chrony-synchronization" class="md-nav__link">
@@ -1772,6 +1801,11 @@ specs, firewall ports, and time sync needed for a smooth installation.
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1987,68 +2021,96 @@ Ubuntu LTS 24.04.x.</p>
 <li><a href="https://opensuse.org/">https://opensuse.org/</a></li>
 <li><a href="https://ubuntu.com/">https://ubuntu.com/</a></li>
 </ul>
+<details class="note" open="open">
+<summary>Note</summary>
+<p>OS installation steps are outside the scope of this book, but a default or even a
+minimal installation of your preferred OS should be sufficient. Please refrain from
+installing graphical user interfaces (GUIs) or desktop environments, as they are
+unnecessary for server setups and consume valuable resources.</p>
+</details>
+<p>Once you have your preferred OS installed, there are a few essential configurations
+to perform before proceeding with the Zabbix installation. Perform the following
+steps on <strong>all</strong> the servers that will host Zabbix components (i.e., Zabbix server, 
+database server, and web server).</p>
+<hr />
+<h3 id="update-the-system">Update the System</h3>
+<p>Before installing the Zabbix components, it's a best practice to ensure
+your operating system is up-to-date with the latest patches and security fixes.
+This will help maintain system stability and compatibility with the software you're
+about to install.
+Even if your OS installation is recent, it's still advisable to run an update
+to ensure you have the latest packages.</p>
+<p>To update your system, run the following command based on your OS:</p>
+<div class="admonition info">
+<p class="admonition-title">Update your system</p>
+<p>Red Hat
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dnf<span class="w"> </span>update
+</span></code></pre></div></p>
+<p>SUSE
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>zypper<span class="w"> </span>refresh
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>zypper<span class="w"> </span>update
+</span></code></pre></div></p>
+<p>Ubuntu
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade
+</span></code></pre></div></p>
+</div>
+<details class="note" open="open">
+<summary>what is apt, dnf or zypper</summary>
+<p>dnf is a package manager used in Red Hat-based systems. Zypper is the package
+manager used on SUSE-based systems and apt is the package manager used on 
+Debian/Ubuntu-based systems. If you're using another distribution, replace 
+<code>dnf</code> with your appropriate package manager, such as <code>zypper</code>, <code>apt</code>, or <code>yum</code>.
+Do note that packagenames may also vary from distribution to distribution.</p>
+</details>
+<hr />
 <h3 id="firewall">Firewall</h3>
 <p>Before installing Zabbix, it's essential to properly prepare the operating system.
-The first step is to ensure that the firewall is installed and configured.</p>
+The first step is to ensure that the firewall is installed and configured</p>
 <p>To install and enable the firewall, run the following command:</p>
 <div class="admonition info">
 <p class="admonition-title">Install and enable the firewall</p>
 <p>Red Hat
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="l l-Scalar l-Scalar-Plain">dnf install firewalld</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="l l-Scalar l-Scalar-Plain">systemctl enable firewalld --now</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dnf<span class="w"> </span>install<span class="w"> </span>firewalld
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>firewalld<span class="w"> </span>--now
 </span></code></pre></div>
 SUSE
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="l l-Scalar l-Scalar-Plain">zypper install firewalld</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="l l-Scalar l-Scalar-Plain">systemctl enable firewalld --now</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>zypper<span class="w"> </span>install<span class="w"> </span>firewalld
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>firewalld<span class="w"> </span>--now
 </span></code></pre></div></p>
 <p>Ubuntu
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="l l-Scalar l-Scalar-Plain">sudo apt install ufw</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="l l-Scalar l-Scalar-Plain">sudo ufw enable</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ufw
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>sudo<span class="w"> </span>ufw<span class="w"> </span><span class="nb">enable</span>
 </span></code></pre></div></p>
-</div>
-<p>Once installed, you can configure the necessary ports.
-For Zabbix, we need to allow access to port <code>10051/tcp</code>, which is where the
-Zabbix trapper listens for incoming data. Use the following command to open
-this port in the firewall:</p>
-<div class="admonition info">
-<p class="admonition-title">Allow Zabbix trapper access</p>
-<p>Red Hat / SUSE
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="l l-Scalar l-Scalar-Plain">firewall-cmd --add-service=zabbix-server --permanent</span>
-</span></code></pre></div></p>
-<p>Ubuntu
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="l l-Scalar l-Scalar-Plain">sudo ufw allow 10051/tcp</span>
-</span></code></pre></div></p>
-</div>
-<p>If the service is not recognized, you can manually specify the port:</p>
-<div class="admonition info">
-<p class="admonition-title">Add port instead of the service name</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="l l-Scalar l-Scalar-Plain">firewall-cmd --add-port=10051/tcp --permanent</span>
-</span></code></pre></div>
 </div>
 <details class="note" open="open">
-<summary>Note</summary>
-<p>"Firewalld is the replacement for iptables in RHEL- and SUSE-based systems and allows
+<summary>what is firewalld / ufw</summary>
+<p>Firewalld is the replacement for iptables in RHEL- and SUSE-based systems and allows
 changes to take effect immediately without needing to restart the service.
 If your distribution does not use <a href="https://www.firewalld.org">Firewalld</a>,
-refer to your OS documentation for the appropriate firewall configuration steps."
-Ubuntu makes use of UFW and is merely a frontend for iptables.</p>
+refer to your OS documentation for the appropriate firewall configuration steps.
+Ubuntu makes use of UFW which is merely a frontend for iptables.</p>
 </details>
-<p>An alternative approach is to define dedicated firewall zones for specific use cases.
+<p>During the Zabbix installation in the next chapters, we will need to open specific
+ports in the firewall to allow communication between Zabbix components.</p>
+<p>Alternatively to just opening ports, as we will do in the next chapters, you can
+also choose to define dedicated firewall zones for specific use cases. This 
+approach enhances security by isolating services and restricting access based on
+trust levels.
 For example...</p>
 <div class="admonition info">
-<p class="admonition-title">Create a firewalld zone</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="l l-Scalar l-Scalar-Plain">firewall-cmd --new-zone=postgresql-access --permanent</span>
+<p class="admonition-title">Create a firewalld zone for database access</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>firewall-cmd<span class="w"> </span>--new-zone<span class="o">=</span>db_zone<span class="w"> </span>--permanent
 </span></code></pre></div>
 </div>
 <p>You can confirm the creation of the zone by executing the following command:</p>
 <div class="admonition info">
 <p class="admonition-title">Verify the zone creation</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="l l-Scalar l-Scalar-Plain">firewall-cmd --get-zones</span>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="go">~# firewall-cmd --get-zones</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="go">block dmz drop external home internal nm-shared db_zone public trusted work</span>
 </span></code></pre></div>
 </div>
-<p>block dmz drop external home internal nm-shared postgresql-access public
-trusted work</p>
-<p>Using zones in firewalld to configure firewall rules for PostgreSQL provides several
+<p>Using zones in firewalld to configure firewall rules provides several
 advantages in terms of security, flexibility, and ease of management.
 Here’s why zones are beneficial:</p>
 <ul>
@@ -2060,7 +2122,7 @@ Here’s why zones are beneficial:</p>
 <li>Instead of manually defining complex iptables rules, zones provide an organized
     way to group and manage firewall rules based on usage scenarios.</li>
 <li><strong>Enhanced security:</strong></li>
-<li>By restricting PostgreSQL access to a specific zone, you prevent unauthorized
+<li>By restricting application access to a specific zone, you prevent unauthorized
     connections from other interfaces or networks.</li>
 <li><strong>Dynamic configuration:</strong></li>
 <li>firewalld supports runtime and permanent rule configurations, allowing changes
@@ -2069,17 +2131,20 @@ Here’s why zones are beneficial:</p>
 <li>If the server has multiple network interfaces, zones allow different security
     policies for each interface.</li>
 </ul>
-<p>Bringing everything together it would look like this:</p>
+<p>Bringing everything together to add a zone for, in this example, PostgreSQL it
+would look like this:</p>
 <div class="admonition info">
-<p class="admonition-title">Firewalld with zone config</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="l l-Scalar l-Scalar-Plain">firewall-cmd --new-zone=db_zone --permanent</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="l l-Scalar l-Scalar-Plain">firewall-cmd --zone=db_zone --add-service=postgresql --permanent</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="l l-Scalar l-Scalar-Plain">firewall-cmd --zone=db_zone --add-source=xxx.xxx.xxx.xxx/32 --permanent</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="l l-Scalar l-Scalar-Plain">firewall-cmd --reload</span>
+<p class="admonition-title">Firewalld with zone config for PostgreSQL database access</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>firewall-cmd<span class="w"> </span>--new-zone<span class="o">=</span>db_zone<span class="w"> </span>--permanent
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>firewall-cmd<span class="w"> </span>--zone<span class="o">=</span>db_zone<span class="w"> </span>--add-service<span class="o">=</span>postgresql<span class="w"> </span>--permanent
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>firewall-cmd<span class="w"> </span>--zone<span class="o">=</span>db_zone<span class="w"> </span>--add-source<span class="o">=</span>xxx.xxx.xxx.xxx/32<span class="w"> </span>--permanent
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>firewall-cmd<span class="w"> </span>--reload
 </span></code></pre></div>
 </div>
 <p>Where the <code>source IP</code> is the only address permitted to establish a connection to
 the database.</p>
+<p>If you wish to use zones when using firewalld, ensure to adapt the instructions
+in the following chapters accordingly.</p>
 <hr />
 <h3 id="time-server">Time Server</h3>
 <p>Another crucial step is configuring the time server and syncing the Zabbix server
@@ -2093,32 +2158,24 @@ than it actually did.</p>
 <div class="admonition info">
 <p class="admonition-title">Install NTP client</p>
 <p>Red Hat
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="l l-Scalar l-Scalar-Plain">dnf install chrony</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="l l-Scalar l-Scalar-Plain">systemctl enable chronyd --now</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>dnf<span class="w"> </span>install<span class="w"> </span>chrony
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>chronyd<span class="w"> </span>--now
 </span></code></pre></div></p>
 <p>SUSE
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="l l-Scalar l-Scalar-Plain">zypper install chrony</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="l l-Scalar l-Scalar-Plain">systemctl enable chronyd --now</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>zypper<span class="w"> </span>install<span class="w"> </span>chrony
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>chronyd<span class="w"> </span>--now
 </span></code></pre></div></p>
 <p>Ubuntu
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="l l-Scalar l-Scalar-Plain">sudo apt install chrony</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>chrony
 </span></code></pre></div></p>
 </div>
 <p>After installation, verify that Chrony is enabled and running by checking its
 status with the following command:</p>
 <div class="admonition info">
 <p class="admonition-title">Check status chronyd</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="l l-Scalar l-Scalar-Plain">systemctl status chronyd</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>systemctl<span class="w"> </span>status<span class="w"> </span>chronyd
 </span></code></pre></div>
 </div>
-<details class="note" open="open">
-<summary>what is apt, dnf or zypper</summary>
-<p>dnf is a package manager used in Red Hat-based systems. Zypper is the package
-manager used on SUSE-based systems and apt is the package manager used on 
-Debian/Ubuntu-based systems.If you're using another distribution, replace 
-<code>dnf</code> with your appropriate package manager, such as <code>zypper</code>, <code>apt</code>, or <code>yum</code>.
-Do note that packagenames may also vary from distribution to distribution.</p>
-</details>
 <details class="note" open="open">
 <summary>what is Chrony</summary>
 <p>Chrony is a modern replacement for <code>ntpd</code>, offering faster and
@@ -2130,15 +2187,14 @@ more accurate time synchronization. If your OS does not support
 You can view your current time configuration using the <code>timedatectl</code> command:</p>
 <div class="admonition info">
 <p class="admonition-title">check the time config</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="l l-Scalar l-Scalar-Plain">timedatectl</span>
-</span></code></pre></div>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nt">Local time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Thu 2023-11-16 15:09:14 UTC</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nt">Universal time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Thu 2023-11-16 15:09:14 UTC</span>
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="nt">RTC time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Thu 2023-11-16 15:09:15</span>
-</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="nt">Time zone</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UTC (UTC, +0000)</span>
-</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="nt">System clock synchronized</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span>
-</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="nt">NTP service</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">active</span>
-</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="nt">RTC in local TZ</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">no</span>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="go">~# timedatectl</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="go">               Local time: Thu 2023-11-16 15:09:14 UTC</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="go">           Universal time: Thu 2023-11-16 15:09:14 UTC</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="go">                 RTC time: Thu 2023-11-16 15:09:15</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="go">                Time zone: UTC (UTC, +0000)</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="go">System clock synchronized: yes</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="go">              NTP service: active</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="go">          RTC in local TZ: no</span>
 </span></code></pre></div>
 </div>
 <p>Ensure that the Chrony service is active (refer to the previous steps if needed).
@@ -2146,41 +2202,41 @@ To set the correct time zone, first, you can list all available time zones with
 the following command:</p>
 <div class="admonition info">
 <p class="admonition-title">list the timezones</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="l l-Scalar l-Scalar-Plain">timedatectl list-timezones</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>timedatectl<span class="w"> </span>list-timezones
 </span></code></pre></div>
 </div>
 <p>This command will display a list of available time zones, allowing you to select
 the one closest to your location. For example:</p>
 <div class="admonition info">
 <p class="admonition-title">List of all the timezones available</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="l l-Scalar l-Scalar-Plain">Africa/Abidjan</span>
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="l l-Scalar l-Scalar-Plain">Africa/Accra</span>
-</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="nn">...</span>
-</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="l l-Scalar l-Scalar-Plain">Pacific/Tongatapu</span>
-</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="l l-Scalar l-Scalar-Plain">Pacific/Wake</span>
-</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="l l-Scalar l-Scalar-Plain">Pacific/Wallis</span>
-</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="l l-Scalar l-Scalar-Plain">UTC</span>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="go">~# timedatectl list-timezones</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="go">Africa/Abidjan</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="go">Africa/Accra</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="go">...</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="go">Pacific/Tongatapu</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="go">Pacific/Wake</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="go">Pacific/Wallis</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="go">UTC</span>
 </span></code></pre></div>
 </div>
 <p>Once you've identified your time zone, configure it using the following command:</p>
 <div class="admonition info">
 <p class="admonition-title">Set the timezone</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="l l-Scalar l-Scalar-Plain">timedatectl set-timezone Europe/Brussels</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>timedatectl<span class="w"> </span>set-timezone<span class="w"> </span>Europe/Brussels
 </span></code></pre></div>
 </div>
 <p>To verify that the time zone has been configured correctly, use the <code>timedatectl</code>
 command again:</p>
 <div class="admonition info">
 <p class="admonition-title">Check the time and zone</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="l l-Scalar l-Scalar-Plain">timedatectl</span>
-</span></code></pre></div>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nt">Local time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Thu 2023-11-16 16:13:35 CET</span>
-</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="nt">Universal time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Thu 2023-11-16 15:13:35 UTC</span>
-</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="nt">RTC time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Thu 2023-11-16 15:13:36</span>
-</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="nt">**Time zone</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Europe/Brussels (CET, +0100)**</span>
-</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="nt">System clock synchronized</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span>
-</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="nt">NTP service</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">active</span>
-</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="nt">RTC in local TZ</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">no</span>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="go">~# timedatectl</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="go">               Local time: Thu 2023-11-16 16:13:35 CET</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="go">           Universal time: Thu 2023-11-16 15:13:35 UTC</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="go">                 RTC time: Thu 2023-11-16 15:13:36</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="go">                Time zone: Europe/Brussels (CET, +0100)</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="go">System clock synchronized: yes</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="go">              NTP service: active</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="go">          RTC in local TZ: no</span>
 </span></code></pre></div>
 </div>
 <details class="note" open="open">
@@ -2192,40 +2248,40 @@ remain in UTC while individual users can adjust the time zone via the
 interface if needed.</p>
 </details>
 <hr />
-<h3 id="verifying-chrony-synchronization">Verifying Chrony Synchronization</h3>
+<h4 id="verifying-chrony-synchronization">Verifying Chrony Synchronization</h4>
 <p>To ensure that Chrony is synchronizing with the correct time servers, you can
 run the following command:</p>
 <div class="admonition info">
 <p class="admonition-title">Verify chrony</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="l l-Scalar l-Scalar-Plain">chronyc</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>chronyc
 </span></code></pre></div>
 </div>
 <p>The output should resemble:</p>
 <div class="admonition info">
 <p class="admonition-title">Verify your chrony output</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="l l-Scalar l-Scalar-Plain">chrony version 4.2</span>
-</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="l l-Scalar l-Scalar-Plain">Copyright (C) 1997-2003, 2007, 2009-2021 Richard P. Curnow and others</span>
-</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="l l-Scalar l-Scalar-Plain">chrony comes with ABSOLUTELY NO WARRANTY. This is free software, and</span>
-</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="l l-Scalar l-Scalar-Plain">you are welcome to redistribute it under certain conditions. See the</span>
-</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="l l-Scalar l-Scalar-Plain">GNU General Public License version 2 for details.</span>
-</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>
-</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="l l-Scalar l-Scalar-Plain">chronyc&gt;</span>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>chrony version 4.2
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>Copyright (C) 1997-2003, 2007, 2009-2021 Richard P. Curnow and others
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>chrony comes with ABSOLUTELY NO WARRANTY. This is free software, and
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>you are welcome to redistribute it under certain conditions. See the
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>GNU General Public License version 2 for details.
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>chronyc&gt;
 </span></code></pre></div>
 </div>
 <p>Once inside the Chrony prompt, type the following to check the sources:</p>
 <div class="admonition info">
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="l l-Scalar l-Scalar-Plain">chronyc&gt; sources</span>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>chronyc&gt; sources
 </span></code></pre></div>
 </div>
 <p>Example output:</p>
 <div class="admonition info">
 <p class="admonition-title">Check your time server sources</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>MS<span class="w"> </span>Name/IP<span class="w"> </span>address<span class="w">         </span>Stratum<span class="w"> </span>Poll<span class="w"> </span>Reach<span class="w"> </span>LastRx<span class="w"> </span>Last<span class="w"> </span><span class="nv">sample</span>
-</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="o">===============================================================================</span>
-</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>^-<span class="w"> </span><span class="m">51</span>-15-20-83.rev.poneytel&gt;<span class="w">     </span><span class="m">2</span><span class="w">   </span><span class="m">9</span><span class="w">   </span><span class="m">377</span><span class="w">   </span><span class="m">354</span><span class="w">   </span>+429us<span class="o">[</span><span class="w"> </span>+429us<span class="o">]</span><span class="w"> </span>+/-<span class="w">  </span>342ms
-</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>^-<span class="w"> </span><span class="m">5</span>.255.99.180<span class="w">                  </span><span class="m">2</span><span class="w">  </span><span class="m">10</span><span class="w">   </span><span class="m">377</span><span class="w">   </span><span class="m">620</span><span class="w">  </span>+7424us<span class="o">[</span>+7424us<span class="o">]</span><span class="w"> </span>+/-<span class="w">   </span>37ms
-</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>^-<span class="w"> </span>hachi.paina.net<span class="w">               </span><span class="m">2</span><span class="w">  </span><span class="m">10</span><span class="w">   </span><span class="m">377</span><span class="w">   </span><span class="m">412</span><span class="w">   </span>+445us<span class="o">[</span><span class="w"> </span>+445us<span class="o">]</span><span class="w"> </span>+/-<span class="w">   </span>39ms
-</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>^*<span class="w"> </span>leontp1.office.panq.nl<span class="w">        </span><span class="m">1</span><span class="w">  </span><span class="m">10</span><span class="w">   </span><span class="m">377</span><span class="w">   </span><span class="m">904</span><span class="w">  </span>+6806ns<span class="o">[</span><span class="w"> </span>+171us<span class="o">]</span><span class="w"> </span>+/-<span class="w"> </span>2336us
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>MS<span class="w"> </span>Name/IP<span class="w"> </span>address<span class="w">         </span>Stratum<span class="w"> </span>Poll<span class="w"> </span>Reach<span class="w"> </span>LastRx<span class="w"> </span>Last<span class="w"> </span><span class="nv">sample</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="o">===============================================================================</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>^-<span class="w"> </span><span class="m">51</span>-15-20-83.rev.poneytel&gt;<span class="w">     </span><span class="m">2</span><span class="w">   </span><span class="m">9</span><span class="w">   </span><span class="m">377</span><span class="w">   </span><span class="m">354</span><span class="w">   </span>+429us<span class="o">[</span><span class="w"> </span>+429us<span class="o">]</span><span class="w"> </span>+/-<span class="w">  </span>342ms
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>^-<span class="w"> </span><span class="m">5</span>.255.99.180<span class="w">                  </span><span class="m">2</span><span class="w">  </span><span class="m">10</span><span class="w">   </span><span class="m">377</span><span class="w">   </span><span class="m">620</span><span class="w">  </span>+7424us<span class="o">[</span>+7424us<span class="o">]</span><span class="w"> </span>+/-<span class="w">   </span>37ms
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>^-<span class="w"> </span>hachi.paina.net<span class="w">               </span><span class="m">2</span><span class="w">  </span><span class="m">10</span><span class="w">   </span><span class="m">377</span><span class="w">   </span><span class="m">412</span><span class="w">   </span>+445us<span class="o">[</span><span class="w"> </span>+445us<span class="o">]</span><span class="w"> </span>+/-<span class="w">   </span>39ms
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>^*<span class="w"> </span>leontp1.office.panq.nl<span class="w">        </span><span class="m">1</span><span class="w">  </span><span class="m">10</span><span class="w">   </span><span class="m">377</span><span class="w">   </span><span class="m">904</span><span class="w">  </span>+6806ns<span class="o">[</span><span class="w"> </span>+171us<span class="o">]</span><span class="w"> </span>+/-<span class="w"> </span>2336us
 </span></code></pre></div>
 </div>
 <p>In this example, the NTP servers in use are located outside your local region.
@@ -2233,51 +2289,52 @@ It is recommended to switch to time servers in your country or, if available,
 to a dedicated company time server. You can find local NTP servers here:
 <a href="https://www.ntppool.org/">www.ntppool.org</a>.</p>
 <hr />
-<h3 id="updating-time-servers">Updating Time Servers</h3>
-<p>To update the time servers, modify the <code>/etc/chrony.conf</code> file for Red Hat and SUSE
-based systems, and if you use Ubuntu edit <code>/etc/chrony/chrony.conf</code>. Replace the
-existing NTP server with one closer to your location.</p>
+<h4 id="updating-time-servers">Updating Time Servers</h4>
+<p>To update the time servers, modify the <code>/etc/chrony.conf</code> file for Red Hat 
+based systems, <code>/etc/chrony.d/pool.conf</code> on SUSE based systems and if you use 
+Ubuntu edit <code>/etc/chrony/chrony.conf</code>. Replace the existing NTP server with 
+one closer to your location.</p>
 <p>Example of the current configuration:</p>
 <div class="admonition info">
 <p class="admonition-title">example ntp pool config</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># Use public servers from the pool.ntp.org project.</span>
-</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="c1"># Please consider joining the pool (http://www.pool.ntp.org/join.html).</span>
-</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="l l-Scalar l-Scalar-Plain">pool 2.centos.pool.ntp.org iburst</span>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a># Use public servers from the pool.ntp.org project.
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a># Please consider joining the pool (http://www.pool.ntp.org/join.html).
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>pool 2.centos.pool.ntp.org iburst
 </span></code></pre></div>
 <p>Change the pools you want to a local time server:</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1"># Use public servers from the pool.ntp.org project.</span>
-</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="c1"># Please consider joining the pool (http://www.pool.ntp.org/join.html).</span>
-</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="l l-Scalar l-Scalar-Plain">pool be.pool.ntp.org iburst</span>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a># Use public servers from the pool.ntp.org project.
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a># Please consider joining the pool (http://www.pool.ntp.org/join.html).
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>pool be.pool.ntp.org iburst
 </span></code></pre></div>
 </div>
 <p>After making this change, restart the Chrony service to apply the new configuration:</p>
 <div class="admonition info">
 <p class="admonition-title">restart the chrony service</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="l l-Scalar l-Scalar-Plain">systemctl restart chronyd</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>systemctl<span class="w"> </span>restart<span class="w"> </span>chronyd
 </span></code></pre></div>
 </div>
-<h3 id="verifying-updated-time-servers">Verifying Updated Time Servers</h3>
+<h4 id="verifying-updated-time-servers">Verifying Updated Time Servers</h4>
 <p>Check the time sources again to ensure that the new local servers are in use:</p>
 <div class="admonition info">
 <p class="admonition-title">Check chrony sources</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="l l-Scalar l-Scalar-Plain">chronyc&gt; sources</span>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>chronyc&gt; sources
 </span></code></pre></div>
 </div>
 <p>Example of expected output with local servers:</p>
 <div class="admonition info">
 <p class="admonition-title">Example output</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="l l-Scalar l-Scalar-Plain">MS Name/IP address         Stratum Poll Reach LastRx Last sample</span>
-</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="l l-Scalar l-Scalar-Plain">===============================================================================</span>
-</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="l l-Scalar l-Scalar-Plain">^- ntp1.unix-solutions.be        2   6    17    43   -375us[ -676us] +/-   28ms</span>
-</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="l l-Scalar l-Scalar-Plain">^* ntp.devrandom.be              2   6    17    43   -579us[ -880us] +/- 2877us</span>
-</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="l l-Scalar l-Scalar-Plain">^+ time.cloudflare.com           3   6    17    43   +328us[  +27us] +/- 2620us</span>
-</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="l l-Scalar l-Scalar-Plain">^+ time.cloudflare.com           3   6    17    43</span>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>MS Name/IP address         Stratum Poll Reach LastRx Last sample
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>===============================================================================
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>^- ntp1.unix-solutions.be        2   6    17    43   -375us[ -676us] +/-   28ms
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>^* ntp.devrandom.be              2   6    17    43   -579us[ -880us] +/- 2877us
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>^+ time.cloudflare.com           3   6    17    43   +328us[  +27us] +/- 2620us
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>^+ time.cloudflare.com           3   6    17    43
 </span></code></pre></div>
 </div>
 <p>This confirms that the system is now using local time servers.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>As we have seen, before even considering the Zabbix packages, attention must be
-paid to the environment in which it will reside. A properly configured operating
+paid to the environment in which it will reside. A properly configured and up-to-date operating
 system, an open path through the firewall, and accurate timekeeping are not mere
 suggestions, but essential building blocks. Having laid this groundwork, we can
 now proceed with confidence to the Zabbix installation, knowing that the underlying

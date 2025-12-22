@@ -912,6 +912,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#configure-firewall-to-allow-zabbix-trapper-connections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configure firewall to allow Zabbix trapper connections
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#starting-the-zabbix-server" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2157,6 +2168,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#configure-firewall-to-allow-zabbix-trapper-connections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configure firewall to allow Zabbix trapper connections
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#starting-the-zabbix-server" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2391,12 +2413,6 @@ chosen in this example to split the database from the rest of the setup.</p>
 </ul>
 <hr />
 <h2 id="installing-the-zabbix-database">Installing the Zabbix database</h2>
-<p>Before proceeding with the database installation, it's a best practice to ensure
-your operating system is up-to-date with the latest patches and security fixes.
-This will help maintain system stability and compatibility with the software you're
-about to install.
-Once the update process is complete, you can move forward with the database software
-installation.</p>
 <h3 id="choosing-a-database-backend-for-zabbix">Choosing a Database Backend for Zabbix</h3>
 <p>A critical decision when managing Zabbix installations is selecting the database
 backend. Zabbix supports several database options: MySQL/Percona, MariaDB, 
@@ -3605,6 +3621,27 @@ This file should be readable by the <code>zabbix</code> user. By doing so, you c
 or modify parameters without modifying the default configuration file,
 making system management and upgrades smoother.</p>
 <hr />
+<h3 id="configure-firewall-to-allow-zabbix-trapper-connections">Configure firewall to allow Zabbix trapper connections</h3>
+<p>Your Zabbix server needs to accept incoming connections from Zabbix agents, senders,
+and proxies. By default, Zabbix uses port <code>10051/tcp</code> for these connections.
+To allow these connections, you need to open this port in your firewall.</p>
+<div class="admonition info">
+<p class="admonition-title">Open firewall for zabbix-trapper</p>
+<p>Red Hat / SUSE
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-84-1"><a id="__codelineno-84-1" name="__codelineno-84-1" href="#__codelineno-84-1"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--add-service<span class="o">=</span>zabbix-server<span class="w"> </span>--permanent
+</span><span id="__span-84-2"><a id="__codelineno-84-2" name="__codelineno-84-2" href="#__codelineno-84-2"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--reload
+</span></code></pre></div></p>
+<p>Ubuntu
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-85-1"><a id="__codelineno-85-1" name="__codelineno-85-1" href="#__codelineno-85-1"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">10051</span>/tcp
+</span></code></pre></div></p>
+</div>
+<p>If the service is not recognized using <code>firewall-cmd</code>, you can manually specify the port:</p>
+<div class="admonition info">
+<p class="admonition-title">Add port instead of the service name</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-86-1"><a id="__codelineno-86-1" name="__codelineno-86-1" href="#__codelineno-86-1"></a>firewall-cmd<span class="w"> </span>--add-port<span class="o">=</span><span class="m">10051</span>/tcp<span class="w"> </span>--permanent
+</span></code></pre></div>
+</div>
+<hr />
 <h3 id="starting-the-zabbix-server">Starting the Zabbix server</h3>
 <p>With the Zabbix server configuration updated to connect to your database, you
 can now start and enable the Zabbix server service. Run the following command
@@ -3620,7 +3657,7 @@ be accomplished using the following command: <code>zabbix-server -T</code></p>
 <div class="admonition info">
 <p class="admonition-title">enable and start zabbix-server service</p>
 <p>Red Hat, SUSE and Ubuntu
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-84-1"><a id="__codelineno-84-1" name="__codelineno-84-1" href="#__codelineno-84-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>zabbix-server<span class="w"> </span>--now
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-87-1"><a id="__codelineno-87-1" name="__codelineno-87-1" href="#__codelineno-87-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>zabbix-server<span class="w"> </span>--now
 </span></code></pre></div></p>
 </div>
 <p>This command will start the Zabbix server service immediately and configure it
@@ -3629,100 +3666,100 @@ check the log file for any messages. You can view the latest entries in the
 <code>Zabbix server</code> log file using:</p>
 <div class="admonition info">
 <p class="admonition-title">Check the log file</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-85-1"><a id="__codelineno-85-1" name="__codelineno-85-1" href="#__codelineno-85-1"></a>tail<span class="w"> </span>/var/log/zabbix/zabbix_server.log
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-88-1"><a id="__codelineno-88-1" name="__codelineno-88-1" href="#__codelineno-88-1"></a>tail<span class="w"> </span>/var/log/zabbix/zabbix_server.log
 </span></code></pre></div>
 </div>
 <p>Look for messages indicating that the server has started successfully. If there
 are any issues, the log file will provide details to help with troubleshooting.</p>
 <div class="admonition info">
 <p class="admonition-title">Example output</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-86-1"><a id="__codelineno-86-1" name="__codelineno-86-1" href="#__codelineno-86-1"></a>12074:20250225:145333.529 Starting Zabbix Server. Zabbix 7.2.4 (revision c34078a4563).
-</span><span id="__span-86-2"><a id="__codelineno-86-2" name="__codelineno-86-2" href="#__codelineno-86-2"></a>12074:20250225:145333.530 ****** Enabled features ******
-</span><span id="__span-86-3"><a id="__codelineno-86-3" name="__codelineno-86-3" href="#__codelineno-86-3"></a>12074:20250225:145333.530 SNMP monitoring:           YES
-</span><span id="__span-86-4"><a id="__codelineno-86-4" name="__codelineno-86-4" href="#__codelineno-86-4"></a>12074:20250225:145333.530 IPMI monitoring:           YES
-</span><span id="__span-86-5"><a id="__codelineno-86-5" name="__codelineno-86-5" href="#__codelineno-86-5"></a>12074:20250225:145333.530 Web monitoring:            YES
-</span><span id="__span-86-6"><a id="__codelineno-86-6" name="__codelineno-86-6" href="#__codelineno-86-6"></a>12074:20250225:145333.530 VMware monitoring:         YES
-</span><span id="__span-86-7"><a id="__codelineno-86-7" name="__codelineno-86-7" href="#__codelineno-86-7"></a>12074:20250225:145333.530 SMTP authentication:       YES
-</span><span id="__span-86-8"><a id="__codelineno-86-8" name="__codelineno-86-8" href="#__codelineno-86-8"></a>12074:20250225:145333.530 ODBC:                      YES
-</span><span id="__span-86-9"><a id="__codelineno-86-9" name="__codelineno-86-9" href="#__codelineno-86-9"></a>12074:20250225:145333.530 SSH support:               YES
-</span><span id="__span-86-10"><a id="__codelineno-86-10" name="__codelineno-86-10" href="#__codelineno-86-10"></a>12074:20250225:145333.530 IPv6 support:              YES
-</span><span id="__span-86-11"><a id="__codelineno-86-11" name="__codelineno-86-11" href="#__codelineno-86-11"></a>12074:20250225:145333.530 TLS support:               YES
-</span><span id="__span-86-12"><a id="__codelineno-86-12" name="__codelineno-86-12" href="#__codelineno-86-12"></a>12074:20250225:145333.530 ******************************
-</span><span id="__span-86-13"><a id="__codelineno-86-13" name="__codelineno-86-13" href="#__codelineno-86-13"></a>12074:20250225:145333.530 using configuration file: /etc/zabbix/zabbix_server.conf
-</span><span id="__span-86-14"><a id="__codelineno-86-14" name="__codelineno-86-14" href="#__codelineno-86-14"></a>12074:20250225:145333.545 current database version (mandatory/optional): 07020000/07020000
-</span><span id="__span-86-15"><a id="__codelineno-86-15" name="__codelineno-86-15" href="#__codelineno-86-15"></a>12074:20250225:145333.545 required mandatory version: 07020000
-</span><span id="__span-86-16"><a id="__codelineno-86-16" name="__codelineno-86-16" href="#__codelineno-86-16"></a>12075:20250225:145333.557 starting HA manager
-</span><span id="__span-86-17"><a id="__codelineno-86-17" name="__codelineno-86-17" href="#__codelineno-86-17"></a>12075:20250225:145333.566 HA manager started in active mode
-</span><span id="__span-86-18"><a id="__codelineno-86-18" name="__codelineno-86-18" href="#__codelineno-86-18"></a>12074:20250225:145333.567 server #0 started [main process]
-</span><span id="__span-86-19"><a id="__codelineno-86-19" name="__codelineno-86-19" href="#__codelineno-86-19"></a>12076:20250225:145333.567 server #1 started [service manager #1]
-</span><span id="__span-86-20"><a id="__codelineno-86-20" name="__codelineno-86-20" href="#__codelineno-86-20"></a>12077:20250225:145333.567 server #2 started [configuration syncer #1]
-</span><span id="__span-86-21"><a id="__codelineno-86-21" name="__codelineno-86-21" href="#__codelineno-86-21"></a>12078:20250225:145333.718 server #3 started [alert manager #1]
-</span><span id="__span-86-22"><a id="__codelineno-86-22" name="__codelineno-86-22" href="#__codelineno-86-22"></a>12079:20250225:145333.719 server #4 started [alerter #1]
-</span><span id="__span-86-23"><a id="__codelineno-86-23" name="__codelineno-86-23" href="#__codelineno-86-23"></a>12080:20250225:145333.719 server #5 started [alerter #2]
-</span><span id="__span-86-24"><a id="__codelineno-86-24" name="__codelineno-86-24" href="#__codelineno-86-24"></a>12081:20250225:145333.719 server #6 started [alerter #3]
-</span><span id="__span-86-25"><a id="__codelineno-86-25" name="__codelineno-86-25" href="#__codelineno-86-25"></a>12082:20250225:145333.719 server #7 started [preprocessing manager #1]
-</span><span id="__span-86-26"><a id="__codelineno-86-26" name="__codelineno-86-26" href="#__codelineno-86-26"></a>12083:20250225:145333.719 server #8 started [lld manager #1]
+<div class="language-text highlight"><pre><span></span><code><span id="__span-89-1"><a id="__codelineno-89-1" name="__codelineno-89-1" href="#__codelineno-89-1"></a>12074:20250225:145333.529 Starting Zabbix Server. Zabbix 7.2.4 (revision c34078a4563).
+</span><span id="__span-89-2"><a id="__codelineno-89-2" name="__codelineno-89-2" href="#__codelineno-89-2"></a>12074:20250225:145333.530 ****** Enabled features ******
+</span><span id="__span-89-3"><a id="__codelineno-89-3" name="__codelineno-89-3" href="#__codelineno-89-3"></a>12074:20250225:145333.530 SNMP monitoring:           YES
+</span><span id="__span-89-4"><a id="__codelineno-89-4" name="__codelineno-89-4" href="#__codelineno-89-4"></a>12074:20250225:145333.530 IPMI monitoring:           YES
+</span><span id="__span-89-5"><a id="__codelineno-89-5" name="__codelineno-89-5" href="#__codelineno-89-5"></a>12074:20250225:145333.530 Web monitoring:            YES
+</span><span id="__span-89-6"><a id="__codelineno-89-6" name="__codelineno-89-6" href="#__codelineno-89-6"></a>12074:20250225:145333.530 VMware monitoring:         YES
+</span><span id="__span-89-7"><a id="__codelineno-89-7" name="__codelineno-89-7" href="#__codelineno-89-7"></a>12074:20250225:145333.530 SMTP authentication:       YES
+</span><span id="__span-89-8"><a id="__codelineno-89-8" name="__codelineno-89-8" href="#__codelineno-89-8"></a>12074:20250225:145333.530 ODBC:                      YES
+</span><span id="__span-89-9"><a id="__codelineno-89-9" name="__codelineno-89-9" href="#__codelineno-89-9"></a>12074:20250225:145333.530 SSH support:               YES
+</span><span id="__span-89-10"><a id="__codelineno-89-10" name="__codelineno-89-10" href="#__codelineno-89-10"></a>12074:20250225:145333.530 IPv6 support:              YES
+</span><span id="__span-89-11"><a id="__codelineno-89-11" name="__codelineno-89-11" href="#__codelineno-89-11"></a>12074:20250225:145333.530 TLS support:               YES
+</span><span id="__span-89-12"><a id="__codelineno-89-12" name="__codelineno-89-12" href="#__codelineno-89-12"></a>12074:20250225:145333.530 ******************************
+</span><span id="__span-89-13"><a id="__codelineno-89-13" name="__codelineno-89-13" href="#__codelineno-89-13"></a>12074:20250225:145333.530 using configuration file: /etc/zabbix/zabbix_server.conf
+</span><span id="__span-89-14"><a id="__codelineno-89-14" name="__codelineno-89-14" href="#__codelineno-89-14"></a>12074:20250225:145333.545 current database version (mandatory/optional): 07020000/07020000
+</span><span id="__span-89-15"><a id="__codelineno-89-15" name="__codelineno-89-15" href="#__codelineno-89-15"></a>12074:20250225:145333.545 required mandatory version: 07020000
+</span><span id="__span-89-16"><a id="__codelineno-89-16" name="__codelineno-89-16" href="#__codelineno-89-16"></a>12075:20250225:145333.557 starting HA manager
+</span><span id="__span-89-17"><a id="__codelineno-89-17" name="__codelineno-89-17" href="#__codelineno-89-17"></a>12075:20250225:145333.566 HA manager started in active mode
+</span><span id="__span-89-18"><a id="__codelineno-89-18" name="__codelineno-89-18" href="#__codelineno-89-18"></a>12074:20250225:145333.567 server #0 started [main process]
+</span><span id="__span-89-19"><a id="__codelineno-89-19" name="__codelineno-89-19" href="#__codelineno-89-19"></a>12076:20250225:145333.567 server #1 started [service manager #1]
+</span><span id="__span-89-20"><a id="__codelineno-89-20" name="__codelineno-89-20" href="#__codelineno-89-20"></a>12077:20250225:145333.567 server #2 started [configuration syncer #1]
+</span><span id="__span-89-21"><a id="__codelineno-89-21" name="__codelineno-89-21" href="#__codelineno-89-21"></a>12078:20250225:145333.718 server #3 started [alert manager #1]
+</span><span id="__span-89-22"><a id="__codelineno-89-22" name="__codelineno-89-22" href="#__codelineno-89-22"></a>12079:20250225:145333.719 server #4 started [alerter #1]
+</span><span id="__span-89-23"><a id="__codelineno-89-23" name="__codelineno-89-23" href="#__codelineno-89-23"></a>12080:20250225:145333.719 server #5 started [alerter #2]
+</span><span id="__span-89-24"><a id="__codelineno-89-24" name="__codelineno-89-24" href="#__codelineno-89-24"></a>12081:20250225:145333.719 server #6 started [alerter #3]
+</span><span id="__span-89-25"><a id="__codelineno-89-25" name="__codelineno-89-25" href="#__codelineno-89-25"></a>12082:20250225:145333.719 server #7 started [preprocessing manager #1]
+</span><span id="__span-89-26"><a id="__codelineno-89-26" name="__codelineno-89-26" href="#__codelineno-89-26"></a>12083:20250225:145333.719 server #8 started [lld manager #1]
 </span></code></pre></div>
 </div>
 <p>If there was an error and the server was not able to connect to the database you
 would see something like this in the server log file :</p>
 <div class="admonition info">
 <p class="admonition-title">Example log with errors</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-87-1"><a id="__codelineno-87-1" name="__codelineno-87-1" href="#__codelineno-87-1"></a>12068:20250225:145309.018 Starting Zabbix Server. Zabbix 7.2.4 (revision c34078a4563).
-</span><span id="__span-87-2"><a id="__codelineno-87-2" name="__codelineno-87-2" href="#__codelineno-87-2"></a>12068:20250225:145309.018 ****** Enabled features ******
-</span><span id="__span-87-3"><a id="__codelineno-87-3" name="__codelineno-87-3" href="#__codelineno-87-3"></a>12068:20250225:145309.018 SNMP monitoring:           YES
-</span><span id="__span-87-4"><a id="__codelineno-87-4" name="__codelineno-87-4" href="#__codelineno-87-4"></a>12068:20250225:145309.018 IPMI monitoring:           YES
-</span><span id="__span-87-5"><a id="__codelineno-87-5" name="__codelineno-87-5" href="#__codelineno-87-5"></a>12068:20250225:145309.018 Web monitoring:            YES
-</span><span id="__span-87-6"><a id="__codelineno-87-6" name="__codelineno-87-6" href="#__codelineno-87-6"></a>12068:20250225:145309.018 VMware monitoring:         YES
-</span><span id="__span-87-7"><a id="__codelineno-87-7" name="__codelineno-87-7" href="#__codelineno-87-7"></a>12068:20250225:145309.018 SMTP authentication:       YES
-</span><span id="__span-87-8"><a id="__codelineno-87-8" name="__codelineno-87-8" href="#__codelineno-87-8"></a>12068:20250225:145309.018 ODBC:                      YES
-</span><span id="__span-87-9"><a id="__codelineno-87-9" name="__codelineno-87-9" href="#__codelineno-87-9"></a>12068:20250225:145309.018 SSH support:               YES
-</span><span id="__span-87-10"><a id="__codelineno-87-10" name="__codelineno-87-10" href="#__codelineno-87-10"></a>12068:20250225:145309.018 IPv6 support:              YES
-</span><span id="__span-87-11"><a id="__codelineno-87-11" name="__codelineno-87-11" href="#__codelineno-87-11"></a>12068:20250225:145309.018 TLS support:               YES
-</span><span id="__span-87-12"><a id="__codelineno-87-12" name="__codelineno-87-12" href="#__codelineno-87-12"></a>12068:20250225:145309.018 ******************************
-</span><span id="__span-87-13"><a id="__codelineno-87-13" name="__codelineno-87-13" href="#__codelineno-87-13"></a>12068:20250225:145309.018 using configuration file: /etc/zabbix/zabbix_server.conf
-</span><span id="__span-87-14"><a id="__codelineno-87-14" name="__codelineno-87-14" href="#__codelineno-87-14"></a>12068:20250225:145309.027 [Z3005] query failed: [1146] Table &#39;zabbix.users&#39; doesn&#39;t exist [select userid from users limit 1]
-</span><span id="__span-87-15"><a id="__codelineno-87-15" name="__codelineno-87-15" href="#__codelineno-87-15"></a>12068:20250225:145309.027 cannot use database &quot;zabbix&quot;: database is not a Zabbix database
+<div class="language-text highlight"><pre><span></span><code><span id="__span-90-1"><a id="__codelineno-90-1" name="__codelineno-90-1" href="#__codelineno-90-1"></a>12068:20250225:145309.018 Starting Zabbix Server. Zabbix 7.2.4 (revision c34078a4563).
+</span><span id="__span-90-2"><a id="__codelineno-90-2" name="__codelineno-90-2" href="#__codelineno-90-2"></a>12068:20250225:145309.018 ****** Enabled features ******
+</span><span id="__span-90-3"><a id="__codelineno-90-3" name="__codelineno-90-3" href="#__codelineno-90-3"></a>12068:20250225:145309.018 SNMP monitoring:           YES
+</span><span id="__span-90-4"><a id="__codelineno-90-4" name="__codelineno-90-4" href="#__codelineno-90-4"></a>12068:20250225:145309.018 IPMI monitoring:           YES
+</span><span id="__span-90-5"><a id="__codelineno-90-5" name="__codelineno-90-5" href="#__codelineno-90-5"></a>12068:20250225:145309.018 Web monitoring:            YES
+</span><span id="__span-90-6"><a id="__codelineno-90-6" name="__codelineno-90-6" href="#__codelineno-90-6"></a>12068:20250225:145309.018 VMware monitoring:         YES
+</span><span id="__span-90-7"><a id="__codelineno-90-7" name="__codelineno-90-7" href="#__codelineno-90-7"></a>12068:20250225:145309.018 SMTP authentication:       YES
+</span><span id="__span-90-8"><a id="__codelineno-90-8" name="__codelineno-90-8" href="#__codelineno-90-8"></a>12068:20250225:145309.018 ODBC:                      YES
+</span><span id="__span-90-9"><a id="__codelineno-90-9" name="__codelineno-90-9" href="#__codelineno-90-9"></a>12068:20250225:145309.018 SSH support:               YES
+</span><span id="__span-90-10"><a id="__codelineno-90-10" name="__codelineno-90-10" href="#__codelineno-90-10"></a>12068:20250225:145309.018 IPv6 support:              YES
+</span><span id="__span-90-11"><a id="__codelineno-90-11" name="__codelineno-90-11" href="#__codelineno-90-11"></a>12068:20250225:145309.018 TLS support:               YES
+</span><span id="__span-90-12"><a id="__codelineno-90-12" name="__codelineno-90-12" href="#__codelineno-90-12"></a>12068:20250225:145309.018 ******************************
+</span><span id="__span-90-13"><a id="__codelineno-90-13" name="__codelineno-90-13" href="#__codelineno-90-13"></a>12068:20250225:145309.018 using configuration file: /etc/zabbix/zabbix_server.conf
+</span><span id="__span-90-14"><a id="__codelineno-90-14" name="__codelineno-90-14" href="#__codelineno-90-14"></a>12068:20250225:145309.027 [Z3005] query failed: [1146] Table &#39;zabbix.users&#39; doesn&#39;t exist [select userid from users limit 1]
+</span><span id="__span-90-15"><a id="__codelineno-90-15" name="__codelineno-90-15" href="#__codelineno-90-15"></a>12068:20250225:145309.027 cannot use database &quot;zabbix&quot;: database is not a Zabbix database
 </span></code></pre></div>
 </div>
 <p>Let's check the Zabbix server service to see if it's enabled so that it survives
 a reboot</p>
 <div class="admonition info">
 <p class="admonition-title">check status of zabbix-server service</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-88-1"><a id="__codelineno-88-1" name="__codelineno-88-1" href="#__codelineno-88-1"></a>systemctl<span class="w"> </span>status<span class="w"> </span>zabbix-server
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-91-1"><a id="__codelineno-91-1" name="__codelineno-91-1" href="#__codelineno-91-1"></a>systemctl<span class="w"> </span>status<span class="w"> </span>zabbix-server
 </span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-89-1"><a id="__codelineno-89-1" name="__codelineno-89-1" href="#__codelineno-89-1"></a>● zabbix-server.service - Zabbix Server
-</span><span id="__span-89-2"><a id="__codelineno-89-2" name="__codelineno-89-2" href="#__codelineno-89-2"></a>     Loaded: loaded (/usr/lib/systemd/system/zabbix-server.service; enabled; preset: disabled)
-</span><span id="__span-89-3"><a id="__codelineno-89-3" name="__codelineno-89-3" href="#__codelineno-89-3"></a>     Active: active (running) since Tue 2025-02-25 14:53:33 CET; 26min ago
-</span><span id="__span-89-4"><a id="__codelineno-89-4" name="__codelineno-89-4" href="#__codelineno-89-4"></a>   Main PID: 12074 (zabbix_server)
-</span><span id="__span-89-5"><a id="__codelineno-89-5" name="__codelineno-89-5" href="#__codelineno-89-5"></a>      Tasks: 77 (limit: 24744)
-</span><span id="__span-89-6"><a id="__codelineno-89-6" name="__codelineno-89-6" href="#__codelineno-89-6"></a>     Memory: 71.5M
-</span><span id="__span-89-7"><a id="__codelineno-89-7" name="__codelineno-89-7" href="#__codelineno-89-7"></a>        CPU: 18.535s
-</span><span id="__span-89-8"><a id="__codelineno-89-8" name="__codelineno-89-8" href="#__codelineno-89-8"></a>     CGroup: /system.slice/zabbix-server.service
-</span><span id="__span-89-9"><a id="__codelineno-89-9" name="__codelineno-89-9" href="#__codelineno-89-9"></a>             ├─12074 /usr/sbin/zabbix_server -c /etc/zabbix/zabbix_server.conf
-</span><span id="__span-89-10"><a id="__codelineno-89-10" name="__codelineno-89-10" href="#__codelineno-89-10"></a>             ├─12075 &quot;/usr/sbin/zabbix_server: ha manager&quot;
-</span><span id="__span-89-11"><a id="__codelineno-89-11" name="__codelineno-89-11" href="#__codelineno-89-11"></a>             ├─12076 &quot;/usr/sbin/zabbix_server: service manager #1 [processed 0 events, updated 0 event tags, deleted 0 problems, synced 0 service updates, idle 5.027667 sec during 5.042628 sec]&quot;
-</span><span id="__span-89-12"><a id="__codelineno-89-12" name="__codelineno-89-12" href="#__codelineno-89-12"></a>             ├─12077 &quot;/usr/sbin/zabbix_server: configuration syncer [synced configuration in 0.051345 sec, idle 10 sec]&quot;
-</span><span id="__span-89-13"><a id="__codelineno-89-13" name="__codelineno-89-13" href="#__codelineno-89-13"></a>             ├─12078 &quot;/usr/sbin/zabbix_server: alert manager #1 [sent 0, failed 0 alerts, idle 5.030391 sec during 5.031944 sec]&quot;
-</span><span id="__span-89-14"><a id="__codelineno-89-14" name="__codelineno-89-14" href="#__codelineno-89-14"></a>             ├─12079 &quot;/usr/sbin/zabbix_server: alerter #1 started&quot;
-</span><span id="__span-89-15"><a id="__codelineno-89-15" name="__codelineno-89-15" href="#__codelineno-89-15"></a>             ├─12080 &quot;/usr/sbin/zabbix_server: alerter #2 started&quot;
-</span><span id="__span-89-16"><a id="__codelineno-89-16" name="__codelineno-89-16" href="#__codelineno-89-16"></a>             ├─12081 &quot;/usr/sbin/zabbix_server: alerter #3 started&quot;
-</span><span id="__span-89-17"><a id="__codelineno-89-17" name="__codelineno-89-17" href="#__codelineno-89-17"></a>             ├─12082 &quot;/usr/sbin/zabbix_server: preprocessing manager #1 [queued 0, processed 0 values, idle 5.023818 sec during 5.024830 sec]&quot;
-</span><span id="__span-89-18"><a id="__codelineno-89-18" name="__codelineno-89-18" href="#__codelineno-89-18"></a>             ├─12083 &quot;/usr/sbin/zabbix_server: lld manager #1 [processed 0 LLD rules, idle 5.017278sec during 5.017574 sec]&quot;
-</span><span id="__span-89-19"><a id="__codelineno-89-19" name="__codelineno-89-19" href="#__codelineno-89-19"></a>             ├─12084 &quot;/usr/sbin/zabbix_server: lld worker #1 [processed 1 LLD rules, idle 21.031209 sec during 21.063879 sec]&quot;
-</span><span id="__span-89-20"><a id="__codelineno-89-20" name="__codelineno-89-20" href="#__codelineno-89-20"></a>             ├─12085 &quot;/usr/sbin/zabbix_server: lld worker #2 [processed 1 LLD rules, idle 43.195541 sec during 43.227934 sec]&quot;
-</span><span id="__span-89-21"><a id="__codelineno-89-21" name="__codelineno-89-21" href="#__codelineno-89-21"></a>             ├─12086 &quot;/usr/sbin/zabbix_server: housekeeper [startup idle for 30 minutes]&quot;
-</span><span id="__span-89-22"><a id="__codelineno-89-22" name="__codelineno-89-22" href="#__codelineno-89-22"></a>             ├─12087 &quot;/usr/sbin/zabbix_server: timer #1 [updated 0 hosts, suppressed 0 events in 0.017595 sec, idle 59 sec]&quot;
-</span><span id="__span-89-23"><a id="__codelineno-89-23" name="__codelineno-89-23" href="#__codelineno-89-23"></a>             ├─12088 &quot;/usr/sbin/zabbix_server: http poller #1 [got 0 values in 0.000071 sec, idle 5 sec]&quot;
-</span><span id="__span-89-24"><a id="__codelineno-89-24" name="__codelineno-89-24" href="#__codelineno-89-24"></a>             ├─12089 &quot;/usr/sbin/zabbix_server: browser poller #1 [got 0 values in 0.000066 sec, idle 5 sec]&quot;
-</span><span id="__span-89-25"><a id="__codelineno-89-25" name="__codelineno-89-25" href="#__codelineno-89-25"></a>             ├─12090 &quot;/usr/sbin/zabbix_server: discovery manager #1 [processing 0 rules, 0 unsaved checks]&quot;
-</span><span id="__span-89-26"><a id="__codelineno-89-26" name="__codelineno-89-26" href="#__codelineno-89-26"></a>             ├─12091 &quot;/usr/sbin/zabbix_server: history syncer #1 [processed 4 values, 3 triggers in 0.027382 sec, idle 1 sec]&quot;
-</span><span id="__span-89-27"><a id="__codelineno-89-27" name="__codelineno-89-27" href="#__codelineno-89-27"></a>             ├─12092 &quot;/usr/sbin/zabbix_server: history syncer #2 [processed 0 values, 0 triggers in 0.000077 sec, idle 1 sec]&quot;
-</span><span id="__span-89-28"><a id="__codelineno-89-28" name="__codelineno-89-28" href="#__codelineno-89-28"></a>             ├─12093 &quot;/usr/sbin/zabbix_server: history syncer #3 [processed 0 values, 0 triggers in 0.000076 sec, idle 1 sec]&quot;
-</span><span id="__span-89-29"><a id="__codelineno-89-29" name="__codelineno-89-29" href="#__codelineno-89-29"></a>             ├─12094 &quot;/usr/sbin/zabbix_server: history syncer #4 [processed 0 values, 0 triggers in 0.000020 sec, idle 1 sec]&quot;
-</span><span id="__span-89-30"><a id="__codelineno-89-30" name="__codelineno-89-30" href="#__codelineno-89-30"></a>             ├─12095 &quot;/usr/sbin/zabbix_server: escalator #1 [processed 0 escalations in 0.011627 sec, idle 3 sec]&quot;
-</span><span id="__span-89-31"><a id="__codelineno-89-31" name="__codelineno-89-31" href="#__codelineno-89-31"></a>             ├─12096 &quot;/usr/sbin/zabbix_server: proxy poller #1 [exchanged data with 0 proxies in 0.000081 sec, idle 5 sec]&quot;
-</span><span id="__span-89-32"><a id="__codelineno-89-32" name="__codelineno-89-32" href="#__codelineno-89-32"></a>             ├─12097 &quot;/usr/sbin/zabbix_server: self-monitoring [processed data in 0.000068 sec, idle 1 sec]&quot;
+<div class="language-text highlight"><pre><span></span><code><span id="__span-92-1"><a id="__codelineno-92-1" name="__codelineno-92-1" href="#__codelineno-92-1"></a>● zabbix-server.service - Zabbix Server
+</span><span id="__span-92-2"><a id="__codelineno-92-2" name="__codelineno-92-2" href="#__codelineno-92-2"></a>     Loaded: loaded (/usr/lib/systemd/system/zabbix-server.service; enabled; preset: disabled)
+</span><span id="__span-92-3"><a id="__codelineno-92-3" name="__codelineno-92-3" href="#__codelineno-92-3"></a>     Active: active (running) since Tue 2025-02-25 14:53:33 CET; 26min ago
+</span><span id="__span-92-4"><a id="__codelineno-92-4" name="__codelineno-92-4" href="#__codelineno-92-4"></a>   Main PID: 12074 (zabbix_server)
+</span><span id="__span-92-5"><a id="__codelineno-92-5" name="__codelineno-92-5" href="#__codelineno-92-5"></a>      Tasks: 77 (limit: 24744)
+</span><span id="__span-92-6"><a id="__codelineno-92-6" name="__codelineno-92-6" href="#__codelineno-92-6"></a>     Memory: 71.5M
+</span><span id="__span-92-7"><a id="__codelineno-92-7" name="__codelineno-92-7" href="#__codelineno-92-7"></a>        CPU: 18.535s
+</span><span id="__span-92-8"><a id="__codelineno-92-8" name="__codelineno-92-8" href="#__codelineno-92-8"></a>     CGroup: /system.slice/zabbix-server.service
+</span><span id="__span-92-9"><a id="__codelineno-92-9" name="__codelineno-92-9" href="#__codelineno-92-9"></a>             ├─12074 /usr/sbin/zabbix_server -c /etc/zabbix/zabbix_server.conf
+</span><span id="__span-92-10"><a id="__codelineno-92-10" name="__codelineno-92-10" href="#__codelineno-92-10"></a>             ├─12075 &quot;/usr/sbin/zabbix_server: ha manager&quot;
+</span><span id="__span-92-11"><a id="__codelineno-92-11" name="__codelineno-92-11" href="#__codelineno-92-11"></a>             ├─12076 &quot;/usr/sbin/zabbix_server: service manager #1 [processed 0 events, updated 0 event tags, deleted 0 problems, synced 0 service updates, idle 5.027667 sec during 5.042628 sec]&quot;
+</span><span id="__span-92-12"><a id="__codelineno-92-12" name="__codelineno-92-12" href="#__codelineno-92-12"></a>             ├─12077 &quot;/usr/sbin/zabbix_server: configuration syncer [synced configuration in 0.051345 sec, idle 10 sec]&quot;
+</span><span id="__span-92-13"><a id="__codelineno-92-13" name="__codelineno-92-13" href="#__codelineno-92-13"></a>             ├─12078 &quot;/usr/sbin/zabbix_server: alert manager #1 [sent 0, failed 0 alerts, idle 5.030391 sec during 5.031944 sec]&quot;
+</span><span id="__span-92-14"><a id="__codelineno-92-14" name="__codelineno-92-14" href="#__codelineno-92-14"></a>             ├─12079 &quot;/usr/sbin/zabbix_server: alerter #1 started&quot;
+</span><span id="__span-92-15"><a id="__codelineno-92-15" name="__codelineno-92-15" href="#__codelineno-92-15"></a>             ├─12080 &quot;/usr/sbin/zabbix_server: alerter #2 started&quot;
+</span><span id="__span-92-16"><a id="__codelineno-92-16" name="__codelineno-92-16" href="#__codelineno-92-16"></a>             ├─12081 &quot;/usr/sbin/zabbix_server: alerter #3 started&quot;
+</span><span id="__span-92-17"><a id="__codelineno-92-17" name="__codelineno-92-17" href="#__codelineno-92-17"></a>             ├─12082 &quot;/usr/sbin/zabbix_server: preprocessing manager #1 [queued 0, processed 0 values, idle 5.023818 sec during 5.024830 sec]&quot;
+</span><span id="__span-92-18"><a id="__codelineno-92-18" name="__codelineno-92-18" href="#__codelineno-92-18"></a>             ├─12083 &quot;/usr/sbin/zabbix_server: lld manager #1 [processed 0 LLD rules, idle 5.017278sec during 5.017574 sec]&quot;
+</span><span id="__span-92-19"><a id="__codelineno-92-19" name="__codelineno-92-19" href="#__codelineno-92-19"></a>             ├─12084 &quot;/usr/sbin/zabbix_server: lld worker #1 [processed 1 LLD rules, idle 21.031209 sec during 21.063879 sec]&quot;
+</span><span id="__span-92-20"><a id="__codelineno-92-20" name="__codelineno-92-20" href="#__codelineno-92-20"></a>             ├─12085 &quot;/usr/sbin/zabbix_server: lld worker #2 [processed 1 LLD rules, idle 43.195541 sec during 43.227934 sec]&quot;
+</span><span id="__span-92-21"><a id="__codelineno-92-21" name="__codelineno-92-21" href="#__codelineno-92-21"></a>             ├─12086 &quot;/usr/sbin/zabbix_server: housekeeper [startup idle for 30 minutes]&quot;
+</span><span id="__span-92-22"><a id="__codelineno-92-22" name="__codelineno-92-22" href="#__codelineno-92-22"></a>             ├─12087 &quot;/usr/sbin/zabbix_server: timer #1 [updated 0 hosts, suppressed 0 events in 0.017595 sec, idle 59 sec]&quot;
+</span><span id="__span-92-23"><a id="__codelineno-92-23" name="__codelineno-92-23" href="#__codelineno-92-23"></a>             ├─12088 &quot;/usr/sbin/zabbix_server: http poller #1 [got 0 values in 0.000071 sec, idle 5 sec]&quot;
+</span><span id="__span-92-24"><a id="__codelineno-92-24" name="__codelineno-92-24" href="#__codelineno-92-24"></a>             ├─12089 &quot;/usr/sbin/zabbix_server: browser poller #1 [got 0 values in 0.000066 sec, idle 5 sec]&quot;
+</span><span id="__span-92-25"><a id="__codelineno-92-25" name="__codelineno-92-25" href="#__codelineno-92-25"></a>             ├─12090 &quot;/usr/sbin/zabbix_server: discovery manager #1 [processing 0 rules, 0 unsaved checks]&quot;
+</span><span id="__span-92-26"><a id="__codelineno-92-26" name="__codelineno-92-26" href="#__codelineno-92-26"></a>             ├─12091 &quot;/usr/sbin/zabbix_server: history syncer #1 [processed 4 values, 3 triggers in 0.027382 sec, idle 1 sec]&quot;
+</span><span id="__span-92-27"><a id="__codelineno-92-27" name="__codelineno-92-27" href="#__codelineno-92-27"></a>             ├─12092 &quot;/usr/sbin/zabbix_server: history syncer #2 [processed 0 values, 0 triggers in 0.000077 sec, idle 1 sec]&quot;
+</span><span id="__span-92-28"><a id="__codelineno-92-28" name="__codelineno-92-28" href="#__codelineno-92-28"></a>             ├─12093 &quot;/usr/sbin/zabbix_server: history syncer #3 [processed 0 values, 0 triggers in 0.000076 sec, idle 1 sec]&quot;
+</span><span id="__span-92-29"><a id="__codelineno-92-29" name="__codelineno-92-29" href="#__codelineno-92-29"></a>             ├─12094 &quot;/usr/sbin/zabbix_server: history syncer #4 [processed 0 values, 0 triggers in 0.000020 sec, idle 1 sec]&quot;
+</span><span id="__span-92-30"><a id="__codelineno-92-30" name="__codelineno-92-30" href="#__codelineno-92-30"></a>             ├─12095 &quot;/usr/sbin/zabbix_server: escalator #1 [processed 0 escalations in 0.011627 sec, idle 3 sec]&quot;
+</span><span id="__span-92-31"><a id="__codelineno-92-31" name="__codelineno-92-31" href="#__codelineno-92-31"></a>             ├─12096 &quot;/usr/sbin/zabbix_server: proxy poller #1 [exchanged data with 0 proxies in 0.000081 sec, idle 5 sec]&quot;
+</span><span id="__span-92-32"><a id="__codelineno-92-32" name="__codelineno-92-32" href="#__codelineno-92-32"></a>             ├─12097 &quot;/usr/sbin/zabbix_server: self-monitoring [processed data in 0.000068 sec, idle 1 sec]&quot;
 </span></code></pre></div></p>
 </div>
 <p>This concludes our chapter on installing and configuring the Zabbix server.</p>
@@ -3738,23 +3775,23 @@ and perform all subsequent steps on the server designated for the frontend.</p>
 <div class="admonition info">
 <p class="admonition-title">install frontend packages</p>
 <p>Red Hat
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-90-1"><a id="__codelineno-90-1" name="__codelineno-90-1" href="#__codelineno-90-1"></a><span class="c1"># When using MySQL/MariaDB</span>
-</span><span id="__span-90-2"><a id="__codelineno-90-2" name="__codelineno-90-2" href="#__codelineno-90-2"></a>dnf<span class="w"> </span>install<span class="w"> </span>zabbix-nginx-conf<span class="w"> </span>zabbix-web-mysql
-</span><span id="__span-90-3"><a id="__codelineno-90-3" name="__codelineno-90-3" href="#__codelineno-90-3"></a><span class="c1"># or when using PostgreSQL</span>
-</span><span id="__span-90-4"><a id="__codelineno-90-4" name="__codelineno-90-4" href="#__codelineno-90-4"></a>dnf<span class="w"> </span>install<span class="w"> </span>zabbix-nginx-conf<span class="w"> </span>zabbix-web-pgsql
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-93-1"><a id="__codelineno-93-1" name="__codelineno-93-1" href="#__codelineno-93-1"></a><span class="c1"># When using MySQL/MariaDB</span>
+</span><span id="__span-93-2"><a id="__codelineno-93-2" name="__codelineno-93-2" href="#__codelineno-93-2"></a>dnf<span class="w"> </span>install<span class="w"> </span>zabbix-nginx-conf<span class="w"> </span>zabbix-web-mysql
+</span><span id="__span-93-3"><a id="__codelineno-93-3" name="__codelineno-93-3" href="#__codelineno-93-3"></a><span class="c1"># or when using PostgreSQL</span>
+</span><span id="__span-93-4"><a id="__codelineno-93-4" name="__codelineno-93-4" href="#__codelineno-93-4"></a>dnf<span class="w"> </span>install<span class="w"> </span>zabbix-nginx-conf<span class="w"> </span>zabbix-web-pgsql
 </span></code></pre></div>
 SUSE
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-91-1"><a id="__codelineno-91-1" name="__codelineno-91-1" href="#__codelineno-91-1"></a><span class="c1"># When using MySQL/MariaDB</span>
-</span><span id="__span-91-2"><a id="__codelineno-91-2" name="__codelineno-91-2" href="#__codelineno-91-2"></a>zypper<span class="w"> </span>install<span class="w"> </span>zabbix-nginx-conf<span class="w"> </span>php8-mysql<span class="w"> </span>zabbix-web-mysql
-</span><span id="__span-91-3"><a id="__codelineno-91-3" name="__codelineno-91-3" href="#__codelineno-91-3"></a><span class="c1"># or when using PostgreSQL</span>
-</span><span id="__span-91-4"><a id="__codelineno-91-4" name="__codelineno-91-4" href="#__codelineno-91-4"></a>zypper<span class="w"> </span>install<span class="w"> </span>zabbix-nginx-conf<span class="w"> </span>php8-pgsql<span class="w"> </span>zabbix-web-pgsql
-</span><span id="__span-91-5"><a id="__codelineno-91-5" name="__codelineno-91-5" href="#__codelineno-91-5"></a>
-</span><span id="__span-91-6"><a id="__codelineno-91-6" name="__codelineno-91-6" href="#__codelineno-91-6"></a>Ubuntu
-</span><span id="__span-91-7"><a id="__codelineno-91-7" name="__codelineno-91-7" href="#__codelineno-91-7"></a><span class="sb">```</span>bash
-</span><span id="__span-91-8"><a id="__codelineno-91-8" name="__codelineno-91-8" href="#__codelineno-91-8"></a><span class="c1"># When using MySQL/MariaDB</span>
-</span><span id="__span-91-9"><a id="__codelineno-91-9" name="__codelineno-91-9" href="#__codelineno-91-9"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>zabbix-frontend-php<span class="w"> </span>php8.3-mysql<span class="w"> </span>zabbix-nginx-conf
-</span><span id="__span-91-10"><a id="__codelineno-91-10" name="__codelineno-91-10" href="#__codelineno-91-10"></a><span class="c1"># or when using PostgreSQL</span>
-</span><span id="__span-91-11"><a id="__codelineno-91-11" name="__codelineno-91-11" href="#__codelineno-91-11"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>zabbix-frontend-php<span class="w"> </span>php8.3-pgsql<span class="w"> </span>zabbix-nginx-conf
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-94-1"><a id="__codelineno-94-1" name="__codelineno-94-1" href="#__codelineno-94-1"></a><span class="c1"># When using MySQL/MariaDB</span>
+</span><span id="__span-94-2"><a id="__codelineno-94-2" name="__codelineno-94-2" href="#__codelineno-94-2"></a>zypper<span class="w"> </span>install<span class="w"> </span>zabbix-nginx-conf<span class="w"> </span>php8-mysql<span class="w"> </span>zabbix-web-mysql
+</span><span id="__span-94-3"><a id="__codelineno-94-3" name="__codelineno-94-3" href="#__codelineno-94-3"></a><span class="c1"># or when using PostgreSQL</span>
+</span><span id="__span-94-4"><a id="__codelineno-94-4" name="__codelineno-94-4" href="#__codelineno-94-4"></a>zypper<span class="w"> </span>install<span class="w"> </span>zabbix-nginx-conf<span class="w"> </span>php8-pgsql<span class="w"> </span>zabbix-web-pgsql
+</span><span id="__span-94-5"><a id="__codelineno-94-5" name="__codelineno-94-5" href="#__codelineno-94-5"></a>
+</span><span id="__span-94-6"><a id="__codelineno-94-6" name="__codelineno-94-6" href="#__codelineno-94-6"></a>Ubuntu
+</span><span id="__span-94-7"><a id="__codelineno-94-7" name="__codelineno-94-7" href="#__codelineno-94-7"></a><span class="sb">```</span>bash
+</span><span id="__span-94-8"><a id="__codelineno-94-8" name="__codelineno-94-8" href="#__codelineno-94-8"></a><span class="c1"># When using MySQL/MariaDB</span>
+</span><span id="__span-94-9"><a id="__codelineno-94-9" name="__codelineno-94-9" href="#__codelineno-94-9"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>zabbix-frontend-php<span class="w"> </span>php8.3-mysql<span class="w"> </span>zabbix-nginx-conf
+</span><span id="__span-94-10"><a id="__codelineno-94-10" name="__codelineno-94-10" href="#__codelineno-94-10"></a><span class="c1"># or when using PostgreSQL</span>
+</span><span id="__span-94-11"><a id="__codelineno-94-11" name="__codelineno-94-11" href="#__codelineno-94-11"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>zabbix-frontend-php<span class="w"> </span>php8.3-pgsql<span class="w"> </span>zabbix-nginx-conf
 </span></code></pre></div></p>
 </div>
 <p>This command will install the front-end packages along with the required dependencies
@@ -3763,49 +3800,49 @@ for Nginx. </p>
 use the standard config and serve the Zabbix frontend on port 80.</p>
 <div class="admonition info">
 <p class="admonition-title">edit nginx config for Red Hat</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-92-1"><a id="__codelineno-92-1" name="__codelineno-92-1" href="#__codelineno-92-1"></a>vi<span class="w"> </span>/etc/nginx/nginx.conf
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-95-1"><a id="__codelineno-95-1" name="__codelineno-95-1" href="#__codelineno-95-1"></a>vi<span class="w"> </span>/etc/nginx/nginx.conf
 </span></code></pre></div>
 </div>
 <p>In this configuration file look for the following block that starts with :</p>
 <div class="admonition info">
 <p class="admonition-title">original config</p>
-<div class="language-nginx highlight"><pre><span></span><code><span id="__span-93-1"><a id="__codelineno-93-1" name="__codelineno-93-1" href="#__codelineno-93-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-93-2"><a id="__codelineno-93-2" name="__codelineno-93-2" href="#__codelineno-93-2"></a><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
-</span><span id="__span-93-3"><a id="__codelineno-93-3" name="__codelineno-93-3" href="#__codelineno-93-3"></a><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span>
-</span><span id="__span-93-4"><a id="__codelineno-93-4" name="__codelineno-93-4" href="#__codelineno-93-4"></a><span class="kn">server_name</span><span class="w"> </span><span class="s">*</span><span class="p">;</span>
-</span><span id="__span-93-5"><a id="__codelineno-93-5" name="__codelineno-93-5" href="#__codelineno-93-5"></a><span class="kn">root</span><span class="w"> </span><span class="s">/usr/share/nginx/html</span><span class="p">;</span>
-</span><span id="__span-93-6"><a id="__codelineno-93-6" name="__codelineno-93-6" href="#__codelineno-93-6"></a>
-</span><span id="__span-93-7"><a id="__codelineno-93-7" name="__codelineno-93-7" href="#__codelineno-93-7"></a><span class="w">         </span><span class="c1"># Load configuration files for the default server block.</span>
-</span><span id="__span-93-8"><a id="__codelineno-93-8" name="__codelineno-93-8" href="#__codelineno-93-8"></a><span class="w">         </span><span class="kn">include</span><span class="w"> </span><span class="s">/etc/nginx/default.d/*.conf</span><span class="p">;</span>
+<div class="language-nginx highlight"><pre><span></span><code><span id="__span-96-1"><a id="__codelineno-96-1" name="__codelineno-96-1" href="#__codelineno-96-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-96-2"><a id="__codelineno-96-2" name="__codelineno-96-2" href="#__codelineno-96-2"></a><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+</span><span id="__span-96-3"><a id="__codelineno-96-3" name="__codelineno-96-3" href="#__codelineno-96-3"></a><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span>
+</span><span id="__span-96-4"><a id="__codelineno-96-4" name="__codelineno-96-4" href="#__codelineno-96-4"></a><span class="kn">server_name</span><span class="w"> </span><span class="s">*</span><span class="p">;</span>
+</span><span id="__span-96-5"><a id="__codelineno-96-5" name="__codelineno-96-5" href="#__codelineno-96-5"></a><span class="kn">root</span><span class="w"> </span><span class="s">/usr/share/nginx/html</span><span class="p">;</span>
+</span><span id="__span-96-6"><a id="__codelineno-96-6" name="__codelineno-96-6" href="#__codelineno-96-6"></a>
+</span><span id="__span-96-7"><a id="__codelineno-96-7" name="__codelineno-96-7" href="#__codelineno-96-7"></a><span class="w">         </span><span class="c1"># Load configuration files for the default server block.</span>
+</span><span id="__span-96-8"><a id="__codelineno-96-8" name="__codelineno-96-8" href="#__codelineno-96-8"></a><span class="w">         </span><span class="kn">include</span><span class="w"> </span><span class="s">/etc/nginx/default.d/*.conf</span><span class="p">;</span>
 </span></code></pre></div>
 </div>
 <p>Then, comment out the following server block within the configuration file:</p>
 <div class="admonition info">
 <p class="admonition-title">config after edit</p>
-<div class="language-nginx highlight"><pre><span></span><code><span id="__span-94-1"><a id="__codelineno-94-1" name="__codelineno-94-1" href="#__codelineno-94-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-94-2"><a id="__codelineno-94-2" name="__codelineno-94-2" href="#__codelineno-94-2"></a><span class="c1"># listen 80;</span>
-</span><span id="__span-94-3"><a id="__codelineno-94-3" name="__codelineno-94-3" href="#__codelineno-94-3"></a><span class="c1"># listen [::]:80;</span>
-</span><span id="__span-94-4"><a id="__codelineno-94-4" name="__codelineno-94-4" href="#__codelineno-94-4"></a><span class="c1"># server_name *;</span>
-</span><span id="__span-94-5"><a id="__codelineno-94-5" name="__codelineno-94-5" href="#__codelineno-94-5"></a><span class="c1"># root /usr/share/nginx/html;</span>
+<div class="language-nginx highlight"><pre><span></span><code><span id="__span-97-1"><a id="__codelineno-97-1" name="__codelineno-97-1" href="#__codelineno-97-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-97-2"><a id="__codelineno-97-2" name="__codelineno-97-2" href="#__codelineno-97-2"></a><span class="c1"># listen 80;</span>
+</span><span id="__span-97-3"><a id="__codelineno-97-3" name="__codelineno-97-3" href="#__codelineno-97-3"></a><span class="c1"># listen [::]:80;</span>
+</span><span id="__span-97-4"><a id="__codelineno-97-4" name="__codelineno-97-4" href="#__codelineno-97-4"></a><span class="c1"># server_name *;</span>
+</span><span id="__span-97-5"><a id="__codelineno-97-5" name="__codelineno-97-5" href="#__codelineno-97-5"></a><span class="c1"># root /usr/share/nginx/html;</span>
 </span></code></pre></div>
 </div>
 <p>The Zabbix configuration file must now be modified to reflect the current environment.
 Open the following file for editing:</p>
 <div class="admonition info">
 <p class="admonition-title">edit zabbix config for nginx</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-95-1"><a id="__codelineno-95-1" name="__codelineno-95-1" href="#__codelineno-95-1"></a>vi<span class="w"> </span>/etc/nginx/conf.d/zabbix.conf
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-98-1"><a id="__codelineno-98-1" name="__codelineno-98-1" href="#__codelineno-98-1"></a>vi<span class="w"> </span>/etc/nginx/conf.d/zabbix.conf
 </span></code></pre></div>
 </div>
 <p>And alter the following lines:</p>
 <div class="admonition info">
 <p class="admonition-title">original config</p>
-<div class="language-nginx highlight"><pre><span></span><code><span id="__span-96-1"><a id="__codelineno-96-1" name="__codelineno-96-1" href="#__codelineno-96-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-96-2"><a id="__codelineno-96-2" name="__codelineno-96-2" href="#__codelineno-96-2"></a><span class="kn">listen</span><span class="w"> </span><span class="mi">8080</span><span class="p">;</span>
-</span><span id="__span-96-3"><a id="__codelineno-96-3" name="__codelineno-96-3" href="#__codelineno-96-3"></a><span class="kn">server_name</span><span class="w"> </span><span class="s">example.com</span><span class="p">;</span>
-</span><span id="__span-96-4"><a id="__codelineno-96-4" name="__codelineno-96-4" href="#__codelineno-96-4"></a>
-</span><span id="__span-96-5"><a id="__codelineno-96-5" name="__codelineno-96-5" href="#__codelineno-96-5"></a><span class="kn">root</span><span class="w">    </span><span class="s">/usr/share/zabbix</span><span class="p">;</span>
-</span><span id="__span-96-6"><a id="__codelineno-96-6" name="__codelineno-96-6" href="#__codelineno-96-6"></a>
-</span><span id="__span-96-7"><a id="__codelineno-96-7" name="__codelineno-96-7" href="#__codelineno-96-7"></a><span class="kn">index</span><span class="w">   </span><span class="s">index.php</span><span class="p">;</span>
+<div class="language-nginx highlight"><pre><span></span><code><span id="__span-99-1"><a id="__codelineno-99-1" name="__codelineno-99-1" href="#__codelineno-99-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-99-2"><a id="__codelineno-99-2" name="__codelineno-99-2" href="#__codelineno-99-2"></a><span class="kn">listen</span><span class="w"> </span><span class="mi">8080</span><span class="p">;</span>
+</span><span id="__span-99-3"><a id="__codelineno-99-3" name="__codelineno-99-3" href="#__codelineno-99-3"></a><span class="kn">server_name</span><span class="w"> </span><span class="s">example.com</span><span class="p">;</span>
+</span><span id="__span-99-4"><a id="__codelineno-99-4" name="__codelineno-99-4" href="#__codelineno-99-4"></a>
+</span><span id="__span-99-5"><a id="__codelineno-99-5" name="__codelineno-99-5" href="#__codelineno-99-5"></a><span class="kn">root</span><span class="w">    </span><span class="s">/usr/share/zabbix</span><span class="p">;</span>
+</span><span id="__span-99-6"><a id="__codelineno-99-6" name="__codelineno-99-6" href="#__codelineno-99-6"></a>
+</span><span id="__span-99-7"><a id="__codelineno-99-7" name="__codelineno-99-7" href="#__codelineno-99-7"></a><span class="kn">index</span><span class="w">   </span><span class="s">index.php</span><span class="p">;</span>
 </span></code></pre></div>
 </div>
 <p>Replace the first 2 lines with the correct port and domain for your front-end in
@@ -3813,36 +3850,36 @@ case you don't have a domain you can replace <code>servername</code> with <code>
 example below:</p>
 <div class="admonition info">
 <p class="admonition-title">config after the edit</p>
-<div class="language-nginx highlight"><pre><span></span><code><span id="__span-97-1"><a id="__codelineno-97-1" name="__codelineno-97-1" href="#__codelineno-97-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># listen 8080; # server*name example.com;</span>
-</span><span id="__span-97-2"><a id="__codelineno-97-2" name="__codelineno-97-2" href="#__codelineno-97-2"></a><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
-</span><span id="__span-97-3"><a id="__codelineno-97-3" name="__codelineno-97-3" href="#__codelineno-97-3"></a><span class="kn">server_name</span><span class="w"> </span><span class="s">*</span><span class="p">;</span>
-</span><span id="__span-97-4"><a id="__codelineno-97-4" name="__codelineno-97-4" href="#__codelineno-97-4"></a>
-</span><span id="__span-97-5"><a id="__codelineno-97-5" name="__codelineno-97-5" href="#__codelineno-97-5"></a><span class="w">         </span><span class="kn">root</span><span class="w">    </span><span class="s">/usr/share/zabbix</span><span class="p">;</span>
-</span><span id="__span-97-6"><a id="__codelineno-97-6" name="__codelineno-97-6" href="#__codelineno-97-6"></a>
-</span><span id="__span-97-7"><a id="__codelineno-97-7" name="__codelineno-97-7" href="#__codelineno-97-7"></a><span class="w">         </span><span class="kn">index</span><span class="w">   </span><span class="s">index.php</span><span class="p">;</span>
+<div class="language-nginx highlight"><pre><span></span><code><span id="__span-100-1"><a id="__codelineno-100-1" name="__codelineno-100-1" href="#__codelineno-100-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># listen 8080; # server*name example.com;</span>
+</span><span id="__span-100-2"><a id="__codelineno-100-2" name="__codelineno-100-2" href="#__codelineno-100-2"></a><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+</span><span id="__span-100-3"><a id="__codelineno-100-3" name="__codelineno-100-3" href="#__codelineno-100-3"></a><span class="kn">server_name</span><span class="w"> </span><span class="s">*</span><span class="p">;</span>
+</span><span id="__span-100-4"><a id="__codelineno-100-4" name="__codelineno-100-4" href="#__codelineno-100-4"></a>
+</span><span id="__span-100-5"><a id="__codelineno-100-5" name="__codelineno-100-5" href="#__codelineno-100-5"></a><span class="w">         </span><span class="kn">root</span><span class="w">    </span><span class="s">/usr/share/zabbix</span><span class="p">;</span>
+</span><span id="__span-100-6"><a id="__codelineno-100-6" name="__codelineno-100-6" href="#__codelineno-100-6"></a>
+</span><span id="__span-100-7"><a id="__codelineno-100-7" name="__codelineno-100-7" href="#__codelineno-100-7"></a><span class="w">         </span><span class="kn">index</span><span class="w">   </span><span class="s">index.php</span><span class="p">;</span>
 </span></code></pre></div>
 </div>
 <p>The web server and PHP-FPM service are now ready for activation and persistent
 startup. Execute the following commands to enable and start them immediately:</p>
 <div class="admonition info">
 <p class="admonition-title">edit nginx config for ubuntu</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-98-1"><a id="__codelineno-98-1" name="__codelineno-98-1" href="#__codelineno-98-1"></a>sudo<span class="w"> </span>vi<span class="w"> </span>/etc/zabbix/nginx.conf
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-101-1"><a id="__codelineno-101-1" name="__codelineno-101-1" href="#__codelineno-101-1"></a>sudo<span class="w"> </span>vi<span class="w"> </span>/etc/zabbix/nginx.conf
 </span></code></pre></div>
 </div>
 <p>replace the Following lines:</p>
 <div class="admonition info">
 <p class="admonition-title">original config</p>
-<div class="language-nginx highlight"><pre><span></span><code><span id="__span-99-1"><a id="__codelineno-99-1" name="__codelineno-99-1" href="#__codelineno-99-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-99-2"><a id="__codelineno-99-2" name="__codelineno-99-2" href="#__codelineno-99-2"></a><span class="c1">#        listen          8080;</span>
-</span><span id="__span-99-3"><a id="__codelineno-99-3" name="__codelineno-99-3" href="#__codelineno-99-3"></a><span class="c1">#        server_name     example.com;</span>
+<div class="language-nginx highlight"><pre><span></span><code><span id="__span-102-1"><a id="__codelineno-102-1" name="__codelineno-102-1" href="#__codelineno-102-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-102-2"><a id="__codelineno-102-2" name="__codelineno-102-2" href="#__codelineno-102-2"></a><span class="c1">#        listen          8080;</span>
+</span><span id="__span-102-3"><a id="__codelineno-102-3" name="__codelineno-102-3" href="#__codelineno-102-3"></a><span class="c1">#        server_name     example.com;</span>
 </span></code></pre></div>
 </div>
 <p>with :</p>
 <div class="admonition info">
 <p class="admonition-title">config after edit</p>
-<div class="language-nginx highlight"><pre><span></span><code><span id="__span-100-1"><a id="__codelineno-100-1" name="__codelineno-100-1" href="#__codelineno-100-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-100-2"><a id="__codelineno-100-2" name="__codelineno-100-2" href="#__codelineno-100-2"></a><span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="n">xxx.xxx.xxx.xxx</span><span class="p">:</span><span class="mi">80</span><span class="p">;</span>
-</span><span id="__span-100-3"><a id="__codelineno-100-3" name="__codelineno-100-3" href="#__codelineno-100-3"></a><span class="w">        </span><span class="kn">server_name</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
+<div class="language-nginx highlight"><pre><span></span><code><span id="__span-103-1"><a id="__codelineno-103-1" name="__codelineno-103-1" href="#__codelineno-103-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-103-2"><a id="__codelineno-103-2" name="__codelineno-103-2" href="#__codelineno-103-2"></a><span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="n">xxx.xxx.xxx.xxx</span><span class="p">:</span><span class="mi">80</span><span class="p">;</span>
+</span><span id="__span-103-3"><a id="__codelineno-103-3" name="__codelineno-103-3" href="#__codelineno-103-3"></a><span class="w">        </span><span class="kn">server_name</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
 </span></code></pre></div>
 </div>
 <p>where xxx.xxx.xxx.xxx is your IP or DNS name.</p>
@@ -3854,37 +3891,37 @@ have no fqdn you can keep it open like in this example.</p>
 <div class="admonition info">
 <p class="admonition-title">restart the front-end services</p>
 <p>Red Hat / SUSE
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-101-1"><a id="__codelineno-101-1" name="__codelineno-101-1" href="#__codelineno-101-1"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>php-fpm<span class="w"> </span>--now
-</span><span id="__span-101-2"><a id="__codelineno-101-2" name="__codelineno-101-2" href="#__codelineno-101-2"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nginx<span class="w"> </span>--now
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-104-1"><a id="__codelineno-104-1" name="__codelineno-104-1" href="#__codelineno-104-1"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>php-fpm<span class="w"> </span>--now
+</span><span id="__span-104-2"><a id="__codelineno-104-2" name="__codelineno-104-2" href="#__codelineno-104-2"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nginx<span class="w"> </span>--now
 </span></code></pre></div></p>
 <p>Ubuntu
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-102-1"><a id="__codelineno-102-1" name="__codelineno-102-1" href="#__codelineno-102-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nginx<span class="w"> </span>php8.3-fpm
-</span><span id="__span-102-2"><a id="__codelineno-102-2" name="__codelineno-102-2" href="#__codelineno-102-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx<span class="w"> </span>php8.3-fpm
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-105-1"><a id="__codelineno-105-1" name="__codelineno-105-1" href="#__codelineno-105-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nginx<span class="w"> </span>php8.3-fpm
+</span><span id="__span-105-2"><a id="__codelineno-105-2" name="__codelineno-105-2" href="#__codelineno-105-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx<span class="w"> </span>php8.3-fpm
 </span></code></pre></div></p>
 </div>
 <p>Let's verify if the service is properly started and enabled so that it survives
 our reboot next time.</p>
 <div class="admonition info">
 <p class="admonition-title">check if the service is running</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-103-1"><a id="__codelineno-103-1" name="__codelineno-103-1" href="#__codelineno-103-1"></a>systemctl<span class="w"> </span>status<span class="w"> </span>nginx
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-106-1"><a id="__codelineno-106-1" name="__codelineno-106-1" href="#__codelineno-106-1"></a>systemctl<span class="w"> </span>status<span class="w"> </span>nginx
 </span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-104-1"><a id="__codelineno-104-1" name="__codelineno-104-1" href="#__codelineno-104-1"></a>● nginx.service - The nginx HTTP and reverse proxy server
-</span><span id="__span-104-2"><a id="__codelineno-104-2" name="__codelineno-104-2" href="#__codelineno-104-2"></a>      Loaded: loaded (/usr/lib/systemd/system/nginx.service; enabled; preset: disabled)
-</span><span id="__span-104-3"><a id="__codelineno-104-3" name="__codelineno-104-3" href="#__codelineno-104-3"></a>     Drop-In: /usr/lib/systemd/system/nginx.service.d
-</span><span id="__span-104-4"><a id="__codelineno-104-4" name="__codelineno-104-4" href="#__codelineno-104-4"></a>              └─php-fpm.conf
-</span><span id="__span-104-5"><a id="__codelineno-104-5" name="__codelineno-104-5" href="#__codelineno-104-5"></a>      Active: active (running) since Mon 2023-11-20 11:42:18 CET; 30min ago
-</span><span id="__span-104-6"><a id="__codelineno-104-6" name="__codelineno-104-6" href="#__codelineno-104-6"></a>    Main PID: 1206 (nginx)
-</span><span id="__span-104-7"><a id="__codelineno-104-7" name="__codelineno-104-7" href="#__codelineno-104-7"></a>       Tasks: 2 (limit: 12344)
-</span><span id="__span-104-8"><a id="__codelineno-104-8" name="__codelineno-104-8" href="#__codelineno-104-8"></a>      Memory: 4.8M
-</span><span id="__span-104-9"><a id="__codelineno-104-9" name="__codelineno-104-9" href="#__codelineno-104-9"></a>         CPU: 38ms
-</span><span id="__span-104-10"><a id="__codelineno-104-10" name="__codelineno-104-10" href="#__codelineno-104-10"></a>      CGroup: /system.slice/nginx.service
-</span><span id="__span-104-11"><a id="__codelineno-104-11" name="__codelineno-104-11" href="#__codelineno-104-11"></a>              ├─1206 &quot;nginx: master process /usr/sbin/nginx&quot;
-</span><span id="__span-104-12"><a id="__codelineno-104-12" name="__codelineno-104-12" href="#__codelineno-104-12"></a>              └─1207 &quot;nginx: worker process&quot;
-</span><span id="__span-104-13"><a id="__codelineno-104-13" name="__codelineno-104-13" href="#__codelineno-104-13"></a>
-</span><span id="__span-104-14"><a id="__codelineno-104-14" name="__codelineno-104-14" href="#__codelineno-104-14"></a>Nov 20 11:42:18 zabbix-srv systemd[1]: Starting The nginx HTTP and reverse proxy server...
-</span><span id="__span-104-15"><a id="__codelineno-104-15" name="__codelineno-104-15" href="#__codelineno-104-15"></a>Nov 20 11:42:18 zabbix-srv nginx[1204]: nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
-</span><span id="__span-104-16"><a id="__codelineno-104-16" name="__codelineno-104-16" href="#__codelineno-104-16"></a>Nov 20 11:42:18 zabbix-srv nginx[1204]: nginx: configuration file /etc/nginx/nginx.conf test is successful
-</span><span id="__span-104-17"><a id="__codelineno-104-17" name="__codelineno-104-17" href="#__codelineno-104-17"></a>Nov 20 11:42:18 zabbix-srv systemd[1]: Started The nginx HTTP and reverse proxy server.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-107-1"><a id="__codelineno-107-1" name="__codelineno-107-1" href="#__codelineno-107-1"></a>● nginx.service - The nginx HTTP and reverse proxy server
+</span><span id="__span-107-2"><a id="__codelineno-107-2" name="__codelineno-107-2" href="#__codelineno-107-2"></a>      Loaded: loaded (/usr/lib/systemd/system/nginx.service; enabled; preset: disabled)
+</span><span id="__span-107-3"><a id="__codelineno-107-3" name="__codelineno-107-3" href="#__codelineno-107-3"></a>     Drop-In: /usr/lib/systemd/system/nginx.service.d
+</span><span id="__span-107-4"><a id="__codelineno-107-4" name="__codelineno-107-4" href="#__codelineno-107-4"></a>              └─php-fpm.conf
+</span><span id="__span-107-5"><a id="__codelineno-107-5" name="__codelineno-107-5" href="#__codelineno-107-5"></a>      Active: active (running) since Mon 2023-11-20 11:42:18 CET; 30min ago
+</span><span id="__span-107-6"><a id="__codelineno-107-6" name="__codelineno-107-6" href="#__codelineno-107-6"></a>    Main PID: 1206 (nginx)
+</span><span id="__span-107-7"><a id="__codelineno-107-7" name="__codelineno-107-7" href="#__codelineno-107-7"></a>       Tasks: 2 (limit: 12344)
+</span><span id="__span-107-8"><a id="__codelineno-107-8" name="__codelineno-107-8" href="#__codelineno-107-8"></a>      Memory: 4.8M
+</span><span id="__span-107-9"><a id="__codelineno-107-9" name="__codelineno-107-9" href="#__codelineno-107-9"></a>         CPU: 38ms
+</span><span id="__span-107-10"><a id="__codelineno-107-10" name="__codelineno-107-10" href="#__codelineno-107-10"></a>      CGroup: /system.slice/nginx.service
+</span><span id="__span-107-11"><a id="__codelineno-107-11" name="__codelineno-107-11" href="#__codelineno-107-11"></a>              ├─1206 &quot;nginx: master process /usr/sbin/nginx&quot;
+</span><span id="__span-107-12"><a id="__codelineno-107-12" name="__codelineno-107-12" href="#__codelineno-107-12"></a>              └─1207 &quot;nginx: worker process&quot;
+</span><span id="__span-107-13"><a id="__codelineno-107-13" name="__codelineno-107-13" href="#__codelineno-107-13"></a>
+</span><span id="__span-107-14"><a id="__codelineno-107-14" name="__codelineno-107-14" href="#__codelineno-107-14"></a>Nov 20 11:42:18 zabbix-srv systemd[1]: Starting The nginx HTTP and reverse proxy server...
+</span><span id="__span-107-15"><a id="__codelineno-107-15" name="__codelineno-107-15" href="#__codelineno-107-15"></a>Nov 20 11:42:18 zabbix-srv nginx[1204]: nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+</span><span id="__span-107-16"><a id="__codelineno-107-16" name="__codelineno-107-16" href="#__codelineno-107-16"></a>Nov 20 11:42:18 zabbix-srv nginx[1204]: nginx: configuration file /etc/nginx/nginx.conf test is successful
+</span><span id="__span-107-17"><a id="__codelineno-107-17" name="__codelineno-107-17" href="#__codelineno-107-17"></a>Nov 20 11:42:18 zabbix-srv systemd[1]: Started The nginx HTTP and reverse proxy server.
 </span></code></pre></div></p>
 </div>
 <p>With the service operational and configured for automatic startup, the final preparatory
@@ -3893,24 +3930,24 @@ following commands:</p>
 <div class="admonition info">
 <p class="admonition-title">configure the firewall</p>
 <p>Red Hat / SUSE
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-105-1"><a id="__codelineno-105-1" name="__codelineno-105-1" href="#__codelineno-105-1"></a>firewall-cmd<span class="w"> </span>--add-service<span class="o">=</span>http<span class="w"> </span>--permanent
-</span><span id="__span-105-2"><a id="__codelineno-105-2" name="__codelineno-105-2" href="#__codelineno-105-2"></a>firewall-cmd<span class="w"> </span>--reload
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-108-1"><a id="__codelineno-108-1" name="__codelineno-108-1" href="#__codelineno-108-1"></a>firewall-cmd<span class="w"> </span>--add-service<span class="o">=</span>http<span class="w"> </span>--permanent
+</span><span id="__span-108-2"><a id="__codelineno-108-2" name="__codelineno-108-2" href="#__codelineno-108-2"></a>firewall-cmd<span class="w"> </span>--reload
 </span></code></pre></div></p>
 <p>Ubuntu
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-106-1"><a id="__codelineno-106-1" name="__codelineno-106-1" href="#__codelineno-106-1"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">80</span>/tcp
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-109-1"><a id="__codelineno-109-1" name="__codelineno-109-1" href="#__codelineno-109-1"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">80</span>/tcp
 </span></code></pre></div></p>
 </div>
 <p>Open your browser and go to the url or ip of your front-end :</p>
 <div class="admonition info">
 <p class="admonition-title">front-end configuration</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-107-1"><a id="__codelineno-107-1" name="__codelineno-107-1" href="#__codelineno-107-1"></a>http://&lt;ip or dns of the zabbix frontend server&gt;/
+<div class="language-text highlight"><pre><span></span><code><span id="__span-110-1"><a id="__codelineno-110-1" name="__codelineno-110-1" href="#__codelineno-110-1"></a>http://&lt;ip or dns of the zabbix frontend server&gt;/
 </span></code></pre></div>
 </div>
 <p>If all goes well you should be greeted with a Zabbix welcome page. In case you
 have an error check the configuration again or have a look at the nginx log file
 <code>/var/log/nginx/error.log</code> or run the following command :</p>
 <div class="admonition info">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-108-1"><a id="__codelineno-108-1" name="__codelineno-108-1" href="#__codelineno-108-1"></a>journalctl<span class="w"> </span>-xe
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-111-1"><a id="__codelineno-111-1" name="__codelineno-111-1" href="#__codelineno-111-1"></a>journalctl<span class="w"> </span>-xe
 </span></code></pre></div>
 </div>
 <p>This should help you in locating the errors you made.</p>
@@ -3928,58 +3965,58 @@ Run the next command to get a list of all locales available for your OS.</p>
 <div class="admonition info">
 <p class="admonition-title">install language packs</p>
 <p>Red Hat
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-109-1"><a id="__codelineno-109-1" name="__codelineno-109-1" href="#__codelineno-109-1"></a>dnf<span class="w"> </span>list<span class="w"> </span>glibc-langpack-*
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-112-1"><a id="__codelineno-112-1" name="__codelineno-112-1" href="#__codelineno-112-1"></a>dnf<span class="w"> </span>list<span class="w"> </span>glibc-langpack-*
 </span></code></pre></div></p>
 <p>SUSE
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-110-1"><a id="__codelineno-110-1" name="__codelineno-110-1" href="#__codelineno-110-1"></a>localectl<span class="w"> </span>list-locales
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-113-1"><a id="__codelineno-113-1" name="__codelineno-113-1" href="#__codelineno-113-1"></a>localectl<span class="w"> </span>list-locales
 </span></code></pre></div></p>
 <p>Ubuntu
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-111-1"><a id="__codelineno-111-1" name="__codelineno-111-1" href="#__codelineno-111-1"></a>apt-cache<span class="w"> </span>search<span class="w"> </span>language-pack
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-114-1"><a id="__codelineno-114-1" name="__codelineno-114-1" href="#__codelineno-114-1"></a>apt-cache<span class="w"> </span>search<span class="w"> </span>language-pack
 </span></code></pre></div></p>
 </div>
 <p>Users on Ubuntu will probably notice following error `"Locale for language "en_US"
 is not found on the web server."``</p>
 <div class="admonition info">
 <p class="admonition-title">This can be solved easy with the following commands.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-112-1"><a id="__codelineno-112-1" name="__codelineno-112-1" href="#__codelineno-112-1"></a>sudo<span class="w"> </span>locale-gen<span class="w"> </span>en_US.UTF-8
-</span><span id="__span-112-2"><a id="__codelineno-112-2" name="__codelineno-112-2" href="#__codelineno-112-2"></a>sudo<span class="w"> </span>update-locale
-</span><span id="__span-112-3"><a id="__codelineno-112-3" name="__codelineno-112-3" href="#__codelineno-112-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx<span class="w"> </span>php8.3-fpm
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-115-1"><a id="__codelineno-115-1" name="__codelineno-115-1" href="#__codelineno-115-1"></a>sudo<span class="w"> </span>locale-gen<span class="w"> </span>en_US.UTF-8
+</span><span id="__span-115-2"><a id="__codelineno-115-2" name="__codelineno-115-2" href="#__codelineno-115-2"></a>sudo<span class="w"> </span>update-locale
+</span><span id="__span-115-3"><a id="__codelineno-115-3" name="__codelineno-115-3" href="#__codelineno-115-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx<span class="w"> </span>php8.3-fpm
 </span></code></pre></div>
 </div>
 <p>This will give you on Red Hat based systems a list like:</p>
 <div class="admonition info">
-<div class="language-text highlight"><pre><span></span><code><span id="__span-113-1"><a id="__codelineno-113-1" name="__codelineno-113-1" href="#__codelineno-113-1"></a>Installed Packages
-</span><span id="__span-113-2"><a id="__codelineno-113-2" name="__codelineno-113-2" href="#__codelineno-113-2"></a>glibc-langpack-en.x86_64
-</span><span id="__span-113-3"><a id="__codelineno-113-3" name="__codelineno-113-3" href="#__codelineno-113-3"></a>Available Packages
-</span><span id="__span-113-4"><a id="__codelineno-113-4" name="__codelineno-113-4" href="#__codelineno-113-4"></a>glibc-langpack-aa.x86_64
-</span><span id="__span-113-5"><a id="__codelineno-113-5" name="__codelineno-113-5" href="#__codelineno-113-5"></a>---
-</span><span id="__span-113-6"><a id="__codelineno-113-6" name="__codelineno-113-6" href="#__codelineno-113-6"></a>glibc-langpack-zu.x86_64
+<div class="language-text highlight"><pre><span></span><code><span id="__span-116-1"><a id="__codelineno-116-1" name="__codelineno-116-1" href="#__codelineno-116-1"></a>Installed Packages
+</span><span id="__span-116-2"><a id="__codelineno-116-2" name="__codelineno-116-2" href="#__codelineno-116-2"></a>glibc-langpack-en.x86_64
+</span><span id="__span-116-3"><a id="__codelineno-116-3" name="__codelineno-116-3" href="#__codelineno-116-3"></a>Available Packages
+</span><span id="__span-116-4"><a id="__codelineno-116-4" name="__codelineno-116-4" href="#__codelineno-116-4"></a>glibc-langpack-aa.x86_64
+</span><span id="__span-116-5"><a id="__codelineno-116-5" name="__codelineno-116-5" href="#__codelineno-116-5"></a>---
+</span><span id="__span-116-6"><a id="__codelineno-116-6" name="__codelineno-116-6" href="#__codelineno-116-6"></a>glibc-langpack-zu.x86_64
 </span></code></pre></div>
 </div>
 <div class="admonition info">
 <p class="admonition-title">on SUSE it will look like :</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-114-1"><a id="__codelineno-114-1" name="__codelineno-114-1" href="#__codelineno-114-1"></a>C.UTF-8
-</span><span id="__span-114-2"><a id="__codelineno-114-2" name="__codelineno-114-2" href="#__codelineno-114-2"></a>aa_DJ.UTF-8
-</span><span id="__span-114-3"><a id="__codelineno-114-3" name="__codelineno-114-3" href="#__codelineno-114-3"></a>af_ZA.UTF-8
-</span><span id="__span-114-4"><a id="__codelineno-114-4" name="__codelineno-114-4" href="#__codelineno-114-4"></a>an_ES.UTF-8
-</span><span id="__span-114-5"><a id="__codelineno-114-5" name="__codelineno-114-5" href="#__codelineno-114-5"></a>---
-</span><span id="__span-114-6"><a id="__codelineno-114-6" name="__codelineno-114-6" href="#__codelineno-114-6"></a>zh_SG.UTF-8
-</span><span id="__span-114-7"><a id="__codelineno-114-7" name="__codelineno-114-7" href="#__codelineno-114-7"></a>zh_TW.UTF-8
-</span><span id="__span-114-8"><a id="__codelineno-114-8" name="__codelineno-114-8" href="#__codelineno-114-8"></a>zu_ZA.UTF-8
+<div class="language-text highlight"><pre><span></span><code><span id="__span-117-1"><a id="__codelineno-117-1" name="__codelineno-117-1" href="#__codelineno-117-1"></a>C.UTF-8
+</span><span id="__span-117-2"><a id="__codelineno-117-2" name="__codelineno-117-2" href="#__codelineno-117-2"></a>aa_DJ.UTF-8
+</span><span id="__span-117-3"><a id="__codelineno-117-3" name="__codelineno-117-3" href="#__codelineno-117-3"></a>af_ZA.UTF-8
+</span><span id="__span-117-4"><a id="__codelineno-117-4" name="__codelineno-117-4" href="#__codelineno-117-4"></a>an_ES.UTF-8
+</span><span id="__span-117-5"><a id="__codelineno-117-5" name="__codelineno-117-5" href="#__codelineno-117-5"></a>---
+</span><span id="__span-117-6"><a id="__codelineno-117-6" name="__codelineno-117-6" href="#__codelineno-117-6"></a>zh_SG.UTF-8
+</span><span id="__span-117-7"><a id="__codelineno-117-7" name="__codelineno-117-7" href="#__codelineno-117-7"></a>zh_TW.UTF-8
+</span><span id="__span-117-8"><a id="__codelineno-117-8" name="__codelineno-117-8" href="#__codelineno-117-8"></a>zu_ZA.UTF-8
 </span></code></pre></div>
 </div>
 <div class="admonition info">
 <p class="admonition-title">on Ubuntu it will look like :</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-115-1"><a id="__codelineno-115-1" name="__codelineno-115-1" href="#__codelineno-115-1"></a>language-pack-kab - translation updates for language Kabyle
-</span><span id="__span-115-2"><a id="__codelineno-115-2" name="__codelineno-115-2" href="#__codelineno-115-2"></a>language-pack-kab-base - translations for language Kabyle
-</span><span id="__span-115-3"><a id="__codelineno-115-3" name="__codelineno-115-3" href="#__codelineno-115-3"></a>language-pack-kn - translation updates for language Kannada
-</span><span id="__span-115-4"><a id="__codelineno-115-4" name="__codelineno-115-4" href="#__codelineno-115-4"></a>language-pack-kn-base - translations for language Kannada
-</span><span id="__span-115-5"><a id="__codelineno-115-5" name="__codelineno-115-5" href="#__codelineno-115-5"></a>---
-</span><span id="__span-115-6"><a id="__codelineno-115-6" name="__codelineno-115-6" href="#__codelineno-115-6"></a>language-pack-ko - translation updates for language Korean
-</span><span id="__span-115-7"><a id="__codelineno-115-7" name="__codelineno-115-7" href="#__codelineno-115-7"></a>language-pack-ko-base - translations for language Korean
-</span><span id="__span-115-8"><a id="__codelineno-115-8" name="__codelineno-115-8" href="#__codelineno-115-8"></a>language-pack-ku - translation updates for language Kurdish
-</span><span id="__span-115-9"><a id="__codelineno-115-9" name="__codelineno-115-9" href="#__codelineno-115-9"></a>language-pack-ku-base - translations for language Kurdish
-</span><span id="__span-115-10"><a id="__codelineno-115-10" name="__codelineno-115-10" href="#__codelineno-115-10"></a>language-pack-lt - translation updates for language Lithuanian
+<div class="language-text highlight"><pre><span></span><code><span id="__span-118-1"><a id="__codelineno-118-1" name="__codelineno-118-1" href="#__codelineno-118-1"></a>language-pack-kab - translation updates for language Kabyle
+</span><span id="__span-118-2"><a id="__codelineno-118-2" name="__codelineno-118-2" href="#__codelineno-118-2"></a>language-pack-kab-base - translations for language Kabyle
+</span><span id="__span-118-3"><a id="__codelineno-118-3" name="__codelineno-118-3" href="#__codelineno-118-3"></a>language-pack-kn - translation updates for language Kannada
+</span><span id="__span-118-4"><a id="__codelineno-118-4" name="__codelineno-118-4" href="#__codelineno-118-4"></a>language-pack-kn-base - translations for language Kannada
+</span><span id="__span-118-5"><a id="__codelineno-118-5" name="__codelineno-118-5" href="#__codelineno-118-5"></a>---
+</span><span id="__span-118-6"><a id="__codelineno-118-6" name="__codelineno-118-6" href="#__codelineno-118-6"></a>language-pack-ko - translation updates for language Korean
+</span><span id="__span-118-7"><a id="__codelineno-118-7" name="__codelineno-118-7" href="#__codelineno-118-7"></a>language-pack-ko-base - translations for language Korean
+</span><span id="__span-118-8"><a id="__codelineno-118-8" name="__codelineno-118-8" href="#__codelineno-118-8"></a>language-pack-ku - translation updates for language Kurdish
+</span><span id="__span-118-9"><a id="__codelineno-118-9" name="__codelineno-118-9" href="#__codelineno-118-9"></a>language-pack-ku-base - translations for language Kurdish
+</span><span id="__span-118-10"><a id="__codelineno-118-10" name="__codelineno-118-10" href="#__codelineno-118-10"></a>language-pack-lt - translation updates for language Lithuanian
 </span></code></pre></div>
 </div>
 <p>Let's search for our Chinese locale to see if it is available. As you can see
@@ -3987,19 +4024,19 @@ the code starts with zh.</p>
 <div class="admonition info">
 <p class="admonition-title">search for language pack</p>
 <p>Red Hat
-<div class="language-console highlight"><pre><span></span><code><span id="__span-116-1"><a id="__codelineno-116-1" name="__codelineno-116-1" href="#__codelineno-116-1"></a><span class="go">~# dnf list glibc-langpack-* | grep zh</span>
-</span><span id="__span-116-2"><a id="__codelineno-116-2" name="__codelineno-116-2" href="#__codelineno-116-2"></a><span class="go">glibc-langpack-zh.x86_64</span>
-</span><span id="__span-116-3"><a id="__codelineno-116-3" name="__codelineno-116-3" href="#__codelineno-116-3"></a><span class="go">glibc-langpack-lzh.x86_64</span>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-119-1"><a id="__codelineno-119-1" name="__codelineno-119-1" href="#__codelineno-119-1"></a><span class="go">~# dnf list glibc-langpack-* | grep zh</span>
+</span><span id="__span-119-2"><a id="__codelineno-119-2" name="__codelineno-119-2" href="#__codelineno-119-2"></a><span class="go">glibc-langpack-zh.x86_64</span>
+</span><span id="__span-119-3"><a id="__codelineno-119-3" name="__codelineno-119-3" href="#__codelineno-119-3"></a><span class="go">glibc-langpack-lzh.x86_64</span>
 </span></code></pre></div></p>
 <p>SUSE
-<div class="language-console highlight"><pre><span></span><code><span id="__span-117-1"><a id="__codelineno-117-1" name="__codelineno-117-1" href="#__codelineno-117-1"></a><span class="go">~&gt; localectl list-locales | grep zh</span>
-</span><span id="__span-117-2"><a id="__codelineno-117-2" name="__codelineno-117-2" href="#__codelineno-117-2"></a><span class="go">zh_CN.UTF-8</span>
-</span><span id="__span-117-3"><a id="__codelineno-117-3" name="__codelineno-117-3" href="#__codelineno-117-3"></a><span class="go">zh_HK.UTF-8</span>
-</span><span id="__span-117-4"><a id="__codelineno-117-4" name="__codelineno-117-4" href="#__codelineno-117-4"></a><span class="go">zh_SG.UTF-8</span>
-</span><span id="__span-117-5"><a id="__codelineno-117-5" name="__codelineno-117-5" href="#__codelineno-117-5"></a><span class="go">zh_TW.UTF-8</span>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-120-1"><a id="__codelineno-120-1" name="__codelineno-120-1" href="#__codelineno-120-1"></a><span class="go">~&gt; localectl list-locales | grep zh</span>
+</span><span id="__span-120-2"><a id="__codelineno-120-2" name="__codelineno-120-2" href="#__codelineno-120-2"></a><span class="go">zh_CN.UTF-8</span>
+</span><span id="__span-120-3"><a id="__codelineno-120-3" name="__codelineno-120-3" href="#__codelineno-120-3"></a><span class="go">zh_HK.UTF-8</span>
+</span><span id="__span-120-4"><a id="__codelineno-120-4" name="__codelineno-120-4" href="#__codelineno-120-4"></a><span class="go">zh_SG.UTF-8</span>
+</span><span id="__span-120-5"><a id="__codelineno-120-5" name="__codelineno-120-5" href="#__codelineno-120-5"></a><span class="go">zh_TW.UTF-8</span>
 </span></code></pre></div></p>
 <p>Ubuntu
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-118-1"><a id="__codelineno-118-1" name="__codelineno-118-1" href="#__codelineno-118-1"></a>sudo<span class="w"> </span>apt-cache<span class="w"> </span>search<span class="w"> </span>language-pack<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>zh
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-121-1"><a id="__codelineno-121-1" name="__codelineno-121-1" href="#__codelineno-121-1"></a>sudo<span class="w"> </span>apt-cache<span class="w"> </span>search<span class="w"> </span>language-pack<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>zh
 </span></code></pre></div></p>
 </div>
 <p>On RedHat and Ubuntu, the command outputs two lines; however, given the identified language code,
@@ -4010,16 +4047,16 @@ is installed or not. </p>
 <div class="admonition info">
 <p class="admonition-title">install the package</p>
 <p>Red Hat
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-119-1"><a id="__codelineno-119-1" name="__codelineno-119-1" href="#__codelineno-119-1"></a>dnf<span class="w"> </span>install<span class="w"> </span>glibc-langpack-zh.x86_64
-</span><span id="__span-119-2"><a id="__codelineno-119-2" name="__codelineno-119-2" href="#__codelineno-119-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx<span class="w"> </span>php-fpm
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-122-1"><a id="__codelineno-122-1" name="__codelineno-122-1" href="#__codelineno-122-1"></a>dnf<span class="w"> </span>install<span class="w"> </span>glibc-langpack-zh.x86_64
+</span><span id="__span-122-2"><a id="__codelineno-122-2" name="__codelineno-122-2" href="#__codelineno-122-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx<span class="w"> </span>php-fpm
 </span></code></pre></div></p>
 <p>SUSE
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-120-1"><a id="__codelineno-120-1" name="__codelineno-120-1" href="#__codelineno-120-1"></a>zypper<span class="w"> </span>install<span class="w"> </span>glibc-locale
-</span><span id="__span-120-2"><a id="__codelineno-120-2" name="__codelineno-120-2" href="#__codelineno-120-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx<span class="w"> </span>php-fpm
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-123-1"><a id="__codelineno-123-1" name="__codelineno-123-1" href="#__codelineno-123-1"></a>zypper<span class="w"> </span>install<span class="w"> </span>glibc-locale
+</span><span id="__span-123-2"><a id="__codelineno-123-2" name="__codelineno-123-2" href="#__codelineno-123-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx<span class="w"> </span>php-fpm
 </span></code></pre></div></p>
 <p>Ubuntu
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-121-1"><a id="__codelineno-121-1" name="__codelineno-121-1" href="#__codelineno-121-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>language-pack-zh-hans
-</span><span id="__span-121-2"><a id="__codelineno-121-2" name="__codelineno-121-2" href="#__codelineno-121-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx<span class="w"> </span>php8.3-fpm
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-124-1"><a id="__codelineno-124-1" name="__codelineno-124-1" href="#__codelineno-124-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>language-pack-zh-hans
+</span><span id="__span-124-2"><a id="__codelineno-124-2" name="__codelineno-124-2" href="#__codelineno-124-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx<span class="w"> </span>php8.3-fpm
 </span></code></pre></div></p>
 </div>
 <p>When we return now to our front-end we are able to select the Chinese language,
