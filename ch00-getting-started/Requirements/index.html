@@ -2065,7 +2065,7 @@ used on SUSE-based systems (invoked as <code>zypper</code>) and </li>
 </ul>
 <p>If you're using another distribution, replace <code>dnf</code>/<code>zypper</code>/<code>apt</code> with your appropriate 
 package manager, such as <code>yum</code>, <code>pacman</code>, <code>emerge</code>, <code>apk</code> or ... .</p>
-<p>Do note that packagenames may also vary from distribution to distribution.</p>
+<p>Do note that package names may also vary from distribution to distribution.</p>
 </details>
 <hr />
 <h3 id="firewall">Firewall</h3>
@@ -2088,7 +2088,7 @@ SUSE
 </span></code></pre></div></p>
 </div>
 <details class="note" open="open">
-<summary>what is firewalld / ufw</summary>
+<summary>What is firewalld / ufw</summary>
 <p>Firewalld is the replacement for iptables in RHEL- and SUSE-based systems and allows
 changes to take effect immediately without needing to restart the service.
 If your distribution does not use <a href="https://www.firewalld.org">Firewalld</a>,
@@ -2208,7 +2208,7 @@ more accurate time synchronization. If your OS does not support
 <p>Once Chrony is installed, the next step is to ensure the correct time zone is set.
 You can view your current time configuration using the <code>timedatectl</code> command:</p>
 <div class="admonition example">
-<p class="admonition-title">check the time config</p>
+<p class="admonition-title">Check the time config</p>
 <div class="language-shell-session highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="gp">localhost:~ # </span>timedatectl
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="go">               Local time: Thu 2023-11-16 15:09:14 UTC</span>
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="go">           Universal time: Thu 2023-11-16 15:09:14 UTC</span>
@@ -2223,7 +2223,7 @@ You can view your current time configuration using the <code>timedatectl</code> 
 To set the correct time zone, first, you can list all available time zones with
 the following command:</p>
 <div class="admonition info">
-<p class="admonition-title">list the timezones</p>
+<p class="admonition-title">List the timezones</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>timedatectl<span class="w"> </span>list-timezones
 </span></code></pre></div>
 </div>
@@ -2316,7 +2316,7 @@ Ubuntu edit <code>/etc/chrony/chrony.conf</code>. Replace the existing NTP serve
 one closer to your location.</p>
 <p>Example of the current configuration:</p>
 <div class="admonition example">
-<p class="admonition-title">example ntp pool config</p>
+<p class="admonition-title">Example ntp pool config</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a># Use public servers from the pool.ntp.org project.
 </span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a># Please consider joining the pool (http://www.pool.ntp.org/join.html).
 </span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>pool 2.centos.pool.ntp.org iburst
@@ -2332,7 +2332,7 @@ one closer to your location.</p>
 </div>
 <p>After making this change, restart the Chrony service to apply the new configuration:</p>
 <div class="admonition info">
-<p class="admonition-title">restart the chrony service</p>
+<p class="admonition-title">Restart the chrony service</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>systemctl<span class="w"> </span>restart<span class="w"> </span>chronyd
 </span></code></pre></div>
 </div>
