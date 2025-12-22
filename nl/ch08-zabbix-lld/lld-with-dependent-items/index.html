@@ -2049,7 +2049,7 @@ that will serve as the master item for our Low-Level Discovery (LLD) rule.</p>
 </span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>}&#39; | sudo tee /home/printer-status.txt &gt; /dev/null
 </span></code></pre></div>
 </div>
-<ol>
+<ol start="3">
 <li><strong>Verify the File</strong>: Ensure the file is correctly created by running:</li>
 </ol>
 <div class="admonition info">
@@ -2141,17 +2141,15 @@ macros, the next step is to create an LLD item. This is done through item protot
 <ol>
 <li>Navigate to the <code>Item prototypes</code> tab.  </li>
 <li>Click Create <code>item prototype</code> in the upper-right corner.  </li>
-<li>
-<p>Configure the following parameters:  </p>
-</li>
-<li>
-<p><strong>Name</strong>: <code>Status from {#PRINTER.NAME}</code>  </p>
-</li>
+<li>Configure the following parameters:  </li>
+</ol>
+<ul>
+<li><strong>Name</strong>: <code>Status from {#PRINTER.NAME}</code>  </li>
 <li><strong>Type</strong>: <code>Dependent item</code>  </li>
 <li><strong>Key</strong>: <code>status.[{{#PRINTER.NAME}}]</code>  </li>
 <li><strong>Type of information</strong>: <code>Text</code>  </li>
 <li><strong>Master Item</strong>: Select the previously created raw item.  </li>
-</ol>
+</ul>
 <p>This setup ensures that the discovered printer statuses are correctly assigned and
 processed through the LLD mechanism.  </p>
 <p><img alt="LLD Item create" src="../../../ch08-zabbix-lld/dependent%20lld/ch08-dependent-lld-create-llditem.png" />
@@ -2161,16 +2159,16 @@ preprocessing steps. These steps will ensure that the extracted data is correctl
 formatted for Zabbix. Configure the following preprocessing steps:</p>
 <ol>
 <li><strong>JSONPath</strong>: $.data..[?(@.name=='{#PRINTER.NAME}')].status.first()</li>
-<li><strong>Replace</strong>:  </li>
-<li>Convert <code>NOK</code> to <code>false</code>.  </li>
-<li>This step is required because Zabbix does not recognize <code>NOK</code> as a boolean
+<li><strong>Replace</strong>:<br />
+   - Convert <code>NOK</code> to <code>false</code>.<br />
+   - This step is required because Zabbix does not recognize <code>NOK</code> as a boolean
      value but does recognize <code>false</code>.</li>
-<li><strong>Boolean to Decimal</strong>:  </li>
-<li>This conversion transforms boolean values into numerical representation
-   (<code>1</code> for <code>OK</code>, <code>0</code> for <code>false</code>).</li>
-<li>Numeric values are more suitable for graphing and analysis in Zabbix.</li>
-<li><strong>Type of Information</strong>:  </li>
-<li>Set to <strong>Numeric</strong> to ensure proper data processing and visualization.</li>
+<li><strong>Boolean to Decimal</strong>:<br />
+   - This conversion transforms boolean values into numerical representation
+   (<code>1</code> for <code>OK</code>, <code>0</code> for <code>false</code>).
+   - Numeric values are more suitable for graphing and analysis in Zabbix.</li>
+<li><strong>Type of Information</strong>:<br />
+   - Set to <strong>Numeric</strong> to ensure proper data processing and visualization.</li>
 </ol>
 <h3 id="understanding-the-jsonpath-expression">Understanding the JSONPath Expression</h3>
 <p>To derive the correct JSONPath query, use a tool such as the <code>JSON Query Tool</code>

@@ -4573,7 +4573,7 @@ from the rest of the setup.</p>
 backend. Zabbix supports several database options: MySQL/Percona, MariaDB, 
 PostgreSQL (including TimescaleDB), and Oracle (up to Zabbix 7.0).</p>
 <details class="note" open="open">
-<summary>Note</summary>
+<summary>Oracle Database deprecation</summary>
 <p>Zabbix 7.0 marks the final release to offer support for Oracle Database.
 Consequently, systems running Zabbix 7.0 or any prior version must undertake
 a database migration to either PostgreSQL, MySQL, or a compatible fork such
@@ -4637,7 +4637,7 @@ and are maintained by the distribution vendor.</p>
 </ul>
 </dd>
 </dl>
-<ol>
+<ol start="2">
 <li><strong>Official MariaDB/PostgreSQL Repositories</strong></li>
 </ol>
 <dl>
@@ -8895,7 +8895,7 @@ context, we will focus on Google Workspace as the IdP.</p>
 </ol>
 <p><em>2.16 create
 new application</em></p>
-<ol>
+<ol start="5">
 <li><strong>Download the IdP Certificate:</strong> Within the newly created application's settings,
    locate and download the idp.crt file. This certificate is crucial for establishing
    trust between Zabbix and Google Workspace.</li>
@@ -10148,19 +10148,17 @@ tells Podman to periodically check the container registry for updates to this ta
 <p><strong>Image Update</strong>
    If a new version is detected:</p>
 </li>
-<li>
-<p>The updated image is pulled from the registry.</p>
-</li>
+</ol>
+<ul>
+<li>The updated image is pulled from the registry.</li>
 <li>The currently running container is stopped and removed.</li>
-<li>
-<p>A new container is created from the updated image.</p>
-</li>
-<li>
-<p><strong>Configuration Reuse</strong>
+<li>A new container is created from the updated image.</li>
+</ul>
+<ol start="3">
+<li><strong>Configuration Reuse</strong>
    The new container is launched using the exact same configuration defined in
    your <code>.container</code> file, including environment variables, volume mounts, ports,
-   and networking.</p>
-</li>
+   and networking.</li>
 </ol>
 <p>This approach provides a clean, repeatable way to keep your Zabbix proxy (or other
 components) current without direct user intervention.</p>
@@ -11803,11 +11801,11 @@ your network.</p>
    potentially read- write access? It's rarely 'public' in a properly configured
    environment.</li>
 <li><strong>Username, Authentication, and Privacy (for v3)</strong>: If your device uses SNMPv3,
-   you'll need more specific information:</li>
-<li><strong>Username</strong>: What username has been created for SNMPv3?</li>
-<li><strong>Authentication Protocol and Password</strong>: Which authentication protocol (e.g.,
-     MD5, SHA) is used, and what is its corresponding password?</li>
-<li><strong>Privacy Protocol and Password</strong>: Which encryption protocol (e.g., DES, AES)
+   you'll need more specific information:
+   - <strong>Username</strong>: What username has been created for SNMPv3?
+   - <strong>Authentication Protocol and Password</strong>: Which authentication protocol (e.g.,
+     MD5, SHA) is used, and what is its corresponding password?
+   - <strong>Privacy Protocol and Password</strong>: Which encryption protocol (e.g., DES, AES)
      is used, and what is its corresponding password?</li>
 </ol>
 <p><strong>Next, consider potential network issues:</strong></p>
@@ -11977,7 +11975,7 @@ Or another compatible system if you prefer.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-8-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>snmp<span class="w"> </span>snmpd
 </span></code></pre></div></p>
 </div>
-<ol>
+<ol start="2">
 <li>Configure the SNMP Agent
    First, create a clean configuration file for the SNMP daemon:</li>
 </ol>
@@ -17399,24 +17397,20 @@ and examples for <code>foreach</code>, consult the official Zabbix documentation
 <ul>
 <li>Does the formula reference items that do not exist?</li>
 <li>Are value types compatible?</li>
-<li>
-<p>Does the function return something numeric?</p>
-</li>
-<li>
-<p>When you have incorrect values</p>
-</li>
+<li>Does the function return something numeric?</li>
 </ul>
+<ol start="2">
+<li>When you have incorrect values</li>
+</ol>
 <p><strong>Check :</strong></p>
 <ul>
 <li>Unit mismatch (bytes vs bits)</li>
 <li>Wrong interval compared to source data</li>
-<li>
-<p>Missing parentheses in expression</p>
-</li>
-<li>
-<p>No Graphs Displaying</p>
-</li>
+<li>Missing parentheses in expression</li>
 </ul>
+<ol start="3">
+<li>No Graphs Displaying</li>
+</ol>
 <p><strong>Ensure :</strong></p>
 <ul>
 <li>Value type is numeric</li>
@@ -19082,17 +19076,19 @@ depending on the number of users you made and what name you gave them.</p>
 <p>With our Low-Level Discovery (LLD) rule in place, we are ready to create our LLD
 item prototype. Follow these steps to configure the item prototype correctly:</p>
 <ol>
-<li><strong>Navigating to Item Prototype Configuration</strong></li>
-<li>Open your template in Zabbix.</li>
-<li>Click on the <strong>Discovery</strong> tab.</li>
-<li>Navigate to <strong>Item Prototypes</strong>.</li>
 <li>
-<p>Click on <strong>Create Item Prototype</strong> in the upper-right corner.</p>
+<p><strong>Navigating to Item Prototype Configuration</strong>
+   - Open your template in Zabbix.
+   - Click on the <strong>Discovery</strong> tab.
+   - Navigate to <strong>Item Prototypes</strong>.
+   - Click on <strong>Create Item Prototype</strong> in the upper-right corner.</p>
 </li>
 <li>
 <p><strong>Configuring the Item Prototype</strong>
    Several key fields must be completed for the prototype to function correctly:</p>
 </li>
+</ol>
+<ul>
 <li>
 <p><strong>Name:</strong></p>
 <ul>
@@ -19127,7 +19123,7 @@ item prototype. Follow these steps to configure the item prototype correctly:</p
 <li>A reasonable interval for checking user online status is <code>1m</code> (one minute).</li>
 </ul>
 </li>
-</ol>
+</ul>
 <p>With these configurations, your LLD item prototype is ready for deployment.</p>
 <p><img alt="create lld item" src="../ch08-zabbix-lld/custom-lld/lld-item-create.png" /></p>
 <h3 id="ch08-zabbix-lld-custom-configuring-the-agent-to-listen-for-lld-items">Configuring the Agent to Listen for LLD Items</h3>
@@ -19302,7 +19298,7 @@ that will serve as the master item for our Low-Level Discovery (LLD) rule.</p>
 </span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#ch08-zabbix-lld-lld-with-dependent-items-__codelineno-1-21"></a>}&#39; | sudo tee /home/printer-status.txt &gt; /dev/null
 </span></code></pre></div>
 </div>
-<ol>
+<ol start="3">
 <li><strong>Verify the File</strong>: Ensure the file is correctly created by running:</li>
 </ol>
 <div class="admonition info">
@@ -19394,17 +19390,15 @@ macros, the next step is to create an LLD item. This is done through item protot
 <ol>
 <li>Navigate to the <code>Item prototypes</code> tab.  </li>
 <li>Click Create <code>item prototype</code> in the upper-right corner.  </li>
-<li>
-<p>Configure the following parameters:  </p>
-</li>
-<li>
-<p><strong>Name</strong>: <code>Status from {#PRINTER.NAME}</code>  </p>
-</li>
+<li>Configure the following parameters:  </li>
+</ol>
+<ul>
+<li><strong>Name</strong>: <code>Status from {#PRINTER.NAME}</code>  </li>
 <li><strong>Type</strong>: <code>Dependent item</code>  </li>
 <li><strong>Key</strong>: <code>status.[{{#PRINTER.NAME}}]</code>  </li>
 <li><strong>Type of information</strong>: <code>Text</code>  </li>
 <li><strong>Master Item</strong>: Select the previously created raw item.  </li>
-</ol>
+</ul>
 <p>This setup ensures that the discovered printer statuses are correctly assigned and
 processed through the LLD mechanism.  </p>
 <p><img alt="LLD Item create" src="../ch08-zabbix-lld/dependent%20lld/ch08-dependent-lld-create-llditem.png" />
@@ -19414,16 +19408,16 @@ preprocessing steps. These steps will ensure that the extracted data is correctl
 formatted for Zabbix. Configure the following preprocessing steps:</p>
 <ol>
 <li><strong>JSONPath</strong>: $.data..[?(@.name=='{#PRINTER.NAME}')].status.first()</li>
-<li><strong>Replace</strong>:  </li>
-<li>Convert <code>NOK</code> to <code>false</code>.  </li>
-<li>This step is required because Zabbix does not recognize <code>NOK</code> as a boolean
+<li><strong>Replace</strong>:<br />
+   - Convert <code>NOK</code> to <code>false</code>.<br />
+   - This step is required because Zabbix does not recognize <code>NOK</code> as a boolean
      value but does recognize <code>false</code>.</li>
-<li><strong>Boolean to Decimal</strong>:  </li>
-<li>This conversion transforms boolean values into numerical representation
-   (<code>1</code> for <code>OK</code>, <code>0</code> for <code>false</code>).</li>
-<li>Numeric values are more suitable for graphing and analysis in Zabbix.</li>
-<li><strong>Type of Information</strong>:  </li>
-<li>Set to <strong>Numeric</strong> to ensure proper data processing and visualization.</li>
+<li><strong>Boolean to Decimal</strong>:<br />
+   - This conversion transforms boolean values into numerical representation
+   (<code>1</code> for <code>OK</code>, <code>0</code> for <code>false</code>).
+   - Numeric values are more suitable for graphing and analysis in Zabbix.</li>
+<li><strong>Type of Information</strong>:<br />
+   - Set to <strong>Numeric</strong> to ensure proper data processing and visualization.</li>
 </ol>
 <h3 id="ch08-zabbix-lld-lld-with-dependent-items-understanding-the-jsonpath-expression">Understanding the JSONPath Expression</h3>
 <p>To derive the correct JSONPath query, use a tool such as the <code>JSON Query Tool</code>
@@ -22595,8 +22589,8 @@ to add a clock widget to the dashboard with the <code>Zabbix server</code> time.
 <strong>Zabbix Timer process</strong> (controlled by <code>StartTimers</code>).</p>
 <ol>
 <li><strong>Recalculation Interval (The Check):</strong> The Timer process checks whether a host's
-   status must change to/from maintenance at <strong>0 seconds of every minute</strong>.</li>
-<li>This means the maintenance window will start and stop with a <strong>maximum latency
+   status must change to/from maintenance at <strong>0 seconds of every minute</strong>.
+   * This means the maintenance window will start and stop with a <strong>maximum latency
      of 60 seconds</strong> after the scheduled time.</li>
 <li><strong>Configuration Cache:</strong> Maintenance definitions are stored in the database
    and loaded into the Zabbix Server's <strong>Configuration Cache</strong>. The Timer

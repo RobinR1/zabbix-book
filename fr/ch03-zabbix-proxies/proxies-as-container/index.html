@@ -2508,19 +2508,17 @@ tells Podman to periodically check the container registry for updates to this ta
 <p><strong>Image Update</strong>
    If a new version is detected:</p>
 </li>
-<li>
-<p>The updated image is pulled from the registry.</p>
-</li>
+</ol>
+<ul>
+<li>The updated image is pulled from the registry.</li>
 <li>The currently running container is stopped and removed.</li>
-<li>
-<p>A new container is created from the updated image.</p>
-</li>
-<li>
-<p><strong>Configuration Reuse</strong>
+<li>A new container is created from the updated image.</li>
+</ul>
+<ol start="3">
+<li><strong>Configuration Reuse</strong>
    The new container is launched using the exact same configuration defined in
    your <code>.container</code> file, including environment variables, volume mounts, ports,
-   and networking.</p>
-</li>
+   and networking.</li>
 </ol>
 <p>This approach provides a clean, repeatable way to keep your Zabbix proxy (or other
 components) current without direct user intervention.</p>

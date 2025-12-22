@@ -2660,8 +2660,8 @@ to add a clock widget to the dashboard with the <code>Zabbix server</code> time.
 <strong>Zabbix Timer process</strong> (controlled by <code>StartTimers</code>).</p>
 <ol>
 <li><strong>Recalculation Interval (The Check):</strong> The Timer process checks whether a host's
-   status must change to/from maintenance at <strong>0 seconds of every minute</strong>.</li>
-<li>This means the maintenance window will start and stop with a <strong>maximum latency
+   status must change to/from maintenance at <strong>0 seconds of every minute</strong>.
+   * This means the maintenance window will start and stop with a <strong>maximum latency
      of 60 seconds</strong> after the scheduled time.</li>
 <li><strong>Configuration Cache:</strong> Maintenance definitions are stored in the database
    and loaded into the Zabbix Server's <strong>Configuration Cache</strong>. The Timer
