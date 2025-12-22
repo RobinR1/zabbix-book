@@ -1994,11 +1994,11 @@ For simplicity, take note of the server details:</p>
 or <code>zabbix-sender</code>, but the binaries themselves may use underscores (<code>_</code>),
 like <code>zabbix_sender</code> or <code>zabbix_server</code>. This naming discrepancy can sometimes
 be confusing, particularly if you are using packages from non-official Zabbix
-repositories.
-Always check if a binary uses a dash or an underscore when troubleshooting.</p>
+repositories.</p>
+<p>Always check if a binary uses a dash or an underscore when troubleshooting.</p>
 </details>
-<details class="note" open="open">
-<summary>Note</summary>
+<details class="warning" open="open">
+<summary>Warning</summary>
 <p>Starting from Zabbix 7.2, only MySQL (including its forks) and PostgreSQL are
 supported as back-end databases. Earlier versions of Zabbix also included support
 for Oracle Database; however, this support was discontinued with Zabbix 7.0 LTS,
@@ -2320,9 +2320,9 @@ one closer to your location.</p>
 </span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>pool 2.centos.pool.ntp.org iburst
 </span></code></pre></div>
 </div>
+<p>Change the pools you want to a local time server:</p>
 <div class="admonition info">
 <p class="admonition-title">Change ntp pool config</p>
-<p>Change the pools you want to a local time server:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a># Use public servers from the pool.ntp.org project.
 </span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a># Please consider joining the pool (http://www.pool.ntp.org/join.html).
 </span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>pool be.pool.ntp.org iburst
