@@ -2100,15 +2100,15 @@ also choose to define dedicated firewall zones for specific use cases. This
 approach enhances security by isolating services and restricting access based on
 trust levels.
 For example...</p>
-<div class="admonition info">
+<div class="admonition example">
 <p class="admonition-title">Create a firewalld zone for database access</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>firewall-cmd<span class="w"> </span>--new-zone<span class="o">=</span>db_zone<span class="w"> </span>--permanent
 </span></code></pre></div>
 </div>
 <p>You can confirm the creation of the zone by executing the following command:</p>
-<div class="admonition info">
+<div class="admonition example">
 <p class="admonition-title">Verify the zone creation</p>
-<div class="language-console highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="go">~# firewall-cmd --get-zones</span>
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="gp">localhost:~ # </span>firewall-cmd<span class="w"> </span>--get-zones
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="go">block dmz drop external home internal nm-shared db_zone public trusted work</span>
 </span></code></pre></div>
 </div>
@@ -2153,7 +2153,7 @@ policies for each interface.</dd>
 </dl>
 <p>Bringing everything together to add a zone for, in this example, PostgreSQL it
 would look like this:</p>
-<div class="admonition info">
+<div class="admonition example">
 <p class="admonition-title">Firewalld with zone config for PostgreSQL database access</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>firewall-cmd<span class="w"> </span>--new-zone<span class="o">=</span>db_zone<span class="w"> </span>--permanent
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>firewall-cmd<span class="w"> </span>--zone<span class="o">=</span>db_zone<span class="w"> </span>--add-service<span class="o">=</span>postgresql<span class="w"> </span>--permanent
@@ -2205,9 +2205,9 @@ more accurate time synchronization. If your OS does not support
 </details>
 <p>Once Chrony is installed, the next step is to ensure the correct time zone is set.
 You can view your current time configuration using the <code>timedatectl</code> command:</p>
-<div class="admonition info">
+<div class="admonition example">
 <p class="admonition-title">check the time config</p>
-<div class="language-console highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="go">~# timedatectl</span>
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="gp">localhost:~ # </span>timedatectl
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="go">               Local time: Thu 2023-11-16 15:09:14 UTC</span>
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="go">           Universal time: Thu 2023-11-16 15:09:14 UTC</span>
 </span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="go">                 RTC time: Thu 2023-11-16 15:09:15</span>
@@ -2227,9 +2227,9 @@ the following command:</p>
 </div>
 <p>This command will display a list of available time zones, allowing you to select
 the one closest to your location. For example:</p>
-<div class="admonition info">
+<div class="admonition example">
 <p class="admonition-title">List of all the timezones available</p>
-<div class="language-console highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="go">~# timedatectl list-timezones</span>
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="gp">localhost:~ # </span>timedatectl<span class="w"> </span>list-timezones
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="go">Africa/Abidjan</span>
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="go">Africa/Accra</span>
 </span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="go">...</span>
@@ -2247,9 +2247,9 @@ the one closest to your location. For example:</p>
 </div>
 <p>To verify that the time zone has been configured correctly, use the <code>timedatectl</code>
 command again:</p>
-<div class="admonition info">
+<div class="admonition example">
 <p class="admonition-title">Check the time and zone</p>
-<div class="language-console highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="go">~# timedatectl</span>
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="gp">localhost:~ # </span>timedatectl
 </span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="go">               Local time: Thu 2023-11-16 16:13:35 CET</span>
 </span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="go">           Universal time: Thu 2023-11-16 15:13:35 UTC</span>
 </span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="go">                 RTC time: Thu 2023-11-16 15:13:36</span>
@@ -2277,15 +2277,16 @@ run the following command:</p>
 </span></code></pre></div>
 </div>
 <p>The output should resemble:</p>
-<div class="admonition info">
+<div class="admonition example">
 <p class="admonition-title">Verify your chrony output</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>chrony version 4.2
-</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>Copyright (C) 1997-2003, 2007, 2009-2021 Richard P. Curnow and others
-</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>chrony comes with ABSOLUTELY NO WARRANTY. This is free software, and
-</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>you are welcome to redistribute it under certain conditions. See the
-</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>GNU General Public License version 2 for details.
-</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
-</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>chronyc&gt;
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="gp">localhost:~ # </span>chronyc
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="go">chrony version 4.2</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="go">Copyright (C) 1997-2003, 2007, 2009-2021 Richard P. Curnow and others</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="go">chrony comes with ABSOLUTELY NO WARRANTY. This is free software, and</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="go">you are welcome to redistribute it under certain conditions. See the</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="go">GNU General Public License version 2 for details.</span>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="go">chronyc&gt;</span>
 </span></code></pre></div>
 </div>
 <p>Once inside the Chrony prompt, type the following to check the sources:</p>
@@ -2294,14 +2295,15 @@ run the following command:</p>
 </span></code></pre></div>
 </div>
 <p>Example output:</p>
-<div class="admonition info">
+<div class="admonition example">
 <p class="admonition-title">Check your time server sources</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>MS<span class="w"> </span>Name/IP<span class="w"> </span>address<span class="w">         </span>Stratum<span class="w"> </span>Poll<span class="w"> </span>Reach<span class="w"> </span>LastRx<span class="w"> </span>Last<span class="w"> </span><span class="nv">sample</span>
-</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="o">===============================================================================</span>
-</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>^-<span class="w"> </span><span class="m">51</span>-15-20-83.rev.poneytel&gt;<span class="w">     </span><span class="m">2</span><span class="w">   </span><span class="m">9</span><span class="w">   </span><span class="m">377</span><span class="w">   </span><span class="m">354</span><span class="w">   </span>+429us<span class="o">[</span><span class="w"> </span>+429us<span class="o">]</span><span class="w"> </span>+/-<span class="w">  </span>342ms
-</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>^-<span class="w"> </span><span class="m">5</span>.255.99.180<span class="w">                  </span><span class="m">2</span><span class="w">  </span><span class="m">10</span><span class="w">   </span><span class="m">377</span><span class="w">   </span><span class="m">620</span><span class="w">  </span>+7424us<span class="o">[</span>+7424us<span class="o">]</span><span class="w"> </span>+/-<span class="w">   </span>37ms
-</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>^-<span class="w"> </span>hachi.paina.net<span class="w">               </span><span class="m">2</span><span class="w">  </span><span class="m">10</span><span class="w">   </span><span class="m">377</span><span class="w">   </span><span class="m">412</span><span class="w">   </span>+445us<span class="o">[</span><span class="w"> </span>+445us<span class="o">]</span><span class="w"> </span>+/-<span class="w">   </span>39ms
-</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>^*<span class="w"> </span>leontp1.office.panq.nl<span class="w">        </span><span class="m">1</span><span class="w">  </span><span class="m">10</span><span class="w">   </span><span class="m">377</span><span class="w">   </span><span class="m">904</span><span class="w">  </span>+6806ns<span class="o">[</span><span class="w"> </span>+171us<span class="o">]</span><span class="w"> </span>+/-<span class="w"> </span>2336us
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="go">chronyc&gt; sources</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="go">MS Name/IP address         Stratum Poll Reach LastRx Last sample</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="go">===============================================================================</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="go">^- 51-15-20-83.rev.poneytel&gt;     2   9   377   354   +429us[ +429us] +/-  342ms</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="go">^- 5.255.99.180                  2  10   377   620  +7424us[+7424us] +/-   37ms</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="go">^- hachi.paina.net               2  10   377   412   +445us[ +445us] +/-   39ms</span>
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="go">^* leontp1.office.panq.nl        1  10   377   904  +6806ns[ +171us] +/- 2336us</span>
 </span></code></pre></div>
 </div>
 <p>In this example, the NTP servers in use are located outside your local region.
@@ -2341,14 +2343,15 @@ one closer to your location.</p>
 </span></code></pre></div>
 </div>
 <p>Example of expected output with local servers:</p>
-<div class="admonition info">
+<div class="admonition example">
 <p class="admonition-title">Example output</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>MS Name/IP address         Stratum Poll Reach LastRx Last sample
-</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>===============================================================================
-</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>^- ntp1.unix-solutions.be        2   6    17    43   -375us[ -676us] +/-   28ms
-</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>^* ntp.devrandom.be              2   6    17    43   -579us[ -880us] +/- 2877us
-</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>^+ time.cloudflare.com           3   6    17    43   +328us[  +27us] +/- 2620us
-</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>^+ time.cloudflare.com           3   6    17    43
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="go">chronyc&gt; sources</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="go">MS Name/IP address         Stratum Poll Reach LastRx Last sample</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="go">===============================================================================</span>
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="go">^- ntp1.unix-solutions.be        2   6    17    43   -375us[ -676us] +/-   28ms</span>
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="go">^* ntp.devrandom.be              2   6    17    43   -579us[ -880us] +/- 2877us</span>
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="go">^+ time.cloudflare.com           3   6    17    43   +328us[  +27us] +/- 2620us</span>
+</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="go">^+ time.cloudflare.com           3   6    17    43</span>
 </span></code></pre></div>
 </div>
 <p>This confirms that the system is now using local time servers.</p>
