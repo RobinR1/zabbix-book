@@ -3160,16 +3160,25 @@ specific packages from individual repositories. However, the Zabbix packages
 included in the default repositories are typically one to two LTS versions behind
 the latest releases. As a result, they are unlikely to interfere with your
 installation unless they are already installed.</p>
-<p>In the next step, you will configure the official Zabbix repositories. As long
+<p>In the next step, we will configure the official Zabbix repositories. As long
 as you select a Zabbix repository version newer than the packages available in 
-<code>repo-oss</code>, zypper will automatically install the most recent version.
-If you have already installed Zabbix packages from the default repositories, 
+<code>repo-oss</code>, zypper will automatically install the most recent version.</p>
+<details class="tip" open="open">
+<summary>Tip</summary>
+<p>If you have already installed Zabbix packages from the default repositories, 
 it is recommended to either:</p>
 <ul>
 <li>Remove them before proceeding, or</li>
 <li>Upgrade them after adding the new Zabbix repositories, using the zypper 
-    option <code>--allow-vendor-change</code>.</li>
+  option <code>--allow-vendor-change</code>.</li>
 </ul>
+</details>
+<details class="note" open="open">
+<summary>Suse Linux Enterprise Server (SLES)</summary>
+<p>If you are using SLES, the Zabbix packages are not included in the default
+repositories. Therefore, you can proceed to add the official Zabbix repository
+without any concerns about conflicts with existing packages.</p>
+</details>
 <hr />
 <h4 id="adding-the-zabbix-repository">Adding the Zabbix repository</h4>
 <p>Next, we will install the Zabbix repository on our operating system. After adding
