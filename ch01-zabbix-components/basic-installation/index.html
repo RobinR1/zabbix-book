@@ -880,21 +880,9 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Installation and configuration of Zabbix server">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#installation-and-configuration-of-zabbix-server_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installation and configuration of Zabbix server
-      
-    </span>
-  </a>
-  
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#populate-the-zabbix-database-instance" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -925,11 +913,6 @@
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -2158,21 +2141,9 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Installation and configuration of Zabbix server">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#installation-and-configuration-of-zabbix-server_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installation and configuration of Zabbix server
-      
-    </span>
-  </a>
-  
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#populate-the-zabbix-database-instance" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2203,11 +2174,6 @@
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -3248,8 +3214,6 @@ system security and stability.</p>
 ready to install both the Zabbix server and the web server. Keep in mind that the
 web server doesn't need to be installed on the same machine as the Zabbix server;
 they can be hosted on separate systems if desired.</p>
-<hr />
-<h3 id="installation-and-configuration-of-zabbix-server_1">Installation and configuration of Zabbix server</h3>
 <p>To install the Zabbix server components, run the following command:</p>
 <div class="admonition info">
 <p class="admonition-title">Install the zabbix server</p>
@@ -3355,7 +3319,7 @@ lines with the same parameter, Zabbix will use the value from the last occurrenc
 <p>The next step is to populate the database with the necessary tables and data
 required for Zabbix to function correctly.</p>
 <hr />
-<h3 id="populate-the-zabbix-database-instance">Populate the Zabbix database instance</h3>
+<h2 id="populate-the-zabbix-database-instance">Populate the Zabbix database instance</h2>
 <p>During the installation of the database software earlier, we created the 
 necessary users and database for Zabbix, however, Zabbix expects certain tables,
 schemas, images, and other elements to be present in the database.
@@ -3388,7 +3352,7 @@ the SQL scripts package may already be installed as a dependency.
 You can verify this by checking if the <code>/usr/share/zabbix/sql-scripts/</code>
 directory exists on your system.</p>
 </details>
-<h4 id="populate-mariadbmysql-database">Populate MariaDB/MySQL Database</h4>
+<h3 id="populate-mariadbmysql-database">Populate MariaDB/MySQL Database</h3>
 <details class="warning" open="open">
 <summary>Warning</summary>
 <p>When using a recent version of MySQL or MariaDB as the database backend for 
@@ -3442,7 +3406,7 @@ MySQL/MariaDB shell:</p>
 <p>This command will disable the setting, ensuring that the servers security
 posture remains robust.</p>
 <hr />
-<h4 id="populate-the-postgresql-database">Populate the PostgreSQL Database</h4>
+<h3 id="populate-the-postgresql-database">Populate the PostgreSQL Database</h3>
 <ul>
 <li>Unzip the Zabbix database schema file for PostgreSQL:</li>
 </ul>
