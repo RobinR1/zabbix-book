@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
         <loc>https://thezabbixbook.com/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/"/>
@@ -12,7 +12,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/Guidelines/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/Guidelines/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/Guidelines/"/>
@@ -22,7 +22,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/Supporters-Contributors/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/Supporters-Contributors/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/Supporters-Contributors/"/>
@@ -32,7 +32,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/tags/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/tags/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/tags/"/>
@@ -42,7 +42,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch00-getting-started/Requirements/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch00-getting-started/Requirements/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch00-getting-started/Requirements/"/>
@@ -52,7 +52,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch00-getting-started/initial-steps/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch00-getting-started/initial-steps/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch00-getting-started/initial-steps/"/>
@@ -62,7 +62,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch01-zabbix-components/basic-installation/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch01-zabbix-components/basic-installation/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch01-zabbix-components/basic-installation/"/>
@@ -72,7 +72,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch01-zabbix-components/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch01-zabbix-components/chapter/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch01-zabbix-components/chapter/"/>
@@ -82,7 +82,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch01-zabbix-components/ha-setup/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch01-zabbix-components/ha-setup/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch01-zabbix-components/ha-setup/"/>
@@ -92,7 +92,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch02-zabbix-installation/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/chapter/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch02-zabbix-installation/chapter/"/>
@@ -102,7 +102,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch02-zabbix-installation/frontend/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/frontend/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch02-zabbix-installation/frontend/"/>
@@ -112,7 +112,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch02-zabbix-installation/host-groups/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/host-groups/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch02-zabbix-installation/host-groups/"/>
@@ -122,7 +122,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch02-zabbix-installation/http/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/http/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch02-zabbix-installation/http/"/>
@@ -132,7 +132,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch02-zabbix-installation/ldap-ad/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/ldap-ad/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch02-zabbix-installation/ldap-ad/"/>
@@ -142,7 +142,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch02-zabbix-installation/mfa/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/mfa/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch02-zabbix-installation/mfa/"/>
@@ -152,7 +152,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch02-zabbix-installation/saml/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/saml/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch02-zabbix-installation/saml/"/>
@@ -162,7 +162,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch02-zabbix-installation/user-groups/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/user-groups/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch02-zabbix-installation/user-groups/"/>
@@ -172,7 +172,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch02-zabbix-installation/user-roles/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/user-roles/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch02-zabbix-installation/user-roles/"/>
@@ -182,7 +182,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch03-zabbix-proxies/active-passive-proxies/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch03-zabbix-proxies/active-passive-proxies/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch03-zabbix-proxies/active-passive-proxies/"/>
@@ -192,7 +192,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch03-zabbix-proxies/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch03-zabbix-proxies/chapter/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch03-zabbix-proxies/chapter/"/>
@@ -202,7 +202,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch03-zabbix-proxies/proxies-as-container/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch03-zabbix-proxies/proxies-as-container/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch03-zabbix-proxies/proxies-as-container/"/>
@@ -212,7 +212,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch03-zabbix-proxies/proxy-basics/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch03-zabbix-proxies/proxy-basics/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch03-zabbix-proxies/proxy-basics/"/>
@@ -222,7 +222,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch03-zabbix-proxies/proxy-groups/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch03-zabbix-proxies/proxy-groups/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch03-zabbix-proxies/proxy-groups/"/>
@@ -232,7 +232,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch03-zabbix-proxies/web-services/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch03-zabbix-proxies/web-services/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch03-zabbix-proxies/web-services/"/>
@@ -242,7 +242,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch04-zabbix-collecting-data/browser/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/browser/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/browser/"/>
@@ -252,7 +252,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch04-zabbix-collecting-data/calculated/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/calculated/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/calculated/"/>
@@ -262,7 +262,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch04-zabbix-collecting-data/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/chapter/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/chapter/"/>
@@ -272,7 +272,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch04-zabbix-collecting-data/database-agent/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/database-agent/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/database-agent/"/>
@@ -282,7 +282,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch04-zabbix-collecting-data/database-odbc/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/database-odbc/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/database-odbc/"/>
@@ -292,7 +292,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch04-zabbix-collecting-data/dataflow/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/dataflow/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/dataflow/"/>
@@ -302,7 +302,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch04-zabbix-collecting-data/dependent/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/dependent/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/dependent/"/>
@@ -312,7 +312,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch04-zabbix-collecting-data/external-checks/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/external-checks/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/external-checks/"/>
@@ -322,7 +322,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch04-zabbix-collecting-data/host-interfaces/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/host-interfaces/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/host-interfaces/"/>
@@ -332,7 +332,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch04-zabbix-collecting-data/hosts/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/hosts/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/hosts/"/>
@@ -342,7 +342,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch04-zabbix-collecting-data/http/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/http/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/http/"/>
@@ -352,7 +352,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch04-zabbix-collecting-data/ipmi/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/ipmi/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/ipmi/"/>
@@ -362,7 +362,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch04-zabbix-collecting-data/jmx/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/jmx/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/jmx/"/>
@@ -372,7 +372,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch04-zabbix-collecting-data/preprocessing/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/preprocessing/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/preprocessing/"/>
@@ -382,7 +382,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch04-zabbix-collecting-data/script/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/script/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/script/"/>
@@ -392,7 +392,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch04-zabbix-collecting-data/simple-checks/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/simple-checks/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/simple-checks/"/>
@@ -402,7 +402,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch04-zabbix-collecting-data/snmp-polling/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/snmp-polling/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/snmp-polling/"/>
@@ -412,7 +412,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch04-zabbix-collecting-data/snmp-trapping/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/snmp-trapping/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/snmp-trapping/"/>
@@ -422,7 +422,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch04-zabbix-collecting-data/ssh-telnet/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/ssh-telnet/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/ssh-telnet/"/>
@@ -432,7 +432,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch04-zabbix-collecting-data/zabbix-agent-active/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/zabbix-agent-active/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/zabbix-agent-active/"/>
@@ -442,7 +442,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch04-zabbix-collecting-data/zabbix-agent-passive/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/zabbix-agent-passive/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/zabbix-agent-passive/"/>
@@ -452,7 +452,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch04-zabbix-collecting-data/zabbix-internal/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/zabbix-internal/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/zabbix-internal/"/>
@@ -462,7 +462,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch04-zabbix-collecting-data/zabbix-trapper/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/zabbix-trapper/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/zabbix-trapper/"/>
@@ -472,7 +472,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch05-zabbix-triggers/advanced-triggers/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch05-zabbix-triggers/advanced-triggers/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch05-zabbix-triggers/advanced-triggers/"/>
@@ -482,7 +482,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch05-zabbix-triggers/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch05-zabbix-triggers/chapter/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch05-zabbix-triggers/chapter/"/>
@@ -492,7 +492,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch05-zabbix-triggers/triggers/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch05-zabbix-triggers/triggers/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch05-zabbix-triggers/triggers/"/>
@@ -502,7 +502,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch06-zabbix-templates/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch06-zabbix-templates/chapter/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch06-zabbix-templates/chapter/"/>
@@ -512,7 +512,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch06-zabbix-templates/templates/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch06-zabbix-templates/templates/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch06-zabbix-templates/templates/"/>
@@ -522,7 +522,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch07-zabbix-alerts/actions/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch07-zabbix-alerts/actions/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch07-zabbix-alerts/actions/"/>
@@ -532,7 +532,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch07-zabbix-alerts/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch07-zabbix-alerts/chapter/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch07-zabbix-alerts/chapter/"/>
@@ -542,7 +542,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch07-zabbix-alerts/media-types/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch07-zabbix-alerts/media-types/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch07-zabbix-alerts/media-types/"/>
@@ -552,7 +552,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch07-zabbix-alerts/scripts/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch07-zabbix-alerts/scripts/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch07-zabbix-alerts/scripts/"/>
@@ -562,7 +562,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch08-zabbix-lld/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch08-zabbix-lld/chapter/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch08-zabbix-lld/chapter/"/>
@@ -572,7 +572,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch08-zabbix-lld/custom/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch08-zabbix-lld/custom/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch08-zabbix-lld/custom/"/>
@@ -582,7 +582,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch08-zabbix-lld/lld-with-dependent-items/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch08-zabbix-lld/lld-with-dependent-items/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch08-zabbix-lld/lld-with-dependent-items/"/>
@@ -592,7 +592,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch09-zabbix-extending/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch09-zabbix-extending/chapter/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch09-zabbix-extending/chapter/"/>
@@ -602,7 +602,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch09-zabbix-extending/frontend-scripts/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch09-zabbix-extending/frontend-scripts/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch09-zabbix-extending/frontend-scripts/"/>
@@ -612,7 +612,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch09-zabbix-extending/user-parameters/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch09-zabbix-extending/user-parameters/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch09-zabbix-extending/user-parameters/"/>
@@ -622,7 +622,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch10-zabbix-discovery/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch10-zabbix-discovery/chapter/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch10-zabbix-discovery/chapter/"/>
@@ -632,7 +632,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch11-zabbix-visualisation/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch11-zabbix-visualisation/chapter/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch11-zabbix-visualisation/chapter/"/>
@@ -642,7 +642,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch12-zabbix-api/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch12-zabbix-api/chapter/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch12-zabbix-api/chapter/"/>
@@ -652,7 +652,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch12-zabbix-api/self-engaging/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch12-zabbix-api/self-engaging/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch12-zabbix-api/self-engaging/"/>
@@ -662,7 +662,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch13-advanced-security/agent-security/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/agent-security/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch13-advanced-security/agent-security/"/>
@@ -672,7 +672,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch13-advanced-security/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/chapter/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch13-advanced-security/chapter/"/>
@@ -682,7 +682,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch13-advanced-security/partitioning-database/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/partitioning-database/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch13-advanced-security/partitioning-database/"/>
@@ -692,7 +692,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch13-advanced-security/partitioning-postgresql-database/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/partitioning-postgresql-database/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch13-advanced-security/partitioning-postgresql-database/"/>
@@ -702,7 +702,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch13-advanced-security/securing-frontend/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/securing-frontend/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch13-advanced-security/securing-frontend/"/>
@@ -712,7 +712,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch13-advanced-security/selinux-zabbix/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/selinux-zabbix/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch13-advanced-security/selinux-zabbix/"/>
@@ -722,7 +722,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch13-advanced-security/using-vault/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/using-vault/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch13-advanced-security/using-vault/"/>
@@ -732,7 +732,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch14-zabbix-maintenance/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch14-zabbix-maintenance/chapter/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch14-zabbix-maintenance/chapter/"/>
@@ -742,7 +742,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch14-zabbix-maintenance/internal-health/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch14-zabbix-maintenance/internal-health/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch14-zabbix-maintenance/internal-health/"/>
@@ -752,7 +752,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch14-zabbix-maintenance/maintenance/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch14-zabbix-maintenance/maintenance/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch14-zabbix-maintenance/maintenance/"/>
@@ -762,7 +762,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch14-zabbix-maintenance/taking-backups/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch14-zabbix-maintenance/taking-backups/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch14-zabbix-maintenance/taking-backups/"/>
@@ -772,7 +772,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch14-zabbix-maintenance/upgrades/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch14-zabbix-maintenance/upgrades/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch14-zabbix-maintenance/upgrades/"/>
@@ -782,7 +782,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch15-zabbix-real-world-examples/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch15-zabbix-real-world-examples/chapter/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch15-zabbix-real-world-examples/chapter/"/>
@@ -792,7 +792,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ch15-zabbix-real-world-examples/disk-health-windows/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch15-zabbix-real-world-examples/disk-health-windows/"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch15-zabbix-real-world-examples/disk-health-windows/"/>
@@ -802,7 +802,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/"/>
@@ -812,7 +812,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/Guidelines/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/Guidelines/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/Guidelines/"/>
@@ -822,7 +822,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/Supporters-Contributors/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/Supporters-Contributors/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/Supporters-Contributors/"/>
@@ -832,7 +832,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/tags/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/tags/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/tags/"/>
@@ -842,7 +842,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch00-getting-started/Requirements/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch00-getting-started/Requirements/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch00-getting-started/Requirements/"/>
@@ -852,7 +852,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch00-getting-started/initial-steps/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch00-getting-started/initial-steps/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch00-getting-started/initial-steps/"/>
@@ -862,7 +862,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch01-zabbix-components/basic-installation/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch01-zabbix-components/basic-installation/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch01-zabbix-components/basic-installation/"/>
@@ -872,7 +872,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch01-zabbix-components/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch01-zabbix-components/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch01-zabbix-components/chapter/"/>
@@ -882,7 +882,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch01-zabbix-components/ha-setup/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch01-zabbix-components/ha-setup/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch01-zabbix-components/ha-setup/"/>
@@ -892,7 +892,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch02-zabbix-installation/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch02-zabbix-installation/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/chapter/"/>
@@ -902,7 +902,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch02-zabbix-installation/frontend/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch02-zabbix-installation/frontend/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/frontend/"/>
@@ -912,7 +912,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch02-zabbix-installation/host-groups/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch02-zabbix-installation/host-groups/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/host-groups/"/>
@@ -922,7 +922,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch02-zabbix-installation/http/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch02-zabbix-installation/http/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/http/"/>
@@ -932,7 +932,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch02-zabbix-installation/ldap-ad/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch02-zabbix-installation/ldap-ad/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/ldap-ad/"/>
@@ -942,7 +942,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch02-zabbix-installation/mfa/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch02-zabbix-installation/mfa/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/mfa/"/>
@@ -952,7 +952,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch02-zabbix-installation/saml/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch02-zabbix-installation/saml/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/saml/"/>
@@ -962,7 +962,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch02-zabbix-installation/user-groups/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch02-zabbix-installation/user-groups/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/user-groups/"/>
@@ -972,7 +972,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch02-zabbix-installation/user-roles/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch02-zabbix-installation/user-roles/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/user-roles/"/>
@@ -982,7 +982,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch03-zabbix-proxies/active-passive-proxies/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch03-zabbix-proxies/active-passive-proxies/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch03-zabbix-proxies/active-passive-proxies/"/>
@@ -992,7 +992,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch03-zabbix-proxies/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch03-zabbix-proxies/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch03-zabbix-proxies/chapter/"/>
@@ -1002,7 +1002,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch03-zabbix-proxies/proxies-as-container/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch03-zabbix-proxies/proxies-as-container/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch03-zabbix-proxies/proxies-as-container/"/>
@@ -1012,7 +1012,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch03-zabbix-proxies/proxy-basics/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch03-zabbix-proxies/proxy-basics/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch03-zabbix-proxies/proxy-basics/"/>
@@ -1022,7 +1022,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch03-zabbix-proxies/proxy-groups/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch03-zabbix-proxies/proxy-groups/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch03-zabbix-proxies/proxy-groups/"/>
@@ -1032,7 +1032,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch03-zabbix-proxies/web-services/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch03-zabbix-proxies/web-services/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch03-zabbix-proxies/web-services/"/>
@@ -1042,7 +1042,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/browser/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/browser/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/browser/"/>
@@ -1052,7 +1052,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/calculated/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/calculated/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/calculated/"/>
@@ -1062,7 +1062,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/chapter/"/>
@@ -1072,7 +1072,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/database-agent/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/database-agent/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/database-agent/"/>
@@ -1082,7 +1082,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/database-odbc/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/database-odbc/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/database-odbc/"/>
@@ -1092,7 +1092,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/dataflow/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/dataflow/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/dataflow/"/>
@@ -1102,7 +1102,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/dependent/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/dependent/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/dependent/"/>
@@ -1112,7 +1112,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/external-checks/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/external-checks/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/external-checks/"/>
@@ -1122,7 +1122,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/host-interfaces/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/host-interfaces/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/host-interfaces/"/>
@@ -1132,7 +1132,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/hosts/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/hosts/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/hosts/"/>
@@ -1142,7 +1142,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/http/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/http/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/http/"/>
@@ -1152,7 +1152,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/ipmi/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/ipmi/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/ipmi/"/>
@@ -1162,7 +1162,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/jmx/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/jmx/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/jmx/"/>
@@ -1172,7 +1172,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/preprocessing/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/preprocessing/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/preprocessing/"/>
@@ -1182,7 +1182,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/script/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/script/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/script/"/>
@@ -1192,7 +1192,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/simple-checks/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/simple-checks/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/simple-checks/"/>
@@ -1202,7 +1202,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/snmp-polling/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/snmp-polling/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/snmp-polling/"/>
@@ -1212,7 +1212,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/snmp-trapping/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/snmp-trapping/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/snmp-trapping/"/>
@@ -1222,7 +1222,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/ssh-telnet/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/ssh-telnet/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/ssh-telnet/"/>
@@ -1232,7 +1232,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/zabbix-agent-active/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/zabbix-agent-active/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/zabbix-agent-active/"/>
@@ -1242,7 +1242,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/zabbix-agent-passive/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/zabbix-agent-passive/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/zabbix-agent-passive/"/>
@@ -1252,7 +1252,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/zabbix-internal/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/zabbix-internal/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/zabbix-internal/"/>
@@ -1262,7 +1262,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/zabbix-trapper/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch04-zabbix-collecting-data/zabbix-trapper/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/zabbix-trapper/"/>
@@ -1272,7 +1272,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch05-zabbix-triggers/advanced-triggers/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch05-zabbix-triggers/advanced-triggers/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch05-zabbix-triggers/advanced-triggers/"/>
@@ -1282,7 +1282,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch05-zabbix-triggers/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch05-zabbix-triggers/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch05-zabbix-triggers/chapter/"/>
@@ -1292,7 +1292,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch05-zabbix-triggers/triggers/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch05-zabbix-triggers/triggers/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch05-zabbix-triggers/triggers/"/>
@@ -1302,7 +1302,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch06-zabbix-templates/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch06-zabbix-templates/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch06-zabbix-templates/chapter/"/>
@@ -1312,7 +1312,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch06-zabbix-templates/templates/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch06-zabbix-templates/templates/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch06-zabbix-templates/templates/"/>
@@ -1322,7 +1322,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch07-zabbix-alerts/actions/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch07-zabbix-alerts/actions/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch07-zabbix-alerts/actions/"/>
@@ -1332,7 +1332,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch07-zabbix-alerts/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch07-zabbix-alerts/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch07-zabbix-alerts/chapter/"/>
@@ -1342,7 +1342,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch07-zabbix-alerts/media-types/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch07-zabbix-alerts/media-types/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch07-zabbix-alerts/media-types/"/>
@@ -1352,7 +1352,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch07-zabbix-alerts/scripts/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch07-zabbix-alerts/scripts/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch07-zabbix-alerts/scripts/"/>
@@ -1362,7 +1362,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch08-zabbix-lld/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch08-zabbix-lld/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch08-zabbix-lld/chapter/"/>
@@ -1372,7 +1372,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch08-zabbix-lld/custom/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch08-zabbix-lld/custom/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch08-zabbix-lld/custom/"/>
@@ -1382,7 +1382,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch08-zabbix-lld/lld-with-dependent-items/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch08-zabbix-lld/lld-with-dependent-items/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch08-zabbix-lld/lld-with-dependent-items/"/>
@@ -1392,7 +1392,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch09-zabbix-extending/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch09-zabbix-extending/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch09-zabbix-extending/chapter/"/>
@@ -1402,7 +1402,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch09-zabbix-extending/frontend-scripts/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch09-zabbix-extending/frontend-scripts/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch09-zabbix-extending/frontend-scripts/"/>
@@ -1412,7 +1412,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch09-zabbix-extending/user-parameters/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch09-zabbix-extending/user-parameters/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch09-zabbix-extending/user-parameters/"/>
@@ -1422,7 +1422,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch10-zabbix-discovery/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch10-zabbix-discovery/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch10-zabbix-discovery/chapter/"/>
@@ -1432,7 +1432,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch11-zabbix-visualisation/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch11-zabbix-visualisation/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch11-zabbix-visualisation/chapter/"/>
@@ -1442,7 +1442,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch12-zabbix-api/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch12-zabbix-api/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch12-zabbix-api/chapter/"/>
@@ -1452,7 +1452,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch12-zabbix-api/self-engaging/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch12-zabbix-api/self-engaging/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch12-zabbix-api/self-engaging/"/>
@@ -1462,7 +1462,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch13-advanced-security/agent-security/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch13-advanced-security/agent-security/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/agent-security/"/>
@@ -1472,7 +1472,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch13-advanced-security/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch13-advanced-security/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/chapter/"/>
@@ -1482,7 +1482,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch13-advanced-security/partitioning-database/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch13-advanced-security/partitioning-database/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/partitioning-database/"/>
@@ -1492,7 +1492,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch13-advanced-security/partitioning-postgresql-database/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch13-advanced-security/partitioning-postgresql-database/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/partitioning-postgresql-database/"/>
@@ -1502,7 +1502,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch13-advanced-security/securing-frontend/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch13-advanced-security/securing-frontend/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/securing-frontend/"/>
@@ -1512,7 +1512,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch13-advanced-security/selinux-zabbix/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch13-advanced-security/selinux-zabbix/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/selinux-zabbix/"/>
@@ -1522,7 +1522,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch13-advanced-security/using-vault/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch13-advanced-security/using-vault/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/using-vault/"/>
@@ -1532,7 +1532,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch14-zabbix-maintenance/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch14-zabbix-maintenance/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch14-zabbix-maintenance/chapter/"/>
@@ -1542,7 +1542,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch14-zabbix-maintenance/internal-health/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch14-zabbix-maintenance/internal-health/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch14-zabbix-maintenance/internal-health/"/>
@@ -1552,7 +1552,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch14-zabbix-maintenance/maintenance/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch14-zabbix-maintenance/maintenance/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch14-zabbix-maintenance/maintenance/"/>
@@ -1562,7 +1562,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch14-zabbix-maintenance/taking-backups/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch14-zabbix-maintenance/taking-backups/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch14-zabbix-maintenance/taking-backups/"/>
@@ -1572,7 +1572,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch14-zabbix-maintenance/upgrades/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch14-zabbix-maintenance/upgrades/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch14-zabbix-maintenance/upgrades/"/>
@@ -1582,7 +1582,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch15-zabbix-real-world-examples/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch15-zabbix-real-world-examples/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch15-zabbix-real-world-examples/chapter/"/>
@@ -1592,7 +1592,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch15-zabbix-real-world-examples/disk-health-windows/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch15-zabbix-real-world-examples/disk-health-windows/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch15-zabbix-real-world-examples/disk-health-windows/"/>
@@ -1602,7 +1602,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/"/>
@@ -1612,7 +1612,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/Guidelines/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/Guidelines/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/Guidelines/"/>
@@ -1622,7 +1622,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/Supporters-Contributors/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/Supporters-Contributors/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/Supporters-Contributors/"/>
@@ -1632,7 +1632,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/tags/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/tags/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/tags/"/>
@@ -1642,7 +1642,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch00-getting-started/Requirements/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch00-getting-started/Requirements/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch00-getting-started/Requirements/"/>
@@ -1652,7 +1652,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch00-getting-started/initial-steps/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch00-getting-started/initial-steps/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch00-getting-started/initial-steps/"/>
@@ -1662,7 +1662,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch01-zabbix-components/basic-installation/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch01-zabbix-components/basic-installation/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch01-zabbix-components/basic-installation/"/>
@@ -1672,7 +1672,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch01-zabbix-components/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch01-zabbix-components/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch01-zabbix-components/chapter/"/>
@@ -1682,7 +1682,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch01-zabbix-components/ha-setup/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch01-zabbix-components/ha-setup/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch01-zabbix-components/ha-setup/"/>
@@ -1692,7 +1692,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch02-zabbix-installation/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch02-zabbix-installation/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/chapter/"/>
@@ -1702,7 +1702,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch02-zabbix-installation/frontend/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch02-zabbix-installation/frontend/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/frontend/"/>
@@ -1712,7 +1712,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch02-zabbix-installation/host-groups/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch02-zabbix-installation/host-groups/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/host-groups/"/>
@@ -1722,7 +1722,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch02-zabbix-installation/http/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch02-zabbix-installation/http/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/http/"/>
@@ -1732,7 +1732,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch02-zabbix-installation/ldap-ad/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch02-zabbix-installation/ldap-ad/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/ldap-ad/"/>
@@ -1742,7 +1742,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch02-zabbix-installation/mfa/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch02-zabbix-installation/mfa/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/mfa/"/>
@@ -1752,7 +1752,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch02-zabbix-installation/saml/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch02-zabbix-installation/saml/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/saml/"/>
@@ -1762,7 +1762,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch02-zabbix-installation/user-groups/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch02-zabbix-installation/user-groups/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/user-groups/"/>
@@ -1772,7 +1772,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch02-zabbix-installation/user-roles/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch02-zabbix-installation/user-roles/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/user-roles/"/>
@@ -1782,7 +1782,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch03-zabbix-proxies/active-passive-proxies/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch03-zabbix-proxies/active-passive-proxies/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch03-zabbix-proxies/active-passive-proxies/"/>
@@ -1792,7 +1792,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch03-zabbix-proxies/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch03-zabbix-proxies/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch03-zabbix-proxies/chapter/"/>
@@ -1802,7 +1802,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch03-zabbix-proxies/proxies-as-container/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch03-zabbix-proxies/proxies-as-container/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch03-zabbix-proxies/proxies-as-container/"/>
@@ -1812,7 +1812,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch03-zabbix-proxies/proxy-basics/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch03-zabbix-proxies/proxy-basics/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch03-zabbix-proxies/proxy-basics/"/>
@@ -1822,7 +1822,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch03-zabbix-proxies/proxy-groups/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch03-zabbix-proxies/proxy-groups/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch03-zabbix-proxies/proxy-groups/"/>
@@ -1832,7 +1832,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch03-zabbix-proxies/web-services/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch03-zabbix-proxies/web-services/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch03-zabbix-proxies/web-services/"/>
@@ -1842,7 +1842,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/browser/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/browser/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/browser/"/>
@@ -1852,7 +1852,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/calculated/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/calculated/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/calculated/"/>
@@ -1862,7 +1862,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/chapter/"/>
@@ -1872,7 +1872,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/database-agent/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/database-agent/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/database-agent/"/>
@@ -1882,7 +1882,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/database-odbc/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/database-odbc/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/database-odbc/"/>
@@ -1892,7 +1892,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/dataflow/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/dataflow/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/dataflow/"/>
@@ -1902,7 +1902,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/dependent/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/dependent/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/dependent/"/>
@@ -1912,7 +1912,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/external-checks/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/external-checks/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/external-checks/"/>
@@ -1922,7 +1922,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/host-interfaces/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/host-interfaces/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/host-interfaces/"/>
@@ -1932,7 +1932,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/hosts/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/hosts/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/hosts/"/>
@@ -1942,7 +1942,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/http/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/http/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/http/"/>
@@ -1952,7 +1952,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/ipmi/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/ipmi/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/ipmi/"/>
@@ -1962,7 +1962,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/jmx/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/jmx/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/jmx/"/>
@@ -1972,7 +1972,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/preprocessing/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/preprocessing/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/preprocessing/"/>
@@ -1982,7 +1982,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/script/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/script/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/script/"/>
@@ -1992,7 +1992,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/simple-checks/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/simple-checks/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/simple-checks/"/>
@@ -2002,7 +2002,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/snmp-polling/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/snmp-polling/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/snmp-polling/"/>
@@ -2012,7 +2012,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/snmp-trapping/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/snmp-trapping/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/snmp-trapping/"/>
@@ -2022,7 +2022,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/ssh-telnet/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/ssh-telnet/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/ssh-telnet/"/>
@@ -2032,7 +2032,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/zabbix-agent-active/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/zabbix-agent-active/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/zabbix-agent-active/"/>
@@ -2042,7 +2042,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/zabbix-agent-passive/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/zabbix-agent-passive/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/zabbix-agent-passive/"/>
@@ -2052,7 +2052,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/zabbix-internal/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/zabbix-internal/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/zabbix-internal/"/>
@@ -2062,7 +2062,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/zabbix-trapper/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch04-zabbix-collecting-data/zabbix-trapper/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/zabbix-trapper/"/>
@@ -2072,7 +2072,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch05-zabbix-triggers/advanced-triggers/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch05-zabbix-triggers/advanced-triggers/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch05-zabbix-triggers/advanced-triggers/"/>
@@ -2082,7 +2082,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch05-zabbix-triggers/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch05-zabbix-triggers/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch05-zabbix-triggers/chapter/"/>
@@ -2092,7 +2092,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch05-zabbix-triggers/triggers/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch05-zabbix-triggers/triggers/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch05-zabbix-triggers/triggers/"/>
@@ -2102,7 +2102,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch06-zabbix-templates/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch06-zabbix-templates/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch06-zabbix-templates/chapter/"/>
@@ -2112,7 +2112,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch06-zabbix-templates/templates/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch06-zabbix-templates/templates/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch06-zabbix-templates/templates/"/>
@@ -2122,7 +2122,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch07-zabbix-alerts/actions/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch07-zabbix-alerts/actions/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch07-zabbix-alerts/actions/"/>
@@ -2132,7 +2132,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch07-zabbix-alerts/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch07-zabbix-alerts/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch07-zabbix-alerts/chapter/"/>
@@ -2142,7 +2142,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch07-zabbix-alerts/media-types/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch07-zabbix-alerts/media-types/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch07-zabbix-alerts/media-types/"/>
@@ -2152,7 +2152,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch07-zabbix-alerts/scripts/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch07-zabbix-alerts/scripts/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch07-zabbix-alerts/scripts/"/>
@@ -2162,7 +2162,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch08-zabbix-lld/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch08-zabbix-lld/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch08-zabbix-lld/chapter/"/>
@@ -2172,7 +2172,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch08-zabbix-lld/custom/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch08-zabbix-lld/custom/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch08-zabbix-lld/custom/"/>
@@ -2182,7 +2182,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch08-zabbix-lld/lld-with-dependent-items/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch08-zabbix-lld/lld-with-dependent-items/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch08-zabbix-lld/lld-with-dependent-items/"/>
@@ -2192,7 +2192,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch09-zabbix-extending/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch09-zabbix-extending/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch09-zabbix-extending/chapter/"/>
@@ -2202,7 +2202,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch09-zabbix-extending/frontend-scripts/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch09-zabbix-extending/frontend-scripts/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch09-zabbix-extending/frontend-scripts/"/>
@@ -2212,7 +2212,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch09-zabbix-extending/user-parameters/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch09-zabbix-extending/user-parameters/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch09-zabbix-extending/user-parameters/"/>
@@ -2222,7 +2222,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch10-zabbix-discovery/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch10-zabbix-discovery/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch10-zabbix-discovery/chapter/"/>
@@ -2232,7 +2232,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch11-zabbix-visualisation/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch11-zabbix-visualisation/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch11-zabbix-visualisation/chapter/"/>
@@ -2242,7 +2242,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch12-zabbix-api/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch12-zabbix-api/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch12-zabbix-api/chapter/"/>
@@ -2252,7 +2252,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch12-zabbix-api/self-engaging/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch12-zabbix-api/self-engaging/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch12-zabbix-api/self-engaging/"/>
@@ -2262,7 +2262,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch13-advanced-security/agent-security/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch13-advanced-security/agent-security/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/agent-security/"/>
@@ -2272,7 +2272,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch13-advanced-security/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch13-advanced-security/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/chapter/"/>
@@ -2282,7 +2282,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch13-advanced-security/partitioning-database/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch13-advanced-security/partitioning-database/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/partitioning-database/"/>
@@ -2292,7 +2292,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch13-advanced-security/partitioning-postgresql-database/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch13-advanced-security/partitioning-postgresql-database/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/partitioning-postgresql-database/"/>
@@ -2302,7 +2302,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch13-advanced-security/securing-frontend/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch13-advanced-security/securing-frontend/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/securing-frontend/"/>
@@ -2312,7 +2312,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch13-advanced-security/selinux-zabbix/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch13-advanced-security/selinux-zabbix/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/selinux-zabbix/"/>
@@ -2322,7 +2322,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch13-advanced-security/using-vault/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch13-advanced-security/using-vault/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/using-vault/"/>
@@ -2332,7 +2332,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch14-zabbix-maintenance/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch14-zabbix-maintenance/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch14-zabbix-maintenance/chapter/"/>
@@ -2342,7 +2342,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch14-zabbix-maintenance/internal-health/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch14-zabbix-maintenance/internal-health/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch14-zabbix-maintenance/internal-health/"/>
@@ -2352,7 +2352,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch14-zabbix-maintenance/maintenance/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch14-zabbix-maintenance/maintenance/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch14-zabbix-maintenance/maintenance/"/>
@@ -2362,7 +2362,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch14-zabbix-maintenance/taking-backups/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch14-zabbix-maintenance/taking-backups/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch14-zabbix-maintenance/taking-backups/"/>
@@ -2372,7 +2372,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch14-zabbix-maintenance/upgrades/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch14-zabbix-maintenance/upgrades/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch14-zabbix-maintenance/upgrades/"/>
@@ -2382,7 +2382,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch15-zabbix-real-world-examples/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch15-zabbix-real-world-examples/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch15-zabbix-real-world-examples/chapter/"/>
@@ -2392,7 +2392,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/nl/ch15-zabbix-real-world-examples/disk-health-windows/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch15-zabbix-real-world-examples/disk-health-windows/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch15-zabbix-real-world-examples/disk-health-windows/"/>
@@ -2402,7 +2402,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/"/>
@@ -2412,7 +2412,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/Guidelines/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/Guidelines/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/Guidelines/"/>
@@ -2422,7 +2422,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/Supporters-Contributors/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/Supporters-Contributors/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/Supporters-Contributors/"/>
@@ -2432,7 +2432,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/tags/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/tags/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/tags/"/>
@@ -2442,7 +2442,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch00-getting-started/Requirements/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch00-getting-started/Requirements/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch00-getting-started/Requirements/"/>
@@ -2452,7 +2452,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch00-getting-started/initial-steps/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch00-getting-started/initial-steps/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch00-getting-started/initial-steps/"/>
@@ -2462,7 +2462,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch01-zabbix-components/basic-installation/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch01-zabbix-components/basic-installation/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch01-zabbix-components/basic-installation/"/>
@@ -2472,7 +2472,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch01-zabbix-components/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch01-zabbix-components/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch01-zabbix-components/chapter/"/>
@@ -2482,7 +2482,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch01-zabbix-components/ha-setup/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch01-zabbix-components/ha-setup/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch01-zabbix-components/ha-setup/"/>
@@ -2492,7 +2492,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch02-zabbix-installation/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch02-zabbix-installation/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/chapter/"/>
@@ -2502,7 +2502,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch02-zabbix-installation/frontend/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch02-zabbix-installation/frontend/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/frontend/"/>
@@ -2512,7 +2512,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch02-zabbix-installation/host-groups/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch02-zabbix-installation/host-groups/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/host-groups/"/>
@@ -2522,7 +2522,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch02-zabbix-installation/http/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch02-zabbix-installation/http/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/http/"/>
@@ -2532,7 +2532,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch02-zabbix-installation/ldap-ad/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch02-zabbix-installation/ldap-ad/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/ldap-ad/"/>
@@ -2542,7 +2542,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch02-zabbix-installation/mfa/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch02-zabbix-installation/mfa/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/mfa/"/>
@@ -2552,7 +2552,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch02-zabbix-installation/saml/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch02-zabbix-installation/saml/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/saml/"/>
@@ -2562,7 +2562,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch02-zabbix-installation/user-groups/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch02-zabbix-installation/user-groups/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/user-groups/"/>
@@ -2572,7 +2572,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch02-zabbix-installation/user-roles/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch02-zabbix-installation/user-roles/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/user-roles/"/>
@@ -2582,7 +2582,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch03-zabbix-proxies/active-passive-proxies/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch03-zabbix-proxies/active-passive-proxies/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch03-zabbix-proxies/active-passive-proxies/"/>
@@ -2592,7 +2592,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch03-zabbix-proxies/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch03-zabbix-proxies/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch03-zabbix-proxies/chapter/"/>
@@ -2602,7 +2602,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch03-zabbix-proxies/proxies-as-container/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch03-zabbix-proxies/proxies-as-container/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch03-zabbix-proxies/proxies-as-container/"/>
@@ -2612,7 +2612,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch03-zabbix-proxies/proxy-basics/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch03-zabbix-proxies/proxy-basics/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch03-zabbix-proxies/proxy-basics/"/>
@@ -2622,7 +2622,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch03-zabbix-proxies/proxy-groups/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch03-zabbix-proxies/proxy-groups/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch03-zabbix-proxies/proxy-groups/"/>
@@ -2632,7 +2632,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch03-zabbix-proxies/web-services/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch03-zabbix-proxies/web-services/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch03-zabbix-proxies/web-services/"/>
@@ -2642,7 +2642,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/browser/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/browser/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/browser/"/>
@@ -2652,7 +2652,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/calculated/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/calculated/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/calculated/"/>
@@ -2662,7 +2662,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/chapter/"/>
@@ -2672,7 +2672,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/database-agent/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/database-agent/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/database-agent/"/>
@@ -2682,7 +2682,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/database-odbc/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/database-odbc/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/database-odbc/"/>
@@ -2692,7 +2692,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/dataflow/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/dataflow/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/dataflow/"/>
@@ -2702,7 +2702,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/dependent/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/dependent/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/dependent/"/>
@@ -2712,7 +2712,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/external-checks/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/external-checks/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/external-checks/"/>
@@ -2722,7 +2722,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/host-interfaces/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/host-interfaces/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/host-interfaces/"/>
@@ -2732,7 +2732,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/hosts/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/hosts/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/hosts/"/>
@@ -2742,7 +2742,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/http/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/http/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/http/"/>
@@ -2752,7 +2752,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/ipmi/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/ipmi/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/ipmi/"/>
@@ -2762,7 +2762,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/jmx/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/jmx/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/jmx/"/>
@@ -2772,7 +2772,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/preprocessing/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/preprocessing/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/preprocessing/"/>
@@ -2782,7 +2782,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/script/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/script/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/script/"/>
@@ -2792,7 +2792,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/simple-checks/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/simple-checks/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/simple-checks/"/>
@@ -2802,7 +2802,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/snmp-polling/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/snmp-polling/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/snmp-polling/"/>
@@ -2812,7 +2812,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/snmp-trapping/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/snmp-trapping/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/snmp-trapping/"/>
@@ -2822,7 +2822,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/ssh-telnet/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/ssh-telnet/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/ssh-telnet/"/>
@@ -2832,7 +2832,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/zabbix-agent-active/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/zabbix-agent-active/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/zabbix-agent-active/"/>
@@ -2842,7 +2842,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/zabbix-agent-passive/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/zabbix-agent-passive/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/zabbix-agent-passive/"/>
@@ -2852,7 +2852,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/zabbix-internal/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/zabbix-internal/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/zabbix-internal/"/>
@@ -2862,7 +2862,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/zabbix-trapper/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch04-zabbix-collecting-data/zabbix-trapper/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/zabbix-trapper/"/>
@@ -2872,7 +2872,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch05-zabbix-triggers/advanced-triggers/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch05-zabbix-triggers/advanced-triggers/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch05-zabbix-triggers/advanced-triggers/"/>
@@ -2882,7 +2882,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch05-zabbix-triggers/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch05-zabbix-triggers/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch05-zabbix-triggers/chapter/"/>
@@ -2892,7 +2892,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch05-zabbix-triggers/triggers/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch05-zabbix-triggers/triggers/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch05-zabbix-triggers/triggers/"/>
@@ -2902,7 +2902,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch06-zabbix-templates/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch06-zabbix-templates/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch06-zabbix-templates/chapter/"/>
@@ -2912,7 +2912,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch06-zabbix-templates/templates/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch06-zabbix-templates/templates/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch06-zabbix-templates/templates/"/>
@@ -2922,7 +2922,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch07-zabbix-alerts/actions/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch07-zabbix-alerts/actions/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch07-zabbix-alerts/actions/"/>
@@ -2932,7 +2932,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch07-zabbix-alerts/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch07-zabbix-alerts/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch07-zabbix-alerts/chapter/"/>
@@ -2942,7 +2942,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch07-zabbix-alerts/media-types/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch07-zabbix-alerts/media-types/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch07-zabbix-alerts/media-types/"/>
@@ -2952,7 +2952,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch07-zabbix-alerts/scripts/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch07-zabbix-alerts/scripts/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch07-zabbix-alerts/scripts/"/>
@@ -2962,7 +2962,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch08-zabbix-lld/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch08-zabbix-lld/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch08-zabbix-lld/chapter/"/>
@@ -2972,7 +2972,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch08-zabbix-lld/custom/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch08-zabbix-lld/custom/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch08-zabbix-lld/custom/"/>
@@ -2982,7 +2982,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch08-zabbix-lld/lld-with-dependent-items/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch08-zabbix-lld/lld-with-dependent-items/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch08-zabbix-lld/lld-with-dependent-items/"/>
@@ -2992,7 +2992,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch09-zabbix-extending/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch09-zabbix-extending/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch09-zabbix-extending/chapter/"/>
@@ -3002,7 +3002,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch09-zabbix-extending/frontend-scripts/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch09-zabbix-extending/frontend-scripts/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch09-zabbix-extending/frontend-scripts/"/>
@@ -3012,7 +3012,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch09-zabbix-extending/user-parameters/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch09-zabbix-extending/user-parameters/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch09-zabbix-extending/user-parameters/"/>
@@ -3022,7 +3022,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch10-zabbix-discovery/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch10-zabbix-discovery/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch10-zabbix-discovery/chapter/"/>
@@ -3032,7 +3032,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch11-zabbix-visualisation/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch11-zabbix-visualisation/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch11-zabbix-visualisation/chapter/"/>
@@ -3042,7 +3042,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch12-zabbix-api/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch12-zabbix-api/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch12-zabbix-api/chapter/"/>
@@ -3052,7 +3052,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch12-zabbix-api/self-engaging/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch12-zabbix-api/self-engaging/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch12-zabbix-api/self-engaging/"/>
@@ -3062,7 +3062,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch13-advanced-security/agent-security/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch13-advanced-security/agent-security/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/agent-security/"/>
@@ -3072,7 +3072,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch13-advanced-security/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch13-advanced-security/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/chapter/"/>
@@ -3082,7 +3082,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch13-advanced-security/partitioning-database/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch13-advanced-security/partitioning-database/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/partitioning-database/"/>
@@ -3092,7 +3092,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch13-advanced-security/partitioning-postgresql-database/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch13-advanced-security/partitioning-postgresql-database/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/partitioning-postgresql-database/"/>
@@ -3102,7 +3102,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch13-advanced-security/securing-frontend/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch13-advanced-security/securing-frontend/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/securing-frontend/"/>
@@ -3112,7 +3112,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch13-advanced-security/selinux-zabbix/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch13-advanced-security/selinux-zabbix/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/selinux-zabbix/"/>
@@ -3122,7 +3122,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch13-advanced-security/using-vault/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch13-advanced-security/using-vault/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/using-vault/"/>
@@ -3132,7 +3132,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch14-zabbix-maintenance/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch14-zabbix-maintenance/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch14-zabbix-maintenance/chapter/"/>
@@ -3142,7 +3142,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch14-zabbix-maintenance/internal-health/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch14-zabbix-maintenance/internal-health/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch14-zabbix-maintenance/internal-health/"/>
@@ -3152,7 +3152,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch14-zabbix-maintenance/maintenance/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch14-zabbix-maintenance/maintenance/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch14-zabbix-maintenance/maintenance/"/>
@@ -3162,7 +3162,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch14-zabbix-maintenance/taking-backups/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch14-zabbix-maintenance/taking-backups/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch14-zabbix-maintenance/taking-backups/"/>
@@ -3172,7 +3172,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch14-zabbix-maintenance/upgrades/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch14-zabbix-maintenance/upgrades/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch14-zabbix-maintenance/upgrades/"/>
@@ -3182,7 +3182,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch15-zabbix-real-world-examples/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch15-zabbix-real-world-examples/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch15-zabbix-real-world-examples/chapter/"/>
@@ -3192,7 +3192,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch15-zabbix-real-world-examples/disk-health-windows/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch15-zabbix-real-world-examples/disk-health-windows/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch15-zabbix-real-world-examples/disk-health-windows/"/>
@@ -3202,13 +3202,13 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/initial-steps/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/initial-steps/"/>
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/"/>
@@ -3218,7 +3218,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/Guidelines/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/Guidelines/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/Guidelines/"/>
@@ -3228,7 +3228,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/Supporters-Contributors/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/Supporters-Contributors/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/Supporters-Contributors/"/>
@@ -3238,7 +3238,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/tags/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/tags/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/tags/"/>
@@ -3248,7 +3248,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch00-getting-started/Requirements/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch00-getting-started/Requirements/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch00-getting-started/Requirements/"/>
@@ -3258,7 +3258,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch00-getting-started/initial-steps/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch00-getting-started/initial-steps/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch00-getting-started/initial-steps/"/>
@@ -3268,7 +3268,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch01-zabbix-components/basic-installation/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch01-zabbix-components/basic-installation/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch01-zabbix-components/basic-installation/"/>
@@ -3278,7 +3278,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch01-zabbix-components/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch01-zabbix-components/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch01-zabbix-components/chapter/"/>
@@ -3288,7 +3288,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch01-zabbix-components/ha-setup/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch01-zabbix-components/ha-setup/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch01-zabbix-components/ha-setup/"/>
@@ -3298,7 +3298,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch02-zabbix-installation/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch02-zabbix-installation/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/chapter/"/>
@@ -3308,7 +3308,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch02-zabbix-installation/frontend/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch02-zabbix-installation/frontend/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/frontend/"/>
@@ -3318,7 +3318,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch02-zabbix-installation/host-groups/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch02-zabbix-installation/host-groups/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/host-groups/"/>
@@ -3328,7 +3328,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch02-zabbix-installation/http/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch02-zabbix-installation/http/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/http/"/>
@@ -3338,7 +3338,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch02-zabbix-installation/ldap-ad/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch02-zabbix-installation/ldap-ad/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/ldap-ad/"/>
@@ -3348,7 +3348,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch02-zabbix-installation/mfa/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch02-zabbix-installation/mfa/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/mfa/"/>
@@ -3358,7 +3358,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch02-zabbix-installation/saml/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch02-zabbix-installation/saml/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/saml/"/>
@@ -3368,7 +3368,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch02-zabbix-installation/user-groups/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch02-zabbix-installation/user-groups/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/user-groups/"/>
@@ -3378,7 +3378,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch02-zabbix-installation/user-roles/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch02-zabbix-installation/user-roles/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch02-zabbix-installation/user-roles/"/>
@@ -3388,7 +3388,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch03-zabbix-proxies/active-passive-proxies/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch03-zabbix-proxies/active-passive-proxies/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch03-zabbix-proxies/active-passive-proxies/"/>
@@ -3398,7 +3398,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch03-zabbix-proxies/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch03-zabbix-proxies/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch03-zabbix-proxies/chapter/"/>
@@ -3408,7 +3408,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch03-zabbix-proxies/proxies-as-container/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch03-zabbix-proxies/proxies-as-container/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch03-zabbix-proxies/proxies-as-container/"/>
@@ -3418,7 +3418,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch03-zabbix-proxies/proxy-basics/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch03-zabbix-proxies/proxy-basics/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch03-zabbix-proxies/proxy-basics/"/>
@@ -3428,7 +3428,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch03-zabbix-proxies/proxy-groups/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch03-zabbix-proxies/proxy-groups/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch03-zabbix-proxies/proxy-groups/"/>
@@ -3438,7 +3438,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch03-zabbix-proxies/web-services/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch03-zabbix-proxies/web-services/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch03-zabbix-proxies/web-services/"/>
@@ -3448,7 +3448,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/browser/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/browser/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/browser/"/>
@@ -3458,7 +3458,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/calculated/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/calculated/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/calculated/"/>
@@ -3468,7 +3468,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/chapter/"/>
@@ -3478,7 +3478,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/database-agent/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/database-agent/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/database-agent/"/>
@@ -3488,7 +3488,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/database-odbc/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/database-odbc/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/database-odbc/"/>
@@ -3498,7 +3498,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/dataflow/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/dataflow/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/dataflow/"/>
@@ -3508,7 +3508,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/dependent/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/dependent/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/dependent/"/>
@@ -3518,7 +3518,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/external-checks/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/external-checks/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/external-checks/"/>
@@ -3528,7 +3528,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/host-interfaces/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/host-interfaces/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/host-interfaces/"/>
@@ -3538,7 +3538,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/hosts/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/hosts/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/hosts/"/>
@@ -3548,7 +3548,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/http/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/http/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/http/"/>
@@ -3558,7 +3558,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/ipmi/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/ipmi/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/ipmi/"/>
@@ -3568,7 +3568,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/jmx/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/jmx/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/jmx/"/>
@@ -3578,7 +3578,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/preprocessing/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/preprocessing/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/preprocessing/"/>
@@ -3588,7 +3588,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/script/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/script/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/script/"/>
@@ -3598,7 +3598,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/simple-checks/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/simple-checks/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/simple-checks/"/>
@@ -3608,7 +3608,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/snmp-polling/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/snmp-polling/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/snmp-polling/"/>
@@ -3618,7 +3618,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/snmp-trapping/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/snmp-trapping/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/snmp-trapping/"/>
@@ -3628,7 +3628,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/ssh-telnet/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/ssh-telnet/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/ssh-telnet/"/>
@@ -3638,7 +3638,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/zabbix-agent-active/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/zabbix-agent-active/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/zabbix-agent-active/"/>
@@ -3648,7 +3648,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/zabbix-agent-passive/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/zabbix-agent-passive/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/zabbix-agent-passive/"/>
@@ -3658,7 +3658,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/zabbix-internal/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/zabbix-internal/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/zabbix-internal/"/>
@@ -3668,7 +3668,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/zabbix-trapper/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch04-zabbix-collecting-data/zabbix-trapper/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch04-zabbix-collecting-data/zabbix-trapper/"/>
@@ -3678,7 +3678,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch05-zabbix-triggers/advanced-triggers/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch05-zabbix-triggers/advanced-triggers/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch05-zabbix-triggers/advanced-triggers/"/>
@@ -3688,7 +3688,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch05-zabbix-triggers/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch05-zabbix-triggers/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch05-zabbix-triggers/chapter/"/>
@@ -3698,7 +3698,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch05-zabbix-triggers/triggers/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch05-zabbix-triggers/triggers/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch05-zabbix-triggers/triggers/"/>
@@ -3708,7 +3708,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch06-zabbix-templates/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch06-zabbix-templates/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch06-zabbix-templates/chapter/"/>
@@ -3718,7 +3718,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch06-zabbix-templates/templates/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch06-zabbix-templates/templates/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch06-zabbix-templates/templates/"/>
@@ -3728,7 +3728,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch07-zabbix-alerts/actions/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch07-zabbix-alerts/actions/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch07-zabbix-alerts/actions/"/>
@@ -3738,7 +3738,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch07-zabbix-alerts/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch07-zabbix-alerts/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch07-zabbix-alerts/chapter/"/>
@@ -3748,7 +3748,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch07-zabbix-alerts/media-types/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch07-zabbix-alerts/media-types/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch07-zabbix-alerts/media-types/"/>
@@ -3758,7 +3758,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch07-zabbix-alerts/scripts/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch07-zabbix-alerts/scripts/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch07-zabbix-alerts/scripts/"/>
@@ -3768,7 +3768,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch08-zabbix-lld/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch08-zabbix-lld/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch08-zabbix-lld/chapter/"/>
@@ -3778,7 +3778,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch08-zabbix-lld/custom/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch08-zabbix-lld/custom/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch08-zabbix-lld/custom/"/>
@@ -3788,7 +3788,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch08-zabbix-lld/lld-with-dependent-items/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch08-zabbix-lld/lld-with-dependent-items/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch08-zabbix-lld/lld-with-dependent-items/"/>
@@ -3798,7 +3798,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch09-zabbix-extending/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch09-zabbix-extending/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch09-zabbix-extending/chapter/"/>
@@ -3808,7 +3808,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch09-zabbix-extending/frontend-scripts/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch09-zabbix-extending/frontend-scripts/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch09-zabbix-extending/frontend-scripts/"/>
@@ -3818,7 +3818,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch09-zabbix-extending/user-parameters/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch09-zabbix-extending/user-parameters/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch09-zabbix-extending/user-parameters/"/>
@@ -3828,7 +3828,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch10-zabbix-discovery/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch10-zabbix-discovery/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch10-zabbix-discovery/chapter/"/>
@@ -3838,7 +3838,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch11-zabbix-visualisation/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch11-zabbix-visualisation/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch11-zabbix-visualisation/chapter/"/>
@@ -3848,7 +3848,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch12-zabbix-api/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch12-zabbix-api/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch12-zabbix-api/chapter/"/>
@@ -3858,7 +3858,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch12-zabbix-api/self-engaging/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch12-zabbix-api/self-engaging/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch12-zabbix-api/self-engaging/"/>
@@ -3868,7 +3868,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch13-advanced-security/agent-security/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch13-advanced-security/agent-security/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/agent-security/"/>
@@ -3878,7 +3878,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch13-advanced-security/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch13-advanced-security/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/chapter/"/>
@@ -3888,7 +3888,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch13-advanced-security/partitioning-database/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch13-advanced-security/partitioning-database/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/partitioning-database/"/>
@@ -3898,7 +3898,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch13-advanced-security/partitioning-postgresql-database/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch13-advanced-security/partitioning-postgresql-database/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/partitioning-postgresql-database/"/>
@@ -3908,7 +3908,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch13-advanced-security/securing-frontend/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch13-advanced-security/securing-frontend/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/securing-frontend/"/>
@@ -3918,7 +3918,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch13-advanced-security/selinux-zabbix/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch13-advanced-security/selinux-zabbix/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/selinux-zabbix/"/>
@@ -3928,7 +3928,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch13-advanced-security/using-vault/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch13-advanced-security/using-vault/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch13-advanced-security/using-vault/"/>
@@ -3938,7 +3938,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch14-zabbix-maintenance/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch14-zabbix-maintenance/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch14-zabbix-maintenance/chapter/"/>
@@ -3948,7 +3948,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch14-zabbix-maintenance/internal-health/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch14-zabbix-maintenance/internal-health/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch14-zabbix-maintenance/internal-health/"/>
@@ -3958,7 +3958,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch14-zabbix-maintenance/maintenance/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch14-zabbix-maintenance/maintenance/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch14-zabbix-maintenance/maintenance/"/>
@@ -3968,7 +3968,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch14-zabbix-maintenance/taking-backups/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch14-zabbix-maintenance/taking-backups/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch14-zabbix-maintenance/taking-backups/"/>
@@ -3978,7 +3978,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch14-zabbix-maintenance/upgrades/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch14-zabbix-maintenance/upgrades/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch14-zabbix-maintenance/upgrades/"/>
@@ -3988,7 +3988,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch15-zabbix-real-world-examples/chapter/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch15-zabbix-real-world-examples/chapter/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch15-zabbix-real-world-examples/chapter/"/>
@@ -3998,7 +3998,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch15-zabbix-real-world-examples/disk-health-windows/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch15-zabbix-real-world-examples/disk-health-windows/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch15-zabbix-real-world-examples/disk-health-windows/"/>
@@ -4008,7 +4008,7 @@
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch00-getting-started%20/initial-steps/</loc>
-        <lastmod>2025-12-22</lastmod>
+        <lastmod>2025-12-23</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch00-getting-started%20/initial-steps/"/>
     </url>
