@@ -3038,8 +3038,8 @@ for the current session:</p>
 <div class="language-psql highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">search_path</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s s-Name">&quot;zabbix_server&quot;</span><span class="p">;</span>
 </span></code></pre></div>
 </div>
-<details class="note" open="open">
-<summary>Note</summary>
+<details class="tip" open="open">
+<summary>Tip</summary>
 <p>If you prefer not to set the search path manually each time you log in as the
 <code>zabbix-srv</code> user, you can configure PostgreSQL to automatically use the desired
 search path. Run the following SQL command to set the default search path for
@@ -3050,7 +3050,7 @@ the <code>zabbix-srv</code> role:</p>
 database, the <code>search_path</code> is automatically set to <code>zabbix_server</code>.</p>
 </details>
 <p>To confirm the schema setup, you can list the existing schemas:</p>
-<div class="admonition info">
+<div class="admonition example">
 <p class="admonition-title">Verify schema access</p>
 <div class="language-psql highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\dn</span>
 </span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="go">          List of schemas</span>
@@ -3084,6 +3084,7 @@ but that will be covered in the next section when we install the Zabbix server.<
 the database you will need to open the host firewall to allow incoming connections
 to the database server. By default, PostgreSQL listens on port 5432.</p>
 <div class="admonition info">
+<p class="admonition-title">Add firewall rules</p>
 <p>Red Hat / SUSE
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>firewall-cmd<span class="w"> </span>--add-service<span class="o">=</span>postgresql<span class="w"> </span>--permanent
 </span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>firewall-cmd<span class="w"> </span>--reload
@@ -3186,7 +3187,7 @@ the Zabbix packages provided by the EPEL repository, if it's installed on your s
 To do this, edit the <code>/etc/yum.repos.d/epel.repo</code> file and add the following statement
 to disable the EPEL repository by default:</p>
 <div class="admonition info">
-<p class="admonition-title">exclude packages</p>
+<p class="admonition-title">Exclude packages</p>
 <p>Red Hat
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="k">[epel]</span>
 </span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a><span class="na">...</span>
@@ -3670,7 +3671,7 @@ beforehand, avoiding downtime caused by an invalid configuration. This can
 be accomplished using the following command: <code>zabbix-server -T</code></p>
 </details>
 <div class="admonition info">
-<p class="admonition-title">enable and start zabbix-server service</p>
+<p class="admonition-title">Enable and start zabbix-server service</p>
 <p>Red Hat, SUSE and Ubuntu
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-79-1"><a id="__codelineno-79-1" name="__codelineno-79-1" href="#__codelineno-79-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>zabbix-server<span class="w"> </span>--now
 </span></code></pre></div></p>
@@ -3739,7 +3740,9 @@ would see something like this in the server log file :</p>
 </div>
 <p>If that is the case, double-check your database connection settings in the
 <code>/etc/zabbix/zabbix_server.d/database.conf</code> file and ensure that the database
-is properly populated as described in the previous steps.</p>
+is properly populated as described in the previous steps. Also check firewall rules
+and when using PostgreSQL make sure that <code>pg_hba.conf</code> is correctly configured 
+to allow connections from the Zabbix server.</p>
 <p>Let's check the Zabbix server service to see if it's enabled so that it survives
 a reboot</p>
 <div class="admonition info">
@@ -3809,63 +3812,93 @@ SUSE
 </span><span id="__span-86-3"><a id="__codelineno-86-3" name="__codelineno-86-3" href="#__codelineno-86-3"></a><span class="c1"># or when using PostgreSQL</span>
 </span><span id="__span-86-4"><a id="__codelineno-86-4" name="__codelineno-86-4" href="#__codelineno-86-4"></a>zypper<span class="w"> </span>install<span class="w"> </span>zabbix-nginx-conf<span class="w"> </span>zabbix-web-pgsql<span class="w"> </span>php8-openssl<span class="w"> </span>php8-xmlreader<span class="w"> </span>php8-xmlwriter
 </span></code></pre></div></p>
+<details class="note" open="open">
+<summary>Suse Linux Enterprise Server</summary>
+<p>On SUSE Linux Enterprise Server (SLES), ensure you are subscribed to the
+"SUSE Linux Enterprise Module Web and Scripting" repository to access
+the necessary PHP 8 packages required for the Zabbix frontend installation:</p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-87-1"><a id="__codelineno-87-1" name="__codelineno-87-1" href="#__codelineno-87-1"></a>SUSEConnect<span class="w"> </span>-p<span class="w"> </span>sle-module-web-scripting/16/x86_64
+</span></code></pre></div>
+The actual URL for web scripting module may be different depending on particular service pack. Use the following command to determine the right one.
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-88-1"><a id="__codelineno-88-1" name="__codelineno-88-1" href="#__codelineno-88-1"></a>SUSEConnect<span class="w"> </span>--list-extensions
+</span></code></pre></div></p>
+</details>
 <p>Ubuntu
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-87-1"><a id="__codelineno-87-1" name="__codelineno-87-1" href="#__codelineno-87-1"></a><span class="c1"># When using MySQL/MariaDB</span>
-</span><span id="__span-87-2"><a id="__codelineno-87-2" name="__codelineno-87-2" href="#__codelineno-87-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>zabbix-frontend-php<span class="w"> </span>php8.3-mysql<span class="w"> </span>zabbix-nginx-conf
-</span><span id="__span-87-3"><a id="__codelineno-87-3" name="__codelineno-87-3" href="#__codelineno-87-3"></a><span class="c1"># or when using PostgreSQL</span>
-</span><span id="__span-87-4"><a id="__codelineno-87-4" name="__codelineno-87-4" href="#__codelineno-87-4"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>zabbix-frontend-php<span class="w"> </span>php8.3-pgsql<span class="w"> </span>zabbix-nginx-conf
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-89-1"><a id="__codelineno-89-1" name="__codelineno-89-1" href="#__codelineno-89-1"></a><span class="c1"># When using MySQL/MariaDB</span>
+</span><span id="__span-89-2"><a id="__codelineno-89-2" name="__codelineno-89-2" href="#__codelineno-89-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>zabbix-frontend-php<span class="w"> </span>php8.3-mysql<span class="w"> </span>zabbix-nginx-conf
+</span><span id="__span-89-3"><a id="__codelineno-89-3" name="__codelineno-89-3" href="#__codelineno-89-3"></a><span class="c1"># or when using PostgreSQL</span>
+</span><span id="__span-89-4"><a id="__codelineno-89-4" name="__codelineno-89-4" href="#__codelineno-89-4"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>zabbix-frontend-php<span class="w"> </span>php8.3-pgsql<span class="w"> </span>zabbix-nginx-conf
 </span></code></pre></div></p>
 </div>
 <p>This command will install the front-end packages along with the required dependencies
 for Nginx. </p>
-<p>As of SUSE 16, PHP-FPM is not allowed by SELinux to map exec memory or to connect
-to the Zabbix server. We need to tell SELinux to allow this:</p>
+<p>As of SUSE 16 SELinux is now the default security module instead of AppArmor.
+By default PHP-FPM is not allowed by SELinux on SUSE to 
+- map exec memory required for PHP JIT compilation,
+- connect to Zabbix server or
+- connect to the database server over TCP.
+We need to tell SELinux to allow all this:</p>
 <div class="admonition info">
 <p class="admonition-title">SELinux: Allow PHP-FPM to map exec memory</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-88-1"><a id="__codelineno-88-1" name="__codelineno-88-1" href="#__codelineno-88-1"></a>setsebool<span class="w"> </span>-P<span class="w"> </span>httpd_execmem<span class="w"> </span><span class="m">1</span>
-</span><span id="__span-88-2"><a id="__codelineno-88-2" name="__codelineno-88-2" href="#__codelineno-88-2"></a>setsebool<span class="w"> </span>-P<span class="w"> </span>httpd_can_connect_zabbix<span class="w"> </span><span class="m">1</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-90-1"><a id="__codelineno-90-1" name="__codelineno-90-1" href="#__codelineno-90-1"></a>setsebool<span class="w"> </span>-P<span class="w"> </span>httpd_execmem<span class="w"> </span><span class="m">1</span>
+</span><span id="__span-90-2"><a id="__codelineno-90-2" name="__codelineno-90-2" href="#__codelineno-90-2"></a>setsebool<span class="w"> </span>-P<span class="w"> </span>httpd_can_connect_zabbix<span class="w"> </span><span class="m">1</span>
+</span><span id="__span-90-3"><a id="__codelineno-90-3" name="__codelineno-90-3" href="#__codelineno-90-3"></a>setsebool<span class="w"> </span>-P<span class="w"> </span>httpd_can_network_connect_db<span class="w"> </span><span class="m">1</span>
 </span></code></pre></div>
 </div>
-<p>Also on SUSE, PHP-FPM is by default not allowed by SystemD to write to the 
-<code>/etc/zabbix/web</code> directory. We need to create a drop-in file to allow this:</p>
+<details class="tip" open="open">
+<summary>Tip</summary>
+<p>To troubleshoot SELinux issues, it is recommended to install the <code>setroubleshoot</code>
+package which will log any SELinux denials in the system log and provide
+suggestions on how to resolve them.</p>
+</details>
+<p>Depending on your Linux distribution defaults, PHP-FPM may by default not be 
+allowed by SystemD to write to the <code>/etc/zabbix/web</code> directory required for the
+Zabbix frontend setup. To enable this we need to create a drop-in file to allow this:</p>
 <div class="admonition info">
 <p class="admonition-title">SystemD: Allow PHP-FPM to write to /etc/zabbix/web</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-89-1"><a id="__codelineno-89-1" name="__codelineno-89-1" href="#__codelineno-89-1"></a>systemctl<span class="w"> </span>edit<span class="w"> </span>php-fpm
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-91-1"><a id="__codelineno-91-1" name="__codelineno-91-1" href="#__codelineno-91-1"></a>systemctl<span class="w"> </span>edit<span class="w"> </span>php-fpm
 </span></code></pre></div>
 <p>This will open an editor to create a drop-in file <code>/etc/systemd/system/php-fpm.service.d/override.conf</code>
 which will override or extend the existing service file.</p>
 <p>Add the following lines to the file:</p>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-90-1"><a id="__codelineno-90-1" name="__codelineno-90-1" href="#__codelineno-90-1"></a><span class="k">[Service]</span>
-</span><span id="__span-90-2"><a id="__codelineno-90-2" name="__codelineno-90-2" href="#__codelineno-90-2"></a><span class="na">ReadWritePaths</span><span class="o">=</span><span class="s">/etc/zabbix/web</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-92-1"><a id="__codelineno-92-1" name="__codelineno-92-1" href="#__codelineno-92-1"></a><span class="k">[Service]</span>
+</span><span id="__span-92-2"><a id="__codelineno-92-2" name="__codelineno-92-2" href="#__codelineno-92-2"></a><span class="na">ReadWritePaths</span><span class="o">=</span><span class="s">/etc/zabbix/web</span>
 </span></code></pre></div>
 <p>Then exit the editor and reload the SystemD configuration:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-91-1"><a id="__codelineno-91-1" name="__codelineno-91-1" href="#__codelineno-91-1"></a>systemctl<span class="w"> </span>daemon-reload
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-93-1"><a id="__codelineno-93-1" name="__codelineno-93-1" href="#__codelineno-93-1"></a>systemctl<span class="w"> </span>daemon-reload
 </span></code></pre></div>
 </div>
-<p>???+ note How is SystemD preventing PHP-FPM from writing to /etc/zabbix/web?</p>
-<div class="language-text highlight"><pre><span></span><code>On many modern Linux distributions, SystemD employs a security feature known as
+<details class="note" open="open">
+<summary>How is SystemD preventing PHP-FPM from writing to /etc/zabbix/web?</summary>
+<p>On many modern Linux distributions, SystemD employs a security feature known as
 sandboxing to restrict the capabilities of services. This is done to enhance
 security by limiting the access of services to only the resources they need to function.
 By default, PHP-FPM may be restricted from writing to certain directories,
-including `/etc/zabbix/web`, to prevent potential security vulnerabilities.
-This is enforced through SystemD&#39;s `ProtectSystem` and `ReadWritePaths` directives, which
-control the file system access of services.
-</code></pre></div>
+including <code>/etc/zabbix/web</code>, to prevent potential security vulnerabilities.
+This is enforced through SystemD's <code>ProtectSystem</code> and <code>ReadWritePaths</code> directives, which
+control the file system access of services.</p>
+</details>
+<details class="tip" open="open">
+<summary>Tip</summary>
+<p>Normaly write access to <code>/etc/zabbix/web</code> is only needed during the initial setup
+of the Zabbix frontend. After the setup is complete you can remove the drop-in
+file again to further harden the security of your system.</p>
+</details>
 <p>First thing we have to do is alter the Nginx configuration file so that we don't
 use the standard config and serve the Zabbix frontend on port 80.</p>
 <div class="admonition info">
 <p class="admonition-title">Edit nginx config for Red Hat</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-92-1"><a id="__codelineno-92-1" name="__codelineno-92-1" href="#__codelineno-92-1"></a>vi<span class="w"> </span>/etc/nginx/nginx.conf
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-94-1"><a id="__codelineno-94-1" name="__codelineno-94-1" href="#__codelineno-94-1"></a>vi<span class="w"> </span>/etc/nginx/nginx.conf
 </span></code></pre></div>
 </div>
 <p>In this configuration file look for the following block that starts with <code>server {</code>:</p>
 <div class="admonition example">
 <p class="admonition-title">Original config</p>
-<div class="language-nginx highlight"><pre><span></span><code><span id="__span-93-1"><a id="__codelineno-93-1" name="__codelineno-93-1" href="#__codelineno-93-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-93-2"><a id="__codelineno-93-2" name="__codelineno-93-2" href="#__codelineno-93-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
-</span><span id="__span-93-3"><a id="__codelineno-93-3" name="__codelineno-93-3" href="#__codelineno-93-3"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span>
-</span><span id="__span-93-4"><a id="__codelineno-93-4" name="__codelineno-93-4" href="#__codelineno-93-4"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">*</span><span class="p">;</span>
-</span><span id="__span-93-5"><a id="__codelineno-93-5" name="__codelineno-93-5" href="#__codelineno-93-5"></a><span class="kn">...</span>
+<div class="language-nginx highlight"><pre><span></span><code><span id="__span-95-1"><a id="__codelineno-95-1" name="__codelineno-95-1" href="#__codelineno-95-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-95-2"><a id="__codelineno-95-2" name="__codelineno-95-2" href="#__codelineno-95-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+</span><span id="__span-95-3"><a id="__codelineno-95-3" name="__codelineno-95-3" href="#__codelineno-95-3"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span>
+</span><span id="__span-95-4"><a id="__codelineno-95-4" name="__codelineno-95-4" href="#__codelineno-95-4"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">*</span><span class="p">;</span>
+</span><span id="__span-95-5"><a id="__codelineno-95-5" name="__codelineno-95-5" href="#__codelineno-95-5"></a><span class="kn">...</span>
 </span></code></pre></div>
 <details class="tip" open="open">
 <summary>Tip</summary>
@@ -3877,11 +3910,11 @@ http server configuration. You can do this by adding a <code>#</code> at the beg
 each line, like in the example below:</p>
 <div class="admonition example">
 <p class="admonition-title">Config after edit</p>
-<div class="language-nginx highlight"><pre><span></span><code><span id="__span-94-1"><a id="__codelineno-94-1" name="__codelineno-94-1" href="#__codelineno-94-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-94-2"><a id="__codelineno-94-2" name="__codelineno-94-2" href="#__codelineno-94-2"></a><span class="w">    </span><span class="c1">#listen 80;</span>
-</span><span id="__span-94-3"><a id="__codelineno-94-3" name="__codelineno-94-3" href="#__codelineno-94-3"></a><span class="w">    </span><span class="c1">#listen [::]:80;</span>
-</span><span id="__span-94-4"><a id="__codelineno-94-4" name="__codelineno-94-4" href="#__codelineno-94-4"></a><span class="w">    </span><span class="c1">#server_name *;</span>
-</span><span id="__span-94-5"><a id="__codelineno-94-5" name="__codelineno-94-5" href="#__codelineno-94-5"></a><span class="kn">...</span>
+<div class="language-nginx highlight"><pre><span></span><code><span id="__span-96-1"><a id="__codelineno-96-1" name="__codelineno-96-1" href="#__codelineno-96-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-96-2"><a id="__codelineno-96-2" name="__codelineno-96-2" href="#__codelineno-96-2"></a><span class="w">    </span><span class="c1">#listen 80;</span>
+</span><span id="__span-96-3"><a id="__codelineno-96-3" name="__codelineno-96-3" href="#__codelineno-96-3"></a><span class="w">    </span><span class="c1">#listen [::]:80;</span>
+</span><span id="__span-96-4"><a id="__codelineno-96-4" name="__codelineno-96-4" href="#__codelineno-96-4"></a><span class="w">    </span><span class="c1">#server_name *;</span>
+</span><span id="__span-96-5"><a id="__codelineno-96-5" name="__codelineno-96-5" href="#__codelineno-96-5"></a><span class="kn">...</span>
 </span></code></pre></div>
 </div>
 <p>The Zabbix configuration file must now be modified to take over the default 
@@ -3889,20 +3922,20 @@ service on port 80 we just disabled.
 Open the following file for editing:</p>
 <div class="admonition info">
 <p class="admonition-title">Edit Zabbix config for nginx</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-95-1"><a id="__codelineno-95-1" name="__codelineno-95-1" href="#__codelineno-95-1"></a>sudo<span class="w"> </span>vi<span class="w"> </span>/etc/nginx/conf.d/zabbix.conf
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-97-1"><a id="__codelineno-97-1" name="__codelineno-97-1" href="#__codelineno-97-1"></a>sudo<span class="w"> </span>vi<span class="w"> </span>/etc/nginx/conf.d/zabbix.conf
 </span></code></pre></div>
 </div>
 <p>And alter the following lines:</p>
 <div class="admonition example">
 <p class="admonition-title">Original config</p>
-<div class="language-nginx highlight"><pre><span></span><code><span id="__span-96-1"><a id="__codelineno-96-1" name="__codelineno-96-1" href="#__codelineno-96-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-96-2"><a id="__codelineno-96-2" name="__codelineno-96-2" href="#__codelineno-96-2"></a><span class="c1">#       listen          8080;</span>
-</span><span id="__span-96-3"><a id="__codelineno-96-3" name="__codelineno-96-3" href="#__codelineno-96-3"></a><span class="c1">#       server_name     example.com;</span>
-</span><span id="__span-96-4"><a id="__codelineno-96-4" name="__codelineno-96-4" href="#__codelineno-96-4"></a>
-</span><span id="__span-96-5"><a id="__codelineno-96-5" name="__codelineno-96-5" href="#__codelineno-96-5"></a><span class="w">        </span><span class="kn">root</span><span class="w">    </span><span class="s">/usr/share/zabbix</span><span class="p">;</span>
-</span><span id="__span-96-6"><a id="__codelineno-96-6" name="__codelineno-96-6" href="#__codelineno-96-6"></a>
-</span><span id="__span-96-7"><a id="__codelineno-96-7" name="__codelineno-96-7" href="#__codelineno-96-7"></a><span class="w">        </span><span class="kn">index</span><span class="w">   </span><span class="s">index.php</span><span class="p">;</span>
-</span><span id="__span-96-8"><a id="__codelineno-96-8" name="__codelineno-96-8" href="#__codelineno-96-8"></a><span class="kn">...</span>
+<div class="language-nginx highlight"><pre><span></span><code><span id="__span-98-1"><a id="__codelineno-98-1" name="__codelineno-98-1" href="#__codelineno-98-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-98-2"><a id="__codelineno-98-2" name="__codelineno-98-2" href="#__codelineno-98-2"></a><span class="c1">#       listen          8080;</span>
+</span><span id="__span-98-3"><a id="__codelineno-98-3" name="__codelineno-98-3" href="#__codelineno-98-3"></a><span class="c1">#       server_name     example.com;</span>
+</span><span id="__span-98-4"><a id="__codelineno-98-4" name="__codelineno-98-4" href="#__codelineno-98-4"></a>
+</span><span id="__span-98-5"><a id="__codelineno-98-5" name="__codelineno-98-5" href="#__codelineno-98-5"></a><span class="w">        </span><span class="kn">root</span><span class="w">    </span><span class="s">/usr/share/zabbix</span><span class="p">;</span>
+</span><span id="__span-98-6"><a id="__codelineno-98-6" name="__codelineno-98-6" href="#__codelineno-98-6"></a>
+</span><span id="__span-98-7"><a id="__codelineno-98-7" name="__codelineno-98-7" href="#__codelineno-98-7"></a><span class="w">        </span><span class="kn">index</span><span class="w">   </span><span class="s">index.php</span><span class="p">;</span>
+</span><span id="__span-98-8"><a id="__codelineno-98-8" name="__codelineno-98-8" href="#__codelineno-98-8"></a><span class="kn">...</span>
 </span></code></pre></div>
 </div>
 <p>Remove the <code>#</code> in front of the first 2 lines and modify them with the correct 
@@ -3914,13 +3947,13 @@ like in the example below:</p>
 </details>
 <div class="admonition example">
 <p class="admonition-title">Config after the edit</p>
-<div class="language-nginx highlight"><pre><span></span><code><span id="__span-97-1"><a id="__codelineno-97-1" name="__codelineno-97-1" href="#__codelineno-97-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-97-2"><a id="__codelineno-97-2" name="__codelineno-97-2" href="#__codelineno-97-2"></a><span class="w">        </span><span class="kn">listen</span><span class="w">          </span><span class="mi">80</span><span class="p">;</span>
-</span><span id="__span-97-3"><a id="__codelineno-97-3" name="__codelineno-97-3" href="#__codelineno-97-3"></a><span class="w">        </span><span class="kn">server_name</span><span class="w">     </span><span class="s">_</span><span class="p">;</span>
-</span><span id="__span-97-4"><a id="__codelineno-97-4" name="__codelineno-97-4" href="#__codelineno-97-4"></a>
-</span><span id="__span-97-5"><a id="__codelineno-97-5" name="__codelineno-97-5" href="#__codelineno-97-5"></a><span class="w">         </span><span class="kn">root</span><span class="w">    </span><span class="s">/usr/share/zabbix</span><span class="p">;</span>
-</span><span id="__span-97-6"><a id="__codelineno-97-6" name="__codelineno-97-6" href="#__codelineno-97-6"></a>
-</span><span id="__span-97-7"><a id="__codelineno-97-7" name="__codelineno-97-7" href="#__codelineno-97-7"></a><span class="w">         </span><span class="kn">index</span><span class="w">   </span><span class="s">index.php</span><span class="p">;</span>
+<div class="language-nginx highlight"><pre><span></span><code><span id="__span-99-1"><a id="__codelineno-99-1" name="__codelineno-99-1" href="#__codelineno-99-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-99-2"><a id="__codelineno-99-2" name="__codelineno-99-2" href="#__codelineno-99-2"></a><span class="w">        </span><span class="kn">listen</span><span class="w">          </span><span class="mi">80</span><span class="p">;</span>
+</span><span id="__span-99-3"><a id="__codelineno-99-3" name="__codelineno-99-3" href="#__codelineno-99-3"></a><span class="w">        </span><span class="kn">server_name</span><span class="w">     </span><span class="s">_</span><span class="p">;</span>
+</span><span id="__span-99-4"><a id="__codelineno-99-4" name="__codelineno-99-4" href="#__codelineno-99-4"></a>
+</span><span id="__span-99-5"><a id="__codelineno-99-5" name="__codelineno-99-5" href="#__codelineno-99-5"></a><span class="w">         </span><span class="kn">root</span><span class="w">    </span><span class="s">/usr/share/zabbix</span><span class="p">;</span>
+</span><span id="__span-99-6"><a id="__codelineno-99-6" name="__codelineno-99-6" href="#__codelineno-99-6"></a>
+</span><span id="__span-99-7"><a id="__codelineno-99-7" name="__codelineno-99-7" href="#__codelineno-99-7"></a><span class="w">         </span><span class="kn">index</span><span class="w">   </span><span class="s">index.php</span><span class="p">;</span>
 </span></code></pre></div>
 </div>
 <p>The web server and PHP-FPM service are now ready for activation and persistent
@@ -3928,39 +3961,39 @@ startup. Execute the following commands to enable and start them immediately:</p
 <div class="admonition info">
 <p class="admonition-title">Restart the front-end services</p>
 <p>Red Hat / SUSE
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-98-1"><a id="__codelineno-98-1" name="__codelineno-98-1" href="#__codelineno-98-1"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nginx<span class="w"> </span>php-fpm<span class="w"> </span>--now
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-100-1"><a id="__codelineno-100-1" name="__codelineno-100-1" href="#__codelineno-100-1"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nginx<span class="w"> </span>php-fpm<span class="w"> </span>--now
 </span></code></pre></div></p>
 <p>Ubuntu
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-99-1"><a id="__codelineno-99-1" name="__codelineno-99-1" href="#__codelineno-99-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nginx<span class="w"> </span>php8.3-fpm<span class="w"> </span>--now
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-101-1"><a id="__codelineno-101-1" name="__codelineno-101-1" href="#__codelineno-101-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nginx<span class="w"> </span>php8.3-fpm<span class="w"> </span>--now
 </span></code></pre></div></p>
 </div>
 <p>Let's verify if the service is properly started and enabled so that it survives
 our reboot next time.</p>
 <div class="admonition info">
-<p class="admonition-title">check if the service is running</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-100-1"><a id="__codelineno-100-1" name="__codelineno-100-1" href="#__codelineno-100-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>nginx
+<p class="admonition-title">Check if the service is running</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-102-1"><a id="__codelineno-102-1" name="__codelineno-102-1" href="#__codelineno-102-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>nginx
 </span></code></pre></div>
 </div>
 <details class="example" open="open">
 <summary>Example output</summary>
-<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-101-1"><a id="__codelineno-101-1" name="__codelineno-101-1" href="#__codelineno-101-1"></a><span class="go">localhost:~&gt; sudo systemctl status nginx</span>
-</span><span id="__span-101-2"><a id="__codelineno-101-2" name="__codelineno-101-2" href="#__codelineno-101-2"></a><span class="go">● nginx.service - The nginx HTTP and reverse proxy server</span>
-</span><span id="__span-101-3"><a id="__codelineno-101-3" name="__codelineno-101-3" href="#__codelineno-101-3"></a><span class="go">      Loaded: loaded (/usr/lib/systemd/system/nginx.service; enabled; preset: disabled)</span>
-</span><span id="__span-101-4"><a id="__codelineno-101-4" name="__codelineno-101-4" href="#__codelineno-101-4"></a><span class="go">     Drop-In: /usr/lib/systemd/system/nginx.service.d</span>
-</span><span id="__span-101-5"><a id="__codelineno-101-5" name="__codelineno-101-5" href="#__codelineno-101-5"></a><span class="go">              └─php-fpm.conf</span>
-</span><span id="__span-101-6"><a id="__codelineno-101-6" name="__codelineno-101-6" href="#__codelineno-101-6"></a><span class="go">      Active: active (running) since Mon 2023-11-20 11:42:18 CET; 30min ago</span>
-</span><span id="__span-101-7"><a id="__codelineno-101-7" name="__codelineno-101-7" href="#__codelineno-101-7"></a><span class="go">    Main PID: 1206 (nginx)</span>
-</span><span id="__span-101-8"><a id="__codelineno-101-8" name="__codelineno-101-8" href="#__codelineno-101-8"></a><span class="go">       Tasks: 2 (limit: 12344)</span>
-</span><span id="__span-101-9"><a id="__codelineno-101-9" name="__codelineno-101-9" href="#__codelineno-101-9"></a><span class="go">      Memory: 4.8M</span>
-</span><span id="__span-101-10"><a id="__codelineno-101-10" name="__codelineno-101-10" href="#__codelineno-101-10"></a><span class="go">         CPU: 38ms</span>
-</span><span id="__span-101-11"><a id="__codelineno-101-11" name="__codelineno-101-11" href="#__codelineno-101-11"></a><span class="go">      CGroup: /system.slice/nginx.service</span>
-</span><span id="__span-101-12"><a id="__codelineno-101-12" name="__codelineno-101-12" href="#__codelineno-101-12"></a><span class="go">              ├─1206 &quot;nginx: master process /usr/sbin/nginx&quot;</span>
-</span><span id="__span-101-13"><a id="__codelineno-101-13" name="__codelineno-101-13" href="#__codelineno-101-13"></a><span class="go">              └─1207 &quot;nginx: worker process&quot;</span>
-</span><span id="__span-101-14"><a id="__codelineno-101-14" name="__codelineno-101-14" href="#__codelineno-101-14"></a>
-</span><span id="__span-101-15"><a id="__codelineno-101-15" name="__codelineno-101-15" href="#__codelineno-101-15"></a><span class="go">Nov 20 11:42:18 zabbix-srv systemd[1]: Starting The nginx HTTP and reverse proxy server...</span>
-</span><span id="__span-101-16"><a id="__codelineno-101-16" name="__codelineno-101-16" href="#__codelineno-101-16"></a><span class="go">Nov 20 11:42:18 zabbix-srv nginx[1204]: nginx: the configuration file /etc/nginx/nginx.conf syntax is ok</span>
-</span><span id="__span-101-17"><a id="__codelineno-101-17" name="__codelineno-101-17" href="#__codelineno-101-17"></a><span class="go">Nov 20 11:42:18 zabbix-srv nginx[1204]: nginx: configuration file /etc/nginx/nginx.conf test is successful</span>
-</span><span id="__span-101-18"><a id="__codelineno-101-18" name="__codelineno-101-18" href="#__codelineno-101-18"></a><span class="go">Nov 20 11:42:18 zabbix-srv systemd[1]: Started The nginx HTTP and reverse proxy server.</span>
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-103-1"><a id="__codelineno-103-1" name="__codelineno-103-1" href="#__codelineno-103-1"></a><span class="go">localhost:~&gt; sudo systemctl status nginx</span>
+</span><span id="__span-103-2"><a id="__codelineno-103-2" name="__codelineno-103-2" href="#__codelineno-103-2"></a><span class="go">● nginx.service - The nginx HTTP and reverse proxy server</span>
+</span><span id="__span-103-3"><a id="__codelineno-103-3" name="__codelineno-103-3" href="#__codelineno-103-3"></a><span class="go">      Loaded: loaded (/usr/lib/systemd/system/nginx.service; enabled; preset: disabled)</span>
+</span><span id="__span-103-4"><a id="__codelineno-103-4" name="__codelineno-103-4" href="#__codelineno-103-4"></a><span class="go">     Drop-In: /usr/lib/systemd/system/nginx.service.d</span>
+</span><span id="__span-103-5"><a id="__codelineno-103-5" name="__codelineno-103-5" href="#__codelineno-103-5"></a><span class="go">              └─php-fpm.conf</span>
+</span><span id="__span-103-6"><a id="__codelineno-103-6" name="__codelineno-103-6" href="#__codelineno-103-6"></a><span class="go">      Active: active (running) since Mon 2023-11-20 11:42:18 CET; 30min ago</span>
+</span><span id="__span-103-7"><a id="__codelineno-103-7" name="__codelineno-103-7" href="#__codelineno-103-7"></a><span class="go">    Main PID: 1206 (nginx)</span>
+</span><span id="__span-103-8"><a id="__codelineno-103-8" name="__codelineno-103-8" href="#__codelineno-103-8"></a><span class="go">       Tasks: 2 (limit: 12344)</span>
+</span><span id="__span-103-9"><a id="__codelineno-103-9" name="__codelineno-103-9" href="#__codelineno-103-9"></a><span class="go">      Memory: 4.8M</span>
+</span><span id="__span-103-10"><a id="__codelineno-103-10" name="__codelineno-103-10" href="#__codelineno-103-10"></a><span class="go">         CPU: 38ms</span>
+</span><span id="__span-103-11"><a id="__codelineno-103-11" name="__codelineno-103-11" href="#__codelineno-103-11"></a><span class="go">      CGroup: /system.slice/nginx.service</span>
+</span><span id="__span-103-12"><a id="__codelineno-103-12" name="__codelineno-103-12" href="#__codelineno-103-12"></a><span class="go">              ├─1206 &quot;nginx: master process /usr/sbin/nginx&quot;</span>
+</span><span id="__span-103-13"><a id="__codelineno-103-13" name="__codelineno-103-13" href="#__codelineno-103-13"></a><span class="go">              └─1207 &quot;nginx: worker process&quot;</span>
+</span><span id="__span-103-14"><a id="__codelineno-103-14" name="__codelineno-103-14" href="#__codelineno-103-14"></a>
+</span><span id="__span-103-15"><a id="__codelineno-103-15" name="__codelineno-103-15" href="#__codelineno-103-15"></a><span class="go">Nov 20 11:42:18 zabbix-srv systemd[1]: Starting The nginx HTTP and reverse proxy server...</span>
+</span><span id="__span-103-16"><a id="__codelineno-103-16" name="__codelineno-103-16" href="#__codelineno-103-16"></a><span class="go">Nov 20 11:42:18 zabbix-srv nginx[1204]: nginx: the configuration file /etc/nginx/nginx.conf syntax is ok</span>
+</span><span id="__span-103-17"><a id="__codelineno-103-17" name="__codelineno-103-17" href="#__codelineno-103-17"></a><span class="go">Nov 20 11:42:18 zabbix-srv nginx[1204]: nginx: configuration file /etc/nginx/nginx.conf test is successful</span>
+</span><span id="__span-103-18"><a id="__codelineno-103-18" name="__codelineno-103-18" href="#__codelineno-103-18"></a><span class="go">Nov 20 11:42:18 zabbix-srv systemd[1]: Started The nginx HTTP and reverse proxy server.</span>
 </span></code></pre></div>
 </details>
 <p>With the service operational and configured for automatic startup, the final preparatory
@@ -3969,24 +4002,24 @@ following commands:</p>
 <div class="admonition info">
 <p class="admonition-title">Configure the firewall</p>
 <p>Red Hat / SUSE
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-102-1"><a id="__codelineno-102-1" name="__codelineno-102-1" href="#__codelineno-102-1"></a>firewall-cmd<span class="w"> </span>--add-service<span class="o">=</span>http<span class="w"> </span>--permanent
-</span><span id="__span-102-2"><a id="__codelineno-102-2" name="__codelineno-102-2" href="#__codelineno-102-2"></a>firewall-cmd<span class="w"> </span>--reload
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-104-1"><a id="__codelineno-104-1" name="__codelineno-104-1" href="#__codelineno-104-1"></a>firewall-cmd<span class="w"> </span>--add-service<span class="o">=</span>http<span class="w"> </span>--permanent
+</span><span id="__span-104-2"><a id="__codelineno-104-2" name="__codelineno-104-2" href="#__codelineno-104-2"></a>firewall-cmd<span class="w"> </span>--reload
 </span></code></pre></div></p>
 <p>Ubuntu
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-103-1"><a id="__codelineno-103-1" name="__codelineno-103-1" href="#__codelineno-103-1"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">80</span>/tcp
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-105-1"><a id="__codelineno-105-1" name="__codelineno-105-1" href="#__codelineno-105-1"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">80</span>/tcp
 </span></code></pre></div></p>
 </div>
 <p>Open your browser and go to the url or ip of your front-end :</p>
 <div class="admonition info">
 <p class="admonition-title">Front-end configuration</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-104-1"><a id="__codelineno-104-1" name="__codelineno-104-1" href="#__codelineno-104-1"></a>http://&lt;ip or dns of the zabbix frontend server&gt;/
+<div class="language-text highlight"><pre><span></span><code><span id="__span-106-1"><a id="__codelineno-106-1" name="__codelineno-106-1" href="#__codelineno-106-1"></a>http://&lt;ip or dns of the zabbix frontend server&gt;/
 </span></code></pre></div>
 </div>
 <p>If all goes well you should be greeted with a Zabbix welcome page. In case you
 have an error check the configuration again or have a look at the nginx log file
 <code>/var/log/nginx/error.log</code> or run the following command :</p>
 <div class="admonition info">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-105-1"><a id="__codelineno-105-1" name="__codelineno-105-1" href="#__codelineno-105-1"></a>journalctl<span class="w"> </span>-xeu<span class="w"> </span>nginx
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-107-1"><a id="__codelineno-107-1" name="__codelineno-107-1" href="#__codelineno-107-1"></a>journalctl<span class="w"> </span>-xeu<span class="w"> </span>nginx
 </span></code></pre></div>
 </div>
 <p>This should help you in locating the errors you made.</p>
@@ -4002,100 +4035,98 @@ choice</em></p>
 <p>What if we want to install Chinese as language or another language from the list?
 Run the next command to get a list of all locales available for your OS.</p>
 <div class="admonition info">
-<p class="admonition-title">install language packs</p>
+<p class="admonition-title">Install language packs</p>
 <p>Red Hat
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-106-1"><a id="__codelineno-106-1" name="__codelineno-106-1" href="#__codelineno-106-1"></a>dnf<span class="w"> </span>list<span class="w"> </span>glibc-langpack-*
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-108-1"><a id="__codelineno-108-1" name="__codelineno-108-1" href="#__codelineno-108-1"></a>dnf<span class="w"> </span>list<span class="w"> </span>glibc-langpack-*
 </span></code></pre></div></p>
 <p>SUSE
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-107-1"><a id="__codelineno-107-1" name="__codelineno-107-1" href="#__codelineno-107-1"></a>localectl<span class="w"> </span>list-locales
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-109-1"><a id="__codelineno-109-1" name="__codelineno-109-1" href="#__codelineno-109-1"></a>localectl<span class="w"> </span>list-locales
 </span></code></pre></div></p>
 <p>Ubuntu
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-108-1"><a id="__codelineno-108-1" name="__codelineno-108-1" href="#__codelineno-108-1"></a>apt-cache<span class="w"> </span>search<span class="w"> </span>language-pack
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-110-1"><a id="__codelineno-110-1" name="__codelineno-110-1" href="#__codelineno-110-1"></a>apt-cache<span class="w"> </span>search<span class="w"> </span>language-pack
 </span></code></pre></div></p>
 </div>
 <p>Users on Ubuntu will probably notice following error `"Locale for language "en_US"
 is not found on the web server."``</p>
 <div class="admonition info">
 <p class="admonition-title">This can be solved easy with the following commands.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-109-1"><a id="__codelineno-109-1" name="__codelineno-109-1" href="#__codelineno-109-1"></a>sudo<span class="w"> </span>locale-gen<span class="w"> </span>en_US.UTF-8
-</span><span id="__span-109-2"><a id="__codelineno-109-2" name="__codelineno-109-2" href="#__codelineno-109-2"></a>sudo<span class="w"> </span>update-locale
-</span><span id="__span-109-3"><a id="__codelineno-109-3" name="__codelineno-109-3" href="#__codelineno-109-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx<span class="w"> </span>php8.3-fpm
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-111-1"><a id="__codelineno-111-1" name="__codelineno-111-1" href="#__codelineno-111-1"></a>sudo<span class="w"> </span>locale-gen<span class="w"> </span>en_US.UTF-8
+</span><span id="__span-111-2"><a id="__codelineno-111-2" name="__codelineno-111-2" href="#__codelineno-111-2"></a>sudo<span class="w"> </span>update-locale
+</span><span id="__span-111-3"><a id="__codelineno-111-3" name="__codelineno-111-3" href="#__codelineno-111-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx<span class="w"> </span>php8.3-fpm
 </span></code></pre></div>
 </div>
-<p>This will give you on Red Hat based systems a list like:</p>
-<div class="admonition info">
-<div class="language-text highlight"><pre><span></span><code><span id="__span-110-1"><a id="__codelineno-110-1" name="__codelineno-110-1" href="#__codelineno-110-1"></a>Installed Packages
-</span><span id="__span-110-2"><a id="__codelineno-110-2" name="__codelineno-110-2" href="#__codelineno-110-2"></a>glibc-langpack-en.x86_64
-</span><span id="__span-110-3"><a id="__codelineno-110-3" name="__codelineno-110-3" href="#__codelineno-110-3"></a>Available Packages
-</span><span id="__span-110-4"><a id="__codelineno-110-4" name="__codelineno-110-4" href="#__codelineno-110-4"></a>glibc-langpack-aa.x86_64
-</span><span id="__span-110-5"><a id="__codelineno-110-5" name="__codelineno-110-5" href="#__codelineno-110-5"></a>---
-</span><span id="__span-110-6"><a id="__codelineno-110-6" name="__codelineno-110-6" href="#__codelineno-110-6"></a>glibc-langpack-zu.x86_64
-</span></code></pre></div>
-</div>
-<div class="admonition info">
-<p class="admonition-title">on SUSE it will look like :</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-111-1"><a id="__codelineno-111-1" name="__codelineno-111-1" href="#__codelineno-111-1"></a>C.UTF-8
-</span><span id="__span-111-2"><a id="__codelineno-111-2" name="__codelineno-111-2" href="#__codelineno-111-2"></a>aa_DJ.UTF-8
-</span><span id="__span-111-3"><a id="__codelineno-111-3" name="__codelineno-111-3" href="#__codelineno-111-3"></a>af_ZA.UTF-8
-</span><span id="__span-111-4"><a id="__codelineno-111-4" name="__codelineno-111-4" href="#__codelineno-111-4"></a>an_ES.UTF-8
-</span><span id="__span-111-5"><a id="__codelineno-111-5" name="__codelineno-111-5" href="#__codelineno-111-5"></a>---
-</span><span id="__span-111-6"><a id="__codelineno-111-6" name="__codelineno-111-6" href="#__codelineno-111-6"></a>zh_SG.UTF-8
-</span><span id="__span-111-7"><a id="__codelineno-111-7" name="__codelineno-111-7" href="#__codelineno-111-7"></a>zh_TW.UTF-8
-</span><span id="__span-111-8"><a id="__codelineno-111-8" name="__codelineno-111-8" href="#__codelineno-111-8"></a>zu_ZA.UTF-8
-</span></code></pre></div>
-</div>
-<div class="admonition info">
-<p class="admonition-title">on Ubuntu it will look like :</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-112-1"><a id="__codelineno-112-1" name="__codelineno-112-1" href="#__codelineno-112-1"></a>language-pack-kab - translation updates for language Kabyle
-</span><span id="__span-112-2"><a id="__codelineno-112-2" name="__codelineno-112-2" href="#__codelineno-112-2"></a>language-pack-kab-base - translations for language Kabyle
-</span><span id="__span-112-3"><a id="__codelineno-112-3" name="__codelineno-112-3" href="#__codelineno-112-3"></a>language-pack-kn - translation updates for language Kannada
-</span><span id="__span-112-4"><a id="__codelineno-112-4" name="__codelineno-112-4" href="#__codelineno-112-4"></a>language-pack-kn-base - translations for language Kannada
+<p>This will give you a list like:</p>
+<details class="example" open="open">
+<summary>Example output</summary>
+<p>Red Hat
+<div class="language-text highlight"><pre><span></span><code><span id="__span-112-1"><a id="__codelineno-112-1" name="__codelineno-112-1" href="#__codelineno-112-1"></a>Installed Packages
+</span><span id="__span-112-2"><a id="__codelineno-112-2" name="__codelineno-112-2" href="#__codelineno-112-2"></a>glibc-langpack-en.x86_64
+</span><span id="__span-112-3"><a id="__codelineno-112-3" name="__codelineno-112-3" href="#__codelineno-112-3"></a>Available Packages
+</span><span id="__span-112-4"><a id="__codelineno-112-4" name="__codelineno-112-4" href="#__codelineno-112-4"></a>glibc-langpack-aa.x86_64
 </span><span id="__span-112-5"><a id="__codelineno-112-5" name="__codelineno-112-5" href="#__codelineno-112-5"></a>---
-</span><span id="__span-112-6"><a id="__codelineno-112-6" name="__codelineno-112-6" href="#__codelineno-112-6"></a>language-pack-ko - translation updates for language Korean
-</span><span id="__span-112-7"><a id="__codelineno-112-7" name="__codelineno-112-7" href="#__codelineno-112-7"></a>language-pack-ko-base - translations for language Korean
-</span><span id="__span-112-8"><a id="__codelineno-112-8" name="__codelineno-112-8" href="#__codelineno-112-8"></a>language-pack-ku - translation updates for language Kurdish
-</span><span id="__span-112-9"><a id="__codelineno-112-9" name="__codelineno-112-9" href="#__codelineno-112-9"></a>language-pack-ku-base - translations for language Kurdish
-</span><span id="__span-112-10"><a id="__codelineno-112-10" name="__codelineno-112-10" href="#__codelineno-112-10"></a>language-pack-lt - translation updates for language Lithuanian
-</span></code></pre></div>
-</div>
+</span><span id="__span-112-6"><a id="__codelineno-112-6" name="__codelineno-112-6" href="#__codelineno-112-6"></a>glibc-langpack-zu.x86_64
+</span></code></pre></div></p>
+<p>SUSE
+<div class="language-text highlight"><pre><span></span><code><span id="__span-113-1"><a id="__codelineno-113-1" name="__codelineno-113-1" href="#__codelineno-113-1"></a>C.UTF-8
+</span><span id="__span-113-2"><a id="__codelineno-113-2" name="__codelineno-113-2" href="#__codelineno-113-2"></a>aa_DJ.UTF-8
+</span><span id="__span-113-3"><a id="__codelineno-113-3" name="__codelineno-113-3" href="#__codelineno-113-3"></a>af_ZA.UTF-8
+</span><span id="__span-113-4"><a id="__codelineno-113-4" name="__codelineno-113-4" href="#__codelineno-113-4"></a>an_ES.UTF-8
+</span><span id="__span-113-5"><a id="__codelineno-113-5" name="__codelineno-113-5" href="#__codelineno-113-5"></a>---
+</span><span id="__span-113-6"><a id="__codelineno-113-6" name="__codelineno-113-6" href="#__codelineno-113-6"></a>zh_SG.UTF-8
+</span><span id="__span-113-7"><a id="__codelineno-113-7" name="__codelineno-113-7" href="#__codelineno-113-7"></a>zh_TW.UTF-8
+</span><span id="__span-113-8"><a id="__codelineno-113-8" name="__codelineno-113-8" href="#__codelineno-113-8"></a>zu_ZA.UTF-8
+</span></code></pre></div></p>
+<p>Ubuntu
+<div class="language-text highlight"><pre><span></span><code><span id="__span-114-1"><a id="__codelineno-114-1" name="__codelineno-114-1" href="#__codelineno-114-1"></a>language-pack-kab - translation updates for language Kabyle
+</span><span id="__span-114-2"><a id="__codelineno-114-2" name="__codelineno-114-2" href="#__codelineno-114-2"></a>language-pack-kab-base - translations for language Kabyle
+</span><span id="__span-114-3"><a id="__codelineno-114-3" name="__codelineno-114-3" href="#__codelineno-114-3"></a>language-pack-kn - translation updates for language Kannada
+</span><span id="__span-114-4"><a id="__codelineno-114-4" name="__codelineno-114-4" href="#__codelineno-114-4"></a>language-pack-kn-base - translations for language Kannada
+</span><span id="__span-114-5"><a id="__codelineno-114-5" name="__codelineno-114-5" href="#__codelineno-114-5"></a>---
+</span><span id="__span-114-6"><a id="__codelineno-114-6" name="__codelineno-114-6" href="#__codelineno-114-6"></a>language-pack-ko - translation updates for language Korean
+</span><span id="__span-114-7"><a id="__codelineno-114-7" name="__codelineno-114-7" href="#__codelineno-114-7"></a>language-pack-ko-base - translations for language Korean
+</span><span id="__span-114-8"><a id="__codelineno-114-8" name="__codelineno-114-8" href="#__codelineno-114-8"></a>language-pack-ku - translation updates for language Kurdish
+</span><span id="__span-114-9"><a id="__codelineno-114-9" name="__codelineno-114-9" href="#__codelineno-114-9"></a>language-pack-ku-base - translations for language Kurdish
+</span><span id="__span-114-10"><a id="__codelineno-114-10" name="__codelineno-114-10" href="#__codelineno-114-10"></a>language-pack-lt - translation updates for language Lithuanian
+</span></code></pre></div></p>
+</details>
 <p>Let's search for our Chinese locale to see if it is available. As you can see
 the code starts with zh.</p>
 <div class="admonition info">
 <p class="admonition-title">search for language pack</p>
 <p>Red Hat
-<div class="language-console highlight"><pre><span></span><code><span id="__span-113-1"><a id="__codelineno-113-1" name="__codelineno-113-1" href="#__codelineno-113-1"></a><span class="go">~# dnf list glibc-langpack-* | grep zh</span>
-</span><span id="__span-113-2"><a id="__codelineno-113-2" name="__codelineno-113-2" href="#__codelineno-113-2"></a><span class="go">glibc-langpack-zh.x86_64</span>
-</span><span id="__span-113-3"><a id="__codelineno-113-3" name="__codelineno-113-3" href="#__codelineno-113-3"></a><span class="go">glibc-langpack-lzh.x86_64</span>
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-115-1"><a id="__codelineno-115-1" name="__codelineno-115-1" href="#__codelineno-115-1"></a><span class="go">~# dnf list glibc-langpack-* | grep zh</span>
+</span><span id="__span-115-2"><a id="__codelineno-115-2" name="__codelineno-115-2" href="#__codelineno-115-2"></a><span class="go">glibc-langpack-zh.x86_64</span>
+</span><span id="__span-115-3"><a id="__codelineno-115-3" name="__codelineno-115-3" href="#__codelineno-115-3"></a><span class="go">glibc-langpack-lzh.x86_64</span>
 </span></code></pre></div></p>
 <p>SUSE
-<div class="language-console highlight"><pre><span></span><code><span id="__span-114-1"><a id="__codelineno-114-1" name="__codelineno-114-1" href="#__codelineno-114-1"></a><span class="go">~&gt; localectl list-locales | grep zh</span>
-</span><span id="__span-114-2"><a id="__codelineno-114-2" name="__codelineno-114-2" href="#__codelineno-114-2"></a><span class="go">zh_CN.UTF-8</span>
-</span><span id="__span-114-3"><a id="__codelineno-114-3" name="__codelineno-114-3" href="#__codelineno-114-3"></a><span class="go">zh_HK.UTF-8</span>
-</span><span id="__span-114-4"><a id="__codelineno-114-4" name="__codelineno-114-4" href="#__codelineno-114-4"></a><span class="go">zh_SG.UTF-8</span>
-</span><span id="__span-114-5"><a id="__codelineno-114-5" name="__codelineno-114-5" href="#__codelineno-114-5"></a><span class="go">zh_TW.UTF-8</span>
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-116-1"><a id="__codelineno-116-1" name="__codelineno-116-1" href="#__codelineno-116-1"></a><span class="go">~&gt; localectl list-locales | grep zh</span>
+</span><span id="__span-116-2"><a id="__codelineno-116-2" name="__codelineno-116-2" href="#__codelineno-116-2"></a><span class="go">zh_CN.UTF-8</span>
+</span><span id="__span-116-3"><a id="__codelineno-116-3" name="__codelineno-116-3" href="#__codelineno-116-3"></a><span class="go">zh_HK.UTF-8</span>
+</span><span id="__span-116-4"><a id="__codelineno-116-4" name="__codelineno-116-4" href="#__codelineno-116-4"></a><span class="go">zh_SG.UTF-8</span>
+</span><span id="__span-116-5"><a id="__codelineno-116-5" name="__codelineno-116-5" href="#__codelineno-116-5"></a><span class="go">zh_TW.UTF-8</span>
 </span></code></pre></div></p>
 <p>Ubuntu
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-115-1"><a id="__codelineno-115-1" name="__codelineno-115-1" href="#__codelineno-115-1"></a>sudo<span class="w"> </span>apt-cache<span class="w"> </span>search<span class="w"> </span>language-pack<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>zh
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-117-1"><a id="__codelineno-117-1" name="__codelineno-117-1" href="#__codelineno-117-1"></a>sudo<span class="w"> </span>apt-cache<span class="w"> </span>search<span class="w"> </span>language-pack<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>zh
 </span></code></pre></div></p>
 </div>
 <p>On RedHat and Ubuntu, the command outputs two lines; however, given the identified language code,
 'zh_CN,' only the first package requires installation.
-on SUSE either only locales <code>C.UTF-8</code> and <code>en_US.UTF-8</code> are available or all
-available locales are available, depending on wether the package <code>glibc-locale</code>
+on SUSE either only locales <code>C.UTF-8</code> and <code>en_US.UTF-8</code> are install or all
+available locales are installed, depending on wether the package <code>glibc-locale</code>
 is installed or not. </p>
 <div class="admonition info">
-<p class="admonition-title">install the package</p>
+<p class="admonition-title">Install the locale package</p>
 <p>Red Hat
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-116-1"><a id="__codelineno-116-1" name="__codelineno-116-1" href="#__codelineno-116-1"></a>dnf<span class="w"> </span>install<span class="w"> </span>glibc-langpack-zh.x86_64
-</span><span id="__span-116-2"><a id="__codelineno-116-2" name="__codelineno-116-2" href="#__codelineno-116-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx<span class="w"> </span>php-fpm
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-118-1"><a id="__codelineno-118-1" name="__codelineno-118-1" href="#__codelineno-118-1"></a>dnf<span class="w"> </span>install<span class="w"> </span>glibc-langpack-zh.x86_64
+</span><span id="__span-118-2"><a id="__codelineno-118-2" name="__codelineno-118-2" href="#__codelineno-118-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx<span class="w"> </span>php-fpm
 </span></code></pre></div></p>
 <p>SUSE
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-117-1"><a id="__codelineno-117-1" name="__codelineno-117-1" href="#__codelineno-117-1"></a>zypper<span class="w"> </span>install<span class="w"> </span>glibc-locale
-</span><span id="__span-117-2"><a id="__codelineno-117-2" name="__codelineno-117-2" href="#__codelineno-117-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx<span class="w"> </span>php-fpm
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-119-1"><a id="__codelineno-119-1" name="__codelineno-119-1" href="#__codelineno-119-1"></a>zypper<span class="w"> </span>install<span class="w"> </span>glibc-locale
+</span><span id="__span-119-2"><a id="__codelineno-119-2" name="__codelineno-119-2" href="#__codelineno-119-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx<span class="w"> </span>php-fpm
 </span></code></pre></div></p>
 <p>Ubuntu
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-118-1"><a id="__codelineno-118-1" name="__codelineno-118-1" href="#__codelineno-118-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>language-pack-zh-hans
-</span><span id="__span-118-2"><a id="__codelineno-118-2" name="__codelineno-118-2" href="#__codelineno-118-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx<span class="w"> </span>php8.3-fpm
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-120-1"><a id="__codelineno-120-1" name="__codelineno-120-1" href="#__codelineno-120-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>language-pack-zh-hans
+</span><span id="__span-120-2"><a id="__codelineno-120-2" name="__codelineno-120-2" href="#__codelineno-120-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx<span class="w"> </span>php8.3-fpm
 </span></code></pre></div></p>
 </div>
 <p>When we return now to our front-end we are able to select the Chinese language,
@@ -4131,8 +4162,10 @@ pre-requisites</em></p>
 <li><code>Enter the Database Name</code>: Specify the name of your database. In our case, it
    is zabbix. If you are using PostgreSQL, you will also need to provide the schema
    name, which is zabbix_server in our case.</li>
+<li><code>Enther the Database Schema</code>: Only for PostgreSQL users, enter the schema name
+   created for Zabbix server, which is <code>zabbix_server</code> in our case.</li>
 <li><code>Enter the Database User</code>: Input the database user created for the web front-end,
-   remember in our basic installation guide we created 2 users zabbix-web and zabbix-srv.
+   remember in our basic installation guide we created 2 users <code>zabbix-web</code> and <code>zabbix-srv</code>.
    One for the frontend and the other one for our zabbix server so here we will use 
    the user <code>zabbix-web</code>. Enter the corresponding password for this user.</li>
 </ol>
