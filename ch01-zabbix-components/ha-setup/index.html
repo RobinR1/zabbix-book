@@ -2085,17 +2085,19 @@ enable HA (High Availability).</p>
 by following the steps in the <em>Preparing the server for Zabbix</em> and 
 <em>Installation and configuration of Zabbix server</em> sections of the <a href="../basic-installation/#preparing-the-server-for-zabbix"><em>Basic Installation</em></a>
 chapter. </p>
-<p>Do note that:
-- you need to skip the database population step on all but the first Zabbix server as
-  the database is shared between all Zabbix servers.
-- you need to skip the enabling and starting of the zabbix-server service on all
-  servers as we will start it later after the HA configuration is done.
-- you make sure that all Zabbix servers can connect to the database server.
+<p>Do note that:</p>
+<ul>
+<li>you need to skip the database population step on all but the first Zabbix server as
+  the database is shared between all Zabbix servers.</li>
+<li>you need to skip the enabling and starting of the zabbix-server service on all
+  servers as we will start it later after the HA configuration is done.</li>
+<li>you make sure that all Zabbix servers can connect to the database server.
   For example, if you are using PostgreSQL, ensure that the <code>pg_hba.conf</code> file 
-  is configured to allow connections from all Zabbix servers.
-- all Zabbix servers should use the same database name, user, and password
-  to connect to the database.
-- all Zabbix servers should be of the same version.</p>
+  is configured to allow connections from all Zabbix servers.</li>
+<li>all Zabbix servers should use the same database name, user, and password
+  to connect to the database.</li>
+<li>all Zabbix servers should be of the same version.</li>
+</ul>
 <p>When all Zabbix servers are installed and configured to access the database,
 we can proceed with the HA configuration.</p>
 <hr />
