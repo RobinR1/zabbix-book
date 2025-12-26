@@ -2875,12 +2875,16 @@ For further details, you can refer to the official PostgreSQL documentation."
 <div class="admonition example">
 <p class="admonition-title">pg_hba example</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a># &quot;local&quot; is for Unix domain socket connections only
-</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>local    zabbix     zabbix-srv                                                              scram-sha-256
-</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>local    all            all                                                                            peer
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>local    zabbix     zabbix-srv                                 scram-sha-256
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>local    all        all                                        peer
 </span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a># IPv4 local connections
-</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>host     zabbix     zabbix-srv          &lt;ip from zabbix server/24&gt;     scram-sha-256
-</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>host     zabbix     zabbix-web        &lt;ip from zabbix server/24&gt;     scram-sha-256
-</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>host     all            all                         127.0.0.1/32                            scram-sha-256
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>host     zabbix         zabbix-srv      &lt;ip from zabbix server/24&gt;     scram-sha-256
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>host     zabbix         zabbix-web      &lt;ip from zabbix server/24&gt;     scram-sha-256
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>host     all            all             127.0.0.1/32                   scram-sha-256
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a># IPv6 local connections:
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>host    zabbix          zabbix-srv      ::1/128                 scram-sha-256
+</span><span id="__span-21-10"><a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>host    zabbix          zabbix-web      ::1/128                 scram-sha-256
+</span><span id="__span-21-11"><a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>host    all             all             ::1/128                 ident
 </span></code></pre></div>
 </div>
 <div class="admonition warning">
@@ -3630,6 +3634,8 @@ user has the appropriate ownership and permissions. If you need to adjust any
 permissions, you can do so using the GRANT commands as needed.</p>
 <hr />
 <h3 id="configure-firewall-to-allow-zabbix-trapper-connections">Configure firewall to allow Zabbix trapper connections</h3>
+<p>Back on your Zabbix server machine, we need to ensure that the firewall is configured
+to allow incoming connections to the Zabbix server.</p>
 <p>Your Zabbix server needs to accept incoming connections from Zabbix agents, senders,
 and proxies. By default, Zabbix uses port <code>10051/tcp</code> for these connections.
 To allow these connections, you need to open this port in your firewall.</p>
