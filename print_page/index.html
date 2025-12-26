@@ -6549,14 +6549,10 @@ we can proceed with the HA configuration.</p>
 <p class="admonition-title">Add High Availability Zabbix server configuration</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#ch01-zabbix-components-ha-setup-__codelineno-0-1"></a>sudo<span class="w"> </span>vi<span class="w"> </span>/etc/zabbix/zabbix_server.d/high-availability.conf
 </span></code></pre></div>
-</div>
 <p>Insert the following line into the configuration file to enable HA mode.</p>
-<div class="admonition info">
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#ch01-zabbix-components-ha-setup-__codelineno-1-1"></a><span class="na">HANodeName</span><span class="o">=</span><span class="s">zabbix1</span><span class="w">  </span><span class="c1"># or choose a name you prefer</span>
 </span></code></pre></div>
-</div>
 <p>Specify the frontend node address for failover scenarios:</p>
-<div class="admonition info">
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#ch01-zabbix-components-ha-setup-__codelineno-2-1"></a><span class="na">NodeAddress</span><span class="o">=</span><span class="s">&lt;Zabbix server 1 ip&gt;:10051</span>
 </span></code></pre></div>
 </div>
@@ -6571,6 +6567,12 @@ the queue and other information.</p>
 <h3 id="ch01-zabbix-components-ha-setup-configuring-zabbix-server-2">Configuring Zabbix Server 2</h3>
 <p>Repeat the configuration steps for the second Zabbix server. Adjust the <code>HANodeName</code>
 and <code>NodeAddress</code> as necessary for this server.</p>
+<details class="example" open="open">
+<summary>Zabbix server 2 HA configuration high-availability.conf</summary>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#ch01-zabbix-components-ha-setup-__codelineno-3-1"></a><span class="na">HANodeName</span><span class="o">=</span><span class="s">zabbix2</span><span class="w">  </span><span class="c1"># or choose a name you prefer</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#ch01-zabbix-components-ha-setup-__codelineno-3-2"></a><span class="na">NodeAddress</span><span class="o">=</span><span class="s">&lt;Zabbix server 2 ip&gt;:10051</span>
+</span></code></pre></div>
+</details>
 <p>You can add more servers by repeating the same steps, ensuring each server has a unique
 <code>HANodeName</code> and the correct <code>NodeAddress</code> set.</p>
 <hr />
@@ -6578,7 +6580,7 @@ and <code>NodeAddress</code> as necessary for this server.</p>
 <p>After configuring both servers, enable and start the zabbix-server service on each:</p>
 <div class="admonition info">
 <p class="admonition-title">Enable and start zabbix-server service</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#ch01-zabbix-components-ha-setup-__codelineno-3-1"></a>sudo systemctl enable zabbix-server --now
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#ch01-zabbix-components-ha-setup-__codelineno-4-1"></a>sudo systemctl enable zabbix-server --now
 </span></code></pre></div>
 </div>
 <hr />
@@ -6588,35 +6590,30 @@ are operating in their respective HA modes.</p>
 <p>On the first server:</p>
 <div class="admonition info">
 <p class="admonition-title">Check logs for HA messages</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#ch01-zabbix-components-ha-setup-__codelineno-4-1"></a>sudo<span class="w"> </span>grep<span class="w"> </span>HA<span class="w"> </span>/var/log/zabbix/zabbix_server.log
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#ch01-zabbix-components-ha-setup-__codelineno-5-1"></a>sudo<span class="w"> </span>grep<span class="w"> </span>HA<span class="w"> </span>/var/log/zabbix/zabbix_server.log
 </span></code></pre></div>
 </div>
 <p>In the system logs, you should observe the following entries, indicating the initialization
 of the High Availability (HA) manager:</p>
-<div class="admonition example">
-<p class="admonition-title">HA log messages on active node</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#ch01-zabbix-components-ha-setup-__codelineno-5-1"></a>22597:20240309:155230.353 starting HA manager
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#ch01-zabbix-components-ha-setup-__codelineno-5-2"></a>22597:20240309:155230.362 HA manager started in active mode
+<details class="example" open="open">
+<summary>HA log messages on active node</summary>
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#ch01-zabbix-components-ha-setup-__codelineno-6-1"></a><span class="go">localhost:~&gt; sudo grep HA /var/log/zabbix/zabbix_server.log</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#ch01-zabbix-components-ha-setup-__codelineno-6-2"></a><span class="go">22597:20240309:155230.353 starting HA manager</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#ch01-zabbix-components-ha-setup-__codelineno-6-3"></a><span class="go">22597:20240309:155230.362 HA manager started in active mode</span>
 </span></code></pre></div>
-</div>
+</details>
 <p>These log messages confirm that the HA manager process has started and has assumed
 the active role. This means that the Zabbix instance is now the primary node in
 the HA cluster, handling all monitoring operations. If a failover event occurs,
 another standby node will take over based on the configured HA strategy.</p>
-<p>On the second server (and any additional nodes):</p>
-<div class="admonition info">
-<p class="admonition-title">Check logs for HA messages</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#ch01-zabbix-components-ha-setup-__codelineno-6-1"></a>grep<span class="w"> </span>HA<span class="w"> </span>/var/log/zabbix/zabbix_server.log
+<p>Running the same command on the second server (and any additional nodes):</p>
+<details class="example" open="open">
+<summary>HA log messages on standby node</summary>
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#ch01-zabbix-components-ha-setup-__codelineno-7-1"></a><span class="go">localhost:~&gt; sudo grep HA /var/log/zabbix/zabbix_server.log</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#ch01-zabbix-components-ha-setup-__codelineno-7-2"></a><span class="go">22304:20240309:155331.163 starting HA manager</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#ch01-zabbix-components-ha-setup-__codelineno-7-3"></a><span class="go">22304:20240309:155331.174 HA manager started in standby mode</span>
 </span></code></pre></div>
-</div>
-<p>In the system logs, the following entries indicate the initialization of the High
-Availability (HA) manager:</p>
-<div class="admonition example">
-<p class="admonition-title">HA log messages on standby node</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#ch01-zabbix-components-ha-setup-__codelineno-7-1"></a>22304:20240309:155331.163 starting HA manager
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#ch01-zabbix-components-ha-setup-__codelineno-7-2"></a>22304:20240309:155331.174 HA manager started in standby mode
-</span></code></pre></div>
-</div>
+</details>
 <p>These messages confirm that the HA manager process was invoked and
 successfully launched in standby mode. This suggests that the node is operational
 but not currently acting as the active HA instance, awaiting further state transitions
@@ -6672,13 +6669,13 @@ servers to ensure high availability of both the frontend and the server.</p>
 <div class="admonition info">
 <p class="admonition-title">Install keepalived</p>
 <p>Red Hat
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#ch01-zabbix-components-ha-setup-__codelineno-9-1"></a><span class="l l-Scalar l-Scalar-Plain">dnf install keepalived</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#ch01-zabbix-components-ha-setup-__codelineno-9-1"></a>dnf<span class="w"> </span>install<span class="w"> </span>keepalived
 </span></code></pre></div></p>
 <p>SUSE
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#ch01-zabbix-components-ha-setup-__codelineno-10-1"></a>zypper<span class="w"> </span>install<span class="w"> </span>keepalived
 </span></code></pre></div></p>
 <p>Ubuntu
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#ch01-zabbix-components-ha-setup-__codelineno-11-1"></a><span class="l l-Scalar l-Scalar-Plain">sudo apt install keepalived</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#ch01-zabbix-components-ha-setup-__codelineno-11-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>keepalived
 </span></code></pre></div></p>
 </div>
 <p>Next, we need to modify the Keepalived configuration on all servers. While the
@@ -6691,7 +6688,7 @@ command:</p>
 </span></code></pre></div>
 </div>
 <p>If the file contains any existing content, it should be cleared and replaced
-with the following lines :</p>
+with the following lines:</p>
 <div class="admonition info">
 <div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#ch01-zabbix-components-ha-setup-__codelineno-13-1"></a>vrrp_track_process track_nginx {
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#ch01-zabbix-components-ha-setup-__codelineno-13-2"></a>    process nginx
@@ -6720,12 +6717,12 @@ with the following lines :</p>
 <details class="warning" open="open">
 <summary>Warning</summary>
 <p>Replace <code>enp0s1</code> with the interface name of your machine and replace the <code>password</code>
-with something secure. For the virtual_ipaddress use a free IP from your network.
+with something secure. For the <code>virtual_ipaddress</code> use a free IP from your network.
 This will be used as our VIP.</p>
 </details>
 <p>We can now do the same modification on our second or any subsequent Zabbix server. 
-Delete again everything in the same file like we did before and replace it with
-following lines:</p>
+Delete again everything in the <code>/etc/keepalived/keepalived.conf</code> file like we did 
+before and replace it with following lines:</p>
 <div class="admonition info">
 <div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#ch01-zabbix-components-ha-setup-__codelineno-14-1"></a>vrrp_track_process track_nginx {
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#ch01-zabbix-components-ha-setup-__codelineno-14-2"></a>      process nginx
@@ -6753,7 +6750,7 @@ following lines:</p>
 </div>
 <p>Just as with our 1st Zabbix server, replace <code>enp0s1</code> with the interface name of
 your machine and replace the <code>password</code> with your password and fill in the
-virtual_ipaddress as used before.</p>
+<code>virtual_ipaddress</code> as done before.</p>
 <p>Make sure that the firewall allows Keepalived traffic on all servers. The VRRP
 protocol is different than the standard IP protocol and uses multicast address
 <code>224.0.0.18</code>. Therefore, we need to explicitly allow this traffic through the 
@@ -6791,7 +6788,6 @@ Zabbix database. This table contains information about all nodes in the HA
 cluster, including their status. To check the status of the nodes, you can run
 the following SQL query:</p>
 <div class="admonition info">
-<p class="admonition-title">Check the ha_node table</p>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#ch01-zabbix-components-ha-setup-__codelineno-17-1"></a><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">ha_node</span><span class="p">;</span>
 </span></code></pre></div>
 </div>
