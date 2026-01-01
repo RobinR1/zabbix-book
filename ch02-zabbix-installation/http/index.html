@@ -2213,15 +2213,15 @@ to actually perform basic authentication, using this file.</p>
 <p>Find <code>location / {</code> block in Nginx configuration file that defines your Zabbix
 WebUI (if you followed the installation steps as described in earlier chapters,
 this should be in <code>/etc/nginx/conf.d/zabbix.conf</code>) and add these two lines:</p>
-<p>!!!! info</p>
-<div class="language-text highlight"><pre><span></span><code>```
-    location / {
-        ...
-        auth_basic &quot;Basic Auth Protected Site&quot;;
-        auth_basic_user_file /etc/nginx/httpauth;
-    }
-```
-</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>    location / {
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>        ...
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>        auth_basic &quot;Basic Auth Protected Site&quot;;
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>        auth_basic_user_file /etc/nginx/httpauth;
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    }
+</span></code></pre></div>
+</div>
 <p>Do not forget to restart Nginx service after making this change.</p>
 <h2 id="configure-authentication-file-on-apache-httpd">Configure authentication file on Apache HTTPD</h2>
 <p>Find <code>&lt;Directory "/usr/share/zabbix"&gt;</code> block in Apache HTTPD configuration file
