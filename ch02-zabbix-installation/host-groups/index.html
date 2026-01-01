@@ -2106,9 +2106,8 @@ Groups menu</em></p>
 <li><strong>Template groups</strong>: A newer addition, specifically created for organizing templates.</li>
 </ul>
 <details class="info" open="open">
-<summary>Info</summary>
-<p><strong>If you're migrating from an older Zabbix version:</strong>
-In previous versions, templates and hosts were often placed in the same groups.
+<summary>Migrating from an older Zabbix version</summary>
+<p>In previous versions, templates and hosts were often placed in the same groups.
 This led to confusion, particularly for new users, as templates don't technically
 belong to host groups in Zabbix. As of recent versions (starting from Zabbix
 6.x), template groups are separated out for better clarity.</p>
@@ -2154,8 +2153,8 @@ This allows you to represent hierarchies such as:</p>
 <p>These nested group names are <strong>just names</strong> Zabbix does not require that parent
 folders (e.g., <code>Europe</code>) physically exist as separate groups unless you explicitly
 create them.</p>
-<details class="note" open="open">
-<summary>Note</summary>
+<details class="warning" open="open">
+<summary>Warning</summary>
 <ul>
 <li>You cannot escape the <code>/</code> character.</li>
 <li>Group names <strong>cannot</strong> contain leading/trailing slashes or multiple consecutive

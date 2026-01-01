@@ -5441,7 +5441,7 @@ during installation which has administrative privileges on the PostgreSQL instan
 To administer the database, you will need to execute commands as the <code>postgres</code> user.</p>
 <p>First, create the Zabbix server database user (also referred to as a "role" in PostgreSQL):</p>
 <div class="admonition info">
-<p class="admonition-title">create server users</p>
+<p class="admonition-title">Create server users</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-54-1"><a id="__codelineno-54-1" name="__codelineno-54-1" href="#ch01-zabbix-components-basic-installation-__codelineno-54-1"></a>sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>createuser<span class="w"> </span>--pwprompt<span class="w"> </span>zabbix-srv
 </span><span id="__span-54-2"><a id="__codelineno-54-2" name="__codelineno-54-2" href="#ch01-zabbix-components-basic-installation-__codelineno-54-2"></a>Enter<span class="w"> </span>password<span class="w"> </span><span class="k">for</span><span class="w"> </span>new<span class="w"> </span>role:<span class="w"> </span>&lt;server-password&gt;
 </span><span id="__span-54-3"><a id="__codelineno-54-3" name="__codelineno-54-3" href="#ch01-zabbix-components-basic-installation-__codelineno-54-3"></a>Enter<span class="w"> </span>it<span class="w"> </span>again:<span class="w"> </span>&lt;server-password&gt;
@@ -6731,6 +6731,8 @@ it into a powerful observability platform.</p>
 </ol>
 <h2 id="ch01-zabbix-components-basic-installation-useful-urls">Useful URLs</h2>
 <ul>
+<li><a href="https://en.opensuse.org/SDB:PostgreSQL">https://en.opensuse.org/SDB:PostgreSQL</a></li>
+<li><a href="https://help.ubuntu.com/community/PostgreSQL">https://help.ubuntu.com/community/PostgreSQL</a></li>
 <li><a href="https://www.postgresql.org/docs/current/ddl-priv.html">https://www.postgresql.org/docs/current/ddl-priv.html</a></li>
 <li><a href="https://www.zabbix.com/download">https://www.zabbix.com/download</a></li>
 <li><a href="https://www.zabbix.com/documentation/current/en/manual">https://www.zabbix.com/documentation/current/en/manual</a></li>
@@ -7442,21 +7444,23 @@ Information</em></p>
 </tbody>
 </table>
 <details class="note" open="open">
-<summary>Note</summary>
-<p><code>Global script</code> execution on Zabbix server can be enabled by going to the
-zabbix server configuration file and setting <code>EnableGlobalScripts=1</code>. For new
-installations, since Zabbix 7.0, global script execution on Zabbix server is
+<summary>Enabling Global script execution</summary>
+<p><code>Global script</code> execution on Zabbix server can be enabled by setting 
+<code>EnableGlobalScripts=1</code> in the Zabbix server configuration at <code>/etc/zabbix/zabbix_server.d/</code>.
+For new installations, since Zabbix 7.0, global script execution is
 disabled by default.</p>
 </details>
 <details class="tip" open="open">
 <summary>Tip</summary>
-<p>System information may display some additional warnings like when your database
- doesn't have the correct character set or collation UTF-8.
- Also when the database you used is lower or higher then the recommended version
- or when there are misconfigurations on housekeeper or TimescaleDB.
- Another warning you can see is about database history tables that aren't
- upgraded or primary keys that have not been set. This is possible if you are
- coming from an older version before Zabbix 6 and never did the upgrade.</p>
+<p>System information may display some additional warnings like:</p>
+<ul>
+<li>when your database doesn't have the correct character set or collation UTF-8.</li>
+<li>when the database you used is lower or higher then the recommended version or</li>
+<li>when there are misconfigurations on housekeeper or TimescaleDB.</li>
+</ul>
+<p>Another warning you can see is about database history tables that aren't
+upgraded or primary keys that have not been set. This is possible if you are
+coming from an older version before Zabbix 6 and never did the upgrade.</p>
 </details>
 <hr />
 <h2 id="ch02-zabbix-installation-frontend-the-main-menu-explained">The main menu explained</h2>
@@ -7593,15 +7597,15 @@ menu</em></p>
 <summary>Info</summary>
 <p>More information can be found in the online Zabbix documentation <a href="https://www.zabbix.com/documentation/7.0/en/manual/web_interface/frontend_sections">here</a></p>
 </details>
-<details class="info" open="open">
-<summary>Info</summary>
-<p>You will see that Zabbix is using the modal forms in the frontend on many places.
+<details class="tip movable modal forms" open="open">
+<summary>Tip</summary>
+<p>You will see that Zabbix is using modal forms in the frontend on many places.
 The problem is that they are not movable. <a href="https://github.com/gr8b/zabbix-module-uitwix/">This</a>
 module created by one of the Zabbix developers <code>UI Twix</code> will solve this problem
 for you.</p>
 </details>
-<details class="note" open="open">
-<summary>Note</summary>
+<details class="warning" open="open">
+<summary>Warning</summary>
 <p>At time of writing there is no Dashboard import/export functionality in zabbix.
 So when upgrading dashboards it needs to be created by hand. It was on the roadmap
 for 7 but didn't made it so feel free to vote <a href="https://support.zabbix.com/browse/ZBXNEXT-5419">https://support.zabbix.com/browse/ZBXNEXT-5419</a></p>
@@ -7647,15 +7651,9 @@ monitoring workflows in the chapters that follow.</p>
 </ul>
 <h2 id="ch02-zabbix-installation-frontend-useful-urls">Useful URLs</h2>
 <ul>
-<li>
-<p>https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/dashboards</p>
-</li>
-<li>
-<p>https://blog.zabbix.com/handy-tips-6-organize-your-dashboards-and-create-slideshows-with-dashboard-pages/17511/</p>
-</li>
-<li>
-<p>https://blog.zabbix.com/interactive-dashboard-creation-for-large-organizations-and-msps/30132/</p>
-</li>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/dashboards">https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/dashboards</a></li>
+<li><a href="https://blog.zabbix.com/handy-tips-6-organize-your-dashboards-and-create-slideshows-with-dashboard-pages/17511/">https://blog.zabbix.com/handy-tips-6-organize-your-dashboards-and-create-slideshows-with-dashboard-pages/17511/</a></li>
+<li><a href="https://blog.zabbix.com/interactive-dashboard-creation-for-large-organizations-and-msps/30132/">https://blog.zabbix.com/interactive-dashboard-creation-for-large-organizations-and-msps/30132/</a></li>
 </ul></section><section class="print-page" id="ch02-zabbix-installation-host-groups" heading-number="7.3"><nav class='md-tags'><span class='md-tag'>beginner</span></nav><h1 id="host-groups">Host Groups</h1>
 <p>In Zabbix, <strong>host groups</strong> serve as a foundational mechanism for organizing monitored
 entities. They allow you to logically categorize hosts for easier management, simplified
@@ -7682,9 +7680,8 @@ Groups menu</em></p>
 <li><strong>Template groups</strong>: A newer addition, specifically created for organizing templates.</li>
 </ul>
 <details class="info" open="open">
-<summary>Info</summary>
-<p><strong>If you're migrating from an older Zabbix version:</strong>
-In previous versions, templates and hosts were often placed in the same groups.
+<summary>Migrating from an older Zabbix version</summary>
+<p>In previous versions, templates and hosts were often placed in the same groups.
 This led to confusion, particularly for new users, as templates don't technically
 belong to host groups in Zabbix. As of recent versions (starting from Zabbix
 6.x), template groups are separated out for better clarity.</p>
@@ -7730,8 +7727,8 @@ This allows you to represent hierarchies such as:</p>
 <p>These nested group names are <strong>just names</strong> Zabbix does not require that parent
 folders (e.g., <code>Europe</code>) physically exist as separate groups unless you explicitly
 create them.</p>
-<details class="note" open="open">
-<summary>Note</summary>
+<details class="warning" open="open">
+<summary>Warning</summary>
 <ul>
 <li>You cannot escape the <code>/</code> character.</li>
 <li>Group names <strong>cannot</strong> contain leading/trailing slashes or multiple consecutive
@@ -7795,6 +7792,7 @@ of <strong>User Groups</strong>.</p>
 and structuring access to the monitored data and configuration entities. This
 chapter details the function of user groups, guides you through their configuration,
 and outlines best practices for applying them in a robust, real world deployment.</p>
+<hr />
 <h2 id="ch02-zabbix-installation-user-groups-the-role-of-a-user-group">The Role of a User Group</h2>
 <p>A <strong>User Group</strong> in Zabbix is a logical collection of individual user accounts.
 Rather than managing permissions for hundreds of users individually, Zabbix requires
@@ -7888,7 +7886,7 @@ not be distracted by network switch problems.</p>
 <p>When a user is a member of multiple groups, the tag filters apply with <strong>OR logic</strong>.
 If any of the user's groups allows visibility of a specific problem based on its
 tags, the user will see it.</p>
-<details class="info" open="open">
+<details class="example" open="open">
 <summary>Example: Database Administrator Filter</summary>
 <p>To ensure a Database Administrator group only sees relevant issues, the problem
 tag filter would be configured to specify:
@@ -8218,8 +8216,8 @@ of access control in Zabbix 8.0. They define <em>what</em> each user can see and
 </ul>
 <h2 id="ch02-zabbix-installation-user-groups-useful-urls">Useful URLs</h2>
 <ul>
-<li>https://www.zabbix.com/documentation/current/en/manual/config/users_and_usergroups/usergroup</li>
-<li>https://www.zabbix.com/documentation/current/en/manual/config/users_and_usergroups/permissions</li>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/config/users_and_usergroups/usergroup">https://www.zabbix.com/documentation/current/en/manual/config/users_and_usergroups/usergroup</a></li>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/config/users_and_usergroups/permissions">https://www.zabbix.com/documentation/current/en/manual/config/users_and_usergroups/permissions</a></li>
 </ul></section><section class="print-page" id="ch02-zabbix-installation-user-roles" heading-number="7.5"><nav class='md-tags'><span class='md-tag'>beginner</span></nav><h1 id="user-roles">User Roles</h1>
 <p>The Zabbix <em>User Role</em> system, introduced in Zabbix 5.2, defines what a user is
 allowed to do within the Zabbix frontend and via the API. Unlike User Groups which
@@ -8814,12 +8812,6 @@ username and password. When a user attempts to access Zabbix WebUI, the
 browser pops up a dialog asking for credentials before sending anything over
 to Zabbix WebUI php code.</p>
 <p>An HTTP server has a file with credentials that is used to authenticate users.</p>
-<details class="note" open="open">
-<summary>Note</summary>
-<p>IMPORTANT: usernames configured for basic authentication in HTTP server
-must exit in Zabbix. But only passwords configured in HTTP server are used
-for users authentication.</p>
-</details>
 <p>First let's see how we can configure basic authentication in HTTP server.</p>
 <details class="warning" open="open">
 <summary>Warning</summary>
@@ -8827,32 +8819,80 @@ for users authentication.</p>
 basic authentication. Please refer to respective HTTP server documentation
 for more details</p>
 </details>
-<h2 id="ch02-zabbix-installation-http-basic-authentication-in-nginx">Basic authentication in Nginx</h2>
+<h2 id="ch02-zabbix-installation-http-basic-authentication">Basic authentication</h2>
+<p>To enable basic authentication, we first need a "password-file" containing all
+usernames and passwords that are allowed to access the frontend.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>IMPORTANT: usernames configured for basic authentication in HTTP server
+must exit in Zabbix. But only passwords configured in HTTP server are used
+for users authentication.</p>
+</div>
+<p>To create this file we need the command <code>htpasswd</code>. Execute following commands
+to ensure we have this utility:</p>
+<div class="admonition info">
+<p class="admonition-title">Install htpasswd utility</p>
+</div>
+<p>Red Hat
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#ch02-zabbix-installation-http-__codelineno-0-1"></a>dnf<span class="w"> </span>install<span class="w"> </span>httpd-utils
+</span></code></pre></div></p>
+<p>SUSE
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#ch02-zabbix-installation-http-__codelineno-1-1"></a>zypper<span class="w"> </span>install<span class="w"> </span>apache2-utils
+</span></code></pre></div></p>
+<p>Ubuntu
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#ch02-zabbix-installation-http-__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>apache2-utils
+</span></code></pre></div></p>
+<p>Next we will create the required file and the <code>Admin</code> user in it:</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+</div>
+<p>NGINX
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#ch02-zabbix-installation-http-__codelineno-3-1"></a>sudo<span class="w"> </span>htpasswd<span class="w"> </span>-c<span class="w"> </span>/etc/nginx/httpauth<span class="w"> </span>Admin
+</span></code></pre></div></p>
+<p>Apache on Red Hat
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#ch02-zabbix-installation-http-__codelineno-4-1"></a>sudo<span class="w"> </span>htpasswd<span class="w"> </span>-c<span class="w"> </span>/etc/httpd/.htpasswd<span class="w"> </span>Admin
+</span></code></pre></div></p>
+<p>Apache on SUSE / Ubuntu
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#ch02-zabbix-installation-http-__codelineno-5-1"></a>sudo<span class="w"> </span>htpasswd<span class="w"> </span>-c<span class="w"> </span>/etc/apache2/.htpasswd<span class="w"> </span>Admin
+</span></code></pre></div></p>
+<p>This command will request you to input the desired password for the <code>Admin</code> user
+and will then create the specified password-file with the username and encrypted
+password in it.</p>
+<p>For any additional user we can use the same command but without the <code>-c</code> option
+as the file is now already created:</p>
+<details class="example" open="open">
+<summary>Add additional users</summary>
+</details>
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#ch02-zabbix-installation-http-__codelineno-6-1"></a><span class="go">localhost:~&gt; sudo htpasswd /etc/nginx/httpauth user1</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#ch02-zabbix-installation-http-__codelineno-6-2"></a><span class="go">New password: </span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#ch02-zabbix-installation-http-__codelineno-6-3"></a><span class="go">Re-type new password: </span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#ch02-zabbix-installation-http-__codelineno-6-4"></a><span class="go">Adding password for user user1</span>
+</span></code></pre></div>
+<p>Which will add <code>user1</code> to the <code>/etc/nginx/httpauth</code>-file. Replace this path with
+the path of this file on your distribution/webserver.</p>
+<p>In the end the password-file should look something like:</p>
+<details class="example" open="open">
+<summary>Example password-file</summary>
+</details>
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#ch02-zabbix-installation-http-__codelineno-7-1"></a><span class="go">localhost:~&gt; sudo cat /etc/nginx/httpauth</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#ch02-zabbix-installation-http-__codelineno-7-2"></a><span class="gp">Admin:$1$8T6SbR/N$</span>rgANUPGvFh7H.R1Mffexh.
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#ch02-zabbix-installation-http-__codelineno-7-3"></a><span class="gp">user1:$1$GXoDIOCA$</span>u/n1kkDeFwcI4KhyHkY6p/
+</span></code></pre></div>
+<p>Now that we have a password-file, we can continue to configure the web-browser
+to actually perform basic authentication, using this file.</p>
+<h3 id="ch02-zabbix-installation-http-configure-authentication-file-on-nginx">Configure authentication file on Nginx</h3>
 <p>Find <code>location / {</code> block in Nginx configuration file that defines your Zabbix
-WebUI (in my Zabbix deployment it is <code>/etc/nginx/conf.d/nginx.conf</code> file) and
-add these two lines:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#ch02-zabbix-installation-http-__codelineno-0-1"></a>    location / {
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#ch02-zabbix-installation-http-__codelineno-0-2"></a>        ...
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#ch02-zabbix-installation-http-__codelineno-0-3"></a>        auth_basic &quot;Basic Auth Protected Site&quot;;
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#ch02-zabbix-installation-http-__codelineno-0-4"></a>        auth_basic_user_file /etc/nginx/httpauth;
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#ch02-zabbix-installation-http-__codelineno-0-5"></a>    }
+WebUI (if you followed the installation steps as described in earlier chapters,
+this should be in <code>/etc/nginx/conf.d/zabbix.conf</code>) and add these two lines:</p>
+<p>!!!! info</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#ch02-zabbix-installation-http-__codelineno-8-1"></a>    location / {
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#ch02-zabbix-installation-http-__codelineno-8-2"></a>        ...
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#ch02-zabbix-installation-http-__codelineno-8-3"></a>        auth_basic &quot;Basic Auth Protected Site&quot;;
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#ch02-zabbix-installation-http-__codelineno-8-4"></a>        auth_basic_user_file /etc/nginx/httpauth;
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#ch02-zabbix-installation-http-__codelineno-8-5"></a>    }
 </span></code></pre></div>
 <p>Do not forget to restart Nginx service after making this change.</p>
-<p>Then you need to create <code>/etc/nginx/httpauth</code> file which will keep all users'
-password (make sure to restrict access to this file). Format of this file is
-<code>username:hashed_password</code>, for example, for
-users <code>Admin</code> and <code>test</code>:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#ch02-zabbix-installation-http-__codelineno-1-1"></a>Admin:$1$8T6SbR/N$rgANUPGvFh7H.R1Mffexh.
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#ch02-zabbix-installation-http-__codelineno-1-2"></a>test:$1$GXoDIOCA$u/n1kkDeFwcI4KhyHkY6p/
-</span></code></pre></div>
-<p>To generate hashed_password you can use <code>openssl</code> tool entering the password
-twice:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#ch02-zabbix-installation-http-__codelineno-2-1"></a>openssl passwd
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#ch02-zabbix-installation-http-__codelineno-2-2"></a>Password:
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#ch02-zabbix-installation-http-__codelineno-2-3"></a>Verifying - Password:
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#ch02-zabbix-installation-http-__codelineno-2-4"></a>$1$8T6SbR/N$rgANUPGvFh7H.R1Mffexh.
-</span></code></pre></div></p>
-<h2 id="ch02-zabbix-installation-http-basic-authentication-in-apache-httpd">Basic authentication in Apache HTTPD</h2>
+<h2 id="ch02-zabbix-installation-http-configure-authentication-file-on-apache-httpd">Configure authentication file on Apache HTTPD</h2>
 <p>Find <code>&lt;Directory "/usr/share/zabbix"&gt;</code> block in Apache HTTPD configuration file
 that defines your Zabbix WebUI (in my case it is <code>/etc/zabbix/apache.conf</code>) and
 add these lines:</p>
@@ -8860,40 +8900,28 @@ add these lines:</p>
 <summary>Note</summary>
 <p>By default configuration has <code>Require all granted</code>, remove this line.</p>
 </details>
-<p>For Ubuntu/Debian:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#ch02-zabbix-installation-http-__codelineno-3-1"></a>    &lt;Directory &quot;/usr/share/zabbix&quot;&gt;
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#ch02-zabbix-installation-http-__codelineno-3-2"></a>        ...
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#ch02-zabbix-installation-http-__codelineno-3-3"></a>        AuthType Basic
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#ch02-zabbix-installation-http-__codelineno-3-4"></a>        AuthName &quot;Restricted Content&quot;
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#ch02-zabbix-installation-http-__codelineno-3-5"></a>        AuthUserFile /etc/apache2/.htpasswd
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#ch02-zabbix-installation-http-__codelineno-3-6"></a>        Require valid-user
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#ch02-zabbix-installation-http-__codelineno-3-7"></a>    &lt;/Directory&gt;
+<details class="example" open="open">
+<summary>Example</summary>
+</details>
+<p>RedHat:
+  <div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#ch02-zabbix-installation-http-__codelineno-9-1"></a>    &lt;Directory &quot;/usr/share/zabbix&quot;&gt;
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#ch02-zabbix-installation-http-__codelineno-9-2"></a>        ...
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#ch02-zabbix-installation-http-__codelineno-9-3"></a>        AuthType Basic
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#ch02-zabbix-installation-http-__codelineno-9-4"></a>        AuthName &quot;Restricted Content&quot;
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#ch02-zabbix-installation-http-__codelineno-9-5"></a>        AuthUserFile /etc/httpd/.htpasswd
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#ch02-zabbix-installation-http-__codelineno-9-6"></a>        Require valid-user
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#ch02-zabbix-installation-http-__codelineno-9-7"></a>    &lt;/Directory&gt;
 </span></code></pre></div></p>
-<p>For RedHat:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#ch02-zabbix-installation-http-__codelineno-4-1"></a>    &lt;Directory &quot;/usr/share/zabbix&quot;&gt;
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#ch02-zabbix-installation-http-__codelineno-4-2"></a>        ...
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#ch02-zabbix-installation-http-__codelineno-4-3"></a>        AuthType Basic
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#ch02-zabbix-installation-http-__codelineno-4-4"></a>        AuthName &quot;Restricted Content&quot;
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#ch02-zabbix-installation-http-__codelineno-4-5"></a>        AuthUserFile /etc/httpd/.htpasswd
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#ch02-zabbix-installation-http-__codelineno-4-6"></a>        Require valid-user
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#ch02-zabbix-installation-http-__codelineno-4-7"></a>    &lt;/Directory&gt;
+<p>Ubuntu / SUSE
+  <div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#ch02-zabbix-installation-http-__codelineno-10-1"></a>    &lt;Directory &quot;/usr/share/zabbix&quot;&gt;
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#ch02-zabbix-installation-http-__codelineno-10-2"></a>        ...
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#ch02-zabbix-installation-http-__codelineno-10-3"></a>        AuthType Basic
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#ch02-zabbix-installation-http-__codelineno-10-4"></a>        AuthName &quot;Restricted Content&quot;
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#ch02-zabbix-installation-http-__codelineno-10-5"></a>        AuthUserFile /etc/apache2/.htpasswd
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#ch02-zabbix-installation-http-__codelineno-10-6"></a>        Require valid-user
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#ch02-zabbix-installation-http-__codelineno-10-7"></a>    &lt;/Directory&gt;
 </span></code></pre></div></p>
-<p>Do not forget to restart apache2 service after making this change.</p>
-<p>Create <code>/etc/apache2/.httpasswd</code> (<code>/etc/httpd/.htpassword</code> for RedHat) file that will have all the users with
-passwords, do it by using <code>htpasswd</code> tool, to add user <code>test</code> execute:</p>
-<p>For Ubuntu/Debian
-<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#ch02-zabbix-installation-http-__codelineno-5-1"></a>sudo htpasswd -c /etc/apache2/.htpasswd test
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#ch02-zabbix-installation-http-__codelineno-5-2"></a>New password: 
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#ch02-zabbix-installation-http-__codelineno-5-3"></a>Re-type new password: 
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#ch02-zabbix-installation-http-__codelineno-5-4"></a>Adding password for user test
-</span></code></pre></div></p>
-<p>For RedHat
-<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#ch02-zabbix-installation-http-__codelineno-6-1"></a>sudo htpasswd -c /etc/httpd/.htpasswd test
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#ch02-zabbix-installation-http-__codelineno-6-2"></a>New password: 
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#ch02-zabbix-installation-http-__codelineno-6-3"></a>Re-type new password: 
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#ch02-zabbix-installation-http-__codelineno-6-4"></a>Adding password for user test
-</span></code></pre></div></p>
-<p>To add more users to the file repeat the command without <code>-c</code> flag.</p>
+<p>Do not forget to restart apache2 or httpd service after making this change.</p>
 <h2 id="ch02-zabbix-installation-http-zabbix-configuration-for-http-authentication">Zabbix configuration for HTTP authentication</h2>
 <p>When we have a WEB server configured with basic authentication it is high time
 to configure Zabbix server. In Zabbix menu select <code>Users | Authentication |
@@ -8968,7 +8996,9 @@ frontend usability with robust protective measures.</p>
 </li>
 </ul>
 <h2 id="ch02-zabbix-installation-http-useful-urls">Useful URLs</h2>
-<p><a href="https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/users/authentication/http">https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/users/authentication/http</a></p></section><section class="print-page" id="ch02-zabbix-installation-ldap-ad" heading-number="7.6.2"><nav class='md-tags'><span class='md-tag'>expert</span></nav><h1 id="ldap-ad">LDAP / AD</h1>
+<ul>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/users/authentication/http">https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/users/authentication/http</a></li>
+</ul></section><section class="print-page" id="ch02-zabbix-installation-ldap-ad" heading-number="7.6.2"><nav class='md-tags'><span class='md-tag'>expert</span></nav><h1 id="ldap-ad">LDAP / AD</h1>
 <p>As any modern system Zabbix can perform users authentication using Lightweight
 Directory Access Protocol (LDAP). In theory LDAP is very well defined open
 protocol that should be vendor independent but its relative complexity plays a
@@ -8999,34 +9029,70 @@ very trivial task as new people join different teams (or leave). This problem
 is addressed by "users provisioning" and we'll cover this topic a bit later.
 For now let's take a look at how to configure LDAP authentication.</p>
 <h2 id="ch02-zabbix-installation-ldap-ad-configure-ldap">Configure LDAP</h2>
+<p>In this section, we will be using a custom demo LDAP server with pre-loaded
+data. You can set this demo environment up to check out the Zabbix LDAP authentication
+possibilities. Or you can skip the setup of the demo environment if you just want
+to connect your Zabbix instance to your existing LDAP or AD server.</p>
+<h3 id="ch02-zabbix-installation-ldap-ad-set-up-local-demo-ldap-server">Set up local demo LDAP server</h3>
 <p>We believe that it is better to learn this topic by example so we'll be using
-our own LDAP server that you can spin up in a container by executing:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#ch02-zabbix-installation-ldap-ad-__codelineno-0-1"></a># Install docker if you don&#39;t have it
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#ch02-zabbix-installation-ldap-ad-__codelineno-0-2"></a># For Ubuntu
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#ch02-zabbix-installation-ldap-ad-__codelineno-0-3"></a>apt install docker-ce
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#ch02-zabbix-installation-ldap-ad-__codelineno-0-4"></a>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#ch02-zabbix-installation-ldap-ad-__codelineno-0-5"></a># Start LDAP server container with pre-loaded data
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#ch02-zabbix-installation-ldap-ad-__codelineno-0-6"></a>docker run -p 3389:389 -p 6636:636 --name openldap-server --detach bgmot42/openldap-server:0.1.1
+our own LDAP server that you can spin up in a container for demo purposes.
+First we will need to ensure that we have a container engine installed. </p>
+<div class="admonition info">
+<p class="admonition-title">Install Podman container engine</p>
+</div>
+<p>Red Hat
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#ch02-zabbix-installation-ldap-ad-__codelineno-0-1"></a>dnf<span class="w"> </span>install<span class="w"> </span>podman
+</span></code></pre></div></p>
+<p>SUSE
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#ch02-zabbix-installation-ldap-ad-__codelineno-1-1"></a>zypper<span class="w"> </span>install<span class="w"> </span>podman
+</span></code></pre></div></p>
+<p>Ubuntu
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#ch02-zabbix-installation-ldap-ad-__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>podman
+</span></code></pre></div></p>
+<details class="note" open="open">
+<summary>What is Podman</summary>
+</details>
+<p>Podman is a container engine designed as a drop-in replacement for Docker, 
+  but with a daemonless architecture. This means it runs containers directly 
+  under the user’s control, improving security and simplicity. Podman is fully 
+  compatible with Docker’s CLI and supports rootless containers, making it ideal 
+  for development, testing, and production environments where security and 
+  isolation are priorities.</p>
+<details class="tip" open="open">
+<summary>Tip</summary>
+</details>
+<p>If you want to use Docker instead of Podman, you can just replace any 
+  occurances of <code>podman</code> in following instructions by <code>docker</code>.</p>
+<p>Now we can start containers. Start an OpenLDAP server in a container:</p>
+<div class="admonition info">
+<p class="admonition-title">Start an OpenLDAP server in a container with pre-loaded data</p>
+</div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#ch02-zabbix-installation-ldap-ad-__codelineno-3-1"></a>podman<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">3389</span>:389<span class="w"> </span>-p<span class="w"> </span><span class="m">6636</span>:636<span class="w"> </span>--name<span class="w"> </span>openldap-server<span class="w"> </span>--detach<span class="w"> </span>bgmot42/openldap-server:0.1.1
 </span></code></pre></div>
-<p>All users (including <code>ldap_search</code>) in this test LDAP server for simplicity
+<p>For simplicity, all users (including <code>ldap_search</code>) in this test LDAP server
 have the word <code>password</code> as their passwords.</p>
 <p>Users <code>user1</code> and <code>user2</code> is a member of <code>zabbix-admins</code> LDAP group. User
 <code>user3</code> is a member of <code>zabbix-users</code> LDAP group.</p>
-<details class="optional" open="open">
-<summary>Optional</summary>
-<p>To visually see LDAP server data (and add your own configuration like users
-and groups) you can start this standard container
-<code>docker run -p 8081:80 -p 4443:443 --name phpldapadmin --hostname phpldapadmin\
---link openldap-server:ldap-host --env PHPLDAPADMIN_LDAP_HOSTS=ldap-host\
---detach osixia/phpldapadmin:0.9.0</code>
-Now you can access this LDAP server via https://<ip_address>:4443 (or any
+<p>???+ tip Tip: use phpLdapAdmin as an LDAP GUI</p>
+<div class="language-text highlight"><pre><span></span><code>To visually see LDAP server data (and add your own configuration like users
+and groups) you can start this standard container:
+
+```bash
+podman run -p 8081:80 -p 4443:443 --name phpldapadmin --hostname phpldapadmin\
+  --link openldap-server:ldap-host --env PHPLDAPADMIN_LDAP_HOSTS=ldap-host\
+  --detach osixia/phpldapadmin:0.9.0
+```
+Now you can access this LDAP server via https://&lt;ip_address&gt;:4443 (or any
 other port you configure to access this Docker container), click Login,
 enter “cn=admin,dc=example,dc=org” in Login DN field and “password” in
 Password field, click Authenticate. You should see the following structure
-of the LDAP server (picture shows ‘zabbix-admins’ group configuration):</p>
-<p><img align="center" alt="LDAP server data" src="../ch02-zabbix-installation/external-auth/ch02.4-ldap-ldap-server-data.png" /></p>
-<p><em>2.4 LDAP server data</em></p>
-</details>
+of the LDAP server (picture shows ‘zabbix-admins’ group configuration):
+
+![LDAP server data](external-auth/ch02.4-ldap-ldap-server-data.png){ align=center }
+
+_2.4 LDAP server data_
+</code></pre></div>
+<h3 id="ch02-zabbix-installation-ldap-ad-configure-zabbix-ldap-authentication">Configure Zabbix LDAP authentication</h3>
 <p>Let's configure LDAP server settings in Zabbix. In Zabbix menu select
 <code>Users | Authentication | LDAP settings</code>, then check the check-box
 <code>Enable LDAP authentication</code> and click <code>Add</code> under <code>Servers</code> (change IP address
@@ -9044,9 +9110,9 @@ need to provide <em>Bind password</em>. This DN should have access to a sub-tree
 LDAP data hierarchy where all your users are configured. In our case all the
 users configured “under” <em>ou=Users,dc=example,dc=org</em>, this DN is called base
 DN and used by Zabbix as so to say “starting point” to start searching.</p>
-<details class="note" open="open">
-<summary>Note</summary>
-<p>technically it is possible to bind to LDAP server anonymously, without
+<details class="warning" open="open">
+<summary>Anonymous LDAP binding</summary>
+<p>Technically it is possible to bind to the LDAP server anonymously, without
 providing a password but this is a huge breach in security as the whole
 users sub-tree becomes available for anonymous (unauthenticated) search,
 i.e. effectively exposed to any LDAP client that can connect to LDAP server
@@ -9056,8 +9122,8 @@ not provide this functionality.</p>
 <p>Click <code>Test</code> button and enter <code>user1</code> and <code>password</code> in the respective fields, the
 test should be successful confirming Zabbix can authenticate users against LDAP
 server.</p>
-<details class="note" open="open">
-<summary>Note</summary>
+<details class="tip" open="open">
+<summary>Tip</summary>
 <p>We can add multiple LDAP servers and use them for different <code>User groups</code>.</p>
 </details>
 <p>To test real users login using LDAP authentication we need to create user
@@ -9259,7 +9325,9 @@ consistency across their access control and authentication strategy.</p>
 </li>
 </ul>
 <h2 id="ch02-zabbix-installation-ldap-ad-useful-urls">Useful URLs</h2>
-<p><a href="https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/users/authentication/ldap">https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/users/authentication/ldap</a></p></section><section class="print-page" id="ch02-zabbix-installation-saml" heading-number="7.6.3"><nav class='md-tags'><span class='md-tag'>advanced</span></nav><h1 id="saml">SAML</h1>
+<ul>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/users/authentication/ldap">https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/users/authentication/ldap</a></li>
+</ul></section><section class="print-page" id="ch02-zabbix-installation-saml" heading-number="7.6.3"><nav class='md-tags'><span class='md-tag'>advanced</span></nav><h1 id="saml">SAML</h1>
 <h2 id="ch02-zabbix-installation-saml-google">Google</h2>
 <p>Integrating Security Assertion Markup Language (SAML) for authentication within
 Zabbix presents a non-trivial configuration challenge. This process necessitates
