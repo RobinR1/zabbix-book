@@ -8825,38 +8825,38 @@ for more details</p>
 <p>To enable basic authentication, we first need a "password-file" containing all
 usernames and passwords that are allowed to access the frontend.</p>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>IMPORTANT: usernames configured for basic authentication in HTTP server
-must exit in Zabbix. But only passwords configured in HTTP server are used
+<p class="admonition-title">Important</p>
+<p>Usernames configured for basic authentication in HTTP server
+must exist in Zabbix. But only passwords configured in HTTP server are used
 for users authentication.</p>
 </div>
 <p>To create this file we need the command <code>htpasswd</code>. Execute following commands
 to ensure we have this utility:</p>
 <div class="admonition info">
 <p class="admonition-title">Install htpasswd utility</p>
-</div>
 <p>Red Hat
-  <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#ch02-zabbix-installation-http-__codelineno-0-1"></a>dnf<span class="w"> </span>install<span class="w"> </span>httpd-utils
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#ch02-zabbix-installation-http-__codelineno-0-1"></a>dnf<span class="w"> </span>install<span class="w"> </span>httpd-utils
 </span></code></pre></div></p>
 <p>SUSE
-  <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#ch02-zabbix-installation-http-__codelineno-1-1"></a>zypper<span class="w"> </span>install<span class="w"> </span>apache2-utils
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#ch02-zabbix-installation-http-__codelineno-1-1"></a>zypper<span class="w"> </span>install<span class="w"> </span>apache2-utils
 </span></code></pre></div></p>
 <p>Ubuntu
-  <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#ch02-zabbix-installation-http-__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>apache2-utils
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#ch02-zabbix-installation-http-__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>apache2-utils
 </span></code></pre></div></p>
+</div>
 <p>Next we will create the required file and the <code>Admin</code> user in it:</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-</div>
 <p>NGINX
-  <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#ch02-zabbix-installation-http-__codelineno-3-1"></a>sudo<span class="w"> </span>htpasswd<span class="w"> </span>-c<span class="w"> </span>/etc/nginx/httpauth<span class="w"> </span>Admin
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#ch02-zabbix-installation-http-__codelineno-3-1"></a>sudo<span class="w"> </span>htpasswd<span class="w"> </span>-c<span class="w"> </span>/etc/nginx/httpauth<span class="w"> </span>Admin
 </span></code></pre></div></p>
 <p>Apache on Red Hat
-  <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#ch02-zabbix-installation-http-__codelineno-4-1"></a>sudo<span class="w"> </span>htpasswd<span class="w"> </span>-c<span class="w"> </span>/etc/httpd/.htpasswd<span class="w"> </span>Admin
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#ch02-zabbix-installation-http-__codelineno-4-1"></a>sudo<span class="w"> </span>htpasswd<span class="w"> </span>-c<span class="w"> </span>/etc/httpd/.htpasswd<span class="w"> </span>Admin
 </span></code></pre></div></p>
 <p>Apache on SUSE / Ubuntu
-  <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#ch02-zabbix-installation-http-__codelineno-5-1"></a>sudo<span class="w"> </span>htpasswd<span class="w"> </span>-c<span class="w"> </span>/etc/apache2/.htpasswd<span class="w"> </span>Admin
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#ch02-zabbix-installation-http-__codelineno-5-1"></a>sudo<span class="w"> </span>htpasswd<span class="w"> </span>-c<span class="w"> </span>/etc/apache2/.htpasswd<span class="w"> </span>Admin
 </span></code></pre></div></p>
+</div>
 <p>This command will request you to input the desired password for the <code>Admin</code> user
 and will then create the specified password-file with the username and encrypted
 password in it.</p>
@@ -8864,22 +8864,22 @@ password in it.</p>
 as the file is now already created:</p>
 <details class="example" open="open">
 <summary>Add additional users</summary>
-</details>
 <div class="language-shell-session highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#ch02-zabbix-installation-http-__codelineno-6-1"></a><span class="go">localhost:~&gt; sudo htpasswd /etc/nginx/httpauth user1</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#ch02-zabbix-installation-http-__codelineno-6-2"></a><span class="go">New password: </span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#ch02-zabbix-installation-http-__codelineno-6-3"></a><span class="go">Re-type new password: </span>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#ch02-zabbix-installation-http-__codelineno-6-4"></a><span class="go">Adding password for user user1</span>
 </span></code></pre></div>
+</details>
 <p>Which will add <code>user1</code> to the <code>/etc/nginx/httpauth</code>-file. Replace this path with
 the path of this file on your distribution/webserver.</p>
 <p>In the end the password-file should look something like:</p>
 <details class="example" open="open">
 <summary>Example password-file</summary>
-</details>
 <div class="language-shell-session highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#ch02-zabbix-installation-http-__codelineno-7-1"></a><span class="go">localhost:~&gt; sudo cat /etc/nginx/httpauth</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#ch02-zabbix-installation-http-__codelineno-7-2"></a><span class="gp">Admin:$1$8T6SbR/N$</span>rgANUPGvFh7H.R1Mffexh.
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#ch02-zabbix-installation-http-__codelineno-7-3"></a><span class="gp">user1:$1$GXoDIOCA$</span>u/n1kkDeFwcI4KhyHkY6p/
 </span></code></pre></div>
+</details>
 <p>Now that we have a password-file, we can continue to configure the web-browser
 to actually perform basic authentication, using this file.</p>
 <h3 id="ch02-zabbix-installation-http-configure-authentication-file-on-nginx">Configure authentication file on Nginx</h3>
@@ -8887,12 +8887,14 @@ to actually perform basic authentication, using this file.</p>
 WebUI (if you followed the installation steps as described in earlier chapters,
 this should be in <code>/etc/nginx/conf.d/zabbix.conf</code>) and add these two lines:</p>
 <p>!!!! info</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#ch02-zabbix-installation-http-__codelineno-8-1"></a>    location / {
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#ch02-zabbix-installation-http-__codelineno-8-2"></a>        ...
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#ch02-zabbix-installation-http-__codelineno-8-3"></a>        auth_basic &quot;Basic Auth Protected Site&quot;;
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#ch02-zabbix-installation-http-__codelineno-8-4"></a>        auth_basic_user_file /etc/nginx/httpauth;
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#ch02-zabbix-installation-http-__codelineno-8-5"></a>    }
-</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>```
+    location / {
+        ...
+        auth_basic &quot;Basic Auth Protected Site&quot;;
+        auth_basic_user_file /etc/nginx/httpauth;
+    }
+```
+</code></pre></div>
 <p>Do not forget to restart Nginx service after making this change.</p>
 <h2 id="ch02-zabbix-installation-http-configure-authentication-file-on-apache-httpd">Configure authentication file on Apache HTTPD</h2>
 <p>Find <code>&lt;Directory "/usr/share/zabbix"&gt;</code> block in Apache HTTPD configuration file
@@ -8904,9 +8906,8 @@ add these lines:</p>
 </details>
 <details class="example" open="open">
 <summary>Example</summary>
-</details>
 <p>RedHat:
-  <div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#ch02-zabbix-installation-http-__codelineno-9-1"></a>    &lt;Directory &quot;/usr/share/zabbix&quot;&gt;
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#ch02-zabbix-installation-http-__codelineno-9-1"></a>    &lt;Directory &quot;/usr/share/zabbix&quot;&gt;
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#ch02-zabbix-installation-http-__codelineno-9-2"></a>        ...
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#ch02-zabbix-installation-http-__codelineno-9-3"></a>        AuthType Basic
 </span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#ch02-zabbix-installation-http-__codelineno-9-4"></a>        AuthName &quot;Restricted Content&quot;
@@ -8915,7 +8916,7 @@ add these lines:</p>
 </span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#ch02-zabbix-installation-http-__codelineno-9-7"></a>    &lt;/Directory&gt;
 </span></code></pre></div></p>
 <p>Ubuntu / SUSE
-  <div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#ch02-zabbix-installation-http-__codelineno-10-1"></a>    &lt;Directory &quot;/usr/share/zabbix&quot;&gt;
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#ch02-zabbix-installation-http-__codelineno-10-1"></a>    &lt;Directory &quot;/usr/share/zabbix&quot;&gt;
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#ch02-zabbix-installation-http-__codelineno-10-2"></a>        ...
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#ch02-zabbix-installation-http-__codelineno-10-3"></a>        AuthType Basic
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#ch02-zabbix-installation-http-__codelineno-10-4"></a>        AuthName &quot;Restricted Content&quot;
@@ -8923,6 +8924,7 @@ add these lines:</p>
 </span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#ch02-zabbix-installation-http-__codelineno-10-6"></a>        Require valid-user
 </span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#ch02-zabbix-installation-http-__codelineno-10-7"></a>    &lt;/Directory&gt;
 </span></code></pre></div></p>
+</details>
 <p>Do not forget to restart apache2 or httpd service after making this change.</p>
 <h2 id="ch02-zabbix-installation-http-zabbix-configuration-for-http-authentication">Zabbix configuration for HTTP authentication</h2>
 <p>When we have a WEB server configured with basic authentication it is high time
@@ -8964,6 +8966,7 @@ up Zabbix's HTTP authentication settings (such as domain removal and case sensit
 options). By coordinating web server authentication settings with Zabbix's internal
 configuration, you can achieve seamless and secure user login workflows that blend
 frontend usability with robust protective measures.</p>
+<hr />
 <h2 id="ch02-zabbix-installation-http-questions">Questions</h2>
 <ul>
 <li>
