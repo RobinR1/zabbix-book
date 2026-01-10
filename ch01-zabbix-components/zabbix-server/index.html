@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://thezabbixbook.com/ch01-zabbix-components/zabbix-server/">
       
       
-        <link rel="prev" href="../postgresql/">
+        <link rel="prev" href="../preparation/">
       
       
         <link rel="next" href="../zabbix-frontend/">
@@ -39,7 +39,7 @@
     
     
       
-        <title>Preparing the server for Zabbix - Zabbix Book</title>
+        <title>Installing the Zabbix server - Zabbix Book</title>
       
     
     
@@ -79,14 +79,14 @@
     
     
 
-    <meta property="og:title" content="Preparing the server for Zabbix">
+    <meta property="og:title" content="Installing the Zabbix server">
     <meta property="og:description" content="A free, community driven online resource to master Zabbix: built to give back, sustain the community, and help you become truly empowered with monitoring.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thezabbixbook.com/ch01-zabbix-components/zabbix-server/">
     <meta property="og:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Preparing the server for Zabbix">
+    <meta name="twitter:title" content="Installing the Zabbix server">
     <meta name="twitter:description" content="A free, community driven online resource to master Zabbix: built to give back, sustain the community, and help you become truly empowered with monitoring.">
     <meta name="twitter:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
     <meta property="og:image:width" content="1200">
@@ -111,7 +111,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#preparing-the-server-for-zabbix" class="md-skip">
+        <a href="#installing-the-zabbix-server" class="md-skip">
           Skip to content
         </a>
       
@@ -169,7 +169,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Preparing the server for Zabbix
+              Installing the Zabbix server
             
           </span>
         </div>
@@ -629,6 +629,8 @@
       
         
       
+        
+      
     
     
     
@@ -760,6 +762,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../preparation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preparing the system for Zabbix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -779,7 +809,7 @@
   <span class="md-ellipsis">
     
   
-    Preparing the server for Zabbix
+    Installing the Zabbix server
   
 
     
@@ -797,7 +827,7 @@
   <span class="md-ellipsis">
     
   
-    Preparing the server for Zabbix
+    Installing the Zabbix server
   
 
     
@@ -823,33 +853,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#disable-selinux-on-rhel" class="md-nav__link">
+  <a href="#populate-the-zabbix-database-instance" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Disable SELinux on RHEL
+        Populate the Zabbix database instance
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#install-the-zabbix-repository" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Install the Zabbix repository
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Install the Zabbix repository">
+    <nav class="md-nav" aria-label="Populate the Zabbix database instance">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#red-hat-specific-remarks" class="md-nav__link">
+  <a href="#populate-mariadbmysql-database" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Red Hat specific remarks
+        Populate MariaDB/MySQL Database
       
     </span>
   </a>
@@ -857,21 +876,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#opensuse-specific-remarks" class="md-nav__link">
+  <a href="#populate-the-postgresql-database" class="md-nav__link">
     <span class="md-ellipsis">
       
-        OpenSUSE specific remarks
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#adding-the-zabbix-repository" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Adding the Zabbix repository
+        Populate the PostgreSQL Database
       
     </span>
   </a>
@@ -880,6 +888,28 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configure-firewall-to-allow-zabbix-trapper-connections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configure firewall to allow Zabbix trapper connections
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#starting-the-zabbix-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Starting the Zabbix server
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1879,33 +1909,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#disable-selinux-on-rhel" class="md-nav__link">
+  <a href="#populate-the-zabbix-database-instance" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Disable SELinux on RHEL
+        Populate the Zabbix database instance
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#install-the-zabbix-repository" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Install the Zabbix repository
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Install the Zabbix repository">
+    <nav class="md-nav" aria-label="Populate the Zabbix database instance">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#red-hat-specific-remarks" class="md-nav__link">
+  <a href="#populate-mariadbmysql-database" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Red Hat specific remarks
+        Populate MariaDB/MySQL Database
       
     </span>
   </a>
@@ -1913,21 +1932,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#opensuse-specific-remarks" class="md-nav__link">
+  <a href="#populate-the-postgresql-database" class="md-nav__link">
     <span class="md-ellipsis">
       
-        OpenSUSE specific remarks
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#adding-the-zabbix-repository" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Adding the Zabbix repository
+        Populate the PostgreSQL Database
       
     </span>
   </a>
@@ -1936,6 +1944,28 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configure-firewall-to-allow-zabbix-trapper-connections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configure firewall to allow Zabbix trapper connections
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#starting-the-zabbix-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Starting the Zabbix server
+      
+    </span>
+  </a>
   
 </li>
       
@@ -2048,183 +2078,7 @@
   
 
 
-<h1 id="preparing-the-server-for-zabbix">Preparing the server for Zabbix</h1>
-<p>Before installing the Zabbix server and/or frontend, ensure that the server(s)
-meet the configuration requirements outlined in the previous section: <a href="../../ch00-getting-started/Requirements/">System Requirements</a>.</p>
-<p>If you plan to install the Zabbix server and frontend on separate machines,
-prepare each server individually according to the instructions provided here.</p>
-<hr />
-<h2 id="disable-selinux-on-rhel">Disable SELinux on RHEL</h2>
-<p>Another critical step at this stage if you use Red Hat based systems is disabling
-SELinux, which can interfere with the installation and operation of Zabbix.
-We will revisit SELinux at the end of this chapter once our installation is finished.</p>
-<p>To check the current status of SELinux, you can use the following command: `sestatus``</p>
-<div class="admonition info">
-<p class="admonition-title">Selinux status</p>
-<div class="language-console highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="go">~# sestatus</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="go">SELinux status:                 enabled</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="go">SELinuxfs mount:                /sys/fs/selinux</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="go">SELinux root directory:         /etc/selinux</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="go">Loaded policy name:             targeted</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="go">Current mode:                   enforcing</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="go">Mode from config file:          enforcing</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="go">Policy MLS status:              enabled</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="go">Policy deny_unknown status:     allowed</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="go">Memory protection checking:     actual (secure)</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="go">Max kernel policy version:      33</span>
-</span></code></pre></div>
-</div>
-<p>As shown, the system is currently in enforcing mode. To temporarily disable SELinux,
-you can run the following command: <code>setenforce 0</code></p>
-<div class="admonition info">
-<p class="admonition-title">Disable SeLinux</p>
-<div class="language-console highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="go">~# setenforce 0</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="go">~# sestatus</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="go">SELinux status:                 enabled</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="go">SELinuxfs mount:                /sys/fs/selinux</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="go">SELinux root directory:         /etc/selinux</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="go">Loaded policy name:             targeted</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="go">Current mode:                   permissive</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="go">Mode from config file:          enforcing</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="go">Policy MLS status:              enabled</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="go">Policy deny_unknown status:     allowed</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="go">Memory protection checking:     actual (secure)</span>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="go">Max kernel policy version:      33</span>
-</span></code></pre></div>
-</div>
-<p>Now, as you can see, the mode is switched to permissive. However, this change
-is not persistent across reboots. To make it permanent, you need to modify the
-SELinux configuration file located at <code>/etc/selinux/config</code>. Open the file and
-replace enforcing with <code>permissive</code>.</p>
-<p>Alternatively, you can achieve the same result more easily by running the
-following command:</p>
-<div class="admonition info">
-<p class="admonition-title">Disable SeLinux permanent</p>
-<p>Red Hat
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/SELINUX=enforcing/SELINUX=permissive/g&#39;</span><span class="w"> </span>/etc/selinux/config
-</span></code></pre></div></p>
-</div>
-<p>This line will alter the configuration file for you. So when we run <code>sestatus</code>
-again we will see that we are in <code>permissive</code> mode and that our configuration
-file is also in permissive mode.</p>
-<div class="admonition info">
-<p class="admonition-title">Verify selinux status again</p>
-<div class="language-console highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="go">~# sestatus</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="go">SELinux status:                 enabled</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="go">SELinuxfs mount:                /sys/fs/selinux</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="go">SELinux root directory:         /etc/selinux</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="go">Loaded policy name:             targeted</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="go">Current mode:                   permissive</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="go">Mode from config file:          permissive</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="go">Policy MLS status:              enabled</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="go">Policy deny_unknown status:     allowed</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="go">Memory protection checking:     actual (secure)</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="go">Max kernel policy version:      33</span>
-</span></code></pre></div>
-</div>
-<hr />
-<h2 id="install-the-zabbix-repository">Install the Zabbix repository</h2>
-<p>From the Zabbix Download page <a href="https://www.zabbix.com/download">https://www.zabbix.com/download</a>,
-select the appropriate Zabbix version you wish to install. In this case, we will
-be using Zabbix 8.0 LTS. Additionally, ensure you choose the correct OS distribution
-for your environment, which will be Rocky Linux 9, openSUSE Leap 16 or Ubuntu 24.04 in our case.</p>
-<p>We will be installing the Zabbix Server along with NGINX as the web server for
-the front-end. Make sure to download the relevant packages for your chosen configuration.</p>
-<p><img alt="Zabbix Download" src="../basic-installation/ch01-basic-installation-zabbixdownload.png" /></p>
-<p><em>1.2 Zabbix
-download</em></p>
-<hr />
-<h3 id="red-hat-specific-remarks">Red Hat specific remarks</h3>
-<p>If you make use of a RHEL based system like Rocky then the first step is to disable
-the Zabbix packages provided by the EPEL repository, if it's installed on your system.
-To do this, edit the <code>/etc/yum.repos.d/epel.repo</code> file and add the following statement
-to disable the EPEL repository by default:</p>
-<div class="admonition info">
-<p class="admonition-title">Exclude packages</p>
-<p>Red Hat
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">[epel]</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="na">...</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="na">excludepkgs</span><span class="o">=</span><span class="s">zabbix*</span>
-</span></code></pre></div></p>
-</div>
-<details class="tip" open="open">
-<summary>Tip</summary>
-<p>It's considered bad practice to keep the EPEL repository enabled all the time,
-as it may cause conflicts by unintentionally overwriting or installing unwanted
-packages. Instead, it's safer to enable the repository only when needed, by using
-the following command during installations: dnf install --enablerepo=epel <package-name>
-This ensures that EPEL is only enabled when explicitly required.</p>
-</details>
-<hr />
-<h3 id="opensuse-specific-remarks">OpenSUSE specific remarks</h3>
-<p>On openSUSE, Zabbix packages are also available in the default <code>repo-oss</code> repository. 
-Unlike RHEL-based systems, openSUSE does not provide a built-in way to exclude
-specific packages from individual repositories. However, the Zabbix packages
-included in the default repositories are typically one to two LTS versions behind
-the latest releases. As a result, they are unlikely to interfere with your
-installation unless they are already installed.</p>
-<p>In the next step, we will configure the official Zabbix repositories. As long
-as you select a Zabbix repository version newer than the packages available in 
-<code>repo-oss</code>, zypper will automatically install the most recent version.</p>
-<details class="tip" open="open">
-<summary>Tip</summary>
-<p>If you have already installed Zabbix packages from the default repositories, 
-it is recommended to either:</p>
-<ul>
-<li>Remove them before proceeding, or</li>
-<li>Upgrade them after adding the new Zabbix repositories, using the zypper 
-  option <code>--allow-vendor-change</code>.</li>
-</ul>
-</details>
-<details class="note" open="open">
-<summary>Suse Linux Enterprise Server (SLES)</summary>
-<p>If you are using SLES, the Zabbix packages are not included in the default
-repositories. Therefore, you can proceed to add the official Zabbix repository
-without any concerns about conflicts with existing packages.</p>
-</details>
-<hr />
-<h3 id="adding-the-zabbix-repository">Adding the Zabbix repository</h3>
-<p>Next, we will install the Zabbix repository on our operating system. After adding
-the Zabbix repository, it is recommended to perform a repository cleanup to remove
-old cache files and ensure the repository metadata is up to date. You can do this
-by running:</p>
-<div class="admonition info">
-<p class="admonition-title">Add the zabbix repo</p>
-<p>Red Hat
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>rpm<span class="w"> </span>-Uvh<span class="w"> </span>https://repo.zabbix.com/zabbix/8.0/release/rocky/9/noarch/zabbix-release-latest-8.0.el9.noarch.rpm
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>dnf<span class="w"> </span>clean<span class="w"> </span>all
-</span></code></pre></div></p>
-<p>SUSE
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>rpm<span class="w"> </span>-Uvh<span class="w"> </span>--nosignature<span class="w"> </span>https://repo.zabbix.com/zabbix/8.0/release/sles/16/noarch/zabbix-release-latest-8.0.sles16.noarch.rpm
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>zypper<span class="w"> </span>--gpg-auto-import-keys<span class="w"> </span>refresh<span class="w"> </span><span class="s1">&#39;Zabbix Official Repository&#39;</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Set the repository to auto-refresh to ensure it&#39;s always up to date</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>zypper<span class="w"> </span>modifyrepo<span class="w"> </span>--refresh<span class="w"> </span><span class="s1">&#39;Zabbix Official Repository&#39;</span>
-</span></code></pre></div></p>
-<p>Ubuntu
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>wget<span class="w"> </span>https://repo.zabbix.com/zabbix/8.0/release/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_8.0+ubuntu24.04_all.deb
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>zabbix-release_latest_8.0+ubuntu24.04_all.deb
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
-</span></code></pre></div></p>
-</div>
-<p>This will refresh the repository metadata and prepare the system for Zabbix installation.</p>
-<details class="note" open="open">
-<summary>What is a repository?</summary>
-<p>A repository in Linux is a configuration that allows you to access and install
-software packages. You can think of it like an "app store" where you find and
-download software from a trusted source, in this case, the Zabbix repository.
-Many repositories are available, but it's important to only add those you trust.
-The safest practice is to stick to the repositories provided by your operating
-system and only add additional ones when you're sure they are both trusted and necessary.</p>
-<p>For our installation, the Zabbix repository is provided by the vendor itself,
-making it a trusted source. Another popular and safe repository for
-Red Hat-based systems is EPEL (Extra Packages for Enterprise Linux), which is
-commonly used in enterprise environments.
-However, always exercise caution when adding new repositories to ensure
-system security and stability.</p>
-</details>
-<hr />
-<h1 id="installation-and-configuration-of-zabbix-server">Installation and configuration of Zabbix server</h1>
+<h1 id="installing-the-zabbix-server">Installing the Zabbix server</h1>
 <p>Now that we've added the Zabbix repository with the necessary software, we are
 ready to install both the Zabbix server and the web server. Keep in mind that the
 web server doesn't need to be installed on the same machine as the Zabbix server;
@@ -2233,22 +2087,22 @@ they can be hosted on separate systems if desired.</p>
 <div class="admonition info">
 <p class="admonition-title">Install the zabbix server</p>
 <p>Red Hat
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># For MySQL/MariaDB backend:</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>dnf<span class="w"> </span>install<span class="w"> </span>zabbix-server-mysql
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="c1"># For PostgreSQL backend:</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>dnf<span class="w"> </span>install<span class="w"> </span>zabbix-server-pgsql
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># For MySQL/MariaDB backend:</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>dnf<span class="w"> </span>install<span class="w"> </span>zabbix-server-mysql
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># For PostgreSQL backend:</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>dnf<span class="w"> </span>install<span class="w"> </span>zabbix-server-pgsql
 </span></code></pre></div></p>
 <p>SUSE
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># For MySQL/MariaDB backend:</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>zypper<span class="w"> </span>install<span class="w"> </span>zabbix-server-mysql
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="c1"># For PostgreSQL backend:</span>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>zypper<span class="w"> </span>install<span class="w"> </span>zabbix-server-pgsql
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># For MySQL/MariaDB backend:</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>zypper<span class="w"> </span>install<span class="w"> </span>zabbix-server-mysql
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># For PostgreSQL backend:</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>zypper<span class="w"> </span>install<span class="w"> </span>zabbix-server-pgsql
 </span></code></pre></div></p>
 <p>Ubuntu
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># For MySQL/MariaDB backend:</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>zabbix-server-mysql
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1"># For PostgreSQL backend:</span>
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>zabbix-server-pgsql
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># For MySQL/MariaDB backend:</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>zabbix-server-mysql
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># For PostgreSQL backend:</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>zabbix-server-pgsql
 </span></code></pre></div></p>
 </div>
 <p>After successfully installing the Zabbix server package, we need to
@@ -2270,8 +2124,8 @@ the <code>/etc/zabbix_server/zabbix_server.d/</code> directory.</p>
 <p>To enable this feature, ensure the next line exists and is not commented 
 (with a <code>#</code> in front of it) in <code>/etc/zabbix/zabbix_server.conf</code>:</p>
 <div class="admonition info">
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Include=/usr/local/etc/zabbix_server.conf.d/*.conf</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="na">Include</span><span class="o">=</span><span class="s">/etc/zabbix/zabbix_server.d/*.conf</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Include=/usr/local/etc/zabbix_server.conf.d/*.conf</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="na">Include</span><span class="o">=</span><span class="s">/etc/zabbix/zabbix_server.d/*.conf</span>
 </span></code></pre></div>
 </div>
 <p>The path <code>/etc/zabbix/zabbix_server.d/</code> should already be created by the
@@ -2280,16 +2134,16 @@ installed package, but ensure it really exists.</p>
 directory that will hold our database connection settings:</p>
 <div class="admonition info">
 <p class="admonition-title">Add Zabbix database connection settings</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>vi<span class="w"> </span>/etc/zabbix/zabbix_server.d/database.conf
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>vi<span class="w"> </span>/etc/zabbix/zabbix_server.d/database.conf
 </span></code></pre></div>
 <p>Add the following lines in the configuration file to match your database setup:</p>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Zabbix database configuration</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="na">DBHost</span><span class="o">=</span><span class="s">&lt;database-host&gt;</span>
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="na">DBName</span><span class="o">=</span><span class="s">&lt;database-name&gt;</span>
-</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="na">DBSchema</span><span class="o">=</span><span class="s">&lt;database-schema&gt;</span><span class="w">  </span><span class="c1"># Only for PostgreSQL</span>
-</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="na">DBUser</span><span class="o">=</span><span class="s">&lt;database-user&gt;</span>
-</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="na">DBPassword</span><span class="o">=</span><span class="s">&lt;database-password&gt;</span>
-</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="na">DBPort</span><span class="o">=</span><span class="s">&lt;database-port&gt;</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Zabbix database configuration</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="na">DBHost</span><span class="o">=</span><span class="s">&lt;database-host&gt;</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="na">DBName</span><span class="o">=</span><span class="s">&lt;database-name&gt;</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="na">DBSchema</span><span class="o">=</span><span class="s">&lt;database-schema&gt;</span><span class="w">  </span><span class="c1"># Only for PostgreSQL</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="na">DBUser</span><span class="o">=</span><span class="s">&lt;database-user&gt;</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="na">DBPassword</span><span class="o">=</span><span class="s">&lt;database-password&gt;</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="na">DBPort</span><span class="o">=</span><span class="s">&lt;database-port&gt;</span>
 </span></code></pre></div>
 </div>
 <p>Replace <code>&lt;database-host&gt;</code>, <code>&lt;database-name&gt;</code>, <code>&lt;database-schema&gt;</code>, <code>&lt;database-user&gt;</code>,
@@ -2303,21 +2157,21 @@ lines with the same parameter, Zabbix will use the value from the last occurrenc
 <div class="admonition example">
 <p class="admonition-title">Example database.conf</p>
 <p>MariaDB/MySQL:
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># MariaDB database configuration</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="na">DBHost</span><span class="o">=</span><span class="s">&lt;ip or dns of your MariaDB server&gt;</span>
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="na">DBName</span><span class="o">=</span><span class="s">zabbix</span>
-</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="na">DBUser</span><span class="o">=</span><span class="s">zabbix-srv</span>
-</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="na">DBPassword</span><span class="o">=</span><span class="s">&lt;your super secret password&gt;</span>
-</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="na">DBPort</span><span class="o">=</span><span class="s">3306</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># MariaDB database configuration</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="na">DBHost</span><span class="o">=</span><span class="s">&lt;ip or dns of your MariaDB server&gt;</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="na">DBName</span><span class="o">=</span><span class="s">zabbix</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="na">DBUser</span><span class="o">=</span><span class="s">zabbix-srv</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="na">DBPassword</span><span class="o">=</span><span class="s">&lt;your super secret password&gt;</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="na">DBPort</span><span class="o">=</span><span class="s">3306</span>
 </span></code></pre></div></p>
 <p>PostgreSQL:
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># PostgreSQL database configuration</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="na">DBHost</span><span class="o">=</span><span class="s">&lt;ip or dns of your PostgreSQL server&gt;</span>
-</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="na">DBName</span><span class="o">=</span><span class="s">zabbix</span>
-</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="na">DBSchema</span><span class="o">=</span><span class="s">zabbix_server</span>
-</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="na">DBUser</span><span class="o">=</span><span class="s">zabbix-srv</span>
-</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="na">DBPassword</span><span class="o">=</span><span class="s">&lt;your super secret password&gt;</span>
-</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="na">DBPort</span><span class="o">=</span><span class="s">5432</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># PostgreSQL database configuration</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="na">DBHost</span><span class="o">=</span><span class="s">&lt;ip or dns of your PostgreSQL server&gt;</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="na">DBName</span><span class="o">=</span><span class="s">zabbix</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="na">DBSchema</span><span class="o">=</span><span class="s">zabbix_server</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="na">DBUser</span><span class="o">=</span><span class="s">zabbix-srv</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="na">DBPassword</span><span class="o">=</span><span class="s">&lt;your super secret password&gt;</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="na">DBPort</span><span class="o">=</span><span class="s">5432</span>
 </span></code></pre></div></p>
 </div>
 <p>In this example:</p>
@@ -2350,13 +2204,13 @@ adding the Zabbix repository also in this system.</p>
 <div class="admonition info">
 <p class="admonition-title">Install SQL scripts</p>
 <p>Red Hat
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dnf<span class="w"> </span>install<span class="w"> </span>zabbix-sql-scripts
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dnf<span class="w"> </span>install<span class="w"> </span>zabbix-sql-scripts
 </span></code></pre></div></p>
 <p>SUSE
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>zypper<span class="w"> </span>install<span class="w"> </span>zabbix-sql-scripts
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>zypper<span class="w"> </span>install<span class="w"> </span>zabbix-sql-scripts
 </span></code></pre></div></p>
 <p>Ubuntu
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>zabbix-sql-scripts
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>zabbix-sql-scripts
 </span></code></pre></div></p>
 </div>
 <details class="tip" open="open">
@@ -2382,7 +2236,7 @@ This allows non-root users to create stored functions and triggers without requi
 so we will disable it again after the import is complete.</p>
 <div class="admonition info">
 <p class="admonition-title">Activate temporarily extra privileges for non root users</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>mariadb<span class="w"> </span>-uroot<span class="w"> </span>-p<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;SET GLOBAL log_bin_trust_function_creators = 1;&quot;</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>mariadb<span class="w"> </span>-uroot<span class="w"> </span>-p<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;SET GLOBAL log_bin_trust_function_creators = 1;&quot;</span>
 </span></code></pre></div>
 </div>
 </details>
@@ -2390,7 +2244,7 @@ so we will disable it again after the import is complete.</p>
 for this we make use of the user <code>zabbix-srv</code> and we upload it all in our DB <code>zabbix</code>.</p>
 <div class="admonition info">
 <p class="admonition-title">Populate the database</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>sudo<span class="w"> </span>zcat<span class="w"> </span>/usr/share/zabbix/sql-scripts/mysql/server.sql.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>mariadb<span class="w"> </span>--default-character-set<span class="o">=</span>utf8mb4<span class="w"> </span>-uroot<span class="w"> </span>-p<span class="w"> </span>zabbix
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo<span class="w"> </span>zcat<span class="w"> </span>/usr/share/zabbix/sql-scripts/mysql/server.sql.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>mariadb<span class="w"> </span>--default-character-set<span class="o">=</span>utf8mb4<span class="w"> </span>-uroot<span class="w"> </span>-p<span class="w"> </span>zabbix
 </span></code></pre></div>
 </div>
 <div class="admonition warning">
@@ -2415,7 +2269,7 @@ it for security reasons.</p>
 MySQL/MariaDB shell:</p>
 <div class="admonition info">
 <p class="admonition-title">Disable function log_bin_trust again</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>mariadb<span class="w"> </span>-uroot<span class="w"> </span>-p<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;SET GLOBAL log_bin_trust_function_creators = 0;&quot;</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>mariadb<span class="w"> </span>-uroot<span class="w"> </span>-p<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;SET GLOBAL log_bin_trust_function_creators = 0;&quot;</span>
 </span></code></pre></div>
 </div>
 <p>This command will disable the setting, ensuring that the servers security
@@ -2427,10 +2281,10 @@ by running the following command:</p>
 <div class="admonition info">
 <p class="admonition-title">Unzip the DB patch</p>
 <p>Red Hat / SUSE
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>gzip<span class="w"> </span>-d<span class="w"> </span>/usr/share/zabbix/sql-scripts/postgresql/server.sql.gz
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>gzip<span class="w"> </span>-d<span class="w"> </span>/usr/share/zabbix/sql-scripts/postgresql/server.sql.gz
 </span></code></pre></div></p>
 <p>Ubuntu
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>sudo<span class="w"> </span>gzip<span class="w"> </span>-d<span class="w"> </span>/usr/share/zabbix/sql-scripts/postgresql/server.sql.gz
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sudo<span class="w"> </span>gzip<span class="w"> </span>-d<span class="w"> </span>/usr/share/zabbix/sql-scripts/postgresql/server.sql.gz
 </span></code></pre></div></p>
 </div>
 <details class="note" open="open">
@@ -2444,7 +2298,7 @@ changed.</p>
 <p>Next we will execute the SQL file to populate the database. Open a <code>psql</code> shell:</p>
 <div class="admonition info">
 <p class="admonition-title">Open psql shell</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>psql<span class="w"> </span>-d<span class="w"> </span>zabbix<span class="w"> </span>-U<span class="w"> </span>zabbix-srv
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>psql<span class="w"> </span>-d<span class="w"> </span>zabbix<span class="w"> </span>-U<span class="w"> </span>zabbix-srv
 </span></code></pre></div>
 </div>
 <details class="warning" open="open">
@@ -2453,13 +2307,13 @@ changed.</p>
 carefully so that you have set the correct <code>search_path</code>.</p>
 <p>If you did not set the default <code>search_path</code> for the <code>zabbix-srv</code> user,
 ensure you set it manually in the current session before proceeding:
-<div class="language-psql highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">search_path</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s s-Name">&quot;zabbix_server&quot;</span><span class="p">;</span>
+<div class="language-psql highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">search_path</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s s-Name">&quot;zabbix_server&quot;</span><span class="p">;</span>
 </span></code></pre></div></p>
 </details>
 <p>Now run the following commands:</p>
 <div class="admonition info">
 <p class="admonition-title">Upload the DB schema to db zabbix</p>
-<div class="language-psql highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\i</span><span class="w"> </span><span class="ss">/usr/share/zabbix/sql-scripts/postgresql/server.sql</span>
+<div class="language-psql highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\i</span><span class="w"> </span><span class="ss">/usr/share/zabbix/sql-scripts/postgresql/server.sql</span>
 </span></code></pre></div>
 </div>
 <details class="warning" open="open">
@@ -2471,18 +2325,18 @@ the operation.</p>
 <p>Monitor the progress as the script runs. You will see output similar to:</p>
 <div class="admonition example">
 <p class="admonition-title">Output example</p>
-<div class="language-psql highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\i</span><span class="w"> </span><span class="ss">/usr/share/zabbix/sql-scripts/postgresql/server.sql</span>
-</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="go">CREATE TABLE</span>
-</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="go">CREATE INDEX</span>
-</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="go">CREATE TABLE</span>
-</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="go">CREATE INDEX</span>
-</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="go">CREATE TABLE</span>
-</span><span id="__span-27-7"><a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="go">...</span>
-</span><span id="__span-27-8"><a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="go">...</span>
-</span><span id="__span-27-9"><a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a><span class="go">...</span>
-</span><span id="__span-27-10"><a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a><span class="go">INSERT 0 10444</span>
-</span><span id="__span-27-11"><a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a><span class="go">DELETE 90352</span>
-</span><span id="__span-27-12"><a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a><span class="go">COMMIT</span>
+<div class="language-psql highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\i</span><span class="w"> </span><span class="ss">/usr/share/zabbix/sql-scripts/postgresql/server.sql</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="go">CREATE TABLE</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="go">CREATE INDEX</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="go">CREATE TABLE</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="go">CREATE INDEX</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="go">CREATE TABLE</span>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="go">...</span>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="go">...</span>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="go">...</span>
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="go">INSERT 0 10444</span>
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="go">DELETE 90352</span>
+</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="go">COMMIT</span>
 </span></code></pre></div>
 </div>
 <p>Once the script completes and you return to the <code>zabbix=&gt;</code> prompt, the database
@@ -2497,22 +2351,22 @@ following permissions:</p>
 </ul>
 <div class="admonition info">
 <p class="admonition-title">Grant rights on the schema to user zabbix-web</p>
-<div class="language-psql highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="p">,</span><span class="w"> </span><span class="k">INSERT</span><span class="p">,</span><span class="w"> </span><span class="k">UPDATE</span><span class="p">,</span><span class="w"> </span><span class="k">DELETE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">TABLES</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="k">SCHEMA</span><span class="w"> </span><span class="n">zabbix_server</span>
-</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="k">TO</span><span class="w"> </span><span class="s s-Name">&quot;zabbix-web&quot;</span><span class="p">;</span>
-</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="p">,</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">SEQUENCES</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="k">SCHEMA</span><span class="w"> </span><span class="n">zabbix_server</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s s-Name">&quot;zabbix-web&quot;</span><span class="p">;</span>
+<div class="language-psql highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="p">,</span><span class="w"> </span><span class="k">INSERT</span><span class="p">,</span><span class="w"> </span><span class="k">UPDATE</span><span class="p">,</span><span class="w"> </span><span class="k">DELETE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">TABLES</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="k">SCHEMA</span><span class="w"> </span><span class="n">zabbix_server</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="k">TO</span><span class="w"> </span><span class="s s-Name">&quot;zabbix-web&quot;</span><span class="p">;</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="p">,</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">SEQUENCES</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="k">SCHEMA</span><span class="w"> </span><span class="n">zabbix_server</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s s-Name">&quot;zabbix-web&quot;</span><span class="p">;</span>
 </span></code></pre></div>
 </div>
 <p>Verify if the rights are correct on the schema :</p>
 <div class="admonition example">
 <p class="admonition-title">Example schema rights</p>
-<div class="language-psql highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\dn+</span>
-</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="go">                                           List of schemas</span>
-</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="go">     Name      |       Owner       |           Access privileges            |      Description</span>
-</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="go">---------------+-------------------+----------------------------------------+------------------------</span>
-</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="go"> public        | pg_database_owner | pg_database_owner=UC/pg_database_owner+| standard public schema</span>
-</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="go">               |                   | =U/pg_database_owner                   |</span>
-</span><span id="__span-29-7"><a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="go"> zabbix_server | zabbix-srv        | &quot;zabbix-srv&quot;=UC/&quot;zabbix-srv&quot;          +|</span>
-</span><span id="__span-29-8"><a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="go">               |                   | &quot;zabbix-web&quot;=U/&quot;zabbix-srv&quot;            |</span>
+<div class="language-psql highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\dn+</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="go">                                           List of schemas</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="go">     Name      |       Owner       |           Access privileges            |      Description</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="go">---------------+-------------------+----------------------------------------+------------------------</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="go"> public        | pg_database_owner | pg_database_owner=UC/pg_database_owner+| standard public schema</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="go">               |                   | =U/pg_database_owner                   |</span>
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="go"> zabbix_server | zabbix-srv        | &quot;zabbix-srv&quot;=UC/&quot;zabbix-srv&quot;          +|</span>
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="go">               |                   | &quot;zabbix-web&quot;=U/&quot;zabbix-srv&quot;            |</span>
 </span></code></pre></div>
 </div>
 <details class="note" open="open">
@@ -2532,32 +2386,32 @@ permissions, you can verify the table list and their ownership using the <code>p
 </ul>
 <div class="admonition info">
 <p class="admonition-title">List tables</p>
-<div class="language-psql highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="gp">zabbix=#</span><span class="w"> </span><span class="kp">\dt</span>
+<div class="language-psql highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="gp">zabbix=#</span><span class="w"> </span><span class="kp">\dt</span>
 </span></code></pre></div>
 </div>
 <p>You should see a list of tables with their schema, name, type, and owner.
 For example:</p>
 <details class="example" open="open">
 <summary>List table with relations</summary>
-<div class="language-psql highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\dt</span>
-</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="go">                        List of relations</span>
-</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="go">    Schema     |            Name            | Type  |   Owner</span>
-</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="go">---------------+----------------------------+-------+------------</span>
-</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="go"> zabbix_server | acknowledges               | table | zabbix-srv</span>
-</span><span id="__span-31-6"><a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="go"> zabbix_server | actions                    | table | zabbix-srv</span>
-</span><span id="__span-31-7"><a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="go"> zabbix_server | alerts                     | table | zabbix-srv</span>
-</span><span id="__span-31-8"><a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a><span class="go"> zabbix_server | auditlog                   | table | zabbix-srv</span>
-</span><span id="__span-31-9"><a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a><span class="go"> zabbix_server | autoreg_host               | table | zabbix-srv</span>
-</span><span id="__span-31-10"><a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a><span class="go"> zabbix_server | changelog                  | table | zabbix-srv</span>
-</span><span id="__span-31-11"><a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a><span class="go"> zabbix_server | conditions                 | table | zabbix-srv</span>
-</span><span id="__span-31-12"><a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a><span class="go">...</span>
-</span><span id="__span-31-13"><a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a><span class="go">...</span>
-</span><span id="__span-31-14"><a id="__codelineno-31-14" name="__codelineno-31-14" href="#__codelineno-31-14"></a><span class="go">...</span>
-</span><span id="__span-31-15"><a id="__codelineno-31-15" name="__codelineno-31-15" href="#__codelineno-31-15"></a><span class="go"> zabbix_server | valuemap                   | table | zabbix-srv</span>
-</span><span id="__span-31-16"><a id="__codelineno-31-16" name="__codelineno-31-16" href="#__codelineno-31-16"></a><span class="go"> zabbix_server | valuemap_mapping           | table | zabbix-srv</span>
-</span><span id="__span-31-17"><a id="__codelineno-31-17" name="__codelineno-31-17" href="#__codelineno-31-17"></a><span class="go"> zabbix_server | widget                     | table | zabbix-srv</span>
-</span><span id="__span-31-18"><a id="__codelineno-31-18" name="__codelineno-31-18" href="#__codelineno-31-18"></a><span class="go"> zabbix_server | widget_field               | table | zabbix-srv</span>
-</span><span id="__span-31-19"><a id="__codelineno-31-19" name="__codelineno-31-19" href="#__codelineno-31-19"></a><span class="go">(203 rows)</span>
+<div class="language-psql highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\dt</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="go">                        List of relations</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="go">    Schema     |            Name            | Type  |   Owner</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="go">---------------+----------------------------+-------+------------</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="go"> zabbix_server | acknowledges               | table | zabbix-srv</span>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="go"> zabbix_server | actions                    | table | zabbix-srv</span>
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="go"> zabbix_server | alerts                     | table | zabbix-srv</span>
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="go"> zabbix_server | auditlog                   | table | zabbix-srv</span>
+</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="go"> zabbix_server | autoreg_host               | table | zabbix-srv</span>
+</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="go"> zabbix_server | changelog                  | table | zabbix-srv</span>
+</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a><span class="go"> zabbix_server | conditions                 | table | zabbix-srv</span>
+</span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a><span class="go">...</span>
+</span><span id="__span-23-13"><a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a><span class="go">...</span>
+</span><span id="__span-23-14"><a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a><span class="go">...</span>
+</span><span id="__span-23-15"><a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a><span class="go"> zabbix_server | valuemap                   | table | zabbix-srv</span>
+</span><span id="__span-23-16"><a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a><span class="go"> zabbix_server | valuemap_mapping           | table | zabbix-srv</span>
+</span><span id="__span-23-17"><a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a><span class="go"> zabbix_server | widget                     | table | zabbix-srv</span>
+</span><span id="__span-23-18"><a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a><span class="go"> zabbix_server | widget_field               | table | zabbix-srv</span>
+</span><span id="__span-23-19"><a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a><span class="go">(203 rows)</span>
 </span></code></pre></div>
 </details>
 <ul>
@@ -2567,22 +2421,22 @@ For example:</p>
 </ul>
 <div class="admonition info">
 <p class="admonition-title">Verify table permissions</p>
-<div class="language-psql highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\dp</span><span class="w"> </span><span class="ss">zabbix_server.*</span>
+<div class="language-psql highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\dp</span><span class="w"> </span><span class="ss">zabbix_server.*</span>
 </span></code></pre></div>
 </div>
 <details class="example" open="open">
 <summary>Example output</summary>
-<div class="language-psql highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\dp</span><span class="w"> </span><span class="ss">zabbix_server.*</span>
-</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="go">                                                     Access privileges</span>
-</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="go">    Schema     |            Name            |   Type   |         Access privileges          | Column privileges | Policies</span>
-</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="go">---------------+----------------------------+----------+------------------------------------+-------------------+----------</span>
-</span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a><span class="go"> zabbix_server | acknowledges               | table    | &quot;zabbix-srv&quot;=arwdDxtm/&quot;zabbix-srv&quot;+|                   |</span>
-</span><span id="__span-33-6"><a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a><span class="go">               |                            |          | &quot;zabbix-web&quot;=arwd/&quot;zabbix-srv&quot;     |                   |</span>
-</span><span id="__span-33-7"><a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a><span class="go"> zabbix_server | actions                    | table    | &quot;zabbix-srv&quot;=arwdDxtm/&quot;zabbix-srv&quot;+|                   |</span>
-</span><span id="__span-33-8"><a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a><span class="go">               |                            |          | &quot;zabbix-web&quot;=arwd/&quot;zabbix-srv&quot;     |                   |</span>
-</span><span id="__span-33-9"><a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a><span class="go"> zabbix_server | alerts                     | table    | &quot;zabbix-srv&quot;=arwdDxtm/&quot;zabbix-srv&quot;+|                   |</span>
-</span><span id="__span-33-10"><a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a><span class="go">               |                            |          | &quot;zabbix-web&quot;=arwd/&quot;zabbix-srv&quot;     |                   |</span>
-</span><span id="__span-33-11"><a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a><span class="go"> zabbix_server | auditlog                   | table    | &quot;zabbix-srv&quot;=arwdDxtm/&quot;zabbix-srv&quot;+|                   |</span>
+<div class="language-psql highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\dp</span><span class="w"> </span><span class="ss">zabbix_server.*</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="go">                                                     Access privileges</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="go">    Schema     |            Name            |   Type   |         Access privileges          | Column privileges | Policies</span>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="go">---------------+----------------------------+----------+------------------------------------+-------------------+----------</span>
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="go"> zabbix_server | acknowledges               | table    | &quot;zabbix-srv&quot;=arwdDxtm/&quot;zabbix-srv&quot;+|                   |</span>
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="go">               |                            |          | &quot;zabbix-web&quot;=arwd/&quot;zabbix-srv&quot;     |                   |</span>
+</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="go"> zabbix_server | actions                    | table    | &quot;zabbix-srv&quot;=arwdDxtm/&quot;zabbix-srv&quot;+|                   |</span>
+</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="go">               |                            |          | &quot;zabbix-web&quot;=arwd/&quot;zabbix-srv&quot;     |                   |</span>
+</span><span id="__span-25-9"><a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="go"> zabbix_server | alerts                     | table    | &quot;zabbix-srv&quot;=arwdDxtm/&quot;zabbix-srv&quot;+|                   |</span>
+</span><span id="__span-25-10"><a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="go">               |                            |          | &quot;zabbix-web&quot;=arwd/&quot;zabbix-srv&quot;     |                   |</span>
+</span><span id="__span-25-11"><a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a><span class="go"> zabbix_server | auditlog                   | table    | &quot;zabbix-srv&quot;=arwdDxtm/&quot;zabbix-srv&quot;+|                   |</span>
 </span></code></pre></div>
 </details>
 <p>This will display the access privileges for all tables in the <code>zabbix_server</code>
@@ -2600,18 +2454,18 @@ To allow these connections, you need to open this port in your firewall.</p>
 <div class="admonition info">
 <p class="admonition-title">Open firewall for zabbix-trapper</p>
 <p>Red Hat / SUSE
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--add-service<span class="o">=</span>zabbix-server<span class="w"> </span>--permanent
-</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--reload
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--add-service<span class="o">=</span>zabbix-server<span class="w"> </span>--permanent
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--reload
 </span></code></pre></div></p>
 <p>Ubuntu
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">10051</span>/tcp
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">10051</span>/tcp
 </span></code></pre></div></p>
 </div>
 <p>If the service is not recognized using <code>firewall-cmd --add-service</code>, you can
 manually specify the port:</p>
 <div class="admonition info">
 <p class="admonition-title">Add port instead of the service name</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>firewall-cmd<span class="w"> </span>--add-port<span class="o">=</span><span class="m">10051</span>/tcp<span class="w"> </span>--permanent
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>firewall-cmd<span class="w"> </span>--add-port<span class="o">=</span><span class="m">10051</span>/tcp<span class="w"> </span>--permanent
 </span></code></pre></div>
 </div>
 <hr />
@@ -2630,7 +2484,7 @@ be accomplished using the following command: <code>zabbix-server -T</code></p>
 <div class="admonition info">
 <p class="admonition-title">Enable and start zabbix-server service</p>
 <p>Red Hat, SUSE and Ubuntu
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>zabbix-server<span class="w"> </span>--now
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>zabbix-server<span class="w"> </span>--now
 </span></code></pre></div></p>
 </div>
 <p>This command will start the Zabbix server service immediately and configure it
@@ -2639,60 +2493,60 @@ check the log file for any messages. You can view the latest entries in the
 <code>Zabbix server</code> log file using:</p>
 <div class="admonition info">
 <p class="admonition-title">Check the log file</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>tail<span class="w"> </span>/var/log/zabbix/zabbix_server.log
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>tail<span class="w"> </span>/var/log/zabbix/zabbix_server.log
 </span></code></pre></div>
 </div>
 <p>Look for messages indicating that the server has started successfully. If there
 are any issues, the log file will provide details to help with troubleshooting.</p>
 <div class="admonition example">
 <p class="admonition-title">Example output</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>12074:20250225:145333.529 Starting Zabbix Server. Zabbix 7.2.4 (revision c34078a4563).
-</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>12074:20250225:145333.530 ****** Enabled features ******
-</span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>12074:20250225:145333.530 SNMP monitoring:           YES
-</span><span id="__span-39-4"><a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a>12074:20250225:145333.530 IPMI monitoring:           YES
-</span><span id="__span-39-5"><a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a>12074:20250225:145333.530 Web monitoring:            YES
-</span><span id="__span-39-6"><a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a>12074:20250225:145333.530 VMware monitoring:         YES
-</span><span id="__span-39-7"><a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a>12074:20250225:145333.530 SMTP authentication:       YES
-</span><span id="__span-39-8"><a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a>12074:20250225:145333.530 ODBC:                      YES
-</span><span id="__span-39-9"><a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a>12074:20250225:145333.530 SSH support:               YES
-</span><span id="__span-39-10"><a id="__codelineno-39-10" name="__codelineno-39-10" href="#__codelineno-39-10"></a>12074:20250225:145333.530 IPv6 support:              YES
-</span><span id="__span-39-11"><a id="__codelineno-39-11" name="__codelineno-39-11" href="#__codelineno-39-11"></a>12074:20250225:145333.530 TLS support:               YES
-</span><span id="__span-39-12"><a id="__codelineno-39-12" name="__codelineno-39-12" href="#__codelineno-39-12"></a>12074:20250225:145333.530 ******************************
-</span><span id="__span-39-13"><a id="__codelineno-39-13" name="__codelineno-39-13" href="#__codelineno-39-13"></a>12074:20250225:145333.530 using configuration file: /etc/zabbix/zabbix_server.conf
-</span><span id="__span-39-14"><a id="__codelineno-39-14" name="__codelineno-39-14" href="#__codelineno-39-14"></a>12074:20250225:145333.545 current database version (mandatory/optional): 07020000/07020000
-</span><span id="__span-39-15"><a id="__codelineno-39-15" name="__codelineno-39-15" href="#__codelineno-39-15"></a>12074:20250225:145333.545 required mandatory version: 07020000
-</span><span id="__span-39-16"><a id="__codelineno-39-16" name="__codelineno-39-16" href="#__codelineno-39-16"></a>12075:20250225:145333.557 starting HA manager
-</span><span id="__span-39-17"><a id="__codelineno-39-17" name="__codelineno-39-17" href="#__codelineno-39-17"></a>12075:20250225:145333.566 HA manager started in active mode
-</span><span id="__span-39-18"><a id="__codelineno-39-18" name="__codelineno-39-18" href="#__codelineno-39-18"></a>12074:20250225:145333.567 server #0 started [main process]
-</span><span id="__span-39-19"><a id="__codelineno-39-19" name="__codelineno-39-19" href="#__codelineno-39-19"></a>12076:20250225:145333.567 server #1 started [service manager #1]
-</span><span id="__span-39-20"><a id="__codelineno-39-20" name="__codelineno-39-20" href="#__codelineno-39-20"></a>12077:20250225:145333.567 server #2 started [configuration syncer #1]
-</span><span id="__span-39-21"><a id="__codelineno-39-21" name="__codelineno-39-21" href="#__codelineno-39-21"></a>12078:20250225:145333.718 server #3 started [alert manager #1]
-</span><span id="__span-39-22"><a id="__codelineno-39-22" name="__codelineno-39-22" href="#__codelineno-39-22"></a>12079:20250225:145333.719 server #4 started [alerter #1]
-</span><span id="__span-39-23"><a id="__codelineno-39-23" name="__codelineno-39-23" href="#__codelineno-39-23"></a>12080:20250225:145333.719 server #5 started [alerter #2]
-</span><span id="__span-39-24"><a id="__codelineno-39-24" name="__codelineno-39-24" href="#__codelineno-39-24"></a>12081:20250225:145333.719 server #6 started [alerter #3]
-</span><span id="__span-39-25"><a id="__codelineno-39-25" name="__codelineno-39-25" href="#__codelineno-39-25"></a>12082:20250225:145333.719 server #7 started [preprocessing manager #1]
-</span><span id="__span-39-26"><a id="__codelineno-39-26" name="__codelineno-39-26" href="#__codelineno-39-26"></a>12083:20250225:145333.719 server #8 started [lld manager #1]
+<div class="language-text highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>12074:20250225:145333.529 Starting Zabbix Server. Zabbix 7.2.4 (revision c34078a4563).
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>12074:20250225:145333.530 ****** Enabled features ******
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>12074:20250225:145333.530 SNMP monitoring:           YES
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>12074:20250225:145333.530 IPMI monitoring:           YES
+</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>12074:20250225:145333.530 Web monitoring:            YES
+</span><span id="__span-31-6"><a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>12074:20250225:145333.530 VMware monitoring:         YES
+</span><span id="__span-31-7"><a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a>12074:20250225:145333.530 SMTP authentication:       YES
+</span><span id="__span-31-8"><a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a>12074:20250225:145333.530 ODBC:                      YES
+</span><span id="__span-31-9"><a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a>12074:20250225:145333.530 SSH support:               YES
+</span><span id="__span-31-10"><a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a>12074:20250225:145333.530 IPv6 support:              YES
+</span><span id="__span-31-11"><a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a>12074:20250225:145333.530 TLS support:               YES
+</span><span id="__span-31-12"><a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a>12074:20250225:145333.530 ******************************
+</span><span id="__span-31-13"><a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a>12074:20250225:145333.530 using configuration file: /etc/zabbix/zabbix_server.conf
+</span><span id="__span-31-14"><a id="__codelineno-31-14" name="__codelineno-31-14" href="#__codelineno-31-14"></a>12074:20250225:145333.545 current database version (mandatory/optional): 07020000/07020000
+</span><span id="__span-31-15"><a id="__codelineno-31-15" name="__codelineno-31-15" href="#__codelineno-31-15"></a>12074:20250225:145333.545 required mandatory version: 07020000
+</span><span id="__span-31-16"><a id="__codelineno-31-16" name="__codelineno-31-16" href="#__codelineno-31-16"></a>12075:20250225:145333.557 starting HA manager
+</span><span id="__span-31-17"><a id="__codelineno-31-17" name="__codelineno-31-17" href="#__codelineno-31-17"></a>12075:20250225:145333.566 HA manager started in active mode
+</span><span id="__span-31-18"><a id="__codelineno-31-18" name="__codelineno-31-18" href="#__codelineno-31-18"></a>12074:20250225:145333.567 server #0 started [main process]
+</span><span id="__span-31-19"><a id="__codelineno-31-19" name="__codelineno-31-19" href="#__codelineno-31-19"></a>12076:20250225:145333.567 server #1 started [service manager #1]
+</span><span id="__span-31-20"><a id="__codelineno-31-20" name="__codelineno-31-20" href="#__codelineno-31-20"></a>12077:20250225:145333.567 server #2 started [configuration syncer #1]
+</span><span id="__span-31-21"><a id="__codelineno-31-21" name="__codelineno-31-21" href="#__codelineno-31-21"></a>12078:20250225:145333.718 server #3 started [alert manager #1]
+</span><span id="__span-31-22"><a id="__codelineno-31-22" name="__codelineno-31-22" href="#__codelineno-31-22"></a>12079:20250225:145333.719 server #4 started [alerter #1]
+</span><span id="__span-31-23"><a id="__codelineno-31-23" name="__codelineno-31-23" href="#__codelineno-31-23"></a>12080:20250225:145333.719 server #5 started [alerter #2]
+</span><span id="__span-31-24"><a id="__codelineno-31-24" name="__codelineno-31-24" href="#__codelineno-31-24"></a>12081:20250225:145333.719 server #6 started [alerter #3]
+</span><span id="__span-31-25"><a id="__codelineno-31-25" name="__codelineno-31-25" href="#__codelineno-31-25"></a>12082:20250225:145333.719 server #7 started [preprocessing manager #1]
+</span><span id="__span-31-26"><a id="__codelineno-31-26" name="__codelineno-31-26" href="#__codelineno-31-26"></a>12083:20250225:145333.719 server #8 started [lld manager #1]
 </span></code></pre></div>
 </div>
 <p>If there was an error and the server was not able to connect to the database you
 would see something like this in the server log file :</p>
 <div class="admonition example">
 <p class="admonition-title">Example log with errors</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>12068:20250225:145309.018 Starting Zabbix Server. Zabbix 7.2.4 (revision c34078a4563).
-</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>12068:20250225:145309.018 ****** Enabled features ******
-</span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>12068:20250225:145309.018 SNMP monitoring:           YES
-</span><span id="__span-40-4"><a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a>12068:20250225:145309.018 IPMI monitoring:           YES
-</span><span id="__span-40-5"><a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a>12068:20250225:145309.018 Web monitoring:            YES
-</span><span id="__span-40-6"><a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a>12068:20250225:145309.018 VMware monitoring:         YES
-</span><span id="__span-40-7"><a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a>12068:20250225:145309.018 SMTP authentication:       YES
-</span><span id="__span-40-8"><a id="__codelineno-40-8" name="__codelineno-40-8" href="#__codelineno-40-8"></a>12068:20250225:145309.018 ODBC:                      YES
-</span><span id="__span-40-9"><a id="__codelineno-40-9" name="__codelineno-40-9" href="#__codelineno-40-9"></a>12068:20250225:145309.018 SSH support:               YES
-</span><span id="__span-40-10"><a id="__codelineno-40-10" name="__codelineno-40-10" href="#__codelineno-40-10"></a>12068:20250225:145309.018 IPv6 support:              YES
-</span><span id="__span-40-11"><a id="__codelineno-40-11" name="__codelineno-40-11" href="#__codelineno-40-11"></a>12068:20250225:145309.018 TLS support:               YES
-</span><span id="__span-40-12"><a id="__codelineno-40-12" name="__codelineno-40-12" href="#__codelineno-40-12"></a>12068:20250225:145309.018 ******************************
-</span><span id="__span-40-13"><a id="__codelineno-40-13" name="__codelineno-40-13" href="#__codelineno-40-13"></a>12068:20250225:145309.018 using configuration file: /etc/zabbix/zabbix_server.conf
-</span><span id="__span-40-14"><a id="__codelineno-40-14" name="__codelineno-40-14" href="#__codelineno-40-14"></a>12068:20250225:145309.027 [Z3005] query failed: [1146] Table &#39;zabbix.users&#39; doesn&#39;t exist [select userid from users limit 1]
-</span><span id="__span-40-15"><a id="__codelineno-40-15" name="__codelineno-40-15" href="#__codelineno-40-15"></a>12068:20250225:145309.027 cannot use database &quot;zabbix&quot;: database is not a Zabbix database
+<div class="language-text highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>12068:20250225:145309.018 Starting Zabbix Server. Zabbix 7.2.4 (revision c34078a4563).
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>12068:20250225:145309.018 ****** Enabled features ******
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>12068:20250225:145309.018 SNMP monitoring:           YES
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>12068:20250225:145309.018 IPMI monitoring:           YES
+</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>12068:20250225:145309.018 Web monitoring:            YES
+</span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>12068:20250225:145309.018 VMware monitoring:         YES
+</span><span id="__span-32-7"><a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>12068:20250225:145309.018 SMTP authentication:       YES
+</span><span id="__span-32-8"><a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>12068:20250225:145309.018 ODBC:                      YES
+</span><span id="__span-32-9"><a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a>12068:20250225:145309.018 SSH support:               YES
+</span><span id="__span-32-10"><a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a>12068:20250225:145309.018 IPv6 support:              YES
+</span><span id="__span-32-11"><a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a>12068:20250225:145309.018 TLS support:               YES
+</span><span id="__span-32-12"><a id="__codelineno-32-12" name="__codelineno-32-12" href="#__codelineno-32-12"></a>12068:20250225:145309.018 ******************************
+</span><span id="__span-32-13"><a id="__codelineno-32-13" name="__codelineno-32-13" href="#__codelineno-32-13"></a>12068:20250225:145309.018 using configuration file: /etc/zabbix/zabbix_server.conf
+</span><span id="__span-32-14"><a id="__codelineno-32-14" name="__codelineno-32-14" href="#__codelineno-32-14"></a>12068:20250225:145309.027 [Z3005] query failed: [1146] Table &#39;zabbix.users&#39; doesn&#39;t exist [select userid from users limit 1]
+</span><span id="__span-32-15"><a id="__codelineno-32-15" name="__codelineno-32-15" href="#__codelineno-32-15"></a>12068:20250225:145309.027 cannot use database &quot;zabbix&quot;: database is not a Zabbix database
 </span></code></pre></div>
 </div>
 <p>If that is the case, double-check your database connection settings in the
@@ -2704,45 +2558,45 @@ to allow connections from the Zabbix server.</p>
 a reboot</p>
 <div class="admonition info">
 <p class="admonition-title">check status of zabbix-server service</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>zabbix-server
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>zabbix-server
 </span></code></pre></div>
 </div>
 <details class="example" open="open">
 <summary>Example output</summary>
-<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="go">localhost:~&gt; sudo systemctl status zabbix-server</span>
-</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>
-</span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a><span class="go">● zabbix-server.service - Zabbix Server</span>
-</span><span id="__span-42-4"><a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a><span class="go">     Loaded: loaded (/usr/lib/systemd/system/zabbix-server.service; enabled; preset: disabled)</span>
-</span><span id="__span-42-5"><a id="__codelineno-42-5" name="__codelineno-42-5" href="#__codelineno-42-5"></a><span class="go">     Active: active (running) since Tue 2025-02-25 14:53:33 CET; 26min ago</span>
-</span><span id="__span-42-6"><a id="__codelineno-42-6" name="__codelineno-42-6" href="#__codelineno-42-6"></a><span class="go">   Main PID: 12074 (zabbix_server)</span>
-</span><span id="__span-42-7"><a id="__codelineno-42-7" name="__codelineno-42-7" href="#__codelineno-42-7"></a><span class="go">      Tasks: 77 (limit: 24744)</span>
-</span><span id="__span-42-8"><a id="__codelineno-42-8" name="__codelineno-42-8" href="#__codelineno-42-8"></a><span class="go">     Memory: 71.5M</span>
-</span><span id="__span-42-9"><a id="__codelineno-42-9" name="__codelineno-42-9" href="#__codelineno-42-9"></a><span class="go">        CPU: 18.535s</span>
-</span><span id="__span-42-10"><a id="__codelineno-42-10" name="__codelineno-42-10" href="#__codelineno-42-10"></a><span class="go">     CGroup: /system.slice/zabbix-server.service</span>
-</span><span id="__span-42-11"><a id="__codelineno-42-11" name="__codelineno-42-11" href="#__codelineno-42-11"></a><span class="go">             ├─12074 /usr/sbin/zabbix_server -c /etc/zabbix/zabbix_server.conf</span>
-</span><span id="__span-42-12"><a id="__codelineno-42-12" name="__codelineno-42-12" href="#__codelineno-42-12"></a><span class="go">             ├─12075 &quot;/usr/sbin/zabbix_server: ha manager&quot;</span>
-</span><span id="__span-42-13"><a id="__codelineno-42-13" name="__codelineno-42-13" href="#__codelineno-42-13"></a><span class="go">             ├─12076 &quot;/usr/sbin/zabbix_server: service manager #1 [processed 0 events, updated 0 event tags, deleted 0 problems, synced 0 service updates, idle 5.027667 sec during 5.042628 sec]&quot;</span>
-</span><span id="__span-42-14"><a id="__codelineno-42-14" name="__codelineno-42-14" href="#__codelineno-42-14"></a><span class="go">             ├─12077 &quot;/usr/sbin/zabbix_server: configuration syncer [synced configuration in 0.051345 sec, idle 10 sec]&quot;</span>
-</span><span id="__span-42-15"><a id="__codelineno-42-15" name="__codelineno-42-15" href="#__codelineno-42-15"></a><span class="go">             ├─12078 &quot;/usr/sbin/zabbix_server: alert manager #1 [sent 0, failed 0 alerts, idle 5.030391 sec during 5.031944 sec]&quot;</span>
-</span><span id="__span-42-16"><a id="__codelineno-42-16" name="__codelineno-42-16" href="#__codelineno-42-16"></a><span class="go">             ├─12079 &quot;/usr/sbin/zabbix_server: alerter #1 started&quot;</span>
-</span><span id="__span-42-17"><a id="__codelineno-42-17" name="__codelineno-42-17" href="#__codelineno-42-17"></a><span class="go">             ├─12080 &quot;/usr/sbin/zabbix_server: alerter #2 started&quot;</span>
-</span><span id="__span-42-18"><a id="__codelineno-42-18" name="__codelineno-42-18" href="#__codelineno-42-18"></a><span class="go">             ├─12081 &quot;/usr/sbin/zabbix_server: alerter #3 started&quot;</span>
-</span><span id="__span-42-19"><a id="__codelineno-42-19" name="__codelineno-42-19" href="#__codelineno-42-19"></a><span class="go">             ├─12082 &quot;/usr/sbin/zabbix_server: preprocessing manager #1 [queued 0, processed 0 values, idle 5.023818 sec during 5.024830 sec]&quot;</span>
-</span><span id="__span-42-20"><a id="__codelineno-42-20" name="__codelineno-42-20" href="#__codelineno-42-20"></a><span class="go">             ├─12083 &quot;/usr/sbin/zabbix_server: lld manager #1 [processed 0 LLD rules, idle 5.017278sec during 5.017574 sec]&quot;</span>
-</span><span id="__span-42-21"><a id="__codelineno-42-21" name="__codelineno-42-21" href="#__codelineno-42-21"></a><span class="go">             ├─12084 &quot;/usr/sbin/zabbix_server: lld worker #1 [processed 1 LLD rules, idle 21.031209 sec during 21.063879 sec]&quot;</span>
-</span><span id="__span-42-22"><a id="__codelineno-42-22" name="__codelineno-42-22" href="#__codelineno-42-22"></a><span class="go">             ├─12085 &quot;/usr/sbin/zabbix_server: lld worker #2 [processed 1 LLD rules, idle 43.195541 sec during 43.227934 sec]&quot;</span>
-</span><span id="__span-42-23"><a id="__codelineno-42-23" name="__codelineno-42-23" href="#__codelineno-42-23"></a><span class="go">             ├─12086 &quot;/usr/sbin/zabbix_server: housekeeper [startup idle for 30 minutes]&quot;</span>
-</span><span id="__span-42-24"><a id="__codelineno-42-24" name="__codelineno-42-24" href="#__codelineno-42-24"></a><span class="go">             ├─12087 &quot;/usr/sbin/zabbix_server: timer #1 [updated 0 hosts, suppressed 0 events in 0.017595 sec, idle 59 sec]&quot;</span>
-</span><span id="__span-42-25"><a id="__codelineno-42-25" name="__codelineno-42-25" href="#__codelineno-42-25"></a><span class="go">             ├─12088 &quot;/usr/sbin/zabbix_server: http poller #1 [got 0 values in 0.000071 sec, idle 5 sec]&quot;</span>
-</span><span id="__span-42-26"><a id="__codelineno-42-26" name="__codelineno-42-26" href="#__codelineno-42-26"></a><span class="go">             ├─12089 &quot;/usr/sbin/zabbix_server: browser poller #1 [got 0 values in 0.000066 sec, idle 5 sec]&quot;</span>
-</span><span id="__span-42-27"><a id="__codelineno-42-27" name="__codelineno-42-27" href="#__codelineno-42-27"></a><span class="go">             ├─12090 &quot;/usr/sbin/zabbix_server: discovery manager #1 [processing 0 rules, 0 unsaved checks]&quot;</span>
-</span><span id="__span-42-28"><a id="__codelineno-42-28" name="__codelineno-42-28" href="#__codelineno-42-28"></a><span class="go">             ├─12091 &quot;/usr/sbin/zabbix_server: history syncer #1 [processed 4 values, 3 triggers in 0.027382 sec, idle 1 sec]&quot;</span>
-</span><span id="__span-42-29"><a id="__codelineno-42-29" name="__codelineno-42-29" href="#__codelineno-42-29"></a><span class="go">             ├─12092 &quot;/usr/sbin/zabbix_server: history syncer #2 [processed 0 values, 0 triggers in 0.000077 sec, idle 1 sec]&quot;</span>
-</span><span id="__span-42-30"><a id="__codelineno-42-30" name="__codelineno-42-30" href="#__codelineno-42-30"></a><span class="go">             ├─12093 &quot;/usr/sbin/zabbix_server: history syncer #3 [processed 0 values, 0 triggers in 0.000076 sec, idle 1 sec]&quot;</span>
-</span><span id="__span-42-31"><a id="__codelineno-42-31" name="__codelineno-42-31" href="#__codelineno-42-31"></a><span class="go">             ├─12094 &quot;/usr/sbin/zabbix_server: history syncer #4 [processed 0 values, 0 triggers in 0.000020 sec, idle 1 sec]&quot;</span>
-</span><span id="__span-42-32"><a id="__codelineno-42-32" name="__codelineno-42-32" href="#__codelineno-42-32"></a><span class="go">             ├─12095 &quot;/usr/sbin/zabbix_server: escalator #1 [processed 0 escalations in 0.011627 sec, idle 3 sec]&quot;</span>
-</span><span id="__span-42-33"><a id="__codelineno-42-33" name="__codelineno-42-33" href="#__codelineno-42-33"></a><span class="go">             ├─12096 &quot;/usr/sbin/zabbix_server: proxy poller #1 [exchanged data with 0 proxies in 0.000081 sec, idle 5 sec]&quot;</span>
-</span><span id="__span-42-34"><a id="__codelineno-42-34" name="__codelineno-42-34" href="#__codelineno-42-34"></a><span class="go">             ├─12097 &quot;/usr/sbin/zabbix_server: self-monitoring [processed data in 0.000068 sec, idle 1 sec]&quot;</span>
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="go">localhost:~&gt; sudo systemctl status zabbix-server</span>
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="go">● zabbix-server.service - Zabbix Server</span>
+</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="go">     Loaded: loaded (/usr/lib/systemd/system/zabbix-server.service; enabled; preset: disabled)</span>
+</span><span id="__span-34-5"><a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a><span class="go">     Active: active (running) since Tue 2025-02-25 14:53:33 CET; 26min ago</span>
+</span><span id="__span-34-6"><a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="go">   Main PID: 12074 (zabbix_server)</span>
+</span><span id="__span-34-7"><a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a><span class="go">      Tasks: 77 (limit: 24744)</span>
+</span><span id="__span-34-8"><a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a><span class="go">     Memory: 71.5M</span>
+</span><span id="__span-34-9"><a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a><span class="go">        CPU: 18.535s</span>
+</span><span id="__span-34-10"><a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a><span class="go">     CGroup: /system.slice/zabbix-server.service</span>
+</span><span id="__span-34-11"><a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a><span class="go">             ├─12074 /usr/sbin/zabbix_server -c /etc/zabbix/zabbix_server.conf</span>
+</span><span id="__span-34-12"><a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a><span class="go">             ├─12075 &quot;/usr/sbin/zabbix_server: ha manager&quot;</span>
+</span><span id="__span-34-13"><a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a><span class="go">             ├─12076 &quot;/usr/sbin/zabbix_server: service manager #1 [processed 0 events, updated 0 event tags, deleted 0 problems, synced 0 service updates, idle 5.027667 sec during 5.042628 sec]&quot;</span>
+</span><span id="__span-34-14"><a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a><span class="go">             ├─12077 &quot;/usr/sbin/zabbix_server: configuration syncer [synced configuration in 0.051345 sec, idle 10 sec]&quot;</span>
+</span><span id="__span-34-15"><a id="__codelineno-34-15" name="__codelineno-34-15" href="#__codelineno-34-15"></a><span class="go">             ├─12078 &quot;/usr/sbin/zabbix_server: alert manager #1 [sent 0, failed 0 alerts, idle 5.030391 sec during 5.031944 sec]&quot;</span>
+</span><span id="__span-34-16"><a id="__codelineno-34-16" name="__codelineno-34-16" href="#__codelineno-34-16"></a><span class="go">             ├─12079 &quot;/usr/sbin/zabbix_server: alerter #1 started&quot;</span>
+</span><span id="__span-34-17"><a id="__codelineno-34-17" name="__codelineno-34-17" href="#__codelineno-34-17"></a><span class="go">             ├─12080 &quot;/usr/sbin/zabbix_server: alerter #2 started&quot;</span>
+</span><span id="__span-34-18"><a id="__codelineno-34-18" name="__codelineno-34-18" href="#__codelineno-34-18"></a><span class="go">             ├─12081 &quot;/usr/sbin/zabbix_server: alerter #3 started&quot;</span>
+</span><span id="__span-34-19"><a id="__codelineno-34-19" name="__codelineno-34-19" href="#__codelineno-34-19"></a><span class="go">             ├─12082 &quot;/usr/sbin/zabbix_server: preprocessing manager #1 [queued 0, processed 0 values, idle 5.023818 sec during 5.024830 sec]&quot;</span>
+</span><span id="__span-34-20"><a id="__codelineno-34-20" name="__codelineno-34-20" href="#__codelineno-34-20"></a><span class="go">             ├─12083 &quot;/usr/sbin/zabbix_server: lld manager #1 [processed 0 LLD rules, idle 5.017278sec during 5.017574 sec]&quot;</span>
+</span><span id="__span-34-21"><a id="__codelineno-34-21" name="__codelineno-34-21" href="#__codelineno-34-21"></a><span class="go">             ├─12084 &quot;/usr/sbin/zabbix_server: lld worker #1 [processed 1 LLD rules, idle 21.031209 sec during 21.063879 sec]&quot;</span>
+</span><span id="__span-34-22"><a id="__codelineno-34-22" name="__codelineno-34-22" href="#__codelineno-34-22"></a><span class="go">             ├─12085 &quot;/usr/sbin/zabbix_server: lld worker #2 [processed 1 LLD rules, idle 43.195541 sec during 43.227934 sec]&quot;</span>
+</span><span id="__span-34-23"><a id="__codelineno-34-23" name="__codelineno-34-23" href="#__codelineno-34-23"></a><span class="go">             ├─12086 &quot;/usr/sbin/zabbix_server: housekeeper [startup idle for 30 minutes]&quot;</span>
+</span><span id="__span-34-24"><a id="__codelineno-34-24" name="__codelineno-34-24" href="#__codelineno-34-24"></a><span class="go">             ├─12087 &quot;/usr/sbin/zabbix_server: timer #1 [updated 0 hosts, suppressed 0 events in 0.017595 sec, idle 59 sec]&quot;</span>
+</span><span id="__span-34-25"><a id="__codelineno-34-25" name="__codelineno-34-25" href="#__codelineno-34-25"></a><span class="go">             ├─12088 &quot;/usr/sbin/zabbix_server: http poller #1 [got 0 values in 0.000071 sec, idle 5 sec]&quot;</span>
+</span><span id="__span-34-26"><a id="__codelineno-34-26" name="__codelineno-34-26" href="#__codelineno-34-26"></a><span class="go">             ├─12089 &quot;/usr/sbin/zabbix_server: browser poller #1 [got 0 values in 0.000066 sec, idle 5 sec]&quot;</span>
+</span><span id="__span-34-27"><a id="__codelineno-34-27" name="__codelineno-34-27" href="#__codelineno-34-27"></a><span class="go">             ├─12090 &quot;/usr/sbin/zabbix_server: discovery manager #1 [processing 0 rules, 0 unsaved checks]&quot;</span>
+</span><span id="__span-34-28"><a id="__codelineno-34-28" name="__codelineno-34-28" href="#__codelineno-34-28"></a><span class="go">             ├─12091 &quot;/usr/sbin/zabbix_server: history syncer #1 [processed 4 values, 3 triggers in 0.027382 sec, idle 1 sec]&quot;</span>
+</span><span id="__span-34-29"><a id="__codelineno-34-29" name="__codelineno-34-29" href="#__codelineno-34-29"></a><span class="go">             ├─12092 &quot;/usr/sbin/zabbix_server: history syncer #2 [processed 0 values, 0 triggers in 0.000077 sec, idle 1 sec]&quot;</span>
+</span><span id="__span-34-30"><a id="__codelineno-34-30" name="__codelineno-34-30" href="#__codelineno-34-30"></a><span class="go">             ├─12093 &quot;/usr/sbin/zabbix_server: history syncer #3 [processed 0 values, 0 triggers in 0.000076 sec, idle 1 sec]&quot;</span>
+</span><span id="__span-34-31"><a id="__codelineno-34-31" name="__codelineno-34-31" href="#__codelineno-34-31"></a><span class="go">             ├─12094 &quot;/usr/sbin/zabbix_server: history syncer #4 [processed 0 values, 0 triggers in 0.000020 sec, idle 1 sec]&quot;</span>
+</span><span id="__span-34-32"><a id="__codelineno-34-32" name="__codelineno-34-32" href="#__codelineno-34-32"></a><span class="go">             ├─12095 &quot;/usr/sbin/zabbix_server: escalator #1 [processed 0 escalations in 0.011627 sec, idle 3 sec]&quot;</span>
+</span><span id="__span-34-33"><a id="__codelineno-34-33" name="__codelineno-34-33" href="#__codelineno-34-33"></a><span class="go">             ├─12096 &quot;/usr/sbin/zabbix_server: proxy poller #1 [exchanged data with 0 proxies in 0.000081 sec, idle 5 sec]&quot;</span>
+</span><span id="__span-34-34"><a id="__codelineno-34-34" name="__codelineno-34-34" href="#__codelineno-34-34"></a><span class="go">             ├─12097 &quot;/usr/sbin/zabbix_server: self-monitoring [processed data in 0.000068 sec, idle 1 sec]&quot;</span>
 </span></code></pre></div>
 </details>
 <p>This concludes our chapter on installing and configuring the Zabbix server.</p>

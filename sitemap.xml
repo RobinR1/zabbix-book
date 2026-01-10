@@ -131,6 +131,16 @@
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch01-zabbix-components/postgresql/"/>
     </url>
     <url>
+        <loc>https://thezabbixbook.com/ch01-zabbix-components/preparation/</loc>
+        <lastmod>2026-01-10</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch01-zabbix-components/preparation/"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch01-zabbix-components/preparation/"/>
+        <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch01-zabbix-components/preparation/"/>
+        <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch01-zabbix-components/preparation/"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch01-zabbix-components/preparation/"/>
+    </url>
+    <url>
         <loc>https://thezabbixbook.com/ch01-zabbix-components/zabbix-frontend/</loc>
         <lastmod>2026-01-10</lastmod>
         <changefreq>daily</changefreq>
@@ -979,6 +989,16 @@
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch01-zabbix-components/postgresql/"/>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch01-zabbix-components/postgresql/"/>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch01-zabbix-components/postgresql/"/>
+    </url>
+    <url>
+        <loc>https://thezabbixbook.com/fr/ch01-zabbix-components/preparation/</loc>
+        <lastmod>2026-01-10</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch01-zabbix-components/preparation/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch01-zabbix-components/preparation/"/>
+        <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch01-zabbix-components/preparation/"/>
+        <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch01-zabbix-components/preparation/"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch01-zabbix-components/preparation/"/>
     </url>
     <url>
         <loc>https://thezabbixbook.com/fr/ch01-zabbix-components/zabbix-frontend/</loc>
@@ -1840,6 +1860,16 @@
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch01-zabbix-components/postgresql/"/>
     </url>
     <url>
+        <loc>https://thezabbixbook.com/nl/ch01-zabbix-components/preparation/</loc>
+        <lastmod>2026-01-10</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch01-zabbix-components/preparation/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch01-zabbix-components/preparation/"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch01-zabbix-components/preparation/"/>
+        <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch01-zabbix-components/preparation/"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch01-zabbix-components/preparation/"/>
+    </url>
+    <url>
         <loc>https://thezabbixbook.com/nl/ch01-zabbix-components/zabbix-frontend/</loc>
         <lastmod>2026-01-10</lastmod>
         <changefreq>daily</changefreq>
@@ -2697,6 +2727,16 @@
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch01-zabbix-components/postgresql/"/>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch01-zabbix-components/postgresql/"/>
         <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch01-zabbix-components/postgresql/"/>
+    </url>
+    <url>
+        <loc>https://thezabbixbook.com/pt_BR/ch01-zabbix-components/preparation/</loc>
+        <lastmod>2026-01-10</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch01-zabbix-components/preparation/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch01-zabbix-components/preparation/"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch01-zabbix-components/preparation/"/>
+        <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch01-zabbix-components/preparation/"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch01-zabbix-components/preparation/"/>
     </url>
     <url>
         <loc>https://thezabbixbook.com/pt_BR/ch01-zabbix-components/zabbix-frontend/</loc>
@@ -3562,6 +3602,16 @@
         <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch01-zabbix-components/postgresql/"/>
         <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch01-zabbix-components/postgresql/"/>
         <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch01-zabbix-components/postgresql/"/>
+    </url>
+    <url>
+        <loc>https://thezabbixbook.com/ru/ch01-zabbix-components/preparation/</loc>
+        <lastmod>2026-01-10</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://thezabbixbook.com/ru/ch01-zabbix-components/preparation/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://thezabbixbook.com/ch01-zabbix-components/preparation/"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://thezabbixbook.com/fr/ch01-zabbix-components/preparation/"/>
+        <xhtml:link rel="alternate" hreflang="nl" href="https://thezabbixbook.com/nl/ch01-zabbix-components/preparation/"/>
+        <xhtml:link rel="alternate" hreflang="pt_BR" href="https://thezabbixbook.com/pt_BR/ch01-zabbix-components/preparation/"/>
     </url>
     <url>
         <loc>https://thezabbixbook.com/ru/ch01-zabbix-components/zabbix-frontend/</loc>
