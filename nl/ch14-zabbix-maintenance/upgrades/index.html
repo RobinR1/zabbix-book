@@ -6,14 +6,8 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="This chapter focuses on Zabbix upgrade best practices to help you keep your
-monitoring system up-to-date, secure, and feature-rich. You'll learn how to
-safely plan and execute upgrades, from minor patches to major version updates.
-Topics include checking compatibility, backing up before upgrade, updating the
-database schema, and verifying configuration changes. Staying current with the
-latest Zabbix version ensures better performance, access to new features, and
-important security fixes. With a structured upgrade process, you can reduce
-downtime and avoid unexpected issues.
+        <meta name="description" content="Complete guide to Zabbix upgrades covering major and minor versions, OS, database,
+and PHP upgrades, plus safe migration strategies.
 ">
       
       
@@ -88,14 +82,14 @@ downtime and avoid unexpected issues.
     
 
     <meta property="og:title" content="Upgrades">
-    <meta property="og:description" content="This chapter focuses on Zabbix upgrade best practices to help you keep your monitoring system up-to-date, secure, and feature-rich. You&#39;ll learn how to safely plan and execute upgrades, from minor patches to major version updates. Topics include checking compatibility, backing up before upgrade, updating the database schema, and verifying configuration changes. Staying current with the latest Zabbix version ensures better performance, access to new features, and important security fixes. With a structured upgrade process, you can reduce downtime and avoid unexpected issues.">
+    <meta property="og:description" content="Complete guide to Zabbix upgrades covering major and minor versions, OS, database, and PHP upgrades, plus safe migration strategies.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thezabbixbook.com/nl/ch14-zabbix-maintenance/upgrades/">
     <meta property="og:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Upgrades">
-    <meta name="twitter:description" content="This chapter focuses on Zabbix upgrade best practices to help you keep your monitoring system up-to-date, secure, and feature-rich. You&#39;ll learn how to safely plan and execute upgrades, from minor patches to major version updates. Topics include checking compatibility, backing up before upgrade, updating the database schema, and verifying configuration changes. Staying current with the latest Zabbix version ensures better performance, access to new features, and important security fixes. With a structured upgrade process, you can reduce downtime and avoid unexpected issues.">
+    <meta name="twitter:description" content="Complete guide to Zabbix upgrades covering major and minor versions, OS, database, and PHP upgrades, plus safe migration strategies.">
     <meta name="twitter:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="627">
@@ -722,8 +716,6 @@ downtime and avoid unexpected issues.
   
     
     
-      
-        
       
         
       
@@ -1554,6 +1546,222 @@ downtime and avoid unexpected issues.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#how-zabbix-really-upgrades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Zabbix Really Upgrades
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#major-and-minor-upgrades-two-very-different-beasts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Major and Minor Upgrades: Two Very Different Beasts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-stack-beneath-the-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Stack Beneath the Server
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Stack Beneath the Server">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-short-story-about-an-upgrade-gone-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Short Story About an Upgrade Gone Wrong
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-migrations-are-often-safer-than-upgrades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Migrations Are Often Safer Than Upgrades
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-actually-makes-a-zabbix-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Actually Makes a Zabbix System
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-scale-and-reality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time, Scale, and Reality
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Time, Scale, and Reality">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-crucial-detour-primary-keys-and-database-health" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Crucial Detour: Primary Keys and Database Health
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-primary-keys-matter-more-during-upgrades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Primary Keys Matter More During Upgrades
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-engines-are-not-neutral-observers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database Engines Are Not Neutral Observers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postgresql-upgrade-and-migration-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PostgreSQL: Upgrade and Migration Strategies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mariadb-and-mysql-different-tools-same-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MariaDB and MySQL: Different Tools, Same Principles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replication-as-an-upgrade-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replication as an Upgrade Tool
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Replication as an Upgrade Tool">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logical-replication-and-near-zero-downtime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logical Replication and Near-Zero Downtime
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-replication-is-the-right-choice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When Replication Is the Right Choice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bringing-it-back-to-zabbix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bringing It Back to Zabbix
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-frontend-as-an-early-warning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Frontend as an Early Warning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choosing-the-right-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing the Right Approach
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#conclusion" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1710,6 +1918,222 @@ downtime and avoid unexpected issues.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#how-zabbix-really-upgrades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Zabbix Really Upgrades
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#major-and-minor-upgrades-two-very-different-beasts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Major and Minor Upgrades: Two Very Different Beasts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-stack-beneath-the-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Stack Beneath the Server
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Stack Beneath the Server">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-short-story-about-an-upgrade-gone-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Short Story About an Upgrade Gone Wrong
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-migrations-are-often-safer-than-upgrades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Migrations Are Often Safer Than Upgrades
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-actually-makes-a-zabbix-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Actually Makes a Zabbix System
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-scale-and-reality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time, Scale, and Reality
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Time, Scale, and Reality">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-crucial-detour-primary-keys-and-database-health" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Crucial Detour: Primary Keys and Database Health
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-primary-keys-matter-more-during-upgrades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Primary Keys Matter More During Upgrades
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-engines-are-not-neutral-observers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database Engines Are Not Neutral Observers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postgresql-upgrade-and-migration-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PostgreSQL: Upgrade and Migration Strategies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mariadb-and-mysql-different-tools-same-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MariaDB and MySQL: Different Tools, Same Principles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replication-as-an-upgrade-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replication as an Upgrade Tool
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Replication as an Upgrade Tool">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logical-replication-and-near-zero-downtime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logical Replication and Near-Zero Downtime
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-replication-is-the-right-choice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When Replication Is the Right Choice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bringing-it-back-to-zabbix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bringing It Back to Zabbix
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-frontend-as-an-early-warning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Frontend as an Early Warning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choosing-the-right-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing the Right Approach
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#conclusion" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1819,6 +2243,20 @@ downtime and avoid unexpected issues.
 
 
 
+<nav class="md-tags">
+  
+    
+    <span class="md-tag md-tag-icon" data-tag="advanced">
+      Gevorderde
+    </span>
+  
+    
+    <span class="md-tag md-tag-icon" data-tag="expert">
+      Expert
+    </span>
+  
+</nav>
+
 
 
   
@@ -1834,9 +2272,310 @@ downtime and avoid unexpected issues.
 
 
 <h1 id="zabbix-upgrades">Zabbix Upgrades</h1>
+<p>Upgrading Zabbix is one of those activities every administrator knows must happen
+eventually, and yet hopes to postpone just a little longer. Not because it is
+particularly complex, but because it touches the one system everyone depends on
+when things go wrong.</p>
+<p>A monitoring system that is unavailable during an incident is not just inconvenient
+it is actively harmful. This is why upgrades deserve planning, context, and restraint.</p>
+<p>This chapter is not a checklist. It is a guide to understanding what actually happens
+when you upgrade Zabbix, what can go wrong, and how to make sure it does not.</p>
+<p><em>“Good upgrades are quiet. Bad ones become stories.”</em></p>
+<h3 id="how-zabbix-really-upgrades">How Zabbix Really Upgrades</h3>
+<p>Zabbix does not upgrade like some other open-source software.</p>
+<p>At its core, Zabbix uses a versioned database schema. Every structural change ever
+made to the database since 2.0 is recorded as a patch. When the Zabbix server
+starts, it compares the current database version with the one it expects and applies
+all missing patches automatically.</p>
+<p>This means that a database created with Zabbix 2.0 can be upgraded directly to
+Zabbix 8.0. No intermediate versions are required. No manual schema juggling is
+needed.</p>
+<p>This capability is powerful, and often misunderstood.</p>
+<p>What matters is not the starting version of Zabbix, but whether the surrounding
+system, the operating system, database engine, PHP, and optional extensions can support
+the target version.</p>
+<h3 id="major-and-minor-upgrades-two-very-different-beasts">Major and Minor Upgrades: Two Very Different Beasts</h3>
+<p>Not all upgrades deserve the same level of concern.</p>
+<p>A minor upgrade for example from 8.0.1 to 8.0.8 focuses on stability. These releases
+fix bugs, close security issues, and improve performance. They are usually quick,
+safe, and should be applied regularly. Treating them as major events often leads
+to them being postponed, which quietly increases risk over time.</p>
+<p>A major upgrade, on the other hand, changes behavior. It may introduce new features,
+remove deprecated ones, and almost always involves database schema changes. While
+Zabbix can apply these changes automatically, the impact depends heavily on the
+size of your database and the age of your installation.</p>
+<p><em>“Skipping minor upgrades is how small problems grow up unsupervised.”</em></p>
+<details class="info" open="open">
+<summary>Info</summary>
+<p>Zabbix follows a regular release cycle for minor updates, which are generally
+published on a monthly basis.</p>
+</details>
+<p>This book focuses on Zabbix 8.0 as the target version. Older releases matter only
+in how they shape the path toward it.</p>
+<h3 id="the-stack-beneath-the-server">The Stack Beneath the Server</h3>
+<p>Zabbix is not an island. It rests on a stack of software that evolves independently
+and sometimes forces upgrades on its own schedule.</p>
+<p>Operating systems reach end of life. Database engines deprecate versions. PHP moves
+forward whether the frontend is ready or not. TimescaleDB introduces performance
+gains and constraints in equal measure.</p>
+<p>Many Zabbix upgrades are triggered not by Zabbix itself, but by one of these layers.</p>
+<p>This is where many upgrades go wrong: everything changes at once.</p>
+<p><strong><em>“If the OS, database, PHP, and Zabbix all change in the same night, you did not
+perform an upgrade. You rolled the dice.”</em></strong></p>
+<h4 id="a-short-story-about-an-upgrade-gone-wrong">A Short Story About an Upgrade Gone Wrong</h4>
+<p><strong>Consider a real-world example:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>An administrator decides to upgrade an aging monitoring server. The OS is out of
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>support, so it gets upgraded. The new OS ships with a newer PostgreSQL version,
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>so that changes too. PHP is updated automatically as part of the process. Since
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Zabbix needs an upgrade anyway, that is done last.
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>The server starts. The database upgrade begins. Disk usage spikes. PostgreSQL
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>runs out of space halfway through rebuilding indexes. The Zabbix server refuses
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>to start. The frontend is broken because PHP extensions changed. Monitoring is
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>down, and restoring the backup takes hours.
+</span></code></pre></div>
+<p>Nothing <strong>“unexpected”</strong> happened. Everything that went wrong was predictable.</p>
+<p>The mistake was not technical. It was concurrent change without isolation.</p>
+<h3 id="why-migrations-are-often-safer-than-upgrades">Why Migrations Are Often Safer Than Upgrades</h3>
+<p>For this reason, many experienced administrators prefer migration based upgrades,
+especially when major versions or operating systems are involved.</p>
+<p>Instead of upgrading an existing system in place, a new system is built alongside
+it. The target operating system, database engine, PHP version, and Zabbix release
+are installed cleanly. Only once the new environment is stable does the data move.</p>
+<p>This approach has advantages that are hard to overstate. It allows testing without
+pressure, rollback without panic, and validation without guessing.</p>
+<p>It also forces clarity.</p>
+<h3 id="what-actually-makes-a-zabbix-system">What Actually Makes a Zabbix System</h3>
+<p>Despite appearances, a Zabbix system consists of remarkably few moving parts.</p>
+<p><strong>The database holds almost everything:</strong> configuration, history, trends, users,
+permissions. Migrating the database brings the environment with it. When restored
+into a new system and started with a newer Zabbix server, the schema is upgraded
+automatically.</p>
+<p>Configuration files matter too, but far less than many expect. Server and proxy
+configuration files, alert scripts, external checks, and certificates should be
+migrated deliberately, not copied blindly. Paths change. Defaults improve. Old
+workarounds often become unnecessary. As an example Zabbix now support
+preprocessing with JSONPath and JavaScript. This alone can reduce tons of
+scripts we used before.</p>
+<p>What does not deserve to follow you are old logs, temporary files, and forgotten
+overrides. Migration is not just movement, it is an opportunity to let go.</p>
+<p><strong><em>“If you copy every problem forward, you did not migrate. You embalmed.”</em></strong></p>
+<h3 id="time-scale-and-reality">Time, Scale, and Reality</h3>
+<p>Upgrade duration has little to do with version numbers and everything to do with
+data volume.</p>
+<p>A small installation with a modest database may complete a major upgrade in minutes.
+A large environment with years of retained history and TimescaleDB hypertables
+may take hours if not days. During that time, disk I/O will spike, tables may be
+locked, and patience will be tested.</p>
+<p>This is normal.</p>
+<p>What turns long upgrades into outages is not duration, but surprise.</p>
+<p>A well planned upgrade announces its timeline in advance. A poorly planned one
+discovers it in production.</p>
+<h4 id="a-crucial-detour-primary-keys-and-database-health">A Crucial Detour: Primary Keys and Database Health</h4>
+<p>At some point in every long running Zabbix installation, performance questions
+arise. Queries get slower. Housekeeping takes longer. Vacuuming or optimization
+jobs begin to dominate maintenance windows. Very often, the root cause is not
+hardware, scale, or even Zabbix itself.</p>
+<p>It is missing or late added primary keys.</p>
+<p>Historically, early Zabbix versions did not enforce primary keys on all large tables.
+This was not negligence it reflected the realities of database engines and workloads at the
+time. As Zabbix evolved, so did its expectations of the database beneath it.</p>
+<p>Modern Zabbix versions rely heavily on primary keys to ensure:</p>
+<ul>
+<li>Efficient housekeeping</li>
+<li>Predictable query plans</li>
+<li>Safe parallel operations</li>
+<li>TimescaleDB compatibility</li>
+</ul>
+<p>Adding them late is possible, but it is not free.</p>
+<p><strong><em>“A database without primary keys works… until it really, really doesn't.”</em></strong></p>
+<h4 id="why-primary-keys-matter-more-during-upgrades">Why Primary Keys Matter More During Upgrades</h4>
+<p>Database upgrades and migrations are moments of maximum leverage. Tables are already
+being rewritten, indexes rebuilt, and metadata refreshed. This makes them the ideal
+time to correct structural debt.</p>
+<p>Adding primary keys to large Zabbix tables on a live production system can be
+disruptive. Doing so during an upgrade or migration often costs little more than
+patience.</p>
+<p>This is why Zabbix documents primary key enforcement so explicitly: it is not a
+theoretical best practice, it is a practical necessity for modern workloads.</p>
+<p>If your database still lacks required primary keys, an upgrade is not just an
+opportunity to add them, it is the safest time you will ever get.</p>
+<h4 id="database-engines-are-not-neutral-observers">Database Engines Are Not Neutral Observers</h4>
+<p>database does not exist in a vacuum. It may feel self contained once it is running,
+but it is quietly shaped by the operating system beneath it, sometimes in ways that
+only become visible years later.</p>
+<p>One of the most striking examples of this is the C standard library.</p>
+<p>Database engines rely on the system’s C library for fundamental operations such as
+string comparison, sorting, and collation. When that library changes, the rules of
+order can change with it. What was considered correctly sorted yesterday may no
+longer be considered correct tomorrow.</p>
+<p>This is not hypothetical.</p>
+<p>During major Linux distribution upgrades such as the transition from CentOS 6 to 7,
+or across certain Ubuntu releases the underlying C library changed its collation
+behavior. Databases that were perfectly healthy before the upgrade suddenly contained
+indexes that no longer matched the new sorting rules.</p>
+<p>Nothing was “broken”. Queries still worked. Data was still there. But indexes were
+now built on assumptions that no longer held true.</p>
+<p>The only correct response in such situations is a rebuild.</p>
+<p>That is why database upgrades that coincide with operating system changes often
+benefit from index rebuilds, table rewrites, or full reindexing operations. Not
+because the database engine failed, but because the environment it depends on has
+evolved.</p>
+<p><strong><em>“A database upgraded without reindexing is carrying yesterday’s sorting rules
+into today's system.”</em></strong></p>
+<p><strong>Ignoring this can lead to subtle and difficult-to-diagnose issues:</strong> degraded
+performance, unexpected query plans, or in rare cases, incorrect index usage.
+These problems do not announce themselves loudly. They simply erode confidence
+over time.</p>
+<p>Reindexing after a major OS or database upgrade is not superstition. It is an
+acknowledgement that databases inherit behavior from the systems they run on and
+that those systems do change.</p>
+<details class="note" open="open">
+<summary>Note</summary>
+<p>Historically, major upgrades of CentOS, Ubuntu, and SUSE Linux Enterprise have 
+all introduced updates to core system libraries, including the C standard library.
+In some cases, these updates altered collation and sorting behavior in ways that
+directly affected database indexes.</p>
+</details>
+<h4 id="postgresql-upgrade-and-migration-strategies">PostgreSQL: Upgrade and Migration Strategies</h4>
+<p>PostgreSQL offers administrators an unusual degree of flexibility when it comes to
+upgrades. That flexibility is a strength but only if it is understood.</p>
+<p>For smaller Zabbix installations, the most straightforward approach is often a
+logical dump and restore. A new PostgreSQL version is installed, data is exported
+from the old system, and restored into the new one. This method is slow, sometimes
+painfully so, but it has one decisive advantage: every table, index, and object is
+rebuilt from scratch using the new database engine and the current system libraries.</p>
+<p>It is difficult to carry historical baggage through a dump and restore, which is
+precisely why it remains such a reliable option.</p>
+<p>Larger environments tend to follow a different path. When databases grow to hundreds
+of gigabytes or more, full logical restores become impractical. In these cases,
+PostgreSQL’s native upgrade tooling is often used to perform an in-place upgrade.</p>
+<p>This is where installing multiple PostgreSQL versions side by side becomes important.</p>
+<p>Tools such as pg_upgrade rely on having both the old and the new PostgreSQL binaries
+available at the same time. By explicitly controlling which binaries operate on a
+given data directory, administrators can perform a fast upgrade while preserving
+the existing data layout. When executed correctly, this approach dramatically reduces
+downtime compared to logical migrations.</p>
+<p>Some teams take this one step further by carefully structuring filesystem layouts
+or using symbolic links to ensure that data directories remain stable while binaries
+change around them. This is not casual administration, it requires discipline, documentation,
+and rehearsals but it allows upgrades to be repeatable and predictable even at scale.</p>
+<p><strong><em>“Fast upgrades are never accidental. They are designed long before they are needed.”</em></strong></p>
+<p>Regardless of the chosen method, PostgreSQL upgrades benefit enormously from a few
+consistent practices.</p>
+<p>Testing the upgrade process on a restored copy of the database removes uncertainty.
+Performing explicit reindexing after major operating system or engine upgrades ensures
+that indexes reflect the behavior of the new environment. Verifying extensions
+particularly TimescaleDB before starting Zabbix prevents avoidable startup failures.</p>
+<p>PostgreSQL provides the tools to upgrade safely. The challenge lies not in choosing
+the fastest method, but in choosing the one that matches the size, risk tolerance,
+and operational maturity of your environment.</p>
+<h4 id="mariadb-and-mysql-different-tools-same-principles">MariaDB and MySQL: Different Tools, Same Principles</h4>
+<p>MariaDB and MySQL follow a different philosophy, but the fundamentals remain unchanged.</p>
+<p>Major engine upgrades should be treated as database migrations, not package updates.
+Replication can be used to great advantage here: upgrading a replica first, validating
+behavior, and only then promoting it.</p>
+<p>This approach reduces downtime and provides a clean rollback path.</p>
+<p>Primary key enforcement, index health, and collation consistency deserve special
+care in these environments. What works adequately on smaller systems can degrade
+sharply at scale.</p>
+<h4 id="replication-as-an-upgrade-tool">Replication as an Upgrade Tool</h4>
+<p>Replication is often discussed only in the context of high availability, but its
+value goes far beyond failover. Used correctly, replication is one of the most
+powerful tools available for safe upgrades.</p>
+<p>Whether using PostgreSQL replication or MariaDB replicas, maintaining a secondary
+system allows administrators to observe the effects of an upgrade without putting
+production at risk. Schema changes can be applied and evaluated, performance
+characteristics measured, and perhaps most importantly the true duration of the
+upgrade can be understood before it matters.</p>
+<p>Only once the replica behaves exactly as expected does the primary system change.</p>
+<p>This transforms upgrades from leaps of faith into rehearsed procedures.</p>
+<p><strong><em>“If you have a replica and didn’t test the upgrade on it first, you skipped
+the best gift you were given.”</em></strong></p>
+<h5 id="logical-replication-and-near-zero-downtime">Logical Replication and Near-Zero Downtime</h5>
+<p><strong>PostgreSQL adds another powerful option:</strong> logical replication.</p>
+<p>Unlike physical replication, logical replication works at the level of database
+changes rather than raw data files. This makes it possible to replicate data between:</p>
+<ul>
+<li>Different PostgreSQL major versions</li>
+<li>Different database layouts</li>
+<li>Even different operating systems</li>
+</ul>
+<p>In upgrade scenarios, this opens the door to near zero downtime migrations.</p>
+<p>A new system can be built with the target PostgreSQL version, operating system,
+and Zabbix release. Data is streamed continuously from the old system into the
+new one while production remains fully active. When the time comes to switch over,
+downtime is reduced to the moment required to stop writes, let replication catch
+up, and redirect the application.</p>
+<p>This approach requires more planning and careful validation, but it fundamentally
+changes what “upgrade downtime” means especially for large installations where
+traditional upgrades would take hours.</p>
+<p>MariaDB offers similar concepts through replication and online schema changes,
+though the mechanisms differ. The underlying idea remains the same: decouple
+data movement from service interruption.</p>
+<p><strong><em>“The fastest upgrade is the one that finishes before users notice it
+started.”</em></strong></p>
+<h5 id="when-replication-is-the-right-choice">When Replication Is the Right Choice</h5>
+<p>Replication-based upgrades shine when:</p>
+<ul>
+<li>Databases are large</li>
+<li>Downtime windows are small</li>
+<li>OS or major database versions are changing</li>
+<li>A clean separation between old and new systems is desired</li>
+</ul>
+<p>They also impose discipline. Replication setups must be monitored, understood,
+and tested long before an upgrade is planned. This is not a last minute solution
+but when available, it is one of the safest ones.</p>
+<h5 id="bringing-it-back-to-zabbix">Bringing It Back to Zabbix</h5>
+<p>For Zabbix, replication based upgrades are particularly attractive. Configuration
+data changes slowly. History and trends are append-only. This makes the data model
+well suited to replication strategies.</p>
+<p>Used correctly, replication allows Zabbix upgrades to feel less like maintenance
+windows and more like controlled transitions.</p>
+<p><em>And that, ultimately, is the goal !</em></p>
+<h3 id="the-frontend-as-an-early-warning">The Frontend as an Early Warning</h3>
+<p><strong>One often overlooked lesson:</strong> the Zabbix frontend is your canary.</p>
+<p>After OS or PHP changes, the frontend is usually the first thing to break. When
+it does, it is a signal not an inconvenience. It tells you something in the
+environment is no longer aligned.</p>
+<p>If the frontend is unhealthy, do not proceed with the server upgrade. Fix the
+stack first. Zabbix itself is rarely the problem.</p>
+<h3 id="choosing-the-right-approach">Choosing the Right Approach</h3>
+<p>There is no universal rule that says every upgrade must be done in place, nor
+that every system requires migration. The decision depends on scale, risk tolerance,
+and what else is changing at the same time.</p>
+<p>Minor upgrades should be routine. Major upgrades should be deliberate. Operating
+system changes should be treated with respect. Database and TimescaleDB upgrades
+should never be rushed.</p>
+<p>Above all, changes should be isolated whenever possible.</p>
 <h2 id="conclusion">Conclusion</h2>
+<p>Zabbix upgrades have a reputation they do not deserve. The software itself is
+capable, conservative, and predictable. When upgrades fail, it is almost always
+because too many things changed at once, or because preparation was mistaken for
+pessimism.</p>
+<p><strong><em>“Most upgrade failures are not technical. They are scheduling decisions.”</em></strong></p>
+<p>Treat upgrades as part of system lifecycle management, not emergency surgery. Plan
+them, rehearse them, and let them be boring.</p>
+<p>Because when your monitoring system needs attention, it is already too late to
+learn how it works.</p>
 <h2 id="questions">Questions</h2>
+<ul>
+<li>What is the fundamental difference between a major and a minor Zabbix upgrade,
+  and why does it matter when planning downtime?</li>
+<li>Why does Zabbix not require incremental upgrades between major versions, and
+  what role does the database play in this process?</li>
+<li>Which components of the stack should be considered before upgrading Zabbix itself,
+  and why can upgrading them all at once be risky?</li>
+<li>What problems can arise when upgrading an operating system without rebuilding
+  database indexes?</li>
+</ul>
 <h2 id="useful-urls">Useful URLs</h2>
+<ul>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/installation/upgrade">https://www.zabbix.com/documentation/current/en/manual/installation/upgrade</a></li>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/appendix/install/db_primary_keys">https://www.zabbix.com/documentation/current/en/manual/appendix/install/db_primary_keys</a></li>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/appendix/install/db_scripts">https://www.zabbix.com/documentation/current/en/manual/appendix/install/db_scripts</a></li>
+<li></li>
+</ul>
 
 
 

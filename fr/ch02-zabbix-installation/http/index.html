@@ -914,21 +914,38 @@ adds an extra protection layer to your monitoring environment.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#authentification-de-base-dans-nginx" class="md-nav__link">
+  <a href="#basic-authentication" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Authentification de base dans Nginx
+        Basic authentication
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic authentication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-authentication-file-on-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configure authentication file on Nginx
       
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#authentification-de-base-dans-apache-httpd" class="md-nav__link">
+  <a href="#configure-authentication-file-on-apache-httpd" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Authentification de base dans Apache HTTPD
+        Configure authentication file on Apache HTTPD
       
     </span>
   </a>
@@ -1157,8 +1174,6 @@ adds an extra protection layer to your monitoring environment.
   
     
     
-      
-        
       
         
       
@@ -1915,21 +1930,38 @@ adds an extra protection layer to your monitoring environment.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#authentification-de-base-dans-nginx" class="md-nav__link">
+  <a href="#basic-authentication" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Authentification de base dans Nginx
+        Basic authentication
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic authentication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-authentication-file-on-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configure authentication file on Nginx
       
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#authentification-de-base-dans-apache-httpd" class="md-nav__link">
+  <a href="#configure-authentication-file-on-apache-httpd" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Authentification de base dans Apache HTTPD
+        Configure authentication file on Apache HTTPD
       
     </span>
   </a>
@@ -2110,12 +2142,6 @@ des informations d'identification avant d'envoyer quoi que ce soit au code php
 de Zabbix WebUI.</p>
 <p>Un serveur HTTP dispose d'un fichier contenant des informations d'identification
 utilisées pour authentifier les utilisateurs.</p>
-<details class="note" open="open">
-<summary>Note</summary>
-<p>IMPORTANT: usernames configured for basic authentication in HTTP server
-must exit in Zabbix. But only passwords configured in HTTP server are used
-for users authentication.</p>
-</details>
 <p>Voyons d'abord comment configurer l'authentification de base dans le serveur
 HTTP.</p>
 <details class="warning" open="open">
@@ -2124,75 +2150,112 @@ HTTP.</p>
 basic authentication. Please refer to respective HTTP server documentation
 for more details</p>
 </details>
-<h2 id="authentification-de-base-dans-nginx">Authentification de base dans Nginx</h2>
-<p>Trouvez le bloc <code>location / {</code> dans les fichiers de configuration de Nginx, qui
-définit votre WebUI Zabbix (ie : <code>/etc/nginx/conf.d/nginx.conf</code> file) et ajoutez
-ces deux lignes :</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>    location / {
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>        ...
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        auth_basic &quot;Basic Auth Protected Site&quot;;
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        auth_basic_user_file /etc/nginx/httpauth;
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    }
+<h2 id="basic-authentication">Basic authentication</h2>
+<p>To enable basic authentication, we first need a "password-file" containing all
+usernames and passwords that are allowed to access the frontend.</p>
+<div class="admonition warning">
+<p class="admonition-title">Important</p>
+<p>Usernames configured for basic authentication in HTTP server
+must exist in Zabbix. But only passwords configured in HTTP server are used
+for users authentication.</p>
+</div>
+<p>To create this file we need the command <code>htpasswd</code>. Execute following commands
+to ensure we have this utility:</p>
+<div class="admonition info">
+<p class="admonition-title">Install htpasswd utility</p>
+<p>Red Hat
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dnf<span class="w"> </span>install<span class="w"> </span>httpd-utils
+</span></code></pre></div></p>
+<p>SUSE
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>zypper<span class="w"> </span>install<span class="w"> </span>apache2-utils
+</span></code></pre></div></p>
+<p>Ubuntu
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>apache2-utils
+</span></code></pre></div></p>
+</div>
+<p>Next we will create the required file and the <code>Admin</code> user in it:</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>NGINX
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>htpasswd<span class="w"> </span>-c<span class="w"> </span>/etc/nginx/httpauth<span class="w"> </span>Admin
+</span></code></pre></div></p>
+<p>Apache on Red Hat
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span>htpasswd<span class="w"> </span>-c<span class="w"> </span>/etc/httpd/.htpasswd<span class="w"> </span>Admin
+</span></code></pre></div></p>
+<p>Apache on SUSE / Ubuntu
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>htpasswd<span class="w"> </span>-c<span class="w"> </span>/etc/apache2/.htpasswd<span class="w"> </span>Admin
+</span></code></pre></div></p>
+</div>
+<p>This command will request you to input the desired password for the <code>Admin</code> user
+and will then create the specified password-file with the username and encrypted
+password in it.</p>
+<p>For any additional user we can use the same command but without the <code>-c</code> option
+as the file is now already created:</p>
+<details class="example" open="open">
+<summary>Add additional users</summary>
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="go">localhost:~&gt; sudo htpasswd /etc/nginx/httpauth user1</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="go">New password: </span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="go">Re-type new password: </span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="go">Adding password for user user1</span>
 </span></code></pre></div>
+</details>
+<p>Which will add <code>user1</code> to the <code>/etc/nginx/httpauth</code>-file. Replace this path with
+the path of this file on your distribution/webserver.</p>
+<p>In the end the password-file should look something like:</p>
+<details class="example" open="open">
+<summary>Example password-file</summary>
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="go">localhost:~&gt; sudo cat /etc/nginx/httpauth</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="gp">Admin:$1$8T6SbR/N$</span>rgANUPGvFh7H.R1Mffexh.
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="gp">user1:$1$GXoDIOCA$</span>u/n1kkDeFwcI4KhyHkY6p/
+</span></code></pre></div>
+</details>
+<p>Now that we have a password-file, we can continue to configure the web-browser
+to actually perform basic authentication, using this file.</p>
+<h3 id="configure-authentication-file-on-nginx">Configure authentication file on Nginx</h3>
+<p>Find <code>location / {</code> block in Nginx configuration file that defines your Zabbix
+WebUI (if you followed the installation steps as described in earlier chapters,
+this should be in <code>/etc/nginx/conf.d/zabbix.conf</code>) and add these two lines:</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>    location / {
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>        ...
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>        auth_basic &quot;Basic Auth Protected Site&quot;;
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>        auth_basic_user_file /etc/nginx/httpauth;
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    }
+</span></code></pre></div>
+</div>
 <p>N'oubliez pas de redémarrer le service Nginx après avoir effectué cette
 modification.</p>
-<p>Ensuite, vous devez créer <code>/etc/nginx/httpauth</code> un fichier qui contiendra les
-mots de passe de tous les utilisateurs (assurez-vous de restreindre l'accès à ce
-fichier). Le format de ce fichier est <code>nom_utilisateur :mot_de_passe_haché</code>, par
-exemple, pour les utilisateurs <code>Admin</code> et <code>test</code> :</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Admin:$1$8T6SbR/N$rgANUPGvFh7H.R1Mffexh.
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>test:$1$GXoDIOCA$u/n1kkDeFwcI4KhyHkY6p/
-</span></code></pre></div>
-<p>Pour générer un mot de passe haché, vous pouvez utiliser l'outil <code>openssl</code> en
-entrant le mot de passe deux fois :
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>openssl passwd
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Password:
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Verifying - Password:
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>$1$8T6SbR/N$rgANUPGvFh7H.R1Mffexh.
-</span></code></pre></div></p>
-<h2 id="authentification-de-base-dans-apache-httpd">Authentification de base dans Apache HTTPD</h2>
+<h2 id="configure-authentication-file-on-apache-httpd">Configure authentication file on Apache HTTPD</h2>
 <p>Trouvez le bloc <code>&lt;Directory "/usr/share/zabbix"&gt;</code> dans le fichier de
 configuration Apache HTTP, il définit votre WebUI Zabbix (ie :
 <code>/etc/zabbix/apache.conf</code>) et ajoutez ces lignes :</p>
-<p>???+ note La configuration par défaut est <code>Require all granted</code>, supprimez cette
-ligne.</p>
-<p>Pour Ubuntu/Debian :
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>    &lt;Directory &quot;/usr/share/zabbix&quot;&gt;
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>        ...
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>        AuthType Basic
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>        AuthName &quot;Restricted Content&quot;
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>        AuthUserFile /etc/apache2/.htpasswd
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>        Require valid-user
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    &lt;/Directory&gt;
+<details class="note" open="open">
+<summary>Note</summary>
+<p>By default configuration has <code>Require all granted</code>, remove this line.</p>
+</details>
+<details class="example" open="open">
+<summary>Example</summary>
+<p>RedHat:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>    &lt;Directory &quot;/usr/share/zabbix&quot;&gt;
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>        ...
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>        AuthType Basic
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>        AuthName &quot;Restricted Content&quot;
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>        AuthUserFile /etc/httpd/.htpasswd
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>        Require valid-user
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>    &lt;/Directory&gt;
 </span></code></pre></div></p>
-<p>Pour RedHat :
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>    &lt;Directory &quot;/usr/share/zabbix&quot;&gt;
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>        ...
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>        AuthType Basic
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>        AuthName &quot;Restricted Content&quot;
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>        AuthUserFile /etc/httpd/.htpasswd
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>        Require valid-user
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    &lt;/Directory&gt;
+<p>Ubuntu / SUSE
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>    &lt;Directory &quot;/usr/share/zabbix&quot;&gt;
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>        ...
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>        AuthType Basic
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>        AuthName &quot;Restricted Content&quot;
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>        AuthUserFile /etc/apache2/.htpasswd
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>        Require valid-user
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    &lt;/Directory&gt;
 </span></code></pre></div></p>
-<p>N'oubliez pas de redémarrer le service apache2 après avoir effectué cette
-modification.</p>
-<p>Créez le fichier <code>/etc/apache2/.httpasswd</code> (<code>/etc/httpd/.htpassword</code> pour
-RedHat) qui contiendra tous les utilisateurs avec leurs mots de passe, en
-utilisant l'outil <code>htpasswd</code>, pour ajouter l'utilisateur <code>test</code> exécuter :</p>
-<p>Pour Ubuntu/Debian
-<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo htpasswd -c /etc/apache2/.htpasswd test
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>New password: 
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>Re-type new password: 
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>Adding password for user test
-</span></code></pre></div></p>
-<p>Pour RedHat
-<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo htpasswd -c /etc/httpd/.htpasswd test
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>New password: 
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>Re-type new password: 
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>Adding password for user test
-</span></code></pre></div></p>
-<p>Pour ajouter d'autres utilisateurs au fichier, répétez la commande sans l'option
-<code>-c</code>.</p>
+</details>
+<p>Do not forget to restart apache2 or httpd service after making this change.</p>
 <h2 id="configuration-de-zabbix-pour-lauthentification-http">Configuration de Zabbix pour l'authentification HTTP</h2>
 <p>Une fois le serveur WEB configuré avec l'authentification de base, il est temps
 de configurer le serveur Zabbix. Dans le menu Zabbix, sélectionnez <code>Users |
@@ -2244,6 +2307,7 @@ les paramètres d'authentification du serveur web avec la configuration interne
 de Zabbix, vous pouvez obtenir des flux de travail de connexion des utilisateurs
 transparents et sécurisés qui combinent la facilité d'utilisation frontale avec
 des mesures de protection robustes.</p>
+<hr />
 <h2 id="questions">Questions</h2>
 <ul>
 <li>
@@ -2284,7 +2348,9 @@ des mesures de protection robustes.</p>
 </li>
 </ul>
 <h2 id="url-utiles">URL utiles</h2>
-<p><a href="https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/users/authentication/http">https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/users/authentication/http</a></p>
+<ul>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/users/authentication/http">https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/users/authentication/http</a></li>
+</ul>
 
 
 

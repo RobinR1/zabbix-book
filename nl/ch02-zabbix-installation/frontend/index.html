@@ -43,7 +43,7 @@ secure and fully functional monitoring frontend.
     
     
       
-        <title>Frontend explained - Zabbix Book</title>
+        <title>Frontend uitgelegd - Zabbix Book</title>
       
     
     
@@ -83,14 +83,14 @@ secure and fully functional monitoring frontend.
     
     
 
-    <meta property="og:title" content="Frontend explained">
+    <meta property="og:title" content="Frontend uitgelegd">
     <meta property="og:description" content="This chapter from The Zabbix Book, titled &#34;Frontend Installation,&#34; provides a step-by-step guide to setting up the Zabbix web interface. Learn how to install required packages, configure PHP, and integrate with Apache or Nginx for a secure and fully functional monitoring frontend.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thezabbixbook.com/nl/ch02-zabbix-installation/frontend/">
     <meta property="og:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Frontend explained">
+    <meta name="twitter:title" content="Frontend uitgelegd">
     <meta name="twitter:description" content="This chapter from The Zabbix Book, titled &#34;Frontend Installation,&#34; provides a step-by-step guide to setting up the Zabbix web interface. Learn how to install required packages, configure PHP, and integrate with Apache or Nginx for a secure and fully functional monitoring frontend.">
     <meta name="twitter:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
     <meta property="og:image:width" content="1200">
@@ -115,7 +115,7 @@ secure and fully functional monitoring frontend.
     <div data-md-component="skip">
       
         
-        <a href="#frontend-explained" class="md-skip">
+        <a href="#frontend-uitgelegd" class="md-skip">
           Ga naar inhoud
         </a>
       
@@ -173,7 +173,7 @@ secure and fully functional monitoring frontend.
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Frontend explained
+              Frontend uitgelegd
             
           </span>
         </div>
@@ -660,7 +660,7 @@ secure and fully functional monitoring frontend.
   <span class="md-ellipsis">
     
   
-    Getting started with the Zabbix installation
+    Aan de slag met de Zabbix installatie
   
 
     
@@ -697,7 +697,7 @@ secure and fully functional monitoring frontend.
   <span class="md-ellipsis">
     
   
-    Frontend explained
+    Frontend uitgelegd
   
 
     
@@ -715,7 +715,7 @@ secure and fully functional monitoring frontend.
   <span class="md-ellipsis">
     
   
-    Frontend explained
+    Frontend uitgelegd
   
 
     
@@ -741,10 +741,10 @@ secure and fully functional monitoring frontend.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview-of-the-interface" class="md-nav__link">
+  <a href="#overzicht-van-de-interface" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview of the interface
+        Overzicht van de interface
       
     </span>
   </a>
@@ -796,10 +796,10 @@ secure and fully functional monitoring frontend.
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#conclusie" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conclusion
+        Conclusie
       
     </span>
   </a>
@@ -851,7 +851,7 @@ secure and fully functional monitoring frontend.
   <span class="md-ellipsis">
     
   
-    Host Groups
+    Host groepen
   
 
     
@@ -879,7 +879,7 @@ secure and fully functional monitoring frontend.
   <span class="md-ellipsis">
     
   
-    User Groups
+    Gebruikersgroepen
   
 
     
@@ -907,7 +907,7 @@ secure and fully functional monitoring frontend.
   <span class="md-ellipsis">
     
   
-    User Roles
+    Gebruikersrollen
   
 
     
@@ -1057,8 +1057,6 @@ secure and fully functional monitoring frontend.
   
     
     
-      
-        
       
         
       
@@ -1815,10 +1813,10 @@ secure and fully functional monitoring frontend.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview-of-the-interface" class="md-nav__link">
+  <a href="#overzicht-van-de-interface" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview of the interface
+        Overzicht van de interface
       
     </span>
   </a>
@@ -1870,10 +1868,10 @@ secure and fully functional monitoring frontend.
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#conclusie" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conclusion
+        Conclusie
       
     </span>
   </a>
@@ -2002,20 +2000,22 @@ secure and fully functional monitoring frontend.
   
 
 
-<h1 id="frontend-explained">Frontend explained</h1>
-<p>This chapter is going to cover the basics we need to know when it comes to the
-Zabbix user interface and the thing we need to know before we can start to fully
-dive into our monitoring tool. We will see how the user interface works how to
-add a host, groups users, items ... so that we have a good understanding of the
-basics. This is something that is sometimes missed and can lead to frustrations
-not knowing why things don't work like we had expected them to work. So even if
-you are an advanced user it may be useful to have a look into this chapter.</p>
-<p>Let's get started</p>
+<h1 id="frontend-uitgelegd">Frontend uitgelegd</h1>
+<p>Dit hoofdstuk gaat over de basis die we moeten weten als het gaat om de Zabbix
+gebruikersinterface en de dingen die we moeten weten voordat we volledig in onze
+monitoring tool kunnen duiken. We zullen zien hoe de gebruikersinterface werkt,
+hoe we een host, groepen gebruikers, items kunnen toevoegen ... zodat we een
+goed begrip hebben van de basis. Dit is iets dat soms gemist wordt en tot
+frustraties kan leiden als we niet weten waarom dingen niet werken zoals we
+verwacht hadden dat ze zouden werken. Dus zelfs als je een gevorderde gebruiker
+bent, kan het nuttig zijn om even naar dit hoofdstuk te kijken.</p>
+<p>Aan de slag</p>
 <hr />
-<h2 id="overview-of-the-interface">Overview of the interface</h2>
-<p>With Zabbix 7 the user interface after logging in is a bit changed. Our menu on
-the left side of the screen has has a small overhaul. Let's dive into it. When
-we login into our Zabbix setup the first time with our Admin user we see a page</p>
+<h2 id="overzicht-van-de-interface">Overzicht van de interface</h2>
+<p>Met Zabbix 7 is de gebruikersinterface na het inloggen een beetje veranderd. Ons
+menu aan de linkerkant van het scherm heeft een kleine opknapbeurt gekregen.
+Laten we er eens in duiken. Als we de eerste keer inloggen in onze Zabbix setup
+met onze Admin-gebruiker zien we een pagina</p>
 <p>like this where we have our <code>main window</code> in <font color='green'>green</font>
 our <code>main menu</code> marked in <font color='red'>red</font> and our <code>links</code> marked in
 <font color='gold'>yellow</font>.</p>
@@ -2243,21 +2243,23 @@ panel, as their interpretation is crucial for system comprehension.</p>
 </tbody>
 </table>
 <details class="note" open="open">
-<summary>Note</summary>
-<p><code>Global script</code> execution on Zabbix server can be enabled by going to the
-zabbix server configuration file and setting <code>EnableGlobalScripts=1</code>. For new
-installations, since Zabbix 7.0, global script execution on Zabbix server is
+<summary>Enabling Global script execution</summary>
+<p><code>Global script</code> execution on Zabbix server can be enabled by setting 
+<code>EnableGlobalScripts=1</code> in the Zabbix server configuration at <code>/etc/zabbix/zabbix_server.d/</code>.
+For new installations, since Zabbix 7.0, global script execution is
 disabled by default.</p>
 </details>
 <details class="tip" open="open">
 <summary>Tip</summary>
-<p>System information may display some additional warnings like when your database
- doesn't have the correct character set or collation UTF-8.
- Also when the database you used is lower or higher then the recommended version
- or when there are misconfigurations on housekeeper or TimescaleDB.
- Another warning you can see is about database history tables that aren't
- upgraded or primary keys that have not been set. This is possible if you are
- coming from an older version before Zabbix 6 and never did the upgrade.</p>
+<p>System information may display some additional warnings like:</p>
+<ul>
+<li>when your database doesn't have the correct character set or collation UTF-8.</li>
+<li>when the database you used is lower or higher then the recommended version or</li>
+<li>when there are misconfigurations on housekeeper or TimescaleDB.</li>
+</ul>
+<p>Another warning you can see is about database history tables that aren't
+upgraded or primary keys that have not been set. This is possible if you are
+coming from an older version before Zabbix 6 and never did the upgrade.</p>
 </details>
 <hr />
 <h2 id="the-main-menu-explained">The main menu explained</h2>
@@ -2404,20 +2406,20 @@ differences :</p>
 <summary>Info</summary>
 <p>More information can be found in the online Zabbix documentation <a href="https://www.zabbix.com/documentation/7.0/en/manual/web_interface/frontend_sections">here</a></p>
 </details>
-<details class="info" open="open">
-<summary>Info</summary>
-<p>You will see that Zabbix is using the modal forms in the frontend on many places.
+<details class="tip movable modal forms" open="open">
+<summary>Tip</summary>
+<p>You will see that Zabbix is using modal forms in the frontend on many places.
 The problem is that they are not movable. <a href="https://github.com/gr8b/zabbix-module-uitwix/">This</a>
 module created by one of the Zabbix developers <code>UI Twix</code> will solve this problem
 for you.</p>
 </details>
-<details class="note" open="open">
-<summary>Note</summary>
+<details class="warning" open="open">
+<summary>Warning</summary>
 <p>At time of writing there is no Dashboard import/export functionality in zabbix.
 So when upgrading dashboards it needs to be created by hand. It was on the roadmap
 for 7 but didn't made it so feel free to vote <a href="https://support.zabbix.com/browse/ZBXNEXT-5419">https://support.zabbix.com/browse/ZBXNEXT-5419</a></p>
 </details>
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusie">Conclusie</h2>
 <p>The Zabbix frontend serves as the central command center for monitoring,
 configuration, and system awareness. In this chapter, you explored how to
 navigate its interface from dashboards and the customizable main menu to
@@ -2461,15 +2463,9 @@ mechanisms, and advanced monitoring workflows in the chapters that follow.</p>
 </ul>
 <h2 id="useful-urls">Useful URLs</h2>
 <ul>
-<li>
-<p>https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/dashboards</p>
-</li>
-<li>
-<p>https://blog.zabbix.com/handy-tips-6-organize-your-dashboards-and-create-slideshows-with-dashboard-pages/17511/</p>
-</li>
-<li>
-<p>https://blog.zabbix.com/interactive-dashboard-creation-for-large-organizations-and-msps/30132/</p>
-</li>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/dashboards">https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/dashboards</a></li>
+<li><a href="https://blog.zabbix.com/handy-tips-6-organize-your-dashboards-and-create-slideshows-with-dashboard-pages/17511/">https://blog.zabbix.com/handy-tips-6-organize-your-dashboards-and-create-slideshows-with-dashboard-pages/17511/</a></li>
+<li><a href="https://blog.zabbix.com/interactive-dashboard-creation-for-large-organizations-and-msps/30132/">https://blog.zabbix.com/interactive-dashboard-creation-for-large-organizations-and-msps/30132/</a></li>
 </ul>
 
 

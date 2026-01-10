@@ -44,7 +44,7 @@ scalability and efficiency.
     
     
       
-        <title>Proxy basics - Zabbix Book</title>
+        <title>Proxy grondbeginselen - Zabbix Book</title>
       
     
     
@@ -84,14 +84,14 @@ scalability and efficiency.
     
     
 
-    <meta property="og:title" content="Proxy basics">
+    <meta property="og:title" content="Proxy grondbeginselen">
     <meta property="og:description" content="This chapter from The Zabbix Book, titled &#34;Proxy Basics,&#34; introduces the role of proxies in a Zabbix environment. It explains how proxies collect monitoring data, forward it to the server, and help reduce load in distributed setups. The guide covers installation, configuration, and when to use proxies for scalability and efficiency.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thezabbixbook.com/nl/ch03-zabbix-proxies/proxy-basics/">
     <meta property="og:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Proxy basics">
+    <meta name="twitter:title" content="Proxy grondbeginselen">
     <meta name="twitter:description" content="This chapter from The Zabbix Book, titled &#34;Proxy Basics,&#34; introduces the role of proxies in a Zabbix environment. It explains how proxies collect monitoring data, forward it to the server, and help reduce load in distributed setups. The guide covers installation, configuration, and when to use proxies for scalability and efficiency.">
     <meta name="twitter:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
     <meta property="og:image:width" content="1200">
@@ -116,7 +116,7 @@ scalability and efficiency.
     <div data-md-component="skip">
       
         
-        <a href="#proxy-basics" class="md-skip">
+        <a href="#proxy-grondbeginselen" class="md-skip">
           Ga naar inhoud
         </a>
       
@@ -174,7 +174,7 @@ scalability and efficiency.
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Proxy basics
+              Proxy grondbeginselen
             
           </span>
         </div>
@@ -723,7 +723,7 @@ scalability and efficiency.
   <span class="md-ellipsis">
     
   
-    proxies
+    Proxy's en de webservicescomponent
   
 
     
@@ -760,7 +760,7 @@ scalability and efficiency.
   <span class="md-ellipsis">
     
   
-    Proxy basics
+    Proxy grondbeginselen
   
 
     
@@ -778,7 +778,7 @@ scalability and efficiency.
   <span class="md-ellipsis">
     
   
-    Proxy basics
+    Proxy grondbeginselen
   
 
     
@@ -804,15 +804,15 @@ scalability and efficiency.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#proxy-requirements" class="md-nav__link">
+  <a href="#proxy-vereisten" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Proxy requirements
+        Proxy-vereisten
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Proxy requirements">
+    <nav class="md-nav" aria-label="Proxy-vereisten">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1022,8 +1022,6 @@ scalability and efficiency.
   
     
     
-      
-        
       
         
       
@@ -1780,15 +1778,15 @@ scalability and efficiency.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#proxy-requirements" class="md-nav__link">
+  <a href="#proxy-vereisten" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Proxy requirements
+        Proxy-vereisten
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Proxy requirements">
+    <nav class="md-nav" aria-label="Proxy-vereisten">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1962,19 +1960,20 @@ scalability and efficiency.
   
 
 
-<h1 id="proxy-basics">Proxy basics</h1>
-<p>In this chapter we will cover the basic needs for our proxies. We won't pay
-attention to active or passive proxies yet this is something we cover later in
-the next chapters.</p>
-<h2 id="proxy-requirements">Proxy requirements</h2>
-<p>If you like to setup a few proxies for test or in your environment you will need
-a few Linux hosts to install the Proxies on. Proxies are also available in
-containers so a full VM is not needed. However here we will use a VM so we can
-show you how to install a proxy. Don't worry we will cover containers as well.
-When it comes to proxies they are very lightweight however since Zabbix 4.2
-Proxies are able to do Item value preprocessing and this can use a lot of CPU
-power. So the number of CPUs and memory will depends on how many machines you
-will monitor and how many preprocessing rules you have on your hosts.</p>
+<h1 id="proxy-grondbeginselen">Proxy grondbeginselen</h1>
+<p>In dit hoofdstuk behandelen we de basisbehoeften voor onze proxies. We zullen
+geen aandacht besteden aan actieve of passieve proxies, maar dit is iets wat we
+later in de volgende hoofdstukken behandelen.</p>
+<h2 id="proxy-vereisten">Proxy-vereisten</h2>
+<p>Als je een paar proxies wilt instellen voor testdoeleinden of in je omgeving,
+dan heb je een paar Linux hosts nodig om de proxies op te installeren. Proxies
+zijn ook beschikbaar in containers, dus een volledige VM is niet nodig. Hier
+zullen we echter een VM gebruiken zodat we je kunnen laten zien hoe je een proxy
+installeert. Maak je geen zorgen, we zullen containers ook behandelen. Proxy's
+zijn erg licht, maar sinds Zabbix 4.2 zijn proxy's in staat om Item value
+preprocessing te doen en dit kan veel CPU kracht gebruiken. Dus het aantal CPU's
+en geheugen hangt af van hoeveel machines je wilt monitoren en hoeveel
+preprocessing regels je op je hosts hebt.</p>
 <p>So in short a Zabbix proxy can be used to:</p>
 <ul>
 <li>Monitor remote locations</li>

@@ -41,7 +41,7 @@ users can do, while user groups define what they can see.
     
     
       
-        <title>User Roles - Zabbix Book</title>
+        <title>Gebruikersrollen - Zabbix Book</title>
       
     
     
@@ -81,14 +81,14 @@ users can do, while user groups define what they can see.
     
     
 
-    <meta property="og:title" content="User Roles">
+    <meta property="og:title" content="Gebruikersrollen">
     <meta property="og:description" content="Learn how Zabbix user roles control frontend and API permissions. Define what users can do, while user groups define what they can see.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thezabbixbook.com/nl/ch02-zabbix-installation/user-roles/">
     <meta property="og:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="User Roles">
+    <meta name="twitter:title" content="Gebruikersrollen">
     <meta name="twitter:description" content="Learn how Zabbix user roles control frontend and API permissions. Define what users can do, while user groups define what they can see.">
     <meta name="twitter:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
     <meta property="og:image:width" content="1200">
@@ -113,7 +113,7 @@ users can do, while user groups define what they can see.
     <div data-md-component="skip">
       
         
-        <a href="#user-roles" class="md-skip">
+        <a href="#gebruikersrollen" class="md-skip">
           Ga naar inhoud
         </a>
       
@@ -171,7 +171,7 @@ users can do, while user groups define what they can see.
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              User Roles
+              Gebruikersrollen
             
           </span>
         </div>
@@ -658,7 +658,7 @@ users can do, while user groups define what they can see.
   <span class="md-ellipsis">
     
   
-    Getting started with the Zabbix installation
+    Aan de slag met de Zabbix installatie
   
 
     
@@ -686,7 +686,7 @@ users can do, while user groups define what they can see.
   <span class="md-ellipsis">
     
   
-    Frontend explained
+    Frontend uitgelegd
   
 
     
@@ -714,7 +714,7 @@ users can do, while user groups define what they can see.
   <span class="md-ellipsis">
     
   
-    Host Groups
+    Host groepen
   
 
     
@@ -742,7 +742,7 @@ users can do, while user groups define what they can see.
   <span class="md-ellipsis">
     
   
-    User Groups
+    Gebruikersgroepen
   
 
     
@@ -779,7 +779,7 @@ users can do, while user groups define what they can see.
   <span class="md-ellipsis">
     
   
-    User Roles
+    Gebruikersrollen
   
 
     
@@ -797,7 +797,7 @@ users can do, while user groups define what they can see.
   <span class="md-ellipsis">
     
   
-    User Roles
+    Gebruikersrollen
   
 
     
@@ -823,10 +823,10 @@ users can do, while user groups define what they can see.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-role-hierarchy" class="md-nav__link">
+  <a href="#de-rollenhierarchie" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The role hierarchy
+        De rollenhiërarchie
       
     </span>
   </a>
@@ -956,10 +956,10 @@ users can do, while user groups define what they can see.
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#conclusie" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conclusion
+        Conclusie
       
     </span>
   </a>
@@ -1133,8 +1133,6 @@ users can do, while user groups define what they can see.
   
     
     
-      
-        
       
         
       
@@ -1891,10 +1889,10 @@ users can do, while user groups define what they can see.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-role-hierarchy" class="md-nav__link">
+  <a href="#de-rollenhierarchie" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The role hierarchy
+        De rollenhiërarchie
       
     </span>
   </a>
@@ -2024,10 +2022,10 @@ users can do, while user groups define what they can see.
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#conclusie" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conclusion
+        Conclusie
       
     </span>
   </a>
@@ -2156,15 +2154,16 @@ users can do, while user groups define what they can see.
   
 
 
-<h1 id="user-roles">User Roles</h1>
-<p>The Zabbix <em>User Role</em> system, introduced in Zabbix 5.2, defines what a user is
-allowed to do within the Zabbix frontend and via the API. Unlike User Groups
-which control data visibility Ex: (which hosts a user can see and/or manage),
-User Roles control application functionality (what buttons a user can click).</p>
-<h2 id="the-role-hierarchy">The role hierarchy</h2>
-<p>Every User Role, whether default or custom, is fundamentally based on one of the
-classic User Types (Super Admin, Admin or User). This User Type serves as the
-maximum allowed privilege for the role.</p>
+<h1 id="gebruikersrollen">Gebruikersrollen</h1>
+<p>Het Zabbix <em>User Role</em> systeem, geïntroduceerd in Zabbix 5.2, definieert wat een
+gebruiker mag doen binnen de Zabbix frontend en via de API. In tegenstelling tot
+Gebruikersgroepen die de zichtbaarheid van gegevens bepalen Ex: (welke hosts een
+gebruiker kan zien en/of beheren), bepalen Gebruikersrollen de functionaliteit
+van applicaties (op welke knoppen een gebruiker kan klikken).</p>
+<h2 id="de-rollenhierarchie">De rollenhiërarchie</h2>
+<p>Elke gebruikersrol, standaard of aangepast, is gebaseerd op een van de klassieke
+gebruikerstypes (Super Admin, Admin of User). Dit Gebruikerstype dient als de
+maximaal toegestane rechten voor de rol.</p>
 <h2 id="default-menu-access-by-user-type">Default Menu Access by User Type</h2>
 <p><code>User Roles</code> can be created in the menu under the <code>Users</code> → <code>User roles</code> menu.
 Or they can be set per user in the menu <code>Users</code> → <code>Users</code> → "some user" →
@@ -2716,7 +2715,7 @@ something that wasn't possible before.</p>
 if their <strong>User Group</strong> has no permissions to any <strong>Host Groups</strong>, they will see
 an empty host list. This layered approach ensures both security and a tailored
 user experience.</p>
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusie">Conclusie</h2>
 <p>Zabbix's <strong>User Roles</strong> and <strong>User Groups</strong> together form the foundation of a
 secure and flexible access control model. User Roles define <strong>what a person can
 do</strong> in the frontend and API shaping the available menus, actions, and

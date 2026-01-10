@@ -961,6 +961,34 @@ making user authentication more secure and easier to maintain.
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Configure LDAP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-up-local-demo-ldap-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Set up local demo LDAP server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-zabbix-ldap-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configure Zabbix LDAP authentication
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1036,10 +1064,10 @@ making user authentication more secure and easier to maintain.
 </li>
       
         <li class="md-nav__item">
-  <a href="#useful-urls" class="md-nav__link">
+  <a href="#url-utiles" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Useful URLs
+        URL utiles
       
     </span>
   </a>
@@ -1196,8 +1224,6 @@ making user authentication more secure and easier to maintain.
   
     
     
-      
-        
       
         
       
@@ -1973,6 +1999,34 @@ making user authentication more secure and easier to maintain.
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Configure LDAP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-up-local-demo-ldap-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Set up local demo LDAP server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-zabbix-ldap-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configure Zabbix LDAP authentication
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2048,10 +2102,10 @@ making user authentication more secure and easier to maintain.
 </li>
       
         <li class="md-nav__item">
-  <a href="#useful-urls" class="md-nav__link">
+  <a href="#url-utiles" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Useful URLs
+        URL utiles
       
     </span>
   </a>
@@ -2208,34 +2262,71 @@ very trivial task as new people join different teams (or leave). This problem is
 addressed by "users provisioning" and we'll cover this topic a bit later. For
 now let's take a look at how to configure LDAP authentication.</p>
 <h2 id="configure-ldap">Configure LDAP</h2>
+<p>In this section, we will be using a custom demo LDAP server with pre-loaded
+data. You can set this demo environment up to check out the Zabbix LDAP
+authentication possibilities. Or you can skip the setup of the demo environment
+if you just want to connect your Zabbix instance to your existing LDAP or AD
+server.</p>
+<h3 id="set-up-local-demo-ldap-server">Set up local demo LDAP server</h3>
 <p>We believe that it is better to learn this topic by example so we'll be using
-our own LDAP server that you can spin up in a container by executing:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a># Install docker if you don&#39;t have it
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a># For Ubuntu
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>apt install docker-ce
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a># Start LDAP server container with pre-loaded data
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>docker run -p 3389:389 -p 6636:636 --name openldap-server --detach bgmot42/openldap-server:0.1.1
+our own LDAP server that you can spin up in a container for demo purposes. First
+we will need to ensure that we have a container engine installed.</p>
+<div class="admonition info">
+<p class="admonition-title">Install Podman container engine</p>
+</div>
+<p>Red Hat
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dnf<span class="w"> </span>install<span class="w"> </span>podman
+</span></code></pre></div></p>
+<p>SUSE
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>zypper<span class="w"> </span>install<span class="w"> </span>podman
+</span></code></pre></div></p>
+<p>Ubuntu
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>podman
+</span></code></pre></div></p>
+<details class="note" open="open">
+<summary>What is Podman</summary>
+</details>
+<p>Podman is a container engine designed as a drop-in replacement for Docker, but
+with a daemonless architecture. This means it runs containers directly under the
+user’s control, improving security and simplicity. Podman is fully compatible
+with Docker’s CLI and supports rootless containers, making it ideal for
+development, testing, and production environments where security and isolation
+are priorities.</p>
+<details class="tip" open="open">
+<summary>Tip</summary>
+</details>
+<p>If you want to use Docker instead of Podman, you can just replace any
+occurrences of <code>podman</code> in following instructions by <code>docker</code>.</p>
+<p>Now we can start containers. Start an OpenLDAP server in a container:</p>
+<div class="admonition info">
+<p class="admonition-title">Start an OpenLDAP server in a container with pre-loaded data</p>
+</div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>podman<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">3389</span>:389<span class="w"> </span>-p<span class="w"> </span><span class="m">6636</span>:636<span class="w"> </span>--name<span class="w"> </span>openldap-server<span class="w"> </span>--detach<span class="w"> </span>bgmot42/openldap-server:0.1.1
 </span></code></pre></div>
-<p>All users (including <code>ldap_search</code>) in this test LDAP server for simplicity have
-the word <code>password</code> as their passwords.</p>
+<p>For simplicity, all users (including <code>ldap_search</code>) in this test LDAP server
+have the word <code>password</code> as their passwords.</p>
 <p>Users <code>user1</code> and <code>user2</code> is a member of <code>zabbix-admins</code> LDAP group. User
 <code>user3</code> is a member of <code>zabbix-users</code> LDAP group.</p>
-<details class="optional" open="open">
-<summary>Optional</summary>
-<p>To visually see LDAP server data (and add your own configuration like users
-and groups) you can start this standard container
-<code>docker run -p 8081:80 -p 4443:443 --name phpldapadmin --hostname phpldapadmin\
---link openldap-server:ldap-host --env PHPLDAPADMIN_LDAP_HOSTS=ldap-host\
---detach osixia/phpldapadmin:0.9.0</code>
-Now you can access this LDAP server via https://<ip_address>:4443 (or any
+<p>???+ tip Tip: use phpLdapAdmin as an LDAP GUI</p>
+<div class="language-text highlight"><pre><span></span><code>To visually see LDAP server data (and add your own configuration like users
+and groups) you can start this standard container:
+
+```bash
+podman run -p 8081:80 -p 4443:443 --name phpldapadmin --hostname phpldapadmin\
+  --link openldap-server:ldap-host --env PHPLDAPADMIN_LDAP_HOSTS=ldap-host\
+  --detach osixia/phpldapadmin:0.9.0
+```
+Now you can access this LDAP server via https://&lt;ip_address&gt;:4443 (or any
 other port you configure to access this Docker container), click Login,
 enter “cn=admin,dc=example,dc=org” in Login DN field and “password” in
 Password field, click Authenticate. You should see the following structure
-of the LDAP server (picture shows ‘zabbix-admins’ group configuration):</p>
-<p><img align="center" alt="LDAP server data" src="../../../ch02-zabbix-installation/external-auth/ch02.4-ldap-ldap-server-data.png" /></p>
-<p><em>2.4 LDAP server data</em></p>
-</details>
+of the LDAP server (picture shows ‘zabbix-admins’ group configuration):
+
+![LDAP server data](../../ch02-zabbix-installation/external-auth/ch02.4-ldap-ldap-server-data.png){ align=center }
+
+_2.4 LDAP server data_
+</code></pre></div>
+<h3 id="configure-zabbix-ldap-authentication">Configure Zabbix LDAP authentication</h3>
 <p>Let's configure LDAP server settings in Zabbix. In Zabbix menu select <code>Users |
 Authentication | LDAP settings</code>, then check the check-box <code>Enable LDAP
 authentication</code> and click <code>Add</code> under <code>Servers</code> (change IP address of your LDAP
@@ -2254,9 +2345,9 @@ need to provide <em>Bind password</em>. This DN should have access to a sub-tree
 LDAP data hierarchy where all your users are configured. In our case all the
 users configured “under” <em>ou=Users,dc=example,dc=org</em>, this DN is called base DN
 and used by Zabbix as so to say “starting point” to start searching.</p>
-<details class="note" open="open">
-<summary>Note</summary>
-<p>technically it is possible to bind to LDAP server anonymously, without
+<details class="warning" open="open">
+<summary>Anonymous LDAP binding</summary>
+<p>Technically it is possible to bind to the LDAP server anonymously, without
 providing a password but this is a huge breach in security as the whole
 users sub-tree becomes available for anonymous (unauthenticated) search,
 i.e. effectively exposed to any LDAP client that can connect to LDAP server
@@ -2266,8 +2357,8 @@ not provide this functionality.</p>
 <p>Click <code>Test</code> button and enter <code>user1</code> and <code>password</code> in the respective fields,
 the test should be successful confirming Zabbix can authenticate users against
 LDAP server.</p>
-<details class="note" open="open">
-<summary>Note</summary>
+<details class="tip" open="open">
+<summary>Tip</summary>
 <p>We can add multiple LDAP servers and use them for different <code>User groups</code>.</p>
 </details>
 <p>To test real users login using LDAP authentication we need to create user groups
@@ -2472,8 +2563,10 @@ strategy.</p>
   JIT was not enabled?</p>
 </li>
 </ul>
-<h2 id="useful-urls">Useful URLs</h2>
-<p><a href="https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/users/authentication/ldap">https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/users/authentication/ldap</a></p>
+<h2 id="url-utiles">URL utiles</h2>
+<ul>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/users/authentication/ldap">https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/users/authentication/ldap</a></li>
+</ul>
 
 
 

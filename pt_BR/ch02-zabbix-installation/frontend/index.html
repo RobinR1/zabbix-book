@@ -1102,8 +1102,6 @@ secure and fully functional monitoring frontend.
       
         
       
-        
-      
     
     
     
@@ -2051,14 +2049,14 @@ apontando para a parte interna da tela. Ao pressionar esse botão, voltaremos ao
 estado original.</p>
 <p><img alt="Expandir" src="../../../ch02-zabbix-installation/frontend/ch02-frontend-shrink.png" /></p>
 <p><em>2.5 Reduzir</em></p>
-<details class="dica" open="open">
-<summary>Dica</summary>
+<details class="tip" open="open">
+<summary>Tip</summary>
 <p>We can also enter and exit kiosk mode by making use of parameters in our Zabbix
 url: <code>/zabbix.php?action=dashboard.view&amp;kiosk=1</code> - activate kiosk mode or
 <code>/zabbix.php?action=dashboard.view&amp;kiosk=0</code> - activate normal mode.</p>
 </details>
-<details class="nota" open="open">
-<summary>Nota</summary>
+<details class="note" open="open">
+<summary>Note</summary>
 <p>There are many other page parameters we can use. A full list can be found at
 <a href="https://www.zabbix.com/documentation/7.4/en/manual/web_interface/page_parameters">https://www.zabbix.com/documentation/7.4/en/manual/web_interface/page_parameters</a>
 Zabbix also has a global search menu that we can use to find hosts, host groups
@@ -2199,17 +2197,17 @@ compreensão do sistema.</p>
 <tr>
 <td>Versão do servidor Zabbix</td>
 <td>Isso nos mostra a versão do servidor <code>Zabbix</code>. Portanto, a versão que você vê na parte inferior da tela é a versão do front-end do Zabbix e pode ser diferente, mas deve estar na mesma versão principal.</td>
-<td>Número da versão</td>
+<td>Version Number</td>
 </tr>
 <tr>
 <td>Versão de front-end do Zabbix</td>
 <td>Essa é a versão do frontend e deve corresponder ao que você vê na parte inferior da tela.</td>
-<td>Número da versão</td>
+<td>Version Number</td>
 </tr>
 <tr>
 <td>Número de hosts (ativado/desativado)</td>
 <td>O número total de hosts configurados em nosso sistema</td>
-<td>Quantos deles estão ativados e desativados?</td>
+<td>Quantos deles estão ativados e desativados</td>
 </tr>
 <tr>
 <td>Número de modelos</td>
@@ -2248,22 +2246,25 @@ compreensão do sistema.</p>
 </tr>
 </tbody>
 </table>
-<details class="nota" open="open">
-<summary>Nota</summary>
-<p><code>Global script</code> execution on Zabbix server can be enabled by going to the
-zabbix server configuration file and setting <code>EnableGlobalScripts=1</code>. For new
-installations, since Zabbix 7.0, global script execution on Zabbix server is
+<details class="note" open="open">
+<summary>Enabling Global script execution</summary>
+<p><code>Global script</code> execution on Zabbix server can be enabled by setting 
+<code>EnableGlobalScripts=1</code> in the Zabbix server configuration at <code>/etc/zabbix/zabbix_server.d/</code>.
+For new installations, since Zabbix 7.0, global script execution is
 disabled by default.</p>
 </details>
-<p>Dica</p>
-<div class="language-text highlight"><pre><span></span><code> System information may display some additional warnings like when your database
- doesn&#39;t have the correct character set or collation UTF-8.
- Also when the database you used is lower or higher then the recommended version
- or when there are misconfigurations on housekeeper or TimescaleDB.
- Another warning you can see is about database history tables that aren&#39;t
- upgraded or primary keys that have not been set. This is possible if you are
- coming from an older version before Zabbix 6 and never did the upgrade.
-</code></pre></div>
+<details class="tip" open="open">
+<summary>Tip</summary>
+<p>System information may display some additional warnings like:</p>
+<ul>
+<li>when your database doesn't have the correct character set or collation UTF-8.</li>
+<li>when the database you used is lower or higher then the recommended version or</li>
+<li>when there are misconfigurations on housekeeper or TimescaleDB.</li>
+</ul>
+<p>Another warning you can see is about database history tables that aren't
+upgraded or primary keys that have not been set. This is possible if you are
+coming from an older version before Zabbix 6 and never did the upgrade.</p>
+</details>
 <hr />
 <h2 id="o-menu-principal-explicado">O menu principal explicado</h2>
 <p>É importante saber que até agora vimos nosso painel de controle com o usuário
@@ -2415,19 +2416,19 @@ mais profunda nas diferenças:</p>
   dados.</li>
 </ul>
 <hr />
-<details class="informações" open="open">
-<summary>Informações</summary>
+<details class="info" open="open">
+<summary>Info</summary>
 <p>More information can be found in the online Zabbix documentation <a href="https://www.zabbix.com/documentation/7.0/en/manual/web_interface/frontend_sections">here</a></p>
 </details>
-<details class="informações" open="open">
-<summary>Informações</summary>
-<p>You will see that Zabbix is using the modal forms in the frontend on many places.
+<details class="tip movable modal forms" open="open">
+<summary>Tip</summary>
+<p>You will see that Zabbix is using modal forms in the frontend on many places.
 The problem is that they are not movable. <a href="https://github.com/gr8b/zabbix-module-uitwix/">This</a>
 module created by one of the Zabbix developers <code>UI Twix</code> will solve this problem
 for you.</p>
 </details>
-<details class="nota" open="open">
-<summary>Nota</summary>
+<details class="warning" open="open">
+<summary>Warning</summary>
 <p>At time of writing there is no Dashboard import/export functionality in zabbix.
 So when upgrading dashboards it needs to be created by hand. It was on the roadmap
 for 7 but didn't made it so feel free to vote <a href="https://support.zabbix.com/browse/ZBXNEXT-5419">https://support.zabbix.com/browse/ZBXNEXT-5419</a></p>
@@ -2478,15 +2479,9 @@ monitoramento avançado nos capítulos seguintes.</p>
 </ul>
 <h2 id="urls-uteis">URLs úteis</h2>
 <ul>
-<li>
-<p>https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/dashboards</p>
-</li>
-<li>
-<p>https://blog.zabbix.com/handy-tips-6-organize-your-dashboards-and-create-slideshows-with-dashboard-pages/17511/</p>
-</li>
-<li>
-<p>https://blog.zabbix.com/interactive-dashboard-creation-for-large-organizations-and-msps/30132/</p>
-</li>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/dashboards">https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/dashboards</a></li>
+<li><a href="https://blog.zabbix.com/handy-tips-6-organize-your-dashboards-and-create-slideshows-with-dashboard-pages/17511/">https://blog.zabbix.com/handy-tips-6-organize-your-dashboards-and-create-slideshows-with-dashboard-pages/17511/</a></li>
+<li><a href="https://blog.zabbix.com/interactive-dashboard-creation-for-large-organizations-and-msps/30132/">https://blog.zabbix.com/interactive-dashboard-creation-for-large-organizations-and-msps/30132/</a></li>
 </ul>
 
 

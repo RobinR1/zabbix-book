@@ -6,7 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A free, community driven online resource to master Zabbix: built to give back, sustain the community, and help you become truly empowered with monitoring.">
+        <meta name="description" content="Learn how Zabbix proxies enhance scalability and distributed monitoring. This
+chapter guides you through setting up basic proxies, explores active vs. passive
+modes, container deployment, proxy groups, and the web services component
+helping you architect a resilient and efficient Zabbix infrastructure.
+">
       
       
         <meta name="author" content="The Monitoring Penmasters">
@@ -39,7 +43,7 @@
     
     
       
-        <title>proxies - Zabbix Book</title>
+        <title>Proxies and the Web services component - Zabbix Book</title>
       
     
     
@@ -79,15 +83,15 @@
     
     
 
-    <meta property="og:title" content="proxies">
-    <meta property="og:description" content="A free, community driven online resource to master Zabbix: built to give back, sustain the community, and help you become truly empowered with monitoring.">
+    <meta property="og:title" content="Proxies and the Web services component">
+    <meta property="og:description" content="Learn how Zabbix proxies enhance scalability and distributed monitoring. This chapter guides you through setting up basic proxies, explores active vs. passive modes, container deployment, proxy groups, and the web services component helping you architect a resilient and efficient Zabbix infrastructure.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thezabbixbook.com/fr/ch03-zabbix-proxies/chapter/">
     <meta property="og:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="proxies">
-    <meta name="twitter:description" content="A free, community driven online resource to master Zabbix: built to give back, sustain the community, and help you become truly empowered with monitoring.">
+    <meta name="twitter:title" content="Proxies and the Web services component">
+    <meta name="twitter:description" content="Learn how Zabbix proxies enhance scalability and distributed monitoring. This chapter guides you through setting up basic proxies, explores active vs. passive modes, container deployment, proxy groups, and the web services component helping you architect a resilient and efficient Zabbix infrastructure.">
     <meta name="twitter:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="627">
@@ -111,7 +115,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#proxies" class="md-skip">
+        <a href="#proxies-and-the-web-services-component" class="md-skip">
           Aller au contenu
         </a>
       
@@ -169,7 +173,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              proxies
+              Proxies and the Web services component
             
           </span>
         </div>
@@ -727,7 +731,7 @@
   <span class="md-ellipsis">
     
   
-    proxies
+    Proxies and the Web services component
   
 
     
@@ -897,8 +901,6 @@
   
     
     
-      
-        
       
         
       
@@ -1737,13 +1739,34 @@
   
 
 
-<h1 id="proxies">proxies</h1>
+<h1 id="proxies-and-the-web-services-component">Proxies and the Web services component</h1>
+<p>Proxies are often regarded as an advanced topic in Zabbix, but in reality, they
+are a fundamental part of many installations and one of the first components we
+set up for numerous customers. In this chapter, we'll make proxies the third
+subject we cover, encouraging you to consider them from the very beginning of
+your Zabbix journey.</p>
+<p>We'll start with a basic proxy setup, providing straightforward steps to get you
+up and running quickly. Then, we'll take a deep dive into the mechanics of
+proxies how they operate within the Zabbix ecosystem, their benefits, and the
+critical role they play in distributing monitoring load and enhancing system
+scalability.</p>
+<p>Understanding proxies from the start can significantly improve your
+architecture, especially in distributed or large scale environments. Whether
+you're new to Zabbix or looking to refine your existing setup, this chapter will
+offer valuable insights into why proxies should be an integral part of your
+monitoring strategy from the start.</p>
+<p>By the end, you'll not only know how to set up a basic proxy but also have a
+clear understanding of their underlying workings and strategic advantages,
+ensuring you make informed decisions as you scale your Zabbix installation.</p>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1815,9 +1838,6 @@
       
     
     
-        
-            
-            
         
 		
 		

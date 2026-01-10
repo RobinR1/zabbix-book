@@ -1099,6 +1099,7 @@ permissions and structuring access to the monitored data and configuration
 entities. This chapter details the function of user groups, guides you through
 their configuration, and outlines best practices for applying them in a robust,
 real world deployment.</p>
+<hr/>
 <h2 id="the-role-of-a-user-group">The Role of a User Group</h2>
 <p>A <strong>User Group</strong> in Zabbix is a logical collection of individual user accounts.
 Rather than managing permissions for hundreds of users individually, Zabbix
@@ -1193,10 +1194,13 @@ Administrator should not be distracted by network switch problems.</p>
 <p>When a user is a member of multiple groups, the tag filters apply with <strong>OR
 logic</strong>. If any of the user's groups allows visibility of a specific problem
 based on its tags, the user will see it.</p>
-<p>???+ info "Example: Database Administrator Filter" To ensure a Database
+<p>???+ example "Example: Database Administrator Filter" To ensure a Database
 Administrator group only sees relevant issues, the problem tag filter would be
-configured to specify: - <strong>Tag name:</strong> <code>service</code> - <strong>Value:</strong> <code>mysql</code></p>
-<div class="language-text highlight"><pre><span></span><code>This ensures the user only sees problems tagged with `service:mysql` on the
+configured to specify:</p>
+<div class="language-text highlight"><pre><span></span><code>- **Tag name:** `service`
+- **Value:** `mysql`
+
+This ensures the user only sees problems tagged with `service:mysql` on the
 host groups they have permission to view.
 </code></pre></div>
 <hr/>
@@ -1525,8 +1529,8 @@ user can see and configure (via host/template permissions).</p>
 </ul>
 <h2 id="useful-urls">Useful URLs</h2>
 <ul>
-<li>https://www.zabbix.com/documentation/current/en/manual/config/users_and_usergroups/usergroup</li>
-<li>https://www.zabbix.com/documentation/current/en/manual/config/users_and_usergroups/permissions</li>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/config/users_and_usergroups/usergroup">https://www.zabbix.com/documentation/current/en/manual/config/users_and_usergroups/usergroup</a></li>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/config/users_and_usergroups/permissions">https://www.zabbix.com/documentation/current/en/manual/config/users_and_usergroups/permissions</a></li>
 </ul>
 </article>
 </div>

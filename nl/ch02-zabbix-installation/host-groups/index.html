@@ -43,7 +43,7 @@ environments by structuring hosts for better visibility and control.
     
     
       
-        <title>Host Groups - Zabbix Book</title>
+        <title>Host groepen - Zabbix Book</title>
       
     
     
@@ -83,14 +83,14 @@ environments by structuring hosts for better visibility and control.
     
     
 
-    <meta property="og:title" content="Host Groups">
+    <meta property="og:title" content="Host groepen">
     <meta property="og:description" content="This chapter from The Zabbix Book, titled &#34;Host Groups,&#34; explains how to organize and manage monitored hosts effectively in Zabbix. It covers the creation of host groups, their role in permission management, and how they simplify large environments by structuring hosts for better visibility and control.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thezabbixbook.com/nl/ch02-zabbix-installation/host-groups/">
     <meta property="og:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Host Groups">
+    <meta name="twitter:title" content="Host groepen">
     <meta name="twitter:description" content="This chapter from The Zabbix Book, titled &#34;Host Groups,&#34; explains how to organize and manage monitored hosts effectively in Zabbix. It covers the creation of host groups, their role in permission management, and how they simplify large environments by structuring hosts for better visibility and control.">
     <meta name="twitter:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
     <meta property="og:image:width" content="1200">
@@ -115,7 +115,7 @@ environments by structuring hosts for better visibility and control.
     <div data-md-component="skip">
       
         
-        <a href="#host-groups" class="md-skip">
+        <a href="#host-groepen" class="md-skip">
           Ga naar inhoud
         </a>
       
@@ -173,7 +173,7 @@ environments by structuring hosts for better visibility and control.
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Host Groups
+              Host groepen
             
           </span>
         </div>
@@ -660,7 +660,7 @@ environments by structuring hosts for better visibility and control.
   <span class="md-ellipsis">
     
   
-    Getting started with the Zabbix installation
+    Aan de slag met de Zabbix installatie
   
 
     
@@ -688,7 +688,7 @@ environments by structuring hosts for better visibility and control.
   <span class="md-ellipsis">
     
   
-    Frontend explained
+    Frontend uitgelegd
   
 
     
@@ -725,7 +725,7 @@ environments by structuring hosts for better visibility and control.
   <span class="md-ellipsis">
     
   
-    Host Groups
+    Host groepen
   
 
     
@@ -743,7 +743,7 @@ environments by structuring hosts for better visibility and control.
   <span class="md-ellipsis">
     
   
-    Host Groups
+    Host groepen
   
 
     
@@ -863,10 +863,10 @@ environments by structuring hosts for better visibility and control.
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#conclusie" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conclusion
+        Conclusie
       
     </span>
   </a>
@@ -918,7 +918,7 @@ environments by structuring hosts for better visibility and control.
   <span class="md-ellipsis">
     
   
-    User Groups
+    Gebruikersgroepen
   
 
     
@@ -946,7 +946,7 @@ environments by structuring hosts for better visibility and control.
   <span class="md-ellipsis">
     
   
-    User Roles
+    Gebruikersrollen
   
 
     
@@ -1096,8 +1096,6 @@ environments by structuring hosts for better visibility and control.
   
     
     
-      
-        
       
         
       
@@ -1948,10 +1946,10 @@ environments by structuring hosts for better visibility and control.
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#conclusie" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conclusion
+        Conclusie
       
     </span>
   </a>
@@ -2080,15 +2078,15 @@ environments by structuring hosts for better visibility and control.
   
 
 
-<h1 id="host-groups">Host Groups</h1>
-<p>In Zabbix, <strong>host groups</strong> serve as a foundational mechanism for organizing
-monitored entities. They allow you to logically categorize hosts for easier
-management, simplified permissions, and streamlined configuration, especially
-useful in larger environments.</p>
-<p>Common examples include:</p>
+<h1 id="host-groepen">Host groepen</h1>
+<p>In Zabbix dienen <strong>hostgroepen</strong> als een fundamenteel mechanisme voor het
+organiseren van gemonitorde entiteiten. Ze stellen je in staat om hosts logisch
+te categoriseren voor eenvoudiger beheer, vereenvoudigde rechten en
+gestroomlijnde configuratie, vooral handig in grotere omgevingen.</p>
+<p>Bekende voorbeelden zijn:</p>
 <ul>
-<li>Grouping all <strong>Linux servers</strong> together.</li>
-<li>Separating <strong>database servers</strong> (e.g., PostgreSQL, MySQL).</li>
+<li>Groeperen van alle <strong>Linux servers</strong> samen.</li>
+<li>Scheiden van <strong>databaseservers</strong> (bijv. PostgreSQL, MySQL).</li>
 <li>Organizing hosts by <strong>team</strong>, <strong>location</strong>, or <strong>function</strong>.</li>
 </ul>
 <p>Host groups are not only for structuring your monitored hosts, they also play an
@@ -2106,9 +2104,8 @@ filtering hosts in dashboards or maps.</p>
   templates.</li>
 </ul>
 <details class="info" open="open">
-<summary>Info</summary>
-<p><strong>If you're migrating from an older Zabbix version:</strong>
-In previous versions, templates and hosts were often placed in the same groups.
+<summary>Migrating from an older Zabbix version</summary>
+<p>In previous versions, templates and hosts were often placed in the same groups.
 This led to confusion, particularly for new users, as templates don't technically
 belong to host groups in Zabbix. As of recent versions (starting from Zabbix
 6.x), template groups are separated out for better clarity.</p>
@@ -2153,8 +2150,8 @@ names. This allows you to represent hierarchies such as:</p>
 <p>These nested group names are <strong>just names</strong> Zabbix does not require that parent
 folders (e.g., <code>Europe</code>) physically exist as separate groups unless you
 explicitly create them.</p>
-<details class="note" open="open">
-<summary>Note</summary>
+<details class="warning" open="open">
+<summary>Warning</summary>
 <ul>
 <li>You cannot escape the <code>/</code> character.</li>
 <li>Group names <strong>cannot</strong> contain leading/trailing slashes or multiple consecutive
@@ -2192,7 +2189,7 @@ an option to apply permissions and tag filters to all subgroups:</p>
 <p>You can even try adding <strong>emojis</strong> to group names for a fun visual touch! 🎉
 For example: <code>🌍 Europe/🇧🇪 Belgium</code> or <code>📦 Containers/Docker</code>.</p>
 </details>
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusie">Conclusie</h2>
 <p>Host groups are a key organizational tool in Zabbix. With the introduction of
 <strong>template groups</strong>, clearer group separation, and support for <strong>nested
 structures</strong>, modern versions of Zabbix offer great flexibility for tailoring
