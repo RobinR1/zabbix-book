@@ -39,7 +39,7 @@
     
     
       
-        <title>Postgresql - Zabbix Book</title>
+        <title>Installing the PostgreSQL database - Zabbix Book</title>
       
     
     
@@ -79,14 +79,14 @@
     
     
 
-    <meta property="og:title" content="Postgresql">
+    <meta property="og:title" content="Installing the PostgreSQL database">
     <meta property="og:description" content="A free, community driven online resource to master Zabbix: built to give back, sustain the community, and help you become truly empowered with monitoring.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thezabbixbook.com/pt_BR/ch01-zabbix-components/postgresql/">
     <meta property="og:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Postgresql">
+    <meta name="twitter:title" content="Installing the PostgreSQL database">
     <meta name="twitter:description" content="A free, community driven online resource to master Zabbix: built to give back, sustain the community, and help you become truly empowered with monitoring.">
     <meta name="twitter:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
     <meta property="og:image:width" content="1200">
@@ -174,7 +174,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Postgresql
+              Installing the PostgreSQL database
             
           </span>
         </div>
@@ -775,7 +775,7 @@
   <span class="md-ellipsis">
     
   
-    Database
+    Installing the Zabbix database
   
 
     
@@ -803,7 +803,7 @@
   <span class="md-ellipsis">
     
   
-    Mariadb
+    Installing the MariaDB Database
   
 
     
@@ -830,6 +830,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -838,7 +840,7 @@
   <span class="md-ellipsis">
     
   
-    Postgresql
+    Installing the PostgreSQL database
   
 
     
@@ -856,7 +858,7 @@
   <span class="md-ellipsis">
     
   
-    Postgresql
+    Installing the PostgreSQL database
   
 
     
@@ -872,6 +874,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -880,18 +884,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installing-the-postgresql-database" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installing the PostgreSQL database
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Installing the PostgreSQL database">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#installing-postgresql-server-and-client-from-os-vendor-provided-packages" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -901,8 +893,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#installing-postgresql-from-official-postgresql-repositories" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -940,8 +932,8 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#starting-the-postgresql-database" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -951,8 +943,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#securing-the-postgresql-database" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -962,8 +954,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#creating-the-zabbix-database-instance" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -971,11 +963,6 @@
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1010,7 +997,7 @@
   <span class="md-ellipsis">
     
   
-    Zabbix server
+    Preparing the server for Zabbix
   
 
     
@@ -1038,7 +1025,7 @@
   <span class="md-ellipsis">
     
   
-    Zabbix frontend
+    Installing the frontend
   
 
     
@@ -1973,6 +1960,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1981,18 +1970,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installing-the-postgresql-database" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installing the PostgreSQL database
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Installing the PostgreSQL database">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#installing-postgresql-server-and-client-from-os-vendor-provided-packages" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2002,8 +1979,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#installing-postgresql-from-official-postgresql-repositories" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2041,8 +2018,8 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#starting-the-postgresql-database" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2052,8 +2029,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#securing-the-postgresql-database" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2063,8 +2040,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#creating-the-zabbix-database-instance" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2072,11 +2049,6 @@
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2207,9 +2179,7 @@
   
 
 
-  <h1>Postgresql</h1>
-
-<h3 id="installing-the-postgresql-database">Installing the PostgreSQL database</h3>
+<h1 id="installing-the-postgresql-database">Installing the PostgreSQL database</h1>
 <p>Alternatively to MariaDB/MySQL, you can choose to use PostgreSQL as the database backend for Zabbix.
 Similar to MariaDB, PostgreSQL can be installed using either the OS vendor-provided
 packages or the official PostgreSQL repositories.</p>
@@ -2229,7 +2199,7 @@ If you choose to install PostgreSQL from the OS vendor-provided packages,
 you will need to compile and install the TimescaleDB extension from source.</p>
 </details>
 <hr />
-<h4 id="installing-postgresql-server-and-client-from-os-vendor-provided-packages">Installing PostgreSQL Server and Client from OS Vendor-Provided Packages</h4>
+<h2 id="installing-postgresql-server-and-client-from-os-vendor-provided-packages">Installing PostgreSQL Server and Client from OS Vendor-Provided Packages</h2>
 <p>To install the distribution default PostgreSQL server, execute the following 
 commands:</p>
 <div class="admonition info">
@@ -2259,12 +2229,12 @@ an empty database on first startup.</p>
 </div>
 <p>Once the installation is complete, you can proceed to the <a href="#starting-the-postgresql-database"><em>Starting the PostgreSQL Database</em></a> section.</p>
 <hr />
-<h4 id="installing-postgresql-from-official-postgresql-repositories">Installing PostgreSQL from Official PostgreSQL Repositories</h4>
+<h2 id="installing-postgresql-from-official-postgresql-repositories">Installing PostgreSQL from Official PostgreSQL Repositories</h2>
 <p>If you prefer to install PostgreSQL from the official PostgreSQL repositories instead
 of the OS vendor-provided packages, the first step is to add the PostgreSQL repository
 to your system.</p>
 <hr />
-<h5 id="adding-the-postgresql-repository">Adding the PostgreSQL Repository</h5>
+<h3 id="adding-the-postgresql-repository">Adding the PostgreSQL Repository</h3>
 <p>Set up the PostgreSQL repository with the following commands:</p>
 <p>Check <a href="https://www.postgresql.org/download/linux/">https://www.postgresql.org/download/linux/</a>
 for more information.</p>
@@ -2329,7 +2299,7 @@ you will also need the "Desktop Applications Module":</p>
 </span></code></pre></div></p>
 </div>
 <hr />
-<h5 id="installing-the-postgresql-server-and-client">Installing the PostgreSQL Server and Client</h5>
+<h3 id="installing-the-postgresql-server-and-client">Installing the PostgreSQL Server and Client</h3>
 <p>With the PostgreSQL repositories configured, you are now ready to install the PostgreSQL
 server and client packages. This will provide the necessary components to run
 and manage your database.</p>
@@ -2357,7 +2327,7 @@ empty database:</p>
 </div>
 <p>Once the installation is complete, you can proceed to the <a href="#starting-the-postgresql-database">Starting the PostgreSQL Database</a> section.</p>
 <hr />
-<h4 id="starting-the-postgresql-database">Starting the PostgreSQL Database</h4>
+<h2 id="starting-the-postgresql-database">Starting the PostgreSQL Database</h2>
 <p>Now that PostgreSQL is installed, we need to enable the service to start automatically
 upon boot as well as start it immediately. Use the following command to accomplish this:</p>
 <div class="admonition info">
@@ -2426,7 +2396,7 @@ is active and running:</p>
 </details>
 <p>This confirms that your PostgreSQL server is up and running, ready for further configuration.</p>
 <hr />
-<h4 id="securing-the-postgresql-database">Securing the PostgreSQL database</h4>
+<h2 id="securing-the-postgresql-database">Securing the PostgreSQL database</h2>
 <p>PostgreSQL handles access permissions differently from MySQL and MariaDB.
 PostgreSQL relies on a file called <code>pg_hba.conf</code> to manage who can access the database,
 from where, and what encryption method is allowed for authentication.</p>
@@ -2540,7 +2510,7 @@ who can connect to the DB.</p>
 as incorrect entries here may prevent PostgreSQL from starting.</p>
 </details>
 <hr />
-<h4 id="creating-the-zabbix-database-instance">Creating the Zabbix database instance</h4>
+<h2 id="creating-the-zabbix-database-instance">Creating the Zabbix database instance</h2>
 <p>With the necessary packages installed, you are now ready to create the Zabbix 
 database and users for both the server and frontend.</p>
 <p>The PostgreSQL packages automatically create a default <code>postgres</code> linux-user 

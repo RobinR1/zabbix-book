@@ -39,7 +39,7 @@
     
     
       
-        <title>Database - Zabbix Book</title>
+        <title>Installing the Zabbix database - Zabbix Book</title>
       
     
     
@@ -79,14 +79,14 @@
     
     
 
-    <meta property="og:title" content="Database">
+    <meta property="og:title" content="Installing the Zabbix database">
     <meta property="og:description" content="A free, community driven online resource to master Zabbix: built to give back, sustain the community, and help you become truly empowered with monitoring.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thezabbixbook.com/fr/ch01-zabbix-components/database/">
     <meta property="og:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Database">
+    <meta name="twitter:title" content="Installing the Zabbix database">
     <meta name="twitter:description" content="A free, community driven online resource to master Zabbix: built to give back, sustain the community, and help you become truly empowered with monitoring.">
     <meta name="twitter:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
     <meta property="og:image:width" content="1200">
@@ -174,7 +174,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Database
+              Installing the Zabbix database
             
           </span>
         </div>
@@ -774,6 +774,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -782,7 +784,7 @@
   <span class="md-ellipsis">
     
   
-    Database
+    Installing the Zabbix database
   
 
     
@@ -800,7 +802,7 @@
   <span class="md-ellipsis">
     
   
-    Database
+    Installing the Zabbix database
   
 
     
@@ -816,6 +818,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -824,18 +828,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installing-the-zabbix-database" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installing the Zabbix database
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Installing the Zabbix database">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#choosing-a-database-backend-for-zabbix" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -845,8 +837,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#choosing-the-source-for-database-installation" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -854,11 +846,6 @@
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -885,7 +872,7 @@
   <span class="md-ellipsis">
     
   
-    Mariadb
+    Installing the MariaDB Database
   
 
     
@@ -913,7 +900,7 @@
   <span class="md-ellipsis">
     
   
-    Postgresql
+    Installing the PostgreSQL database
   
 
     
@@ -949,7 +936,7 @@
   <span class="md-ellipsis">
     
   
-    Zabbix server
+    Preparing the server for Zabbix
   
 
     
@@ -977,7 +964,7 @@
   <span class="md-ellipsis">
     
   
-    Zabbix frontend
+    Installing the frontend
   
 
     
@@ -1912,6 +1899,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1920,18 +1909,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installing-the-zabbix-database" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installing the Zabbix database
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Installing the Zabbix database">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#choosing-a-database-backend-for-zabbix" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1941,8 +1918,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#choosing-the-source-for-database-installation" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1950,11 +1927,6 @@
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2085,10 +2057,8 @@
   
 
 
-  <h1>Database</h1>
-
-<h2 id="installing-the-zabbix-database">Installing the Zabbix database</h2>
-<h3 id="choosing-a-database-backend-for-zabbix">Choosing a Database Backend for Zabbix</h3>
+<h1 id="installing-the-zabbix-database">Installing the Zabbix database</h1>
+<h2 id="choosing-a-database-backend-for-zabbix">Choosing a Database Backend for Zabbix</h2>
 <p>A critical decision when managing Zabbix installations is selecting the database
 backend. Zabbix supports several database options: MySQL/Percona, MariaDB, 
 PostgreSQL (including TimescaleDB), and Oracle (up to Zabbix 7.0).</p>
@@ -2120,7 +2090,7 @@ use TimescaleDB, refer to <a href="../../ch13-advanced-security/partitioning-pos
 for detailed guidance after installing PostgreSQL.</p>
 </details>
 <hr />
-<h3 id="choosing-the-source-for-database-installation">Choosing the Source for Database Installation</h3>
+<h2 id="choosing-the-source-for-database-installation">Choosing the Source for Database Installation</h2>
 <p>In this chapter we will focus on installing MariaDB and PostgreSQL, as they are
 the most commonly used databases with Zabbix. For MySQL or Percona installations,
 except for the package installation commands, the steps are very similar to MariaDB.</p>

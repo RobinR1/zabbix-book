@@ -39,7 +39,7 @@
     
     
       
-        <title>Zabbix server - Zabbix Book</title>
+        <title>Preparing the server for Zabbix - Zabbix Book</title>
       
     
     
@@ -79,14 +79,14 @@
     
     
 
-    <meta property="og:title" content="Zabbix server">
+    <meta property="og:title" content="Preparing the server for Zabbix">
     <meta property="og:description" content="A free, community driven online resource to master Zabbix: built to give back, sustain the community, and help you become truly empowered with monitoring.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thezabbixbook.com/ch01-zabbix-components/zabbix-server/">
     <meta property="og:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Zabbix server">
+    <meta name="twitter:title" content="Preparing the server for Zabbix">
     <meta name="twitter:description" content="A free, community driven online resource to master Zabbix: built to give back, sustain the community, and help you become truly empowered with monitoring.">
     <meta name="twitter:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
     <meta property="og:image:width" content="1200">
@@ -169,7 +169,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Zabbix server
+              Preparing the server for Zabbix
             
           </span>
         </div>
@@ -767,6 +767,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -775,7 +777,7 @@
   <span class="md-ellipsis">
     
   
-    Zabbix server
+    Preparing the server for Zabbix
   
 
     
@@ -793,7 +795,7 @@
   <span class="md-ellipsis">
     
   
-    Zabbix server
+    Preparing the server for Zabbix
   
 
     
@@ -809,6 +811,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -817,18 +821,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#preparing-the-server-for-zabbix" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Preparing the server for Zabbix
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Preparing the server for Zabbix">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#disable-selinux-on-rhel" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -838,8 +830,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#install-the-zabbix-repository" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -888,89 +880,6 @@
     </nav>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installation-and-configuration-of-zabbix-server" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installation and configuration of Zabbix server
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Installation and configuration of Zabbix server">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#populate-the-zabbix-database-instance" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Populate the Zabbix database instance
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Populate the Zabbix database instance">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#populate-mariadbmysql-database" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Populate MariaDB/MySQL Database
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#populate-the-postgresql-database" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Populate the PostgreSQL Database
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configure-firewall-to-allow-zabbix-trapper-connections" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configure firewall to allow Zabbix trapper connections
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#starting-the-zabbix-server" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Starting the Zabbix server
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
     </ul>
   
@@ -995,7 +904,7 @@
   <span class="md-ellipsis">
     
   
-    Zabbix frontend
+    Installing the frontend
   
 
     
@@ -1930,6 +1839,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1938,18 +1849,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#preparing-the-server-for-zabbix" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Preparing the server for Zabbix
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Preparing the server for Zabbix">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#disable-selinux-on-rhel" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1959,8 +1858,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#install-the-zabbix-repository" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1999,89 +1898,6 @@
     <span class="md-ellipsis">
       
         Adding the Zabbix repository
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installation-and-configuration-of-zabbix-server" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installation and configuration of Zabbix server
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Installation and configuration of Zabbix server">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#populate-the-zabbix-database-instance" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Populate the Zabbix database instance
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Populate the Zabbix database instance">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#populate-mariadbmysql-database" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Populate MariaDB/MySQL Database
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#populate-the-postgresql-database" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Populate the PostgreSQL Database
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configure-firewall-to-allow-zabbix-trapper-connections" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configure firewall to allow Zabbix trapper connections
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#starting-the-zabbix-server" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Starting the Zabbix server
       
     </span>
   </a>
@@ -2202,15 +2018,13 @@
   
 
 
-  <h1>Zabbix server</h1>
-
-<h2 id="preparing-the-server-for-zabbix">Preparing the server for Zabbix</h2>
+<h1 id="preparing-the-server-for-zabbix">Preparing the server for Zabbix</h1>
 <p>Before installing the Zabbix server and/or frontend, ensure that the server(s)
 meet the configuration requirements outlined in the previous section: <a href="../../ch00-getting-started/Requirements/">System Requirements</a>.</p>
 <p>If you plan to install the Zabbix server and frontend on separate machines,
 prepare each server individually according to the instructions provided here.</p>
 <hr />
-<h3 id="disable-selinux-on-rhel">Disable SELinux on RHEL</h3>
+<h2 id="disable-selinux-on-rhel">Disable SELinux on RHEL</h2>
 <p>Another critical step at this stage if you use Red Hat based systems is disabling
 SELinux, which can interfere with the installation and operation of Zabbix.
 We will revisit SELinux at the end of this chapter once our installation is finished.</p>
@@ -2279,7 +2093,7 @@ file is also in permissive mode.</p>
 </span></code></pre></div>
 </div>
 <hr />
-<h3 id="install-the-zabbix-repository">Install the Zabbix repository</h3>
+<h2 id="install-the-zabbix-repository">Install the Zabbix repository</h2>
 <p>From the Zabbix Download page <a href="https://www.zabbix.com/download">https://www.zabbix.com/download</a>,
 select the appropriate Zabbix version you wish to install. In this case, we will
 be using Zabbix 8.0 LTS. Additionally, ensure you choose the correct OS distribution
@@ -2290,7 +2104,7 @@ the front-end. Make sure to download the relevant packages for your chosen confi
 <p><em>1.2 Zabbix
 download</em></p>
 <hr />
-<h4 id="red-hat-specific-remarks">Red Hat specific remarks</h4>
+<h3 id="red-hat-specific-remarks">Red Hat specific remarks</h3>
 <p>If you make use of a RHEL based system like Rocky then the first step is to disable
 the Zabbix packages provided by the EPEL repository, if it's installed on your system.
 To do this, edit the <code>/etc/yum.repos.d/epel.repo</code> file and add the following statement
@@ -2312,7 +2126,7 @@ the following command during installations: dnf install --enablerepo=epel <packa
 This ensures that EPEL is only enabled when explicitly required.</p>
 </details>
 <hr />
-<h4 id="opensuse-specific-remarks">OpenSUSE specific remarks</h4>
+<h3 id="opensuse-specific-remarks">OpenSUSE specific remarks</h3>
 <p>On openSUSE, Zabbix packages are also available in the default <code>repo-oss</code> repository. 
 Unlike RHEL-based systems, openSUSE does not provide a built-in way to exclude
 specific packages from individual repositories. However, the Zabbix packages
@@ -2339,7 +2153,7 @@ repositories. Therefore, you can proceed to add the official Zabbix repository
 without any concerns about conflicts with existing packages.</p>
 </details>
 <hr />
-<h4 id="adding-the-zabbix-repository">Adding the Zabbix repository</h4>
+<h3 id="adding-the-zabbix-repository">Adding the Zabbix repository</h3>
 <p>Next, we will install the Zabbix repository on our operating system. After adding
 the Zabbix repository, it is recommended to perform a repository cleanup to remove
 old cache files and ensure the repository metadata is up to date. You can do this
@@ -2380,7 +2194,7 @@ However, always exercise caution when adding new repositories to ensure
 system security and stability.</p>
 </details>
 <hr />
-<h2 id="installation-and-configuration-of-zabbix-server">Installation and configuration of Zabbix server</h2>
+<h1 id="installation-and-configuration-of-zabbix-server">Installation and configuration of Zabbix server</h1>
 <p>Now that we've added the Zabbix repository with the necessary software, we are
 ready to install both the Zabbix server and the web server. Keep in mind that the
 web server doesn't need to be installed on the same machine as the Zabbix server;
@@ -2489,7 +2303,7 @@ lines with the same parameter, Zabbix will use the value from the last occurrenc
 </ul>
 <p>Make sure the settings reflect your environment's database configuration.</p>
 <hr />
-<h3 id="populate-the-zabbix-database-instance">Populate the Zabbix database instance</h3>
+<h2 id="populate-the-zabbix-database-instance">Populate the Zabbix database instance</h2>
 <p>During the installation of the database software earlier, we created the 
 necessary users and database for Zabbix, however, Zabbix expects certain tables,
 schemas, images, and other elements to be present in the database.
@@ -2523,7 +2337,7 @@ You can verify this by checking if the <code>/usr/share/zabbix/sql-scripts/</cod
 directory exists on your system.</p>
 </details>
 <hr />
-<h4 id="populate-mariadbmysql-database">Populate MariaDB/MySQL Database</h4>
+<h3 id="populate-mariadbmysql-database">Populate MariaDB/MySQL Database</h3>
 <details class="warning" open="open">
 <summary>Warning</summary>
 <p>When using a recent version of MySQL or MariaDB as the database backend for 
@@ -2577,7 +2391,7 @@ MySQL/MariaDB shell:</p>
 <p>This command will disable the setting, ensuring that the servers security
 posture remains robust.</p>
 <hr />
-<h4 id="populate-the-postgresql-database">Populate the PostgreSQL Database</h4>
+<h3 id="populate-the-postgresql-database">Populate the PostgreSQL Database</h3>
 <p>First you need to prepare the database schema: unzip the necessary schema files 
 by running the following command:</p>
 <div class="admonition info">
@@ -2747,7 +2561,7 @@ schema. Ensure that <code>zabbix-srv</code> has the required privileges.</p>
 user has the appropriate ownership and permissions. If you need to adjust any
 permissions, you can do so using the GRANT commands as needed.</p>
 <hr />
-<h3 id="configure-firewall-to-allow-zabbix-trapper-connections">Configure firewall to allow Zabbix trapper connections</h3>
+<h2 id="configure-firewall-to-allow-zabbix-trapper-connections">Configure firewall to allow Zabbix trapper connections</h2>
 <p>Back on your Zabbix server machine, we need to ensure that the firewall is configured
 to allow incoming connections to the Zabbix server.</p>
 <p>Your Zabbix server needs to accept incoming connections from Zabbix agents, senders,
@@ -2771,7 +2585,7 @@ manually specify the port:</p>
 </span></code></pre></div>
 </div>
 <hr />
-<h3 id="starting-the-zabbix-server">Starting the Zabbix server</h3>
+<h2 id="starting-the-zabbix-server">Starting the Zabbix server</h2>
 <p>With the Zabbix server configuration updated to connect to your database, you
 can now start and enable the Zabbix server service. Run the following command
 to enable the Zabbix server and ensure it starts automatically on boot:</p>

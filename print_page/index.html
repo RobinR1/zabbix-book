@@ -1618,7 +1618,7 @@
   <a href="#ch01-zabbix-components-database" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Database
+        Installing the Zabbix database
       
     </span>
   </a>
@@ -1629,7 +1629,7 @@
   <a href="#ch01-zabbix-components-mariadb" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Mariadb
+        Installing the MariaDB Database
       
     </span>
   </a>
@@ -1640,7 +1640,7 @@
   <a href="#ch01-zabbix-components-postgresql" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Postgresql
+        Installing the PostgreSQL database
       
     </span>
   </a>
@@ -1656,7 +1656,7 @@
   <a href="#ch01-zabbix-components-zabbix-server" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Zabbix server
+        Preparing the server for Zabbix
       
     </span>
   </a>
@@ -1667,7 +1667,7 @@
   <a href="#ch01-zabbix-components-zabbix-frontend" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Zabbix frontend
+        Installing the frontend
       
     </span>
   </a>
@@ -2897,7 +2897,7 @@
   <a href="#ch01-zabbix-components-database" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Database
+        Installing the Zabbix database
       
     </span>
   </a>
@@ -2908,7 +2908,7 @@
   <a href="#ch01-zabbix-components-mariadb" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Mariadb
+        Installing the MariaDB Database
       
     </span>
   </a>
@@ -2919,7 +2919,7 @@
   <a href="#ch01-zabbix-components-postgresql" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Postgresql
+        Installing the PostgreSQL database
       
     </span>
   </a>
@@ -2935,7 +2935,7 @@
   <a href="#ch01-zabbix-components-zabbix-server" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Zabbix server
+        Preparing the server for Zabbix
       
     </span>
   </a>
@@ -2946,7 +2946,7 @@
   <a href="#ch01-zabbix-components-zabbix-frontend" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Zabbix frontend
+        Installing the frontend
       
     </span>
   </a>
@@ -6901,8 +6901,8 @@ it into a powerful observability platform.</p>
                     <section class='print-page md-section' id='section-6-2-2' heading-number='6.2.2'>
                         <h1>Database<a class='headerlink' href='#section-6-2-2' title='Permanent link'></a>
                         </h1>
-                    <section class="print-page" id="ch01-zabbix-components-database" heading-number="6.2.2.1"><h1 id="ch01-zabbix-components-database-ch01-zabbix-components-database">Database</h1><h2 id="installing-the-zabbix-database">Installing the Zabbix database</h2>
-<h3 id="ch01-zabbix-components-database-choosing-a-database-backend-for-zabbix">Choosing a Database Backend for Zabbix</h3>
+                    <section class="print-page" id="ch01-zabbix-components-database" heading-number="6.2.2.1"><h1 id="ch01-zabbix-components-database-installing-the-zabbix-database">Installing the Zabbix database</h1>
+<h2 id="ch01-zabbix-components-database-choosing-a-database-backend-for-zabbix">Choosing a Database Backend for Zabbix</h2>
 <p>A critical decision when managing Zabbix installations is selecting the database
 backend. Zabbix supports several database options: MySQL/Percona, MariaDB, 
 PostgreSQL (including TimescaleDB), and Oracle (up to Zabbix 7.0).</p>
@@ -6934,7 +6934,7 @@ use TimescaleDB, refer to <a href="#ch13-advanced-security-partitioning-postgres
 for detailed guidance after installing PostgreSQL.</p>
 </details>
 <hr />
-<h3 id="ch01-zabbix-components-database-choosing-the-source-for-database-installation">Choosing the Source for Database Installation</h3>
+<h2 id="ch01-zabbix-components-database-choosing-the-source-for-database-installation">Choosing the Source for Database Installation</h2>
 <p>In this chapter we will focus on installing MariaDB and PostgreSQL, as they are
 the most commonly used databases with Zabbix. For MySQL or Percona installations,
 except for the package installation commands, the steps are very similar to MariaDB.</p>
@@ -7003,7 +7003,7 @@ for the latest supported versions.</p>
 </details>
 <p>Before installing the database software, ensure that the server(s)
 meet the configuration requirements outlined in the previous section: 
-<a href="#ch00-getting-started-requirements">System Requirements</a>.</p></section><section class="print-page" id="ch01-zabbix-components-mariadb" heading-number="6.2.2.2"><h1 id="ch01-zabbix-components-mariadb-ch01-zabbix-components-mariadb">Mariadb</h1><h2 id="installing-the-mariadb-database">Installing the MariaDB Database</h2>
+<a href="#ch00-getting-started-requirements">System Requirements</a>.</p></section><section class="print-page" id="ch01-zabbix-components-mariadb" heading-number="6.2.2.2"><h1 id="ch01-zabbix-components-mariadb-installing-the-mariadb-database">Installing the MariaDB Database</h1>
 <p>In this section we will install the MariaDB server and -client packages. This will
 provide the necessary components to run and manage MariaDB as your Zabbix database backend.</p>
 <p>If you prefer to use PostgreSQL as your database backend, you can skip this section 
@@ -7014,7 +7014,7 @@ and proceed to the <a href="#ch01-zabbix-components-mariadb-installing-the-postg
 and configuration steps are very similar. Generally, you would replace 
 <code>mariadb</code> with <code>mysql</code> in the package names and commands.</p>
 </details>
-<h4 id="ch01-zabbix-components-mariadb-installing-mariadb-server-and-client-from-os-vendor-provided-packages">Installing MariaDB Server and Client from OS Vendor-Provided Packages</h4>
+<h2 id="ch01-zabbix-components-mariadb-installing-mariadb-server-and-client-from-os-vendor-provided-packages">Installing MariaDB Server and Client from OS Vendor-Provided Packages</h2>
 <p>To install the distribution default MariaDB server and client, execute the 
 following command:</p>
 <div class="admonition info">
@@ -7033,12 +7033,12 @@ following command:</p>
 you to set up, configure, and interact with your MariaDB database. Once the
 installation is complete, you can proceed to the <a href="#ch01-zabbix-components-mariadb-starting-the-mariadb-database"><em>Starting the MariaDB database</em></a> section.</p>
 <hr />
-<h4 id="ch01-zabbix-components-mariadb-installing-mariadb-server-and-client-from-official-mariadb-repositories">Installing MariaDB Server and Client from Official MariaDB Repositories</h4>
+<h2 id="ch01-zabbix-components-mariadb-installing-mariadb-server-and-client-from-official-mariadb-repositories">Installing MariaDB Server and Client from Official MariaDB Repositories</h2>
 <p>If you prefer to install MariaDB from the official MariaDB repositories instead
 of the OS vendor-provided packages, the first step is to add the MariaDB repository
 to your system.</p>
 <hr />
-<h5 id="ch01-zabbix-components-mariadb-adding-the-mariadb-repository">Adding the MariaDB Repository</h5>
+<h3 id="ch01-zabbix-components-mariadb-adding-the-mariadb-repository">Adding the MariaDB Repository</h3>
 <p>To create the MariaDB repository file, execute the following command in your terminal:</p>
 <div class="admonition info">
 <p class="admonition-title">Define the MariaDB repository</p>
@@ -7105,7 +7105,7 @@ using your package manager.</p>
 preferred MariaDB version is compatible with your Zabbix version to avoid potential
 integration issues.</p>
 <hr />
-<h5 id="ch01-zabbix-components-mariadb-installing-mariadb-server-and-client">Installing MariaDB Server and Client</h5>
+<h3 id="ch01-zabbix-components-mariadb-installing-mariadb-server-and-client">Installing MariaDB Server and Client</h3>
 <p>With the MariaDB repository configured, you are now ready to install the MariaDB
 server and client packages. This will provide the necessary components to run
 and manage your database.</p>
@@ -7127,7 +7127,7 @@ and manage your database.</p>
 you to set up, configure, and interact with your MariaDB database. Once the
 installation is complete, you can proceed to the <a href="#ch01-zabbix-components-mariadb-starting-the-mariadb-database"><em>Starting the MariaDB database</em></a> section.</p>
 <hr />
-<h4 id="ch01-zabbix-components-mariadb-starting-the-mariadb-database">Starting the MariaDB Database</h4>
+<h2 id="ch01-zabbix-components-mariadb-starting-the-mariadb-database">Starting the MariaDB Database</h2>
 <p>Now that MariaDB is installed, we need to enable the service to start automatically
 upon boot and start it immediately. Use the following command to accomplish this:</p>
 <div class="admonition info">
@@ -7188,7 +7188,7 @@ is active and running:</p>
 </details>
 <p>This confirms that your MariaDB server is up and running, ready for further configuration.</p>
 <hr />
-<h4 id="ch01-zabbix-components-mariadb-securing-the-mariadb-database">Securing the MariaDB Database</h4>
+<h2 id="ch01-zabbix-components-mariadb-securing-the-mariadb-database">Securing the MariaDB Database</h2>
 <p>To enhance the security of your MariaDB server, it's essential to remove unnecessary
 test databases, anonymous users, and set a root password. This can be done using
 the mariadb-secure-installation script, which provides a step-by-step guide to
@@ -7280,7 +7280,7 @@ securing your database.</p>
 </div>
 <p>You are now ready to configure the database for Zabbix.</p>
 <hr />
-<h4 id="ch01-zabbix-components-mariadb-creating-the-zabbix-database-instance">Creating the Zabbix database instance</h4>
+<h2 id="ch01-zabbix-components-mariadb-creating-the-zabbix-database-instance">Creating the Zabbix database instance</h2>
 <p>With MariaDB now set up and secured, we can move on to creating the database for
 Zabbix. This database will store all the necessary data related to your Zabbix server,
 including configuration information and monitoring data.</p>
@@ -7351,7 +7351,7 @@ to the database server. By default, MariaDB listens on port 3306.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#ch01-zabbix-components-mariadb-__codelineno-23-1"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">3306</span>/tcp
 </span></code></pre></div></p>
 </div>
-<p>This concludes our installation of the MariaDB. You can now proceed to <a href="#ch01-zabbix-components-mariadb-preparing-the-server-for-zabbix">Preparing the Zabbix server</a>.</p></section><section class="print-page" id="ch01-zabbix-components-postgresql" heading-number="6.2.2.3"><h1 id="ch01-zabbix-components-postgresql-ch01-zabbix-components-postgresql">Postgresql</h1><h3 id="installing-the-postgresql-database">Installing the PostgreSQL database</h3>
+<p>This concludes our installation of the MariaDB. You can now proceed to <a href="#ch01-zabbix-components-mariadb-preparing-the-server-for-zabbix">Preparing the Zabbix server</a>.</p></section><section class="print-page" id="ch01-zabbix-components-postgresql" heading-number="6.2.2.3"><h1 id="ch01-zabbix-components-postgresql-installing-the-postgresql-database">Installing the PostgreSQL database</h1>
 <p>Alternatively to MariaDB/MySQL, you can choose to use PostgreSQL as the database backend for Zabbix.
 Similar to MariaDB, PostgreSQL can be installed using either the OS vendor-provided
 packages or the official PostgreSQL repositories.</p>
@@ -7371,7 +7371,7 @@ If you choose to install PostgreSQL from the OS vendor-provided packages,
 you will need to compile and install the TimescaleDB extension from source.</p>
 </details>
 <hr />
-<h4 id="ch01-zabbix-components-postgresql-installing-postgresql-server-and-client-from-os-vendor-provided-packages">Installing PostgreSQL Server and Client from OS Vendor-Provided Packages</h4>
+<h2 id="ch01-zabbix-components-postgresql-installing-postgresql-server-and-client-from-os-vendor-provided-packages">Installing PostgreSQL Server and Client from OS Vendor-Provided Packages</h2>
 <p>To install the distribution default PostgreSQL server, execute the following 
 commands:</p>
 <div class="admonition info">
@@ -7401,12 +7401,12 @@ an empty database on first startup.</p>
 </div>
 <p>Once the installation is complete, you can proceed to the <a href="#ch01-zabbix-components-postgresql-starting-the-postgresql-database"><em>Starting the PostgreSQL Database</em></a> section.</p>
 <hr />
-<h4 id="ch01-zabbix-components-postgresql-installing-postgresql-from-official-postgresql-repositories">Installing PostgreSQL from Official PostgreSQL Repositories</h4>
+<h2 id="ch01-zabbix-components-postgresql-installing-postgresql-from-official-postgresql-repositories">Installing PostgreSQL from Official PostgreSQL Repositories</h2>
 <p>If you prefer to install PostgreSQL from the official PostgreSQL repositories instead
 of the OS vendor-provided packages, the first step is to add the PostgreSQL repository
 to your system.</p>
 <hr />
-<h5 id="ch01-zabbix-components-postgresql-adding-the-postgresql-repository">Adding the PostgreSQL Repository</h5>
+<h3 id="ch01-zabbix-components-postgresql-adding-the-postgresql-repository">Adding the PostgreSQL Repository</h3>
 <p>Set up the PostgreSQL repository with the following commands:</p>
 <p>Check <a href="https://www.postgresql.org/download/linux/">https://www.postgresql.org/download/linux/</a>
 for more information.</p>
@@ -7471,7 +7471,7 @@ you will also need the "Desktop Applications Module":</p>
 </span></code></pre></div></p>
 </div>
 <hr />
-<h5 id="ch01-zabbix-components-postgresql-installing-the-postgresql-server-and-client">Installing the PostgreSQL Server and Client</h5>
+<h3 id="ch01-zabbix-components-postgresql-installing-the-postgresql-server-and-client">Installing the PostgreSQL Server and Client</h3>
 <p>With the PostgreSQL repositories configured, you are now ready to install the PostgreSQL
 server and client packages. This will provide the necessary components to run
 and manage your database.</p>
@@ -7499,7 +7499,7 @@ empty database:</p>
 </div>
 <p>Once the installation is complete, you can proceed to the <a href="#ch01-zabbix-components-postgresql-starting-the-postgresql-database">Starting the PostgreSQL Database</a> section.</p>
 <hr />
-<h4 id="ch01-zabbix-components-postgresql-starting-the-postgresql-database">Starting the PostgreSQL Database</h4>
+<h2 id="ch01-zabbix-components-postgresql-starting-the-postgresql-database">Starting the PostgreSQL Database</h2>
 <p>Now that PostgreSQL is installed, we need to enable the service to start automatically
 upon boot as well as start it immediately. Use the following command to accomplish this:</p>
 <div class="admonition info">
@@ -7568,7 +7568,7 @@ is active and running:</p>
 </details>
 <p>This confirms that your PostgreSQL server is up and running, ready for further configuration.</p>
 <hr />
-<h4 id="ch01-zabbix-components-postgresql-securing-the-postgresql-database">Securing the PostgreSQL database</h4>
+<h2 id="ch01-zabbix-components-postgresql-securing-the-postgresql-database">Securing the PostgreSQL database</h2>
 <p>PostgreSQL handles access permissions differently from MySQL and MariaDB.
 PostgreSQL relies on a file called <code>pg_hba.conf</code> to manage who can access the database,
 from where, and what encryption method is allowed for authentication.</p>
@@ -7682,7 +7682,7 @@ who can connect to the DB.</p>
 as incorrect entries here may prevent PostgreSQL from starting.</p>
 </details>
 <hr />
-<h4 id="ch01-zabbix-components-postgresql-creating-the-zabbix-database-instance">Creating the Zabbix database instance</h4>
+<h2 id="ch01-zabbix-components-postgresql-creating-the-zabbix-database-instance">Creating the Zabbix database instance</h2>
 <p>With the necessary packages installed, you are now ready to create the Zabbix 
 database and users for both the server and frontend.</p>
 <p>The PostgreSQL packages automatically create a default <code>postgres</code> linux-user 
@@ -7830,13 +7830,13 @@ to the database server. By default, PostgreSQL listens on port 5432.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#ch01-zabbix-components-postgresql-__codelineno-42-1"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">5432</span>/tcp
 </span></code></pre></div></p>
 </div>
-<p>This concludes our installation of the PostgreSQL database.</p></section></section><section class="print-page" id="ch01-zabbix-components-zabbix-server" heading-number="6.2.3"><h1 id="ch01-zabbix-components-zabbix-server-ch01-zabbix-components-zabbix-server">Zabbix server</h1><h2 id="preparing-the-server-for-zabbix">Preparing the server for Zabbix</h2>
+<p>This concludes our installation of the PostgreSQL database.</p></section></section><section class="print-page" id="ch01-zabbix-components-zabbix-server" heading-number="6.2.3"><h1 id="ch01-zabbix-components-zabbix-server-preparing-the-server-for-zabbix">Preparing the server for Zabbix</h1>
 <p>Before installing the Zabbix server and/or frontend, ensure that the server(s)
 meet the configuration requirements outlined in the previous section: <a href="#ch00-getting-started-requirements">System Requirements</a>.</p>
 <p>If you plan to install the Zabbix server and frontend on separate machines,
 prepare each server individually according to the instructions provided here.</p>
 <hr />
-<h3 id="ch01-zabbix-components-zabbix-server-disable-selinux-on-rhel">Disable SELinux on RHEL</h3>
+<h2 id="ch01-zabbix-components-zabbix-server-disable-selinux-on-rhel">Disable SELinux on RHEL</h2>
 <p>Another critical step at this stage if you use Red Hat based systems is disabling
 SELinux, which can interfere with the installation and operation of Zabbix.
 We will revisit SELinux at the end of this chapter once our installation is finished.</p>
@@ -7905,7 +7905,7 @@ file is also in permissive mode.</p>
 </span></code></pre></div>
 </div>
 <hr />
-<h3 id="ch01-zabbix-components-zabbix-server-install-the-zabbix-repository">Install the Zabbix repository</h3>
+<h2 id="ch01-zabbix-components-zabbix-server-install-the-zabbix-repository">Install the Zabbix repository</h2>
 <p>From the Zabbix Download page <a href="https://www.zabbix.com/download">https://www.zabbix.com/download</a>,
 select the appropriate Zabbix version you wish to install. In this case, we will
 be using Zabbix 8.0 LTS. Additionally, ensure you choose the correct OS distribution
@@ -7916,7 +7916,7 @@ the front-end. Make sure to download the relevant packages for your chosen confi
 <p><em>1.2 Zabbix
 download</em></p>
 <hr />
-<h4 id="ch01-zabbix-components-zabbix-server-red-hat-specific-remarks">Red Hat specific remarks</h4>
+<h3 id="ch01-zabbix-components-zabbix-server-red-hat-specific-remarks">Red Hat specific remarks</h3>
 <p>If you make use of a RHEL based system like Rocky then the first step is to disable
 the Zabbix packages provided by the EPEL repository, if it's installed on your system.
 To do this, edit the <code>/etc/yum.repos.d/epel.repo</code> file and add the following statement
@@ -7938,7 +7938,7 @@ the following command during installations: dnf install --enablerepo=epel <packa
 This ensures that EPEL is only enabled when explicitly required.</p>
 </details>
 <hr />
-<h4 id="ch01-zabbix-components-zabbix-server-opensuse-specific-remarks">OpenSUSE specific remarks</h4>
+<h3 id="ch01-zabbix-components-zabbix-server-opensuse-specific-remarks">OpenSUSE specific remarks</h3>
 <p>On openSUSE, Zabbix packages are also available in the default <code>repo-oss</code> repository. 
 Unlike RHEL-based systems, openSUSE does not provide a built-in way to exclude
 specific packages from individual repositories. However, the Zabbix packages
@@ -7965,7 +7965,7 @@ repositories. Therefore, you can proceed to add the official Zabbix repository
 without any concerns about conflicts with existing packages.</p>
 </details>
 <hr />
-<h4 id="ch01-zabbix-components-zabbix-server-adding-the-zabbix-repository">Adding the Zabbix repository</h4>
+<h3 id="ch01-zabbix-components-zabbix-server-adding-the-zabbix-repository">Adding the Zabbix repository</h3>
 <p>Next, we will install the Zabbix repository on our operating system. After adding
 the Zabbix repository, it is recommended to perform a repository cleanup to remove
 old cache files and ensure the repository metadata is up to date. You can do this
@@ -8006,7 +8006,7 @@ However, always exercise caution when adding new repositories to ensure
 system security and stability.</p>
 </details>
 <hr />
-<h2 id="ch01-zabbix-components-zabbix-server-installation-and-configuration-of-zabbix-server">Installation and configuration of Zabbix server</h2>
+<h1 id="ch01-zabbix-components-zabbix-server-installation-and-configuration-of-zabbix-server">Installation and configuration of Zabbix server</h1>
 <p>Now that we've added the Zabbix repository with the necessary software, we are
 ready to install both the Zabbix server and the web server. Keep in mind that the
 web server doesn't need to be installed on the same machine as the Zabbix server;
@@ -8115,7 +8115,7 @@ lines with the same parameter, Zabbix will use the value from the last occurrenc
 </ul>
 <p>Make sure the settings reflect your environment's database configuration.</p>
 <hr />
-<h3 id="ch01-zabbix-components-zabbix-server-populate-the-zabbix-database-instance">Populate the Zabbix database instance</h3>
+<h2 id="ch01-zabbix-components-zabbix-server-populate-the-zabbix-database-instance">Populate the Zabbix database instance</h2>
 <p>During the installation of the database software earlier, we created the 
 necessary users and database for Zabbix, however, Zabbix expects certain tables,
 schemas, images, and other elements to be present in the database.
@@ -8149,7 +8149,7 @@ You can verify this by checking if the <code>/usr/share/zabbix/sql-scripts/</cod
 directory exists on your system.</p>
 </details>
 <hr />
-<h4 id="ch01-zabbix-components-zabbix-server-populate-mariadbmysql-database">Populate MariaDB/MySQL Database</h4>
+<h3 id="ch01-zabbix-components-zabbix-server-populate-mariadbmysql-database">Populate MariaDB/MySQL Database</h3>
 <details class="warning" open="open">
 <summary>Warning</summary>
 <p>When using a recent version of MySQL or MariaDB as the database backend for 
@@ -8203,7 +8203,7 @@ MySQL/MariaDB shell:</p>
 <p>This command will disable the setting, ensuring that the servers security
 posture remains robust.</p>
 <hr />
-<h4 id="ch01-zabbix-components-zabbix-server-populate-the-postgresql-database">Populate the PostgreSQL Database</h4>
+<h3 id="ch01-zabbix-components-zabbix-server-populate-the-postgresql-database">Populate the PostgreSQL Database</h3>
 <p>First you need to prepare the database schema: unzip the necessary schema files 
 by running the following command:</p>
 <div class="admonition info">
@@ -8373,7 +8373,7 @@ schema. Ensure that <code>zabbix-srv</code> has the required privileges.</p>
 user has the appropriate ownership and permissions. If you need to adjust any
 permissions, you can do so using the GRANT commands as needed.</p>
 <hr />
-<h3 id="ch01-zabbix-components-zabbix-server-configure-firewall-to-allow-zabbix-trapper-connections">Configure firewall to allow Zabbix trapper connections</h3>
+<h2 id="ch01-zabbix-components-zabbix-server-configure-firewall-to-allow-zabbix-trapper-connections">Configure firewall to allow Zabbix trapper connections</h2>
 <p>Back on your Zabbix server machine, we need to ensure that the firewall is configured
 to allow incoming connections to the Zabbix server.</p>
 <p>Your Zabbix server needs to accept incoming connections from Zabbix agents, senders,
@@ -8397,7 +8397,7 @@ manually specify the port:</p>
 </span></code></pre></div>
 </div>
 <hr />
-<h3 id="ch01-zabbix-components-zabbix-server-starting-the-zabbix-server">Starting the Zabbix server</h3>
+<h2 id="ch01-zabbix-components-zabbix-server-starting-the-zabbix-server">Starting the Zabbix server</h2>
 <p>With the Zabbix server configuration updated to connect to your database, you
 can now start and enable the Zabbix server service. Run the following command
 to enable the Zabbix server and ensure it starts automatically on boot:</p>
@@ -8527,14 +8527,14 @@ a reboot</p>
 </span><span id="__span-42-34"><a id="__codelineno-42-34" name="__codelineno-42-34" href="#ch01-zabbix-components-zabbix-server-__codelineno-42-34"></a><span class="go">             ├─12097 &quot;/usr/sbin/zabbix_server: self-monitoring [processed data in 0.000068 sec, idle 1 sec]&quot;</span>
 </span></code></pre></div>
 </details>
-<p>This concludes our chapter on installing and configuring the Zabbix server.</p></section><section class="print-page" id="ch01-zabbix-components-zabbix-frontend" heading-number="6.2.4"><h1 id="ch01-zabbix-components-zabbix-frontend-ch01-zabbix-components-zabbix-frontend">Zabbix frontend</h1><h2 id="installing-the-frontend">Installing the frontend</h2>
+<p>This concludes our chapter on installing and configuring the Zabbix server.</p></section><section class="print-page" id="ch01-zabbix-components-zabbix-frontend" heading-number="6.2.4"><h1 id="ch01-zabbix-components-zabbix-frontend-installing-the-frontend">Installing the frontend</h1>
 <p>Before configuring the Zabbix frontend, ensure the required packages are installed
 on your chosen frontend server. This server can be the same one where the Zabbix
 server packages were previously installed, or it can be a separate machine. 
 Make sure the frontend machine is prepared as outlined in <a href="#ch01-zabbix-components-zabbix-frontend-preparing-the-server-for-zabbix">Preparing the server for Zabbix</a>,
 and perform all subsequent steps on the server designated for the frontend.</p>
 <hr />
-<h3 id="ch01-zabbix-components-zabbix-frontend-installing-the-frontend-with-nginx">Installing the frontend with NGINX</h3>
+<h2 id="ch01-zabbix-components-zabbix-frontend-installing-the-frontend-with-nginx">Installing the frontend with NGINX</h2>
 <div class="admonition info">
 <p class="admonition-title">install frontend packages</p>
 <p>Red Hat
