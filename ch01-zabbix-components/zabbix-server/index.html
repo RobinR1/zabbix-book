@@ -2197,7 +2197,7 @@ To set up the database correctly, we need to populate it with the required schem
 <summary>Note</summary>
 <p>If this is not the same machine as the Zabbix server, you will need to install 
 the Zabbix repository on the database server to gain access to the necessary SQL
-scripts.  Refer to <a href="#install-the-zabbix-repository">Install the Zabbix repository</a> for instructions on
+scripts.  Refer to <a href="../preparation/#install-the-zabbix-repository">Install the Zabbix repository</a> for instructions on
 adding the Zabbix repository also in this system.</p>
 </details>
 <p>When the repository is added we can install the package:</p>
@@ -2303,7 +2303,7 @@ changed.</p>
 </div>
 <details class="warning" open="open">
 <summary>Ensure correct search_path is set</summary>
-<p>Make sure you performed previous steps as outlined in <a href="#creating-the-zabbix-database-instance_1">Creating the Zabbix database instance with PostgreSQL</a>
+<p>Make sure you performed previous steps as outlined in <a href="../postgresql/#creating-the-zabbix-database-instance">Creating the Zabbix database instance with PostgreSQL</a>
 carefully so that you have set the correct <code>search_path</code>.</p>
 <p>If you did not set the default <code>search_path</code> for the <code>zabbix-srv</code> user,
 ensure you set it manually in the current session before proceeding:
@@ -2454,7 +2454,7 @@ To allow these connections, you need to open this port in your firewall.</p>
 <div class="admonition info">
 <p class="admonition-title">Open firewall for zabbix-trapper</p>
 <p>Red Hat / SUSE
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--add-service<span class="o">=</span>zabbix-server<span class="w"> </span>--permanent
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--add-service<span class="o">=</span>zabbix-trapper<span class="w"> </span>--permanent
 </span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--reload
 </span></code></pre></div></p>
 <p>Ubuntu
