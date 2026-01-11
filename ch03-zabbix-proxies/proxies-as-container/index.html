@@ -2177,9 +2177,9 @@ a Zabbix proxy within a container, outlining configuration options and best prac
 for optimal performance and maintainability.</p>
 <hr />
 <h2 id="setting-up-containers">Setting up containers</h2>
-<p>We will begin by demonstrating how to set up containerized environments on Red Hat
-or SUSE-based systems using Podman. Podman is the recommended container engine on 
-most modern distributions and offers several advantages over Docker.</p>
+<p>We will begin by demonstrating how to set up containerized environments using 
+Podman. Podman is the recommended container engine on most modern distributions
+and offers several advantages over Docker.</p>
 <p>Firstly, Podman enhances security by supporting rootless containers, allowing containers
 to run under non-privileged user accounts. Secondly, it integrates seamlessly with
 SELinux, enabling robust access control and policy enforcement. Thirdly, Podman
@@ -2218,11 +2218,12 @@ are free to use a different username, e.g. <code>zabbix-proxy</code> for a user 
 be running only zabbix-proxy in a container.</p>
 <div class="admonition info">
 <p class="admonition-title">Create and init podman user</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>adduser<span class="w"> </span>podman
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sudo<span class="w"> </span>-i<span class="w"> </span>-u<span class="w"> </span>podman
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.local/share/containers
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.config/containers/systemd/
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nb">exit</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>useradd<span class="w"> </span>--system<span class="w"> </span>--home-dir<span class="w"> </span>/home/podman<span class="w"> </span>--create-home<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span>--comment<span class="w"> </span><span class="s2">&quot;User for running container workloads&quot;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>sudo<span class="w"> </span>-i<span class="w"> </span>-u<span class="w"> </span>podman
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.local/share/containers
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.config/containers/systemd/
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nb">exit</span>
 </span></code></pre></div>
 </div>
 <p>When your system has SELinux enabled, execute the following command as <code>root</code>. </p>
