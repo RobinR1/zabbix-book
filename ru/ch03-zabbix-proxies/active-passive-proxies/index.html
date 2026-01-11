@@ -2030,7 +2030,7 @@ as Zabbix Proxy. Set up a new system or VM and make sure it meets the requiremen
 outlined in the <a href="../../ch00-getting-started/Requirements/"><em>Getting Started: Requirements</em></a> 
 chapter. </p>
 <p>As the Zabbix proxy is actually a small <em>Zabbix server</em>, we also need to make sure
-the system is prepared for Zabbix as outlined in <a href="../ch01-zabbix-components/preparation.md"><em>Preparing the server for Zabbix</em></a>.</p>
+the system is prepared for Zabbix as outlined in <a href="../../ch00-getting-started/preparation/"><em>Preparing the server for Zabbix</em></a>.</p>
 <p>Now that your system is ready and knows where to find the Zabbix software packages, we can 
 actually install the Zabbix Proxy software. It's pretty simple, but there's one 
 thing we need to decide upfront. Zabbix proxies need a place to store their 
@@ -2107,15 +2107,15 @@ listens on another port then the standard port <code>10051</code>. Just be caref
 add the IP and DNS name for the same server as this can return double values.</p>
 </details>
 <ul>
-<li>Another important option is <code>Hostname</code>, especially on an <em>Active</em> proxy.
+<li>
+<p>Another important option is <code>Hostname</code>, especially on an <em>Active</em> proxy.
   Remember in our frontend we gave our <em>Active</em> proxy the name <code>ProxyA</code>, so now 
   we have to fill in the exact same name here for hostname.
   Just like a <em>Zabbix agent</em> in <em>active</em> mode <em>Zabbix server</em> will use the name as a
-  unique identifier.</li>
-</ul>
-<p>For a <em>passive</em> proxy this option matters less, but for clarity it is best to 
+  unique identifier.\
+  For a <em>passive</em> proxy this option matters less, but for clarity it is best to 
   keep it the same: <code>ProxyP</code> in our case. </p>
-<ul>
+</li>
 <li>
 <p>On an <em>Active proxy</em> you may also consider setting <code>ProxyConfigFrequency</code> and 
   <code>DataSenderFrequency</code> to fine-tune communication with the <em>Zabbix server</em>, but
