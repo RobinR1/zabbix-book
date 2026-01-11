@@ -2263,20 +2263,20 @@ version of our proxy and the last seen age.</p>
 <p><img alt="ProxyA ready" src="ch03-active-proxy-installed.png" /></p>
 <p><em>3.6 Active proxy configured</em></p>
 <p>For the <em>passive</em> proxy however, you will notice in the frontend that nothing 
-seems to be working at all even when we have configured everything correct on 
+seems to be working at all even when we have configured everything correctly on 
 our proxy.</p>
 <p><img alt="Passive Proxy not working" src="ch03-passive-not-working.png" /></p>
 <p><em>3.7 Proxy not working</em></p>
 <p>The explanation is rather easy as we run a <em>passive</em> proxy, the <em>Zabbix server</em> needs
-to poll our proxy. But we did not yet configure our Server to do that yet. 
+to poll our proxy. But we did not yet configure our Server to do that currently. 
 So next step is to add the needed proxy pollers in our server configuration.</p>
 <p>Edit or create a new configuration file in <code>/etc/zabbix/zabbix_server.d/</code> on the
 <em>Zabbix Server</em> machine to add the required <code>StartProxyPollers</code> setting.</p>
-<p>!!! info "/etc/zabbix/zabbix_server.d/pollers.conf</p>
-<div class="language-text highlight"><pre><span></span><code>```ini
-StartProxyPollers=1
-```
-</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">/etc/zabbix/zabbix_server.d/pollers.conf</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="na">StartProxyPollers</span><span class="o">=</span><span class="s">1</span>
+</span></code></pre></div>
+</div>
 <p>And restart the <em>Zabbix Server</em> process.</p>
 <div class="admonition info">
 <p class="admonition-title">Restart Zabbix Server</p>
