@@ -1559,6 +1559,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ch00-getting-started-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preparing the system for Zabbix
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2815,6 +2826,17 @@
     <span class="md-ellipsis">
       
         System Requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ch00-getting-started-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preparing the system for Zabbix
       
     </span>
   </a>
@@ -4690,6 +4712,198 @@ system is prepared for the task.</p>
 <li><a href="https://www.ntppool.org/zone">https://www.ntppool.org/zone</a></li>
 <li><a href="https://www.redhat.com/en/blog/beginners-guide-firewalld">https://www.redhat.com/en/blog/beginners-guide-firewalld</a></li>
 <li><a href="https://www.linuxjournal.com/content/understanding-firewalld-multi-zone-configurations">https://www.linuxjournal.com/content/understanding-firewalld-multi-zone-configurations</a></li>
+</ul></section><section class="print-page" id="ch00-getting-started-preparation" heading-number="5.3"><nav class='md-tags'><span class='md-tag'>beginner</span></nav><h1 id="preparing-the-system-for-zabbix">Preparing the system for Zabbix</h1>
+<p>Before installing any Zabbix component, we need to ensure that the server(s)
+meet the configuration requirements outlined in the previous section: <a href="#ch00-getting-started-requirements">System Requirements</a>.</p>
+<p>If you plan to install the Zabbix database, server and/or frontend on separate 
+machines, prepare each server individually according to the instructions provided
+here. Also servers that will host a Zabbix Proxy, need to be prepared in the same
+way.</p>
+<hr />
+<h2 id="ch00-getting-started-preparation-disable-selinux-on-rhel">Disable SELinux on RHEL</h2>
+<p>Another critical step at this stage if you use Red Hat based systems is disabling
+SELinux, which can interfere with the installation and operation of Zabbix.
+We will revisit SELinux at the end of this chapter once our installation is finished.</p>
+<p>To check the current status of SELinux, you can use the following command: `sestatus``</p>
+<div class="admonition info">
+<p class="admonition-title">Selinux status</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#ch00-getting-started-preparation-__codelineno-0-1"></a><span class="go">~# sestatus</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#ch00-getting-started-preparation-__codelineno-0-2"></a><span class="go">SELinux status:                 enabled</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#ch00-getting-started-preparation-__codelineno-0-3"></a><span class="go">SELinuxfs mount:                /sys/fs/selinux</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#ch00-getting-started-preparation-__codelineno-0-4"></a><span class="go">SELinux root directory:         /etc/selinux</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#ch00-getting-started-preparation-__codelineno-0-5"></a><span class="go">Loaded policy name:             targeted</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#ch00-getting-started-preparation-__codelineno-0-6"></a><span class="go">Current mode:                   enforcing</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#ch00-getting-started-preparation-__codelineno-0-7"></a><span class="go">Mode from config file:          enforcing</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#ch00-getting-started-preparation-__codelineno-0-8"></a><span class="go">Policy MLS status:              enabled</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#ch00-getting-started-preparation-__codelineno-0-9"></a><span class="go">Policy deny_unknown status:     allowed</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#ch00-getting-started-preparation-__codelineno-0-10"></a><span class="go">Memory protection checking:     actual (secure)</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#ch00-getting-started-preparation-__codelineno-0-11"></a><span class="go">Max kernel policy version:      33</span>
+</span></code></pre></div>
+</div>
+<p>As shown, the system is currently in enforcing mode. To temporarily disable SELinux,
+you can run the following command: <code>setenforce 0</code></p>
+<div class="admonition info">
+<p class="admonition-title">Disable SeLinux</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#ch00-getting-started-preparation-__codelineno-1-1"></a><span class="go">~# setenforce 0</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#ch00-getting-started-preparation-__codelineno-1-2"></a><span class="go">~# sestatus</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#ch00-getting-started-preparation-__codelineno-1-3"></a><span class="go">SELinux status:                 enabled</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#ch00-getting-started-preparation-__codelineno-1-4"></a><span class="go">SELinuxfs mount:                /sys/fs/selinux</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#ch00-getting-started-preparation-__codelineno-1-5"></a><span class="go">SELinux root directory:         /etc/selinux</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#ch00-getting-started-preparation-__codelineno-1-6"></a><span class="go">Loaded policy name:             targeted</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#ch00-getting-started-preparation-__codelineno-1-7"></a><span class="go">Current mode:                   permissive</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#ch00-getting-started-preparation-__codelineno-1-8"></a><span class="go">Mode from config file:          enforcing</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#ch00-getting-started-preparation-__codelineno-1-9"></a><span class="go">Policy MLS status:              enabled</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#ch00-getting-started-preparation-__codelineno-1-10"></a><span class="go">Policy deny_unknown status:     allowed</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#ch00-getting-started-preparation-__codelineno-1-11"></a><span class="go">Memory protection checking:     actual (secure)</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#ch00-getting-started-preparation-__codelineno-1-12"></a><span class="go">Max kernel policy version:      33</span>
+</span></code></pre></div>
+</div>
+<p>Now, as you can see, the mode is switched to permissive. However, this change
+is not persistent across reboots. To make it permanent, you need to modify the
+SELinux configuration file located at <code>/etc/selinux/config</code>. Open the file and
+replace enforcing with <code>permissive</code>.</p>
+<p>Alternatively, you can achieve the same result more easily by running the
+following command:</p>
+<div class="admonition info">
+<p class="admonition-title">Disable SeLinux permanent</p>
+<p>Red Hat
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#ch00-getting-started-preparation-__codelineno-2-1"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/SELINUX=enforcing/SELINUX=permissive/g&#39;</span><span class="w"> </span>/etc/selinux/config
+</span></code></pre></div></p>
+</div>
+<p>This line will alter the configuration file for you. So when we run <code>sestatus</code>
+again we will see that we are in <code>permissive</code> mode and that our configuration
+file is also in permissive mode.</p>
+<div class="admonition info">
+<p class="admonition-title">Verify selinux status again</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#ch00-getting-started-preparation-__codelineno-3-1"></a><span class="go">~# sestatus</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#ch00-getting-started-preparation-__codelineno-3-2"></a><span class="go">SELinux status:                 enabled</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#ch00-getting-started-preparation-__codelineno-3-3"></a><span class="go">SELinuxfs mount:                /sys/fs/selinux</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#ch00-getting-started-preparation-__codelineno-3-4"></a><span class="go">SELinux root directory:         /etc/selinux</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#ch00-getting-started-preparation-__codelineno-3-5"></a><span class="go">Loaded policy name:             targeted</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#ch00-getting-started-preparation-__codelineno-3-6"></a><span class="go">Current mode:                   permissive</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#ch00-getting-started-preparation-__codelineno-3-7"></a><span class="go">Mode from config file:          permissive</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#ch00-getting-started-preparation-__codelineno-3-8"></a><span class="go">Policy MLS status:              enabled</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#ch00-getting-started-preparation-__codelineno-3-9"></a><span class="go">Policy deny_unknown status:     allowed</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#ch00-getting-started-preparation-__codelineno-3-10"></a><span class="go">Memory protection checking:     actual (secure)</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#ch00-getting-started-preparation-__codelineno-3-11"></a><span class="go">Max kernel policy version:      33</span>
+</span></code></pre></div>
+</div>
+<hr />
+<h2 id="ch00-getting-started-preparation-install-the-zabbix-repository">Install the Zabbix repository</h2>
+<p>From the Zabbix Download page <a href="https://www.zabbix.com/download">https://www.zabbix.com/download</a>,
+select the appropriate Zabbix version you wish to install. In this case, we will
+be using Zabbix 8.0 LTS. Additionally, ensure you choose the correct OS distribution
+for your environment, which will be Rocky Linux 9, openSUSE Leap 16 or Ubuntu 24.04 in our case.</p>
+<p>We will be installing the Zabbix Server along with NGINX as the web server for
+the front-end. Make sure to download the relevant packages for your chosen configuration.</p>
+<p><img alt="Zabbix Download" src="../ch00-getting-started/getting-started/ch00-getting-started-zabbixdownload.png" /></p>
+<p><em>1.2 Zabbix
+download</em></p>
+<hr />
+<h3 id="ch00-getting-started-preparation-red-hat-specific-remarks">Red Hat specific remarks</h3>
+<p>If you make use of a RHEL based system like Rocky then the first step is to disable
+the Zabbix packages provided by the EPEL repository, if it's installed on your system.
+To do this, edit the <code>/etc/yum.repos.d/epel.repo</code> file and add the following statement
+to disable the EPEL repository by default:</p>
+<div class="admonition info">
+<p class="admonition-title">Exclude packages</p>
+<p>Red Hat
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#ch00-getting-started-preparation-__codelineno-4-1"></a><span class="k">[epel]</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#ch00-getting-started-preparation-__codelineno-4-2"></a><span class="na">...</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#ch00-getting-started-preparation-__codelineno-4-3"></a><span class="na">excludepkgs</span><span class="o">=</span><span class="s">zabbix*</span>
+</span></code></pre></div></p>
+</div>
+<details class="tip" open="open">
+<summary>Tip</summary>
+<p>It's considered bad practice to keep the EPEL repository enabled all the time,
+as it may cause conflicts by unintentionally overwriting or installing unwanted
+packages. Instead, it's safer to enable the repository only when needed, by using
+the following command during installations: dnf install --enablerepo=epel <package-name>
+This ensures that EPEL is only enabled when explicitly required.</p>
+</details>
+<hr />
+<h3 id="ch00-getting-started-preparation-opensuse-specific-remarks">OpenSUSE specific remarks</h3>
+<p>On openSUSE, Zabbix packages are also available in the default <code>repo-oss</code> repository. 
+Unlike RHEL-based systems, openSUSE does not provide a built-in way to exclude
+specific packages from individual repositories. However, the Zabbix packages
+included in the default repositories are typically one to two LTS versions behind
+the latest releases. As a result, they are unlikely to interfere with your
+installation unless they are already installed.</p>
+<p>In the next step, we will configure the official Zabbix repositories. As long
+as you select a Zabbix repository version newer than the packages available in 
+<code>repo-oss</code>, zypper will automatically install the most recent version.</p>
+<details class="tip" open="open">
+<summary>Tip</summary>
+<p>If you have already installed Zabbix packages from the default repositories, 
+it is recommended to either:</p>
+<ul>
+<li>Remove them before proceeding, or</li>
+<li>Upgrade them after adding the new Zabbix repositories, using the zypper 
+  option <code>--allow-vendor-change</code>.</li>
+</ul>
+</details>
+<details class="note" open="open">
+<summary>Suse Linux Enterprise Server (SLES)</summary>
+<p>If you are using SLES, the Zabbix packages are not included in the default
+repositories. Therefore, you can proceed to add the official Zabbix repository
+without any concerns about conflicts with existing packages.</p>
+</details>
+<hr />
+<h3 id="ch00-getting-started-preparation-adding-the-zabbix-repository">Adding the Zabbix repository</h3>
+<p>Next, we will install the Zabbix repository on our operating system. After adding
+the Zabbix repository, it is recommended to perform a repository cleanup to remove
+old cache files and ensure the repository metadata is up to date. You can do this
+by running:</p>
+<div class="admonition info">
+<p class="admonition-title">Add the zabbix repo</p>
+<p>Red Hat
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#ch00-getting-started-preparation-__codelineno-5-1"></a>rpm<span class="w"> </span>-Uvh<span class="w"> </span>https://repo.zabbix.com/zabbix/8.0/release/rocky/9/noarch/zabbix-release-latest-8.0.el9.noarch.rpm
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#ch00-getting-started-preparation-__codelineno-5-2"></a>dnf<span class="w"> </span>clean<span class="w"> </span>all
+</span></code></pre></div></p>
+<p>SUSE
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#ch00-getting-started-preparation-__codelineno-6-1"></a>rpm<span class="w"> </span>-Uvh<span class="w"> </span>--nosignature<span class="w"> </span>https://repo.zabbix.com/zabbix/8.0/release/sles/16/noarch/zabbix-release-latest-8.0.sles16.noarch.rpm
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#ch00-getting-started-preparation-__codelineno-6-2"></a>zypper<span class="w"> </span>--gpg-auto-import-keys<span class="w"> </span>refresh<span class="w"> </span><span class="s1">&#39;Zabbix Official Repository&#39;</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#ch00-getting-started-preparation-__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#ch00-getting-started-preparation-__codelineno-6-4"></a><span class="c1"># Set the repository to auto-refresh to ensure it&#39;s always up to date</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#ch00-getting-started-preparation-__codelineno-6-5"></a>zypper<span class="w"> </span>modifyrepo<span class="w"> </span>--refresh<span class="w"> </span><span class="s1">&#39;Zabbix Official Repository&#39;</span>
+</span></code></pre></div></p>
+<p>Ubuntu
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#ch00-getting-started-preparation-__codelineno-7-1"></a>sudo<span class="w"> </span>wget<span class="w"> </span>https://repo.zabbix.com/zabbix/8.0/release/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_8.0+ubuntu24.04_all.deb
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#ch00-getting-started-preparation-__codelineno-7-2"></a>sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>zabbix-release_latest_8.0+ubuntu24.04_all.deb
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#ch00-getting-started-preparation-__codelineno-7-3"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span></code></pre></div></p>
+</div>
+<p>This will refresh the repository metadata and prepare the system for Zabbix installation.</p>
+<details class="note" open="open">
+<summary>What is a repository?</summary>
+<p>A repository in Linux is a configuration that allows you to access and install
+software packages. You can think of it like an "app store" where you find and
+download software from a trusted source, in this case, the Zabbix repository.
+Many repositories are available, but it's important to only add those you trust.
+The safest practice is to stick to the repositories provided by your operating
+system and only add additional ones when you're sure they are both trusted and necessary.</p>
+<p>For our installation, the Zabbix repository is provided by the vendor itself,
+making it a trusted source. Another popular and safe repository for
+Red Hat-based systems is EPEL (Extra Packages for Enterprise Linux), which is
+commonly used in enterprise environments.
+However, always exercise caution when adding new repositories to ensure
+system security and stability.</p>
+</details>
+<hr />
+<h2 id="ch00-getting-started-preparation-conclusion">Conclusion</h2>
+<p>With the preparation of your system for Zabbix now complete, you have successfully
+configured your environment for the installation of Zabbix components. We've covered 
+the steps to add the official Zabbix repository to your system, preparing it for the 
+installation of Zabbix server, database, and frontend components.</p>
+<p>Your system is now ready for the next steps. In the following chapter, we will
+delve into the installation of the Zabbix components, guiding you through the
+process of setting up the Zabbix server, database, and frontend. </p>
+<hr />
+<h2 id="ch00-getting-started-preparation-questions">Questions</h2>
+<hr />
+<h2 id="ch00-getting-started-preparation-useful-urls">Useful URLs</h2>
+<ul>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/installation/install_from_packages">https://www.zabbix.com/documentation/current/en/manual/installation/install_from_packages</a></li>
 </ul></section></section>
                     <section class='print-page md-section' id='section-6' heading-number='6'>
                         <h1>Chapter 01 : Zabbix components and installation<a class='headerlink' href='#section-6' title='Permanent link'></a>
@@ -24923,6 +25137,20 @@ If it does not detect anything:</p>
             
                 .print-site-enumerate-headings #ch00-getting-started-requirements h5:before { content: '5.2.' counter(counter-ch00-getting-started-requirements-2) '.' counter(counter-ch00-getting-started-requirements-3) '.' counter(counter-ch00-getting-started-requirements-4) '.' counter(counter-ch00-getting-started-requirements-5) ' ' }
                 .print-site-enumerate-headings #ch00-getting-started-requirements h5 {  counter-increment: counter-ch00-getting-started-requirements-5 }
+            
+.print-site-enumerate-headings #ch00-getting-started-preparation > h1:before { content: '5.3 ' }
+
+                .print-site-enumerate-headings #ch00-getting-started-preparation h2:before { content: '5.3.' counter(counter-ch00-getting-started-preparation-2) ' ' }
+                .print-site-enumerate-headings #ch00-getting-started-preparation h2 {  counter-reset: counter-ch00-getting-started-preparation-3  counter-ch00-getting-started-preparation-4  counter-ch00-getting-started-preparation-5 ;  counter-increment: counter-ch00-getting-started-preparation-2 }
+            
+                .print-site-enumerate-headings #ch00-getting-started-preparation h3:before { content: '5.3.' counter(counter-ch00-getting-started-preparation-2) '.' counter(counter-ch00-getting-started-preparation-3) ' ' }
+                .print-site-enumerate-headings #ch00-getting-started-preparation h3 {  counter-reset: counter-ch00-getting-started-preparation-4  counter-ch00-getting-started-preparation-5 ;  counter-increment: counter-ch00-getting-started-preparation-3 }
+            
+                .print-site-enumerate-headings #ch00-getting-started-preparation h4:before { content: '5.3.' counter(counter-ch00-getting-started-preparation-2) '.' counter(counter-ch00-getting-started-preparation-3) '.' counter(counter-ch00-getting-started-preparation-4) ' ' }
+                .print-site-enumerate-headings #ch00-getting-started-preparation h4 {  counter-reset: counter-ch00-getting-started-preparation-5 ;  counter-increment: counter-ch00-getting-started-preparation-4 }
+            
+                .print-site-enumerate-headings #ch00-getting-started-preparation h5:before { content: '5.3.' counter(counter-ch00-getting-started-preparation-2) '.' counter(counter-ch00-getting-started-preparation-3) '.' counter(counter-ch00-getting-started-preparation-4) '.' counter(counter-ch00-getting-started-preparation-5) ' ' }
+                .print-site-enumerate-headings #ch00-getting-started-preparation h5 {  counter-increment: counter-ch00-getting-started-preparation-5 }
             
 .print-site-enumerate-headings #section-6 > h1:before { content: '6 ' }
 .print-site-enumerate-headings #ch01-zabbix-components-chapter > h1:before { content: '6.1 ' }
