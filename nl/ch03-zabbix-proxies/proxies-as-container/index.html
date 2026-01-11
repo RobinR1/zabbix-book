@@ -2224,13 +2224,37 @@ be running only zabbix-proxy in a container.</p>
 <div class="admonition info">
 <p class="admonition-title">Create and init podman user</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>useradd<span class="w"> </span>--system<span class="w"> </span>--home-dir<span class="w"> </span>/home/podman<span class="w"> </span>--create-home<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span>--comment<span class="w"> </span><span class="s2">&quot;User for running container workloads&quot;</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>sudo<span class="w"> </span>-i<span class="w"> </span>-u<span class="w"> </span>podman
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.local/share/containers
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.config/containers/systemd/
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nb">exit</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span>--add-subids-for-system<span class="w"> </span>--comment<span class="w"> </span><span class="s2">&quot;User for running container workloads&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span>podman
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>sudo<span class="w"> </span>-i<span class="w"> </span>-u<span class="w"> </span>podman
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.local/share/containers
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.config/containers/systemd/
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="nb">exit</span>
 </span></code></pre></div>
 </div>
+<details class="info" open="open">
+<summary>What is --add-subids-for-system ?</summary>
+<p>Since we pass the parameter <code>--system</code>, the user will be created as a
+"system"-user, indicating that this user is not actually a person but rather
+a user that is used to run specific workload, in our case a Zabbix Proxy 
+container.</p>
+<p>This however also causes that the <code>useradd</code> command will not add a new entry
+into <code>/etc/subuid</code> and <code>/etc/subgid</code> for the user. These files define what
+range of User ID's (uid) and Group ID's (gid) a non-root user is allowed to
+use when running containers. Adding the parameter <code>--add-subids-for-system</code>
+tells the <code>useradd</code> command to still add a new entry in those files for this
+new user, even if it is a system user.</p>
+</details>
+<details class="info" open="open">
+<summary>Why does Podman need UID and GID ranges to run containers as non-root user?</summary>
+<p>When running Podman in rootless mode, the user needs to map the root user 
+inside the container to a non-root user outside the container. To be able to
+do this the podman needs to 'create' a new temporary, virtual non-root user
+which will then be assigned a UID and GID from the ranges defined in those 
+<code>/etc/subuid</code> and <code>/etc/subgid</code>-files.
+Without any ranges defined for the non-root user, podman won't be able to
+launch any containers.</p>
+</details>
 <p>When your system has SELinux enabled, execute the following command as <code>root</code>. </p>
 <div class="admonition info">
 <p class="admonition-title">SELinux: Set file context mapping</p>
@@ -2274,13 +2298,15 @@ is best to now switch to user <code>podman</code> before continueing.</p>
 the user-specific runtime files are stored:</p>
 <div class="admonition info">
 <p class="admonition-title">Set XDG_RUNTIME_DIR environment variable</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">echo</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">XDG_RUNTIME_DIR</span><span class="o">=</span><span class="s2">&quot;/run/user/</span><span class="k">$(</span>id<span class="w"> </span>-u<span class="w"> </span>podman<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bash_profile
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">echo</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">XDG_RUNTIME_DIR</span><span class="o">=</span><span class="s2">&quot;/run/user/</span><span class="k">$(</span>id<span class="w"> </span>-u<span class="w"> </span>podman<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bash_profile<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span>~/.bash_profile
 </span></code></pre></div>
 </div>
 <p>This line ensures that the <code>XDG_RUNTIME_DIR</code> environment variable is correctly set
-for the <code>podman</code> user. This variable points to the location where user-specific runtime
+for the <code>podman</code> user and is loaded in current and next sessions. 
+This variable points to the location where user-specific runtime
 files are stored, including the systemd user session bus. Setting it is essential
 for enabling <code>systemctl --user</code> to function properly with Podman-managed containers.</p>
+<p>To now activate this setting, you can run</p>
 <hr />
 <h3 id="prepare-the-proxy-config">Prepare the Proxy config</h3>
 <p>The next step is to create a <code>.container</code> unit file for our Quadlet setup. This
@@ -2321,7 +2347,7 @@ that is well-suited for LTS environments, and it includes all
 necessary components to run the Zabbix proxy with SQLite.</p>
 <p>In addition to the <code>.container</code> unit file, we also need to create an environment
 file that defines the configuration variables for the container. This file must
-reside in the same directory as the <code>.container file</code>: <code>~/.config/containers/systemd/</code>
+reside in the same directory as the <code>.container</code> file: <code>~/.config/containers/systemd/</code>
 and should be named <code>ZabbixProxy.env</code>, as referenced in our <code>.container</code> configuration.</p>
 <p>This environment file allows us to override default container settings by specifying
 environment variables used during container runtime. The list of supported variables
@@ -2357,7 +2383,7 @@ unit has been registered by checking the output of <code>systemctl --user list-u
 <details class="example" open="open">
 <summary>Verify if the new unit is registered correctly</summary>
 <div class="language-shell-session highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="go">podman@localhost:~&gt; systemctl --user list-unit-files | grep zabbix</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="go">zabbix-proxy-sqlite.service             generated</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="go">zabbix-proxy-sqlite.service             generated -</span>
 </span></code></pre></div>
 </details>
 <p>You can now start the container using the <code>systemctl --user start</code> command.
