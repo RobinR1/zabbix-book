@@ -2028,6 +2028,7 @@ scalability and efficiency.
 <p>In this chapter we will explain what a proxy is, why you may need or consider it,
 what the basic requirements are and what the difference is between <em>Active proxies</em>
 and <em>Passive proxies</em>.</p>
+<hr />
 <h2 id="what-is-a-zabbix-proxy">What is a Zabbix Proxy</h2>
 <p>A Zabbix proxy is actually a kind of lightweight Zabbix server process that
 collects monitoring data from devices on behalf of the real Zabbix server. It's
@@ -2047,6 +2048,7 @@ efficiency of your monitoring system.</p>
 <li>Offload the Zabbix server when monitoring thousands of devices</li>
 <li>Simplify the maintenance and management</li>
 </ul>
+<hr />
 <h2 id="proxy-requirements">Proxy requirements</h2>
 <p>If you'd like to set up a few proxies for testing or in your production environment,
 you'll need some Linux hosts for installation. While proxies are also available as 
@@ -2059,6 +2061,7 @@ Therefore, the number of CPUs and memory you'll need depends on:</p>
 <li>How many machines you'll be monitoring</li>
 <li>How many preprocessing rules you'll implement on your hosts</li>
 </ul>
+<hr />
 <h3 id="proxy-configuration-updates">Proxy configuration updates</h3>
 <p>For a proxy to know what devices it has to monitor, it will receive configuration
 updates from the <em>Zabbix server</em>. They include:</p>
@@ -2104,6 +2107,7 @@ They include:</p>
 </dd>
 </dl>
 </details>
+<hr />
 <h2 id="proxy-throttling">Proxy throttling</h2>
 <p>Imagine that you need to restart your Zabbix server and that all proxies start
 to push the data they have gathered during the downtime of the Zabbix server.</p>
@@ -2148,6 +2152,7 @@ not accept data from other proxies.</p>
 <p>This may cause delays in detection of problems, as you will have to wait for all
 relevant data to be received and processed by the Zabbix server; but you won't lose
 any historical data.</p>
+<hr />
 <h2 id="active-versus-passive-proxy">Active versus Passive proxy</h2>
 <p>Zabbix proxies have been available since Zabbix 1.6. At that time they where 
 available only as what we know today as <strong>Active proxies</strong>. <em>Active</em> means that 
@@ -2163,6 +2168,7 @@ a proxy. </p>
 how Zabbix agents can communicate with this proxy. It's perfectly fine to have
 an <em>active proxy</em> and a <em>passive agent</em> working together.</p>
 </details>
+<hr />
 <h3 id="active-proxy">Active proxy</h3>
 <p>In <em>active</em> mode, the proxy takes full control of its operational settings. This 
 includes managing when it checks for new configuration updates and when it sends 
@@ -2200,6 +2206,7 @@ optimizes performance and prevents potential bottlenecks.</p>
 <p><img alt="Active proxy communication" src="../active-passive-proxies/ch03-active-communication.png" /></p>
 <p><em>3.1 Active proxy
 communication</em></p>
+<hr />
 <h3 id="passive-proxy">Passive proxy</h3>
 <p>In contrast to an <em>active proxy</em>, a proxy in <em>passive</em> mode will have its operational
 settings controlled by the <em>Zabbix server</em>.</p>
@@ -2240,6 +2247,7 @@ the number of values the proxy has received that are yet to be sent to the
 <p><img alt="Passive proxy communication" src="../active-passive-proxies/ch03-passive-communication.png" /></p>
 <p><em>3.2 Passive proxy
 communication</em></p>
+<hr />
 <h2 id="proxy-runtime-control-options">Proxy runtime control options</h2>
 <p>Just like the <em>Zabbix server</em> our proxy supports runtime control options always
 check latest options with the <code>--help</code> option. But here is a short overview of
@@ -2287,6 +2295,7 @@ The section parameter can target areas like historycache, preprocessing or locks
 the preprocessing manager.</p>
 </dd>
 </dl>
+<hr />
 <h2 id="proxy-firewall">Proxy firewall</h2>
 <p>Our proxies work like small <em>Zabbix servers</em> so when it comes to the ports to connect
 to agents, SNMP, ... nothing changes, all ports need to be configured the same as you

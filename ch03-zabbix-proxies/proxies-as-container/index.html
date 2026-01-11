@@ -2175,6 +2175,7 @@ they are inherently flexible and portable, making them well-suited for deploymen
 in containerized environments. This chapter provides a step-by-step guide on deploying
 a Zabbix proxy within a container, outlining configuration options and best practices
 for optimal performance and maintainability.</p>
+<hr />
 <h2 id="setting-up-containers">Setting up containers</h2>
 <p>We will begin by demonstrating how to set up containerized environments on Red Hat
 or SUSE-based systems using Podman. Podman is the recommended container engine on 
@@ -2187,6 +2188,7 @@ systemd units and quadlets.</p>
 <p>For this setup, you will need a virtual machine (VM) where we will install Podman
 and deploy the Zabbix proxy container. This container will then be configured to
 communicate with your Zabbix server.</p>
+<hr />
 <h3 id="add-the-proxy-to-the-zabbix-frontend">Add the proxy to the zabbix frontend</h3>
 <p><img alt="Add the proxy" src="../proxy-containers/ch03-container-proxy-new.png" /></p>
 <p><em>3.9 Add proxy
@@ -2195,6 +2197,7 @@ to frontend</em></p>
 In this case, only two parameters need to be configured: the proxy's hostname
 (as defined in the Zabbix frontend) and the proxy’s IP address for communication
 with the Zabbix server.</p>
+<hr />
 <h3 id="create-the-podman-setup">Create the podman setup</h3>
 <p>Next, we begin configuring Podman on the host system where the Zabbix proxy container
 will be installed and managed.</p>
@@ -2272,6 +2275,7 @@ the user-specific runtime files are stored:</p>
 for the <code>podman</code> user. This variable points to the location where user-specific runtime
 files are stored, including the systemd user session bus. Setting it is essential
 for enabling <code>systemctl --user</code> to function properly with Podman-managed containers.</p>
+<hr />
 <h3 id="prepare-the-proxy-config">Prepare the Proxy config</h3>
 <p>The next step is to create a <code>.container</code> unit file for our Quadlet setup. This
 file should be placed in the directory <code>~/.config/containers/systemd/</code>. For example,
@@ -2377,6 +2381,7 @@ then retrieve the container's logs using:</p>
 <p>This command will return the startup and runtime logs for the container, which
 are helpful for troubleshooting and verifying that the Zabbix proxy has started
 correctly.</p>
+<hr />
 <h2 id="upgrading-our-containers">Upgrading our containers</h2>
 <p>At some point, you may be asking yourself: How do I upgrade my Zabbix containers?
 Fortunately, container upgrades are a straightforward process that can be handled
@@ -2390,6 +2395,7 @@ allow you to maintain strict control over the version deployed. This can be help
 in environments where consistency and reproducibility are critical.</p>
 <p>In the following sections, we will explore both approaches: using the <code>latest</code>
 tag for automated updates and specifying fixed versions for controlled environments.</p>
+<hr />
 <h3 id="upgrading-manually">Upgrading manually</h3>
 <p>If you're running your Zabbix container using a <strong>floating tag</strong> such as <code>:latest</code> or
 <code>:trunk-centos</code>, upgrading is a simple and efficient process. These tags always
@@ -2408,6 +2414,7 @@ A new container instance will be started using the freshly pulled image.
 All configuration options defined in the associated <code>.container</code> file will be reapplied.
 This approach allows for quick updates with minimal effort, while still preserving
 consistent configuration management through systemd.</p>
+<hr />
 <h3 id="upgrading-when-using-a-fixed-image-tag">Upgrading When Using a Fixed Image Tag</h3>
 <p>If your container is configured to use a <strong>fixed image tag</strong> (e.g., <code>7.0.13-centos</code>)
 rather than a floating tag like <code>:latest</code> or <code>:trunk</code>, the upgrade process involves
@@ -2433,12 +2440,14 @@ file is located at <code>~/.config/containers/systemd/zabbix-proxy-sqlite.contai
 the updated image. Since you're using a fixed tag, this upgrade process gives you
 full control over when and how new versions are introduced.</p>
 </details>
+<hr />
 <h3 id="upgrading-automatically">Upgrading automatically</h3>
 <p>When using floating tags like <code>:latest</code> or <code>:trunk-centos</code> for your Zabbix container
 images, Podman Quadlet supports automated upgrades by combining them with the
 <code>AutoUpdate=registry</code> directive in your <code>.container</code> file.</p>
 <p>This setup ensures your container is automatically refreshed whenever a new image
 is available in the remote registry without requiring manual intervention.</p>
+<hr />
 <h4 id="example-configuration">Example Configuration</h4>
 <details class="example" open="open">
 <summary>.container file</summary>
@@ -2450,6 +2459,7 @@ is available in the remote registry without requiring manual intervention.</p>
 <p>In this example, the <code>Image</code> points to the <code>trunk-centos</code> tag, and <code>AutoUpdate=registry</code>
 tells Podman to periodically check the container registry for updates to this tag.</p>
 </details>
+<hr />
 <h4 id="how-the-auto-update-process-works">How the Auto-Update Process Works</h4>
 <p>Once configured, the following steps are handled automatically:</p>
 <ol>
@@ -2477,6 +2487,7 @@ tells Podman to periodically check the container registry for updates to this ta
 </ol>
 <p>This approach provides a clean, repeatable way to keep your Zabbix proxy (or other
 components) current without direct user intervention.</p>
+<hr />
 <h4 id="enabling-the-auto-update-timer">Enabling the Auto-Update Timer</h4>
 <p>To ensure that updates are applied regularly, you must enable the Podman auto-update
 timer.</p>
@@ -2507,6 +2518,7 @@ plan. Floating tags like <code>:latest</code> or <code>:trunk-centos</code> can 
 changes unexpectedly. For production use, fixed version tags (e.g. <code>7.0.13-centos</code>)
 are generaly recommended since they offer greater stability and control.</p>
 </details>
+<hr />
 <h2 id="conclusion">Conclusion</h2>
 <p>In this chapter, we deployed a Zabbix active proxy using Podman and SystemD 
 Quadlets. We configured SELinux, enabled user lingering, and created
@@ -2516,6 +2528,7 @@ the container easy to control and monitor. This setup offers a lightweight, flex
 and secure approach to deploying Zabbix proxies. It is ideal for modern environments,
 especially when using containers or virtualisation. With the proxy running, you're
 ready to extend Zabbix monitoring to remote locations efficiently.</p>
+<hr />
 <h2 id="questions">Questions</h2>
 <ul>
 <li>What are the main advantages of using Podman over Docker for running containers
@@ -2528,6 +2541,7 @@ ready to extend Zabbix monitoring to remote locations efficiently.</p>
 <li>How can you verify that your Zabbix proxy container started successfully?</li>
 <li>What is the difference between an active and passive Zabbix proxy?</li>
 </ul>
+<hr />
 <h2 id="useful-urls">Useful URLs</h2>
 <ul>
 <li><a href="https://hub.docker.com/r/zabbix/zabbix-proxy-sqlite3">https://hub.docker.com/r/zabbix/zabbix-proxy-sqlite3</a></li>

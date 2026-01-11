@@ -10077,6 +10077,7 @@ ensuring you make informed decisions as you scale your Zabbix installation.</p><
 <p>In this chapter we will explain what a proxy is, why you may need or consider it,
 what the basic requirements are and what the difference is between <em>Active proxies</em>
 and <em>Passive proxies</em>.</p>
+<hr />
 <h2 id="ch03-zabbix-proxies-proxy-basics-what-is-a-zabbix-proxy">What is a Zabbix Proxy</h2>
 <p>A Zabbix proxy is actually a kind of lightweight Zabbix server process that
 collects monitoring data from devices on behalf of the real Zabbix server. It's
@@ -10096,6 +10097,7 @@ efficiency of your monitoring system.</p>
 <li>Offload the Zabbix server when monitoring thousands of devices</li>
 <li>Simplify the maintenance and management</li>
 </ul>
+<hr />
 <h2 id="ch03-zabbix-proxies-proxy-basics-proxy-requirements">Proxy requirements</h2>
 <p>If you'd like to set up a few proxies for testing or in your production environment,
 you'll need some Linux hosts for installation. While proxies are also available as 
@@ -10108,6 +10110,7 @@ Therefore, the number of CPUs and memory you'll need depends on:</p>
 <li>How many machines you'll be monitoring</li>
 <li>How many preprocessing rules you'll implement on your hosts</li>
 </ul>
+<hr />
 <h3 id="ch03-zabbix-proxies-proxy-basics-proxy-configuration-updates">Proxy configuration updates</h3>
 <p>For a proxy to know what devices it has to monitor, it will receive configuration
 updates from the <em>Zabbix server</em>. They include:</p>
@@ -10153,6 +10156,7 @@ They include:</p>
 </dd>
 </dl>
 </details>
+<hr />
 <h2 id="ch03-zabbix-proxies-proxy-basics-proxy-throttling">Proxy throttling</h2>
 <p>Imagine that you need to restart your Zabbix server and that all proxies start
 to push the data they have gathered during the downtime of the Zabbix server.</p>
@@ -10197,6 +10201,7 @@ not accept data from other proxies.</p>
 <p>This may cause delays in detection of problems, as you will have to wait for all
 relevant data to be received and processed by the Zabbix server; but you won't lose
 any historical data.</p>
+<hr />
 <h2 id="ch03-zabbix-proxies-proxy-basics-active-versus-passive-proxy">Active versus Passive proxy</h2>
 <p>Zabbix proxies have been available since Zabbix 1.6. At that time they where 
 available only as what we know today as <strong>Active proxies</strong>. <em>Active</em> means that 
@@ -10212,6 +10217,7 @@ a proxy. </p>
 how Zabbix agents can communicate with this proxy. It's perfectly fine to have
 an <em>active proxy</em> and a <em>passive agent</em> working together.</p>
 </details>
+<hr />
 <h3 id="ch03-zabbix-proxies-proxy-basics-active-proxy">Active proxy</h3>
 <p>In <em>active</em> mode, the proxy takes full control of its operational settings. This 
 includes managing when it checks for new configuration updates and when it sends 
@@ -10249,6 +10255,7 @@ optimizes performance and prevents potential bottlenecks.</p>
 <p><img alt="Active proxy communication" src="../ch03-zabbix-proxies/active-passive-proxies/ch03-active-communication.png" /></p>
 <p><em>3.1 Active proxy
 communication</em></p>
+<hr />
 <h3 id="ch03-zabbix-proxies-proxy-basics-passive-proxy">Passive proxy</h3>
 <p>In contrast to an <em>active proxy</em>, a proxy in <em>passive</em> mode will have its operational
 settings controlled by the <em>Zabbix server</em>.</p>
@@ -10289,6 +10296,7 @@ the number of values the proxy has received that are yet to be sent to the
 <p><img alt="Passive proxy communication" src="../ch03-zabbix-proxies/active-passive-proxies/ch03-passive-communication.png" /></p>
 <p><em>3.2 Passive proxy
 communication</em></p>
+<hr />
 <h2 id="ch03-zabbix-proxies-proxy-basics-proxy-runtime-control-options">Proxy runtime control options</h2>
 <p>Just like the <em>Zabbix server</em> our proxy supports runtime control options always
 check latest options with the <code>--help</code> option. But here is a short overview of
@@ -10336,6 +10344,7 @@ The section parameter can target areas like historycache, preprocessing or locks
 the preprocessing manager.</p>
 </dd>
 </dl>
+<hr />
 <h2 id="ch03-zabbix-proxies-proxy-basics-proxy-firewall">Proxy firewall</h2>
 <p>Our proxies work like small <em>Zabbix servers</em> so when it comes to the ports to connect
 to agents, SNMP, ... nothing changes, all ports need to be configured the same as you
@@ -10362,6 +10371,7 @@ open on your proxy server:</p>
 </div></section><section class="print-page" id="ch03-zabbix-proxies-active-passive-proxies" heading-number="8.3"><nav class='md-tags'><span class='md-tag'>advanced</span></nav><h1 id="active-and-passive-proxies">Active and Passive proxies</h1>
 <p>Whether you want to install an Active proxy or a Passive one, much of the installation
 and configuration steps are the same.</p>
+<hr />
 <h2 id="ch03-zabbix-proxies-active-passive-proxies-zabbix-gui-configuration">Zabbix GUI configuration</h2>
 <p>There are 2 things we need to do when we like to setup a Zabbix proxy and one of
 those steps is adding the proxy in the frontend of Zabbix. So from the menu let's select
@@ -10369,6 +10379,7 @@ those steps is adding the proxy in the frontend of Zabbix. So from the menu let'
 <p><img alt="Create proxy" src="../ch03-zabbix-proxies/active-passive-proxies/ch03-add-active-proxy.png" /></p>
 <p><em>3.3 Create proxy</em></p>
 <p>Once pressed, a new modal form will pop-up where we need to fill in some information.</p>
+<hr />
 <h3 id="ch03-zabbix-proxies-active-passive-proxies-active-proxy">Active proxy</h3>
 <p>For active proxies we only need to enter the <em>Proxy name</em> field. Here we will enter
 <code>ProxyA</code> to remind us this will be an active proxy.
@@ -10382,6 +10393,7 @@ between different active proxies and manage their data correctly.</p>
 </details>
 <p><img alt="Active proxy" src="../ch03-zabbix-proxies/active-passive-proxies/ch03-new-active-proxy.png" /></p>
 <p><em>3.4 New proxy</em></p>
+<hr />
 <h3 id="ch03-zabbix-proxies-active-passive-proxies-passive-proxy">Passive proxy</h3>
 <p>For the passive proxy we will enter <code>ProxyP</code> as <em>Proxy name</em> but now we also need
 to specify the <em>Interface</em> field. Here we add the IP of the host where our proxy
@@ -10389,6 +10401,7 @@ runs on. You also notice that we use the same port
 <code>10051</code> as the <em>Zabbix server</em> to communicate with our proxy.</p>
 <p><img alt="Passive proxy" src="../ch03-zabbix-proxies/active-passive-proxies/ch03-new-passive-proxy.png" /></p>
 <p><em>3.5 New passive proxy</em></p>
+<hr />
 <h2 id="ch03-zabbix-proxies-active-passive-proxies-installing-the-proxy">Installing the proxy</h2>
 <p>Next up, we need to get the Zabbix proxy software onto a system that will function
 as Zabbix Proxy. Set up a new system or VM and make sure it meets the requirements as 
@@ -10429,6 +10442,7 @@ are the scripts you will need to setup the DB structure. </p>
 <p>If you want to use MySQL or PostgreSQL then you can use the package <code>zabbix-proxy-mysql</code>
 or <code>zabbix-proxy-pgsql</code> depending on your needs.</p>
 </details>
+<hr />
 <h2 id="ch03-zabbix-proxies-active-passive-proxies-configuring-the-proxy">Configuring the proxy</h2>
 <p>Now that we have installed the required packages we still have to do a few configuration
 changes. </p>
@@ -10663,6 +10677,7 @@ and verify your log files.</p>
 Zabbix server. Hence, all hosts you want to be monitored by the proxy will now 
 have to be configured to have their <code>Server</code> and/or <code>ServerActive</code> configuration 
 values set to the IP/hostname of this proxy instead of the <em>Zabbix server</em>.</p>
+<hr />
 <h2 id="ch03-zabbix-proxies-active-passive-proxies-conclusion">Conclusion</h2>
 <p>This chapter has demonstrated the indispensable role of Zabbix proxies in building
 robust, scalable, and distributed monitoring infrastructures. We've explored the
@@ -10692,6 +10707,7 @@ complex and geographically dispersed environments with unparalleled efficiency a
 reliability. The knowledge gained in this chapter will be instrumental in designing
 and maintaining a Zabbix infrastructure that is not only robust today but also adaptable
 to future monitoring challenges.</p>
+<hr />
 <h2 id="ch03-zabbix-proxies-active-passive-proxies-questions">Questions</h2>
 <ul>
 <li>What is the fundamental difference between an active proxy and a passive proxy
@@ -10699,6 +10715,7 @@ to future monitoring challenges.</p>
 <li>How does a network firewall configuration differ for active vs passive proxies
   when separated from the server by a network firewall?</li>
 </ul>
+<hr />
 <h2 id="ch03-zabbix-proxies-active-passive-proxies-useful-urls">Useful URLs</h2>
 <ul>
 <li><a href="https://www.zabbix.com/documentation/current/en/manpages/zabbix_proxy">https://www.zabbix.com/documentation/current/en/manpages/zabbix_proxy</a></li>
@@ -10709,6 +10726,7 @@ they are inherently flexible and portable, making them well-suited for deploymen
 in containerized environments. This chapter provides a step-by-step guide on deploying
 a Zabbix proxy within a container, outlining configuration options and best practices
 for optimal performance and maintainability.</p>
+<hr />
 <h2 id="ch03-zabbix-proxies-proxies-as-container-setting-up-containers">Setting up containers</h2>
 <p>We will begin by demonstrating how to set up containerized environments on Red Hat
 or SUSE-based systems using Podman. Podman is the recommended container engine on 
@@ -10721,6 +10739,7 @@ systemd units and quadlets.</p>
 <p>For this setup, you will need a virtual machine (VM) where we will install Podman
 and deploy the Zabbix proxy container. This container will then be configured to
 communicate with your Zabbix server.</p>
+<hr />
 <h3 id="ch03-zabbix-proxies-proxies-as-container-add-the-proxy-to-the-zabbix-frontend">Add the proxy to the zabbix frontend</h3>
 <p><img alt="Add the proxy" src="../ch03-zabbix-proxies/proxy-containers/ch03-container-proxy-new.png" /></p>
 <p><em>3.9 Add proxy
@@ -10729,6 +10748,7 @@ to frontend</em></p>
 In this case, only two parameters need to be configured: the proxy's hostname
 (as defined in the Zabbix frontend) and the proxy’s IP address for communication
 with the Zabbix server.</p>
+<hr />
 <h3 id="ch03-zabbix-proxies-proxies-as-container-create-the-podman-setup">Create the podman setup</h3>
 <p>Next, we begin configuring Podman on the host system where the Zabbix proxy container
 will be installed and managed.</p>
@@ -10806,6 +10826,7 @@ the user-specific runtime files are stored:</p>
 for the <code>podman</code> user. This variable points to the location where user-specific runtime
 files are stored, including the systemd user session bus. Setting it is essential
 for enabling <code>systemctl --user</code> to function properly with Podman-managed containers.</p>
+<hr />
 <h3 id="ch03-zabbix-proxies-proxies-as-container-prepare-the-proxy-config">Prepare the Proxy config</h3>
 <p>The next step is to create a <code>.container</code> unit file for our Quadlet setup. This
 file should be placed in the directory <code>~/.config/containers/systemd/</code>. For example,
@@ -10911,6 +10932,7 @@ then retrieve the container's logs using:</p>
 <p>This command will return the startup and runtime logs for the container, which
 are helpful for troubleshooting and verifying that the Zabbix proxy has started
 correctly.</p>
+<hr />
 <h2 id="ch03-zabbix-proxies-proxies-as-container-upgrading-our-containers">Upgrading our containers</h2>
 <p>At some point, you may be asking yourself: How do I upgrade my Zabbix containers?
 Fortunately, container upgrades are a straightforward process that can be handled
@@ -10924,6 +10946,7 @@ allow you to maintain strict control over the version deployed. This can be help
 in environments where consistency and reproducibility are critical.</p>
 <p>In the following sections, we will explore both approaches: using the <code>latest</code>
 tag for automated updates and specifying fixed versions for controlled environments.</p>
+<hr />
 <h3 id="ch03-zabbix-proxies-proxies-as-container-upgrading-manually">Upgrading manually</h3>
 <p>If you're running your Zabbix container using a <strong>floating tag</strong> such as <code>:latest</code> or
 <code>:trunk-centos</code>, upgrading is a simple and efficient process. These tags always
@@ -10942,6 +10965,7 @@ A new container instance will be started using the freshly pulled image.
 All configuration options defined in the associated <code>.container</code> file will be reapplied.
 This approach allows for quick updates with minimal effort, while still preserving
 consistent configuration management through systemd.</p>
+<hr />
 <h3 id="ch03-zabbix-proxies-proxies-as-container-upgrading-when-using-a-fixed-image-tag">Upgrading When Using a Fixed Image Tag</h3>
 <p>If your container is configured to use a <strong>fixed image tag</strong> (e.g., <code>7.0.13-centos</code>)
 rather than a floating tag like <code>:latest</code> or <code>:trunk</code>, the upgrade process involves
@@ -10967,12 +10991,14 @@ file is located at <code>~/.config/containers/systemd/zabbix-proxy-sqlite.contai
 the updated image. Since you're using a fixed tag, this upgrade process gives you
 full control over when and how new versions are introduced.</p>
 </details>
+<hr />
 <h3 id="ch03-zabbix-proxies-proxies-as-container-upgrading-automatically">Upgrading automatically</h3>
 <p>When using floating tags like <code>:latest</code> or <code>:trunk-centos</code> for your Zabbix container
 images, Podman Quadlet supports automated upgrades by combining them with the
 <code>AutoUpdate=registry</code> directive in your <code>.container</code> file.</p>
 <p>This setup ensures your container is automatically refreshed whenever a new image
 is available in the remote registry without requiring manual intervention.</p>
+<hr />
 <h4 id="ch03-zabbix-proxies-proxies-as-container-example-configuration">Example Configuration</h4>
 <details class="example" open="open">
 <summary>.container file</summary>
@@ -10984,6 +11010,7 @@ is available in the remote registry without requiring manual intervention.</p>
 <p>In this example, the <code>Image</code> points to the <code>trunk-centos</code> tag, and <code>AutoUpdate=registry</code>
 tells Podman to periodically check the container registry for updates to this tag.</p>
 </details>
+<hr />
 <h4 id="ch03-zabbix-proxies-proxies-as-container-how-the-auto-update-process-works">How the Auto-Update Process Works</h4>
 <p>Once configured, the following steps are handled automatically:</p>
 <ol>
@@ -11011,6 +11038,7 @@ tells Podman to periodically check the container registry for updates to this ta
 </ol>
 <p>This approach provides a clean, repeatable way to keep your Zabbix proxy (or other
 components) current without direct user intervention.</p>
+<hr />
 <h4 id="ch03-zabbix-proxies-proxies-as-container-enabling-the-auto-update-timer">Enabling the Auto-Update Timer</h4>
 <p>To ensure that updates are applied regularly, you must enable the Podman auto-update
 timer.</p>
@@ -11041,6 +11069,7 @@ plan. Floating tags like <code>:latest</code> or <code>:trunk-centos</code> can 
 changes unexpectedly. For production use, fixed version tags (e.g. <code>7.0.13-centos</code>)
 are generaly recommended since they offer greater stability and control.</p>
 </details>
+<hr />
 <h2 id="ch03-zabbix-proxies-proxies-as-container-conclusion">Conclusion</h2>
 <p>In this chapter, we deployed a Zabbix active proxy using Podman and SystemD 
 Quadlets. We configured SELinux, enabled user lingering, and created
@@ -11050,6 +11079,7 @@ the container easy to control and monitor. This setup offers a lightweight, flex
 and secure approach to deploying Zabbix proxies. It is ideal for modern environments,
 especially when using containers or virtualisation. With the proxy running, you're
 ready to extend Zabbix monitoring to remote locations efficiently.</p>
+<hr />
 <h2 id="ch03-zabbix-proxies-proxies-as-container-questions">Questions</h2>
 <ul>
 <li>What are the main advantages of using Podman over Docker for running containers
@@ -11062,6 +11092,7 @@ ready to extend Zabbix monitoring to remote locations efficiently.</p>
 <li>How can you verify that your Zabbix proxy container started successfully?</li>
 <li>What is the difference between an active and passive Zabbix proxy?</li>
 </ul>
+<hr />
 <h2 id="ch03-zabbix-proxies-proxies-as-container-useful-urls">Useful URLs</h2>
 <ul>
 <li><a href="https://hub.docker.com/r/zabbix/zabbix-proxy-sqlite3">https://hub.docker.com/r/zabbix/zabbix-proxy-sqlite3</a></li>

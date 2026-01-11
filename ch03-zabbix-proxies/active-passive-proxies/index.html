@@ -1992,6 +1992,7 @@ covers setup, use cases, and how to choose the right mode for your environment.
 <h1 id="active-and-passive-proxies">Active and Passive proxies</h1>
 <p>Whether you want to install an Active proxy or a Passive one, much of the installation
 and configuration steps are the same.</p>
+<hr />
 <h2 id="zabbix-gui-configuration">Zabbix GUI configuration</h2>
 <p>There are 2 things we need to do when we like to setup a Zabbix proxy and one of
 those steps is adding the proxy in the frontend of Zabbix. So from the menu let's select
@@ -1999,6 +2000,7 @@ those steps is adding the proxy in the frontend of Zabbix. So from the menu let'
 <p><img alt="Create proxy" src="ch03-add-active-proxy.png" /></p>
 <p><em>3.3 Create proxy</em></p>
 <p>Once pressed, a new modal form will pop-up where we need to fill in some information.</p>
+<hr />
 <h3 id="active-proxy">Active proxy</h3>
 <p>For active proxies we only need to enter the <em>Proxy name</em> field. Here we will enter
 <code>ProxyA</code> to remind us this will be an active proxy.
@@ -2012,6 +2014,7 @@ between different active proxies and manage their data correctly.</p>
 </details>
 <p><img alt="Active proxy" src="ch03-new-active-proxy.png" /></p>
 <p><em>3.4 New proxy</em></p>
+<hr />
 <h3 id="passive-proxy">Passive proxy</h3>
 <p>For the passive proxy we will enter <code>ProxyP</code> as <em>Proxy name</em> but now we also need
 to specify the <em>Interface</em> field. Here we add the IP of the host where our proxy
@@ -2019,6 +2022,7 @@ runs on. You also notice that we use the same port
 <code>10051</code> as the <em>Zabbix server</em> to communicate with our proxy.</p>
 <p><img alt="Passive proxy" src="ch03-new-passive-proxy.png" /></p>
 <p><em>3.5 New passive proxy</em></p>
+<hr />
 <h2 id="installing-the-proxy">Installing the proxy</h2>
 <p>Next up, we need to get the Zabbix proxy software onto a system that will function
 as Zabbix Proxy. Set up a new system or VM and make sure it meets the requirements as 
@@ -2059,6 +2063,7 @@ are the scripts you will need to setup the DB structure. </p>
 <p>If you want to use MySQL or PostgreSQL then you can use the package <code>zabbix-proxy-mysql</code>
 or <code>zabbix-proxy-pgsql</code> depending on your needs.</p>
 </details>
+<hr />
 <h2 id="configuring-the-proxy">Configuring the proxy</h2>
 <p>Now that we have installed the required packages we still have to do a few configuration
 changes. </p>
@@ -2293,6 +2298,7 @@ and verify your log files.</p>
 Zabbix server. Hence, all hosts you want to be monitored by the proxy will now 
 have to be configured to have their <code>Server</code> and/or <code>ServerActive</code> configuration 
 values set to the IP/hostname of this proxy instead of the <em>Zabbix server</em>.</p>
+<hr />
 <h2 id="conclusion">Conclusion</h2>
 <p>This chapter has demonstrated the indispensable role of Zabbix proxies in building
 robust, scalable, and distributed monitoring infrastructures. We've explored the
@@ -2322,6 +2328,7 @@ complex and geographically dispersed environments with unparalleled efficiency a
 reliability. The knowledge gained in this chapter will be instrumental in designing
 and maintaining a Zabbix infrastructure that is not only robust today but also adaptable
 to future monitoring challenges.</p>
+<hr />
 <h2 id="questions">Questions</h2>
 <ul>
 <li>What is the fundamental difference between an active proxy and a passive proxy
@@ -2329,6 +2336,7 @@ to future monitoring challenges.</p>
 <li>How does a network firewall configuration differ for active vs passive proxies
   when separated from the server by a network firewall?</li>
 </ul>
+<hr />
 <h2 id="useful-urls">Useful URLs</h2>
 <ul>
 <li><a href="https://www.zabbix.com/documentation/current/en/manpages/zabbix_proxy">https://www.zabbix.com/documentation/current/en/manpages/zabbix_proxy</a></li>
