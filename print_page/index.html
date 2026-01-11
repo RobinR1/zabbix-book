@@ -10133,15 +10133,25 @@ consumption.</p>
 <p>When working with a Zabbix proxy, it’s important to distinguish between two 
 types of "configuration":</p>
 <ul>
-<li><strong>Proxy Configuration Settings</strong>
-  These are the local settings defined in the proxy’s configuration file. 
-  They control how the proxy operates.</li>
-<li><strong>Configuration Updates from the Zabbix Server</strong>
-  These are dynamic updates pushed by the Zabbix server to the proxy.
-  They include:</li>
+<li><strong>Proxy Configuration Settings</strong></li>
+</ul>
+<dl>
+<dd>These are the local settings defined in the proxy’s configuration file. 
+They control how the proxy operates.</dd>
+</dl>
+<ul>
+<li><strong>Configuration Updates from the Zabbix Server</strong></li>
+</ul>
+<dl>
+<dd>
+<p>These are dynamic updates pushed by the Zabbix server to the proxy.
+They include:</p>
+<ul>
 <li>New or modified monitoring items, triggers, or templates assigned to the proxy.</li>
 <li>Changes to host configurations or data collection rules. </li>
 </ul>
+</dd>
+</dl>
 </details>
 <h2 id="ch03-zabbix-proxies-proxy-basics-proxy-throttling">Proxy throttling</h2>
 <p>Imagine that you need to restart your Zabbix server and that all proxies start
@@ -10196,11 +10206,12 @@ connect to the proxy instead of the other way around.</p>
 <p>As mentioned before Zabbix agents can be both active <em>and</em> passive however proxies
 cannot be both so we have to choose the way of the communication when we configure
 a proxy. </p>
-<p>???+ note Active/Passive agent on Active/Passive proxy ?</p>
-<div class="language-text highlight"><pre><span></span><code>Remember that choosing the proxy mode _active_ or _passive_ has no impact on 
-how Zabbix agents can communicate with this proxy. It&#39;s perfectly fine to have
-an _active proxy_ and a _passive agent_ working together.
-</code></pre></div>
+<details class="note" open="open">
+<summary>Active/Passive agent on Active/Passive proxy ?</summary>
+<p>Remember that choosing the proxy mode <em>active</em> or <em>passive</em> has no impact on 
+how Zabbix agents can communicate with this proxy. It's perfectly fine to have
+an <em>active proxy</em> and a <em>passive agent</em> working together.</p>
+</details>
 <h3 id="ch03-zabbix-proxies-proxy-basics-active-proxy">Active proxy</h3>
 <p>In <em>active</em> mode, the proxy takes full control of its operational settings. This 
 includes managing when it checks for new configuration updates and when it sends 
@@ -10256,7 +10267,7 @@ that controls when and how proxy data is requested by making use of pollers.</p>
 <p>And finally the config settings we need to change on our <em>Zabbix server</em>:</p>
 <ul>
 <li><code>StartProxyPollers</code>: The number of pollers to contact proxies.</li>
-<li><code>ProxyConfigFrequency</code>: Replaces ConfigFrequency and defines how often
+<li><code>ProxyConfigFrequency</code>: Replaces <code>ConfigFrequency</code> and defines how often
   <em>Zabbix server</em> will sent configuration changes to all proxies.</li>
 <li><code>ProxyDataFrequency</code>: How often <em>Zabbix server</em> will request monitored data 
   from our proxies.</li>
@@ -10349,7 +10360,7 @@ open on your proxy server:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#ch03-zabbix-proxies-proxy-basics-__codelineno-1-1"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">10051</span>/tcp
 </span></code></pre></div></p>
 </div></section><section class="print-page" id="ch03-zabbix-proxies-active-passive-proxies" heading-number="8.3"><nav class='md-tags'><span class='md-tag'>advanced</span></nav><h1 id="active-and-passive-proxies">Active and Passive proxies</h1>
-<p>Wether you want to install an Active proxy or a Passive one, much of the installation
+<p>Whether you want to install an Active proxy or a Passive one, much of the installation
 and configuration steps are the same.</p>
 <h2 id="ch03-zabbix-proxies-active-passive-proxies-zabbix-gui-configuration">Zabbix GUI configuration</h2>
 <p>There are 2 things we need to do when we like to setup a Zabbix proxy and one of
@@ -10512,7 +10523,7 @@ the <code>getent passwd</code> command:</p>
 </details>
 <p>Check if the directory exists with correct permissions and SELinux context:</p>
 <details class="example" open="open">
-<summary>Check existance of zabbix home-directory</summary>
+<summary>Check existence of zabbix home-directory</summary>
 <div class="language-shell-session highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#ch03-zabbix-proxies-active-passive-proxies-__codelineno-7-1"></a><span class="go">localhost:~&gt;ls -laZ /var/lib/zabbix</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#ch03-zabbix-proxies-active-passive-proxies-__codelineno-7-2"></a><span class="go">total 0</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#ch03-zabbix-proxies-active-passive-proxies-__codelineno-7-3"></a><span class="go">drwxr-xr-x. 1 zabbix zabbix unconfined_u:object_r:zabbix_var_lib_t:s0   0 Jan 10 20:01 .</span>

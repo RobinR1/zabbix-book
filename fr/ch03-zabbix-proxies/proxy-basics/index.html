@@ -2089,15 +2089,25 @@ consumption.</p>
 <p>When working with a Zabbix proxy, it’s important to distinguish between two 
 types of "configuration":</p>
 <ul>
-<li><strong>Proxy Configuration Settings</strong>
-  These are the local settings defined in the proxy’s configuration file. 
-  They control how the proxy operates.</li>
-<li><strong>Configuration Updates from the Zabbix Server</strong>
-  These are dynamic updates pushed by the Zabbix server to the proxy.
-  They include:</li>
+<li><strong>Proxy Configuration Settings</strong></li>
+</ul>
+<dl>
+<dd>These are the local settings defined in the proxy’s configuration file. 
+They control how the proxy operates.</dd>
+</dl>
+<ul>
+<li><strong>Configuration Updates from the Zabbix Server</strong></li>
+</ul>
+<dl>
+<dd>
+<p>These are dynamic updates pushed by the Zabbix server to the proxy.
+They include:</p>
+<ul>
 <li>New or modified monitoring items, triggers, or templates assigned to the proxy.</li>
 <li>Changes to host configurations or data collection rules. </li>
 </ul>
+</dd>
+</dl>
 </details>
 <h2 id="proxy-throttling">Proxy throttling</h2>
 <p>Imagine that you need to restart your Zabbix server and that all proxies start
@@ -2212,7 +2222,7 @@ that controls when and how proxy data is requested by making use of pollers.</p>
 <p>And finally the config settings we need to change on our <em>Zabbix server</em>:</p>
 <ul>
 <li><code>StartProxyPollers</code>: The number of pollers to contact proxies.</li>
-<li><code>ProxyConfigFrequency</code>: Replaces ConfigFrequency and defines how often
+<li><code>ProxyConfigFrequency</code>: Replaces <code>ConfigFrequency</code> and defines how often
   <em>Zabbix server</em> will sent configuration changes to all proxies.</li>
 <li><code>ProxyDataFrequency</code>: How often <em>Zabbix server</em> will request monitored data 
   from our proxies.</li>

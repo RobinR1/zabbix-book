@@ -2084,15 +2084,25 @@ consumption.</p>
 <p>When working with a Zabbix proxy, it’s important to distinguish between two 
 types of "configuration":</p>
 <ul>
-<li><strong>Proxy Configuration Settings</strong>
-  These are the local settings defined in the proxy’s configuration file. 
-  They control how the proxy operates.</li>
-<li><strong>Configuration Updates from the Zabbix Server</strong>
-  These are dynamic updates pushed by the Zabbix server to the proxy.
-  They include:</li>
+<li><strong>Proxy Configuration Settings</strong></li>
+</ul>
+<dl>
+<dd>These are the local settings defined in the proxy’s configuration file. 
+They control how the proxy operates.</dd>
+</dl>
+<ul>
+<li><strong>Configuration Updates from the Zabbix Server</strong></li>
+</ul>
+<dl>
+<dd>
+<p>These are dynamic updates pushed by the Zabbix server to the proxy.
+They include:</p>
+<ul>
 <li>New or modified monitoring items, triggers, or templates assigned to the proxy.</li>
 <li>Changes to host configurations or data collection rules. </li>
 </ul>
+</dd>
+</dl>
 </details>
 <h2 id="proxy-throttling">Proxy throttling</h2>
 <p>Imagine that you need to restart your Zabbix server and that all proxies start
@@ -2147,11 +2157,12 @@ connect to the proxy instead of the other way around.</p>
 <p>As mentioned before Zabbix agents can be both active <em>and</em> passive however proxies
 cannot be both so we have to choose the way of the communication when we configure
 a proxy. </p>
-<p>???+ note Active/Passive agent on Active/Passive proxy ?</p>
-<div class="language-text highlight"><pre><span></span><code>Remember that choosing the proxy mode _active_ or _passive_ has no impact on 
-how Zabbix agents can communicate with this proxy. It&#39;s perfectly fine to have
-an _active proxy_ and a _passive agent_ working together.
-</code></pre></div>
+<details class="note" open="open">
+<summary>Active/Passive agent on Active/Passive proxy ?</summary>
+<p>Remember that choosing the proxy mode <em>active</em> or <em>passive</em> has no impact on 
+how Zabbix agents can communicate with this proxy. It's perfectly fine to have
+an <em>active proxy</em> and a <em>passive agent</em> working together.</p>
+</details>
 <h3 id="active-proxy">Active proxy</h3>
 <p>In <em>active</em> mode, the proxy takes full control of its operational settings. This 
 includes managing when it checks for new configuration updates and when it sends 
@@ -2207,7 +2218,7 @@ that controls when and how proxy data is requested by making use of pollers.</p>
 <p>And finally the config settings we need to change on our <em>Zabbix server</em>:</p>
 <ul>
 <li><code>StartProxyPollers</code>: The number of pollers to contact proxies.</li>
-<li><code>ProxyConfigFrequency</code>: Replaces ConfigFrequency and defines how often
+<li><code>ProxyConfigFrequency</code>: Replaces <code>ConfigFrequency</code> and defines how often
   <em>Zabbix server</em> will sent configuration changes to all proxies.</li>
 <li><code>ProxyDataFrequency</code>: How often <em>Zabbix server</em> will request monitored data 
   from our proxies.</li>
