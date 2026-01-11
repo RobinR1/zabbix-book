@@ -6,7 +6,9 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A free, community driven online resource to master Zabbix: built to give back, sustain the community, and help you become truly empowered with monitoring.">
+        <meta name="description" content="Use built-in techniques to secure the Zabbix agent with end-to-end encryption. Using  
+both Pre-shared keys (PSK) and Certificates.
+">
       
       
         <meta name="author" content="The Monitoring Penmasters">
@@ -39,7 +41,7 @@
     
     
       
-        <title>Securing the agent - Zabbix Book</title>
+        <title>Securing the Zabbix agent with encryption - Zabbix Book</title>
       
     
     
@@ -60,8 +62,8 @@
         
         
         
-        <link rel="stylesheet" href="../../assets/external/fonts.googleapis.com/css.af67bdb9.css">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Nunito"}</style>
+        <link rel="stylesheet" href="../../assets/external/fonts.googleapis.com/css.49ea35f2.css">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
     
@@ -79,15 +81,15 @@
     
     
 
-    <meta property="og:title" content="Securing the agent">
-    <meta property="og:description" content="A free, community driven online resource to master Zabbix: built to give back, sustain the community, and help you become truly empowered with monitoring.">
+    <meta property="og:title" content="Securing the Zabbix agent with encryption">
+    <meta property="og:description" content="Use built-in techniques to secure the Zabbix agent with end-to-end encryption. Using both Pre-shared keys (PSK) and Certificates.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thezabbixbook.com/ch13-advanced-security/agent-security/">
     <meta property="og:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Securing the agent">
-    <meta name="twitter:description" content="A free, community driven online resource to master Zabbix: built to give back, sustain the community, and help you become truly empowered with monitoring.">
+    <meta name="twitter:title" content="Securing the Zabbix agent with encryption">
+    <meta name="twitter:description" content="Use built-in techniques to secure the Zabbix agent with end-to-end encryption. Using both Pre-shared keys (PSK) and Certificates.">
     <meta name="twitter:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="627">
@@ -111,7 +113,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#securing-the-agent" class="md-skip">
+        <a href="#securing-the-zabbix-agent-with-encryption" class="md-skip">
           Skip to content
         </a>
       
@@ -169,7 +171,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Securing the agent
+              Securing the Zabbix agent with encryption
             
           </span>
         </div>
@@ -1408,6 +1410,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Securing the Zabbix agent with encryption
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1415,7 +1435,7 @@
   <span class="md-ellipsis">
     
   
-    Securing the agent
+    Securing the Zabbix agent with encryption
   
 
     
@@ -1424,6 +1444,97 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pre-shared-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-shared keys
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pre-shared keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#active-agent-autoregistration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Active agent autoregistration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#certificates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Certificates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-urls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Useful URLs
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1682,6 +1793,86 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pre-shared-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-shared keys
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pre-shared keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#active-agent-autoregistration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Active agent autoregistration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#certificates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Certificates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-urls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Useful URLs
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1757,6 +1948,15 @@
 
 
 
+<nav class="md-tags">
+  
+    
+    <span class="md-tag md-tag-icon" data-tag="advanced">
+      Advanced
+    </span>
+  
+</nav>
+
 
 
   
@@ -1771,13 +1971,114 @@
   
 
 
-<h1 id="securing-the-agent">Securing the agent</h1>
+<h1 id="securing-the-zabbix-agent-with-encryption">Securing the Zabbix agent with encryption</h1>
+<p>In chapter 4 we have learned how to set up our Zabbix agent in both the active and the passive mode. In an internal network, this might be all you need to do for your monitoring of Linux, Unix and Windows systems. But what if you need to monitor a Zabbix agent host over the internet or what if you'd just like to add an additional layer of security. This is where Zabbix agent encryption comes in. </p>
+<p>There are two basic methods to encrypt your Zabbix agent and they apply to both passive and active agents.
+- Pre-shared keys
+- Certificates</p>
+<p>Both provide a secure method of encrypting the communication between your Zabbix agent and Zabbix server or proxy. So let's dive into both of them.</p>
+<h2 id="pre-shared-keys">Pre-shared keys</h2>
+<p>Whenever you start working with Zabbix agent encryption, pre-shared keys are the easiest method to provide an additional layer of security on your internal networks or encrypt internet connected agents. They are easy to understand and do not require maintenance, as they are a set and forget kind of encryption method.</p>
+<p>The basis is simple, Zabbix agent uses a pre-shared key (PSK) identity and a PSK string. We set these up both on the Zabbix agent and Zabbix server side to encrypt the communication between them. If you are using Zabbix proxies, the Zabbix server will make sure the proxies know about the pre-shared keys (do not forget to encrypt proxy communication).</p>
+<ul>
+<li><em>PSK identity</em>: A non-secret UTF-8 string. </li>
+<li><em>PSK string</em>: A secret between 128 bit (16 Bytes, 32 character hexadecimal) and 2048 bit (256 Bytes, 512 character hexadecimal) string.</li>
+</ul>
+<details class="important note" open="open">
+<summary>Important</summary>
+<p>The combination of the PSK identity and PSK string has to be unique. There can not be two PSKs with the same identity string but different values.
+We have to keep this in mind when setting up the PSK identity and I usually use something that cannot be duplicate like the hostname of the host we're encrypting.</p>
+</details>
+<p>Let's login to the CLI of a host with the Zabbix agent installed. We are going to edit the Zabbix agent 2 configuration file to allow for PSK encryption.</p>
+<div class="admonition info">
+<p class="admonition-title">Edit Zabbix agent 2 configuration file</p>
+<p>Linux CLI
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>vim<span class="w"> </span>/etc/zabbix/zabbix_agent2.conf
+</span></code></pre></div></p>
+</div>
+<p>In the configuration file there are 4 parameters we need to edit. By default they aren't set, but we will set them as specified below.</p>
+<div class="admonition info">
+<p class="admonition-title">Zabbix agent 2 configuration file encryption parameters</p>
+<p>Linux CLI
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">TLSConnect</span><span class="o">=</span>psk
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">TLSAccept</span><span class="o">=</span>psk
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nv">TLSPSKIdentity</span><span class="o">=</span>zbx-agent-active-rocky
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nv">TLSPSKFile</span><span class="o">=</span>/etc/zabbix/agent.psk
+</span></code></pre></div></p>
+</div>
+<p>I've used <code>zbx-agent-active-rocky</code> as the identity, as that is the hostname on my server and I will use unique PSK keys for each host. If you want to use a default identity/key pair you could use something like <code>agent-default-key</code> as the identity and use the same key on each host (less secure). </p>
+<ul>
+<li><em>TLSConnect</em>: This parameter makes sure that when the Zabbix agent connects in active mode it will either use <code>unencrypted</code>, <code>psk</code>, or <code>cert</code> to connect.</li>
+<li><em>TLSAccept</em>: This parameter makes sure that when the Zabbix agent is connected to in passive mode it will either use <code>unencrypted</code>, <code>psk</code>, or <code>cert</code> to allow the connection.</li>
+<li><em>TLSPSKIdentity</em>: The plain text non-secret identity used for PSK encryption.</li>
+<li><em>TLSPSKFile</em>: The path to the file where the secret PSK is stored.</li>
+</ul>
+<p>As you might have noticed, I have set both <code>TLSConnect</code> and <code>TLSAccept</code>. This is something recommended to always do to safeguard against configuration mistakes. Let's say you only use the Active Zabbix agent connection, but left <code>TLSConnect</code> set to <code>unencrypted</code>. If your Zabbix agent allows passive agent connections (due to configuration error, history or on purpose) an unencrypted connection will still be allowed. Recommendation, set both alway unless you have a good reason not to.</p>
+<p>We're not done with the configuration on the Zabbix agent side however, we still need to create the PSK. There is a simple command to execute and create the PSK.</p>
+<div class="admonition info">
+<p class="admonition-title">Create agent.psk file with new pre-shared key</p>
+<p>Linux CLI
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>openssl<span class="w"> </span>rand<span class="w"> </span>-hex<span class="w"> </span><span class="m">128</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/zabbix/agent.psk<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
+</span></code></pre></div></p>
+</div>
+<p>This will not only create the 128 Bytes (1024 bit and 256 Hex characters) PSK, it will also add it to the file we specified in the Zabbix agent configuration file under <code>TLSPSKFile=/etc/zabbix/agent.psk</code>. We can check to see what the PSK looks like.</p>
+<div class="admonition info">
+<p class="admonition-title">Show agent.psk file with new pre-shared key</p>
+<p>Linux CLI
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>cat<span class="w"> </span>/etc/zabbix/agent.psk
+</span></code></pre></div></p>
+</div>
+<p>We get a string the looks like this:</p>
+<div class="admonition info">
+<p class="admonition-title">agent.psk file contents</p>
+<p>Linux CLI
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>b1b3b66f2cff98285f3e0ee495bf44660dd6620be2f972207315e45ab030637ae0aa6f18033e86a0ea3a7fca600f793246ced7003351be13342a831ac860f74498153237d3528357a0fea9b0266d34ba18afe086187d6e1e00c6ff4d78433e4dd7e695099c3664903716a0e3a5bf017efc1354ce779715cff274b79ff5aab1d9
+</span></code></pre></div></p>
+</div>
+<p>Do not use the above PSK as it is now of course compromised (everyone reading the book has it). But it shows you what it would look like and we can now copy it for later use in the Zabbix frontend, as well as store it in a password vault perhaps.</p>
+<p>Before we go on to the Zabbix frontend however, let's make sure the file where we stored the PSK in is secure.</p>
+<div class="admonition info">
+<p class="admonition-title">agent.psk file security settings</p>
+<p>Linux CLI
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>chown<span class="w"> </span>zabbix:zabbix<span class="w"> </span>/etc/zabbix/agent.psk
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">400</span><span class="w"> </span>/etc/zabbix/agent.psk
+</span></code></pre></div></p>
+</div>
+<p>This will make sure only the zabbix user on your Linux system has read only access. Now let's move on to the Zabbix frontend and find our <code>zbx-agent-active-rocky</code> host under <code>Data collection</code> | <code>Hosts</code>.</p>
+<p>Open you host configuration and go to the <code>Encryption</code> tab. By default it will be set to not use encryption.</p>
+<p><img align="center" alt="Unencrypted agent" src="../securing-agent/ch13.xx-frontend-agent-host-no-encryption.png" />
+<em>13.xx Unencrypted agent settings</em></p>
+<p>Let's fill our the details here, just as we did on the Zabbix agent host side.</p>
+<p><img align="center" alt="Encrypted agent" src="../securing-agent/ch13.xx-frontend-agent-host-encryption.png" />
+<em>13.xx Encrypted agent settings</em></p>
+<p>As you can see, even though this is an Active Zabbix agent, I set up encryption requirements for both. Click on the <code>Update</code> button to save these changes and go back to the Zabbix agent host CLI to restart the agent.</p>
+<div class="admonition info">
+<p class="admonition-title">Restart to make encryption settings take effect.</p>
+<p>Linux CLI
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>systemctl<span class="w"> </span>restart<span class="w"> </span>zabbix-agent2
+</span></code></pre></div></p>
+</div>
+<p>Your agent icon should remain green and you should now see that the agent is encrypted.</p>
+<p><img align="center" alt="Encrypted agent staatus" src="../securing-agent/ch13.xx-frontend-agent-host-encryption-status.png" />
+<em>13.xx Encrypted agent status</em></p>
+<h3 id="active-agent-autoregistration">Active agent autoregistration</h3>
+<h2 id="certificates">Certificates</h2>
+<h2 id="conclusion">Conclusion</h2>
+<p>If you want simple to set up security for your Zabbix agent, use pre-shared keys. They are secure, especially when using 2048-bit (512 hexadecimal digits) and if possible unique pre-shared keys for each agent.</p>
+<p>If you want some more layers of security, certificates do provide more security in the way they work alone. With certificate expiry, we are forced to set up good certificate management software to make managing the many certificates doable. Furthermore, certificates provide impersonation resistance by allowing us to restrict issuer/subject.</p>
+<p>If you are using active agent autoregistration pre-shared keys seems like your only viable option out of the box. We are forced to use a single pre=shared key for this method, and as such it is less secure. This can still be a good option to provide that additional layer of security on internal networks. </p>
+<h2 id="questions">Questions</h2>
+<h2 id="useful-urls">Useful URLs</h2>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1857,9 +2158,6 @@
       
     
     
-        
-            
-            
         
 		
 		
