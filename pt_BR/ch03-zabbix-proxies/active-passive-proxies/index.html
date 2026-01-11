@@ -64,8 +64,8 @@ covers setup, use cases, and how to choose the right mode for your environment.
         
         
         
-        <link rel="stylesheet" href="../../../assets/external/fonts.googleapis.com/css.af67bdb9.css">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Nunito"}</style>
+        <link rel="stylesheet" href="../../../assets/external/fonts.googleapis.com/css.49ea35f2.css">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
     
@@ -2095,13 +2095,13 @@ directory that will hold some general proxy settings:</p>
 </ul>
 </li>
 <li>
-<p>The other option that is important is the option <code>Server</code> this is standard <code>127.0.0.1</code>
-  and we need to replace this with the IP or DNS name of our <code>zabbix server</code>.</p>
+<p>The other option that is important is the option <code>Server</code> which defaults to <code>127.0.0.1</code>,
+  so we need to replace this with the IP or DNS name of our <em>Zabbix Server</em>.</p>
 </li>
 </ul>
 <details class="note" open="open">
 <summary>Note</summary>
-<p>You can fill in multiple servers here in case you have more than 1 <code>zabbix server</code>
+<p>You can fill in multiple servers here in case you have more than one <em>Zabbix Server</em>
 connecting to your proxy. Also the port can be added here in case your server
 listens on another port then the standard port <code>10051</code>. Just be careful to not
 add the IP and DNS name for the same server as this can return double values.</p>
@@ -2135,19 +2135,18 @@ add the IP and DNS name for the same server as this can return double values.</p
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="na">Hostname</span><span class="o">=</span><span class="s">ProxyA</span>
 </span></code></pre></div>
 </details>
-<p>Now we have to configure the database settings. For this, we create a separate
-config file for the database settings: <code>/etc/zabbix/zabbix_proxy.d/database.conf</code>.
-In this file we need to set the database connection settings. For SQLite3, we
-only need to set <code>DBName</code> to a specific database-file which will be automatically
-created and used by the Zabbix Proxy upon first startup:</p>
+<p>To configure the database settings, create a dedicated configuration file at 
+<code>/etc/zabbix/zabbix_proxy.d/database.conf</code>. This file will contain the database
+connection parameters. </p>
+<p>For SQLite3 implementations, only the <code>DBName</code> parameter requires configuration, specifying the path to the database file. The Zabbix Proxy will automatically create and utilize this database file upon its initial startup.</p>
 <details class="example" open="open">
 <summary>/etc/zabbix/zabbix_proxy.d/database.conf</summary>
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="na">DBName</span><span class="o">=</span><span class="s">/var/lib/zabbix/zabbix_proxy.db</span>
 </span></code></pre></div>
 </details>
 <p>You can choose any location for the database file, however you must make sure
-the directory exists and is writable by the Zabbix proxy process.
-In our example, we chose the default <em>home</em>-dir of the <code>zabbix</code>-user as configured
+the directory exists and is writable by the Zabbix proxy process.</p>
+<p>In our example, we chose the default <em>home</em>-dir of the <code>zabbix</code>-user as configured
 by the Zabbix packages. You can check the home dir of the user on your host using
 the <code>getent passwd</code> command:</p>
 <details class="example" open="open">

@@ -65,8 +65,8 @@ scalability and efficiency.
         
         
         
-        <link rel="stylesheet" href="../../../assets/external/fonts.googleapis.com/css.af67bdb9.css">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Nunito"}</style>
+        <link rel="stylesheet" href="../../../assets/external/fonts.googleapis.com/css.49ea35f2.css">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
     
@@ -2162,11 +2162,12 @@ connect to the proxy instead of the other way around.</p>
 <p>As mentioned before Zabbix agents can be both active <em>and</em> passive however proxies
 cannot be both so we have to choose the way of the communication when we configure
 a proxy. </p>
-<p>???+ note Active/Passive agent on Active/Passive proxy ?</p>
-<div class="language-text highlight"><pre><span></span><code>Remember that choosing the proxy mode _active_ or _passive_ has no impact on 
-how Zabbix agents can communicate with this proxy. It&#39;s perfectly fine to have
-an _active proxy_ and a _passive agent_ working together.
-</code></pre></div>
+<details class="note" open="open">
+<summary>Active/Passive agent on Active/Passive proxy ?</summary>
+<p>Remember that choosing the proxy mode <em>active</em> or <em>passive</em> has no impact on 
+how Zabbix agents can communicate with this proxy. It's perfectly fine to have
+an <em>active proxy</em> and a <em>passive agent</em> working together.</p>
+</details>
 <h3 id="active-proxy">Active proxy</h3>
 <p>In <em>active</em> mode, the proxy takes full control of its operational settings. This 
 includes managing when it checks for new configuration updates and when it sends 
