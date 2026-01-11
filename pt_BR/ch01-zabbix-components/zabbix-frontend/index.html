@@ -6,7 +6,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A free, community driven online resource to master Zabbix: built to give back, sustain the community, and help you become truly empowered with monitoring.">
+        <meta name="description" content="This section from The Zabbix Book titled "Installing the frontend" provides
+step-by-step instructions for installing the Zabbix frontend with NGINX on
+various Linux distributions. It covers the installation of necessary packages,
+configuration of SELinux and SystemD for PHP-FPM, and modification of the
+NGINX configuration to serve the Zabbix frontend on port 80. Additionally, 
+it guides users through the initial setup of the Zabbix frontend, including
+database connection configuration and basic settings such as instance name,
+timezone, and time format.
+">
       
       
         <meta name="author" content="The Monitoring Penmasters">
@@ -18,7 +26,7 @@
         <link rel="prev" href="../zabbix-server/">
       
       
-        <link rel="next" href="../conclusion/">
+        <link rel="next" href="../ha-setup/">
       
       
         
@@ -80,14 +88,14 @@
     
 
     <meta property="og:title" content="Installing the frontend">
-    <meta property="og:description" content="A free, community driven online resource to master Zabbix: built to give back, sustain the community, and help you become truly empowered with monitoring.">
+    <meta property="og:description" content="This section from The Zabbix Book titled &#34;Installing the frontend&#34; provides step-by-step instructions for installing the Zabbix frontend with NGINX on various Linux distributions. It covers the installation of necessary packages, configuration of SELinux and SystemD for PHP-FPM, and modification of the NGINX configuration to serve the Zabbix frontend on port 80. Additionally, it guides users through the initial setup of the Zabbix frontend, including database connection configuration and basic settings such as instance name, timezone, and time format.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thezabbixbook.com/pt_BR/ch01-zabbix-components/zabbix-frontend/">
     <meta property="og:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Installing the frontend">
-    <meta name="twitter:description" content="A free, community driven online resource to master Zabbix: built to give back, sustain the community, and help you become truly empowered with monitoring.">
+    <meta name="twitter:description" content="This section from The Zabbix Book titled &#34;Installing the frontend&#34; provides step-by-step instructions for installing the Zabbix frontend with NGINX on various Linux distributions. It covers the installation of necessary packages, configuration of SELinux and SystemD for PHP-FPM, and modification of the NGINX configuration to serve the Zabbix frontend on port 80. Additionally, it guides users through the initial setup of the Zabbix frontend, including database connection configuration and basic settings such as instance name, timezone, and time format.">
     <meta name="twitter:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="627">
@@ -485,6 +493,8 @@
       
         
       
+        
+      
     
     
     
@@ -543,6 +553,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -563,7 +579,7 @@
   <span class="md-ellipsis">
     
   
-    Chapter 01 : Zabbix components
+    Chapter 01 : Zabbix components and installation
   
 
     
@@ -579,7 +595,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Chapter 01 : Zabbix components
+    Chapter 01 : Zabbix components and installation
   
 
           </label>
@@ -612,71 +628,6 @@
   
 
               
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Basic Installation
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Basic Installation
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -758,34 +709,6 @@
   
 
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../preparation/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Preparing the system for Zabbix
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -896,45 +819,42 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-urls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Useful URLs
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../conclusion/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Conclusion
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -1019,7 +939,7 @@
   <span class="md-ellipsis">
     
   
-    Chapter 02 : Installation
+    Chapter 02 : Zabbix Frontend
   
 
     
@@ -1874,6 +1794,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-urls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Useful URLs
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1920,25 +1873,7 @@
         <a href="../chapter/" class="md-path__link">
           
   <span class="md-ellipsis">
-    Chapter 01 : Zabbix components
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="../architecture/" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    Basic Installation
+    Chapter 01 : Zabbix components and installation
   </span>
 
         </a>
@@ -1969,6 +1904,15 @@
 
 
 
+<nav class="md-tags">
+  
+    
+    <span class="md-tag md-tag-icon" data-tag="beginner">
+      Iniciante
+    </span>
+  
+</nav>
+
 
 
   
@@ -1984,11 +1928,11 @@
 
 
 <h1 id="installing-the-frontend">Installing the frontend</h1>
-<p>Before configuring the Zabbix frontend, ensure the required packages are installed
-on your chosen frontend server. This server can be the same one where the Zabbix
-server packages were previously installed, or it can be a separate machine. 
-Make sure the frontend machine is prepared as outlined in <a href="../preparation/">Preparing the server for Zabbix</a>,
-and perform all subsequent steps on the server designated for the frontend.</p>
+<p>Before configuring the Zabbix frontend, ensure the system meets the requirements
+and is prepared as outlined in the previous chapter: <a href="../../ch00-getting-started/Requirements/"><em>Getting started</em></a>. This server can be the same one where 
+the Zabbix server packages were previously installed, or it can be a separate
+machine. </p>
+<p>Perform all subsequent steps on the server designated for the frontend.</p>
 <hr />
 <h2 id="installing-the-frontend-with-nginx">Installing the frontend with NGINX</h2>
 <div class="admonition info">
@@ -2405,18 +2349,42 @@ login</em></p>
 <p>This concludes our topic on setting up the Zabbix server. If you're interested in
 securing your front-end, I recommend checking out the topic Securing Zabbix for
 additional guidance and best practices.</p>
-<details class="note" open="open">
-<summary>Note</summary>
-<p>If you are not able to safe your configuration at the end make sure SeLinux
-is disabled. It is possible that it will block access to certain files or even
-the database.</p>
+<details class="tip" open="open">
+<summary>Tip</summary>
+<p>If you are not able to save your configuration at the end, make sure you
+executed the SELinux related instructions or have SELinux disabled.
+Also check if the <code>/etc/zabbix/web</code> directory is writable by the webservice
+user (usually <code>wwwrun</code> or <code>www</code>)</p>
 </details>
+<hr />
+<h2 id="conclusion">Conclusion</h2>
+<p>With the installation and configuration of the Zabbix frontend now complete,
+you have successfully set up the user interface for your Zabbix monitoring system.
+This process included installing the necessary packages, configuring a web server and
+PHP engine, setting up the database connection, and customizing the frontend settings.</p>
+<p>At this stage, your Zabbix instance is operational, providing the foundation for
+advanced monitoring and alerting. In the upcoming chapters, we will delve into
+fine-tuning Zabbix, optimizing performance, and exploring key features that transform
+it into a powerful observability platform.</p>
+<p>Now that your Zabbix environment is up and running, let’s take it to the next level.</p>
+<hr />
+<h2 id="questions">Questions</h2>
+<hr />
+<h2 id="useful-urls">Useful URLs</h2>
+<ul>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual">https://www.zabbix.com/documentation/current/en/manual</a></li>
+<li><a href="ttps://www.zabbix.com/documentation/current/en/manual/installation/requirements">https://www.zabbix.com/documentation/current/en/manual/installation/requirements</a></li>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/installation/install_from_packages">https://www.zabbix.com/documentation/current/en/manual/installation/install_from_packages</a></li>
+</ul>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -2492,9 +2460,6 @@ the database.</p>
       
     
     
-        
-            
-            
         
 		
 		

@@ -485,6 +485,8 @@ scalability and efficiency.
       
         
       
+        
+      
     
     
     
@@ -541,6 +543,12 @@ scalability and efficiency.
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -563,7 +571,7 @@ scalability and efficiency.
   <span class="md-ellipsis">
     
   
-    Chapter 01 : Zabbix components
+    Chapter 01 : Zabbix components and installation
   
 
     
@@ -625,7 +633,7 @@ scalability and efficiency.
   <span class="md-ellipsis">
     
   
-    Chapter 02 : Installation
+    Chapter 02 : Zabbix Frontend
   
 
     
@@ -1981,7 +1989,7 @@ preprocessing rules you have on your hosts.</p>
 <li>Simplify the maintenance and management</li>
 </ul>
 <details class="note" open="open">
-<summary>Proxy throttling on server</summary>
+<summary>Note</summary>
 <p>Imagine that you need to restart your Zabbix server and that all proxies start
 to push the data they have gathered during the downtime of the Zabbix server.
 This would create a huge amount of data being sent at once to the Zabbix server
@@ -2033,10 +2041,10 @@ remember that choosing the proxy mode <code>active</code> or <code>passive</code
 Zabbix agents can communicate with our proxy. It's perfectly fine to have an
 <code>active proxy</code> and a <code>passive agent</code> working together.</p>
 <h3 id="active-proxy">Active proxy</h3>
-<p>A proxy in active mode will be the one in control of all the settings like when
+<p>A proxy in active mode will be the one in control of all the settings like the when
 it looks for new configuration changes and pushes new data to the server.
 In a standard setup the active proxy will sent it's data every second to the
-<code>Zabbix server</code> and reload it's config every 10 seconds.</p>
+<code>Zabbix server</code> reload it's config every 10 seconds.</p>
 <p>The most important options for an active proxy that we need to remember are changed
 in the <code>Zabbix proxy</code> configuration file only.</p>
 <ul>
@@ -2063,15 +2071,15 @@ communication</em></p>
 <details class="info" open="open">
 <summary>Info</summary>
 <p>Before Zabbix 7.0 a proxy would reload it's configuration once every 3600
-seconds. This has been changed since Zabbix 7.0 as the way proxies handle
+seconds. This has been changed since Zabbix 7.0 as they way proxies handle
 updates have been optimized.</p>
 </details>
 <details class="warning" open="open">
 <summary>Warning</summary>
 <p>Before you continue with the setup of your active or passive proxy make sure
-your OS is properly configure like explained in our chapter Getting Started
-=&gt; <a href="../../ch00-getting-started/Requirements/">System Requirements</a>. As it's very 
-important to have your firewall and time server properly configured.</p>
+your OS is properly configure like explained in our chapter <code>Getting Started</code>
+=&gt; <code>System Requirements</code>. As it's very important to have your firewall and
+time server properly configured.</p>
 </details>
 <h3 id="passive-proxy">Passive proxy</h3>
 <p>A proxy in passive mode will have all settings controlled by the <code>Zabbix server</code>.</p>
@@ -2115,52 +2123,16 @@ consumption.</p>
 <p>Just like the <code>Zabbix server</code> our proxy supports runtime control options always
 check latest options with the --help option. But here is a short overview of
 options available to use.</p>
-<dl>
-<dt><code>zabbix_proxy --runtime-control housekeeper_execute</code></dt>
-<dd>
-<p>Triggers the immediate execution of the Zabbix housekeeper process on the 
-proxy. The housekeeper is responsible for cleaning up outdated data (e.g., 
-old history, trends, or events) according to the configured retention periods 
-in Zabbix. This command forces the housekeeper to run now, instead of waiting 
-for its scheduled interval.</p>
-</dd>
-<dt><code>zabbix_proxy --runtime-control log_level_increase=target</code></dt>
-<dd>
-<p>Increases the log verbosity level for a specific target process (e.g., by type 
-like <code>configuration syncer</code>, <code>housekeeper</code>, <code>icmp pinger</code>, by type and number
-like <code>poller,3</code> or by PID). This is useful for debugging or troubleshooting, 
-as it provides more detailed log output for the specified target. For a full 
-list of available targets, check the <a href="https://www.zabbix.com/documentation/current/en/manpages/zabbix_proxy">man-page of <code>zabbix_proxy</code></a>.
-<em>Example</em>: <code>log_level_increase="http poller"</code> would make http poller-related
-logs more verbose.</p>
-</dd>
-<dt><code>zabbix_proxy --runtime-control log_level_decrease=target</code></dt>
-<dd>
-<p>Decreases the log verbosity level for a specific target, reducing the amount 
-of log output generated. This is helpful to lower noise in logs after debugging
-or to optimize performance by reducing I/O overhead.
-<em>Example</em>: <code>log_level_decrease=trapper,2</code> would reduce the verbosity of 
-trapper-related logs of the second trapper process.</p>
-</dd>
-<dt><code>zabbix_proxy --runtime-control snmp_cache_reload</code></dt>
-<dd>
-<p>Forces the proxy to reload its SNMP cache. This is useful if you’ve made 
-changes to SNMP configurations (e.g., updated community strings, OIDs, or 
-device IPs) and want the proxy to immediately pick up the new settings 
-without restarting the entire service.</p>
-</dd>
-<dt><code>zabbix_proxy --runtime-control diaginfo=section</code></dt>
-<dd>
-<p>Generates diagnostic information for a specific section of the proxy’s 
-operation. This is typically used for troubleshooting or performance analysis. 
-The section parameter can target areas like historycache, preprocessing or locks.
-<em>Example</em>: <code>diaginfo=preprocessing</code> would provide detailed statistics about 
-the preprocessing manager.</p>
-</dd>
-</dl>
+<ul>
+<li>zabbix_proxy --runtime-control housekeeper_execute</li>
+<li>zabbix_proxy --runtime-control log_level_increase=target</li>
+<li>zabbix_proxy --runtime-control log_level_decrease=target</li>
+<li>zabbix_proxy --runtime-control snmp_cache_reload</li>
+<li>zabbix_proxy --runtime-control diaginfo=section</li>
+</ul>
 <h3 id="proxy-firewall">Proxy firewall</h3>
 <p>Our proxies work like small <code>Zabbix servers</code> so when it comes to the ports to connect
-to agents, SNMP, ... nothing changes all ports need to be configured the same as on
+to agents, SNMP, ... nothing changes all ports need to be configured same as on
 your server.</p>
 <p>When it comes to port for the proxy it depends on our proxy being <code>active</code> or <code>passive</code>.</p>
 <ul>
@@ -2169,19 +2141,6 @@ your server.</p>
 <li><strong>Passive Proxy:</strong> Needs to have port <code>10051/tcp</code> open on the proxy so that the
   <code>server</code> can connect to the proxy.</li>
 </ul>
-<p>Do note that for an active Zabbix Agent or Sender to communicate with your proxy, 
-wether it is an active or a passive one, this will require port <code>10051/tcp</code> to be
-open on your proxy server:</p>
-<div class="admonition info">
-<p class="admonition-title">Open firewall for zabbix-trapper</p>
-<p>Red Hat / SUSE
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--add-service<span class="o">=</span>zabbix-trapper<span class="w"> </span>--permanent
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--reload
-</span></code></pre></div></p>
-<p>Ubuntu
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">10051</span>/tcp
-</span></code></pre></div></p>
-</div>
 
 
 

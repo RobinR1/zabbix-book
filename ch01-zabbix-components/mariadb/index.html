@@ -6,7 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A free, community driven online resource to master Zabbix: built to give back, sustain the community, and help you become truly empowered with monitoring.">
+        <meta name="description" content="This section from The Zabbix Book titled "Installing a MariaDB Database"
+guides you through installing MariaDB as the database backend for Zabbix.
+It covers two installation methods: using OS vendor-provided packages or the
+official MariaDB repositories. The section includes steps to start and 
+secure the MariaDB server, create a Zabbix database with appropriate users,
+and configure firewall rules if necessary. 
+">
       
       
         <meta name="author" content="The Monitoring Penmasters">
@@ -39,7 +45,7 @@
     
     
       
-        <title>Installing the MariaDB Database - Zabbix Book</title>
+        <title>Installing a MariaDB Database - Zabbix Book</title>
       
     
     
@@ -79,15 +85,15 @@
     
     
 
-    <meta property="og:title" content="Installing the MariaDB Database">
-    <meta property="og:description" content="A free, community driven online resource to master Zabbix: built to give back, sustain the community, and help you become truly empowered with monitoring.">
+    <meta property="og:title" content="Installing a MariaDB Database">
+    <meta property="og:description" content="This section from The Zabbix Book titled &#34;Installing a MariaDB Database&#34; guides you through installing MariaDB as the database backend for Zabbix. It covers two installation methods: using OS vendor-provided packages or the official MariaDB repositories. The section includes steps to start and secure the MariaDB server, create a Zabbix database with appropriate users, and configure firewall rules if necessary.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thezabbixbook.com/ch01-zabbix-components/mariadb/">
     <meta property="og:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Installing the MariaDB Database">
-    <meta name="twitter:description" content="A free, community driven online resource to master Zabbix: built to give back, sustain the community, and help you become truly empowered with monitoring.">
+    <meta name="twitter:title" content="Installing a MariaDB Database">
+    <meta name="twitter:description" content="This section from The Zabbix Book titled &#34;Installing a MariaDB Database&#34; guides you through installing MariaDB as the database backend for Zabbix. It covers two installation methods: using OS vendor-provided packages or the official MariaDB repositories. The section includes steps to start and secure the MariaDB server, create a Zabbix database with appropriate users, and configure firewall rules if necessary.">
     <meta name="twitter:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="627">
@@ -111,7 +117,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#installing-the-mariadb-database" class="md-skip">
+        <a href="#installing-a-mariadb-database" class="md-skip">
           Skip to content
         </a>
       
@@ -169,7 +175,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Installing the MariaDB Database
+              Installing a MariaDB Database
             
           </span>
         </div>
@@ -480,6 +486,8 @@
       
         
       
+        
+      
     
     
     
@@ -538,6 +546,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -558,7 +572,7 @@
   <span class="md-ellipsis">
     
   
-    Chapter 01 : Zabbix components
+    Chapter 01 : Zabbix components and installation
   
 
     
@@ -574,7 +588,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Chapter 01 : Zabbix components
+    Chapter 01 : Zabbix components and installation
   
 
           </label>
@@ -607,71 +621,6 @@
   
 
               
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Basic Installation
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Basic Installation
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -728,10 +677,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_6_2_2" id="__nav_6_2_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
             
   
   
@@ -749,8 +698,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_2_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -774,7 +723,7 @@
   <span class="md-ellipsis">
     
   
-    Installing the Zabbix database
+    Database choices
   
 
     
@@ -811,7 +760,7 @@
   <span class="md-ellipsis">
     
   
-    Installing the MariaDB Database
+    Installing a MariaDB Database
   
 
     
@@ -829,7 +778,7 @@
   <span class="md-ellipsis">
     
   
-    Installing the MariaDB Database
+    Installing a MariaDB Database
   
 
     
@@ -937,6 +886,50 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#populate-the-zabbix-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Populate the Zabbix database
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-urls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Useful URLs
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -960,7 +953,7 @@
   <span class="md-ellipsis">
     
   
-    Installing the PostgreSQL database
+    Installing a PostgreSQL database
   
 
     
@@ -977,34 +970,6 @@
           </ul>
         </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../preparation/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Preparing the system for Zabbix
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -1061,42 +1026,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../conclusion/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Conclusion
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -1180,7 +1109,7 @@
   <span class="md-ellipsis">
     
   
-    Chapter 02 : Installation
+    Chapter 02 : Zabbix Frontend
   
 
     
@@ -2107,6 +2036,50 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#populate-the-zabbix-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Populate the Zabbix database
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-urls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Useful URLs
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2153,25 +2126,7 @@
         <a href="../chapter/" class="md-path__link">
           
   <span class="md-ellipsis">
-    Chapter 01 : Zabbix components
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="../architecture/" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    Basic Installation
+    Chapter 01 : Zabbix components and installation
   </span>
 
         </a>
@@ -2220,6 +2175,15 @@
 
 
 
+<nav class="md-tags">
+  
+    
+    <span class="md-tag md-tag-icon" data-tag="beginner">
+      beginner
+    </span>
+  
+</nav>
+
 
 
   
@@ -2234,7 +2198,7 @@
   
 
 
-<h1 id="installing-the-mariadb-database">Installing the MariaDB Database</h1>
+<h1 id="installing-a-mariadb-database">Installing a MariaDB Database</h1>
 <p>In this section we will install the MariaDB server and -client packages. This will
 provide the necessary components to run and manage MariaDB as your Zabbix database backend.</p>
 <p>If you prefer to use PostgreSQL as your database backend, you can skip this section 
@@ -2582,13 +2546,110 @@ to the database server. By default, MariaDB listens on port 3306.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">3306</span>/tcp
 </span></code></pre></div></p>
 </div>
-<p>This concludes our installation of the MariaDB. You can now proceed to <a href="../preparation/">Preparing the Zabbix server</a>.</p>
+<hr />
+<h2 id="populate-the-zabbix-database">Populate the Zabbix database</h2>
+<p>During the installation of the database software earlier, we created the 
+necessary users and database for Zabbix, however, Zabbix expects certain tables,
+schemas, images, and other elements to be present in the database.
+To set up the database correctly, we need to populate it with the required schema.</p>
+<p>First we need to install the Zabbix SQL scripts that contain the required
+import scripts for the database.</p>
+<div class="admonition info">
+<p class="admonition-title">Install SQL scripts</p>
+<p>Red Hat
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>dnf<span class="w"> </span>install<span class="w"> </span>zabbix-sql-scripts
+</span></code></pre></div></p>
+<p>SUSE
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>zypper<span class="w"> </span>install<span class="w"> </span>zabbix-sql-scripts
+</span></code></pre></div></p>
+<p>Ubuntu
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>zabbix-sql-scripts
+</span></code></pre></div></p>
+</div>
+<details class="warning" open="open">
+<summary>Warning</summary>
+<p>When using a recent version of MySQL or MariaDB as the database backend for 
+Zabbix, you may encounter issues related to the creation of triggers during
+the schema import process. This is particularly relevant if binary logging
+is enabled on your database server. (Binary logging is often enabled by default)
+To address this, you need to set the <code>log_bin_trust_function_creators</code> option to <code>1</code>
+in the MySQL/MariaDB configuration file or temporarily at runtime.
+This allows non-root users to create stored functions and triggers without requiring
+<code>SUPER</code> privileges, which are restricted when binary logging is enabled.</p>
+<p>Normally we won't need the setting after the initial import of the Zabbix schema is done,
+so we will disable it again after the import is complete.</p>
+<div class="admonition info">
+<p class="admonition-title">Activate temporarily extra privileges for non root users</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>mariadb<span class="w"> </span>-uroot<span class="w"> </span>-p<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;SET GLOBAL log_bin_trust_function_creators = 1;&quot;</span>
+</span></code></pre></div>
+</div>
+</details>
+<p>Now lets upload the data from zabbix (db structure, images, user, ... )
+for this we make use of the user <code>zabbix-srv</code> and we upload it all in our DB <code>zabbix</code>.</p>
+<div class="admonition info">
+<p class="admonition-title">Populate the database</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>sudo<span class="w"> </span>zcat<span class="w"> </span>/usr/share/zabbix/sql-scripts/mysql/server.sql.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>mariadb<span class="w"> </span>--default-character-set<span class="o">=</span>utf8mb4<span class="w"> </span>-uroot<span class="w"> </span>-p<span class="w"> </span>zabbix
+</span></code></pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Depending on the speed of your hardware or virtual machine, the process may
+take anywhere from a few seconds to several minutes without any visual feedback
+after entering the root password.</p>
+<p>Please be patient and avoid cancelling the operation; just wait for the linux 
+prompt to reappear.</p>
+</div>
+<details class="note" open="open">
+<summary>Note</summary>
+<p>Zabbix seems to like to change the locations of the script to populate the
+DB every version or even in between versions. If you encounter an error take a
+look at the Zabbix documentation, there is a good chance that some location was
+changed.</p>
+</details>
+<p>Once the import of the Zabbix schema is complete, you should no longer need the
+<code>log_bin_trust_function_creators</code> global parameter. It is a good practice to remove
+it for security reasons.</p>
+<p>To revert the global parameter back to 0, use the following command in the 
+MySQL/MariaDB shell:</p>
+<div class="admonition info">
+<p class="admonition-title">Disable function log_bin_trust again</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>mariadb<span class="w"> </span>-uroot<span class="w"> </span>-p<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;SET GLOBAL log_bin_trust_function_creators = 0;&quot;</span>
+</span></code></pre></div>
+</div>
+<p>This command will disable the setting, ensuring that the servers security
+posture remains robust.</p>
+<p>This concludes our installation of the MariaDB. You can now proceed to <a href="../../ch00-getting-started/preparation/">Preparing the Zabbix server</a>.</p>
+<hr />
+<h2 id="conclusion">Conclusion</h2>
+<p>With the successful installation and configuration of MariaDB as the database 
+backend for Zabbix, you now have a robust foundation for your monitoring solution.
+We've covered the installation of MariaDB from both vendor-provided packages and
+official repositories, securing the database, creating the necessary Zabbix 
+database and users, and populating the database with the required schema and 
+initial data.</p>
+<p>Your Zabbix environment is now ready for the next stages of setup and configuration.</p>
+<hr />
+<h2 id="questions">Questions</h2>
+<ol>
+<li>What version of MariaDB should I install for compatibility and stability?</li>
+<li>What port does my DB use ?</li>
+<li>Which database users did I create and why?</li>
+</ol>
+<hr />
+<h2 id="useful-urls">Useful URLs</h2>
+<ul>
+<li><a href="https://mariadb.org/download/">https://mariadb.org/download/</a></li>
+<li><a href="https://mariadb.com/docs/server/server-usage/stored-routines/binary-logging-of-stored-routines">https://mariadb.com/docs/server/server-usage/stored-routines/binary-logging-of-stored-routines</a></li>
+</ul>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -2668,9 +2729,6 @@ to the database server. By default, MariaDB listens on port 3306.</p>
       
     
     
-        
-            
-            
         
 		
 		

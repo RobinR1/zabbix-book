@@ -6,7 +6,14 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A free, community driven online resource to master Zabbix: built to give back, sustain the community, and help you become truly empowered with monitoring.">
+        <meta name="description" content="This section from The Zabbix Book titled "Installing a PostgreSQL database"
+guides you through installing PostgreSQL as an alternative database backend
+for Zabbix. It covers installation methods using OS vendor-provided packages
+or official PostgreSQL repositories, with specific commands for Red Hat, SUSE,
+and Ubuntu systems. The section also includes steps to start and secure the
+PostgreSQL server, create the Zabbix database and users, and configure
+firewall rules if necessary.
+">
       
       
         <meta name="author" content="The Monitoring Penmasters">
@@ -18,7 +25,7 @@
         <link rel="prev" href="../mariadb/">
       
       
-        <link rel="next" href="../preparation/">
+        <link rel="next" href="../zabbix-server/">
       
       
         
@@ -39,7 +46,7 @@
     
     
       
-        <title>Installing the PostgreSQL database - Zabbix Book</title>
+        <title>Installing a PostgreSQL database - Zabbix Book</title>
       
     
     
@@ -79,15 +86,15 @@
     
     
 
-    <meta property="og:title" content="Installing the PostgreSQL database">
-    <meta property="og:description" content="A free, community driven online resource to master Zabbix: built to give back, sustain the community, and help you become truly empowered with monitoring.">
+    <meta property="og:title" content="Installing a PostgreSQL database">
+    <meta property="og:description" content="This section from The Zabbix Book titled &#34;Installing a PostgreSQL database&#34; guides you through installing PostgreSQL as an alternative database backend for Zabbix. It covers installation methods using OS vendor-provided packages or official PostgreSQL repositories, with specific commands for Red Hat, SUSE, and Ubuntu systems. The section also includes steps to start and secure the PostgreSQL server, create the Zabbix database and users, and configure firewall rules if necessary.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thezabbixbook.com/fr/ch01-zabbix-components/postgresql/">
     <meta property="og:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Installing the PostgreSQL database">
-    <meta name="twitter:description" content="A free, community driven online resource to master Zabbix: built to give back, sustain the community, and help you become truly empowered with monitoring.">
+    <meta name="twitter:title" content="Installing a PostgreSQL database">
+    <meta name="twitter:description" content="This section from The Zabbix Book titled &#34;Installing a PostgreSQL database&#34; guides you through installing PostgreSQL as an alternative database backend for Zabbix. It covers installation methods using OS vendor-provided packages or official PostgreSQL repositories, with specific commands for Red Hat, SUSE, and Ubuntu systems. The section also includes steps to start and secure the PostgreSQL server, create the Zabbix database and users, and configure firewall rules if necessary.">
     <meta name="twitter:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="627">
@@ -111,7 +118,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#installing-the-postgresql-database" class="md-skip">
+        <a href="#installing-a-postgresql-database" class="md-skip">
           Aller au contenu
         </a>
       
@@ -174,7 +181,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Installing the PostgreSQL database
+              Installing a PostgreSQL database
             
           </span>
         </div>
@@ -485,6 +492,8 @@
       
         
       
+        
+      
     
     
     
@@ -543,6 +552,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -563,7 +578,7 @@
   <span class="md-ellipsis">
     
   
-    Chapter 01 : Zabbix components
+    Chapter 01 : Zabbix components and installation
   
 
     
@@ -579,7 +594,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Chapter 01 : Zabbix components
+    Chapter 01 : Zabbix components and installation
   
 
           </label>
@@ -612,71 +627,6 @@
   
 
               
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Basic Installation
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Basic Installation
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -733,10 +683,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_6_2_2" id="__nav_6_2_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
             
   
   
@@ -754,8 +704,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_2_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -779,7 +729,7 @@
   <span class="md-ellipsis">
     
   
-    Installing the Zabbix database
+    Database choices
   
 
     
@@ -807,7 +757,7 @@
   <span class="md-ellipsis">
     
   
-    Installing the MariaDB Database
+    Installing a MariaDB Database
   
 
     
@@ -844,7 +794,7 @@
   <span class="md-ellipsis">
     
   
-    Installing the PostgreSQL database
+    Installing a PostgreSQL database
   
 
     
@@ -862,7 +812,7 @@
   <span class="md-ellipsis">
     
   
-    Installing the PostgreSQL database
+    Installing a PostgreSQL database
   
 
     
@@ -970,6 +920,50 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#populate-the-zabbix-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Populate the Zabbix database
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-urls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Useful URLs
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -982,34 +976,6 @@
           </ul>
         </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../preparation/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Preparing the system for Zabbix
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -1066,42 +1032,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../conclusion/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Conclusion
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -1185,7 +1115,7 @@
   <span class="md-ellipsis">
     
   
-    Chapter 02 : Installation
+    Chapter 02 : Zabbix Frontend
   
 
     
@@ -2112,6 +2042,50 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#populate-the-zabbix-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Populate the Zabbix database
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-urls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Useful URLs
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2158,25 +2132,7 @@
         <a href="../chapter/" class="md-path__link">
           
   <span class="md-ellipsis">
-    Chapter 01 : Zabbix components
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="../architecture/" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    Basic Installation
+    Chapter 01 : Zabbix components and installation
   </span>
 
         </a>
@@ -2225,6 +2181,15 @@
 
 
 
+<nav class="md-tags">
+  
+    
+    <span class="md-tag md-tag-icon" data-tag="beginner">
+      Débutant
+    </span>
+  
+</nav>
+
 
 
   
@@ -2239,7 +2204,7 @@
   
 
 
-<h1 id="installing-the-postgresql-database">Installing the PostgreSQL database</h1>
+<h1 id="installing-a-postgresql-database">Installing a PostgreSQL database</h1>
 <p>Alternatively to MariaDB/MySQL, you can choose to use PostgreSQL as the database backend for Zabbix.
 Similar to MariaDB, PostgreSQL can be installed using either the OS vendor-provided
 packages or the official PostgreSQL repositories.</p>
@@ -2718,13 +2683,230 @@ to the database server. By default, PostgreSQL listens on port 5432.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">5432</span>/tcp
 </span></code></pre></div></p>
 </div>
+<hr />
+<h2 id="populate-the-zabbix-database">Populate the Zabbix database</h2>
+<p>During the installation of the database software earlier, we created the 
+necessary users, database and schema for Zabbix, however, Zabbix expects certain tables,
+schemas, images, and other elements to be present in the database.
+To set up the database correctly, we need to populate it with the required schema.</p>
+<p>First we need to install the Zabbix SQL scripts that contain the required
+import scripts for the database.</p>
+<div class="admonition info">
+<p class="admonition-title">Install SQL scripts</p>
+<p>Red Hat
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>dnf<span class="w"> </span>install<span class="w"> </span>zabbix-sql-scripts
+</span></code></pre></div></p>
+<p>SUSE
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>zypper<span class="w"> </span>install<span class="w"> </span>zabbix-sql-scripts
+</span></code></pre></div></p>
+<p>Ubuntu
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>zabbix-sql-scripts
+</span></code></pre></div></p>
+</div>
+<p>Next you need to prepare the database schema: unzip the necessary schema files 
+by running the following command:</p>
+<div class="admonition info">
+<p class="admonition-title">Unzip the DB patch</p>
+<p>Red Hat / SUSE
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>gzip<span class="w"> </span>-d<span class="w"> </span>/usr/share/zabbix/sql-scripts/postgresql/server.sql.gz
+</span></code></pre></div></p>
+<p>Ubuntu
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>sudo<span class="w"> </span>gzip<span class="w"> </span>-d<span class="w"> </span>/usr/share/zabbix/sql-scripts/postgresql/server.sql.gz
+</span></code></pre></div></p>
+</div>
+<details class="note" open="open">
+<summary>Note</summary>
+<p>Zabbix seems to like to change the locations of the script to populate the
+DB every version or even in between versions. If you encounter an error take a
+look at the Zabbix documentation, there is a good chance that some location was
+changed.</p>
+</details>
+<p>This will extract the database schema required for the Zabbix server.</p>
+<p>Now we will execute the SQL file to populate the database. Open a <code>psql</code> shell:</p>
+<div class="admonition info">
+<p class="admonition-title">Open psql shell</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>psql<span class="w"> </span>-d<span class="w"> </span>zabbix<span class="w"> </span>-U<span class="w"> </span>zabbix-srv
+</span></code></pre></div>
+</div>
+<details class="warning" open="open">
+<summary>Ensure correct search_path is set</summary>
+<p>Make sure you performed previous steps as outlined in <a href="./#creating-the-zabbix-database-instance">Creating the Zabbix database instance with PostgreSQL</a>
+carefully so that you have set the correct <code>search_path</code>.</p>
+<p>If you did not set the default <code>search_path</code> for the <code>zabbix-srv</code> user,
+ensure you set it manually in the current session before proceeding:
+<div class="language-psql highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">search_path</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s s-Name">&quot;zabbix_server&quot;</span><span class="p">;</span>
+</span></code></pre></div></p>
+</details>
+<p>Upload the DB schema to the database using the following commands:</p>
+<div class="admonition info">
+<p class="admonition-title">Upload the DB schema to db zabbix</p>
+<div class="language-psql highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\i</span><span class="w"> </span><span class="ss">/usr/share/zabbix/sql-scripts/postgresql/server.sql</span>
+</span></code></pre></div>
+</div>
+<details class="warning" open="open">
+<summary>Warning</summary>
+<p>Depending on your hardware or VM performance, this process can take anywhere
+from a few seconds to several minutes. Please be patient and avoid cancelling
+the operation.</p>
+</details>
+<p>Monitor the progress as the script runs. You will see output similar to:</p>
+<div class="admonition example">
+<p class="admonition-title">Output example</p>
+<div class="language-psql highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\i</span><span class="w"> </span><span class="ss">/usr/share/zabbix/sql-scripts/postgresql/server.sql</span>
+</span><span id="__span-51-2"><a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a><span class="go">CREATE TABLE</span>
+</span><span id="__span-51-3"><a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a><span class="go">CREATE INDEX</span>
+</span><span id="__span-51-4"><a id="__codelineno-51-4" name="__codelineno-51-4" href="#__codelineno-51-4"></a><span class="go">CREATE TABLE</span>
+</span><span id="__span-51-5"><a id="__codelineno-51-5" name="__codelineno-51-5" href="#__codelineno-51-5"></a><span class="go">CREATE INDEX</span>
+</span><span id="__span-51-6"><a id="__codelineno-51-6" name="__codelineno-51-6" href="#__codelineno-51-6"></a><span class="go">CREATE TABLE</span>
+</span><span id="__span-51-7"><a id="__codelineno-51-7" name="__codelineno-51-7" href="#__codelineno-51-7"></a><span class="go">...</span>
+</span><span id="__span-51-8"><a id="__codelineno-51-8" name="__codelineno-51-8" href="#__codelineno-51-8"></a><span class="go">...</span>
+</span><span id="__span-51-9"><a id="__codelineno-51-9" name="__codelineno-51-9" href="#__codelineno-51-9"></a><span class="go">...</span>
+</span><span id="__span-51-10"><a id="__codelineno-51-10" name="__codelineno-51-10" href="#__codelineno-51-10"></a><span class="go">INSERT 0 10444</span>
+</span><span id="__span-51-11"><a id="__codelineno-51-11" name="__codelineno-51-11" href="#__codelineno-51-11"></a><span class="go">DELETE 90352</span>
+</span><span id="__span-51-12"><a id="__codelineno-51-12" name="__codelineno-51-12" href="#__codelineno-51-12"></a><span class="go">COMMIT</span>
+</span></code></pre></div>
+</div>
+<p>Once the script completes and you return to the <code>zabbix=&gt;</code> prompt, the database
+should be successfully populated with all the required tables, schemas,
+images, and other elements needed for Zabbix.</p>
+<p>However, <code>zabbix-web</code> still cannot perform any operations on the tables or sequences.
+To allow basic data interaction without giving too many privileges, grant the
+following permissions:</p>
+<ul>
+<li>For tables: SELECT, INSERT, UPDATE, and DELETE.</li>
+<li>For sequences: SELECT and UPDATE.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Grant rights on the schema to user zabbix-web</p>
+<div class="language-psql highlight"><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="p">,</span><span class="w"> </span><span class="k">INSERT</span><span class="p">,</span><span class="w"> </span><span class="k">UPDATE</span><span class="p">,</span><span class="w"> </span><span class="k">DELETE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">TABLES</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="k">SCHEMA</span><span class="w"> </span><span class="n">zabbix_server</span>
+</span><span id="__span-52-2"><a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a><span class="k">TO</span><span class="w"> </span><span class="s s-Name">&quot;zabbix-web&quot;</span><span class="p">;</span>
+</span><span id="__span-52-3"><a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="p">,</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">SEQUENCES</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="k">SCHEMA</span><span class="w"> </span><span class="n">zabbix_server</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s s-Name">&quot;zabbix-web&quot;</span><span class="p">;</span>
+</span></code></pre></div>
+</div>
+<p>Verify if the rights are correct on the schema :</p>
+<div class="admonition example">
+<p class="admonition-title">Example schema rights</p>
+<div class="language-psql highlight"><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\dn+</span>
+</span><span id="__span-53-2"><a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a><span class="go">                                           List of schemas</span>
+</span><span id="__span-53-3"><a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a><span class="go">     Name      |       Owner       |           Access privileges            |      Description</span>
+</span><span id="__span-53-4"><a id="__codelineno-53-4" name="__codelineno-53-4" href="#__codelineno-53-4"></a><span class="go">---------------+-------------------+----------------------------------------+------------------------</span>
+</span><span id="__span-53-5"><a id="__codelineno-53-5" name="__codelineno-53-5" href="#__codelineno-53-5"></a><span class="go"> public        | pg_database_owner | pg_database_owner=UC/pg_database_owner+| standard public schema</span>
+</span><span id="__span-53-6"><a id="__codelineno-53-6" name="__codelineno-53-6" href="#__codelineno-53-6"></a><span class="go">               |                   | =U/pg_database_owner                   |</span>
+</span><span id="__span-53-7"><a id="__codelineno-53-7" name="__codelineno-53-7" href="#__codelineno-53-7"></a><span class="go"> zabbix_server | zabbix-srv        | &quot;zabbix-srv&quot;=UC/&quot;zabbix-srv&quot;          +|</span>
+</span><span id="__span-53-8"><a id="__codelineno-53-8" name="__codelineno-53-8" href="#__codelineno-53-8"></a><span class="go">               |                   | &quot;zabbix-web&quot;=U/&quot;zabbix-srv&quot;            |</span>
+</span></code></pre></div>
+</div>
+<details class="note" open="open">
+<summary>Note</summary>
+<p>If you encounter the following error during the SQL import:
+<code>vbnet psql:/usr/share/zabbix/sql-scripts/postgresql/server.sql:7: ERROR: no
+    schema has been selected to create in</code> It indicates that the <code>search_path</code> setting
+might not have been correctly applied. This setting is crucial because it specifies
+the schema where the tables and other objects should be created. By correctly
+setting the search path, you ensure that the SQL script will create tables
+and other objects in the intended schema.</p>
+</details>
+<p>To ensure that the Zabbix tables were created successfully and have the correct
+permissions, you can verify the table list and their ownership using the <code>psql</code> command:</p>
+<ul>
+<li>List the Tables: Use the following command to list all tables in the <code>zabbix_server</code> schema:</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">List tables</p>
+<div class="language-psql highlight"><pre><span></span><code><span id="__span-54-1"><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="gp">zabbix=#</span><span class="w"> </span><span class="kp">\dt</span>
+</span></code></pre></div>
+</div>
+<p>You should see a list of tables with their schema, name, type, and owner.
+For example:</p>
+<details class="example" open="open">
+<summary>List table with relations</summary>
+<div class="language-psql highlight"><pre><span></span><code><span id="__span-55-1"><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\dt</span>
+</span><span id="__span-55-2"><a id="__codelineno-55-2" name="__codelineno-55-2" href="#__codelineno-55-2"></a><span class="go">                        List of relations</span>
+</span><span id="__span-55-3"><a id="__codelineno-55-3" name="__codelineno-55-3" href="#__codelineno-55-3"></a><span class="go">    Schema     |            Name            | Type  |   Owner</span>
+</span><span id="__span-55-4"><a id="__codelineno-55-4" name="__codelineno-55-4" href="#__codelineno-55-4"></a><span class="go">---------------+----------------------------+-------+------------</span>
+</span><span id="__span-55-5"><a id="__codelineno-55-5" name="__codelineno-55-5" href="#__codelineno-55-5"></a><span class="go"> zabbix_server | acknowledges               | table | zabbix-srv</span>
+</span><span id="__span-55-6"><a id="__codelineno-55-6" name="__codelineno-55-6" href="#__codelineno-55-6"></a><span class="go"> zabbix_server | actions                    | table | zabbix-srv</span>
+</span><span id="__span-55-7"><a id="__codelineno-55-7" name="__codelineno-55-7" href="#__codelineno-55-7"></a><span class="go"> zabbix_server | alerts                     | table | zabbix-srv</span>
+</span><span id="__span-55-8"><a id="__codelineno-55-8" name="__codelineno-55-8" href="#__codelineno-55-8"></a><span class="go"> zabbix_server | auditlog                   | table | zabbix-srv</span>
+</span><span id="__span-55-9"><a id="__codelineno-55-9" name="__codelineno-55-9" href="#__codelineno-55-9"></a><span class="go"> zabbix_server | autoreg_host               | table | zabbix-srv</span>
+</span><span id="__span-55-10"><a id="__codelineno-55-10" name="__codelineno-55-10" href="#__codelineno-55-10"></a><span class="go"> zabbix_server | changelog                  | table | zabbix-srv</span>
+</span><span id="__span-55-11"><a id="__codelineno-55-11" name="__codelineno-55-11" href="#__codelineno-55-11"></a><span class="go"> zabbix_server | conditions                 | table | zabbix-srv</span>
+</span><span id="__span-55-12"><a id="__codelineno-55-12" name="__codelineno-55-12" href="#__codelineno-55-12"></a><span class="go">...</span>
+</span><span id="__span-55-13"><a id="__codelineno-55-13" name="__codelineno-55-13" href="#__codelineno-55-13"></a><span class="go">...</span>
+</span><span id="__span-55-14"><a id="__codelineno-55-14" name="__codelineno-55-14" href="#__codelineno-55-14"></a><span class="go">...</span>
+</span><span id="__span-55-15"><a id="__codelineno-55-15" name="__codelineno-55-15" href="#__codelineno-55-15"></a><span class="go"> zabbix_server | valuemap                   | table | zabbix-srv</span>
+</span><span id="__span-55-16"><a id="__codelineno-55-16" name="__codelineno-55-16" href="#__codelineno-55-16"></a><span class="go"> zabbix_server | valuemap_mapping           | table | zabbix-srv</span>
+</span><span id="__span-55-17"><a id="__codelineno-55-17" name="__codelineno-55-17" href="#__codelineno-55-17"></a><span class="go"> zabbix_server | widget                     | table | zabbix-srv</span>
+</span><span id="__span-55-18"><a id="__codelineno-55-18" name="__codelineno-55-18" href="#__codelineno-55-18"></a><span class="go"> zabbix_server | widget_field               | table | zabbix-srv</span>
+</span><span id="__span-55-19"><a id="__codelineno-55-19" name="__codelineno-55-19" href="#__codelineno-55-19"></a><span class="go">(203 rows)</span>
+</span></code></pre></div>
+</details>
+<ul>
+<li>Verify Permissions: Confirm that the zabbix-srv user owns the tables and has
+  the necessary permissions. You can check permissions for specific tables using
+  the \dp command:</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Verify table permissions</p>
+<div class="language-psql highlight"><pre><span></span><code><span id="__span-56-1"><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\dp</span><span class="w"> </span><span class="ss">zabbix_server.*</span>
+</span></code></pre></div>
+</div>
+<details class="example" open="open">
+<summary>Example output</summary>
+<div class="language-psql highlight"><pre><span></span><code><span id="__span-57-1"><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\dp</span><span class="w"> </span><span class="ss">zabbix_server.*</span>
+</span><span id="__span-57-2"><a id="__codelineno-57-2" name="__codelineno-57-2" href="#__codelineno-57-2"></a><span class="go">                                                     Access privileges</span>
+</span><span id="__span-57-3"><a id="__codelineno-57-3" name="__codelineno-57-3" href="#__codelineno-57-3"></a><span class="go">    Schema     |            Name            |   Type   |         Access privileges          | Column privileges | Policies</span>
+</span><span id="__span-57-4"><a id="__codelineno-57-4" name="__codelineno-57-4" href="#__codelineno-57-4"></a><span class="go">---------------+----------------------------+----------+------------------------------------+-------------------+----------</span>
+</span><span id="__span-57-5"><a id="__codelineno-57-5" name="__codelineno-57-5" href="#__codelineno-57-5"></a><span class="go"> zabbix_server | acknowledges               | table    | &quot;zabbix-srv&quot;=arwdDxtm/&quot;zabbix-srv&quot;+|                   |</span>
+</span><span id="__span-57-6"><a id="__codelineno-57-6" name="__codelineno-57-6" href="#__codelineno-57-6"></a><span class="go">               |                            |          | &quot;zabbix-web&quot;=arwd/&quot;zabbix-srv&quot;     |                   |</span>
+</span><span id="__span-57-7"><a id="__codelineno-57-7" name="__codelineno-57-7" href="#__codelineno-57-7"></a><span class="go"> zabbix_server | actions                    | table    | &quot;zabbix-srv&quot;=arwdDxtm/&quot;zabbix-srv&quot;+|                   |</span>
+</span><span id="__span-57-8"><a id="__codelineno-57-8" name="__codelineno-57-8" href="#__codelineno-57-8"></a><span class="go">               |                            |          | &quot;zabbix-web&quot;=arwd/&quot;zabbix-srv&quot;     |                   |</span>
+</span><span id="__span-57-9"><a id="__codelineno-57-9" name="__codelineno-57-9" href="#__codelineno-57-9"></a><span class="go"> zabbix_server | alerts                     | table    | &quot;zabbix-srv&quot;=arwdDxtm/&quot;zabbix-srv&quot;+|                   |</span>
+</span><span id="__span-57-10"><a id="__codelineno-57-10" name="__codelineno-57-10" href="#__codelineno-57-10"></a><span class="go">               |                            |          | &quot;zabbix-web&quot;=arwd/&quot;zabbix-srv&quot;     |                   |</span>
+</span><span id="__span-57-11"><a id="__codelineno-57-11" name="__codelineno-57-11" href="#__codelineno-57-11"></a><span class="go"> zabbix_server | auditlog                   | table    | &quot;zabbix-srv&quot;=arwdDxtm/&quot;zabbix-srv&quot;+|                   |</span>
+</span></code></pre></div>
+</details>
+<p>This will display the access privileges for all tables in the <code>zabbix_server</code>
+schema. Ensure that <code>zabbix-srv</code> has the required privileges.</p>
+<p>If everything looks correct, your tables are properly created and the <code>zabbix-srv</code>
+user has the appropriate ownership and permissions. If you need to adjust any
+permissions, you can do so using the GRANT commands as needed.</p>
 <p>This concludes our installation of the PostgreSQL database.</p>
+<hr />
+<h2 id="conclusion">Conclusion</h2>
+<p>With the installation and configuration of PostgreSQL as the database backend for
+Zabbix complete, you now have a powerful and efficient database system ready for
+your monitoring needs. We've covered the installation of PostgreSQL from both
+vendor-provided packages and official repositories, securing the database, creating
+the necessary Zabbix database and users, and populating the database with the
+required schema and initial data.</p>
+<p>Your Zabbix environment is now ready for the next stages of setup and configuration.</p>
+<hr />
+<h2 id="questions">Questions</h2>
+<ol>
+<li>What version of PostgreSQL should I install for compatibility and stability?</li>
+<li>What port does my DB use ?</li>
+<li>Which database users did I create and why?</li>
+</ol>
+<hr />
+<h2 id="useful-urls">Useful URLs</h2>
+<ul>
+<li><a href="ttps://yum.postgresql.org">https://yum.postgresql.org</a></li>
+<li><a href="https://zypp.postgresql.org/howtozypp/">https://zypp.postgresql.org/howtozypp/</a></li>
+<li><a href="https://wiki.postgresql.org/wiki/Apt">https://wiki.postgresql.org/wiki/Apt</a></li>
+<li><a href="https://en.opensuse.org/SDB:PostgreSQL">https://en.opensuse.org/SDB:PostgreSQL</a></li>
+<li><a href="https://help.ubuntu.com/community/PostgreSQL">https://help.ubuntu.com/community/PostgreSQL</a></li>
+<li><a href="https://www.postgresql.org/docs/current/ddl-priv.html">https://www.postgresql.org/docs/current/ddl-priv.html</a></li>
+</ul>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -2796,9 +2978,6 @@ to the database server. By default, PostgreSQL listens on port 5432.</p>
       
     
     
-        
-            
-            
         
 		
 		
