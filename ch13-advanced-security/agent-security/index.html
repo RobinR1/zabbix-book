@@ -1497,6 +1497,45 @@ both Pre-shared keys (PSK) and Certificates.
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Certificates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#certificate-authority-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Certificate Authority generation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#certificate-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Certificate generation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-the-agent-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setting up the agent configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1836,6 +1875,45 @@ both Pre-shared keys (PSK) and Certificates.
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Certificates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#certificate-authority-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Certificate Authority generation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#certificate-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Certificate generation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-the-agent-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setting up the agent configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2050,8 +2128,8 @@ We have to keep this in mind when setting up the PSK identity and I usually use 
 <p><img align="center" alt="Unencrypted agent" src="../securing-agent/ch13.xx-frontend-agent-host-no-encryption.png" />
 <em>13.xx Unencrypted agent settings</em></p>
 <p>Let's fill our the details here, just as we did on the Zabbix agent host side.</p>
-<p><img align="center" alt="Encrypted agent" src="../securing-agent/ch13.xx-frontend-agent-host-encryption.png" />
-<em>13.xx Encrypted agent settings</em></p>
+<p><img align="center" alt="Encrypted agent" src="../securing-agent/ch13.xx-frontend-agent-host-encryption.png" /></p>
+<p><em>13.xx Encrypted agent settings</em></p>
 <p>As you can see, even though this is an Active Zabbix agent, I set up encryption requirements for both. Click on the <code>Update</code> button to save these changes and go back to the Zabbix agent host CLI to restart the agent.</p>
 <div class="admonition info">
 <p class="admonition-title">Restart to make encryption settings take effect.</p>
@@ -2060,10 +2138,146 @@ We have to keep this in mind when setting up the PSK identity and I usually use 
 </span></code></pre></div></p>
 </div>
 <p>Your agent icon should remain green and you should now see that the agent is encrypted.</p>
-<p><img align="center" alt="Encrypted agent staatus" src="../securing-agent/ch13.xx-frontend-agent-host-encryption-status.png" />
-<em>13.xx Encrypted agent status</em></p>
+<p><img align="center" alt="Encrypted agent status" src="../securing-agent/ch13.xx-frontend-agent-host-encryption-status.png" /></p>
+<p><em>13.xx Encrypted agent status</em></p>
 <h3 id="active-agent-autoregistration">Active agent autoregistration</h3>
+<p>Another thing you might want to do is encrypt all of the Zabbix agents in active mode that are being registered into Zabbix automatically. This process called autoregistration was discussed in detail in chapter 10. What we did not cover however is how to encrypt this process.</p>
+<p>When you navigate to <code>Administration</code> | <code>General</code> | <code>Autoregistration</code> there are not many options available. As you can see we are using <code>No encryption</code> by default. </p>
+<p><img align="center" alt="Autoregistration without encryption" src="../securing-agent/ch13.xx-autoregistration-no-encryption.png" />
+<em>13.xx Autoregistration without encryption</em></p>
+<p>We can only change this <code>PSK</code> to encrypt all of the autoregistered Zabbix agents. There is no certificate option for autoregistration. But, we can now do the following setup.</p>
+<p><img align="center" alt="Autoregistration with encryption" src="../securing-agent/ch13.xx-autoregistration-encryption.png" />
+<em>13.xx Autoregistration with encryption</em></p>
+<p>This will allow us to define our PSK identity and PSK value on the agents configured for autoregistration. </p>
+<div class="admonition info">
+<p class="admonition-title">Zabbix agent 2 configuration file encryption parameters</p>
+<p>Linux CLI
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nv">TLSConnect</span><span class="o">=</span>psk
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nv">TLSAccept</span><span class="o">=</span>psk
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nv">TLSPSKIdentity</span><span class="o">=</span>agent-default-key
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nv">TLSPSKFile</span><span class="o">=</span>/etc/zabbix/agent.psk
+</span></code></pre></div></p>
+</div>
+<p>Keep in mind that <code>/etc/zabbix/agent.psk</code> should contain the same PSK value on every single agent we configure for autoregistration. We cannot use different keys, as the identity/value pair has to be unique. </p>
+<p>This means that we do not have a unique PSK per Zabbix agent, decreasing our security. If one agent has its PSK compromised, you have to consider all agents compromised. There are a few options to work with this however.</p>
+<ul>
+<li>Make sure you automate the Zabbix agent installation process. Quickly allowing you to rotate PSK keys when necessary.</li>
+<li>Do not share you PSK with possible customers you are monitoring. Use manually configured unique PSK values for them.</li>
+<li>If you want, you can use autoregistration with PSK for the initial agent registration. Manually changed the PSK later or just for important infrastructure.</li>
+</ul>
 <h2 id="certificates">Certificates</h2>
+<p>Pre-shared keys are simple and they work well to encrypt your agents fast and effectively. They do have a fundamental flaw however, once it is known we can easily impersonate it. Identity theft is not a joke and for that reason we are going to issues certificates to counter that issue. </p>
+<p>Keep in mind, you can also use public certificates. But to keep things executable from the book we are going to use self-signed certificates here. Choose whichever you prefer.</p>
+<h3 id="certificate-authority-generation">Certificate Authority generation</h3>
+<p>First, let's create the certificate authority (CA). </p>
+<p>!!! info “Create CA private key”
+    Linux CLI
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>openssl<span class="w"> </span>genrsa<span class="w"> </span>-out<span class="w"> </span>the-zabbix-book-ca.key<span class="w"> </span><span class="m">4096</span>
+</span></code></pre></div></p>
+<p>Next, we create a self-signed CA certificate. This certificate will be trusted by all Zabbix components.</p>
+<p>!!! info “Create CA certificate”
+    Linux CLI
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>openssl<span class="w"> </span>req<span class="w"> </span>-x509<span class="w"> </span>-new<span class="w"> </span>-nodes<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>-key<span class="w"> </span>the-zabbix-book-ca.key<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>-sha256<span class="w"> </span>-days<span class="w"> </span><span class="m">3650</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>-out<span class="w"> </span>the-zabbix-book-ca.crt<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>-subj<span class="w"> </span><span class="s2">&quot;/CN=The Zabbix Book Issuing CA/O=The Zabbix Book/OU=Monitoring&quot;</span>
+</span></code></pre></div></p>
+<ul>
+<li>3650 days gives us a 10-year CA lifetime</li>
+<li>Anyone with the key file can sign valid Zabbix certificates, so keep it secret.</li>
+<li>As you can see we used <code>The Zabbix Book</code> in our CN/CA. Treat this as <code>Your Company Name here</code>. </li>
+</ul>
+<p>Executing these commands should give us 2 files.</p>
+<ul>
+<li><em>the-zabbix-book-ca.key</em>: keep secret</li>
+<li><em>the-zabbix-book-ca.crt</em>: distribute to all Zabbix components</li>
+</ul>
+<p>Let's move these files to the home folder on the server.</p>
+<p>!!! info “Move the CA files”
+    Linux CLI
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>mv<span class="w"> </span>the-zabbix-book-ca.key<span class="w"> </span>/home/zabbix/the-zabbix-book-ca.key
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>mv<span class="w"> </span>the-zabbix-book-ca.crt<span class="w"> </span>/home/zabbix/the-zabbix-book-ca.crt
+</span></code></pre></div></p>
+<p>Then we make sure they are secured.</p>
+<p>!!! info “Secure CA private key”
+    Linux CLI
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sudo<span class="w"> </span>chown<span class="w"> </span>zabbix:zabbix<span class="w"> </span>/home/zabbix/the-zabbix-book-ca.key<span class="w"> </span>/home/zabbix/the-zabbix-book-ca.crt
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">400</span><span class="w"> </span>/home/zabbix/the-zabbix-book-ca.key
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">444</span><span class="w"> </span>/home/zabbix/the-zabbix-book-ca.crt
+</span></code></pre></div></p>
+<p>Since anyone with the key file can sign valid Zabbix certificates it is recommended to do these steps on a secure server where you will distribute the certificates from</p>
+<h3 id="certificate-generation">Certificate generation</h3>
+<p>Next up, we are going to generate the certificate for the Zabbix agent to use. Here it is also recommended to use a unique certificate for each Zabbix agent you'd like to encrypt.</p>
+<p>We will need the CA key we issues earlier in this step. Let's first generate the key.</p>
+<p>!!! info “Create agent private key”
+    Linux CLI
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>openssl<span class="w"> </span>genrsa<span class="w"> </span>-out<span class="w"> </span>zabbix_agent.key<span class="w"> </span><span class="m">2048</span>
+</span></code></pre></div></p>
+<p>Then we create the certificate signing request (CSR).</p>
+<p>!!! info “Create Zabbix agent CSR”
+    Linux CLI
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>openssl<span class="w"> </span>req<span class="w"> </span>-new<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>-key<span class="w"> </span>zabbix_agent.key<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>-out<span class="w"> </span>zabbix_agent.csr<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>-subj<span class="w"> </span><span class="s2">&quot;/CN=www01/OU=Servers/O=The Zabbix Book&quot;</span>
+</span></code></pre></div></p>
+<p>Lastly, we sign the CSR with the CA. This is what makes it a “real” certificate in our environment.</p>
+<p>!!! info “Sign agent certificate with CA”
+Linux CLI
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>openssl<span class="w"> </span>x509<span class="w"> </span>-req<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>-in<span class="w"> </span>zabbix_agent.csr<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>-CA<span class="w"> </span>the-zabbix-book-ca.crt<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>-CAkey<span class="w"> </span>the-zabbix-book-ca.key<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>-CAcreateserial<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>-out<span class="w"> </span>zabbix_agent.crt<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>-days<span class="w"> </span><span class="m">825</span><span class="w"> </span>-sha256
+</span></code></pre></div></p>
+<p>We now have our Zabbix agent certificate and private key:
+    •   <em>zabbix_agent.key</em>: Keep secret on the agent
+    •   <em>zabbix_agent.crt</em>: Public certificate for the agent
+    •   <em>the-zabbix-book-ca.crt</em>: CA certificate the agent uses to trust the Zabbix server/proxy</p>
+<p>The CSR is no longer needed after signing.</p>
+<p>!!! info “Remove CSR file”
+    Linux CLI
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>rm<span class="w"> </span>-f<span class="w"> </span>zabbix_agent.csr
+</span></code></pre></div></p>
+<p>Let's move these files to a folder where we can use them from the Zabbix agent.</p>
+<p>!!! info “Move the CA files”
+    Linux CLI
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>mv<span class="w"> </span>zabbix_agent.key<span class="w"> </span>/home/zabbix/the-zabbix-book-ca.key
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>mv<span class="w"> </span>zabbix_agent.crt<span class="w"> </span>/home/zabbix/the-zabbix-book-ca.crt
+</span></code></pre></div></p>
+<p>Of course it will also be important to secure the files.</p>
+<p>!!! info “Move the CA files”
+    Linux CLI
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>sudo<span class="w"> </span>chown<span class="w"> </span>zabbix:zabbix<span class="w"> </span>/home/zabbix/zabbix_agent.key<span class="w"> </span>/home/zabbix/zabbix_agent.crt
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">400</span><span class="w"> </span>/home/zabbix/zabbix_agent.key
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">444</span><span class="w"> </span>/home/zabbix/zabbix_agent.crt
+</span></code></pre></div></p>
+<h3 id="setting-up-the-agent-configuration">Setting up the agent configuration</h3>
+<p>Lastly, it will be important to set up the Zabbix agent for the certificate to be used by it. Let's edit the Zabbix agent configuration file and add the following parameters.</p>
+<p>!!! info “Move the CA files”
+    Linux CLI
+    <div class="language-ini highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="na">TLSConnect</span><span class="o">=</span><span class="s">cert</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="na">TLSAccept</span><span class="o">=</span><span class="s">cert</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="na">TLSCAFile</span><span class="o">=</span><span class="s">/home/zabbix/the-zabbix-book-ca.crt</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="na">TLSCertFile</span><span class="o">=</span><span class="s">/home/zabbix/pki/zabbix_agent.crt</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="na">TLSKeyFile</span><span class="o">=</span><span class="s">/home/zabbix/pki/zabbix_agent.key</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="na">TLSServerCertIssuer</span><span class="o">=</span><span class="s">CN=The Zabbix Book Issuing CA,O=The Zabbix Book,OU=Monitoring</span>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="na">TLSServerCertSubject</span><span class="o">=</span><span class="s">CN=zabbix-server,OU=Monitoring,O=The Zabbix Book</span>
+</span></code></pre></div></p>
+<p>!!! info “Restart to make certificate encryption take effect”
+    Linux CLI
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>systemctl<span class="w"> </span>restart<span class="w"> </span>zabbix-agent2
+</span></code></pre></div></p>
+<p>Moving to the Zabbix frontend, all that's left to do is edit our host configuration under <code>Data collection</code> | <code>Hosts</code> and add the following information under <code>Encryption</code>.</p>
+<p><img align="center" alt="Encrypted agent certificate" src="../securing-agent/ch13.xx-agent-certificate-encryption.png" /></p>
+<p><em>13.xx Encrypted agent settings certificate</em></p>
 <h2 id="conclusion">Conclusion</h2>
 <p>If you want simple to set up security for your Zabbix agent, use pre-shared keys. They are secure, especially when using 2048-bit (512 hexadecimal digits) and if possible unique pre-shared keys for each agent.</p>
 <p>If you want some more layers of security, certificates do provide more security in the way they work alone. With certificate expiry, we are forced to set up good certificate management software to make managing the many certificates doable. Furthermore, certificates provide impersonation resistance by allowing us to restrict issuer/subject.</p>

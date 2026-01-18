@@ -5572,7 +5572,7 @@ initial data.</p>
 Similar to MariaDB, PostgreSQL can be installed using either the OS vendor-provided
 packages or the official PostgreSQL repositories.</p>
 <p>If you already have installed MariaDB in the previous section, you can skip this section.</p>
-<p>As of writing PostgreSQL 13-17 are supported by Zabbix. Check the Zabbix documentation
+<p>As of writing PostgreSQL 13-18 are supported by Zabbix. Check the Zabbix documentation
 for an up-to-date list of supported versions for your Zabbix version. Usually it's
 a good idea to go with the latest version that is supported by Zabbix. </p>
 <details class="tip" open="open">
@@ -10769,38 +10769,13 @@ are free to use a different username, e.g. <code>zabbix-proxy</code> for a user 
 be running only zabbix-proxy in a container.</p>
 <div class="admonition info">
 <p class="admonition-title">Create and init podman user</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-3-1"></a>sudo<span class="w"> </span>useradd<span class="w"> </span>--system<span class="w"> </span>--home-dir<span class="w"> </span>/home/podman<span class="w"> </span>--create-home<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-3-2"></a><span class="w">    </span>--add-subids-for-system<span class="w"> </span>--comment<span class="w"> </span><span class="s2">&quot;User for running container workloads&quot;</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-3-3"></a><span class="w">    </span>podman
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-3-4"></a>sudo<span class="w"> </span>-i<span class="w"> </span>-u<span class="w"> </span>podman
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-3-5"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.local/share/containers
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-3-6"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.config/containers/systemd/
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-3-7"></a><span class="nb">exit</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-3-1"></a>sudo<span class="w"> </span>useradd<span class="w"> </span>--comment<span class="w"> </span><span class="s2">&quot;User for running container workloads&quot;</span><span class="w"> </span>podman
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-3-2"></a>sudo<span class="w"> </span>-i<span class="w"> </span>-u<span class="w"> </span>podman
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-3-3"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.local/share/containers
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-3-4"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.config/containers/systemd/
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-3-5"></a><span class="nb">exit</span>
 </span></code></pre></div>
 </div>
-<details class="info" open="open">
-<summary>What is --add-subids-for-system ?</summary>
-<p>Since we pass the parameter <code>--system</code>, the user will be created as a
-"system"-user, indicating that this user is not actually a person but rather
-a user that is used to run specific workload, in our case a Zabbix Proxy 
-container.</p>
-<p>This however also causes that the <code>useradd</code> command will not add a new entry
-into <code>/etc/subuid</code> and <code>/etc/subgid</code> for the user. These files define what
-range of User ID's (uid) and Group ID's (gid) a non-root user is allowed to
-use when running containers. Adding the parameter <code>--add-subids-for-system</code>
-tells the <code>useradd</code> command to still add a new entry in those files for this
-new user, even if it is a system user.</p>
-</details>
-<details class="info" open="open">
-<summary>Why does Podman need UID and GID ranges to run containers as non-root user?</summary>
-<p>When running Podman in rootless mode, the user needs to map the root user 
-inside the container to a non-root user outside the container. To be able to
-do this the podman needs to 'create' a new temporary, virtual non-root user
-which will then be assigned a UID and GID from the ranges defined in those 
-<code>/etc/subuid</code> and <code>/etc/subgid</code>-files.
-Without any ranges defined for the non-root user, podman won't be able to
-launch any containers.</p>
-</details>
 <p>When your system has SELinux enabled, execute the following command as <code>root</code>. </p>
 <div class="admonition info">
 <p class="admonition-title">SELinux: Set file context mapping</p>
@@ -10844,7 +10819,8 @@ is best to now switch to user <code>podman</code> before continueing.</p>
 the user-specific runtime files are stored:</p>
 <div class="admonition info">
 <p class="admonition-title">Set XDG_RUNTIME_DIR environment variable</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-8-1"></a><span class="nb">echo</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">XDG_RUNTIME_DIR</span><span class="o">=</span><span class="s2">&quot;/run/user/</span><span class="k">$(</span>id<span class="w"> </span>-u<span class="w"> </span>podman<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bash_profile<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span>~/.bash_profile
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-8-1"></a><span class="nb">echo</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">XDG_RUNTIME_DIR</span><span class="o">=</span><span class="s2">&quot;/run/user/</span><span class="k">$(</span>id<span class="w"> </span>-u<span class="w"> </span>podman<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bash_profile<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-8-2"></a><span class="w">    </span><span class="nb">source</span><span class="w"> </span>~/.bash_profile
 </span></code></pre></div>
 </div>
 <p>This line ensures that the <code>XDG_RUNTIME_DIR</code> environment variable is correctly set
@@ -10852,7 +10828,6 @@ for the <code>podman</code> user and is loaded in current and next sessions.
 This variable points to the location where user-specific runtime
 files are stored, including the systemd user session bus. Setting it is essential
 for enabling <code>systemctl --user</code> to function properly with Podman-managed containers.</p>
-<p>To now activate this setting, you can run</p>
 <hr />
 <h3 id="ch03-zabbix-proxies-proxies-as-container-prepare-the-proxy-config">Prepare the Proxy config</h3>
 <p>The next step is to create a <code>.container</code> unit file for our Quadlet setup. This
@@ -10940,6 +10915,8 @@ you used a different one):</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-14-1"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>start<span class="w"> </span>zabbix-proxy-sqlite.service
 </span></code></pre></div>
 </details>
+<p>This command may take a few minutes as it wil download the required Zabbix Proxy
+container from the docker registry.</p>
 <p>To verify that the container started correctly, you can inspect the running containers
 with:</p>
 <details class="example" open="open">
@@ -10953,12 +10930,64 @@ with:</p>
 then retrieve the container's logs using:</p>
 <details class="info" open="open">
 <summary>Retrieve container logs</summary>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-16-1"></a>podman<span class="w"> </span>logs<span class="w"> </span>b5716f8f379d
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-16-1"></a>podman<span class="w"> </span>logs<span class="w"> </span>b5716f8f379d
 </span></code></pre></div>
+Where <code>b5716f8f379d</code> is the <code>CONTAINER ID</code> of your container</p>
+<p>On some distributions, you can also view the logs directly through SystemD:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-17-1"></a>journalctl<span class="w"> </span>--user<span class="w"> </span>-u<span class="w"> </span>zabbix-proxy-sqlite.service
+</span></code></pre></div></p>
 </details>
 <p>This command will return the startup and runtime logs for the container, which
 are helpful for troubleshooting and verifying that the Zabbix proxy has started
 correctly.</p>
+<details class="warning" open="open">
+<summary>Known issue waiting for network-online.target</summary>
+<p>In case the starting of your containers takes about 90s and then ultimately
+fails to start. If you then see lines like this in your system logging 
+(<code>journalctl</code>):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-18-1"></a>systemd[1601]: Starting Wait for system level network-online.target as user....
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-18-2"></a>sh[3128]: inactive
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-18-3"></a>sh[3130]: inactive
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-18-4"></a>sh[3132]: inactive
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-18-5"></a>sh[3134]: inactive
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-18-6"></a>sh[3136]: inactive
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-18-7"></a>...
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-18-8"></a>...
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-18-9"></a>sh[3604]: inactive
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-18-10"></a>sh[3606]: inactive
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-18-11"></a>systemd[1601]: podman-user-wait-network-online.service: start operation timed out. Terminating.
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-18-12"></a>systemd[1601]: podman-user-wait-network-online.service: Main process exited, code=killed, status=15/TERM
+</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-18-13"></a>systemd[1601]: podman-user-wait-network-online.service: Failed with result &#39;timeout&#39;.
+</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-18-14"></a>systemd[1601]: Failed to start Wait for system level network-online.target as user..
+</span></code></pre></div>
+<p>Then you are hitting a known <a href="https://github.com/containers/podman/issues/24796">problem with the Podman Quadlets</a>. </p>
+<p>This is caused by the fact that the SystemD generated Quadlet service contains
+a dependency to the system-wide special target <code>network-online.target</code> which
+normally indicates the system's network is fully up and running. However on
+certain Linux distriutions or with specific networking configurations the
+system network components may not correctly notify SystemD that the network is
+"online", causing <code>network-online.target</code> to never get activated. This in turn
+makes that Podman will wait until it times out, thinking the network is not 
+yet available.</p>
+<p>As a workaround, you can create a dummy system service that will trigger 
+<code>network-online.target</code>:</p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-19-1"></a>vi<span class="w"> </span>/etc/systemd/system/podman-network-online-dummy.service
+</span></code></pre></div>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-20-1"></a><span class="k">[Unit]</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-20-2"></a><span class="na">Description</span><span class="o">=</span><span class="s">This is a dummy service to activate network-online.target</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-20-3"></a><span class="na">After</span><span class="o">=</span><span class="s">network-online.target</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-20-4"></a><span class="na">Wants</span><span class="o">=</span><span class="s">network-online.target</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-20-5"></a>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-20-6"></a><span class="k">[Service]</span>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-20-7"></a><span class="na">ExecStart</span><span class="o">=</span><span class="s">/usr/bin/echo Activating network-online.target</span>
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-20-8"></a>
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-20-9"></a><span class="k">[Install]</span>
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-20-10"></a><span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-21-1"></a>systemctl<span class="w"> </span>daemon-reload
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-21-2"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>podman-network-online-dummy.service
+</span></code></pre></div></p>
+</details>
 <hr />
 <h2 id="ch03-zabbix-proxies-proxies-as-container-upgrading-our-containers">Upgrading our containers</h2>
 <p>At some point, you may be asking yourself: How do I upgrade my Zabbix containers?
@@ -10980,10 +11009,10 @@ tag for automated updates and specifying fixed versions for controlled environme
 point to the most recent image available in the repository.</p>
 <details class="info" open="open">
 <summary>To upgrade:</summary>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-17-1"></a><span class="c1"># Pull the latest image using Podman.</span>
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-17-2"></a>podman<span class="w"> </span>pull<span class="w"> </span>zabbix/zabbix-proxy-sqlite3:7.0-centos-latest
-</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-17-3"></a><span class="c1"># Restart the systemd service associated with the container.</span>
-</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-17-4"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>restart<span class="w"> </span>zabbix-proxy-sqlite.service
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-22-1"></a><span class="c1"># Pull the latest image using Podman.</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-22-2"></a>podman<span class="w"> </span>pull<span class="w"> </span>zabbix/zabbix-proxy-sqlite3:7.0-centos-latest
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-22-3"></a><span class="c1"># Restart the systemd service associated with the container.</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-22-4"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>restart<span class="w"> </span>zabbix-proxy-sqlite.service
 </span></code></pre></div>
 </details>
 <p>Thanks to our Quadlet integration, systemd will handle the rest automatically:
@@ -11002,17 +11031,17 @@ file is located at <code>~/.config/containers/systemd/zabbix-proxy-sqlite.contai
 <details class="example" open="open">
 <summary>Manually updating the tag</summary>
 <p>You'll need to edit this file 
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-18-1"></a>vi<span class="w"> </span>~/.config/containers/systemd/zabbix-proxy-sqlite.container
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-23-1"></a>vi<span class="w"> </span>~/.config/containers/systemd/zabbix-proxy-sqlite.container
 </span></code></pre></div></p>
 <p>and update the <code>Image=</code> line. For instance, change:</p>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-19-1"></a><span class="na">Image</span><span class="o">=</span><span class="s">docker.io/zabbix/zabbix-proxy-sqlite3:7.0.13-centos</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-24-1"></a><span class="na">Image</span><span class="o">=</span><span class="s">docker.io/zabbix/zabbix-proxy-sqlite3:7.0.13-centos</span>
 </span></code></pre></div>
 <p>to:</p>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-20-1"></a><span class="na">Image</span><span class="o">=</span><span class="s">docker.io/zabbix/zabbix-proxy-sqlite3:7.0.14-centos</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-25-1"></a><span class="na">Image</span><span class="o">=</span><span class="s">docker.io/zabbix/zabbix-proxy-sqlite3:7.0.14-centos</span>
 </span></code></pre></div>
 <p>Once the file has been updated, apply the changes by running:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-21-1"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>daemon-reload
-</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-21-2"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>restart<span class="w"> </span>zabbix-proxy-sqlite.service
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-26-1"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>daemon-reload
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-26-2"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>restart<span class="w"> </span>zabbix-proxy-sqlite.service
 </span></code></pre></div>
 <p>This tells systemd to reload the modified unit file and restart the container with
 the updated image. Since you're using a fixed tag, this upgrade process gives you
@@ -11029,10 +11058,10 @@ is available in the remote registry without requiring manual intervention.</p>
 <h4 id="ch03-zabbix-proxies-proxies-as-container-example-configuration">Example Configuration</h4>
 <details class="example" open="open">
 <summary>.container file</summary>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-22-1"></a><span class="k">[Container]</span>
-</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-22-2"></a><span class="na">Image</span><span class="o">=</span><span class="s">docker.io/zabbix/zabbix-proxy-sqlite3:trunk-centos</span>
-</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-22-3"></a><span class="na">AutoUpdate</span><span class="o">=</span><span class="s">registry</span>
-</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-22-4"></a><span class="na">...</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-27-1"></a><span class="k">[Container]</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-27-2"></a><span class="na">Image</span><span class="o">=</span><span class="s">docker.io/zabbix/zabbix-proxy-sqlite3:trunk-centos</span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-27-3"></a><span class="na">AutoUpdate</span><span class="o">=</span><span class="s">registry</span>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-27-4"></a><span class="na">...</span>
 </span></code></pre></div>
 <p>In this example, the <code>Image</code> points to the <code>trunk-centos</code> tag, and <code>AutoUpdate=registry</code>
 tells Podman to periodically check the container registry for updates to this tag.</p>
@@ -11071,12 +11100,12 @@ components) current without direct user intervention.</p>
 timer.</p>
 <div class="admonition info">
 <p class="admonition-title">For System-Wide Services</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-23-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>podman-auto-update.timer
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-28-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>podman-auto-update.timer
 </span></code></pre></div>
 </div>
 <div class="admonition info">
 <p class="admonition-title">For User-Level Services</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-24-1"></a>systemctl<span class="w"> </span>--user<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>podman-auto-update.timer
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-29-1"></a>systemctl<span class="w"> </span>--user<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>podman-auto-update.timer
 </span></code></pre></div>
 </div>
 <p>This activates a systemd timer that periodically invokes <code>podman-auto-update.service</code>.</p>
@@ -14525,26 +14554,29 @@ polling, but a powerful complement when event-driven monitoring makes more sense
 well-defined, and widely deployed.</p>
 <h4 id="ch04-zabbix-collecting-data-http-authenticating-to-the-api">Authenticating to the API</h4>
 <p>The Zabbix API uses JSON-RPC over HTTP. Authentication is performed by calling
-the user.login method.</p>
+the user.login method. Another better way is to use an API token and pass it in the
+Authorization header in the headers section.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#ch04-zabbix-collecting-data-http-__codelineno-0-1"></a>Authorization<span class="w"> </span>:<span class="w"> </span>Bearer<span class="w"> </span><span class="o">{</span><span class="nv">$YOUR_TOKEN_MACRO</span><span class="o">}</span>
+</span></code></pre></div>
 <p>The endpoint is typically:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#ch04-zabbix-collecting-data-http-__codelineno-0-1"></a>http://&lt;IP Address&gt;/api_jsonrpc.php
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#ch04-zabbix-collecting-data-http-__codelineno-1-1"></a>http://&lt;IP Address&gt;/api_jsonrpc.php
 </span></code></pre></div>
 <p>The HTTP agent item is configured with a POST request and the following body:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#ch04-zabbix-collecting-data-http-__codelineno-1-1"></a>{
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#ch04-zabbix-collecting-data-http-__codelineno-1-2"></a>  &quot;jsonrpc&quot;: &quot;2.0&quot;,
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#ch04-zabbix-collecting-data-http-__codelineno-1-3"></a>  &quot;method&quot;: &quot;apiinfo.version&quot;,
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#ch04-zabbix-collecting-data-http-__codelineno-1-4"></a>  &quot;params&quot;: {},
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#ch04-zabbix-collecting-data-http-__codelineno-1-5"></a>  &quot;id&quot;: 1
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#ch04-zabbix-collecting-data-http-__codelineno-1-6"></a>}
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#ch04-zabbix-collecting-data-http-__codelineno-2-1"></a>{
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#ch04-zabbix-collecting-data-http-__codelineno-2-2"></a>  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#ch04-zabbix-collecting-data-http-__codelineno-2-3"></a>  &quot;method&quot;: &quot;apiinfo.version&quot;,
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#ch04-zabbix-collecting-data-http-__codelineno-2-4"></a>  &quot;params&quot;: {},
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#ch04-zabbix-collecting-data-http-__codelineno-2-5"></a>  &quot;id&quot;: 1
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#ch04-zabbix-collecting-data-http-__codelineno-2-6"></a>}
 </span></code></pre></div>
 <p>The <code>Content-Type</code> header must be set to <code>application/json</code>. Without it, the API
 will reject the request.</p>
 <p>The response looks like this:</p>
-<p><div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#ch04-zabbix-collecting-data-http-__codelineno-2-1"></a>{
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#ch04-zabbix-collecting-data-http-__codelineno-2-2"></a>  &quot;jsonrpc&quot;: &quot;2.0&quot;,
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#ch04-zabbix-collecting-data-http-__codelineno-2-3"></a>  &quot;result&quot;: &quot;8.0.0&quot;,
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#ch04-zabbix-collecting-data-http-__codelineno-2-4"></a>  &quot;id&quot;: 1
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#ch04-zabbix-collecting-data-http-__codelineno-2-5"></a>}
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#ch04-zabbix-collecting-data-http-__codelineno-3-1"></a>{
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#ch04-zabbix-collecting-data-http-__codelineno-3-2"></a>  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#ch04-zabbix-collecting-data-http-__codelineno-3-3"></a>  &quot;result&quot;: &quot;8.0.0&quot;,
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#ch04-zabbix-collecting-data-http-__codelineno-3-4"></a>  &quot;id&quot;: 1
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#ch04-zabbix-collecting-data-http-__codelineno-3-5"></a>}
 </span></code></pre></div>
 <img alt="http/../ch04-zabbix-collecting-data/http/ch04.60_http_item.png" src="../ch04-zabbix-collecting-data/http/ch04.60_http_item.png" /></p>
 <p>Using JSONPath preprocessing with $.result, the authentication token can be extracted.</p>
@@ -14561,10 +14593,10 @@ Zabbix supports runtime log level control, including per-process adjustments.</p
 <p>HTTP agent items are executed by HTTP poller processes. To debug HTTP agent behavior
 specifically, logging should be increased only for those processes.</p>
 <p>This is done using runtime control commands:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#ch04-zabbix-collecting-data-http-__codelineno-3-1"></a>zabbix_server -R log_level_increase=http poller
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#ch04-zabbix-collecting-data-http-__codelineno-4-1"></a>zabbix_server -R log_level_increase=http poller
 </span></code></pre></div>
 <p>or on a proxy:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#ch04-zabbix-collecting-data-http-__codelineno-4-1"></a>zabbix_server -R log_level_decrease=http poller
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#ch04-zabbix-collecting-data-http-__codelineno-5-1"></a>zabbix_server -R log_level_decrease=http poller
 </span></code></pre></div>
 <p>This approach allows detailed libcurl-level diagnostics without restarting services
 or flooding logs from unrelated processes.</p>
@@ -14666,6 +14698,8 @@ a tool.</p>
 <ul>
 <li><a href="https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/http">https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/http</a></li>
 <li><a href="https://curl.se/docs/">https://curl.se/docs/</a></li>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/api/reference/user/login?hl=user.login">https://www.zabbix.com/documentation/current/en/manual/api/reference/user/login?hl=user.login</a></li>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/api?hl=Bearer#by-authorization-header">https://www.zabbix.com/documentation/current/en/manual/api?hl=Bearer#by-authorization-header</a></li>
 </ul></section><section class="print-page" id="ch04-zabbix-collecting-data-preprocessing" heading-number="9.11"><nav class='md-tags'><span class='md-tag'>advanced</span></nav><h1 id="preprocessing">Preprocessing</h1>
 <p>In the previous part of this book about SNMP polling we started using some preprocessing. We used it to extract data from our bulk collected SNMP items as well as manipulate how the data is stored in our Zabbix database.</p>
 <p>Without properly understanding this underlying technical functionality however, we do not have the correct foundation to understand what preprocessing is. As such, let's have a more detailed look into what preprocessing is exactly, how we can use it and why it is such an important part of our Zabbix environment.</p>
@@ -14911,10 +14945,175 @@ Shortly, I'd also like to discuss the <code>Discard unchanged with heartbeat</co
 <p>As we can see preprocessing can be used to turns raw received data into structured, meaningful monitoring data. Once you the various different types of preprocessing your Zabbix environment becomes cleaner and more powerful. It's useful to familiarise yourself with the various options in preprocessing, although we do not need to know all of them in detail. Different situations call for different types of preprocessing, so it's good to at least know of the existence of most of them. The Zabbix documentation also includes more details, as well as various examples.</p>
 <h2 id="ch04-zabbix-collecting-data-preprocessing-questions">Questions</h2>
 <h2 id="ch04-zabbix-collecting-data-preprocessing-useful-urls">Useful URLs</h2></section><section class="print-page" id="ch04-zabbix-collecting-data-dependent" heading-number="9.12"><nav class='md-tags'><span class='md-tag'>beginner</span></nav><h1 id="dependent-items">Dependent items</h1>
-<p>It will often times happen that More and more do you see API's being exposed as the main or often times even only way to collect data. </p>
+<p>There are cases when you have large chunks of data which are rich of monitoring
+metrics. You can of course slice them with the help of scripts and so extract
+needed valuable pieces to be stored individually, as separate items. However,
+there is a native way in Zabbix which can do the very same thing without a need
+to involve any scripting. And that is something called "Dependent items".</p>
+<p>Think of "Dependent items" as small fragments of your large dataset. Of course,
+nothing limits or tells you that your dataset must be large. It can also be
+small, but the smaller - the less sense the dependent items would make. When
+having something large to be collected, you have to collect that data only once
+and have the splitting being done by preprocessing.</p>
+<p>Another use case when you might benefit from dependent items is when data
+collection has "high cost", in terms of time retrieving it or when network
+traffic matters. For example, some remote resource which you want to collect has
+slow network or you want to save each and every byte sent over the network, but
+there are multiple things in that resource which you want to monitor. Without
+dependent items approach you would need to retrieve that resource as many times
+as you have unique items, or store it once and then slice it on your own. But
+with dependent items, you need to collect such data only once and transform it
+into individual metrics just by employing native Zabbix features.</p>
+<p>So basically, the beauty of dependent items lies in the data collection
+efficiency.</p>
+<p>There are three main concepts involved when talking about "Dependent items":</p>
+<ul>
+<li>master item</li>
+<li>dependent item</li>
+<li>preprocessing</li>
+</ul>
+<p>Master item is just a regular Zabbix item. It can be any type of data collection
+behind it - say it can be "Zabbix agent", "Zabbix trapper", "HTTP agent" item
+or anything else.</p>
+<p>Once new value is collected for the master item, all of its dependent items
+are also updated. It has to be specified in dependent item's configuration,
+which item is the master item for it. One master item can have unlimited number
+of dependent items.</p>
+<details class="info" open="open">
+<summary>Info</summary>
+<p>Since dependent item gets updated on master item's value update, it does not
+have its own update interval</p>
+</details>
+<p>To be able to extract just the needed part of data from the master item, you
+will for sure want to apply some preprocessing. Preprocessing loves structured
+data. You should in all cases seek for structured data as your master item's
+content (e.g. json, csv, etc). This way, you will be able to extract needed
+data easier. When dealing with preprocessing, apply the most suitable method
+for particular data source format (e.g. use JSONPath for json) and understand
+your limits (e.g. regex is Perl flavor and JavaScript is Duktape underneath).</p>
+<h2 id="ch04-zabbix-collecting-data-dependent-hello-world">Hello World</h2>
+<p>Let's go through an example, the most basic one, so that you would better
+understand how the dependent items get updated.</p>
+<p>First of all, we will have a simple bash script, which will create three lines
+of structured data.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#ch04-zabbix-collecting-data-dependent-__codelineno-0-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#ch04-zabbix-collecting-data-dependent-__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#ch04-zabbix-collecting-data-dependent-__codelineno-0-3"></a><span class="nv">master_result</span><span class="o">=</span>/tmp/master.txt
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#ch04-zabbix-collecting-data-dependent-__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#ch04-zabbix-collecting-data-dependent-__codelineno-0-5"></a><span class="k">for</span><span class="w"> </span>x<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span>a..c<span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#ch04-zabbix-collecting-data-dependent-__codelineno-0-6"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">x</span><span class="si">}</span><span class="s2">: </span><span class="k">$((</span><span class="nv">RANDOM</span><span class="o">%</span><span class="m">100</span><span class="k">))</span><span class="s2">&quot;</span><span class="w"> </span>&gt;&gt;<span class="si">${</span><span class="nv">master_result</span><span class="si">}</span>.tmp
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#ch04-zabbix-collecting-data-dependent-__codelineno-0-7"></a><span class="k">done</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#ch04-zabbix-collecting-data-dependent-__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#ch04-zabbix-collecting-data-dependent-__codelineno-0-9"></a>mv<span class="w"> </span>-f<span class="w"> </span><span class="si">${</span><span class="nv">master_result</span><span class="si">}</span>.tmp<span class="w"> </span><span class="si">${</span><span class="nv">master_result</span><span class="si">}</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#ch04-zabbix-collecting-data-dependent-__codelineno-0-10"></a>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#ch04-zabbix-collecting-data-dependent-__codelineno-0-11"></a><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
+</span></code></pre></div>
+<p>This script is added to cron and is being run once a minute. It is kind of
+obvious what this script does - it outputs random number and has a prefix of
+one of the three letters: "a", "b" or "c":</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#ch04-zabbix-collecting-data-dependent-__codelineno-1-1"></a>binary@linux:~$<span class="w"> </span>cat<span class="w"> </span>/tmp/master.txt
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#ch04-zabbix-collecting-data-dependent-__codelineno-1-2"></a>a:<span class="w"> </span><span class="m">54</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#ch04-zabbix-collecting-data-dependent-__codelineno-1-3"></a>b:<span class="w"> </span><span class="m">98</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#ch04-zabbix-collecting-data-dependent-__codelineno-1-4"></a>c:<span class="w"> </span><span class="m">21</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#ch04-zabbix-collecting-data-dependent-__codelineno-1-5"></a>binary@linux:~$
+</span></code></pre></div>
+<p>Now this data file becomes our "master item". It will be collected by Zabbix
+native item <code>vfs.file.contents</code>, like:</p>
+<p><img alt="Dependent items - first master item" src="../ch04-zabbix-collecting-data/dependent/ch04.xx-dependent-items-hello-world-master.png" /></p>
+<details class="info" open="open">
+<summary>Info</summary>
+<p>Master item on its own has a little purpose of being stored, especially when
+it is huge. Its only purpose could be debugging, thus once operating 
+normally, it should not be stored and that will not affect dependent items
+in any way</p>
+</details>
+<p>And then we can set our dependent items:</p>
+<p><img alt="Dependent items - first dependent item" src="../ch04-zabbix-collecting-data/dependent/ch04.xx-dependent-items-hello-world-dependent.png" /></p>
+<p>This dependent item will have the following preprocessing - it will extract
+number from line starting with "a":</p>
+<p><img alt="Dependent items - first dependent item preprocessing" src="../ch04-zabbix-collecting-data/dependent/ch04.xx-dependent-items-hello-world-dependent-preprocessing.png" /></p>
+<p>We will then clone the first item in same fashion and get a full set of items:</p>
+<p><img alt="Dependent items - first dependent items all" src="../ch04-zabbix-collecting-data/dependent/ch04.xx-dependent-items-hello-world-all.png" /></p>
+<p>Now data is being collected once and we have 3 separate numeric items, which we
+can use depending on our needs - draw some graphs, have some triggers on top, etc.</p>
+<p><img alt="Dependent items - first dependent items results" src="../ch04-zabbix-collecting-data/dependent/ch04.xx-dependent-items-hello-world-result.png" /></p>
+<h2 id="ch04-zabbix-collecting-data-dependent-dependent-items-from-json">Dependent items from json</h2>
+<p>Previous example had a "Regular expression" as the preprocessing step. In real
+life, you might often face json as your master item, so preprocessing would be
+different. Of course, regexp is a universal thing so it is also suitable to
+extract something from json, but there is a dedicated preprocessing type
+exactly for this purpose - <code>JSONPath</code>.</p>
+<p>So first let's modify our example script to produce json:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#ch04-zabbix-collecting-data-dependent-__codelineno-2-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#ch04-zabbix-collecting-data-dependent-__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#ch04-zabbix-collecting-data-dependent-__codelineno-2-3"></a><span class="nv">json</span><span class="o">=</span><span class="s2">&quot;{&quot;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#ch04-zabbix-collecting-data-dependent-__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#ch04-zabbix-collecting-data-dependent-__codelineno-2-5"></a><span class="k">for</span><span class="w"> </span>x<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span>a..c<span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#ch04-zabbix-collecting-data-dependent-__codelineno-2-6"></a><span class="w">  </span><span class="nv">json</span><span class="o">+=</span><span class="s2">&quot;\&quot;</span><span class="si">${</span><span class="nv">x</span><span class="si">}</span><span class="s2">\&quot;:\&quot;</span><span class="k">$((</span><span class="nv">RANDOM</span><span class="o">%</span><span class="m">100</span><span class="k">))</span><span class="s2">\&quot;,&quot;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#ch04-zabbix-collecting-data-dependent-__codelineno-2-7"></a><span class="k">done</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#ch04-zabbix-collecting-data-dependent-__codelineno-2-8"></a>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#ch04-zabbix-collecting-data-dependent-__codelineno-2-9"></a><span class="nv">json</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">json</span><span class="p">%,</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#ch04-zabbix-collecting-data-dependent-__codelineno-2-10"></a><span class="nv">json</span><span class="o">+=</span><span class="s2">&quot;}&quot;</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#ch04-zabbix-collecting-data-dependent-__codelineno-2-11"></a>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#ch04-zabbix-collecting-data-dependent-__codelineno-2-12"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">json</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>&gt;/tmp/master.json
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#ch04-zabbix-collecting-data-dependent-__codelineno-2-13"></a>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#ch04-zabbix-collecting-data-dependent-__codelineno-2-14"></a><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
+</span></code></pre></div>
+<p>Now we can have similar approach of one single master item and bunch of
+dependent items nearby. Just this time, we would have <code>JSONPath</code> as
+preprocessing step for dependent items.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#ch04-zabbix-collecting-data-dependent-__codelineno-3-1"></a>binary@linux:~$<span class="w"> </span>cat<span class="w"> </span>/tmp/master.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.&#39;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#ch04-zabbix-collecting-data-dependent-__codelineno-3-2"></a><span class="o">{</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#ch04-zabbix-collecting-data-dependent-__codelineno-3-3"></a><span class="w">  </span><span class="s2">&quot;a&quot;</span>:<span class="w"> </span><span class="s2">&quot;94&quot;</span>,
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#ch04-zabbix-collecting-data-dependent-__codelineno-3-4"></a><span class="w">  </span><span class="s2">&quot;b&quot;</span>:<span class="w"> </span><span class="s2">&quot;41&quot;</span>,
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#ch04-zabbix-collecting-data-dependent-__codelineno-3-5"></a><span class="w">  </span><span class="s2">&quot;c&quot;</span>:<span class="w"> </span><span class="s2">&quot;78&quot;</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#ch04-zabbix-collecting-data-dependent-__codelineno-3-6"></a><span class="o">}</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#ch04-zabbix-collecting-data-dependent-__codelineno-3-7"></a>binary@linux:~$
+</span></code></pre></div>
+<p><img alt="Dependent items - first dependent item - json" src="../ch04-zabbix-collecting-data/dependent/ch04.xx-dependent-items-hello-world-dependent-preprocessing-json.png" /></p>
+<p>Easy and smooth!</p>
+<h2 id="ch04-zabbix-collecting-data-dependent-dependent-items-and-lld">Dependent items and LLD</h2>
+<p>Now imagine our example script produces not <code>{a..c}</code> but a full alphabet,
+<code>{a..z}</code>. We could clone dependent items one by one, but that would also
+include editing the preprocessing step regexp each time as well. If you are
+familiar with LLD, you most likely see where this goes. We will apply LLD here
+and combine it with dependent items!</p>
+<p>For LLD, we will use <code>log_discovery.sh</code>, which makes it possible to perform LLD
+from log files (thus, also, from any other text files). Source for this script
+can be found in the "Useful URLs" section. It will have item prototypes of
+"Dependent item" type and will rely on master item in same template, just
+outside of discovery.</p>
+<p><img alt="Dependent items - LLD" src="../ch04-zabbix-collecting-data/dependent/ch04.xx-dependent-items-hello-world-lld.png" /></p>
+<p>And then item prototypes would look like:</p>
+<p><img alt="Dependent items - LLD item prototype" src="../ch04-zabbix-collecting-data/dependent/ch04.xx-dependent-items-hello-world-lld-item-prototype.png" /></p>
+<p>Once LLD "magic" happens, we have all items in place:</p>
+<p><img alt="Dependent items - LLD item values" src="../ch04-zabbix-collecting-data/dependent/ch04.xx-dependent-items-hello-world-lld-item-latest-data.png" /></p>
+<p>Now by using wildcard in our dashboard "Graph" widget:</p>
+<p><img alt="Dependent items - LLD graph widget" src="../ch04-zabbix-collecting-data/dependent/ch04.xx-dependent-items-hello-world-lld-widget.png" /></p>
+<p>we are able to select all of our items at once. Thanks to LLD, we are able to
+create all of our items at once. Finally, thanks to the concept of "Dependent
+items", we are able to collect all of our data at once.</p>
+<p>This is truly beautiful once you understand it.</p>
+<p><img alt="Dependent items - LLD result" src="../ch04-zabbix-collecting-data/dependent/ch04.xx-dependent-items-hello-world-lld-result.png" /></p>
 <h2 id="ch04-zabbix-collecting-data-dependent-conclusion">Conclusion</h2>
+<p>Dependent items concept is a great way to become more efficient in data
+collection under certain circumstances.</p>
+<p>If you have some huge structured data file or output and want to split it into
+separate monitoring entities - think no more. Dependent items are here for you.
+Same is applicable to all the other cases when you want to collect data once
+but have multiple separate metrics out of it.</p>
 <h2 id="ch04-zabbix-collecting-data-dependent-questions">Questions</h2>
-<h2 id="ch04-zabbix-collecting-data-dependent-useful-urls">Useful URLs</h2></section><section class="print-page" id="ch04-zabbix-collecting-data-ssh-telnet" heading-number="9.13"><nav class='md-tags'><span class='md-tag'>beginner</span></nav><h1 id="ssh-telnet">SSH / Telnet</h1>
+<ul>
+<li>Does master item have to be some special type of item or it can be collected
+in any regular way?</li>
+<li>Are you limited in number of dependent items from one master item?</li>
+<li>What is the main benefit of using dependent items?</li>
+</ul>
+<h2 id="ch04-zabbix-collecting-data-dependent-useful-urls">Useful URLs</h2>
+<ul>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/dependent_items">https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/dependent_items</a></li>
+<li><a href="https://github.com/b1nary1/zabbix/tree/main/log_discovery">https://github.com/b1nary1/zabbix/tree/main/log_discovery</a></li>
+</ul></section><section class="print-page" id="ch04-zabbix-collecting-data-ssh-telnet" heading-number="9.13"><nav class='md-tags'><span class='md-tag'>beginner</span></nav><h1 id="ssh-telnet">SSH / Telnet</h1>
 <p>Let's say you have a device that doesn't support SNMP, there is no API and it's just not exposing any data (or just the data you need) via any protocol. However, you are able to login to the device and you are able to execute commands through the SSH or Telnet terminal. In this case Zabbix can still provide you with a solid option to monitor the device.</p>
 <p>Zabbix provides us with the option to set up a remote connection through SSH or Telnet and execute any command we'd normally execute ourselves manually. We can then use our preprocessing rules and other methods to parse this information and create valuable monitoring metrics from it. </p>
 <details class="security notice" open="open">
@@ -23095,8 +23294,8 @@ We have to keep this in mind when setting up the PSK identity and I usually use 
 <p><img align="center" alt="Unencrypted agent" src="../ch13-advanced-security/securing-agent/ch13.xx-frontend-agent-host-no-encryption.png" />
 <em>13.xx Unencrypted agent settings</em></p>
 <p>Let's fill our the details here, just as we did on the Zabbix agent host side.</p>
-<p><img align="center" alt="Encrypted agent" src="../ch13-advanced-security/securing-agent/ch13.xx-frontend-agent-host-encryption.png" />
-<em>13.xx Encrypted agent settings</em></p>
+<p><img align="center" alt="Encrypted agent" src="../ch13-advanced-security/securing-agent/ch13.xx-frontend-agent-host-encryption.png" /></p>
+<p><em>13.xx Encrypted agent settings</em></p>
 <p>As you can see, even though this is an Active Zabbix agent, I set up encryption requirements for both. Click on the <code>Update</code> button to save these changes and go back to the Zabbix agent host CLI to restart the agent.</p>
 <div class="admonition info">
 <p class="admonition-title">Restart to make encryption settings take effect.</p>
@@ -23105,10 +23304,146 @@ We have to keep this in mind when setting up the PSK identity and I usually use 
 </span></code></pre></div></p>
 </div>
 <p>Your agent icon should remain green and you should now see that the agent is encrypted.</p>
-<p><img align="center" alt="Encrypted agent staatus" src="../ch13-advanced-security/securing-agent/ch13.xx-frontend-agent-host-encryption-status.png" />
-<em>13.xx Encrypted agent status</em></p>
+<p><img align="center" alt="Encrypted agent status" src="../ch13-advanced-security/securing-agent/ch13.xx-frontend-agent-host-encryption-status.png" /></p>
+<p><em>13.xx Encrypted agent status</em></p>
 <h3 id="ch13-advanced-security-agent-security-active-agent-autoregistration">Active agent autoregistration</h3>
+<p>Another thing you might want to do is encrypt all of the Zabbix agents in active mode that are being registered into Zabbix automatically. This process called autoregistration was discussed in detail in chapter 10. What we did not cover however is how to encrypt this process.</p>
+<p>When you navigate to <code>Administration</code> | <code>General</code> | <code>Autoregistration</code> there are not many options available. As you can see we are using <code>No encryption</code> by default. </p>
+<p><img align="center" alt="Autoregistration without encryption" src="../ch13-advanced-security/securing-agent/ch13.xx-autoregistration-no-encryption.png" />
+<em>13.xx Autoregistration without encryption</em></p>
+<p>We can only change this <code>PSK</code> to encrypt all of the autoregistered Zabbix agents. There is no certificate option for autoregistration. But, we can now do the following setup.</p>
+<p><img align="center" alt="Autoregistration with encryption" src="../ch13-advanced-security/securing-agent/ch13.xx-autoregistration-encryption.png" />
+<em>13.xx Autoregistration with encryption</em></p>
+<p>This will allow us to define our PSK identity and PSK value on the agents configured for autoregistration. </p>
+<div class="admonition info">
+<p class="admonition-title">Zabbix agent 2 configuration file encryption parameters</p>
+<p>Linux CLI
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#ch13-advanced-security-agent-security-__codelineno-7-1"></a><span class="nv">TLSConnect</span><span class="o">=</span>psk
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#ch13-advanced-security-agent-security-__codelineno-7-2"></a><span class="nv">TLSAccept</span><span class="o">=</span>psk
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#ch13-advanced-security-agent-security-__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#ch13-advanced-security-agent-security-__codelineno-7-4"></a><span class="nv">TLSPSKIdentity</span><span class="o">=</span>agent-default-key
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#ch13-advanced-security-agent-security-__codelineno-7-5"></a><span class="nv">TLSPSKFile</span><span class="o">=</span>/etc/zabbix/agent.psk
+</span></code></pre></div></p>
+</div>
+<p>Keep in mind that <code>/etc/zabbix/agent.psk</code> should contain the same PSK value on every single agent we configure for autoregistration. We cannot use different keys, as the identity/value pair has to be unique. </p>
+<p>This means that we do not have a unique PSK per Zabbix agent, decreasing our security. If one agent has its PSK compromised, you have to consider all agents compromised. There are a few options to work with this however.</p>
+<ul>
+<li>Make sure you automate the Zabbix agent installation process. Quickly allowing you to rotate PSK keys when necessary.</li>
+<li>Do not share you PSK with possible customers you are monitoring. Use manually configured unique PSK values for them.</li>
+<li>If you want, you can use autoregistration with PSK for the initial agent registration. Manually changed the PSK later or just for important infrastructure.</li>
+</ul>
 <h2 id="ch13-advanced-security-agent-security-certificates">Certificates</h2>
+<p>Pre-shared keys are simple and they work well to encrypt your agents fast and effectively. They do have a fundamental flaw however, once it is known we can easily impersonate it. Identity theft is not a joke and for that reason we are going to issues certificates to counter that issue. </p>
+<p>Keep in mind, you can also use public certificates. But to keep things executable from the book we are going to use self-signed certificates here. Choose whichever you prefer.</p>
+<h3 id="ch13-advanced-security-agent-security-certificate-authority-generation">Certificate Authority generation</h3>
+<p>First, let's create the certificate authority (CA). </p>
+<p>!!! info “Create CA private key”
+    Linux CLI
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#ch13-advanced-security-agent-security-__codelineno-8-1"></a>openssl<span class="w"> </span>genrsa<span class="w"> </span>-out<span class="w"> </span>the-zabbix-book-ca.key<span class="w"> </span><span class="m">4096</span>
+</span></code></pre></div></p>
+<p>Next, we create a self-signed CA certificate. This certificate will be trusted by all Zabbix components.</p>
+<p>!!! info “Create CA certificate”
+    Linux CLI
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#ch13-advanced-security-agent-security-__codelineno-9-1"></a>openssl<span class="w"> </span>req<span class="w"> </span>-x509<span class="w"> </span>-new<span class="w"> </span>-nodes<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#ch13-advanced-security-agent-security-__codelineno-9-2"></a>-key<span class="w"> </span>the-zabbix-book-ca.key<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#ch13-advanced-security-agent-security-__codelineno-9-3"></a>-sha256<span class="w"> </span>-days<span class="w"> </span><span class="m">3650</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#ch13-advanced-security-agent-security-__codelineno-9-4"></a>-out<span class="w"> </span>the-zabbix-book-ca.crt<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#ch13-advanced-security-agent-security-__codelineno-9-5"></a>-subj<span class="w"> </span><span class="s2">&quot;/CN=The Zabbix Book Issuing CA/O=The Zabbix Book/OU=Monitoring&quot;</span>
+</span></code></pre></div></p>
+<ul>
+<li>3650 days gives us a 10-year CA lifetime</li>
+<li>Anyone with the key file can sign valid Zabbix certificates, so keep it secret.</li>
+<li>As you can see we used <code>The Zabbix Book</code> in our CN/CA. Treat this as <code>Your Company Name here</code>. </li>
+</ul>
+<p>Executing these commands should give us 2 files.</p>
+<ul>
+<li><em>the-zabbix-book-ca.key</em>: keep secret</li>
+<li><em>the-zabbix-book-ca.crt</em>: distribute to all Zabbix components</li>
+</ul>
+<p>Let's move these files to the home folder on the server.</p>
+<p>!!! info “Move the CA files”
+    Linux CLI
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#ch13-advanced-security-agent-security-__codelineno-10-1"></a>mv<span class="w"> </span>the-zabbix-book-ca.key<span class="w"> </span>/home/zabbix/the-zabbix-book-ca.key
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#ch13-advanced-security-agent-security-__codelineno-10-2"></a>mv<span class="w"> </span>the-zabbix-book-ca.crt<span class="w"> </span>/home/zabbix/the-zabbix-book-ca.crt
+</span></code></pre></div></p>
+<p>Then we make sure they are secured.</p>
+<p>!!! info “Secure CA private key”
+    Linux CLI
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#ch13-advanced-security-agent-security-__codelineno-11-1"></a>sudo<span class="w"> </span>chown<span class="w"> </span>zabbix:zabbix<span class="w"> </span>/home/zabbix/the-zabbix-book-ca.key<span class="w"> </span>/home/zabbix/the-zabbix-book-ca.crt
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#ch13-advanced-security-agent-security-__codelineno-11-2"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">400</span><span class="w"> </span>/home/zabbix/the-zabbix-book-ca.key
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#ch13-advanced-security-agent-security-__codelineno-11-3"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">444</span><span class="w"> </span>/home/zabbix/the-zabbix-book-ca.crt
+</span></code></pre></div></p>
+<p>Since anyone with the key file can sign valid Zabbix certificates it is recommended to do these steps on a secure server where you will distribute the certificates from</p>
+<h3 id="ch13-advanced-security-agent-security-certificate-generation">Certificate generation</h3>
+<p>Next up, we are going to generate the certificate for the Zabbix agent to use. Here it is also recommended to use a unique certificate for each Zabbix agent you'd like to encrypt.</p>
+<p>We will need the CA key we issues earlier in this step. Let's first generate the key.</p>
+<p>!!! info “Create agent private key”
+    Linux CLI
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#ch13-advanced-security-agent-security-__codelineno-12-1"></a>openssl<span class="w"> </span>genrsa<span class="w"> </span>-out<span class="w"> </span>zabbix_agent.key<span class="w"> </span><span class="m">2048</span>
+</span></code></pre></div></p>
+<p>Then we create the certificate signing request (CSR).</p>
+<p>!!! info “Create Zabbix agent CSR”
+    Linux CLI
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#ch13-advanced-security-agent-security-__codelineno-13-1"></a>openssl<span class="w"> </span>req<span class="w"> </span>-new<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#ch13-advanced-security-agent-security-__codelineno-13-2"></a>-key<span class="w"> </span>zabbix_agent.key<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#ch13-advanced-security-agent-security-__codelineno-13-3"></a>-out<span class="w"> </span>zabbix_agent.csr<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#ch13-advanced-security-agent-security-__codelineno-13-4"></a>-subj<span class="w"> </span><span class="s2">&quot;/CN=www01/OU=Servers/O=The Zabbix Book&quot;</span>
+</span></code></pre></div></p>
+<p>Lastly, we sign the CSR with the CA. This is what makes it a “real” certificate in our environment.</p>
+<p>!!! info “Sign agent certificate with CA”
+Linux CLI
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#ch13-advanced-security-agent-security-__codelineno-14-1"></a>openssl<span class="w"> </span>x509<span class="w"> </span>-req<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#ch13-advanced-security-agent-security-__codelineno-14-2"></a>-in<span class="w"> </span>zabbix_agent.csr<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#ch13-advanced-security-agent-security-__codelineno-14-3"></a>-CA<span class="w"> </span>the-zabbix-book-ca.crt<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#ch13-advanced-security-agent-security-__codelineno-14-4"></a>-CAkey<span class="w"> </span>the-zabbix-book-ca.key<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#ch13-advanced-security-agent-security-__codelineno-14-5"></a>-CAcreateserial<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#ch13-advanced-security-agent-security-__codelineno-14-6"></a>-out<span class="w"> </span>zabbix_agent.crt<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#ch13-advanced-security-agent-security-__codelineno-14-7"></a>-days<span class="w"> </span><span class="m">825</span><span class="w"> </span>-sha256
+</span></code></pre></div></p>
+<p>We now have our Zabbix agent certificate and private key:
+    •   <em>zabbix_agent.key</em>: Keep secret on the agent
+    •   <em>zabbix_agent.crt</em>: Public certificate for the agent
+    •   <em>the-zabbix-book-ca.crt</em>: CA certificate the agent uses to trust the Zabbix server/proxy</p>
+<p>The CSR is no longer needed after signing.</p>
+<p>!!! info “Remove CSR file”
+    Linux CLI
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#ch13-advanced-security-agent-security-__codelineno-15-1"></a>rm<span class="w"> </span>-f<span class="w"> </span>zabbix_agent.csr
+</span></code></pre></div></p>
+<p>Let's move these files to a folder where we can use them from the Zabbix agent.</p>
+<p>!!! info “Move the CA files”
+    Linux CLI
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#ch13-advanced-security-agent-security-__codelineno-16-1"></a>mv<span class="w"> </span>zabbix_agent.key<span class="w"> </span>/home/zabbix/the-zabbix-book-ca.key
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#ch13-advanced-security-agent-security-__codelineno-16-2"></a>mv<span class="w"> </span>zabbix_agent.crt<span class="w"> </span>/home/zabbix/the-zabbix-book-ca.crt
+</span></code></pre></div></p>
+<p>Of course it will also be important to secure the files.</p>
+<p>!!! info “Move the CA files”
+    Linux CLI
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#ch13-advanced-security-agent-security-__codelineno-17-1"></a>sudo<span class="w"> </span>chown<span class="w"> </span>zabbix:zabbix<span class="w"> </span>/home/zabbix/zabbix_agent.key<span class="w"> </span>/home/zabbix/zabbix_agent.crt
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#ch13-advanced-security-agent-security-__codelineno-17-2"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">400</span><span class="w"> </span>/home/zabbix/zabbix_agent.key
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#ch13-advanced-security-agent-security-__codelineno-17-3"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">444</span><span class="w"> </span>/home/zabbix/zabbix_agent.crt
+</span></code></pre></div></p>
+<h3 id="ch13-advanced-security-agent-security-setting-up-the-agent-configuration">Setting up the agent configuration</h3>
+<p>Lastly, it will be important to set up the Zabbix agent for the certificate to be used by it. Let's edit the Zabbix agent configuration file and add the following parameters.</p>
+<p>!!! info “Move the CA files”
+    Linux CLI
+    <div class="language-ini highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#ch13-advanced-security-agent-security-__codelineno-18-1"></a><span class="na">TLSConnect</span><span class="o">=</span><span class="s">cert</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#ch13-advanced-security-agent-security-__codelineno-18-2"></a><span class="na">TLSAccept</span><span class="o">=</span><span class="s">cert</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#ch13-advanced-security-agent-security-__codelineno-18-3"></a>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#ch13-advanced-security-agent-security-__codelineno-18-4"></a><span class="na">TLSCAFile</span><span class="o">=</span><span class="s">/home/zabbix/the-zabbix-book-ca.crt</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#ch13-advanced-security-agent-security-__codelineno-18-5"></a>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#ch13-advanced-security-agent-security-__codelineno-18-6"></a><span class="na">TLSCertFile</span><span class="o">=</span><span class="s">/home/zabbix/pki/zabbix_agent.crt</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#ch13-advanced-security-agent-security-__codelineno-18-7"></a><span class="na">TLSKeyFile</span><span class="o">=</span><span class="s">/home/zabbix/pki/zabbix_agent.key</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#ch13-advanced-security-agent-security-__codelineno-18-8"></a>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#ch13-advanced-security-agent-security-__codelineno-18-9"></a><span class="na">TLSServerCertIssuer</span><span class="o">=</span><span class="s">CN=The Zabbix Book Issuing CA,O=The Zabbix Book,OU=Monitoring</span>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#ch13-advanced-security-agent-security-__codelineno-18-10"></a><span class="na">TLSServerCertSubject</span><span class="o">=</span><span class="s">CN=zabbix-server,OU=Monitoring,O=The Zabbix Book</span>
+</span></code></pre></div></p>
+<p>!!! info “Restart to make certificate encryption take effect”
+    Linux CLI
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#ch13-advanced-security-agent-security-__codelineno-19-1"></a>systemctl<span class="w"> </span>restart<span class="w"> </span>zabbix-agent2
+</span></code></pre></div></p>
+<p>Moving to the Zabbix frontend, all that's left to do is edit our host configuration under <code>Data collection</code> | <code>Hosts</code> and add the following information under <code>Encryption</code>.</p>
+<p><img align="center" alt="Encrypted agent certificate" src="../ch13-advanced-security/securing-agent/ch13.xx-agent-certificate-encryption.png" /></p>
+<p><em>13.xx Encrypted agent settings certificate</em></p>
 <h2 id="ch13-advanced-security-agent-security-conclusion">Conclusion</h2>
 <p>If you want simple to set up security for your Zabbix agent, use pre-shared keys. They are secure, especially when using 2048-bit (512 hexadecimal digits) and if possible unique pre-shared keys for each agent.</p>
 <p>If you want some more layers of security, certificates do provide more security in the way they work alone. With certificate expiry, we are forced to set up good certificate management software to make managing the many certificates doable. Furthermore, certificates provide impersonation resistance by allowing us to restrict issuer/subject.</p>

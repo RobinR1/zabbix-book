@@ -132,17 +132,12 @@ firewall rules if necessary.
     
     
     
-        <div class="gmc-announce">
-            Esta página ainda não foi traduzida para o português. Portanto, está sendo exibida em inglês.
-            <a href="/gmc/pt_BR/contribute/#translations">Ajude-nos a traduzir!</a>
-        </div>
-    
     
     <script>
         const gGMC_SELECT_VERSION = "Selecione a versão";
         const gGMC_TRANSLATE_CTA = "Ajude-nos a traduzir!";
         const gGMC_PAGE_LOCALE = "pt_BR";
-        const gGMC_FILE_LOCALE = "en";
+        const gGMC_FILE_LOCALE = "pt_BR";
         const gGMC_TRANSLATE_SVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.5 12c0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2 0 .37-.03.73-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10C6.47 2 2 6.5 2 12s4.5 10 10 10c.59 0 1.16-.06 1.72-.16A5.9 5.9 0 0 1 13 19c0-.29.03-.57.07-.85-.32.63-.67 1.24-1.07 1.81-.83-1.2-1.5-2.53-1.91-3.96h3.72a5.95 5.95 0 0 1 2.59-2.4c.06-.53.1-1.06.1-1.6M12 4.03c.83 1.2 1.5 2.54 1.91 3.97h-3.82c.41-1.43 1.08-2.77 1.91-3.97M4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2zm.82 2H8c.35 1.25.8 2.45 1.4 3.56A8 8 0 0 1 5.08 16M8 8H5.08A7.92 7.92 0 0 1 9.4 4.44C8.8 5.55 8.35 6.75 8 8m6.34 6H9.66c-.1-.66-.16-1.32-.16-2s.06-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2m.25-9.56c1.84.63 3.37 1.9 4.33 3.56h-2.95a15.7 15.7 0 0 0-1.38-3.56M23 18v2h-3v3h-2v-3h-3v-2h3v-3h2v3z"/></svg>';
     </script>
     
@@ -2197,7 +2192,7 @@ firewall rules if necessary.
     
       
     
-    <a href="https://github.com/penmasters/zabbix-book/raw/main/docs/ch01-zabbix-components/postgresql.md" title="Exibir fonte desta página" class="md-content__button md-icon">
+    <a href="https://github.com/penmasters/zabbix-book/raw/main/docs/pt_BR/ch01-zabbix-components/postgresql.md" title="Exibir fonte desta página" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
@@ -2205,13 +2200,15 @@ firewall rules if necessary.
 
 
 <h1 id="installing-a-postgresql-database">Installing a PostgreSQL database</h1>
-<p>Alternatively to MariaDB/MySQL, you can choose to use PostgreSQL as the database backend for Zabbix.
-Similar to MariaDB, PostgreSQL can be installed using either the OS vendor-provided
-packages or the official PostgreSQL repositories.</p>
-<p>If you already have installed MariaDB in the previous section, you can skip this section.</p>
-<p>As of writing PostgreSQL 13-17 are supported by Zabbix. Check the Zabbix documentation
-for an up-to-date list of supported versions for your Zabbix version. Usually it's
-a good idea to go with the latest version that is supported by Zabbix. </p>
+<p>Alternatively to MariaDB/MySQL, you can choose to use PostgreSQL as the database
+backend for Zabbix. Similar to MariaDB, PostgreSQL can be installed using either
+the OS vendor-provided packages or the official PostgreSQL repositories.</p>
+<p>If you already have installed MariaDB in the previous section, you can skip this
+section.</p>
+<p>As of writing PostgreSQL 13-18 are supported by Zabbix. Check the Zabbix
+documentation for an up-to-date list of supported versions for your Zabbix
+version. Usually it's a good idea to go with the latest version that is
+supported by Zabbix.</p>
 <details class="tip" open="open">
 <summary>TimescaleDB extension</summary>
 <p>Zabbix also supports the extension TimescaleDB but due to its advanced nature, 
@@ -2225,7 +2222,7 @@ you will need to compile and install the TimescaleDB extension from source.</p>
 </details>
 <hr />
 <h2 id="installing-postgresql-server-and-client-from-os-vendor-provided-packages">Installing PostgreSQL Server and Client from OS Vendor-Provided Packages</h2>
-<p>To install the distribution default PostgreSQL server, execute the following 
+<p>To install the distribution default PostgreSQL server, execute the following
 commands:</p>
 <div class="admonition info">
 <p class="admonition-title">Install the Postgres server</p>
@@ -2239,8 +2236,8 @@ commands:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>postgresql<span class="w"> </span>postgresql-client<span class="w"> </span>postgresql-contrib
 </span></code></pre></div></p>
 </div>
-<p>This command will download and install both the server and client packages, enabling
-you to set up, configure, and interact with your PostgreSQL database.</p>
+<p>This command will download and install both the server and client packages,
+enabling you to set up, configure, and interact with your PostgreSQL database.</p>
 <div class="admonition warning">
 <p class="admonition-title">Database initialization required on Red Hat</p>
 <p>Due to policies for Red Hat family distributions, the PostgreSQL service
@@ -2252,16 +2249,18 @@ So for Red Hat we need to initialize an empty database before continuing:</p>
 <p>On SUSE and Ubuntu the OS provided SystemD service will automatically initialize
 an empty database on first startup.</p>
 </div>
-<p>Once the installation is complete, you can proceed to the <a href="#starting-the-postgresql-database"><em>Starting the PostgreSQL Database</em></a> section.</p>
+<p>Once the installation is complete, you can proceed to the <a href="#starting-the-postgresql-database"><em>Starting the
+PostgreSQL Database</em></a> section.</p>
 <hr />
 <h2 id="installing-postgresql-from-official-postgresql-repositories">Installing PostgreSQL from Official PostgreSQL Repositories</h2>
-<p>If you prefer to install PostgreSQL from the official PostgreSQL repositories instead
-of the OS vendor-provided packages, the first step is to add the PostgreSQL repository
-to your system.</p>
+<p>If you prefer to install PostgreSQL from the official PostgreSQL repositories
+instead of the OS vendor-provided packages, the first step is to add the
+PostgreSQL repository to your system.</p>
 <hr />
 <h3 id="adding-the-postgresql-repository">Adding the PostgreSQL Repository</h3>
 <p>Set up the PostgreSQL repository with the following commands:</p>
-<p>Check <a href="https://www.postgresql.org/download/linux/">https://www.postgresql.org/download/linux/</a>
+<p>Check
+<a href="https://www.postgresql.org/download/linux/">https://www.postgresql.org/download/linux/</a>
 for more information.</p>
 <div class="admonition info">
 <p class="admonition-title">Add PostgreSQL repo</p>
@@ -2325,9 +2324,9 @@ you will also need the "Desktop Applications Module":</p>
 </div>
 <hr />
 <h3 id="installing-the-postgresql-server-and-client">Installing the PostgreSQL Server and Client</h3>
-<p>With the PostgreSQL repositories configured, you are now ready to install the PostgreSQL
-server and client packages. This will provide the necessary components to run
-and manage your database.</p>
+<p>With the PostgreSQL repositories configured, you are now ready to install the
+PostgreSQL server and client packages. This will provide the necessary
+components to run and manage your database.</p>
 <div class="admonition info">
 <p class="admonition-title">Install PostgreSQL from official repositories</p>
 <p>Red Hat
@@ -2341,8 +2340,8 @@ and manage your database.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>postgresql-17<span class="w"> </span>postgresql-client-17
 </span></code></pre></div></p>
 </div>
-<p>This command will download and install both the server and client packages, enabling
-you to set up, configure, and interact with your PostgreSQL database. </p>
+<p>This command will download and install both the server and client packages,
+enabling you to set up, configure, and interact with your PostgreSQL database.</p>
 <p>Next, before we can start the PostgreSQL server we need to initialize a new
 empty database:</p>
 <div class="admonition info">
@@ -2350,11 +2349,13 @@ empty database:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo /usr/pgsql-17/bin/postgresql-17-setup initdb
 </span></code></pre></div>
 </div>
-<p>Once the installation is complete, you can proceed to the <a href="#starting-the-postgresql-database">Starting the PostgreSQL Database</a> section.</p>
+<p>Once the installation is complete, you can proceed to the <a href="#starting-the-postgresql-database">Starting the
+PostgreSQL Database</a> section.</p>
 <hr />
 <h2 id="starting-the-postgresql-database">Starting the PostgreSQL Database</h2>
-<p>Now that PostgreSQL is installed, we need to enable the service to start automatically
-upon boot as well as start it immediately. Use the following command to accomplish this:</p>
+<p>Now that PostgreSQL is installed, we need to enable the service to start
+automatically upon boot as well as start it immediately. Use the following
+command to accomplish this:</p>
 <div class="admonition info">
 <p class="admonition-title">Enable and start PostgreSQL service</p>
 <p>for OS-provided packages
@@ -2364,9 +2365,9 @@ upon boot as well as start it immediately. Use the following command to accompli
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>postgresql-17<span class="w"> </span>--now
 </span></code></pre></div></p>
 </div>
-<p>This command will both enable and start the PostgreSQL service.
-With the service now up and running, you can verify that the installation
-was successful by checking the version of PostgreSQL using the following command:</p>
+<p>This command will both enable and start the PostgreSQL service. With the service
+now up and running, you can verify that the installation was successful by
+checking the version of PostgreSQL using the following command:</p>
 <div class="admonition info">
 <p class="admonition-title">Check PostgreSQL version</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>psql<span class="w"> </span>-V
@@ -2379,8 +2380,8 @@ was successful by checking the version of PostgreSQL using the following command
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="go">psql (PostgreSQL) 17.7</span>
 </span></code></pre></div>
 </details>
-<p>To ensure that the PostgreSQL service is running properly, you can check its status
-with the following command:</p>
+<p>To ensure that the PostgreSQL service is running properly, you can check its
+status with the following command:</p>
 <div class="admonition info">
 <p class="admonition-title">Get PostgreSQL status</p>
 <p>for OS-provided packages
@@ -2419,12 +2420,13 @@ is active and running:</p>
 </span><span id="__span-19-23"><a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a><span class="go">Dec 29 17:24:07 localhost.localdomain systemd[1]: Started PostgreSQL 17 database server.</span>
 </span></code></pre></div>
 </details>
-<p>This confirms that your PostgreSQL server is up and running, ready for further configuration.</p>
+<p>This confirms that your PostgreSQL server is up and running, ready for further
+configuration.</p>
 <hr />
 <h2 id="securing-the-postgresql-database">Securing the PostgreSQL database</h2>
 <p>PostgreSQL handles access permissions differently from MySQL and MariaDB.
-PostgreSQL relies on a file called <code>pg_hba.conf</code> to manage who can access the database,
-from where, and what encryption method is allowed for authentication.</p>
+PostgreSQL relies on a file called <code>pg_hba.conf</code> to manage who can access the
+database, from where, and what encryption method is allowed for authentication.</p>
 <details class="note" open="open">
 <summary>About pg_hba.conf</summary>
 <p>Client authentication in PostgreSQL is configured through the <code>pg_hba.conf</code>
@@ -2482,10 +2484,11 @@ processes these rules sequentially. Ensure that the specific rules for the
 <code>zabbix-srv</code> and <code>zabbix-web</code> users are placed before any broader rules like
 the default <code>all</code> user rules that could potentially override them.</p>
 </div>
-<p>After we changed the <code>pg_hba.conf</code> file don't forget to restart postgres otherwise the settings
-will not be applied. But before we restart, let us also edit the file <code>postgresql.conf</code>
-and allow our database to listen on our network interface for incoming connections
-from the Zabbix server. PostgreSQL will by default only allow connections from a unix socket.</p>
+<p>After we changed the <code>pg_hba.conf</code> file don't forget to restart postgres
+otherwise the settings will not be applied. But before we restart, let us also
+edit the file <code>postgresql.conf</code> and allow our database to listen on our network
+interface for incoming connections from the Zabbix server. PostgreSQL will by
+default only allow connections from a unix socket.</p>
 <div class="admonition info">
 <p class="admonition-title">Edit postgresql.conf file</p>
 <p>Red Hat / SUSE
@@ -2519,7 +2522,8 @@ from the Zabbix server. PostgreSQL will by default only allow connections from a
 not just the local machine. In production it's probably a good idea to limit
 who can connect to the DB.</p>
 </details>
-<p>After making this change, restart the PostgreSQL service to apply the new settings:</p>
+<p>After making this change, restart the PostgreSQL service to apply the new
+settings:</p>
 <div class="admonition info">
 <p class="admonition-title">Restart the DB server</p>
 <p>for OS-provided packages
@@ -2536,12 +2540,14 @@ as incorrect entries here may prevent PostgreSQL from starting.</p>
 </details>
 <hr />
 <h2 id="creating-the-zabbix-database-instance">Creating the Zabbix database instance</h2>
-<p>With the necessary packages installed, you are now ready to create the Zabbix 
+<p>With the necessary packages installed, you are now ready to create the Zabbix
 database and users for both the server and frontend.</p>
-<p>The PostgreSQL packages automatically create a default <code>postgres</code> linux-user 
-during installation which has administrative privileges on the PostgreSQL instance.
-To administer the database, you will need to execute commands as the <code>postgres</code> user.</p>
-<p>First, create the Zabbix server database user (also referred to as a "role" in PostgreSQL):</p>
+<p>The PostgreSQL packages automatically create a default <code>postgres</code> linux-user
+during installation which has administrative privileges on the PostgreSQL
+instance. To administer the database, you will need to execute commands as the
+<code>postgres</code> user.</p>
+<p>First, create the Zabbix server database user (also referred to as a "role" in
+PostgreSQL):</p>
 <div class="admonition info">
 <p class="admonition-title">Create server users</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>createuser<span class="w"> </span>--pwprompt<span class="w"> </span>zabbix-srv
@@ -2549,7 +2555,8 @@ To administer the database, you will need to execute commands as the <code>postg
 </span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>Enter<span class="w"> </span>it<span class="w"> </span>again:<span class="w"> </span>&lt;server-password&gt;
 </span></code></pre></div>
 </div>
-<p>Next, create the Zabbix frontend user, which will be used to connect to the database:</p>
+<p>Next, create the Zabbix frontend user, which will be used to connect to the
+database:</p>
 <div class="admonition info">
 <p class="admonition-title">Create front-end user</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>createuser<span class="w"> </span>--pwprompt<span class="w"> </span>zabbix-web
@@ -2558,8 +2565,9 @@ To administer the database, you will need to execute commands as the <code>postg
 </span></code></pre></div>
 </div>
 <p>Now with the users created, the next step is to create the Zabbix database.
-Execute the following command to create the database <code>zabbix</code> with the owner set to 
-<code>zabbix-srv</code> and the character encoding set to <code>Unicode</code> as required by Zabbix:</p>
+Execute the following command to create the database <code>zabbix</code> with the owner set
+to <code>zabbix-srv</code> and the character encoding set to <code>Unicode</code> as required by
+Zabbix:</p>
 <div class="admonition info">
 <p class="admonition-title">Create DB</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>createdb<span class="w"> </span>-E<span class="w"> </span>Unicode<span class="w"> </span>-T<span class="w"> </span>template0<span class="w"> </span>-O<span class="w"> </span>zabbix-srv<span class="w"> </span>zabbix
@@ -2575,15 +2583,15 @@ This is particularly useful when you want to create a database with specific
 settings or extensions without inheriting any unwanted elements from other templates.</p>
 </details>
 <p>Once the database is created, you should verify the connection and ensure that
-the correct user session is active. To do this, log into the zabbix database using
-the <code>zabbix-srv</code> user:</p>
+the correct user session is active. To do this, log into the zabbix database
+using the <code>zabbix-srv</code> user:</p>
 <div class="admonition info">
 <p class="admonition-title">Login as user zabbix-srv</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>psql<span class="w"> </span>-d<span class="w"> </span>zabbix<span class="w"> </span>-U<span class="w"> </span>zabbix-srv
 </span></code></pre></div>
 </div>
-<p>After logging in, run the following SQL query to confirm that both the <code>session_user</code>
-and <code>current_user</code> are set to <code>zabbix-srv</code>:</p>
+<p>After logging in, run the following SQL query to confirm that both the
+<code>session_user</code> and <code>current_user</code> are set to <code>zabbix-srv</code>:</p>
 <div class="admonition info">
 <div class="language-psql highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">session_user</span><span class="p">,</span><span class="w"> </span><span class="k">current_user</span><span class="p">;</span>
 </span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="go"> session_user | current_user</span>
@@ -2592,17 +2600,18 @@ and <code>current_user</code> are set to <code>zabbix-srv</code>:</p>
 </span><span id="__span-34-5"><a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a><span class="go">(1 row)</span>
 </span></code></pre></div>
 </div>
-<p>If the output matches, you are successfully connected to the database with the correct
-user.</p>
-<p>PostgreSQL differs significantly from MySQL or MariaDB in several aspects,
-and one of the key features that sets it apart is its use of schemas. Unlike MySQL,
-where databases are more standalone, PostgreSQL's schema system provides a structured,
-multi-user environment within a single database.</p>
+<p>If the output matches, you are successfully connected to the database with the
+correct user.</p>
+<p>PostgreSQL differs significantly from MySQL or MariaDB in several aspects, and
+one of the key features that sets it apart is its use of schemas. Unlike MySQL,
+where databases are more standalone, PostgreSQL's schema system provides a
+structured, multi-user environment within a single database.</p>
 <p>Schemas act as logical containers within a database, enabling multiple users or
-applications to access and manage data independently without conflicts. This feature
-is especially valuable in environments where several users or applications need to
-interact with the same database server concurrently. Each user or application can have
-its own schema, preventing accidental interference with each other's data.</p>
+applications to access and manage data independently without conflicts. This
+feature is especially valuable in environments where several users or
+applications need to interact with the same database server concurrently. Each
+user or application can have its own schema, preventing accidental interference
+with each other's data.</p>
 <details class="note" open="open">
 <summary>Note</summary>
 <p>PostgreSQL comes with a default schema, typically called <code>public</code>, but in
@@ -2612,8 +2621,8 @@ database objects, especially in complex or multi-user environments.</p>
 this URI, <a href="https://hevodata.com/learn/postgresql-schema/#schema">https://hevodata.com/learn/postgresql-schema/#schema</a>
 which explains the benefits and use cases for schemas in PostgreSQL.</p>
 </details>
-<p>To finalize the initial database setup for Zabbix, we need to configure schema permissions
-for both the <code>zabbix-srv</code> and <code>zabbix-web</code> users.</p>
+<p>To finalize the initial database setup for Zabbix, we need to configure schema
+permissions for both the <code>zabbix-srv</code> and <code>zabbix-web</code> users.</p>
 <p>First, we create a custom schema named <code>zabbix_server</code> and assign ownership to
 the <code>zabbix-srv</code> user:</p>
 <div class="admonition info">
@@ -2621,8 +2630,8 @@ the <code>zabbix-srv</code> user:</p>
 <div class="language-psql highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="k">CREATE</span><span class="w"> </span><span class="k">SCHEMA</span><span class="w"> </span><span class="n">zabbix_server</span><span class="w"> </span><span class="k">AUTHORIZATION</span><span class="w"> </span><span class="s s-Name">&quot;zabbix-srv&quot;</span><span class="p">;</span>
 </span></code></pre></div>
 </div>
-<p>Next, we set the <code>search path</code> to <code>zabbix_server</code> schema so that it's the default
-for the current session:</p>
+<p>Next, we set the <code>search path</code> to <code>zabbix_server</code> schema so that it's the
+default for the current session:</p>
 <div class="admonition info">
 <p class="admonition-title">Set search path</p>
 <div class="language-psql highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">search_path</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s s-Name">&quot;zabbix_server&quot;</span><span class="p">;</span>
@@ -2651,9 +2660,10 @@ database, the <code>search_path</code> is automatically set to <code>zabbix_serv
 </span><span id="__span-38-7"><a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a><span class="go">(2 rows)</span>
 </span></code></pre></div>
 </div>
-<p>At this point, the <code>zabbix-srv</code> user has full access to the schema, but the <code>zabbix-web</code>
-user still needs appropriate permissions to connect and interact with the database.
-First, we grant <code>USAGE</code> privileges on the schema to allow <code>zabbix-web</code> to connect:</p>
+<p>At this point, the <code>zabbix-srv</code> user has full access to the schema, but the
+<code>zabbix-web</code> user still needs appropriate permissions to connect and interact
+with the database. First, we grant <code>USAGE</code> privileges on the schema to allow
+<code>zabbix-web</code> to connect:</p>
 <div class="admonition info">
 <p class="admonition-title">Grant access to schema for user zabbix-web</p>
 <div class="language-psql highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="n">USAGE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">SCHEMA</span><span class="w"> </span><span class="n">zabbix_server</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s s-Name">&quot;zabbix-web&quot;</span><span class="p">;</span>
@@ -2667,12 +2677,13 @@ while maintaining security by limiting permissions to essential operations.</p>
 <div class="language-psql highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\q</span>
 </span></code></pre></div>
 </div>
-<p>At this point, your Zabbix database is ready, but before it can actually be used by
-Zabbix, we still need to populate the database with the necessary tables and initial data,
-but that will be covered in the next section when we install the Zabbix server.</p>
-<p>If you intent to install Zabbix server on a different machine than the one hosting
-the database you will need to open the host firewall to allow incoming connections
-to the database server. By default, PostgreSQL listens on port 5432.</p>
+<p>At this point, your Zabbix database is ready, but before it can actually be used
+by Zabbix, we still need to populate the database with the necessary tables and
+initial data, but that will be covered in the next section when we install the
+Zabbix server.</p>
+<p>If you intent to install Zabbix server on a different machine than the one
+hosting the database you will need to open the host firewall to allow incoming
+connections to the database server. By default, PostgreSQL listens on port 5432.</p>
 <div class="admonition info">
 <p class="admonition-title">Add firewall rules</p>
 <p>Red Hat / SUSE
@@ -2685,12 +2696,12 @@ to the database server. By default, PostgreSQL listens on port 5432.</p>
 </div>
 <hr />
 <h2 id="populate-the-zabbix-database">Populate the Zabbix database</h2>
-<p>During the installation of the database software earlier, we created the 
-necessary users, database and schema for Zabbix, however, Zabbix expects certain tables,
-schemas, images, and other elements to be present in the database.
-To set up the database correctly, we need to populate it with the required schema.</p>
-<p>First we need to install the Zabbix SQL scripts that contain the required
-import scripts for the database.</p>
+<p>During the installation of the database software earlier, we created the
+necessary users, database and schema for Zabbix, however, Zabbix expects certain
+tables, schemas, images, and other elements to be present in the database. To
+set up the database correctly, we need to populate it with the required schema.</p>
+<p>First we need to install the Zabbix SQL scripts that contain the required import
+scripts for the database.</p>
 <div class="admonition info">
 <p class="admonition-title">Install SQL scripts</p>
 <p>Red Hat
@@ -2703,7 +2714,7 @@ import scripts for the database.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>zabbix-sql-scripts
 </span></code></pre></div></p>
 </div>
-<p>Next you need to prepare the database schema: unzip the necessary schema files 
+<p>Next you need to prepare the database schema: unzip the necessary schema files
 by running the following command:</p>
 <div class="admonition info">
 <p class="admonition-title">Unzip the DB patch</p>
@@ -2767,11 +2778,11 @@ the operation.</p>
 </span></code></pre></div>
 </div>
 <p>Once the script completes and you return to the <code>zabbix=&gt;</code> prompt, the database
-should be successfully populated with all the required tables, schemas,
-images, and other elements needed for Zabbix.</p>
-<p>However, <code>zabbix-web</code> still cannot perform any operations on the tables or sequences.
-To allow basic data interaction without giving too many privileges, grant the
-following permissions:</p>
+should be successfully populated with all the required tables, schemas, images,
+and other elements needed for Zabbix.</p>
+<p>However, <code>zabbix-web</code> still cannot perform any operations on the tables or
+sequences. To allow basic data interaction without giving too many privileges,
+grant the following permissions:</p>
 <ul>
 <li>For tables: SELECT, INSERT, UPDATE, and DELETE.</li>
 <li>For sequences: SELECT and UPDATE.</li>
@@ -2807,17 +2818,19 @@ setting the search path, you ensure that the SQL script will create tables
 and other objects in the intended schema.</p>
 </details>
 <p>To ensure that the Zabbix tables were created successfully and have the correct
-permissions, you can verify the table list and their ownership using the <code>psql</code> command:</p>
+permissions, you can verify the table list and their ownership using the <code>psql</code>
+command:</p>
 <ul>
-<li>List the Tables: Use the following command to list all tables in the <code>zabbix_server</code> schema:</li>
+<li>List the Tables: Use the following command to list all tables in the
+  <code>zabbix_server</code> schema:</li>
 </ul>
 <div class="admonition info">
 <p class="admonition-title">List tables</p>
 <div class="language-psql highlight"><pre><span></span><code><span id="__span-54-1"><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="gp">zabbix=#</span><span class="w"> </span><span class="kp">\dt</span>
 </span></code></pre></div>
 </div>
-<p>You should see a list of tables with their schema, name, type, and owner.
-For example:</p>
+<p>You should see a list of tables with their schema, name, type, and owner. For
+example:</p>
 <details class="example" open="open">
 <summary>List table with relations</summary>
 <div class="language-psql highlight"><pre><span></span><code><span id="__span-55-1"><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\dt</span>
@@ -2868,19 +2881,20 @@ For example:</p>
 </details>
 <p>This will display the access privileges for all tables in the <code>zabbix_server</code>
 schema. Ensure that <code>zabbix-srv</code> has the required privileges.</p>
-<p>If everything looks correct, your tables are properly created and the <code>zabbix-srv</code>
-user has the appropriate ownership and permissions. If you need to adjust any
-permissions, you can do so using the GRANT commands as needed.</p>
+<p>If everything looks correct, your tables are properly created and the
+<code>zabbix-srv</code> user has the appropriate ownership and permissions. If you need to
+adjust any permissions, you can do so using the GRANT commands as needed.</p>
 <p>This concludes our installation of the PostgreSQL database.</p>
 <hr />
 <h2 id="conclusion">Conclusion</h2>
-<p>With the installation and configuration of PostgreSQL as the database backend for
-Zabbix complete, you now have a powerful and efficient database system ready for
-your monitoring needs. We've covered the installation of PostgreSQL from both
-vendor-provided packages and official repositories, securing the database, creating
-the necessary Zabbix database and users, and populating the database with the
-required schema and initial data.</p>
-<p>Your Zabbix environment is now ready for the next stages of setup and configuration.</p>
+<p>With the installation and configuration of PostgreSQL as the database backend
+for Zabbix complete, you now have a powerful and efficient database system ready
+for your monitoring needs. We've covered the installation of PostgreSQL from
+both vendor-provided packages and official repositories, securing the database,
+creating the necessary Zabbix database and users, and populating the database
+with the required schema and initial data.</p>
+<p>Your Zabbix environment is now ready for the next stages of setup and
+configuration.</p>
 <hr />
 <h2 id="questions">Questions</h2>
 <ol>

@@ -127,17 +127,12 @@ the appropriate database backend and packages for your Zabbix installation.
     
     
     
-        <div class="gmc-announce">
-            Esta página ainda não foi traduzida para o português. Portanto, está sendo exibida em inglês.
-            <a href="/gmc/pt_BR/contribute/#translations">Ajude-nos a traduzir!</a>
-        </div>
-    
     
     <script>
         const gGMC_SELECT_VERSION = "Selecione a versão";
         const gGMC_TRANSLATE_CTA = "Ajude-nos a traduzir!";
         const gGMC_PAGE_LOCALE = "pt_BR";
-        const gGMC_FILE_LOCALE = "en";
+        const gGMC_FILE_LOCALE = "pt_BR";
         const gGMC_TRANSLATE_SVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.5 12c0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2 0 .37-.03.73-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10C6.47 2 2 6.5 2 12s4.5 10 10 10c.59 0 1.16-.06 1.72-.16A5.9 5.9 0 0 1 13 19c0-.29.03-.57.07-.85-.32.63-.67 1.24-1.07 1.81-.83-1.2-1.5-2.53-1.91-3.96h3.72a5.95 5.95 0 0 1 2.59-2.4c.06-.53.1-1.06.1-1.6M12 4.03c.83 1.2 1.5 2.54 1.91 3.97h-3.82c.41-1.43 1.08-2.77 1.91-3.97M4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2zm.82 2H8c.35 1.25.8 2.45 1.4 3.56A8 8 0 0 1 5.08 16M8 8H5.08A7.92 7.92 0 0 1 9.4 4.44C8.8 5.55 8.35 6.75 8 8m6.34 6H9.66c-.1-.66-.16-1.32-.16-2s.06-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2m.25-9.56c1.84.63 3.37 1.9 4.33 3.56h-2.95a15.7 15.7 0 0 0-1.38-3.56M23 18v2h-3v3h-2v-3h-3v-2h3v-3h2v3z"/></svg>';
     </script>
     
@@ -2048,7 +2043,7 @@ the appropriate database backend and packages for your Zabbix installation.
     
       
     
-    <a href="https://github.com/penmasters/zabbix-book/raw/main/docs/ch01-zabbix-components/database.md" title="Exibir fonte desta página" class="md-content__button md-icon">
+    <a href="https://github.com/penmasters/zabbix-book/raw/main/docs/pt_BR/ch01-zabbix-components/database.md" title="Exibir fonte desta página" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
@@ -2058,7 +2053,7 @@ the appropriate database backend and packages for your Zabbix installation.
 <h1 id="database-choices">Database choices</h1>
 <h2 id="choosing-a-database-backend-for-zabbix">Choosing a Database Backend for Zabbix</h2>
 <p>A critical decision when managing Zabbix installations is selecting the database
-backend. Zabbix supports several database options: MySQL/Percona, MariaDB, 
+backend. Zabbix supports several database options: MySQL/Percona, MariaDB,
 PostgreSQL (including TimescaleDB), and Oracle (up to Zabbix 7.0).</p>
 <details class="warning" open="open">
 <summary>Oracle Database deprecation</summary>
@@ -2069,17 +2064,17 @@ as MariaDB before upgrading to a later Zabbix release. This migration is a
 mandatory step to ensure continued functionality and compatibility with future
 Zabbix versions.</p>
 </details>
-<p>All supported databases perform similarly under typical Zabbix workloads, and 
-Zabbix treats them equally in terms of functionality. As such, the choice 
-primarily depends on your or your team’s familiarity with a particular database system. 
-One notable exception is TimescaleDB, a PostgreSQL extension optimized for 
-time-series data. This makes it especially well-suited for monitoring applications 
-like Zabbix, which handle large volumes of timestamped data.</p>
+<p>All supported databases perform similarly under typical Zabbix workloads, and
+Zabbix treats them equally in terms of functionality. As such, the choice
+primarily depends on your or your team’s familiarity with a particular database
+system. One notable exception is TimescaleDB, a PostgreSQL extension optimized
+for time-series data. This makes it especially well-suited for monitoring
+applications like Zabbix, which handle large volumes of timestamped data.</p>
 <p>In large-scale environments with high-frequency data collection, TimescaleDB can
 deliver significant performance benefits, including improved query speeds and
 built-in compression to reduce storage requirements. However, these advantages
-come with added complexity during installation and a few restrictions on historical
-data retention.</p>
+come with added complexity during installation and a few restrictions on
+historical data retention.</p>
 <details class="tip" open="open">
 <summary>TimescaleDB installation</summary>
 <p>Given its advanced nature, TimescaleDB is not essential for most Zabbix users.
@@ -2090,17 +2085,17 @@ for detailed guidance after installing PostgreSQL.</p>
 <hr />
 <h2 id="choosing-the-source-for-database-installation">Choosing the Source for Database Installation</h2>
 <p>In this chapter we will focus on installing MariaDB and PostgreSQL, as they are
-the most commonly used databases with Zabbix. For MySQL or Percona installations,
-except for the package installation commands, the steps are very similar to MariaDB.</p>
-<p>When installing MariaDB or PostgreSQL you must determine the source 
-from which you will want to install the database server. Two primary options are 
-available:</p>
+the most commonly used databases with Zabbix. For MySQL or Percona
+installations, except for the package installation commands, the steps are very
+similar to MariaDB.</p>
+<p>When installing MariaDB or PostgreSQL you must determine the source from which
+you will want to install the database server. Two primary options are available:</p>
 <ol>
 <li><strong>Vendor-Provided Packages</strong></li>
 </ol>
 <dl>
 <dd>
-<p>These are included in the software repositories of most Linux distributions 
+<p>These are included in the software repositories of most Linux distributions
 and are maintained by the distribution vendor.</p>
 <p><strong>Advantages:</strong></p>
 <ul>
@@ -2155,17 +2150,17 @@ by your Zabbix version to avoid potential integration issues.
 Check the <a href="https://www.zabbix.com/documentation/current/en/manual/installation/requirements#required-software">Zabbix documentation</a>
 for the latest supported versions.</p>
 </details>
-<p>Before installing the database software, ensure that the server
-meets the configuration requirements and is prepared as outlined in the previous 
-chapter: <a href="../../ch00-getting-started/Requirements/"><em>Getting started</em></a>.</p>
+<p>Before installing the database software, ensure that the server meets the
+configuration requirements and is prepared as outlined in the previous chapter:
+<a href="../../ch00-getting-started/Requirements/"><em>Getting started</em></a>.</p>
 <hr />
 <h2 id="conclusion">Conclusion</h2>
 <p>We have discussed the various database backends supported by Zabbix. We've also
 examined the advantages and disadvantages of using vendor-provided packages
 versus official repositories for installing MariaDB and PostgreSQL.</p>
-<p>Armed with this knowledge, you are now ready to proceed with the installation 
-of your chosen database backend. In the following chapters, we will guide you 
-through the installation process for MariaDB or PostgreSQL, ensuring that your 
+<p>Armed with this knowledge, you are now ready to proceed with the installation of
+your chosen database backend. In the following chapters, we will guide you
+through the installation process for MariaDB or PostgreSQL, ensuring that your
 Zabbix instance is equipped with a robust and efficient database system.</p>
 <p>Now that you have a clear understanding of the database options available, let's
 move on to the installation of your preferred database backend.</p>

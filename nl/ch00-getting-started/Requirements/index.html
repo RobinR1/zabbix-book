@@ -2266,7 +2266,7 @@ beveiligingsbeleid toe voor elke interface.</dd>
 <p>Om alles samen te voegen en een zone toe te voegen voor, in dit voorbeeld,
 PostgreSQL zou het er als volgt uitzien:</p>
 <div class="admonition example">
-<p class="admonition-title">Firewalld with zone config for PostgreSQL database access</p>
+<p class="admonition-title">Firewalld met zoneconfiguratie voor PostgreSQL databasetoegang</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>firewall-cmd<span class="w"> </span>--new-zone<span class="o">=</span>db_zone<span class="w"> </span>--permanent
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>firewall-cmd<span class="w"> </span>--zone<span class="o">=</span>db_zone<span class="w"> </span>--add-service<span class="o">=</span>postgresql<span class="w"> </span>--permanent
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>firewall-cmd<span class="w"> </span>--zone<span class="o">=</span>db_zone<span class="w"> </span>--add-source<span class="o">=</span>xxx.xxx.xxx.xxx/32<span class="w"> </span>--permanent
@@ -2275,8 +2275,8 @@ PostgreSQL zou het er als volgt uitzien:</p>
 </div>
 <p>Waarbij het <code>bron IP</code> het enige adres is dat een verbinding met de database tot
 stand mag brengen.</p>
-<p>If you wish to use zones when using firewalld, ensure to adapt the instructions
-in the following chapters accordingly.</p>
+<p>Als je zones wilt gebruiken wanneer je firewalld gebruikt, zorg er dan voor dat
+je de instructies in de volgende hoofdstukken dienovereenkomstig aanpast.</p>
 <hr />
 <h3 id="tijdserver">Tijdserver</h3>
 <p>Een andere cruciale stap is het configureren van de tijdserver en het
@@ -2319,7 +2319,7 @@ more accurate time synchronization. If your OS does not support
 juiste tijdzone ingesteld is. U kan uw huidige tijdsconfiguratie bekijken met
 het commando <code>timedatectl</code>:</p>
 <div class="admonition example">
-<p class="admonition-title">Check the time config</p>
+<p class="admonition-title">Controleer de tijdconfiguratie</p>
 <div class="language-shell-session highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="gp">localhost:~ # </span>timedatectl
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="go">               Local time: Thu 2023-11-16 15:09:14 UTC</span>
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="go">           Universal time: Thu 2023-11-16 15:09:14 UTC</span>
@@ -2334,14 +2334,14 @@ het commando <code>timedatectl</code>:</p>
 stappen). Om de juiste tijdzone in te stellen, kunt u eerst alle beschikbare
 tijdzones oplijsten met het volgende commando:</p>
 <div class="admonition info">
-<p class="admonition-title">List the timezones</p>
+<p class="admonition-title">lijst de tijdzones</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>timedatectl<span class="w"> </span>list-timezones
 </span></code></pre></div>
 </div>
 <p>Deze opdracht toont een lijst met beschikbare tijdzones, zodat je de tijdzone
 kunt selecteren die het dichtst bij je locatie ligt. Bijvoorbeeld:</p>
 <div class="admonition example">
-<p class="admonition-title">List of all the timezones available</p>
+<p class="admonition-title">Lijst van alle beschikbare tijdzones</p>
 <div class="language-shell-session highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="gp">localhost:~ # </span>timedatectl<span class="w"> </span>list-timezones
 </span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="go">Africa/Abidjan</span>
 </span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="go">Africa/Accra</span>
@@ -2362,7 +2362,7 @@ volgende commando:</p>
 <p>Gebruik het commando <code>timedatectl</code> opnieuw om te controleren of de tijdzone
 juist is ingesteld:</p>
 <div class="admonition example">
-<p class="admonition-title">Check the time and zone</p>
+<p class="admonition-title">Controleer de tijd en zone</p>
 <div class="language-shell-session highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="gp">localhost:~ # </span>timedatectl
 </span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="go">               Local time: Thu 2023-11-16 16:13:35 CET</span>
 </span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="go">           Universal time: Thu 2023-11-16 15:13:35 UTC</span>
@@ -2392,7 +2392,7 @@ het volgende commando uitvoeren:</p>
 </div>
 <p>De uitvoer moet lijken op:</p>
 <div class="admonition example">
-<p class="admonition-title">Verify your chrony output</p>
+<p class="admonition-title">Controleer uw chrony-uitvoer</p>
 <div class="language-shell-session highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="gp">localhost:~ # </span>chronyc
 </span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="go">chrony version 4.2</span>
 </span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="go">Copyright (C) 1997-2003, 2007, 2009-2021 Richard P. Curnow and others</span>
@@ -2403,11 +2403,11 @@ het volgende commando uitvoeren:</p>
 </span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="go">chronyc&gt;</span>
 </span></code></pre></div>
 </div>
-<p>Once inside the Chrony prompt, type the <code>sources</code> command to check the used time
-sources:</p>
+<p>Typ op de Chrony prompt de opdracht <code>sources</code> om de gebruikte tijdbronnen te
+controleren:</p>
 <p>Voorbeelduitvoer:</p>
 <div class="admonition example">
-<p class="admonition-title">Check your time server sources</p>
+<p class="admonition-title">Controleer uw tijdserver bronnen</p>
 <div class="language-shell-session highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="go">chronyc&gt; sources</span>
 </span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="go">MS Name/IP address         Stratum Poll Reach LastRx Last sample</span>
 </span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="go">===============================================================================</span>
@@ -2423,9 +2423,9 @@ indien beschikbaar, naar een speciale bedrijfstijdserver. U kunt lokale
 NTP-servers hier vinden: <a href="https://www.ntppool.org/">www.ntppool.org</a>.</p>
 <hr />
 <h4 id="tijdservers-bijwerken">Tijdservers bijwerken</h4>
-<p>To update the time servers, modify the Chrony configuration file:</p>
+<p>Wijzig het Chrony configuratiebestand om de tijdservers bij te werken:</p>
 <div class="admonition info">
-<p class="admonition-title">Edit chrony config file</p>
+<p class="admonition-title">Bewerk chrony config bestand</p>
 <p>Red Hat
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>vi<span class="w"> </span>/etc/chrony.conf
 </span></code></pre></div></p>
@@ -2443,15 +2443,15 @@ to avoid conflicts.</p>
 <p>Replace the existing NTP server pool with one closer to your location.</p>
 <p>Voorbeeld van de huidige configuratie:</p>
 <div class="admonition example">
-<p class="admonition-title">Example ntp pool config</p>
+<p class="admonition-title">Voorbeeld ntp pool configuratie</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a># Use public servers from the pool.ntp.org project.
 </span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a># Please consider joining the pool (http://www.pool.ntp.org/join.html).
 </span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>pool 2.centos.pool.ntp.org iburst
 </span></code></pre></div>
 </div>
-<p>Change the pools you want to a local time server:</p>
+<p>Wijzig de gewenste pools naar een lokale tijdserver:</p>
 <div class="admonition info">
-<p class="admonition-title">Change ntp pool config</p>
+<p class="admonition-title">ntp-poolconfiguratie wijzigen</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a># Use public servers from the pool.ntp.org project.
 </span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a># Please consider joining the pool (http://www.pool.ntp.org/join.html).
 </span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>pool be.pool.ntp.org iburst
@@ -2460,7 +2460,7 @@ to avoid conflicts.</p>
 <p>Herstart de Chrony service na deze wijziging om de nieuwe configuratie toe te
 passen:</p>
 <div class="admonition info">
-<p class="admonition-title">Restart the chrony service</p>
+<p class="admonition-title">De chrony service opnieuw starten</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>systemctl<span class="w"> </span>restart<span class="w"> </span>chronyd
 </span></code></pre></div>
 </div>
@@ -2474,7 +2474,7 @@ servers in gebruik zijn:</p>
 </div>
 <p>Voorbeeld van verwachte uitvoer met lokale servers:</p>
 <div class="admonition example">
-<p class="admonition-title">Example output</p>
+<p class="admonition-title">Voorbeeld uitvoer</p>
 <div class="language-shell-session highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="go">chronyc&gt; sources</span>
 </span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="go">MS Name/IP address         Stratum Poll Reach LastRx Last sample</span>
 </span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="go">===============================================================================</span>
@@ -2486,12 +2486,13 @@ servers in gebruik zijn:</p>
 </div>
 <p>Dit bevestigt dat het systeem nu lokale tijdservers gebruikt.</p>
 <h2 id="conclusie">Conclusie</h2>
-<p>As we have seen, before even considering the Zabbix packages, attention must be
-paid to the environment in which it will reside. A properly configured and
-up-to-date operating system, an open path through the firewall, and accurate
-timekeeping are not mere suggestions, but essential building blocks. Having laid
-this groundwork, we can now proceed with confidence to the Zabbix installation,
-knowing that the underlying system is prepared for the task.</p>
+<p>Zoals we gezien hebben, moet er, voordat er over de Zabbix pakketten wordt
+nagedacht, aandacht worden besteed aan de omgeving waarin het zich zal bevinden.
+Een goed geconfigureerd besturingssysteem, een open pad door de firewall en
+nauwkeurige tijdregistratie zijn niet slechts suggesties, maar essentiële
+bouwstenen. Nu we deze basis gelegd hebben, kunnen we met vertrouwen verder gaan
+met de installatie van Zabbix, wetende dat het onderliggende systeem voorbereid
+is op de taak.</p>
 <h2 id="vragen">Vragen</h2>
 <ul>
 <li>Waarom denk je dat nauwkeurige tijdsynchronisatie zo cruciaal is voor een

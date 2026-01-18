@@ -632,7 +632,7 @@ for VIP failover—ensuring zero-downtime monitoring.
   <span class="md-ellipsis">
     
   
-    Zabbix architecture
+    Zabbix architectuur
   
 
     
@@ -717,7 +717,7 @@ for VIP failover—ensuring zero-downtime monitoring.
   <span class="md-ellipsis">
     
   
-    Installing the Zabbix server
+    De Zabbix-server installeren
   
 
     
@@ -745,7 +745,7 @@ for VIP failover—ensuring zero-downtime monitoring.
   <span class="md-ellipsis">
     
   
-    Installing the frontend
+    Frontend installeren
   
 
     
@@ -898,15 +898,15 @@ for VIP failover—ensuring zero-downtime monitoring.
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-the-frontend" class="md-nav__link">
+  <a href="#frontend-installeren" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installing the frontend
+        Frontend installeren
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Installing the frontend">
+    <nav class="md-nav" aria-label="Frontend installeren">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1956,15 +1956,15 @@ for VIP failover—ensuring zero-downtime monitoring.
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-the-frontend" class="md-nav__link">
+  <a href="#frontend-installeren" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installing the frontend
+        Frontend installeren
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Installing the frontend">
+    <nav class="md-nav" aria-label="Frontend installeren">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2194,7 +2194,7 @@ covered here.</p>
 </details>
 <hr />
 <h2 id="installing-the-database">Installing the Database</h2>
-<p>Refer to the <a href="../basic-installation/"><em>Basic Installation</em></a> chapter for detailed
+<p>Refer to the <a href="../database/"><em>Zabbix components: Database</em></a> chapter for detailed
 instructions on setting up the database. That chapter provides step-by-step
 guidance on installing either a PostgreSQL or MariaDB database on a dedicated
 node running Ubuntu, SUSE or Rocky Linux. The same installation steps apply when
@@ -2206,9 +2206,9 @@ together, providing high availability. While the process is similar to setting
 up a single Zabbix server, there are additional configuration steps required to
 enable HA (High Availability).</p>
 <p>Start by preparing the systems for- and installing Zabbix server on all systems
-by following the steps in the <em>Preparing the server for Zabbix</em> and
-<em>Installation and configuration of Zabbix server</em> sections of the <a href="../basic-installation/#preparing-the-server-for-zabbix"><em>Basic
-Installation</em></a> chapter.</p>
+by following the steps in the <a href="../../ch00-getting-started/preparation/"><em>Preparing the server for
+Zabbix</em></a> and <a href="../zabbix-server/"><em>Installing Zabbix server</em></a>
+sections of the <em>Zabbix components</em> chapter.</p>
 <p>Do note that:</p>
 <ul>
 <li>you need to skip the database population step on all but the first Zabbix
@@ -2308,7 +2308,7 @@ are in place. This setup ensures uninterrupted monitoring, even in the event of
 a server failure, by allowing automatic role transitions based on the HA
 configuration.</p>
 <hr />
-<h2 id="installing-the-frontend">Installing the frontend</h2>
+<h2 id="frontend-installeren">Frontend installeren</h2>
 <p>Before proceeding with the installation and configuration of the web server, it
 is essential to install some sort of clustering software or use a load-balancer
 in front of the Zabbix frontends to be able to have a shared Virtual IP (VIP).</p>
@@ -2453,8 +2453,8 @@ frontend.</p>
 <hr />
 <h3 id="install-and-configure-the-frontend">Install and configure the frontend</h3>
 <p>Install the Zabbix frontend on all Zabbix servers, part of the cluster by
-following the steps outlined in the <em>Installing the frontend</em> section of the
-<a href="../basic-installation/#installing-the-frontend"><em>Basic Installation</em></a> chapter.</p>
+following the steps outlined in the <a href="../zabbix-frontend/"><em>Installing the
+frontend</em></a> section.</p>
 <details class="warning" open="open">
 <summary>Warning</summary>
 <p>Ubuntu users need to use the VIP in the setup of Nginx, together with the local

@@ -1183,6 +1183,39 @@ Useful for API related JSON and XML processing. Useful for SNMP Walk BULK collec
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#hello-world" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hello World
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependent-items-from-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependent items from json
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependent-items-and-lld" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependent items and LLD
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#conclusion" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2181,6 +2214,39 @@ Useful for API related JSON and XML processing. Useful for SNMP Walk BULK collec
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#hello-world" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hello World
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependent-items-from-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependent items from json
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependent-items-and-lld" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependent items and LLD
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#conclusion" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2314,10 +2380,175 @@ Useful for API related JSON and XML processing. Useful for SNMP Walk BULK collec
 
 
 <h1 id="dependent-items">Dependent items</h1>
-<p>It will often times happen that More and more do you see API's being exposed as the main or often times even only way to collect data. </p>
+<p>There are cases when you have large chunks of data which are rich of monitoring
+metrics. You can of course slice them with the help of scripts and so extract
+needed valuable pieces to be stored individually, as separate items. However,
+there is a native way in Zabbix which can do the very same thing without a need
+to involve any scripting. And that is something called "Dependent items".</p>
+<p>Think of "Dependent items" as small fragments of your large dataset. Of course,
+nothing limits or tells you that your dataset must be large. It can also be
+small, but the smaller - the less sense the dependent items would make. When
+having something large to be collected, you have to collect that data only once
+and have the splitting being done by preprocessing.</p>
+<p>Another use case when you might benefit from dependent items is when data
+collection has "high cost", in terms of time retrieving it or when network
+traffic matters. For example, some remote resource which you want to collect has
+slow network or you want to save each and every byte sent over the network, but
+there are multiple things in that resource which you want to monitor. Without
+dependent items approach you would need to retrieve that resource as many times
+as you have unique items, or store it once and then slice it on your own. But
+with dependent items, you need to collect such data only once and transform it
+into individual metrics just by employing native Zabbix features.</p>
+<p>So basically, the beauty of dependent items lies in the data collection
+efficiency.</p>
+<p>There are three main concepts involved when talking about "Dependent items":</p>
+<ul>
+<li>master item</li>
+<li>dependent item</li>
+<li>preprocessing</li>
+</ul>
+<p>Master item is just a regular Zabbix item. It can be any type of data collection
+behind it - say it can be "Zabbix agent", "Zabbix trapper", "HTTP agent" item
+or anything else.</p>
+<p>Once new value is collected for the master item, all of its dependent items
+are also updated. It has to be specified in dependent item's configuration,
+which item is the master item for it. One master item can have unlimited number
+of dependent items.</p>
+<details class="info" open="open">
+<summary>Info</summary>
+<p>Since dependent item gets updated on master item's value update, it does not
+have its own update interval</p>
+</details>
+<p>To be able to extract just the needed part of data from the master item, you
+will for sure want to apply some preprocessing. Preprocessing loves structured
+data. You should in all cases seek for structured data as your master item's
+content (e.g. json, csv, etc). This way, you will be able to extract needed
+data easier. When dealing with preprocessing, apply the most suitable method
+for particular data source format (e.g. use JSONPath for json) and understand
+your limits (e.g. regex is Perl flavor and JavaScript is Duktape underneath).</p>
+<h2 id="hello-world">Hello World</h2>
+<p>Let's go through an example, the most basic one, so that you would better
+understand how the dependent items get updated.</p>
+<p>First of all, we will have a simple bash script, which will create three lines
+of structured data.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nv">master_result</span><span class="o">=</span>/tmp/master.txt
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">for</span><span class="w"> </span>x<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span>a..c<span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">x</span><span class="si">}</span><span class="s2">: </span><span class="k">$((</span><span class="nv">RANDOM</span><span class="o">%</span><span class="m">100</span><span class="k">))</span><span class="s2">&quot;</span><span class="w"> </span>&gt;&gt;<span class="si">${</span><span class="nv">master_result</span><span class="si">}</span>.tmp
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">done</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>mv<span class="w"> </span>-f<span class="w"> </span><span class="si">${</span><span class="nv">master_result</span><span class="si">}</span>.tmp<span class="w"> </span><span class="si">${</span><span class="nv">master_result</span><span class="si">}</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
+</span></code></pre></div>
+<p>This script is added to cron and is being run once a minute. It is kind of
+obvious what this script does - it outputs random number and has a prefix of
+one of the three letters: "a", "b" or "c":</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>binary@linux:~$<span class="w"> </span>cat<span class="w"> </span>/tmp/master.txt
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>a:<span class="w"> </span><span class="m">54</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>b:<span class="w"> </span><span class="m">98</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>c:<span class="w"> </span><span class="m">21</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>binary@linux:~$
+</span></code></pre></div>
+<p>Now this data file becomes our "master item". It will be collected by Zabbix
+native item <code>vfs.file.contents</code>, like:</p>
+<p><img alt="Dependent items - first master item" src="ch04.xx-dependent-items-hello-world-master.png" /></p>
+<details class="info" open="open">
+<summary>Info</summary>
+<p>Master item on its own has a little purpose of being stored, especially when
+it is huge. Its only purpose could be debugging, thus once operating 
+normally, it should not be stored and that will not affect dependent items
+in any way</p>
+</details>
+<p>And then we can set our dependent items:</p>
+<p><img alt="Dependent items - first dependent item" src="ch04.xx-dependent-items-hello-world-dependent.png" /></p>
+<p>This dependent item will have the following preprocessing - it will extract
+number from line starting with "a":</p>
+<p><img alt="Dependent items - first dependent item preprocessing" src="ch04.xx-dependent-items-hello-world-dependent-preprocessing.png" /></p>
+<p>We will then clone the first item in same fashion and get a full set of items:</p>
+<p><img alt="Dependent items - first dependent items all" src="ch04.xx-dependent-items-hello-world-all.png" /></p>
+<p>Now data is being collected once and we have 3 separate numeric items, which we
+can use depending on our needs - draw some graphs, have some triggers on top, etc.</p>
+<p><img alt="Dependent items - first dependent items results" src="ch04.xx-dependent-items-hello-world-result.png" /></p>
+<h2 id="dependent-items-from-json">Dependent items from json</h2>
+<p>Previous example had a "Regular expression" as the preprocessing step. In real
+life, you might often face json as your master item, so preprocessing would be
+different. Of course, regexp is a universal thing so it is also suitable to
+extract something from json, but there is a dedicated preprocessing type
+exactly for this purpose - <code>JSONPath</code>.</p>
+<p>So first let's modify our example script to produce json:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nv">json</span><span class="o">=</span><span class="s2">&quot;{&quot;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">for</span><span class="w"> </span>x<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span>a..c<span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="nv">json</span><span class="o">+=</span><span class="s2">&quot;\&quot;</span><span class="si">${</span><span class="nv">x</span><span class="si">}</span><span class="s2">\&quot;:\&quot;</span><span class="k">$((</span><span class="nv">RANDOM</span><span class="o">%</span><span class="m">100</span><span class="k">))</span><span class="s2">\&quot;,&quot;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">done</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="nv">json</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">json</span><span class="p">%,</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="nv">json</span><span class="o">+=</span><span class="s2">&quot;}&quot;</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">json</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>&gt;/tmp/master.json
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
+</span></code></pre></div>
+<p>Now we can have similar approach of one single master item and bunch of
+dependent items nearby. Just this time, we would have <code>JSONPath</code> as
+preprocessing step for dependent items.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>binary@linux:~$<span class="w"> </span>cat<span class="w"> </span>/tmp/master.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.&#39;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="o">{</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="s2">&quot;a&quot;</span>:<span class="w"> </span><span class="s2">&quot;94&quot;</span>,
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="s2">&quot;b&quot;</span>:<span class="w"> </span><span class="s2">&quot;41&quot;</span>,
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="s2">&quot;c&quot;</span>:<span class="w"> </span><span class="s2">&quot;78&quot;</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="o">}</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>binary@linux:~$
+</span></code></pre></div>
+<p><img alt="Dependent items - first dependent item - json" src="ch04.xx-dependent-items-hello-world-dependent-preprocessing-json.png" /></p>
+<p>Easy and smooth!</p>
+<h2 id="dependent-items-and-lld">Dependent items and LLD</h2>
+<p>Now imagine our example script produces not <code>{a..c}</code> but a full alphabet,
+<code>{a..z}</code>. We could clone dependent items one by one, but that would also
+include editing the preprocessing step regexp each time as well. If you are
+familiar with LLD, you most likely see where this goes. We will apply LLD here
+and combine it with dependent items!</p>
+<p>For LLD, we will use <code>log_discovery.sh</code>, which makes it possible to perform LLD
+from log files (thus, also, from any other text files). Source for this script
+can be found in the "Useful URLs" section. It will have item prototypes of
+"Dependent item" type and will rely on master item in same template, just
+outside of discovery.</p>
+<p><img alt="Dependent items - LLD" src="ch04.xx-dependent-items-hello-world-lld.png" /></p>
+<p>And then item prototypes would look like:</p>
+<p><img alt="Dependent items - LLD item prototype" src="ch04.xx-dependent-items-hello-world-lld-item-prototype.png" /></p>
+<p>Once LLD "magic" happens, we have all items in place:</p>
+<p><img alt="Dependent items - LLD item values" src="ch04.xx-dependent-items-hello-world-lld-item-latest-data.png" /></p>
+<p>Now by using wildcard in our dashboard "Graph" widget:</p>
+<p><img alt="Dependent items - LLD graph widget" src="ch04.xx-dependent-items-hello-world-lld-widget.png" /></p>
+<p>we are able to select all of our items at once. Thanks to LLD, we are able to
+create all of our items at once. Finally, thanks to the concept of "Dependent
+items", we are able to collect all of our data at once.</p>
+<p>This is truly beautiful once you understand it.</p>
+<p><img alt="Dependent items - LLD result" src="ch04.xx-dependent-items-hello-world-lld-result.png" /></p>
 <h2 id="conclusion">Conclusion</h2>
+<p>Dependent items concept is a great way to become more efficient in data
+collection under certain circumstances.</p>
+<p>If you have some huge structured data file or output and want to split it into
+separate monitoring entities - think no more. Dependent items are here for you.
+Same is applicable to all the other cases when you want to collect data once
+but have multiple separate metrics out of it.</p>
 <h2 id="questions">Questions</h2>
+<ul>
+<li>Does master item have to be some special type of item or it can be collected
+in any regular way?</li>
+<li>Are you limited in number of dependent items from one master item?</li>
+<li>What is the main benefit of using dependent items?</li>
+</ul>
 <h2 id="useful-urls">Useful URLs</h2>
+<ul>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/dependent_items">https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/dependent_items</a></li>
+<li><a href="https://github.com/b1nary1/zabbix/tree/main/log_discovery">https://github.com/b1nary1/zabbix/tree/main/log_discovery</a></li>
+</ul>
 
 
 

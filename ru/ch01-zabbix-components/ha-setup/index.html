@@ -2193,7 +2193,7 @@ covered here.</p>
 </details>
 <hr />
 <h2 id="installing-the-database">Installing the Database</h2>
-<p>Refer to the <a href="../basic-installation/"><em>Basic Installation</em></a> chapter for detailed
+<p>Refer to the <a href="../database/"><em>Zabbix components: Database</em></a> chapter for detailed
 instructions on setting up the database. That chapter provides step-by-step
 guidance on installing either a PostgreSQL or MariaDB database on a dedicated
 node running Ubuntu, SUSE or Rocky Linux. The same installation steps apply when
@@ -2205,9 +2205,9 @@ together, providing high availability. While the process is similar to setting
 up a single Zabbix server, there are additional configuration steps required to
 enable HA (High Availability).</p>
 <p>Start by preparing the systems for- and installing Zabbix server on all systems
-by following the steps in the <em>Preparing the server for Zabbix</em> and
-<em>Installation and configuration of Zabbix server</em> sections of the <a href="../basic-installation/#preparing-the-server-for-zabbix"><em>Basic
-Installation</em></a> chapter.</p>
+by following the steps in the <a href="../../ch00-getting-started/preparation/"><em>Preparing the server for
+Zabbix</em></a> and <a href="../zabbix-server/"><em>Installing Zabbix server</em></a>
+sections of the <em>Zabbix components</em> chapter.</p>
 <p>Do note that:</p>
 <ul>
 <li>you need to skip the database population step on all but the first Zabbix
@@ -2452,8 +2452,8 @@ frontend.</p>
 <hr />
 <h3 id="install-and-configure-the-frontend">Install and configure the frontend</h3>
 <p>Install the Zabbix frontend on all Zabbix servers, part of the cluster by
-following the steps outlined in the <em>Installing the frontend</em> section of the
-<a href="../basic-installation/#installing-the-frontend"><em>Basic Installation</em></a> chapter.</p>
+following the steps outlined in the <a href="../zabbix-frontend/"><em>Installing the
+frontend</em></a> section.</p>
 <details class="warning" open="open">
 <summary>Warning</summary>
 <p>Ubuntu users need to use the VIP in the setup of Nginx, together with the local
