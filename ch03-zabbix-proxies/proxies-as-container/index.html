@@ -891,17 +891,6 @@ environments.
 </li>
         
           <li class="md-nav__item">
-  <a href="#create-the-podman-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Create the podman setup
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#prepare-the-proxy-config" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1909,17 +1898,6 @@ environments.
 </li>
         
           <li class="md-nav__item">
-  <a href="#create-the-podman-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Create the podman setup
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#prepare-the-proxy-config" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2177,17 +2155,11 @@ a Zabbix proxy within a container, outlining configuration options and best prac
 for optimal performance and maintainability.</p>
 <hr />
 <h2 id="setting-up-containers">Setting up containers</h2>
-<p>We will begin by demonstrating how to set up containerized environments using 
-Podman. Podman is the recommended container engine on most modern distributions
-and offers several advantages over Docker.</p>
-<p>Firstly, Podman enhances security by supporting rootless containers, allowing containers
-to run under non-privileged user accounts. Secondly, it integrates seamlessly with
-SELinux, enabling robust access control and policy enforcement. Thirdly, Podman
-works natively with systemd, which facilitates container lifecycle management through
-systemd units and quadlets.</p>
-<p>For this setup, you will need a virtual machine (VM) where we will install Podman
-and deploy the Zabbix proxy container. This container will then be configured to
+<p>For this setup, you will need a virtual machine (VM) with Podman installed to
+deploy the Zabbix proxy container. This container will then be configured to
 communicate with your Zabbix server.</p>
+<p>Refer to the <a href="../../ch00-getting-started/preparation/#preparing-the-system-for-running-containers-using-podman"><em>Preparing the system for Zabbix</em></a> 
+chapter for instructions on preparing your system for running containers using Podman.</p>
 <hr />
 <h3 id="add-the-proxy-to-the-zabbix-frontend">Add the proxy to the zabbix frontend</h3>
 <p><img alt="Add the proxy" src="../proxy-containers/ch03-container-proxy-new.png" /></p>
@@ -2198,111 +2170,36 @@ In this case, only two parameters need to be configured: the proxy's hostname
 (as defined in the Zabbix frontend) and the proxy’s IP address for communication
 with the Zabbix server.</p>
 <hr />
-<h3 id="create-the-podman-setup">Create the podman setup</h3>
-<p>Next, we begin configuring Podman on the host system where the Zabbix proxy container
-will be installed and managed.</p>
-<div class="admonition info">
-<p class="admonition-title">Install podman and needed tools</p>
-<p>Red Hat
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dnf<span class="w"> </span>install<span class="w"> </span>podman<span class="w"> </span>policycoreutils-python-utils
-</span></code></pre></div></p>
-<p>SUSE
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>zypper<span class="w"> </span>install<span class="w"> </span>podman<span class="w"> </span>policycoreutils-python-utils
-</span></code></pre></div></p>
-<p>Ubuntu
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>podman
-</span></code></pre></div></p>
-</div>
-<p>Next, we will create a <code>podman</code>-user which will be running the container. You
-are free to use a different username, e.g. <code>zabbix-proxy</code> for a user that will
-be running only zabbix-proxy in a container.</p>
-<div class="admonition info">
-<p class="admonition-title">Create and init podman user</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>useradd<span class="w"> </span>--comment<span class="w"> </span><span class="s2">&quot;User for running container workloads&quot;</span><span class="w"> </span>podman
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sudo<span class="w"> </span>-i<span class="w"> </span>-u<span class="w"> </span>podman
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.local/share/containers
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.config/containers/systemd/
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nb">exit</span>
-</span></code></pre></div>
-</div>
-<p>When your system has SELinux enabled, execute the following command as <code>root</code>. </p>
-<div class="admonition info">
-<p class="admonition-title">SELinux: Set file context mapping</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>semanage<span class="w"> </span>fcontext<span class="w"> </span>-a<span class="w"> </span>-e<span class="w"> </span>/var/lib/containers<span class="w"> </span>/home/podman/.local/share/containers
-</span></code></pre></div>
-</div>
-<p>This command adds a SELinux file context mapping by creating an equivalence (-e)
-between the default container storage directory <code>/var/lib/containers</code> and the user’s
-Podman container storage path <code>/home/podman/.local/share/containers</code>. Essentially,
-it tells SELinux to treat files in the user's container storage the same way it
-treats files in the default system container storage, ensuring proper access
-permissions under SELinux policy.</p>
-<div class="admonition info">
-<p class="admonition-title">SELinux: Apply file context mapping</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>restorecon<span class="w"> </span>-R<span class="w"> </span>-v<span class="w"> </span>/home/podman/.local/share/containers
-</span></code></pre></div>
-</div>
-<p>After defining new SELinux contexts, this command recursively (<code>-R</code>) applies
-the correct SELinux security contexts to the files in the specified directory.
-The <code>-v</code> flag enables verbose output, showing what changes are made. This ensures
-that all files in the container storage directory have the correct SELinux labels
-as defined by the previous <code>semanage</code> commands.</p>
-<div class="admonition info">
-<p class="admonition-title">Enable lingering user processes</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>loginctl<span class="w"> </span>enable-linger<span class="w"> </span>podman
-</span></code></pre></div>
-</div>
-<p>This command enables “linger” for the user <code>podman</code>. Linger allows user services
-(such as containers managed by SystemD) to continue running even when the user
-is not actively logged in. This is useful for running Podman containers in the
-background and ensures that containerized proxies or other services remain active
-after logout or system reboots.</p>
-<p>From here on, all upcoming commands should be executed as user <code>podman</code> so it
-is best to now switch to user <code>podman</code> before continueing.</p>
-<div class="admonition info">
-<p class="admonition-title">Switch to user podman</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>-u<span class="w"> </span>podman<span class="w"> </span>-i
-</span></code></pre></div>
-</div>
-<p>As the final step in creating the Podman setup we need to to tell SystemD where 
-the user-specific runtime files are stored:</p>
-<div class="admonition info">
-<p class="admonition-title">Set XDG_RUNTIME_DIR environment variable</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">echo</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">XDG_RUNTIME_DIR</span><span class="o">=</span><span class="s2">&quot;/run/user/</span><span class="k">$(</span>id<span class="w"> </span>-u<span class="w"> </span>podman<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bash_profile<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="nb">source</span><span class="w"> </span>~/.bash_profile
-</span></code></pre></div>
-</div>
-<p>This line ensures that the <code>XDG_RUNTIME_DIR</code> environment variable is correctly set
-for the <code>podman</code> user and is loaded in current and next sessions. 
-This variable points to the location where user-specific runtime
-files are stored, including the systemd user session bus. Setting it is essential
-for enabling <code>systemctl --user</code> to function properly with Podman-managed containers.</p>
-<hr />
 <h3 id="prepare-the-proxy-config">Prepare the Proxy config</h3>
 <p>The next step is to create a <code>.container</code> unit file for our Quadlet setup. This
 file should be placed in the directory <code>~/.config/containers/systemd/</code>. For example,
 we will create a file named <code>zabbix-proxy-sqlite.container</code>, which will define the
 configuration for running the Zabbix proxy container under SystemD using Podman.</p>
-<p>Ensure you are still logged in as user <code>podman</code>.</p>
+<p>Ensure you are logged in as user <code>podman</code>.</p>
+<div class="admonition info">
+<p class="admonition-title">Switch to user podman</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>-u<span class="w"> </span>podman<span class="w"> </span>-i
+</span></code></pre></div>
+</div>
 <details class="example" open="open">
 <summary>Creation of a .container systemd unit file</summary>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>vi<span class="w"> </span>~/.config/containers/systemd/zabbix-proxy-sqlite.container
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>vi<span class="w"> </span>~/.config/containers/systemd/zabbix-proxy-sqlite.container
 </span></code></pre></div>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">[Unit]</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="na">Description</span><span class="o">=</span><span class="s">ZabbixProxy</span>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="k">[Container]</span>
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="na">Image</span><span class="o">=</span><span class="s">docker.io/zabbix/zabbix-proxy-sqlite3:7.0-centos-latest</span>
-</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="na">ContainerName</span><span class="o">=</span><span class="s">ZabbixProxySqlite-Quadlet</span>
-</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="na">AutoUpdate</span><span class="o">=</span><span class="s">registry</span>
-</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="na">EnvironmentFile</span><span class="o">=</span><span class="s">ZabbixProxy.env</span>
-</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="na">PublishPort</span><span class="o">=</span><span class="s">10051:10051</span>
-</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
-</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="k">[Service]</span>
-</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="na">Restart</span><span class="o">=</span><span class="s">always</span>
-</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>
-</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="k">[Install]</span>
-</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="na">WantedBy</span><span class="o">=</span><span class="s">default.target</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">[Unit]</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="na">Description</span><span class="o">=</span><span class="s">ZabbixProxy</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">[Container]</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="na">Image</span><span class="o">=</span><span class="s">docker.io/zabbix/zabbix-proxy-sqlite3:7.0-centos-latest</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="na">ContainerName</span><span class="o">=</span><span class="s">ZabbixProxySqlite-Quadlet</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="na">AutoUpdate</span><span class="o">=</span><span class="s">registry</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="na">EnvironmentFile</span><span class="o">=</span><span class="s">ZabbixProxy.env</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="na">PublishPort</span><span class="o">=</span><span class="s">10051:10051</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="k">[Service]</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="na">Restart</span><span class="o">=</span><span class="s">always</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="k">[Install]</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="na">WantedBy</span><span class="o">=</span><span class="s">default.target</span>
 </span></code></pre></div>
 </details>
 <p>The container image for the Zabbix proxy using SQLite can be sourced from Docker
@@ -2330,21 +2227,21 @@ and declarative way to tailor the proxy’s behavior to your environment.</p>
 following content.</p>
 <div class="admonition info">
 <p class="admonition-title">~/.config/containers/systemd/ZabbixProxy.env</p>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Zabbix proxy hostname as it appears in the Zabbix frontend</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="na">ZBX_HOSTNAME</span><span class="o">=</span><span class="s">ProxyA</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># IP address or DNS name of the Zabbix server</span>
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="na">ZBX_SERVER_HOST</span><span class="o">=</span><span class="s">&lt;DNS or IP&gt;</span>
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
-</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1"># Proxy mode: 0 = active, 1 = passive</span>
-</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="na">ZBX_PROXYMODE</span><span class="o">=</span><span class="s">0</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Zabbix proxy hostname as it appears in the Zabbix frontend</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="na">ZBX_HOSTNAME</span><span class="o">=</span><span class="s">ProxyA</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># IP address or DNS name of the Zabbix server</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="na">ZBX_SERVER_HOST</span><span class="o">=</span><span class="s">&lt;DNS or IP&gt;</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># Proxy mode: 0 = active, 1 = passive</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="na">ZBX_PROXYMODE</span><span class="o">=</span><span class="s">0</span>
 </span></code></pre></div>
 </div>
 <p>With our configuration now complete, the final step is to reload the systemd user daemon
 so it recognizes the new Quadlet unit. This can be done using the following command:</p>
 <div class="admonition info">
 <p class="admonition-title">Reload SystemD user daemon</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>daemon-reload
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>daemon-reload
 </span></code></pre></div>
 </div>
 <p>If everything is set up correctly, systemd will automatically generate a service
@@ -2352,8 +2249,8 @@ unit for the container based on the <code>.container</code> file. You can verify
 unit has been registered by checking the output of <code>systemctl --user list-unit-files</code>:</p>
 <details class="example" open="open">
 <summary>Verify if the new unit is registered correctly</summary>
-<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="go">podman@localhost:~&gt; systemctl --user list-unit-files | grep zabbix</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="go">zabbix-proxy-sqlite.service             generated -</span>
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="go">podman@localhost:~&gt; systemctl --user list-unit-files | grep zabbix</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="go">zabbix-proxy-sqlite.service             generated -</span>
 </span></code></pre></div>
 </details>
 <p>You can now start the container using the <code>systemctl --user start</code> command.
@@ -2361,7 +2258,7 @@ To start the container, use the following command (replacing the service name if
 you used a different one):</p>
 <details class="example" open="open">
 <summary>Start Zabbix Proxy container</summary>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>start<span class="w"> </span>zabbix-proxy-sqlite.service
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>start<span class="w"> </span>zabbix-proxy-sqlite.service
 </span></code></pre></div>
 </details>
 <p>This command may take a few minutes as it wil download the required Zabbix Proxy
@@ -2370,20 +2267,20 @@ container from the docker registry.</p>
 with:</p>
 <details class="example" open="open">
 <summary>Inspect running containers</summary>
-<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="go">podman@localhost:~&gt; podman ps</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="go">CONTAINER ID  IMAGE                                                   COMMAND               CREATED       STATUS       PORTS                     NAMES</span>
-</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="go">b5716f8f379d  docker.io/zabbix/zabbix-proxy-sqlite3:7.0-centos-latest /usr/sbin/zabbix_...  2 hours ago   Up 2 hours   0.0.0.0:10051-&gt;10051/tcp  ZabbixProxySqlite-Quadlet</span>
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="go">podman@localhost:~&gt; podman ps</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="go">CONTAINER ID  IMAGE                                                   COMMAND               CREATED       STATUS       PORTS                     NAMES</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="go">b5716f8f379d  docker.io/zabbix/zabbix-proxy-sqlite3:7.0-centos-latest /usr/sbin/zabbix_...  2 hours ago   Up 2 hours   0.0.0.0:10051-&gt;10051/tcp  ZabbixProxySqlite-Quadlet</span>
 </span></code></pre></div>
 </details>
 <p>Take note of the <code>CONTAINER ID</code>—in this example, it is <code>b5716f8f379d</code>. You can
 then retrieve the container's logs using:</p>
 <details class="info" open="open">
 <summary>Retrieve container logs</summary>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>podman<span class="w"> </span>logs<span class="w"> </span>b5716f8f379d
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>podman<span class="w"> </span>logs<span class="w"> </span>b5716f8f379d
 </span></code></pre></div>
 Where <code>b5716f8f379d</code> is the <code>CONTAINER ID</code> of your container</p>
 <p>On some distributions, you can also view the logs directly through SystemD:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>journalctl<span class="w"> </span>--user<span class="w"> </span>-u<span class="w"> </span>zabbix-proxy-sqlite.service
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>journalctl<span class="w"> </span>--user<span class="w"> </span>-u<span class="w"> </span>zabbix-proxy-sqlite.service
 </span></code></pre></div></p>
 </details>
 <p>This command will return the startup and runtime logs for the container, which
@@ -2394,20 +2291,20 @@ correctly.</p>
 <p>In case the starting of your containers takes about 90s and then ultimately
 fails to start. If you then see lines like this in your system logging 
 (<code>journalctl</code>):</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>systemd[1601]: Starting Wait for system level network-online.target as user....
-</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>sh[3128]: inactive
-</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>sh[3130]: inactive
-</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>sh[3132]: inactive
-</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>sh[3134]: inactive
-</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>sh[3136]: inactive
-</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>...
-</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>...
-</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>sh[3604]: inactive
-</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>sh[3606]: inactive
-</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>systemd[1601]: podman-user-wait-network-online.service: start operation timed out. Terminating.
-</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>systemd[1601]: podman-user-wait-network-online.service: Main process exited, code=killed, status=15/TERM
-</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>systemd[1601]: podman-user-wait-network-online.service: Failed with result &#39;timeout&#39;.
-</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>systemd[1601]: Failed to start Wait for system level network-online.target as user..
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>systemd[1601]: Starting Wait for system level network-online.target as user....
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>sh[3128]: inactive
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>sh[3130]: inactive
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>sh[3132]: inactive
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>sh[3134]: inactive
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>sh[3136]: inactive
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>...
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>...
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>sh[3604]: inactive
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>sh[3606]: inactive
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>systemd[1601]: podman-user-wait-network-online.service: start operation timed out. Terminating.
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>systemd[1601]: podman-user-wait-network-online.service: Main process exited, code=killed, status=15/TERM
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>systemd[1601]: podman-user-wait-network-online.service: Failed with result &#39;timeout&#39;.
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>systemd[1601]: Failed to start Wait for system level network-online.target as user..
 </span></code></pre></div>
 <p>Then you are hitting a known <a href="https://github.com/containers/podman/issues/24796">problem with the Podman Quadlets</a>. </p>
 <p>This is caused by the fact that the SystemD generated Quadlet service contains
@@ -2420,21 +2317,21 @@ makes that Podman will wait until it times out, thinking the network is not
 yet available.</p>
 <p>As a workaround, you can create a dummy system service that will trigger 
 <code>network-online.target</code>:</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>vi<span class="w"> </span>/etc/systemd/system/podman-network-online-dummy.service
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>vi<span class="w"> </span>/etc/systemd/system/podman-network-online-dummy.service
 </span></code></pre></div>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">[Unit]</span>
-</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="na">Description</span><span class="o">=</span><span class="s">This is a dummy service to activate network-online.target</span>
-</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="na">After</span><span class="o">=</span><span class="s">network-online.target</span>
-</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="na">Wants</span><span class="o">=</span><span class="s">network-online.target</span>
-</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>
-</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="k">[Service]</span>
-</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="na">ExecStart</span><span class="o">=</span><span class="s">/usr/bin/echo Activating network-online.target</span>
-</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>
-</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="k">[Install]</span>
-</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">[Unit]</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="na">Description</span><span class="o">=</span><span class="s">This is a dummy service to activate network-online.target</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="na">After</span><span class="o">=</span><span class="s">network-online.target</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="na">Wants</span><span class="o">=</span><span class="s">network-online.target</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="k">[Service]</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="na">ExecStart</span><span class="o">=</span><span class="s">/usr/bin/echo Activating network-online.target</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="k">[Install]</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
 </span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>systemctl<span class="w"> </span>daemon-reload
-</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>podman-network-online-dummy.service
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>systemctl<span class="w"> </span>daemon-reload
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>podman-network-online-dummy.service
 </span></code></pre></div></p>
 </details>
 <hr />
@@ -2458,10 +2355,10 @@ tag for automated updates and specifying fixed versions for controlled environme
 point to the most recent image available in the repository.</p>
 <details class="info" open="open">
 <summary>To upgrade:</summary>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># Pull the latest image using Podman.</span>
-</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>podman<span class="w"> </span>pull<span class="w"> </span>zabbix/zabbix-proxy-sqlite3:7.0-centos-latest
-</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="c1"># Restart the systemd service associated with the container.</span>
-</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>restart<span class="w"> </span>zabbix-proxy-sqlite.service
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># Pull the latest image using Podman.</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>podman<span class="w"> </span>pull<span class="w"> </span>zabbix/zabbix-proxy-sqlite3:7.0-centos-latest
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="c1"># Restart the systemd service associated with the container.</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>restart<span class="w"> </span>zabbix-proxy-sqlite.service
 </span></code></pre></div>
 </details>
 <p>Thanks to our Quadlet integration, systemd will handle the rest automatically:
@@ -2480,17 +2377,17 @@ file is located at <code>~/.config/containers/systemd/zabbix-proxy-sqlite.contai
 <details class="example" open="open">
 <summary>Manually updating the tag</summary>
 <p>You'll need to edit this file 
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>vi<span class="w"> </span>~/.config/containers/systemd/zabbix-proxy-sqlite.container
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>vi<span class="w"> </span>~/.config/containers/systemd/zabbix-proxy-sqlite.container
 </span></code></pre></div></p>
 <p>and update the <code>Image=</code> line. For instance, change:</p>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="na">Image</span><span class="o">=</span><span class="s">docker.io/zabbix/zabbix-proxy-sqlite3:7.0.13-centos</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="na">Image</span><span class="o">=</span><span class="s">docker.io/zabbix/zabbix-proxy-sqlite3:7.0.13-centos</span>
 </span></code></pre></div>
 <p>to:</p>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="na">Image</span><span class="o">=</span><span class="s">docker.io/zabbix/zabbix-proxy-sqlite3:7.0.14-centos</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="na">Image</span><span class="o">=</span><span class="s">docker.io/zabbix/zabbix-proxy-sqlite3:7.0.14-centos</span>
 </span></code></pre></div>
 <p>Once the file has been updated, apply the changes by running:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>daemon-reload
-</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>restart<span class="w"> </span>zabbix-proxy-sqlite.service
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>daemon-reload
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>restart<span class="w"> </span>zabbix-proxy-sqlite.service
 </span></code></pre></div>
 <p>This tells systemd to reload the modified unit file and restart the container with
 the updated image. Since you're using a fixed tag, this upgrade process gives you
@@ -2507,10 +2404,10 @@ is available in the remote registry without requiring manual intervention.</p>
 <h4 id="example-configuration">Example Configuration</h4>
 <details class="example" open="open">
 <summary>.container file</summary>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">[Container]</span>
-</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="na">Image</span><span class="o">=</span><span class="s">docker.io/zabbix/zabbix-proxy-sqlite3:trunk-centos</span>
-</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="na">AutoUpdate</span><span class="o">=</span><span class="s">registry</span>
-</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="na">...</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">[Container]</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="na">Image</span><span class="o">=</span><span class="s">docker.io/zabbix/zabbix-proxy-sqlite3:trunk-centos</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="na">AutoUpdate</span><span class="o">=</span><span class="s">registry</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="na">...</span>
 </span></code></pre></div>
 <p>In this example, the <code>Image</code> points to the <code>trunk-centos</code> tag, and <code>AutoUpdate=registry</code>
 tells Podman to periodically check the container registry for updates to this tag.</p>
@@ -2549,12 +2446,12 @@ components) current without direct user intervention.</p>
 timer.</p>
 <div class="admonition info">
 <p class="admonition-title">For System-Wide Services</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>podman-auto-update.timer
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>podman-auto-update.timer
 </span></code></pre></div>
 </div>
 <div class="admonition info">
 <p class="admonition-title">For User-Level Services</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>systemctl<span class="w"> </span>--user<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>podman-auto-update.timer
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>systemctl<span class="w"> </span>--user<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>podman-auto-update.timer
 </span></code></pre></div>
 </div>
 <p>This activates a systemd timer that periodically invokes <code>podman-auto-update.service</code>.</p>
