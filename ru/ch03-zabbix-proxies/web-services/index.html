@@ -2381,10 +2381,18 @@ creating or editing the <code>/etc/zabbix/zabbix_server.d/web_service.conf</code
 </span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="na">WebServiceURL</span><span class="o">=</span><span class="s">http://&lt;ZABBIX_WEB_SERVICE_IP_OR_DNS&gt;:10053/report</span>
 </span></code></pre></div>
 </div>
+<p>If you have SELinux enabled on your Zabbix server, you may also need to allow the
+Zabbix server to make network connections for it to be able connect to the Zabbix
+web service. This can be done using the following command:</p>
+<div class="admonition info">
+<p class="admonition-title">Allow Zabbix server to connect to Zabbix web service with SELinux</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>sudo<span class="w"> </span>setsebool<span class="w"> </span>-P<span class="w"> </span><span class="nv">zabbix_can_network</span><span class="o">=</span><span class="m">1</span>
+</span></code></pre></div>
+</div>
 <p>After making these changes, restart the Zabbix server to apply the new configuration.</p>
 <div class="admonition info">
 <p class="admonition-title">Restart Zabbix server</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>zabbix-server
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>zabbix-server
 </span></code></pre></div>
 </div>
 <p>Finally, you have to tell Zabbix where to find the Zabbix Frontend so that
