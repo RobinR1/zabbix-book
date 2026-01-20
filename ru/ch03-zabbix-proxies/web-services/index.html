@@ -2341,7 +2341,33 @@ firewall allows incoming connections on the new port.</p>
 <h2 id="zabbix-server-configuration">Zabbix server configuration</h2>
 <p>Finally, we need to configure the Zabbix server to use the Zabbix web service
 for generating scheduled reports. This is done by editing the Zabbix server
-configuration file, which is located at <code>/etc/zabbix/zabbix_server.conf</code>.</p>
+configuration. If you followed the instructions for using separate config files
+in <code>/etc/zabbix/zabbix_server.d</code> in the <a href="../../ch01-zabbix-components/zabbix-server/"><em>Installing the Zabbix server</em></a> chapter, you can do this by
+creating or editing the <code>/etc/zabbix/zabbix_server.d/web_service.conf</code> file.</p>
+<div class="admonition info">
+<p class="admonition-title">Edit zabbix_server.d/web_service.conf</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>sudo<span class="w"> </span>vi<span class="w"> </span>/etc/zabbix/zabbix_server.d/web_service.conf
+</span></code></pre></div>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># Number of report writers to start. Set to 1 or more depending on the</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="c1"># expected load. Minimum is 1 to enable report writing functionality.</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="na">StartReportWriters</span><span class="o">=</span><span class="s">1</span><span class="w"> </span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="c1"># Zabbix web service IP address or DNS name</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="na">WebServiceURL</span><span class="o">=</span><span class="s">http://&lt;ZABBIX_WEB_SERVICE_IP_OR_DNS&gt;:10053/report</span>
+</span></code></pre></div>
+</div>
+<p>After making these changes, restart the Zabbix server to apply the new configuration.</p>
+<div class="admonition info">
+<p class="admonition-title">Restart Zabbix server</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>zabbix-server
+</span></code></pre></div>
+</div>
+<p>Finally, you have to tell Zabbix where to find the Zabbix Frontend so that
+it can generate the reports correctly. This is done in the Frontend itself
+by navigating to <strong>Administration → General → Other</strong> and setting the
+<strong>Frontend URL</strong> parameter to the full URL of your Zabbix Frontend.</p>
+<p>With this, we have completed the installation and configuration of the Zabbix web service and integrated it with the Zabbix server. The Zabbix web service is now ready to generate scheduled reports as configured in the Zabbix server.</p>
+<hr />
 <h2 id="conclusion">Conclusion</h2>
 <p>This chapter has covered the installation and configuration of the Zabbix web service which is an essential component for generating scheduled reports
 in Zabbix. Whether you choose to install it as a package or run it as a container,
