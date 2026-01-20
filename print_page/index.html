@@ -11898,7 +11898,7 @@ your operating system.</p>
 <div class="admonition info">
 <p class="admonition-title">Install zabbix-web-service package</p>
 <p>Red Hat
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#ch03-zabbix-proxies-web-services-__codelineno-0-1"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>zabbix-web-service
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#ch03-zabbix-proxies-web-services-__codelineno-0-1"></a>dnf<span class="w"> </span>install<span class="w"> </span>zabbix-web-service
 </span></code></pre></div></p>
 <p>SUSE
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#ch03-zabbix-proxies-web-services-__codelineno-1-1"></a>zypper<span class="w"> </span>install<span class="w"> </span>zabbix-web-service
@@ -12096,8 +12096,12 @@ creating or editing the <code>/etc/zabbix/zabbix_server.d/web_service.conf</code
 </div>
 <p>Finally, you have to tell Zabbix where to find the Zabbix Frontend so that
 it can generate the reports correctly. This is done in the Frontend itself
-by navigating to <strong>Administration → General → Other</strong> and setting the
-<strong>Frontend URL</strong> parameter to the full URL of your Zabbix Frontend.</p>
+by navigating to </p>
+<p><strong>Administration → General → Other</strong> </p>
+<p>and setting the</p>
+<ul>
+<li><strong>Frontend URL</strong> parameter to the full URL of your Zabbix Frontend.</li>
+</ul>
 <p>With this, we have completed the installation and configuration of the Zabbix web service and integrated it with the Zabbix server. The Zabbix web service is now ready to generate scheduled reports as configured in the Zabbix server.</p>
 <hr />
 <h2 id="ch03-zabbix-proxies-web-services-conclusion">Conclusion</h2>
