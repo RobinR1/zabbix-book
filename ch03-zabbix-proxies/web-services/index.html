@@ -6,7 +6,8 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="+- 160 character description for seo
+        <meta name="description" content="This chapter explains what the Zabbix Web service component is why you may
+need or consider it, what the requirements are and finally how to install it.
 ">
       
       
@@ -81,14 +82,14 @@
     
 
     <meta property="og:title" content="Web services">
-    <meta property="og:description" content="+- 160 character description for seo">
+    <meta property="og:description" content="This chapter explains what the Zabbix Web service component is why you may need or consider it, what the requirements are and finally how to install it.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thezabbixbook.com/ch03-zabbix-proxies/web-services/">
     <meta property="og:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Web services">
-    <meta name="twitter:description" content="+- 160 character description for seo">
+    <meta name="twitter:description" content="This chapter explains what the Zabbix Web service component is why you may need or consider it, what the requirements are and finally how to install it.">
     <meta name="twitter:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="627">
@@ -1008,6 +1009,61 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#firewall-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Firewall configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zabbix-server-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zabbix server configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-urls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Useful URLs
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1876,6 +1932,61 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#firewall-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Firewall configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zabbix-server-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zabbix server configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-urls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Useful URLs
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1979,8 +2090,6 @@
 <h1 id="web-services">Web services</h1>
 <p>This chapter explains what the Zabbix Web service component is why you may need
 or consider it, what the requirements are and finally how to install it..</p>
-<p>The actual usage of the Zabbix web service is covered in a later chapter about
-scheduled reports.</p>
 <hr />
 <h2 id="what-is-the-zabbix-web-service">What is the Zabbix web service?</h2>
 <p>The Zabbix web service is an optional component that can be deployed on the same
@@ -1988,11 +2097,16 @@ server as the Zabbix server, proxy, frontend or on a separate server. The web se
 <p>Currently the Zabbix web service is primarily used for generating and sending
 scheduled reports, but there are plans to expand its functionality in future
 releases of Zabbix.</p>
+<p>The actual usage of the Zabbix web service to generate reports is covered in the
+<a href="../ch11-zabbix-visualisation/scheduled-reports.md">Scheduled reports</a> chapter.</p>
+<p><img align="left" alt="zabbix-web-service-overview" src="ch03-zabbix-web-services-component.png" /></p>
+<p><em>3.1 Zabbix web
+service overview</em></p>
 <hr />
 <h2 id="zabbix-web-service-requirements">Zabbix web service requirements</h2>
 <p>The Zabbix web service requires a linux-based operating system and a headless
 Google Chrome or Chromium. </p>
-<details class="note">
+<details class="note" open="open">
 <summary>Google Chrome vs Chromium</summary>
 <p>Both Google Chrome and Chromium are supported by the Zabbix web service.
 However, Google Chrome is a proprietary browser developed by Google, while
@@ -2009,6 +2123,13 @@ allowed to use home directories outside of <code>/home</code>. However, by defau
 <code>/var/lib/zabbix</code> as its home directory, which causes Chromium to fail to
 start on such distributions.</p>
 </div>
+<p>The system you choose to install the Zabbix web service on should meet the
+requirements as outlined in the <a href="../../ch00-getting-started/Requirements/"><em>Getting Started: Requirements</em></a>
+chapter and should have sufficient resources to run a headless browser. 
+The exact resource requirements will depend on the number of reports you plan to
+generate and the complexity of those reports. As a general guideline, we 
+recommend at least 2 CPU cores and 4 GB of RAM for a system that will be used to
+generate reports for a small to medium-sized Zabbix installation.</p>
 <p>Installing Google Chrome or Chromium on your system will pull in additional
 dependencies, such as Qt libraries, audio/video codecs, OpenGL libraries, font
 rendering libraries, and others. Depending on how you installed your linux
@@ -2018,6 +2139,9 @@ disk space on your system disk. </p>
 <p>This may also be a reason to choose a separate system for the Zabbix web service
 installation, especially if you are installing Zabbix server or proxy on a minimal
 system and want to keep those systems clean and minimal.</p>
+<p>Alternatively, you can also run the Zabbix web service as a container using Podman
+or Docker, which includes a headless browser in the container image and keep
+you host system clean of all those dependency packages. </p>
 <hr />
 <h2 id="installing-the-zabbix-web-service">Installing the Zabbix web service</h2>
 <p>The Zabbix web service can be installed using packages provided by Zabbix
@@ -2027,6 +2151,7 @@ in the chapter, starting with the package installation.</p>
 same system as the Zabbix server, proxy or frontend, or on a separate system. 
 If you choose to install it on a separate system, ensure that the system meets
 the requirements as outlined in the <a href="../../ch00-getting-started/Requirements/"><em>Getting Started: Requirements</em></a>.</p>
+<hr />
 <h3 id="installing-the-zabbix-web-service-package">Installing the Zabbix web service package</h3>
 <p>Before we can install the Zabbix web service package, we need to prepare the server for Zabbix installation as outlined in the <a href="../../ch00-getting-started/preparation/"><em>Preparing the server for Zabbix</em></a> chapters.</p>
 <p>When the system is ready and know where to find the Zabbix software packages, we
@@ -2045,7 +2170,7 @@ your operating system.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>zabbix-web-service
 </span></code></pre></div></p>
 </div>
-<p>As said before, the Zabbix web service requires a headless Google Chrome or Chromium
+<p>As mentioned before, the Zabbix web service requires a headless Google Chrome or Chromium
 browser to be installed on the system. If you do not have it installed already,
 you can install it using the package manager of your operating system.</p>
 <div class="admonition info">
@@ -2071,8 +2196,9 @@ from the <a href="https://www.google.com/chrome/">Google Chrome website</a> and 
 it using the package manager of your operating system.</p>
 <h4 id="configuring-the-zabbix-web-service">Configuring the Zabbix web service</h4>
 <p>Now that the Zabbix web service package and a headless browser are installed, we
-need to configure the Zabbix web service to use the browser. This is done by
-editing the <code>/etc/zabbix/zabbix_web_service.conf</code> configuration file.</p>
+need to configure the Zabbix web service to allow Zabbix server to make requests
+to the web service. This is done by editing the <code>/etc/zabbix/zabbix_web_service.conf</code> 
+configuration file.</p>
 <p>For now, the only configuration parameter that needs to be set is the <code>AllowedIP</code>
 parameter, which defines the IP addresses that are allowed to connect to the
 Zabbix web service. That is, if you have installed the web service on a separate
@@ -2098,6 +2224,7 @@ service using the SystemD service manager.</p>
 </div>
 <p>After this, the Zabbix web service should be up and running and ready to accept
 connections on port 10053 (by default) from the Zabbix server.</p>
+<hr />
 <h3 id="installing-the-zabbix-web-service-as-a-container">Installing the Zabbix web service as a container</h3>
 <p>The Zabbix web service can also be run as a container using Podman or Docker.
 This method does not require a separate installation of a headless browser, as the
@@ -2152,7 +2279,7 @@ and their functions is clearly documented on the container's Docker Hub page.</p
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>vi<span class="w"> </span>~/.config/containers/systemd/ZabbixWebService.env
 </span></code></pre></div>
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># IP address or DNS name of the Zabbix server</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="na">ALLOWED_IP</span><span class="o">=</span><span class="s">&lt;IP_ADDRESS_OF_ZABBIX_SERVER&gt;</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="na">ZBX_ALLOWEDIP</span><span class="o">=</span><span class="s">&lt;IP_ADDRESS_OF_ZABBIX_SERVER&gt;</span>
 </span></code></pre></div>
 </details>
 <p>With our configuration now complete, the final step is to reload the systemd user daemon
@@ -2178,6 +2305,56 @@ unit has been registered by checking the output of <code>systemctl --user list-u
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>start<span class="w"> </span>zabbix-web-service.container<span class="w"> </span>
 </span></code></pre></div>
 </div>
+<p>After this, the Zabbix web service container should be up and running and ready
+to accept connections on port 10053 (by default) from the Zabbix server.</p>
+<details class="tip" open="open">
+<summary>Upgrading the Zabbix web service container</summary>
+<p>If, in the future, you need to update the Zabbix web service container to a newer
+version, you can do so by pulling the latest image from Docker Hub and then
+restarting the container. Refer to the <a href="../proxies-as-container/#upgrading-our-containers">Running Proxies as containers</a>
+chapter where we discuss updating containers in more detail including
+a way to automate the process.</p>
+</details>
+<hr />
+<h2 id="firewall-configuration">Firewall configuration</h2>
+<p>For the Zabbix server to communicate with the Zabbix web service, the firewall
+on the system where the web service is installed must allow incoming connections
+on the port used by the web service. By default, this is port <code>10053</code>. If you 
+have changed the port in the Zabbix web service configuration, ensure that the
+firewall allows incoming connections on the new port.</p>
+<div class="admonition info">
+<p class="admonition-title">Configure firewall for Zabbix web service</p>
+<p>Red Hat / SUSE
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--add-service<span class="o">=</span>zabbix-web-service<span class="w"> </span>--permanent
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--reload
+</span></code></pre></div></p>
+<p>Ubuntu
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">10053</span>/tcp
+</span></code></pre></div></p>
+</div>
+<hr />
+<h2 id="zabbix-server-configuration">Zabbix server configuration</h2>
+<p>Finally, we need to configure the Zabbix server to use the Zabbix web service
+for generating scheduled reports. This is done by editing the Zabbix server
+configuration file, which is located at <code>/etc/zabbix/zabbix_server.conf</code>.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>This chapter has covered the installation and configuration of the Zabbix web service which is an essential component for generating scheduled reports
+in Zabbix. Whether you choose to install it as a package or run it as a container,
+we've learned how to set it up and ensure it is properly configured so that the Zabbix server can communicate with it. </p>
+<hr />
+<h2 id="questions">Questions</h2>
+<ul>
+<li>What is the primary function of the Zabbix web service?</li>
+<li>What are the system requirements for installing the Zabbix web service?</li>
+<li>How do you configure the Zabbix web service to allow connections from the Zabbix server?</li>
+<li>Should I choose to install the Zabbix web service as a package or run it as a container? Why?</li>
+</ul>
+<hr />
+<h2 id="useful-urls">Useful URLs</h2>
+<ul>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/concepts/web_service">https://www.zabbix.com/documentation/current/en/manual/concepts/web_service</a></li>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/appendix/install/web_service">https://www.zabbix.com/documentation/current/en/manual/appendix/install/web_service</a></li>
+</ul>
 
 
 
