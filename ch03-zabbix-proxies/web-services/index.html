@@ -2318,14 +2318,16 @@ with:</p>
 </span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="go">bfedb5d16505  docker.io/zabbix/zabbix-web-service:7.0-centos-latest    /usr/sbin/zabbix_...  12 minutes ago  Up 12 minutes  0.0.0.0:10053-&gt;10053/tcp  ZabbixWebService-Quadlet</span>
 </span></code></pre></div>
 </details>
-<p>When using Podman or Docker directly, container logs can be viewed using 
-<code>podman logs &lt;CONTAINER ID&gt;</code>. However, for containers started as SystemD Quadlet 
-services, this command will not show any output. Instead, the logs are written to 
-the host system's journal and can be accessed using:</p>
+<p>Take note of the <code>CONTAINER ID</code>—in this example, it is <code>b5716f8f379d</code>. You can
+then retrieve the container's logs using:</p>
 <details class="info" open="open">
 <summary>Retrieve container logs</summary>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>journalctl<span class="w"> </span>--user<span class="w"> </span>-u<span class="w"> </span>zabbix-web-service.service
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>podman<span class="w"> </span>logs<span class="w"> </span>b5716f8f379d
 </span></code></pre></div>
+Where <code>b5716f8f379d</code> is the <code>CONTAINER ID</code> of your container</p>
+<p>On some distributions, you can also view the logs directly through SystemD:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>journalctl<span class="w"> </span>--user<span class="w"> </span>-u<span class="w"> </span>zabbix-proxy-sqlite.service
+</span></code></pre></div></p>
 </details>
 <p>This command will return the startup and runtime logs for the container, which
 are helpful for troubleshooting and verifying that the Zabbix web service has started
@@ -2348,11 +2350,11 @@ firewall allows incoming connections on the new port.</p>
 <div class="admonition info">
 <p class="admonition-title">Configure firewall for Zabbix web service</p>
 <p>Red Hat / SUSE
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--add-service<span class="o">=</span>zabbix-web-service<span class="w"> </span>--permanent
-</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--reload
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--add-service<span class="o">=</span>zabbix-web-service<span class="w"> </span>--permanent
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--reload
 </span></code></pre></div></p>
 <p>Ubuntu
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">10053</span>/tcp
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">10053</span>/tcp
 </span></code></pre></div></p>
 </div>
 <hr />
@@ -2364,20 +2366,20 @@ in <code>/etc/zabbix/zabbix_server.d</code> in the <a href="../../ch01-zabbix-co
 creating or editing the <code>/etc/zabbix/zabbix_server.d/web_service.conf</code> file.</p>
 <div class="admonition info">
 <p class="admonition-title">Edit zabbix_server.d/web_service.conf</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>sudo<span class="w"> </span>vi<span class="w"> </span>/etc/zabbix/zabbix_server.d/web_service.conf
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>sudo<span class="w"> </span>vi<span class="w"> </span>/etc/zabbix/zabbix_server.d/web_service.conf
 </span></code></pre></div>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># Number of report writers to start. Set to 1 or more depending on the</span>
-</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="c1"># expected load. Minimum is 1 to enable report writing functionality.</span>
-</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="na">StartReportWriters</span><span class="o">=</span><span class="s">1</span><span class="w"> </span>
-</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>
-</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="c1"># Zabbix web service IP address or DNS name</span>
-</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="na">WebServiceURL</span><span class="o">=</span><span class="s">http://&lt;ZABBIX_WEB_SERVICE_IP_OR_DNS&gt;:10053/report</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># Number of report writers to start. Set to 1 or more depending on the</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="c1"># expected load. Minimum is 1 to enable report writing functionality.</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="na">StartReportWriters</span><span class="o">=</span><span class="s">1</span><span class="w"> </span>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="c1"># Zabbix web service IP address or DNS name</span>
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="na">WebServiceURL</span><span class="o">=</span><span class="s">http://&lt;ZABBIX_WEB_SERVICE_IP_OR_DNS&gt;:10053/report</span>
 </span></code></pre></div>
 </div>
 <p>After making these changes, restart the Zabbix server to apply the new configuration.</p>
 <div class="admonition info">
 <p class="admonition-title">Restart Zabbix server</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>zabbix-server
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>zabbix-server
 </span></code></pre></div>
 </div>
 <p>Finally, you have to tell Zabbix where to find the Zabbix Frontend so that
