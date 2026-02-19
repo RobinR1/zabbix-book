@@ -1864,6 +1864,8 @@ host monitoring.
       
         
       
+        
+      
     
     
     
@@ -1879,7 +1881,7 @@ host monitoring.
   
   
   
-    <a href="../../ch10-zabbix-discovery/chapter/" class="md-nav__link">
+    <a href="../../ch10-zabbix-discovery/network-host-discovery/" class="md-nav__link">
       
   
   
@@ -1916,6 +1918,14 @@ host monitoring.
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1931,7 +1941,7 @@ host monitoring.
   
   
   
-    <a href="../../ch11-zabbix-visualisation/chapter/" class="md-nav__link">
+    <a href="../../ch11-zabbix-visualisation/graphs/" class="md-nav__link">
       
   
   
@@ -2443,20 +2453,22 @@ the end a monitoring system is all about collecting data through various differe
 checks we can do, executed from the Zabbix server or proxy towards our monitoring targets. The simple 
 checks contain protocol checks such as <code>ICMP Ping</code>, <code>TCP/UDP</code> but also built in <code>VMware</code> monitoring.</p>
 <p>Without further ado, let's set up our first items. Please keep in mind that we will be building
-everything on a host level for now. Check out Chapter 06 to learn how to do this properly on a template.</p>
+everything on a host level for now. Check out <a href="../../ch06-zabbix-templates/chapter/">Chapter 06</a> to learn how to do this properly on a template.</p>
 <h2 id="building-the-item">Building the item</h2>
-<p>We shall start with a simple ICMP Ping check. If you haven't already, at <code>Data collection</code> | <code>Hosts</code>
-let's create the host <code>simple-checks</code> in the host group <code>Servers/Linux</code>. Then, for this
-new host navigate to <code>Items</code>. You should see a <code>Create item</code> button in the top right corner. Click
-on this button and lets have a look at the item creation modal popup window:</p>
+<p>We shall start with a simple ICMP Ping check on our host <code>simple-checks</code> in the
+<code>Servers/Linux</code> host group, created in the <a href="../hosts/">previous section</a>. 
+Now go to <strong>Data collection</strong> | <strong>Hosts</strong> and click on the link <code>Items</code> next to
+the host <code>simple-checks</code>. You should see a <code>Create item</code> button in the top right
+corner. Click on this button and lets have a look at the item creation modal popup
+window:</p>
 <p><img align="left" alt="Empty Item creation" src="../datacollection/ch04.5-empty-item-creation.png" /></p>
 <p><em>4.5 Empty Item creation window</em></p>
 <p>Make sure to change the <code>Type</code> to <code>Simple check</code> to get a similar result. We can see there are
-only two fields (that aren't selectors) mandatory. These, we have to fill in to make our
+only two fields mandatory (that aren't selectors). These, we have to fill in to make our
 item work.</p>
 <ul>
-<li><strong>Name</strong> </li>
-<li><strong>Key</strong></li>
+<li><strong>Name</strong> - a descriptive name of the item</li>
+<li><strong>Key</strong> - the unique identifier of the item</li>
 </ul>
 <h3 id="item-name">Item Name</h3>
 <p>The <code>Item name</code> in Zabbix is a very important field for all of our items. This is going
@@ -2471,11 +2483,11 @@ the best practise here? </p>
 <li><strong>Item names should contain suffixes where useful</strong></li>
 </ul>
 <p>Some examples of good item names:
-- Use <code>Memory utilization</code> not <code>The memory util of this host</code>. Keep it short and descriptive
-- Use <code>CPU load</code> or if you have multiple use a suffix <code>CPU load 1m</code> and
-<code>CPU load 5m</code> for example
+- Use <code>Memory utilization</code>, not <code>The memory util of this host</code>. Keep it short and descriptive
+- Use <code>CPU load</code> or if you have multiple use a suffix: <code>CPU load 1m</code> and
+  <code>CPU load 5m</code> for example
 - Use prefixes like <code>Interface eth0: Bits incoming</code> and
-<code>Interface eth1: Bits incoming</code> for similar items on different entities</p>
+  <code>Interface eth1: Bits incoming</code> for similar items on different entities</p>
 <p>Using those techniques, we can create items that are easy to find and most importantly that
 your Zabbix users will want to read. After all, you can count on IT engineers to not read well,
 especially in a troubleshooting while everything is down scenario. Keeping things simple will
@@ -2498,20 +2510,20 @@ the uniqueness criteria for the creation of this entity. There are two types of 
 <li><strong>Built in</strong></li>
 <li><strong>User defined</strong></li>
 </ul>
-<p>The built in item keys is what we will use to create our simple check in a while. The user defined
+<p>The <strong>built in</strong> item key is what we will use to create our simple check in a while. The <strong>user defined</strong>
 item key is what we will use on items types like <code>SNMP</code> and <code>Script</code>. The main difference is that
-built in item keys are defined by Zabbix and attach to a specific monitoring function. The user defined
+<strong>built in</strong> item keys are defined by Zabbix and attached to a specific monitoring function. The <strong>user defined</strong>
 item keys are just there to serve as the uniqueness criteria, while a different field in the item form
 will determine the monitoring function.</p>
 <p>Item keys can also be of a <code>Flexible</code> or <code>Non-flexible</code> kind. Flexible meaning the item key accepts
 parameters. These parameters change the function of the built-in item keys and also count as part
 of the uniqueness of the item keys. For example:</p>
 <ul>
-<li><strong>agent.version</strong> a <code>Zabbix agent</code> item key doesn't accept parameters and only serves one purpose. To
-get the version of the Zabbix agent installed.</li>
-<li><strong>net.tcp.service[service,<ip>,<port>]</strong> a <code>Simple check</code> item key that accepts 3 parameters,
-each parameter divided by a comma(<code>,</code>). Optional parameters are marked by the <code>&lt;&gt;</code> signs, whereas
-mandatory parameters have no pre/suffix.</li>
+<li><code>agent.version</code> - a <strong>Zabbix agent</strong> item key doesn't accept parameters and only serves one purpose. To
+  get the version of the Zabbix agent installed.</li>
+<li><code>net.tcp.service[service,&lt;ip&gt;,&lt;port&gt;]</code> - a <strong>Simple check</strong> item key that accepts 3 parameters,
+  each parameter divided by a comma(<code>,</code>). Optional parameters are marked by the <code>&lt;&gt;</code> signs, whereas
+  mandatory parameters have no pre/suffix.</li>
 </ul>
 <h3 id="icmp-ping">ICMP Ping</h3>
 <p>With all of this in mind, let's finish the creation our ICMP Ping item. First, we will give our
@@ -2523,8 +2535,8 @@ new item a name. Since this is a simple ICMP Ping to the host lets go for:</p>
 <code>icmpping[&lt;target&gt;,&lt;packets&gt;,&lt;interval&gt;,&lt;size&gt;,&lt;timeout&gt;,&lt;options&gt;]</code>. This key accepts 6 parameters, all
 of which are optional. However, when we do not select an interface on an <code>icmpping</code> item, we
 need to fill in at least <code>icmpping[&lt;target&gt;]</code> for it to work. Normally <code>icmpping</code> can use the interface
-IP or DNS, but since we will discuss the <code>Host interfaces</code> later in this chapter, let's use
-the parameter instead.</p>
+IP or DNS, but we did not yet configure one on this host as we will discuss this in the <a href="../host-interfaces/">Host interfaces</a> section later in this chapter. So, for
+now let's use the parameter instead.</p>
 <ul>
 <li><strong>Key</strong> = <code>icmpping[127.0.0.1]</code></li>
 </ul>
@@ -2552,10 +2564,10 @@ Fping6Location=/usr/sbin/fping6
 we can monitor the availability and performance of TCP and UDP ports. There are 4 built-in keys
 available for these checks:</p>
 <ul>
-<li><strong>net.tcp.service[service,<ip>,<port>]</strong></li>
-<li><strong>net.tcp.service.perf[service,<ip>,<port>]</strong></li>
-<li><strong>net.udp.service[service,<ip>,<port>]</strong></li>
-<li><strong>net.udp.service.perf[service,<ip>,<port>]</strong></li>
+<li><code>net.tcp.service[service,&lt;ip&gt;,&lt;port&gt;]</code></li>
+<li><code>net.tcp.service.perf[service,&lt;ip&gt;,&lt;port&gt;]</code></li>
+<li><code>net.udp.service[service,&lt;ip&gt;,&lt;port&gt;]</code></li>
+<li><code>net.udp.service.perf[service,&lt;ip&gt;,&lt;port&gt;]</code></li>
 </ul>
 <p>Granted, the <code>net.udp.service</code> item keys only monitor the availability and performance of the NTP
 protocol due to the "take it our leave it" nature of UDP. But, the <code>net.tcp.service</code> item keys are
@@ -2576,8 +2588,16 @@ create things like items. Keeping things structured in your environment means th
 you and your colleagues will have an easier time using your monitoring and
 observability platform.</p>
 <h2 id="questions">Questions</h2>
+<ul>
+<li>What are simple checks in Zabbix and what are they used for?</li>
+<li>What are the two mandatory fields when creating a simple check item in Zabbix?</li>
+<li>What is the difference between built-in and user-defined item keys in Zabbix?</li>
+<li>Why is it recommended to add a tag with the name <code>component</code> to every item created in Zabbix?</li>
+</ul>
 <h2 id="useful-urls">Useful URLs</h2>
-<p><a href="https://www.youtube.com/watch?v=5etxbNPrygU">https://www.youtube.com/watch?v=5etxbNPrygU</a></p>
+<p><a href="https://www.youtube.com/watch?v=5etxbNPrygU">https://www.youtube.com/watch?v=5etxbNPrygU</a>
+<a href="https://www.zabbix.com/documentation/7.4/en/manual/config/items/itemtypes/simple_checks">https://www.zabbix.com/documentation/7.4/en/manual/config/items/itemtypes/simple_checks</a>
+<a href="https://www.zabbix.com/documentation/guidelines/en/template_guidelines#items">https://www.zabbix.com/documentation/guidelines/en/template_guidelines#items</a></p>
 
 
 

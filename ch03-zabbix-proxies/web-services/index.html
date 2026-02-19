@@ -1465,6 +1465,8 @@ need or consider it, what the requirements are and finally how to install it.
       
         
       
+        
+      
     
     
     
@@ -1480,7 +1482,7 @@ need or consider it, what the requirements are and finally how to install it.
   
   
   
-    <a href="../../ch10-zabbix-discovery/chapter/" class="md-nav__link">
+    <a href="../../ch10-zabbix-discovery/network-host-discovery/" class="md-nav__link">
       
   
   
@@ -1517,6 +1519,14 @@ need or consider it, what the requirements are and finally how to install it.
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1532,7 +1542,7 @@ need or consider it, what the requirements are and finally how to install it.
   
   
   
-    <a href="../../ch11-zabbix-visualisation/chapter/" class="md-nav__link">
+    <a href="../../ch11-zabbix-visualisation/graphs/" class="md-nav__link">
       
   
   
@@ -2322,11 +2332,11 @@ with:</p>
 then retrieve the container's logs using:</p>
 <details class="info" open="open">
 <summary>Retrieve container logs</summary>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>podman<span class="w"> </span>logs<span class="w"> </span>b5716f8f379d
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>podman<span class="w"> </span>logs<span class="w"> </span>bfedb5d16505
 </span></code></pre></div>
-Where <code>b5716f8f379d</code> is the <code>CONTAINER ID</code> of your container</p>
+Where <code>bfedb5d16505</code> is the <code>CONTAINER ID</code> of your container</p>
 <p>On some distributions, you can also view the logs directly through SystemD:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>journalctl<span class="w"> </span>--user<span class="w"> </span>-u<span class="w"> </span>zabbix-proxy-sqlite.service
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>journalctl<span class="w"> </span>--user<span class="w"> </span>-u<span class="w"> </span>zabbix-web-service.service
 </span></code></pre></div></p>
 </details>
 <p>This command will return the startup and runtime logs for the container, which

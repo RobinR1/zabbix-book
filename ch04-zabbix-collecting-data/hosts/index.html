@@ -1852,6 +1852,8 @@ names, host groups, and best practices for monitoring setup.
       
         
       
+        
+      
     
     
     
@@ -1867,7 +1869,7 @@ names, host groups, and best practices for monitoring setup.
   
   
   
-    <a href="../../ch10-zabbix-discovery/chapter/" class="md-nav__link">
+    <a href="../../ch10-zabbix-discovery/network-host-discovery/" class="md-nav__link">
       
   
   
@@ -1904,6 +1906,14 @@ names, host groups, and best practices for monitoring setup.
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1919,7 +1929,7 @@ names, host groups, and best practices for monitoring setup.
   
   
   
-    <a href="../../ch11-zabbix-visualisation/chapter/" class="md-nav__link">
+    <a href="../../ch11-zabbix-visualisation/graphs/" class="md-nav__link">
       
   
   
@@ -2435,14 +2445,17 @@ we can create our host. </p>
 <h3 id="host-name">Host name</h3>
 <p>The <code>Host name</code> is very important. It functions as both the technical name of the host we will
 use in various different locations, but it is also used as the <code>Visible name</code> by default. This 
-means that we will work with this name to find through filters this host with its associated data.</p>
+means that we will work with this name to find this host with its associated data through filters .</p>
 <p>Make sure to select a host name that is short and descriptive. For example:</p>
+<details class="example" open="open">
+<summary>a few good host names</summary>
 <ul>
-<li>linux-srv01-prd</li>
-<li>www.thezabbixbook.com</li>
-<li>docker-container-42</li>
-<li>db-srv10 - Website database</li>
+<li><code>linux-srv01-prd</code></li>
+<li><code>www.thezabbixbook.com</code></li>
+<li><code>docker-container-42</code></li>
+<li><code>db-srv10 - Website database</code></li>
 </ul>
+</details>
 <p>The best practise is to keep the host name the same in Zabbix as it is configured on your
 monitoring target. The monitoring target, being whatever you are trying to monitor. 
 Whether that is a physical or virtual server, a website, a database server or 
@@ -2466,26 +2479,39 @@ different character encoding in the Zabbix database. </p>
 <p>That way you keep your local language in the frontend, but the technical name doesn't include the 
 special character. Keep in mind however, that this can create confusion. You now need to remember
 two different names for the same host. As such, visible names are only recommended when you really need
-them or if you are trying to work around something. Otherwise, there is not need to use them.</p>
+them or if you are trying to work around something. Otherwise, there is no need to use them.</p>
 <h3 id="host-groups">Host groups</h3>
-<p>In Chapter 02 of the book, we had a deep dive into setting up various different host groups to keep
-our Zabbix environment structured. When we create a host, we can now start using on of
+<p>In <a href="../../ch02-zabbix-installation/host-groups/">Chapter 02</a> of the book, we had a deep dive into setting up various different host groups to keep
+our Zabbix environment structured. When we create a host, we can now start using one of
 our created host groups. Keep in mind, to only add the host to the lowest level of the subgroups. For
 example when we have <code>Servers</code> and <code>Servers/Linux</code>, we will only add our host to <code>Servers/Linux</code>.</p>
 <p>It's also possible to create a host straight from the host creation window. To do so,
 simply start typing the host group name into the <code>Host groups</code> field and it will ask you if
 you want to create the host group.</p>
+<p>Let's add the host <code>simple-checks</code> in the <code>Linux/Servers</code> host group:</p>
 <p><img align="center" alt="Host creation - new host group" src="../datacollection/ch04.4-host-creation-new-group.png" /></p>
 <p><em>4.4 Host creation - new host group</em></p>
-<p>Let's add the host <code>simple-checks</code> in the <code>Linux/Servers</code> host group.</p>
-<details class="note" open="open">
-<summary>Note</summary>
-<p>It's recommended to read the simple checks recipe from here, as it 
-contains useful tips on creating good items.</p>
-</details>
+<p>And this is it for creating our first host in Zabbix. We can leave the rest of the
+fields empty as they are optional. Another very important element of a host is
+the interfaces field, but we will cover that in a later section.
+Finally click on the <code>Add</code> button to create the host.</p>
 <h2 id="conclusion">Conclusion</h2>
+<p>In this section we have learned how to create a host in Zabbix. We have covered
+the important fields like <code>Host name</code>, <code>Visible name</code> and <code>Host groups</code>.
+We have also discussed best practices around naming conventions for hosts in Zabbix
+and when to use the visible name field. Finally, we created our first host
+called <code>simple-checks</code> in the <code>Linux/Servers</code> host group, which we will use
+in the next section to create our first items.</p>
 <h2 id="questions">Questions</h2>
+<ul>
+<li>What is the purpose of a host in Zabbix?</li>
+<li>What is the difference between the "Host name" and "Visible name" fields when creating a host?</li>
+<li>Why is it recommended to only add a host to the lowest level of subgroups when assigning host groups?</li>
+</ul>
 <h2 id="useful-urls">Useful URLs</h2>
+<ul>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/config/hosts/host">https://www.zabbix.com/documentation/current/en/manual/config/hosts/host</a></li>
+</ul>
 
 
 

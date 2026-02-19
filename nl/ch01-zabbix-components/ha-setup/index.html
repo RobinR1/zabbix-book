@@ -959,10 +959,10 @@ for VIP failover—ensuring zero-downtime monitoring.
 </li>
       
         <li class="md-nav__item">
-  <a href="#questions" class="md-nav__link">
+  <a href="#vragen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Questions
+        Vragen
       
     </span>
   </a>
@@ -970,10 +970,10 @@ for VIP failover—ensuring zero-downtime monitoring.
 </li>
       
         <li class="md-nav__item">
-  <a href="#useful-urls" class="md-nav__link">
+  <a href="#nuttige-urls" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Useful URLs
+        Nuttige URL's
       
     </span>
   </a>
@@ -1505,6 +1505,8 @@ for VIP failover—ensuring zero-downtime monitoring.
       
         
       
+        
+      
     
     
     
@@ -1520,7 +1522,7 @@ for VIP failover—ensuring zero-downtime monitoring.
   
   
   
-    <a href="../../ch10-zabbix-discovery/chapter/" class="md-nav__link">
+    <a href="../../ch10-zabbix-discovery/network-host-discovery/" class="md-nav__link">
       
   
   
@@ -1557,6 +1559,14 @@ for VIP failover—ensuring zero-downtime monitoring.
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1572,7 +1582,7 @@ for VIP failover—ensuring zero-downtime monitoring.
   
   
   
-    <a href="../../ch11-zabbix-visualisation/chapter/" class="md-nav__link">
+    <a href="../../ch11-zabbix-visualisation/graphs/" class="md-nav__link">
       
   
   
@@ -2017,10 +2027,10 @@ for VIP failover—ensuring zero-downtime monitoring.
 </li>
       
         <li class="md-nav__item">
-  <a href="#questions" class="md-nav__link">
+  <a href="#vragen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Questions
+        Vragen
       
     </span>
   </a>
@@ -2028,10 +2038,10 @@ for VIP failover—ensuring zero-downtime monitoring.
 </li>
       
         <li class="md-nav__item">
-  <a href="#useful-urls" class="md-nav__link">
+  <a href="#nuttige-urls" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Useful URLs
+        Nuttige URL's
       
     </span>
   </a>
@@ -2148,16 +2158,17 @@ naadloos overnemen.</p>
 setup maakt het mogelijk om meer Zabbix servers toe te voegen als dat nodig is.</p>
 <p><img alt="HA-Setup" src="../../../ch01-zabbix-components/ha-setup/ch01-HA-setup.png" /></p>
 <p><em>1.1 HA Configuratie</em></p>
-<p>It's important to note that Zabbix HA setup is straightforward, providing
-redundancy without complex features like load balancing. Only one node will be
-an active node, all other nodes will be on standby. All standby Zabbix servers
-in the HA cluster will monitor the active node through heartbeats using the
-shared database. It does not require any additional clustering software or even
-firewall ports for the Zabbix server itself. However, for the frontend, we will
-use Keepalived to provide a Virtual IP (VIP) for failover purposes.</p>
-<p>Just as in our basic configuration, we will document key details for the servers
-in this HA setup. Below is the list of servers and some place to add their
-respective IP addresses for your convenience :</p>
+<p>Het is belangrijk op te merken dat de Zabbix HA setup eenvoudig is en
+redundantie biedt zonder complexe functies zoals load balancing. Slechts één
+node is een actieve node, alle andere nodes zijn stand-by. Alle stand-by
+Zabbix-servers in het HA-cluster monitoren het actieve knooppunt via heartbeats
+met behulp van de gedeelde database. Er is geen extra clustersoftware of zelfs
+geen firewallpoort nodig voor de Zabbix server zelf. Voor de frontend gebruiken
+we echter Keepalived om een virtueel IP (VIP) te bieden voor
+failover-doeleinden.</p>
+<p>Net als in onze basisconfiguratie zullen we de belangrijkste details voor de
+servers in deze HA opstelling documenteren. Hieronder staat de lijst met servers
+en een plaats om hun respectievelijke IP-adressen toe te voegen:</p>
 <table>
 <thead>
 <tr>
@@ -2167,11 +2178,11 @@ respective IP addresses for your convenience :</p>
 </thead>
 <tbody>
 <tr>
-<td>Zabbix Server 1</td>
+<td>Zabbix server 1</td>
 <td></td>
 </tr>
 <tr>
-<td>Zabbix Server 2</td>
+<td>Zabbix server 2</td>
 <td></td>
 </tr>
 <tr>
@@ -2179,7 +2190,7 @@ respective IP addresses for your convenience :</p>
 <td></td>
 </tr>
 <tr>
-<td>Virtual IP</td>
+<td>Virtuele IP</td>
 <td></td>
 </tr>
 </tbody>
@@ -2566,7 +2577,7 @@ this setup. However, this foundation provides a robust starting point for
 building a resilient monitoring infrastructure that can be further enhanced as
 needed.</p>
 <hr />
-<h2 id="questions">Questions</h2>
+<h2 id="vragen">Vragen</h2>
 <ol>
 <li>What is Zabbix High Availability (HA), and why is it important?</li>
 <li>How does Zabbix determine which node is active in an HA setup?</li>
@@ -2575,7 +2586,7 @@ needed.</p>
 <li>What configuration file(s) are required to enable HA in Zabbix?</li>
 </ol>
 <hr />
-<h2 id="useful-urls">Useful URLs</h2>
+<h2 id="nuttige-urls">Nuttige URL's</h2>
 <ul>
 <li><a href="https://www.redhat.com/sysadmin/advanced-keepalived">https://www.redhat.com/sysadmin/advanced-keepalived</a></li>
 <li><a href="https://keepalived.readthedocs.io/en/latest/introduction.html">https://keepalived.readthedocs.io/en/latest/introduction.html</a></li>

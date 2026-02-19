@@ -804,10 +804,10 @@ timezone, and time format.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installing-the-frontend-with-nginx" class="md-nav__link">
+  <a href="#frontend-installeren-met-nginx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installing the frontend with NGINX
+        Frontend installeren met NGINX
       
     </span>
   </a>
@@ -815,10 +815,10 @@ timezone, and time format.
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#conclusie" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conclusion
+        Conclusie
       
     </span>
   </a>
@@ -826,10 +826,10 @@ timezone, and time format.
 </li>
       
         <li class="md-nav__item">
-  <a href="#questions" class="md-nav__link">
+  <a href="#vragen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Questions
+        Vragen
       
     </span>
   </a>
@@ -837,10 +837,10 @@ timezone, and time format.
 </li>
       
         <li class="md-nav__item">
-  <a href="#useful-urls" class="md-nav__link">
+  <a href="#nuttige-urls" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Useful URLs
+        Nuttige URL's
       
     </span>
   </a>
@@ -1400,6 +1400,8 @@ timezone, and time format.
       
         
       
+        
+      
     
     
     
@@ -1415,7 +1417,7 @@ timezone, and time format.
   
   
   
-    <a href="../../ch10-zabbix-discovery/chapter/" class="md-nav__link">
+    <a href="../../ch10-zabbix-discovery/network-host-discovery/" class="md-nav__link">
       
   
   
@@ -1452,6 +1454,14 @@ timezone, and time format.
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1467,7 +1477,7 @@ timezone, and time format.
   
   
   
-    <a href="../../ch11-zabbix-visualisation/chapter/" class="md-nav__link">
+    <a href="../../ch11-zabbix-visualisation/graphs/" class="md-nav__link">
       
   
   
@@ -1779,10 +1789,10 @@ timezone, and time format.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installing-the-frontend-with-nginx" class="md-nav__link">
+  <a href="#frontend-installeren-met-nginx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installing the frontend with NGINX
+        Frontend installeren met NGINX
       
     </span>
   </a>
@@ -1790,10 +1800,10 @@ timezone, and time format.
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#conclusie" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conclusion
+        Conclusie
       
     </span>
   </a>
@@ -1801,10 +1811,10 @@ timezone, and time format.
 </li>
       
         <li class="md-nav__item">
-  <a href="#questions" class="md-nav__link">
+  <a href="#vragen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Questions
+        Vragen
       
     </span>
   </a>
@@ -1812,10 +1822,10 @@ timezone, and time format.
 </li>
       
         <li class="md-nav__item">
-  <a href="#useful-urls" class="md-nav__link">
+  <a href="#nuttige-urls" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Useful URLs
+        Nuttige URL's
       
     </span>
   </a>
@@ -1923,16 +1933,16 @@ timezone, and time format.
 
 
 <h1 id="frontend-installeren">Frontend installeren</h1>
-<p>Before configuring the Zabbix frontend, ensure the system meets the requirements
-and is prepared as outlined in the previous chapter: <a href="../../ch00-getting-started/Requirements/"><em>Getting
-started</em></a>. This server can be the same
-one where the Zabbix server packages were previously installed, or it can be a
-separate machine.</p>
-<p>Perform all subsequent steps on the server designated for the frontend.</p>
+<p>Voordat je de Zabbix frontend configureert, moet je ervoor zorgen dat het
+systeem voldoet aan de vereisten en is voorbereid zoals beschreven in het vorige
+hoofdstuk: <a href="../../ch00-getting-started/Requirements/"><em>Aan de slag</em></a>. Deze server
+kan dezelfde zijn waarop eerder de Zabbix serverpakketten zijn geïnstalleerd, of
+het kan een aparte machine zijn.</p>
+<p>Voer alle volgende stappen uit op de server die is aangewezen voor de frontend.</p>
 <hr />
-<h2 id="installing-the-frontend-with-nginx">Installing the frontend with NGINX</h2>
+<h2 id="frontend-installeren-met-nginx">Frontend installeren met NGINX</h2>
 <div class="admonition info">
-<p class="admonition-title">install frontend packages</p>
+<p class="admonition-title">frontend pakketten installeren</p>
 <p>Red Hat
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># When using MySQL/MariaDB</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>dnf<span class="w"> </span>install<span class="w"> </span>zabbix-nginx-conf<span class="w"> </span>zabbix-web-mysql
@@ -1964,16 +1974,16 @@ The actual URL for web scripting module may be different depending on particular
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>zabbix-frontend-php<span class="w"> </span>php8.3-pgsql<span class="w"> </span>zabbix-nginx-conf
 </span></code></pre></div></p>
 </div>
-<p>This command will install the front-end packages along with the required
-dependencies for Nginx.</p>
-<p>As of SUSE 16 SELinux is now the default security module instead of AppArmor. By
-default PHP-FPM is not allowed by SELinux on SUSE to
-- map exec memory required for PHP JIT compilation,
-- connect to Zabbix server or
-- connect to the database server over TCP. We need to tell SELinux to allow all
-  this:</p>
+<p>Dit commando installeert de front-end pakketten samen met de benodigde
+afhankelijkheden voor Nginx.</p>
+<p>Vanaf SUSE 16 is SELinux nu de standaard beveiligingsmodule in plaats van
+AppArmor. Standaard mag PHP-FPM van SELinux op SUSE niet
+- map exec memory nodig voor PHP JIT compilatie,
+- verbinding maken met Zabbix-server of
+- verbinding maken met de databaseserver via TCP. We moeten SELinux vertellen
+  dit allemaal toe te staan:</p>
 <div class="admonition info">
-<p class="admonition-title">SELinux: Allow PHP-FPM to map exec memory</p>
+<p class="admonition-title">SELinux: PHP-FPM toestaan exec geheugen in kaart te brengen</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>setsebool<span class="w"> </span>-P<span class="w"> </span>httpd_execmem<span class="w"> </span><span class="m">1</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>setsebool<span class="w"> </span>-P<span class="w"> </span>httpd_can_connect_zabbix<span class="w"> </span><span class="m">1</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>setsebool<span class="w"> </span>-P<span class="w"> </span>httpd_can_network_connect_db<span class="w"> </span><span class="m">1</span>
@@ -1985,10 +1995,10 @@ default PHP-FPM is not allowed by SELinux on SUSE to
 package which will log any SELinux denials in the system log and provide
 suggestions on how to resolve them.</p>
 </details>
-<p>Depending on your Linux distribution defaults, PHP-FPM may by default not be
-allowed by SystemD to write to the <code>/etc/zabbix/web</code> directory required for the
-Zabbix frontend setup. To enable this we need to create a drop-in file to allow
-this:</p>
+<p>Afhankelijk van de standaardinstellingen van je Linux-distributie, kan PHP-FPM
+standaard geen toestemming krijgen van SystemD om te schrijven naar de
+<code>/etc/zabbix/web</code> directory die nodig is voor de Zabbix frontend setup. Om dit
+in te schakelen moeten we een drop-in bestand maken om dit toe te staan:</p>
 <div class="admonition info">
 <p class="admonition-title">SystemD: Allow PHP-FPM to write to /etc/zabbix/web</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>systemctl<span class="w"> </span>edit<span class="w"> </span>php-fpm
@@ -2073,8 +2083,8 @@ service on port 80 we just disabled. Open the following file for editing:</p>
 </span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="kn">...</span>
 </span></code></pre></div>
 </div>
-<p>Remove the <code>#</code> in front of the first 2 lines and modify them with the correct
-port and domain for your front-end.</p>
+<p>Verwijder de <code>#</code> voor de eerste 2 regels en pas ze aan met de juiste poort en
+domein voor je front-end.</p>
 <details class="tip" open="open">
 <summary>Tip</summary>
 <p>In case you don't have a domain you can replace <code>servername</code> with <code>_</code> 
@@ -2352,7 +2362,7 @@ Also check if the <code>/etc/zabbix/web</code> directory is writable by the webs
 user (usually <code>wwwrun</code> or <code>www</code>)</p>
 </details>
 <hr />
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusie">Conclusie</h2>
 <p>With the installation and configuration of the Zabbix frontend now complete, you
 have successfully set up the user interface for your Zabbix monitoring system.
 This process included installing the necessary packages, configuring a web
@@ -2365,9 +2375,9 @@ transform it into a powerful observability platform.</p>
 <p>Now that your Zabbix environment is up and running, let’s take it to the next
 level.</p>
 <hr />
-<h2 id="questions">Questions</h2>
+<h2 id="vragen">Vragen</h2>
 <hr />
-<h2 id="useful-urls">Useful URLs</h2>
+<h2 id="nuttige-urls">Nuttige URL's</h2>
 <ul>
 <li><a href="https://www.zabbix.com/documentation/current/en/manual">https://www.zabbix.com/documentation/current/en/manual</a></li>
 <li><a href="ttps://www.zabbix.com/documentation/current/en/manual/installation/requirements">https://www.zabbix.com/documentation/current/en/manual/installation/requirements</a></li>

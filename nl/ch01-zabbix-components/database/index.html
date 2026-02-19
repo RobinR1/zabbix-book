@@ -772,10 +772,10 @@ the appropriate database backend and packages for your Zabbix installation.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#choosing-a-database-backend-for-zabbix" class="md-nav__link">
+  <a href="#een-database-backend-kiezen-voor-zabbix" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Choosing a Database Backend for Zabbix
+        Een database-backend kiezen voor Zabbix
       
     </span>
   </a>
@@ -783,10 +783,10 @@ the appropriate database backend and packages for your Zabbix installation.
 </li>
       
         <li class="md-nav__item">
-  <a href="#choosing-the-source-for-database-installation" class="md-nav__link">
+  <a href="#de-bron-voor-de-installatie-van-de-database-kiezen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Choosing the Source for Database Installation
+        De bron voor de installatie van de database kiezen
       
     </span>
   </a>
@@ -794,10 +794,10 @@ the appropriate database backend and packages for your Zabbix installation.
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#conclusie" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conclusion
+        Conclusie
       
     </span>
   </a>
@@ -805,10 +805,10 @@ the appropriate database backend and packages for your Zabbix installation.
 </li>
       
         <li class="md-nav__item">
-  <a href="#questions" class="md-nav__link">
+  <a href="#vragen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Questions
+        Vragen
       
     </span>
   </a>
@@ -816,10 +816,10 @@ the appropriate database backend and packages for your Zabbix installation.
 </li>
       
         <li class="md-nav__item">
-  <a href="#useful-urls" class="md-nav__link">
+  <a href="#nuttige-urls" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Useful URLs
+        Nuttige URL's
       
     </span>
   </a>
@@ -1499,6 +1499,8 @@ the appropriate database backend and packages for your Zabbix installation.
       
         
       
+        
+      
     
     
     
@@ -1514,7 +1516,7 @@ the appropriate database backend and packages for your Zabbix installation.
   
   
   
-    <a href="../../ch10-zabbix-discovery/chapter/" class="md-nav__link">
+    <a href="../../ch10-zabbix-discovery/network-host-discovery/" class="md-nav__link">
       
   
   
@@ -1551,6 +1553,14 @@ the appropriate database backend and packages for your Zabbix installation.
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1566,7 +1576,7 @@ the appropriate database backend and packages for your Zabbix installation.
   
   
   
-    <a href="../../ch11-zabbix-visualisation/chapter/" class="md-nav__link">
+    <a href="../../ch11-zabbix-visualisation/graphs/" class="md-nav__link">
       
   
   
@@ -1878,10 +1888,10 @@ the appropriate database backend and packages for your Zabbix installation.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#choosing-a-database-backend-for-zabbix" class="md-nav__link">
+  <a href="#een-database-backend-kiezen-voor-zabbix" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Choosing a Database Backend for Zabbix
+        Een database-backend kiezen voor Zabbix
       
     </span>
   </a>
@@ -1889,10 +1899,10 @@ the appropriate database backend and packages for your Zabbix installation.
 </li>
       
         <li class="md-nav__item">
-  <a href="#choosing-the-source-for-database-installation" class="md-nav__link">
+  <a href="#de-bron-voor-de-installatie-van-de-database-kiezen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Choosing the Source for Database Installation
+        De bron voor de installatie van de database kiezen
       
     </span>
   </a>
@@ -1900,10 +1910,10 @@ the appropriate database backend and packages for your Zabbix installation.
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#conclusie" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conclusion
+        Conclusie
       
     </span>
   </a>
@@ -1911,10 +1921,10 @@ the appropriate database backend and packages for your Zabbix installation.
 </li>
       
         <li class="md-nav__item">
-  <a href="#questions" class="md-nav__link">
+  <a href="#vragen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Questions
+        Vragen
       
     </span>
   </a>
@@ -1922,10 +1932,10 @@ the appropriate database backend and packages for your Zabbix installation.
 </li>
       
         <li class="md-nav__item">
-  <a href="#useful-urls" class="md-nav__link">
+  <a href="#nuttige-urls" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Useful URLs
+        Nuttige URL's
       
     </span>
   </a>
@@ -2051,7 +2061,7 @@ the appropriate database backend and packages for your Zabbix installation.
 
 
 <h1 id="database-keuzes">Database keuzes</h1>
-<h2 id="choosing-a-database-backend-for-zabbix">Choosing a Database Backend for Zabbix</h2>
+<h2 id="een-database-backend-kiezen-voor-zabbix">Een database-backend kiezen voor Zabbix</h2>
 <p>Een kritieke beslissing bij het beheren van Zabbix-installaties is het
 selecteren van de database backend. Zabbix ondersteunt verschillende database
 opties: MySQL/Percona, MariaDB, PostgreSQL (inclusief TimescaleDB) en Oracle
@@ -2065,39 +2075,40 @@ as MariaDB before upgrading to a later Zabbix release. This migration is a
 mandatory step to ensure continued functionality and compatibility with future
 Zabbix versions.</p>
 </details>
-<p>All supported databases perform similarly under typical Zabbix workloads, and
-Zabbix treats them equally in terms of functionality. As such, the choice
-primarily depends on your or your team’s familiarity with a particular database
-system. One notable exception is TimescaleDB, a PostgreSQL extension optimized
-for time-series data. This makes it especially well-suited for monitoring
-applications like Zabbix, which handle large volumes of timestamped data.</p>
-<p>In large-scale environments with high-frequency data collection, TimescaleDB can
-deliver significant performance benefits, including improved query speeds and
-built-in compression to reduce storage requirements. However, these advantages
-come with added complexity during installation and a few restrictions on
-historical data retention.</p>
+<p>Alle ondersteunde databases presteren vergelijkbaar onder typische Zabbix
+workloads, en Zabbix behandelt ze gelijk in termen van functionaliteit. De keuze
+hangt dus vooral af van de bekendheid van jou of je team met een bepaald
+databasesysteem. Een opvallende uitzondering is TimescaleDB, een
+PostgreSQL-extensie die is geoptimaliseerd voor tijdreeksgegevens. Dit maakt het
+bijzonder geschikt voor monitoringtoepassingen zoals Zabbix, die grote
+hoeveelheden gegevens met tijdstempels verwerken.</p>
+<p>In grootschalige omgevingen met hoogfrequente gegevensverzameling kan
+TimescaleDB aanzienlijke prestatievoordelen opleveren, waaronder verbeterde
+query-snelheden en ingebouwde compressie om de opslagvereisten te verlagen. Deze
+voordelen gaan echter gepaard met extra complexiteit tijdens de installatie en
+enkele beperkingen voor het bewaren van historische gegevens.</p>
 <details class="tip" open="open">
-<summary>TimescaleDB installation</summary>
+<summary>TimescaleDB installatie</summary>
 <p>Given its advanced nature, TimescaleDB is not essential for most Zabbix users.
 As such, its installation is beyond the scope of this chapter. If you plan to
 use TimescaleDB, refer to <a href="../../ch13-advanced-security/partitioning-postgresql-database/">Partitioning PostgreSQL with TimescaleDB</a>
 for detailed guidance after installing PostgreSQL.</p>
 </details>
 <hr />
-<h2 id="choosing-the-source-for-database-installation">Choosing the Source for Database Installation</h2>
-<p>In this chapter we will focus on installing MariaDB and PostgreSQL, as they are
-the most commonly used databases with Zabbix. For MySQL or Percona
-installations, except for the package installation commands, the steps are very
-similar to MariaDB.</p>
-<p>When installing MariaDB or PostgreSQL you must determine the source from which
-you will want to install the database server. Two primary options are available:</p>
+<h2 id="de-bron-voor-de-installatie-van-de-database-kiezen">De bron voor de installatie van de database kiezen</h2>
+<p>In dit hoofdstuk concentreren we ons op de installatie van MariaDB en
+PostgreSQL, omdat dit de meest gebruikte databases zijn met Zabbix. Voor MySQL
+of Percona installaties, behalve de commando's voor de pakketinstallatie, zijn
+de stappen erg gelijkaardig aan die van MariaDB.</p>
+<p>Bij de installatie van MariaDB of PostgreSQL moet je bepalen vanaf welke bron je
+de databaseserver wilt installeren. Er zijn twee opties beschikbaar:</p>
 <ol>
-<li><strong>Vendor-Provided Packages</strong></li>
+<li><strong>Door de leverancier geleverde pakketten</strong></li>
 </ol>
 <dl>
 <dd>
-<p>These are included in the software repositories of most Linux distributions
-and are maintained by the distribution vendor.</p>
+<p>Deze staan in de software repositories van de meeste Linux distributies en
+worden onderhouden door de distributieleverancier.</p>
 <p><strong>Advantages:</strong></p>
 <ul>
 <li><strong>Simplified installation:</strong> Packages are readily available via the
@@ -2122,7 +2133,7 @@ and are maintained by the distribution vendor.</p>
 </dd>
 </dl>
 <ol start="2">
-<li><strong>Official MariaDB/PostgreSQL Repositories</strong></li>
+<li><strong>Officiële MariaDB/PostgreSQL repositories</strong></li>
 </ol>
 <dl>
 <dd>
@@ -2155,7 +2166,7 @@ for the latest supported versions.</p>
 configuration requirements and is prepared as outlined in the previous chapter:
 <a href="../../ch00-getting-started/Requirements/"><em>Getting started</em></a>.</p>
 <hr />
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusie">Conclusie</h2>
 <p>We have discussed the various database backends supported by Zabbix. We've also
 examined the advantages and disadvantages of using vendor-provided packages
 versus official repositories for installing MariaDB and PostgreSQL.</p>
@@ -2166,14 +2177,14 @@ Zabbix instance is equipped with a robust and efficient database system.</p>
 <p>Now that you have a clear understanding of the database options available, let's
 move on to the installation of your preferred database backend.</p>
 <hr />
-<h2 id="questions">Questions</h2>
+<h2 id="vragen">Vragen</h2>
 <ol>
 <li>Should I choose MySQL or PostgreSQL as the database back-end? Why?</li>
 <li>Should I use the packages provided by the OS vendor, or should I install
    database-vendor official packages? Why?</li>
 </ol>
 <hr />
-<h2 id="useful-urls">Useful URLs</h2>
+<h2 id="nuttige-urls">Nuttige URL's</h2>
 <ul>
 <li><a href="https://mariadb.org">https://mariadb.org</a></li>
 <li><a href="https://mariadb.com">https://mariadb.com</a></li>

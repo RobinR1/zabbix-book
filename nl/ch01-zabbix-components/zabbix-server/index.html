@@ -798,10 +798,10 @@ file for any issues.
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#conclusie" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conclusion
+        Conclusie
       
     </span>
   </a>
@@ -809,10 +809,10 @@ file for any issues.
 </li>
       
         <li class="md-nav__item">
-  <a href="#questions" class="md-nav__link">
+  <a href="#vragen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Questions
+        Vragen
       
     </span>
   </a>
@@ -820,10 +820,10 @@ file for any issues.
 </li>
       
         <li class="md-nav__item">
-  <a href="#useful-urls" class="md-nav__link">
+  <a href="#nuttige-urls" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Useful URLs
+        Nuttige URL's
       
     </span>
   </a>
@@ -1411,6 +1411,8 @@ file for any issues.
       
         
       
+        
+      
     
     
     
@@ -1426,7 +1428,7 @@ file for any issues.
   
   
   
-    <a href="../../ch10-zabbix-discovery/chapter/" class="md-nav__link">
+    <a href="../../ch10-zabbix-discovery/network-host-discovery/" class="md-nav__link">
       
   
   
@@ -1463,6 +1465,14 @@ file for any issues.
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1478,7 +1488,7 @@ file for any issues.
   
   
   
-    <a href="../../ch11-zabbix-visualisation/chapter/" class="md-nav__link">
+    <a href="../../ch11-zabbix-visualisation/graphs/" class="md-nav__link">
       
   
   
@@ -1812,10 +1822,10 @@ file for any issues.
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#conclusie" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conclusion
+        Conclusie
       
     </span>
   </a>
@@ -1823,10 +1833,10 @@ file for any issues.
 </li>
       
         <li class="md-nav__item">
-  <a href="#questions" class="md-nav__link">
+  <a href="#vragen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Questions
+        Vragen
       
     </span>
   </a>
@@ -1834,10 +1844,10 @@ file for any issues.
 </li>
       
         <li class="md-nav__item">
-  <a href="#useful-urls" class="md-nav__link">
+  <a href="#nuttige-urls" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Useful URLs
+        Nuttige URL's
       
     </span>
   </a>
@@ -1950,9 +1960,9 @@ klaar om zowel de Zabbix server als de webserver te installeren. Houd in
 gedachten dat de webserver niet op dezelfde machine hoeft te worden
 geïnstalleerd als de Zabbix server; ze kunnen op aparte systemen worden gehost
 indien gewenst.</p>
-<p>To install the Zabbix server components, run the following command:</p>
+<p>Voer het volgende commando uit om de Zabbix servercomponenten te installeren:</p>
 <div class="admonition info">
-<p class="admonition-title">Install the zabbix server</p>
+<p class="admonition-title">Zabbix-server installeren</p>
 <p>Red Hat
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># For MySQL/MariaDB backend:</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>dnf<span class="w"> </span>install<span class="w"> </span>zabbix-server-mysql
@@ -1972,37 +1982,39 @@ indien gewenst.</p>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>zabbix-server-pgsql
 </span></code></pre></div></p>
 </div>
-<p>After successfully installing the Zabbix server package, we need to configure
-the Zabbix server to connect to the database. This requires modifying the Zabbix
-server configuration file.</p>
-<p>The Zabbix server configuration file offers an option to include additional
-configuration files for custom parameters. For a production environment, it's
-often best to avoid altering the original configuration file directly. Instead,
-you can create and include separate configuration files for any additional or
-modified parameters. This approach ensures that your original configuration file
-remains untouched, which is particularly useful when performing upgrades or
-managing configurations with tools like Ansible, Puppet, or SaltStack.</p>
-<p>On SUSE 16 and later, this feature is already enabled and configured by default.
-(see also <a href="https://documentation.suse.com/sles/16.0/html/SLE-differences-faq/index.html#sle16-differences-faq-basesystem-etc">SUSE
-documentation</a>).
-Hence, on SUSE systems, the Zabbix server configuration file is located at
-<code>/usr/etc/zabbix/zabbix_server.conf</code>, and it is set up to include all <code>.conf</code>
-files from the <code>/etc/zabbix_server/zabbix_server.d/</code> directory.</p>
-<p>On other distributions, you may need to enable it manually:</p>
-<p>To enable this feature, ensure the next line exists and is not commented (with a
-<code>#</code> in front of it) in <code>/etc/zabbix/zabbix_server.conf</code>:</p>
+<p>Na de succesvolle installatie van het Zabbix serverpakket moeten we de Zabbix
+server configureren om verbinding te maken met de database. Hiervoor moet het
+configuratiebestand van de Zabbix-server worden aangepast.</p>
+<p>Het Zabbix server configuratiebestand biedt een optie om extra
+configuratiebestanden voor aangepaste parameters op te nemen. Voor een
+productieomgeving is het vaak het beste om het oorspronkelijke
+configuratiebestand niet direct te wijzigen. In plaats daarvan kun je aparte
+configuratiebestanden maken en toevoegen voor aanvullende of gewijzigde
+parameters. Deze aanpak zorgt ervoor dat je originele configuratiebestand
+onaangeroerd blijft, wat vooral handig is bij het uitvoeren van upgrades of het
+beheren van configuraties met tools zoals Ansible, Puppet of SaltStack.</p>
+<p>Op SUSE 16 en later is deze functie al standaard ingeschakeld en geconfigureerd.
+(zie ook <a href="https://documentation.suse.com/sles/16.0/html/SLE-differences-faq/index.html#sle16-differences-faq-basesystem-etc">SUSE
+documentatie</a>).
+Op SUSE-systemen bevindt het Zabbix serverconfiguratiebestand zich daarom in
+<code>/usr/etc/zabbix/zabbix_server.conf</code>, en het is zo ingesteld dat het alle
+<code>.conf</code> bestanden uit de <code>/etc/zabbix_server/zabbix_server.d/</code> directory bevat.</p>
+<p>Op andere distributies moet je het misschien handmatig inschakelen:</p>
+<p>Om deze functie in te schakelen, moet je ervoor zorgen dat de volgende regel
+bestaat en niet is becommentarieerd (met een <code>#</code> ervoor) in
+<code>/etc/zabbix/zabbix_server.conf</code>:</p>
 <div class="admonition info">
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Include=/usr/local/etc/zabbix_server.conf.d/*.conf</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="na">Include</span><span class="o">=</span><span class="s">/etc/zabbix/zabbix_server.d/*.conf</span>
 </span></code></pre></div>
 </div>
-<p>The path <code>/etc/zabbix/zabbix_server.d/</code> should already be created by the
-installed package, but ensure it really exists.</p>
-<p>Now we will create a custom configuration file <code>database.conf</code> in the
-<code>/etc/zabbix/zabbix_server.d/</code> directory that will hold our database connection
-settings:</p>
+<p>Het pad <code>/etc/zabbix/zabbix_server.d/</code> zou al aangemaakt moeten zijn door het
+geïnstalleerde pakket, maar controleer of het echt bestaat.</p>
+<p>Nu maken we een aangepast configuratiebestand <code>database.conf</code> in de
+<code>/etc/zabbix/zabbix_server.d/</code> directory dat onze database
+verbindingsinstellingen zal bevatten:</p>
 <div class="admonition info">
-<p class="admonition-title">Add Zabbix database connection settings</p>
+<p class="admonition-title">Zabbix databaseverbindingsinstellingen toevoegen</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>vi<span class="w"> </span>/etc/zabbix/zabbix_server.d/database.conf
 </span></code></pre></div>
 <p>Add the following lines in the configuration file to match your database setup:</p>
@@ -2015,10 +2027,10 @@ settings:</p>
 </span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="na">DBPort</span><span class="o">=</span><span class="s">&lt;database-port&gt;</span>
 </span></code></pre></div>
 </div>
-<p>Replace <code>&lt;database-host&gt;</code>, <code>&lt;database-name&gt;</code>, <code>&lt;database-schema&gt;</code>,
-<code>&lt;database-user&gt;</code>, <code>&lt;database-password&gt;</code>, and <code>&lt;database-port&gt;</code> with the
-appropriate values for your setup. This ensures that the Zabbix server can
-communicate with your database.</p>
+<p>Vervang <code>&lt;database-host&gt;</code>, <code>&lt;database-naam&gt;</code>, <code>&lt;database-schema&gt;</code>,
+<code>&lt;database-user&gt;</code>, <code>&lt;database-paswoord&gt;</code>, en <code>&lt;database-port&gt;</code> door de juiste
+waarden voor jouw setup. Dit zorgt ervoor dat de Zabbix server kan communiceren
+met je database.</p>
 <p>Ensure that there is no <code>#</code> (comment symbol) in front of the configuration
 parameters, as Zabbix will treat lines beginning with <code>#</code> as comments, ignoring
 them during execution. Additionally, double-check for duplicate configuration
@@ -2213,7 +2225,7 @@ status zabbix-server</p>
 </code></pre></div>
 <p>This concludes our chapter on installing and configuring the Zabbix server.</p>
 <hr />
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusie">Conclusie</h2>
 <p>With the successful installation and configuration of the Zabbix server, you
 have now established the core component of your monitoring system. We've covered
 the installation of the Zabbix server package, configuration of the database
@@ -2225,13 +2237,13 @@ proxies. The next step is to install and configure the Zabbix frontend, which
 will provide the user interface for interacting with your monitoring system.</p>
 <p>Let's proceed to the next chapter to set up the Zabbix frontend.</p>
 <hr />
-<h2 id="questions">Questions</h2>
+<h2 id="vragen">Vragen</h2>
 <ol>
 <li>What version of Zabbix should I install for compatibility and stability?</li>
 <li>What Zabbix logs should I check for troubleshooting common issues?</li>
 </ol>
 <hr />
-<h2 id="useful-urls">Useful URLs</h2>
+<h2 id="nuttige-urls">Nuttige URL's</h2>
 <ul>
 <li><a href="https://www.zabbix.com/documentation/current/en/manual">https://www.zabbix.com/documentation/current/en/manual</a></li>
 <li><a href="ttps://www.zabbix.com/documentation/current/en/manual/installation/requirements">https://www.zabbix.com/documentation/current/en/manual/installation/requirements</a></li>

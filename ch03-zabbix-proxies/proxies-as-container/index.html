@@ -1496,6 +1496,8 @@ environments.
       
         
       
+        
+      
     
     
     
@@ -1511,7 +1513,7 @@ environments.
   
   
   
-    <a href="../../ch10-zabbix-discovery/chapter/" class="md-nav__link">
+    <a href="../../ch10-zabbix-discovery/network-host-discovery/" class="md-nav__link">
       
   
   
@@ -1548,6 +1550,14 @@ environments.
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1563,7 +1573,7 @@ environments.
   
   
   
-    <a href="../../ch11-zabbix-visualisation/chapter/" class="md-nav__link">
+    <a href="../../ch11-zabbix-visualisation/graphs/" class="md-nav__link">
       
   
   
@@ -2272,14 +2282,16 @@ with:</p>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="go">b5716f8f379d  docker.io/zabbix/zabbix-proxy-sqlite3:7.0-centos-latest /usr/sbin/zabbix_...  2 hours ago   Up 2 hours   0.0.0.0:10051-&gt;10051/tcp  ZabbixProxySqlite-Quadlet</span>
 </span></code></pre></div>
 </details>
-<p>When using Podman or Docker directly, container logs can be viewed using 
-<code>podman logs &lt;CONTAINER ID&gt;</code>. However, for containers started as SystemD Quadlet 
-services, this command will not show any output. Instead, the logs are written to 
-the host system's journal and can be accessed using:</p>
+<p>Take note of the <code>CONTAINER ID</code>—in this example, it is <code>b5716f8f379d</code>. You can
+then retrieve the container's logs using:</p>
 <details class="info" open="open">
 <summary>Retrieve container logs</summary>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>journalctl<span class="w"> </span>--user<span class="w"> </span>-u<span class="w"> </span>zabbix-proxy-sqlite.service
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>podman<span class="w"> </span>logs<span class="w"> </span>b5716f8f379d
 </span></code></pre></div>
+Where <code>b5716f8f379d</code> is the <code>CONTAINER ID</code> of your container</p>
+<p>On some distributions, you can also view the logs directly through SystemD:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>journalctl<span class="w"> </span>--user<span class="w"> </span>-u<span class="w"> </span>zabbix-proxy-sqlite.service
+</span></code></pre></div></p>
 </details>
 <p>This command will return the startup and runtime logs for the container, which
 are helpful for troubleshooting and verifying that the Zabbix proxy has started
@@ -2305,10 +2317,10 @@ tag for automated updates and specifying fixed versions for controlled environme
 point to the most recent image available in the repository.</p>
 <details class="info" open="open">
 <summary>To upgrade:</summary>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Pull the latest image using Podman.</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>podman<span class="w"> </span>pull<span class="w"> </span>zabbix/zabbix-proxy-sqlite3:7.0-centos-latest
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="c1"># Restart the systemd service associated with the container.</span>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>restart<span class="w"> </span>zabbix-proxy-sqlite.service
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Pull the latest image using Podman.</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>podman<span class="w"> </span>pull<span class="w"> </span>zabbix/zabbix-proxy-sqlite3:7.0-centos-latest
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1"># Restart the systemd service associated with the container.</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>restart<span class="w"> </span>zabbix-proxy-sqlite.service
 </span></code></pre></div>
 </details>
 <p>Thanks to our Quadlet integration, systemd will handle the rest automatically:
@@ -2327,17 +2339,17 @@ file is located at <code>~/.config/containers/systemd/zabbix-proxy-sqlite.contai
 <details class="example" open="open">
 <summary>Manually updating the tag</summary>
 <p>You'll need to edit this file 
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>vi<span class="w"> </span>~/.config/containers/systemd/zabbix-proxy-sqlite.container
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>vi<span class="w"> </span>~/.config/containers/systemd/zabbix-proxy-sqlite.container
 </span></code></pre></div></p>
 <p>and update the <code>Image=</code> line. For instance, change:</p>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="na">Image</span><span class="o">=</span><span class="s">docker.io/zabbix/zabbix-proxy-sqlite3:7.0.13-centos</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="na">Image</span><span class="o">=</span><span class="s">docker.io/zabbix/zabbix-proxy-sqlite3:7.0.13-centos</span>
 </span></code></pre></div>
 <p>to:</p>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="na">Image</span><span class="o">=</span><span class="s">docker.io/zabbix/zabbix-proxy-sqlite3:7.0.14-centos</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="na">Image</span><span class="o">=</span><span class="s">docker.io/zabbix/zabbix-proxy-sqlite3:7.0.14-centos</span>
 </span></code></pre></div>
 <p>Once the file has been updated, apply the changes by running:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>daemon-reload
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>restart<span class="w"> </span>zabbix-proxy-sqlite.service
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>daemon-reload
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>restart<span class="w"> </span>zabbix-proxy-sqlite.service
 </span></code></pre></div>
 <p>This tells systemd to reload the modified unit file and restart the container with
 the updated image. Since you're using a fixed tag, this upgrade process gives you
@@ -2354,10 +2366,10 @@ is available in the remote registry without requiring manual intervention.</p>
 <h4 id="example-configuration">Example Configuration</h4>
 <details class="example" open="open">
 <summary>.container file</summary>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">[Container]</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="na">Image</span><span class="o">=</span><span class="s">docker.io/zabbix/zabbix-proxy-sqlite3:trunk-centos</span>
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="na">AutoUpdate</span><span class="o">=</span><span class="s">registry</span>
-</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="na">...</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">[Container]</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="na">Image</span><span class="o">=</span><span class="s">docker.io/zabbix/zabbix-proxy-sqlite3:trunk-centos</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="na">AutoUpdate</span><span class="o">=</span><span class="s">registry</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="na">...</span>
 </span></code></pre></div>
 <p>In this example, the <code>Image</code> points to the <code>trunk-centos</code> tag, and <code>AutoUpdate=registry</code>
 tells Podman to periodically check the container registry for updates to this tag.</p>
@@ -2396,12 +2408,12 @@ components) current without direct user intervention.</p>
 timer.</p>
 <div class="admonition info">
 <p class="admonition-title">For System-Wide Services</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>podman-auto-update.timer
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>podman-auto-update.timer
 </span></code></pre></div>
 </div>
 <div class="admonition info">
 <p class="admonition-title">For User-Level Services</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>systemctl<span class="w"> </span>--user<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>podman-auto-update.timer
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>systemctl<span class="w"> </span>--user<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>podman-auto-update.timer
 </span></code></pre></div>
 </div>
 <p>This activates a systemd timer that periodically invokes <code>podman-auto-update.service</code>.</p>

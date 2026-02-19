@@ -1886,6 +1886,8 @@ your monitoring setup.
       
         
       
+        
+      
     
     
     
@@ -1901,7 +1903,7 @@ your monitoring setup.
   
   
   
-    <a href="../../ch10-zabbix-discovery/chapter/" class="md-nav__link">
+    <a href="../../ch10-zabbix-discovery/network-host-discovery/" class="md-nav__link">
       
   
   
@@ -1938,6 +1940,14 @@ your monitoring setup.
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1953,7 +1963,7 @@ your monitoring setup.
   
   
   
-    <a href="../../ch11-zabbix-visualisation/chapter/" class="md-nav__link">
+    <a href="../../ch11-zabbix-visualisation/graphs/" class="md-nav__link">
       
   
   
@@ -2554,7 +2564,7 @@ triggers:</p>
 <ul>
 <li><strong>Problem event</strong>: When the trigger goes from OK to PROBLEM</li>
 <li><strong>Problem resolution event</strong>: When the trigger goes from PROBLEM to OK</li>
-<li><strong>Problem update event</strong>: When someone manually updates a problem</li>
+<li><strong>Problem update event</strong>: When the problem is updated either manually or scripted through the Zabbix API.</li>
 </ul>
 <p>These problem events are what you will see in the frontend when you navigate to
 <code>Monitoring</code> | <code>Problems</code>, but they are also very important in the next step in
@@ -2565,7 +2575,7 @@ two parts. An action consists of <code>Conditions</code> and <code>Operations</c
 be important in making sure the action executes on the right time (conditions)
 and executes the right activity (operations). </p>
 <p>What happens is, whenever a problem event in Zabbix is created it is sent to every
-single problem action in our Zabbix environment. All of these action will then
+single problem action in our Zabbix environment. All of these actions will then
 check the event details like what host did it come from, with which severity, when
 did it start, which tags are present. These event details are then checked against
 the action conditions and only when the conditions match will the operations be executed.
@@ -2590,8 +2600,8 @@ looks like the image below.</p>
 <p>Important to note here is that if an item is collecting metrics, it doesn't necessarily
 need to have a trigger attached to it. The trigger expression is a separate configuration
 where we can choose which items we want to define thresholds on. In the end, not
-ever item needs to start creating problems. We can also see that we can use several
-items or event several items from different hosts in a single trigger.</p>
+every item needs to start creating problems. We can also see that we can use several
+items or even several items from different hosts in a single trigger.</p>
 <p>The same is the case for our events. Not every event will match the conditions on
 an action. In practice, this means that some problems will only show up in your
 Zabbix frontend, while other might go on to send you an alert message or even execute
@@ -2601,7 +2611,19 @@ This can be useful, for example if you want to split you messaging and your scri
 execution in different action to keep things organised.</p>
 <p>Now that we understand the various parts of our Zabbix dataflow we can dive deeper into creating the configuration for the steps in the dataflow.</p>
 <h2 id="questions">Questions</h2>
+<ul>
+<li>Can you give two examples of what a "host" could represent in Zabbix, besides a server?</li>
+<li>What is the difference between collecting a metric as-is and using preprocessing on an item?</li>
+<li>What are the two possible states of a trigger, and what do they mean?</li>
+<li>Why is it important to carefully define the conditions in an action?</li>
+</ul>
 <h2 id="useful-urls">Useful URLs</h2>
+<ul>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/config/items">https://www.zabbix.com/documentation/current/en/manual/config/items</a></li>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/config/triggers">https://www.zabbix.com/documentation/current/en/manual/config/triggers</a></li>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/config/notifications/action">https://www.zabbix.com/documentation/current/en/manual/config/notifications/action</a></li>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/config/items/preprocessing">https://www.zabbix.com/documentation/current/en/manual/config/items/preprocessing</a></li>
+</ul>
 
 
 

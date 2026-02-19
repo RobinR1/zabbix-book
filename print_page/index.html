@@ -1096,6 +1096,8 @@
       
         
       
+        
+      
     
     
     
@@ -1111,7 +1113,7 @@
   
   
   
-    <a href="../ch10-zabbix-discovery/chapter/" class="md-nav__link">
+    <a href="../ch10-zabbix-discovery/network-host-discovery/" class="md-nav__link">
       
   
   
@@ -1148,6 +1150,14 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1163,7 +1173,7 @@
   
   
   
-    <a href="../ch11-zabbix-visualisation/chapter/" class="md-nav__link">
+    <a href="../ch11-zabbix-visualisation/graphs/" class="md-nav__link">
       
   
   
@@ -2435,10 +2445,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ch10-zabbix-discovery-chapter" class="md-nav__link">
+  <a href="#ch10-zabbix-discovery-network-host-discovery" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Automating Your Monitoring with Auto Discovery and Active Agent Auto Registration
+        Automating adding hosts with network discovery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ch10-zabbix-discovery-active-agent-autoregistration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automating adding hosts with active agent autoregistration
       
     </span>
   </a>
@@ -2463,10 +2484,54 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ch11-zabbix-visualisation-chapter" class="md-nav__link">
+  <a href="#ch11-zabbix-visualisation-graphs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Graphs, Dashboards, Reports, Maps and other visualisation
+        Using the built-in Graphs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ch11-zabbix-visualisation-dashboards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setting up Dashboards
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ch11-zabbix-visualisation-maps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating Maps for better overviews
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ch11-zabbix-visualisation-built-in-reports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using the Zabbix built in reports
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ch11-zabbix-visualisation-automated-pdf-reports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating automated PDF reports
       
     </span>
   </a>
@@ -3708,10 +3773,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ch10-zabbix-discovery-chapter" class="md-nav__link">
+  <a href="#ch10-zabbix-discovery-network-host-discovery" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Automating Your Monitoring with Auto Discovery and Active Agent Auto Registration
+        Automating adding hosts with network discovery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ch10-zabbix-discovery-active-agent-autoregistration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automating adding hosts with active agent autoregistration
       
     </span>
   </a>
@@ -3736,10 +3812,54 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ch11-zabbix-visualisation-chapter" class="md-nav__link">
+  <a href="#ch11-zabbix-visualisation-graphs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Graphs, Dashboards, Reports, Maps and other visualisation
+        Using the built-in Graphs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ch11-zabbix-visualisation-dashboards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setting up Dashboards
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ch11-zabbix-visualisation-maps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating Maps for better overviews
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ch11-zabbix-visualisation-built-in-reports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using the Zabbix built in reports
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ch11-zabbix-visualisation-automated-pdf-reports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating automated PDF reports
       
     </span>
   </a>
@@ -11041,14 +11161,16 @@ with:</p>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-7-3"></a><span class="go">b5716f8f379d  docker.io/zabbix/zabbix-proxy-sqlite3:7.0-centos-latest /usr/sbin/zabbix_...  2 hours ago   Up 2 hours   0.0.0.0:10051-&gt;10051/tcp  ZabbixProxySqlite-Quadlet</span>
 </span></code></pre></div>
 </details>
-<p>When using Podman or Docker directly, container logs can be viewed using 
-<code>podman logs &lt;CONTAINER ID&gt;</code>. However, for containers started as SystemD Quadlet 
-services, this command will not show any output. Instead, the logs are written to 
-the host system's journal and can be accessed using:</p>
+<p>Take note of the <code>CONTAINER ID</code>—in this example, it is <code>b5716f8f379d</code>. You can
+then retrieve the container's logs using:</p>
 <details class="info" open="open">
 <summary>Retrieve container logs</summary>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-8-1"></a>journalctl<span class="w"> </span>--user<span class="w"> </span>-u<span class="w"> </span>zabbix-proxy-sqlite.service
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-8-1"></a>podman<span class="w"> </span>logs<span class="w"> </span>b5716f8f379d
 </span></code></pre></div>
+Where <code>b5716f8f379d</code> is the <code>CONTAINER ID</code> of your container</p>
+<p>On some distributions, you can also view the logs directly through SystemD:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-9-1"></a>journalctl<span class="w"> </span>--user<span class="w"> </span>-u<span class="w"> </span>zabbix-proxy-sqlite.service
+</span></code></pre></div></p>
 </details>
 <p>This command will return the startup and runtime logs for the container, which
 are helpful for troubleshooting and verifying that the Zabbix proxy has started
@@ -11074,10 +11196,10 @@ tag for automated updates and specifying fixed versions for controlled environme
 point to the most recent image available in the repository.</p>
 <details class="info" open="open">
 <summary>To upgrade:</summary>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-9-1"></a><span class="c1"># Pull the latest image using Podman.</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-9-2"></a>podman<span class="w"> </span>pull<span class="w"> </span>zabbix/zabbix-proxy-sqlite3:7.0-centos-latest
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-9-3"></a><span class="c1"># Restart the systemd service associated with the container.</span>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-9-4"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>restart<span class="w"> </span>zabbix-proxy-sqlite.service
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-10-1"></a><span class="c1"># Pull the latest image using Podman.</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-10-2"></a>podman<span class="w"> </span>pull<span class="w"> </span>zabbix/zabbix-proxy-sqlite3:7.0-centos-latest
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-10-3"></a><span class="c1"># Restart the systemd service associated with the container.</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-10-4"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>restart<span class="w"> </span>zabbix-proxy-sqlite.service
 </span></code></pre></div>
 </details>
 <p>Thanks to our Quadlet integration, systemd will handle the rest automatically:
@@ -11096,17 +11218,17 @@ file is located at <code>~/.config/containers/systemd/zabbix-proxy-sqlite.contai
 <details class="example" open="open">
 <summary>Manually updating the tag</summary>
 <p>You'll need to edit this file 
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-10-1"></a>vi<span class="w"> </span>~/.config/containers/systemd/zabbix-proxy-sqlite.container
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-11-1"></a>vi<span class="w"> </span>~/.config/containers/systemd/zabbix-proxy-sqlite.container
 </span></code></pre></div></p>
 <p>and update the <code>Image=</code> line. For instance, change:</p>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-11-1"></a><span class="na">Image</span><span class="o">=</span><span class="s">docker.io/zabbix/zabbix-proxy-sqlite3:7.0.13-centos</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-12-1"></a><span class="na">Image</span><span class="o">=</span><span class="s">docker.io/zabbix/zabbix-proxy-sqlite3:7.0.13-centos</span>
 </span></code></pre></div>
 <p>to:</p>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-12-1"></a><span class="na">Image</span><span class="o">=</span><span class="s">docker.io/zabbix/zabbix-proxy-sqlite3:7.0.14-centos</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-13-1"></a><span class="na">Image</span><span class="o">=</span><span class="s">docker.io/zabbix/zabbix-proxy-sqlite3:7.0.14-centos</span>
 </span></code></pre></div>
 <p>Once the file has been updated, apply the changes by running:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-13-1"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>daemon-reload
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-13-2"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>restart<span class="w"> </span>zabbix-proxy-sqlite.service
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-14-1"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>daemon-reload
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-14-2"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>restart<span class="w"> </span>zabbix-proxy-sqlite.service
 </span></code></pre></div>
 <p>This tells systemd to reload the modified unit file and restart the container with
 the updated image. Since you're using a fixed tag, this upgrade process gives you
@@ -11123,10 +11245,10 @@ is available in the remote registry without requiring manual intervention.</p>
 <h4 id="ch03-zabbix-proxies-proxies-as-container-example-configuration">Example Configuration</h4>
 <details class="example" open="open">
 <summary>.container file</summary>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-14-1"></a><span class="k">[Container]</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-14-2"></a><span class="na">Image</span><span class="o">=</span><span class="s">docker.io/zabbix/zabbix-proxy-sqlite3:trunk-centos</span>
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-14-3"></a><span class="na">AutoUpdate</span><span class="o">=</span><span class="s">registry</span>
-</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-14-4"></a><span class="na">...</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-15-1"></a><span class="k">[Container]</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-15-2"></a><span class="na">Image</span><span class="o">=</span><span class="s">docker.io/zabbix/zabbix-proxy-sqlite3:trunk-centos</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-15-3"></a><span class="na">AutoUpdate</span><span class="o">=</span><span class="s">registry</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-15-4"></a><span class="na">...</span>
 </span></code></pre></div>
 <p>In this example, the <code>Image</code> points to the <code>trunk-centos</code> tag, and <code>AutoUpdate=registry</code>
 tells Podman to periodically check the container registry for updates to this tag.</p>
@@ -11165,12 +11287,12 @@ components) current without direct user intervention.</p>
 timer.</p>
 <div class="admonition info">
 <p class="admonition-title">For System-Wide Services</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-15-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>podman-auto-update.timer
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-16-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>podman-auto-update.timer
 </span></code></pre></div>
 </div>
 <div class="admonition info">
 <p class="admonition-title">For User-Level Services</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-16-1"></a>systemctl<span class="w"> </span>--user<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>podman-auto-update.timer
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-17-1"></a>systemctl<span class="w"> </span>--user<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>podman-auto-update.timer
 </span></code></pre></div>
 </div>
 <p>This activates a systemd timer that periodically invokes <code>podman-auto-update.service</code>.</p>
@@ -12057,11 +12179,11 @@ with:</p>
 then retrieve the container's logs using:</p>
 <details class="info" open="open">
 <summary>Retrieve container logs</summary>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#ch03-zabbix-proxies-web-services-__codelineno-19-1"></a>podman<span class="w"> </span>logs<span class="w"> </span>b5716f8f379d
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#ch03-zabbix-proxies-web-services-__codelineno-19-1"></a>podman<span class="w"> </span>logs<span class="w"> </span>bfedb5d16505
 </span></code></pre></div>
-Where <code>b5716f8f379d</code> is the <code>CONTAINER ID</code> of your container</p>
+Where <code>bfedb5d16505</code> is the <code>CONTAINER ID</code> of your container</p>
 <p>On some distributions, you can also view the logs directly through SystemD:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#ch03-zabbix-proxies-web-services-__codelineno-20-1"></a>journalctl<span class="w"> </span>--user<span class="w"> </span>-u<span class="w"> </span>zabbix-proxy-sqlite.service
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#ch03-zabbix-proxies-web-services-__codelineno-20-1"></a>journalctl<span class="w"> </span>--user<span class="w"> </span>-u<span class="w"> </span>zabbix-web-service.service
 </span></code></pre></div></p>
 </details>
 <p>This command will return the startup and runtime logs for the container, which
@@ -12252,7 +12374,7 @@ triggers:</p>
 <ul>
 <li><strong>Problem event</strong>: When the trigger goes from OK to PROBLEM</li>
 <li><strong>Problem resolution event</strong>: When the trigger goes from PROBLEM to OK</li>
-<li><strong>Problem update event</strong>: When someone manually updates a problem</li>
+<li><strong>Problem update event</strong>: When the problem is updated either manually or scripted through the Zabbix API.</li>
 </ul>
 <p>These problem events are what you will see in the frontend when you navigate to
 <code>Monitoring</code> | <code>Problems</code>, but they are also very important in the next step in
@@ -12263,7 +12385,7 @@ two parts. An action consists of <code>Conditions</code> and <code>Operations</c
 be important in making sure the action executes on the right time (conditions)
 and executes the right activity (operations). </p>
 <p>What happens is, whenever a problem event in Zabbix is created it is sent to every
-single problem action in our Zabbix environment. All of these action will then
+single problem action in our Zabbix environment. All of these actions will then
 check the event details like what host did it come from, with which severity, when
 did it start, which tags are present. These event details are then checked against
 the action conditions and only when the conditions match will the operations be executed.
@@ -12288,8 +12410,8 @@ looks like the image below.</p>
 <p>Important to note here is that if an item is collecting metrics, it doesn't necessarily
 need to have a trigger attached to it. The trigger expression is a separate configuration
 where we can choose which items we want to define thresholds on. In the end, not
-ever item needs to start creating problems. We can also see that we can use several
-items or event several items from different hosts in a single trigger.</p>
+every item needs to start creating problems. We can also see that we can use several
+items or even several items from different hosts in a single trigger.</p>
 <p>The same is the case for our events. Not every event will match the conditions on
 an action. In practice, this means that some problems will only show up in your
 Zabbix frontend, while other might go on to send you an alert message or even execute
@@ -12299,7 +12421,19 @@ This can be useful, for example if you want to split you messaging and your scri
 execution in different action to keep things organised.</p>
 <p>Now that we understand the various parts of our Zabbix dataflow we can dive deeper into creating the configuration for the steps in the dataflow.</p>
 <h2 id="ch04-zabbix-collecting-data-dataflow-questions">Questions</h2>
-<h2 id="ch04-zabbix-collecting-data-dataflow-useful-urls">Useful URLs</h2></section><section class="print-page" id="ch04-zabbix-collecting-data-hosts" heading-number="9.3"><nav class='md-tags'><span class='md-tag'>beginner</span></nav><h1 id="hosts">Hosts</h1>
+<ul>
+<li>Can you give two examples of what a "host" could represent in Zabbix, besides a server?</li>
+<li>What is the difference between collecting a metric as-is and using preprocessing on an item?</li>
+<li>What are the two possible states of a trigger, and what do they mean?</li>
+<li>Why is it important to carefully define the conditions in an action?</li>
+</ul>
+<h2 id="ch04-zabbix-collecting-data-dataflow-useful-urls">Useful URLs</h2>
+<ul>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/config/items">https://www.zabbix.com/documentation/current/en/manual/config/items</a></li>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/config/triggers">https://www.zabbix.com/documentation/current/en/manual/config/triggers</a></li>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/config/notifications/action">https://www.zabbix.com/documentation/current/en/manual/config/notifications/action</a></li>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/config/items/preprocessing">https://www.zabbix.com/documentation/current/en/manual/config/items/preprocessing</a></li>
+</ul></section><section class="print-page" id="ch04-zabbix-collecting-data-hosts" heading-number="9.3"><nav class='md-tags'><span class='md-tag'>beginner</span></nav><h1 id="hosts">Hosts</h1>
 <p>After reading the previous dataflow section, it is now clear we have to go through the 
 dataflow steps to get from collecting data to sending out alerts. 
 The first part of the dataflow is to create a host, so that is what we are now going to tackle
@@ -12321,14 +12455,17 @@ we can create our host. </p>
 <h3 id="ch04-zabbix-collecting-data-hosts-host-name">Host name</h3>
 <p>The <code>Host name</code> is very important. It functions as both the technical name of the host we will
 use in various different locations, but it is also used as the <code>Visible name</code> by default. This 
-means that we will work with this name to find through filters this host with its associated data.</p>
+means that we will work with this name to find this host with its associated data through filters .</p>
 <p>Make sure to select a host name that is short and descriptive. For example:</p>
+<details class="example" open="open">
+<summary>a few good host names</summary>
 <ul>
-<li>linux-srv01-prd</li>
-<li>www.thezabbixbook.com</li>
-<li>docker-container-42</li>
-<li>db-srv10 - Website database</li>
+<li><code>linux-srv01-prd</code></li>
+<li><code>www.thezabbixbook.com</code></li>
+<li><code>docker-container-42</code></li>
+<li><code>db-srv10 - Website database</code></li>
 </ul>
+</details>
 <p>The best practise is to keep the host name the same in Zabbix as it is configured on your
 monitoring target. The monitoring target, being whatever you are trying to monitor. 
 Whether that is a physical or virtual server, a website, a database server or 
@@ -12352,46 +12489,61 @@ different character encoding in the Zabbix database. </p>
 <p>That way you keep your local language in the frontend, but the technical name doesn't include the 
 special character. Keep in mind however, that this can create confusion. You now need to remember
 two different names for the same host. As such, visible names are only recommended when you really need
-them or if you are trying to work around something. Otherwise, there is not need to use them.</p>
+them or if you are trying to work around something. Otherwise, there is no need to use them.</p>
 <h3 id="ch04-zabbix-collecting-data-hosts-host-groups">Host groups</h3>
-<p>In Chapter 02 of the book, we had a deep dive into setting up various different host groups to keep
-our Zabbix environment structured. When we create a host, we can now start using on of
+<p>In <a href="#ch02-zabbix-installation-host-groups">Chapter 02</a> of the book, we had a deep dive into setting up various different host groups to keep
+our Zabbix environment structured. When we create a host, we can now start using one of
 our created host groups. Keep in mind, to only add the host to the lowest level of the subgroups. For
 example when we have <code>Servers</code> and <code>Servers/Linux</code>, we will only add our host to <code>Servers/Linux</code>.</p>
 <p>It's also possible to create a host straight from the host creation window. To do so,
 simply start typing the host group name into the <code>Host groups</code> field and it will ask you if
 you want to create the host group.</p>
+<p>Let's add the host <code>simple-checks</code> in the <code>Linux/Servers</code> host group:</p>
 <p><img align="center" alt="Host creation - new host group" src="../ch04-zabbix-collecting-data/datacollection/ch04.4-host-creation-new-group.png" /></p>
 <p><em>4.4 Host creation - new host group</em></p>
-<p>Let's add the host <code>simple-checks</code> in the <code>Linux/Servers</code> host group.</p>
-<details class="note" open="open">
-<summary>Note</summary>
-<p>It's recommended to read the simple checks recipe from here, as it 
-contains useful tips on creating good items.</p>
-</details>
+<p>And this is it for creating our first host in Zabbix. We can leave the rest of the
+fields empty as they are optional. Another very important element of a host is
+the interfaces field, but we will cover that in a later section.
+Finally click on the <code>Add</code> button to create the host.</p>
 <h2 id="ch04-zabbix-collecting-data-hosts-conclusion">Conclusion</h2>
+<p>In this section we have learned how to create a host in Zabbix. We have covered
+the important fields like <code>Host name</code>, <code>Visible name</code> and <code>Host groups</code>.
+We have also discussed best practices around naming conventions for hosts in Zabbix
+and when to use the visible name field. Finally, we created our first host
+called <code>simple-checks</code> in the <code>Linux/Servers</code> host group, which we will use
+in the next section to create our first items.</p>
 <h2 id="ch04-zabbix-collecting-data-hosts-questions">Questions</h2>
-<h2 id="ch04-zabbix-collecting-data-hosts-useful-urls">Useful URLs</h2></section><section class="print-page" id="ch04-zabbix-collecting-data-simple-checks" heading-number="9.4"><nav class='md-tags'><span class='md-tag'>beginner</span></nav><h1 id="simple-checks">Simple checks</h1>
+<ul>
+<li>What is the purpose of a host in Zabbix?</li>
+<li>What is the difference between the "Host name" and "Visible name" fields when creating a host?</li>
+<li>Why is it recommended to only add a host to the lowest level of subgroups when assigning host groups?</li>
+</ul>
+<h2 id="ch04-zabbix-collecting-data-hosts-useful-urls">Useful URLs</h2>
+<ul>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/config/hosts/host">https://www.zabbix.com/documentation/current/en/manual/config/hosts/host</a></li>
+</ul></section><section class="print-page" id="ch04-zabbix-collecting-data-simple-checks" heading-number="9.4"><nav class='md-tags'><span class='md-tag'>beginner</span></nav><h1 id="simple-checks">Simple checks</h1>
 <p>What would a Zabbix book be without setting up the actual monitoring itself, because in 
 the end a monitoring system is all about collecting data through various different protocols. </p>
 <p>Simple checks are one (or actually several) of such protocols. Zabbix has a bunch of built-in 
 checks we can do, executed from the Zabbix server or proxy towards our monitoring targets. The simple 
 checks contain protocol checks such as <code>ICMP Ping</code>, <code>TCP/UDP</code> but also built in <code>VMware</code> monitoring.</p>
 <p>Without further ado, let's set up our first items. Please keep in mind that we will be building
-everything on a host level for now. Check out Chapter 06 to learn how to do this properly on a template.</p>
+everything on a host level for now. Check out <a href="#ch06-zabbix-templates-chapter">Chapter 06</a> to learn how to do this properly on a template.</p>
 <h2 id="ch04-zabbix-collecting-data-simple-checks-building-the-item">Building the item</h2>
-<p>We shall start with a simple ICMP Ping check. If you haven't already, at <code>Data collection</code> | <code>Hosts</code>
-let's create the host <code>simple-checks</code> in the host group <code>Servers/Linux</code>. Then, for this
-new host navigate to <code>Items</code>. You should see a <code>Create item</code> button in the top right corner. Click
-on this button and lets have a look at the item creation modal popup window:</p>
+<p>We shall start with a simple ICMP Ping check on our host <code>simple-checks</code> in the
+<code>Servers/Linux</code> host group, created in the <a href="#ch04-zabbix-collecting-data-hosts">previous section</a>. 
+Now go to <strong>Data collection</strong> | <strong>Hosts</strong> and click on the link <code>Items</code> next to
+the host <code>simple-checks</code>. You should see a <code>Create item</code> button in the top right
+corner. Click on this button and lets have a look at the item creation modal popup
+window:</p>
 <p><img align="left" alt="Empty Item creation" src="../ch04-zabbix-collecting-data/datacollection/ch04.5-empty-item-creation.png" /></p>
 <p><em>4.5 Empty Item creation window</em></p>
 <p>Make sure to change the <code>Type</code> to <code>Simple check</code> to get a similar result. We can see there are
-only two fields (that aren't selectors) mandatory. These, we have to fill in to make our
+only two fields mandatory (that aren't selectors). These, we have to fill in to make our
 item work.</p>
 <ul>
-<li><strong>Name</strong> </li>
-<li><strong>Key</strong></li>
+<li><strong>Name</strong> - a descriptive name of the item</li>
+<li><strong>Key</strong> - the unique identifier of the item</li>
 </ul>
 <h3 id="ch04-zabbix-collecting-data-simple-checks-item-name">Item Name</h3>
 <p>The <code>Item name</code> in Zabbix is a very important field for all of our items. This is going
@@ -12406,11 +12558,11 @@ the best practise here? </p>
 <li><strong>Item names should contain suffixes where useful</strong></li>
 </ul>
 <p>Some examples of good item names:
-- Use <code>Memory utilization</code> not <code>The memory util of this host</code>. Keep it short and descriptive
-- Use <code>CPU load</code> or if you have multiple use a suffix <code>CPU load 1m</code> and
-<code>CPU load 5m</code> for example
+- Use <code>Memory utilization</code>, not <code>The memory util of this host</code>. Keep it short and descriptive
+- Use <code>CPU load</code> or if you have multiple use a suffix: <code>CPU load 1m</code> and
+  <code>CPU load 5m</code> for example
 - Use prefixes like <code>Interface eth0: Bits incoming</code> and
-<code>Interface eth1: Bits incoming</code> for similar items on different entities</p>
+  <code>Interface eth1: Bits incoming</code> for similar items on different entities</p>
 <p>Using those techniques, we can create items that are easy to find and most importantly that
 your Zabbix users will want to read. After all, you can count on IT engineers to not read well,
 especially in a troubleshooting while everything is down scenario. Keeping things simple will
@@ -12433,20 +12585,20 @@ the uniqueness criteria for the creation of this entity. There are two types of 
 <li><strong>Built in</strong></li>
 <li><strong>User defined</strong></li>
 </ul>
-<p>The built in item keys is what we will use to create our simple check in a while. The user defined
+<p>The <strong>built in</strong> item key is what we will use to create our simple check in a while. The <strong>user defined</strong>
 item key is what we will use on items types like <code>SNMP</code> and <code>Script</code>. The main difference is that
-built in item keys are defined by Zabbix and attach to a specific monitoring function. The user defined
+<strong>built in</strong> item keys are defined by Zabbix and attached to a specific monitoring function. The <strong>user defined</strong>
 item keys are just there to serve as the uniqueness criteria, while a different field in the item form
 will determine the monitoring function.</p>
 <p>Item keys can also be of a <code>Flexible</code> or <code>Non-flexible</code> kind. Flexible meaning the item key accepts
 parameters. These parameters change the function of the built-in item keys and also count as part
 of the uniqueness of the item keys. For example:</p>
 <ul>
-<li><strong>agent.version</strong> a <code>Zabbix agent</code> item key doesn't accept parameters and only serves one purpose. To
-get the version of the Zabbix agent installed.</li>
-<li><strong>net.tcp.service[service,<ip>,<port>]</strong> a <code>Simple check</code> item key that accepts 3 parameters,
-each parameter divided by a comma(<code>,</code>). Optional parameters are marked by the <code>&lt;&gt;</code> signs, whereas
-mandatory parameters have no pre/suffix.</li>
+<li><code>agent.version</code> - a <strong>Zabbix agent</strong> item key doesn't accept parameters and only serves one purpose. To
+  get the version of the Zabbix agent installed.</li>
+<li><code>net.tcp.service[service,&lt;ip&gt;,&lt;port&gt;]</code> - a <strong>Simple check</strong> item key that accepts 3 parameters,
+  each parameter divided by a comma(<code>,</code>). Optional parameters are marked by the <code>&lt;&gt;</code> signs, whereas
+  mandatory parameters have no pre/suffix.</li>
 </ul>
 <h3 id="ch04-zabbix-collecting-data-simple-checks-icmp-ping">ICMP Ping</h3>
 <p>With all of this in mind, let's finish the creation our ICMP Ping item. First, we will give our
@@ -12458,8 +12610,8 @@ new item a name. Since this is a simple ICMP Ping to the host lets go for:</p>
 <code>icmpping[&lt;target&gt;,&lt;packets&gt;,&lt;interval&gt;,&lt;size&gt;,&lt;timeout&gt;,&lt;options&gt;]</code>. This key accepts 6 parameters, all
 of which are optional. However, when we do not select an interface on an <code>icmpping</code> item, we
 need to fill in at least <code>icmpping[&lt;target&gt;]</code> for it to work. Normally <code>icmpping</code> can use the interface
-IP or DNS, but since we will discuss the <code>Host interfaces</code> later in this chapter, let's use
-the parameter instead.</p>
+IP or DNS, but we did not yet configure one on this host as we will discuss this in the <a href="#ch04-zabbix-collecting-data-host-interfaces">Host interfaces</a> section later in this chapter. So, for
+now let's use the parameter instead.</p>
 <ul>
 <li><strong>Key</strong> = <code>icmpping[127.0.0.1]</code></li>
 </ul>
@@ -12487,10 +12639,10 @@ Fping6Location=/usr/sbin/fping6
 we can monitor the availability and performance of TCP and UDP ports. There are 4 built-in keys
 available for these checks:</p>
 <ul>
-<li><strong>net.tcp.service[service,<ip>,<port>]</strong></li>
-<li><strong>net.tcp.service.perf[service,<ip>,<port>]</strong></li>
-<li><strong>net.udp.service[service,<ip>,<port>]</strong></li>
-<li><strong>net.udp.service.perf[service,<ip>,<port>]</strong></li>
+<li><code>net.tcp.service[service,&lt;ip&gt;,&lt;port&gt;]</code></li>
+<li><code>net.tcp.service.perf[service,&lt;ip&gt;,&lt;port&gt;]</code></li>
+<li><code>net.udp.service[service,&lt;ip&gt;,&lt;port&gt;]</code></li>
+<li><code>net.udp.service.perf[service,&lt;ip&gt;,&lt;port&gt;]</code></li>
 </ul>
 <p>Granted, the <code>net.udp.service</code> item keys only monitor the availability and performance of the NTP
 protocol due to the "take it our leave it" nature of UDP. But, the <code>net.tcp.service</code> item keys are
@@ -12511,15 +12663,23 @@ create things like items. Keeping things structured in your environment means th
 you and your colleagues will have an easier time using your monitoring and
 observability platform.</p>
 <h2 id="ch04-zabbix-collecting-data-simple-checks-questions">Questions</h2>
+<ul>
+<li>What are simple checks in Zabbix and what are they used for?</li>
+<li>What are the two mandatory fields when creating a simple check item in Zabbix?</li>
+<li>What is the difference between built-in and user-defined item keys in Zabbix?</li>
+<li>Why is it recommended to add a tag with the name <code>component</code> to every item created in Zabbix?</li>
+</ul>
 <h2 id="ch04-zabbix-collecting-data-simple-checks-useful-urls">Useful URLs</h2>
-<p><a href="https://www.youtube.com/watch?v=5etxbNPrygU">https://www.youtube.com/watch?v=5etxbNPrygU</a></p></section><section class="print-page" id="ch04-zabbix-collecting-data-host-interfaces" heading-number="9.5"><nav class='md-tags'><span class='md-tag'>beginner</span></nav><h1 id="host-interfaces">Host Interfaces</h1>
+<p><a href="https://www.youtube.com/watch?v=5etxbNPrygU">https://www.youtube.com/watch?v=5etxbNPrygU</a>
+<a href="https://www.zabbix.com/documentation/7.4/en/manual/config/items/itemtypes/simple_checks">https://www.zabbix.com/documentation/7.4/en/manual/config/items/itemtypes/simple_checks</a>
+<a href="https://www.zabbix.com/documentation/guidelines/en/template_guidelines#items">https://www.zabbix.com/documentation/guidelines/en/template_guidelines#items</a></p></section><section class="print-page" id="ch04-zabbix-collecting-data-host-interfaces" heading-number="9.5"><nav class='md-tags'><span class='md-tag'>beginner</span></nav><h1 id="host-interfaces">Host Interfaces</h1>
 <p>When we create a host in Zabbix, we have the option to create <code>Host interfaces</code>.
 You might have noticed this in the previous chapter already when you created a
 host or when you added the simple check.</p>
 <p>Host interfaces in Zabbix are used to define a remote monitoring target. We define
 the <code>IP address</code> or <code>DNS name</code> as well as the <code>Port</code> that we want our Zabbix server
 (or proxy) to connect to when collecting our monitoring information. There are
-three types of interfaces.</p>
+four types of interfaces.</p>
 <ul>
 <li><strong>Agent (or ZBX)</strong> </li>
 <li><strong>SNMP</strong></li>
@@ -12608,37 +12768,141 @@ to important information or worse write access to devices without authentication
 <code>SNMPv3</code> with authentication and data encryption is as such always recommended.
 It's up to the Zabbix administrator to determine what the monitoring target supports,
 but higher security is better in this case. </p>
-<p>noAuthNoPriv utilizes the <code>SNMPv3</code> protocol without authenticating and encrypting the data. 
-AuthNoPriv uses encrypted authentication, but sends monitoring data plain text over the network
-AuthPriv is the recommended method for high security, as it uses encrypted authentication and also sends monitoring data encrypted over the network. </p>
-<p>When using <code>SNMPv3</code> it is also best practice to use a strong authentication protocol. MD5 and DES are both no longer recommended due to the possibility to brute force the passwords with consumer grade hardware amongst other risks. That's why SHA1 and AES128 or higher is always recommended. </p>
+<ul>
+<li>noAuthNoPriv utilizes the <code>SNMPv3</code> protocol without authenticating and encrypting 
+  the data. </li>
+<li>AuthNoPriv uses encrypted authentication, but sends monitoring data plain text 
+  over the network</li>
+<li>AuthPriv is the recommended method for high security, as it uses encrypted 
+  authentication and also sends monitoring data encrypted over the network. </li>
+</ul>
+<p>When using <code>SNMPv3</code> it is also best practice to use a strong authentication protocol.
+MD5 and DES are both no longer recommended due to the possibility to brute force
+the passwords with consumer grade hardware amongst other risks. That's why SHA1
+and AES128 or higher is always recommended. </p>
 <h3 id="ch04-zabbix-collecting-data-host-interfaces-ipmi">IPMI</h3>
-<p>For <code>IPMI agent</code> type items we want to add the <code>IPMI</code> type interface. We can use it to connect to <code>BMC's (Baseboard Management Controller)</code> like <code>iDRAC</code> and <code>iLo</code>. This interface is slightly different again from the previous three interfaces.</p>
+<p>For <code>IPMI agent</code> type items we want to add the <code>IPMI</code> type interface. We can use
+it to connect to <code>BMC's (Baseboard Management Controller)</code> like <code>iDRAC</code> and <code>iLo</code>.
+This interface is slightly different again from the previous three interfaces.</p>
 <p><img align="center" alt="IPMI interface" src="../ch04-zabbix-collecting-data/datacollection/ch04.12-ipmi-interface.png" />
 <em>4.12 IPMI interface</em></p>
-<p>We have the same settings for <code>IP</code>, <code>DNS</code> and <code>Port</code> again, but in the case of IPMI we do not define credentials on the interface level. Instead these are provided on a different tab on the host configuration settings.</p>
+<p>We have the same settings for <code>IP</code>, <code>DNS</code> and <code>Port</code> again, but in the case of
+IPMI we do not define credentials on the interface level. Instead these are provided
+ on a different tab on the host configuration settings.</p>
 <p><img align="center" alt="IPMI host settings" src="../ch04-zabbix-collecting-data/datacollection/ch04.13-ipmi-settings.png" />
 <em>4.13 IPMI host settings</em></p>
-<p>For a host in Zabbix we can only define one IPMI use for authentication, regardless of the amount of interfaces we add. </p>
+<p>For a host in Zabbix we can only define one IPMI use for authentication, 
+regardless of the amount of interfaces we add. </p>
 <ul>
-<li><strong>Authentication algorithm</strong> None, MD2, MD5, Straight, OEM, RMCP+. Determines the encryption strength.</li>
-<li><strong>Privilege level</strong> Callback, User, Operator, Admin, OEM. Determines the privilege level our user should be allowed to connect with.</li>
+<li><strong>Authentication algorithm</strong> None, MD2, MD5, Straight, OEM, RMCP+. Determines 
+  the encryption strength.</li>
+<li><strong>Privilege level</strong> Callback, User, Operator, Admin, OEM. Determines the 
+  privilege level our user should be allowed to connect with.</li>
 <li><strong>Username</strong> The username to authenticate with.</li>
 <li><strong>Password</strong> The password to authenticate with.</li>
 </ul>
-<p>Once again, for security purposes <code>MD2</code> and <code>MD5</code> are not recommended. As well as <code>Straight</code> which is plain text unencrypted and <code>OEM</code> which is vendor specific. If possible, try to use <code>RMCP+</code>, which in most cases is the most secure.</p>
-<p>For the <code>Privilege level</code> it is recommended to use either <code>Callback</code> or <code>User</code> in most scenarios. <code>Callback</code> will allow us to access alerts, <code>User</code> will also allow us to access monitoring data. If need higher privilege levels to execute commands on the <code>BMC</code> as well, this is possible. But keep in mind, write access from your monitoring system comes with additional security risks.</p>
+<p>Once again, for security purposes <code>MD2</code> and <code>MD5</code> are not recommended. As well 
+as <code>Straight</code> which is plain text unencrypted and <code>OEM</code> which is vendor specific.
+If possible, try to use <code>RMCP+</code>, which in most cases is the most secure.</p>
+<p>For the <code>Privilege level</code> it is recommended to use either <code>Callback</code> or <code>User</code>
+in most scenarios. <code>Callback</code> will allow us to access alerts, <code>User</code> will also
+allow us to access monitoring data. If need higher privilege levels to execute
+commands on the <code>BMC</code> as well, this is possible. But keep in mind, write access
+from your monitoring system comes with additional security risks.</p>
 <h2 id="ch04-zabbix-collecting-data-host-interfaces-interface-availability">Interface availability</h2>
-<p>All four interface types, also come with an icon that can turn <span style="color: green;">Green</span>, <span style="color: orange;">Orange</span>, <span style="color: red;">Red</span> or <span style="color: grey;">Grey</span>. This color determines the interface its availability.</p>
-<p>...
-...
-...</p>
+<p>All four interface types, also come with an icon that can turn <span style="color: green;">Green</span>,
+<span style="color: orange;">Orange</span>, <span style="color: red;">Red</span> or
+<span style="color: grey;">Grey</span>. This color determines the interfaces'
+current availability and is shown in a few places in the Zabbix frontend:</p>
+<ul>
+<li>On the host overview page (Monitoring → Hosts)</li>
+<li>On the hosts configuration page (Data Collection → Hosts)</li>
+<li>On the host configuration page when editing a host (Data Collection → Hosts → [Host name])</li>
+</ul>
+<p>When you hover over, or click on one of the availability icons, you will get a 
+tooltip with the current status and possible error reason of each individual 
+interface of that specific interface type.</p>
+<p>The availability status of each interface is determined by the last data collection
+attempt for items that use this interface:</p>
+<ul>
+<li><span style="color: green;">Available</span> - The last data collection attempt 
+  was successful. </li>
+<li><span style="color: red;">Not available</span> - The last data collection attempt
+  failed. (timeout, connection refused, authentication failure, etc.) Usually
+  the details will also show the error reason for the failure.</li>
+<li><span style="color: grey;">Unknown</span> - This can have a few reasons:</li>
+<li>There has been no data collection attempt on this interface yet or</li>
+<li>The host is disabled or</li>
+<li>The host is set to be monitored by a proxy that is currently unavailable.</li>
+<li>The host is set to be monitored by a proxy that has not yet collected data 
+    from this host.</li>
+<li>All items that use this interface are disabled.</li>
+<li>Zabbix server or the proxy monitoring this host has no pollers configured
+    to collect data from this type of interface. (e.g. no SNMP pollers configured
+    to collect data from SNMP interfaces or no Agent pollers configured to collect
+    data from Zabbix Agent interfaces)</li>
+</ul>
+<h3 id="ch04-zabbix-collecting-data-host-interfaces-active-checks-availability">Active checks availability</h3>
+<p>On the details popup of the Zabbix Agent availability icon (ZBX), you will see 
+that there is an additional interface <strong>Active checks</strong> automatically added whenever
+the host has any item of the type '<em>Zabbix agent (active)</em>' enabled.</p>
+<p>The availability of the Active checks is determined by heartbeats sent by the 
+Zabbix agent to the Zabbix server or proxy. The status remains <span style="color: grey;">Unknown</span> 
+until the first heartbeat is received. Once the first heartbeat is received, 
+the status will switch to <span style="color: green;">Available</span>.</p>
+<p>The frequency of there heartbeats is determined by the <code>HeartbeatFrequency</code> 
+parameter in the Zabbix agent configuration file and defaults to 60 seconds. 
+If the Zabbix server or proxy has not received a subsequent heartbeat from the agent for 
+a period of 2 times the <code>HeartbeatFrequency</code>, the status will switch to 
+<span style="color: red;">Not available</span>.</p>
+<p>???+ warning Zabbix agents older than 6.2</p>
+<div class="language-text highlight"><pre><span></span><code>The heartbeat mechanism was introduced in Zabbix 6.2, so for Zabbix agents
+older than version 6.2, the Active checks interface status will always
+remain &lt;span style=&quot;color: grey;&quot;&gt;Unknown&lt;/span&gt; as there are no heartbeats
+being sent by the agent to determine the availability status.
+</code></pre></div>
+<h3 id="ch04-zabbix-collecting-data-host-interfaces-overall-interface-availability">Overall interface availability</h3>
+<p>The status of the interface type availability icon is determined by the status 
+of all interfaces of that specific type and can have the following colors:</p>
+<ul>
+<li><span style="color: green;">Green</span> - All interfaces of this type are available.</li>
+<li><span style="color: orange;">Orange</span> - At least one interface of this type 
+  is unavailable, but at least one other interface of this type is available or unknown.</li>
+<li><span style="color: red;">Red</span> - All interfaces of this type are unavailable.</li>
+<li><span style="color: grey;">Grey</span> - At least one interface of this type is unknown,
+  but none of the interfaces of this type are unavailable.</li>
+</ul>
 <h2 id="ch04-zabbix-collecting-data-host-interfaces-conclusion">Conclusion</h2>
-<p>When configuring your host interfaces in Zabbix, we need to match our <code>Item type</code> to our <code>Interface type</code>. When we have the correct <code>Host interface</code> configured we will be able to add the corresponding <code>Items</code> on our  host to collect data. Upon successful data collection, the interface availability icon will also turn <code>Green</code>.</p>
-<p>Some item types like the <code>Simple check</code> also have the possibility to use host interfaces, but do not need them. These items, although they use the interface, do not have an affect on interface availability and the availability icon.</p>
-<p>When configuring host interfaces with security settings, keep in mind to use the most secure option that your monitoring target supports. This will make sure your Zabbix environment is more secure, even if a bad actor would be present on your network somehow.</p>
+<p>When configuring your host interfaces in Zabbix, we need to match our <code>Item type</code>
+to our <code>Interface type</code>. When we have the correct <code>Host interface</code> configured we
+will be able to add the corresponding <code>Items</code> on our  host to collect data. Upon
+successful data collection, the interface availability icon will also turn <code>Green</code>.</p>
+<p>Some item types like the <code>Simple check</code> also have the possibility to use host
+interfaces, but do not need them. These items, although they use the interface,
+do not have an effect on interface availability and the availability icon.</p>
+<p>When configuring host interfaces with security settings, keep in mind to use the
+most secure option that your monitoring target supports. This will make sure your
+Zabbix environment is more secure, even if a bad actor would be present on your 
+network somehow.</p>
 <h2 id="ch04-zabbix-collecting-data-host-interfaces-questions">Questions</h2>
-<h2 id="ch04-zabbix-collecting-data-host-interfaces-useful-urls">Useful URLs</h2></section><section class="print-page" id="ch04-zabbix-collecting-data-zabbix-agent-passive" heading-number="9.6"><nav class='md-tags'><span class='md-tag'>advanced</span></nav><h1 id="zabbix-agent-installation-and-passive-monitoring">Zabbix Agent installation and Passive monitoring</h1>
+<ul>
+<li>What are the four types of host interfaces in Zabbix, and what is each used for?</li>
+<li>When choosing between monitoring using the IP address or DNS name in a host
+  interface, what do you choose and why?</li>
+<li>What is the purpose of the "Max repetition count" field in SNMPv2 and SNMPv3
+  interfaces?</li>
+<li>Where are the credentials for IPMI interfaces configured in Zabbix?</li>
+<li>What do the green, red, orange, and grey colors indicate for interface 
+  availability in Zabbix?</li>
+<li>How is the availability of "Active checks" determined for Zabbix Agent 
+  interfaces?</li>
+</ul>
+<h2 id="ch04-zabbix-collecting-data-host-interfaces-useful-urls">Useful URLs</h2>
+<ul>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/quickstart/host">https://www.zabbix.com/documentation/current/en/manual/quickstart/host</a></li>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/config/hosts/host">https://www.zabbix.com/documentation/current/en/manual/config/hosts/host</a></li>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/monitoring/hosts">https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/monitoring/hosts</a></li>
+</ul></section><section class="print-page" id="ch04-zabbix-collecting-data-zabbix-agent-passive" heading-number="9.6"><nav class='md-tags'><span class='md-tag'>advanced</span></nav><h1 id="zabbix-agent-installation-and-passive-monitoring">Zabbix Agent installation and Passive monitoring</h1>
 <p>At this point we are familiar with the Zabbix dataflow, how to create hosts and,
 add interfaces and items to a host. As a system administrator or anyone else working
 with Linux, Unix or Windows systems usually we jump right into installing the Zabbix
@@ -21963,51 +22227,57 @@ item?</li>
                     <section class='print-page md-section' id='section-15' heading-number='15'>
                         <h1>Chapter 10 : Discovery<a class='headerlink' href='#section-15' title='Permanent link'></a>
                         </h1>
-                    <section class="print-page" id="ch10-zabbix-discovery-chapter" heading-number="15.1"><h1 id="ch10-zabbix-discovery-chapter-automating-your-monitoring-with-auto-discovery-and-active-agent-auto-registration">Automating Your Monitoring with Auto Discovery and Active Agent Auto Registration</h1>
-<p>In this chapter, we'll explore two powerful automation features in Zabbix:
-<strong>auto discovery</strong> and <strong>active agent auto-registration</strong>. These tools are essential
+                    <section class="print-page" id="ch10-zabbix-discovery-network-host-discovery" heading-number="15.1"><h1 id="ch10-zabbix-discovery-network-host-discovery-automating-adding-hosts-with-network-discovery">Automating adding hosts with network discovery</h1>
+<p>In this chapter, we'll explore the powerful automation features in Zabbix called
+<strong>network discovery</strong>. This tools are essential
 for scaling your monitoring efforts by minimizing manual configuration and
 ensuring new devices and services are seamlessly integrated into your Zabbix
 environment.</p>
-<p>We'll begin with <strong>auto discovery</strong>, which enables Zabbix to automatically detect
-and monitor new hosts and services within your network. You'll learn how to
-configure discovery rules, actions, and conditions to automate the onboarding
-process, making your monitoring more dynamic and adaptive to changes in your
-infrastructure.</p>
-<p>Next, we'll dive into <strong>active agent auto registration</strong>, which simplifies the
+<p>We'll dive into <strong>network discovery</strong>, which can be used to scan a network for hosts, especially in large or rapidly changing environments.
+We'll cover how to set up network discovery rules that allow us to find
+hosts on the network with the Zabbix server or proxy, reducing administrative overhead and ensuring
+all relevant data is captured efficiently.</p>
+<p>By the end of this chapter, you'll have a thorough understanding of how to leverage
+network discovery to create a more automated, scalable, and
+efficient monitoring system.</p>
+<h2 id="ch10-zabbix-discovery-network-host-discovery-conclusion">Conclusion</h2>
+<h2 id="ch10-zabbix-discovery-network-host-discovery-questions">Questions</h2>
+<h2 id="ch10-zabbix-discovery-network-host-discovery-useful-urls">Useful URLs</h2></section><section class="print-page" id="ch10-zabbix-discovery-active-agent-autoregistration" heading-number="15.2"><h1 id="ch10-zabbix-discovery-active-agent-autoregistration-automating-adding-hosts-with-active-agent-autoregistration">Automating adding hosts with active agent autoregistration</h1>
+<p>In this chapter, we'll explore the powerful automation features in Zabbix called
+<strong>active agent autoregistration</strong>. This tools are essential
+for scaling your monitoring efforts by minimizing manual configuration and
+ensuring new devices and services are seamlessly integrated into your Zabbix
+environment.</p>
+<p>We'll dive into <strong>active agent autoregistration</strong>, which simplifies the
 management of Zabbix agents, especially in large or rapidly changing environments.
-We'll cover how to set up auto-registration rules that allow agents to register
+We'll cover how to set up autoregistration rules that allow agents to register
 themselves with the Zabbix server, reducing administrative overhead and ensuring
 all relevant data is captured efficiently.</p>
 <p>By the end of this chapter, you'll have a thorough understanding of how to leverage
-auto-discovery and auto-registration to create a more automated, scalable, and
-efficient monitoring system.</p></section></section>
+active agent autoregistration to create a more automated, scalable, and
+efficient monitoring system.</p>
+<h2 id="ch10-zabbix-discovery-active-agent-autoregistration-conclusion">Conclusion</h2>
+<h2 id="ch10-zabbix-discovery-active-agent-autoregistration-questions">Questions</h2>
+<h2 id="ch10-zabbix-discovery-active-agent-autoregistration-useful-urls">Useful URLs</h2></section></section>
                     <section class='print-page md-section' id='section-16' heading-number='16'>
                         <h1>Chapter 11 : Visualisation<a class='headerlink' href='#section-16' title='Permanent link'></a>
                         </h1>
-                    <section class="print-page" id="ch11-zabbix-visualisation-chapter" heading-number="16.1"><h1 id="ch11-zabbix-visualisation-chapter-graphs-dashboards-reports-maps-and-other-visualisation">Graphs, Dashboards, Reports, Maps and other visualisation</h1>
-<p>In this chapter, we delve into the heart of Zabbix's visualization capabilities,
-where data comes to life through intuitive and powerful visual tools.
-From dynamic graphs that track your system's performance to comprehensive dashboards
-that provide at-a-glance insights, Zabbix offers a rich set of visualization features
-to help you understand and manage your infrastructure.</p>
-<p>We'll start by exploring <strong>graphs</strong>, which allow you to monitor metrics over time,
-helping you spot trends and anomalies with ease. Next, we'll move on to <strong>dashboards</strong>,
-where you can aggregate multiple widgets into a single view for a more holistic
-understanding of your network's health.</p>
-<p>Then, we'll discuss <strong>reports</strong> an essential feature for summarizing and sharing
-insights with your team or stakeholders.
-Finally, we'll cover <strong>maps</strong>, a unique visualization tool that lets you create
-interactive representations of your network topology, making it easier to
-pinpoint issues and understand relationships between different components.</p>
-<p>By the end of this chapter, you'll have a comprehensive understanding of how to
-leverage Zabbix's visualization tools to monitor, analyse, and communicate the
-state of your IT environment effectively. 
-Whether you're a seasoned administrator or just starting with Zabbix, mastering
-these visual tools will enhance your ability to manage complex infrastructures
-and ensure optimal performance.</p>
-<p>Let's dive into the world of Zabbix visualizations and unlock the full potential
-of your monitoring setup.</p></section></section>
+                    <section class="print-page" id="ch11-zabbix-visualisation-graphs" heading-number="16.1"><h1 id="ch11-zabbix-visualisation-graphs-using-the-built-in-graphs">Using the built-in Graphs</h1>
+<h2 id="ch11-zabbix-visualisation-graphs-conclusion">Conclusion</h2>
+<h2 id="ch11-zabbix-visualisation-graphs-questions">Questions</h2>
+<h2 id="ch11-zabbix-visualisation-graphs-useful-urls">Useful URLs</h2></section><section class="print-page" id="ch11-zabbix-visualisation-dashboards" heading-number="16.2"><h1 id="ch11-zabbix-visualisation-dashboards-setting-up-dashboards">Setting up Dashboards</h1>
+<h2 id="ch11-zabbix-visualisation-dashboards-conclusion">Conclusion</h2>
+<h2 id="ch11-zabbix-visualisation-dashboards-questions">Questions</h2>
+<h2 id="ch11-zabbix-visualisation-dashboards-useful-urls">Useful URLs</h2></section><section class="print-page" id="ch11-zabbix-visualisation-maps" heading-number="16.3"><h1 id="ch11-zabbix-visualisation-maps-creating-maps-for-better-overviews">Creating Maps for better overviews</h1>
+<h2 id="ch11-zabbix-visualisation-maps-conclusion">Conclusion</h2>
+<h2 id="ch11-zabbix-visualisation-maps-questions">Questions</h2>
+<h2 id="ch11-zabbix-visualisation-maps-useful-urls">Useful URLs</h2></section><section class="print-page" id="ch11-zabbix-visualisation-built-in-reports" heading-number="16.4"><h1 id="ch11-zabbix-visualisation-built-in-reports-using-the-zabbix-built-in-reports">Using the Zabbix built in reports</h1>
+<h2 id="ch11-zabbix-visualisation-built-in-reports-conclusion">Conclusion</h2>
+<h2 id="ch11-zabbix-visualisation-built-in-reports-questions">Questions</h2>
+<h2 id="ch11-zabbix-visualisation-built-in-reports-useful-urls">Useful URLs</h2></section><section class="print-page" id="ch11-zabbix-visualisation-automated-pdf-reports" heading-number="16.5"><h1 id="ch11-zabbix-visualisation-automated-pdf-reports-creating-automated-pdf-reports">Creating automated PDF reports</h1>
+<h2 id="ch11-zabbix-visualisation-automated-pdf-reports-conclusion">Conclusion</h2>
+<h2 id="ch11-zabbix-visualisation-automated-pdf-reports-questions">Questions</h2>
+<h2 id="ch11-zabbix-visualisation-automated-pdf-reports-useful-urls">Useful URLs</h2></section></section>
                     <section class='print-page md-section' id='section-17' heading-number='17'>
                         <h1>Chapter 12 : Zabbix API<a class='headerlink' href='#section-17' title='Permanent link'></a>
                         </h1>
@@ -27219,34 +27489,104 @@ If it does not detect anything:</p>
                 .print-site-enumerate-headings #ch09-zabbix-extending-user-parameters h5 {  counter-increment: counter-ch09-zabbix-extending-user-parameters-5 }
             
 .print-site-enumerate-headings #section-15 > h1:before { content: '15 ' }
-.print-site-enumerate-headings #ch10-zabbix-discovery-chapter > h1:before { content: '15.1 ' }
+.print-site-enumerate-headings #ch10-zabbix-discovery-network-host-discovery > h1:before { content: '15.1 ' }
 
-                .print-site-enumerate-headings #ch10-zabbix-discovery-chapter h2:before { content: '15.1.' counter(counter-ch10-zabbix-discovery-chapter-2) ' ' }
-                .print-site-enumerate-headings #ch10-zabbix-discovery-chapter h2 {  counter-reset: counter-ch10-zabbix-discovery-chapter-3  counter-ch10-zabbix-discovery-chapter-4  counter-ch10-zabbix-discovery-chapter-5 ;  counter-increment: counter-ch10-zabbix-discovery-chapter-2 }
+                .print-site-enumerate-headings #ch10-zabbix-discovery-network-host-discovery h2:before { content: '15.1.' counter(counter-ch10-zabbix-discovery-network-host-discovery-2) ' ' }
+                .print-site-enumerate-headings #ch10-zabbix-discovery-network-host-discovery h2 {  counter-reset: counter-ch10-zabbix-discovery-network-host-discovery-3  counter-ch10-zabbix-discovery-network-host-discovery-4  counter-ch10-zabbix-discovery-network-host-discovery-5 ;  counter-increment: counter-ch10-zabbix-discovery-network-host-discovery-2 }
             
-                .print-site-enumerate-headings #ch10-zabbix-discovery-chapter h3:before { content: '15.1.' counter(counter-ch10-zabbix-discovery-chapter-2) '.' counter(counter-ch10-zabbix-discovery-chapter-3) ' ' }
-                .print-site-enumerate-headings #ch10-zabbix-discovery-chapter h3 {  counter-reset: counter-ch10-zabbix-discovery-chapter-4  counter-ch10-zabbix-discovery-chapter-5 ;  counter-increment: counter-ch10-zabbix-discovery-chapter-3 }
+                .print-site-enumerate-headings #ch10-zabbix-discovery-network-host-discovery h3:before { content: '15.1.' counter(counter-ch10-zabbix-discovery-network-host-discovery-2) '.' counter(counter-ch10-zabbix-discovery-network-host-discovery-3) ' ' }
+                .print-site-enumerate-headings #ch10-zabbix-discovery-network-host-discovery h3 {  counter-reset: counter-ch10-zabbix-discovery-network-host-discovery-4  counter-ch10-zabbix-discovery-network-host-discovery-5 ;  counter-increment: counter-ch10-zabbix-discovery-network-host-discovery-3 }
             
-                .print-site-enumerate-headings #ch10-zabbix-discovery-chapter h4:before { content: '15.1.' counter(counter-ch10-zabbix-discovery-chapter-2) '.' counter(counter-ch10-zabbix-discovery-chapter-3) '.' counter(counter-ch10-zabbix-discovery-chapter-4) ' ' }
-                .print-site-enumerate-headings #ch10-zabbix-discovery-chapter h4 {  counter-reset: counter-ch10-zabbix-discovery-chapter-5 ;  counter-increment: counter-ch10-zabbix-discovery-chapter-4 }
+                .print-site-enumerate-headings #ch10-zabbix-discovery-network-host-discovery h4:before { content: '15.1.' counter(counter-ch10-zabbix-discovery-network-host-discovery-2) '.' counter(counter-ch10-zabbix-discovery-network-host-discovery-3) '.' counter(counter-ch10-zabbix-discovery-network-host-discovery-4) ' ' }
+                .print-site-enumerate-headings #ch10-zabbix-discovery-network-host-discovery h4 {  counter-reset: counter-ch10-zabbix-discovery-network-host-discovery-5 ;  counter-increment: counter-ch10-zabbix-discovery-network-host-discovery-4 }
             
-                .print-site-enumerate-headings #ch10-zabbix-discovery-chapter h5:before { content: '15.1.' counter(counter-ch10-zabbix-discovery-chapter-2) '.' counter(counter-ch10-zabbix-discovery-chapter-3) '.' counter(counter-ch10-zabbix-discovery-chapter-4) '.' counter(counter-ch10-zabbix-discovery-chapter-5) ' ' }
-                .print-site-enumerate-headings #ch10-zabbix-discovery-chapter h5 {  counter-increment: counter-ch10-zabbix-discovery-chapter-5 }
+                .print-site-enumerate-headings #ch10-zabbix-discovery-network-host-discovery h5:before { content: '15.1.' counter(counter-ch10-zabbix-discovery-network-host-discovery-2) '.' counter(counter-ch10-zabbix-discovery-network-host-discovery-3) '.' counter(counter-ch10-zabbix-discovery-network-host-discovery-4) '.' counter(counter-ch10-zabbix-discovery-network-host-discovery-5) ' ' }
+                .print-site-enumerate-headings #ch10-zabbix-discovery-network-host-discovery h5 {  counter-increment: counter-ch10-zabbix-discovery-network-host-discovery-5 }
+            
+.print-site-enumerate-headings #ch10-zabbix-discovery-active-agent-autoregistration > h1:before { content: '15.2 ' }
+
+                .print-site-enumerate-headings #ch10-zabbix-discovery-active-agent-autoregistration h2:before { content: '15.2.' counter(counter-ch10-zabbix-discovery-active-agent-autoregistration-2) ' ' }
+                .print-site-enumerate-headings #ch10-zabbix-discovery-active-agent-autoregistration h2 {  counter-reset: counter-ch10-zabbix-discovery-active-agent-autoregistration-3  counter-ch10-zabbix-discovery-active-agent-autoregistration-4  counter-ch10-zabbix-discovery-active-agent-autoregistration-5 ;  counter-increment: counter-ch10-zabbix-discovery-active-agent-autoregistration-2 }
+            
+                .print-site-enumerate-headings #ch10-zabbix-discovery-active-agent-autoregistration h3:before { content: '15.2.' counter(counter-ch10-zabbix-discovery-active-agent-autoregistration-2) '.' counter(counter-ch10-zabbix-discovery-active-agent-autoregistration-3) ' ' }
+                .print-site-enumerate-headings #ch10-zabbix-discovery-active-agent-autoregistration h3 {  counter-reset: counter-ch10-zabbix-discovery-active-agent-autoregistration-4  counter-ch10-zabbix-discovery-active-agent-autoregistration-5 ;  counter-increment: counter-ch10-zabbix-discovery-active-agent-autoregistration-3 }
+            
+                .print-site-enumerate-headings #ch10-zabbix-discovery-active-agent-autoregistration h4:before { content: '15.2.' counter(counter-ch10-zabbix-discovery-active-agent-autoregistration-2) '.' counter(counter-ch10-zabbix-discovery-active-agent-autoregistration-3) '.' counter(counter-ch10-zabbix-discovery-active-agent-autoregistration-4) ' ' }
+                .print-site-enumerate-headings #ch10-zabbix-discovery-active-agent-autoregistration h4 {  counter-reset: counter-ch10-zabbix-discovery-active-agent-autoregistration-5 ;  counter-increment: counter-ch10-zabbix-discovery-active-agent-autoregistration-4 }
+            
+                .print-site-enumerate-headings #ch10-zabbix-discovery-active-agent-autoregistration h5:before { content: '15.2.' counter(counter-ch10-zabbix-discovery-active-agent-autoregistration-2) '.' counter(counter-ch10-zabbix-discovery-active-agent-autoregistration-3) '.' counter(counter-ch10-zabbix-discovery-active-agent-autoregistration-4) '.' counter(counter-ch10-zabbix-discovery-active-agent-autoregistration-5) ' ' }
+                .print-site-enumerate-headings #ch10-zabbix-discovery-active-agent-autoregistration h5 {  counter-increment: counter-ch10-zabbix-discovery-active-agent-autoregistration-5 }
             
 .print-site-enumerate-headings #section-16 > h1:before { content: '16 ' }
-.print-site-enumerate-headings #ch11-zabbix-visualisation-chapter > h1:before { content: '16.1 ' }
+.print-site-enumerate-headings #ch11-zabbix-visualisation-graphs > h1:before { content: '16.1 ' }
 
-                .print-site-enumerate-headings #ch11-zabbix-visualisation-chapter h2:before { content: '16.1.' counter(counter-ch11-zabbix-visualisation-chapter-2) ' ' }
-                .print-site-enumerate-headings #ch11-zabbix-visualisation-chapter h2 {  counter-reset: counter-ch11-zabbix-visualisation-chapter-3  counter-ch11-zabbix-visualisation-chapter-4  counter-ch11-zabbix-visualisation-chapter-5 ;  counter-increment: counter-ch11-zabbix-visualisation-chapter-2 }
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-graphs h2:before { content: '16.1.' counter(counter-ch11-zabbix-visualisation-graphs-2) ' ' }
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-graphs h2 {  counter-reset: counter-ch11-zabbix-visualisation-graphs-3  counter-ch11-zabbix-visualisation-graphs-4  counter-ch11-zabbix-visualisation-graphs-5 ;  counter-increment: counter-ch11-zabbix-visualisation-graphs-2 }
             
-                .print-site-enumerate-headings #ch11-zabbix-visualisation-chapter h3:before { content: '16.1.' counter(counter-ch11-zabbix-visualisation-chapter-2) '.' counter(counter-ch11-zabbix-visualisation-chapter-3) ' ' }
-                .print-site-enumerate-headings #ch11-zabbix-visualisation-chapter h3 {  counter-reset: counter-ch11-zabbix-visualisation-chapter-4  counter-ch11-zabbix-visualisation-chapter-5 ;  counter-increment: counter-ch11-zabbix-visualisation-chapter-3 }
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-graphs h3:before { content: '16.1.' counter(counter-ch11-zabbix-visualisation-graphs-2) '.' counter(counter-ch11-zabbix-visualisation-graphs-3) ' ' }
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-graphs h3 {  counter-reset: counter-ch11-zabbix-visualisation-graphs-4  counter-ch11-zabbix-visualisation-graphs-5 ;  counter-increment: counter-ch11-zabbix-visualisation-graphs-3 }
             
-                .print-site-enumerate-headings #ch11-zabbix-visualisation-chapter h4:before { content: '16.1.' counter(counter-ch11-zabbix-visualisation-chapter-2) '.' counter(counter-ch11-zabbix-visualisation-chapter-3) '.' counter(counter-ch11-zabbix-visualisation-chapter-4) ' ' }
-                .print-site-enumerate-headings #ch11-zabbix-visualisation-chapter h4 {  counter-reset: counter-ch11-zabbix-visualisation-chapter-5 ;  counter-increment: counter-ch11-zabbix-visualisation-chapter-4 }
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-graphs h4:before { content: '16.1.' counter(counter-ch11-zabbix-visualisation-graphs-2) '.' counter(counter-ch11-zabbix-visualisation-graphs-3) '.' counter(counter-ch11-zabbix-visualisation-graphs-4) ' ' }
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-graphs h4 {  counter-reset: counter-ch11-zabbix-visualisation-graphs-5 ;  counter-increment: counter-ch11-zabbix-visualisation-graphs-4 }
             
-                .print-site-enumerate-headings #ch11-zabbix-visualisation-chapter h5:before { content: '16.1.' counter(counter-ch11-zabbix-visualisation-chapter-2) '.' counter(counter-ch11-zabbix-visualisation-chapter-3) '.' counter(counter-ch11-zabbix-visualisation-chapter-4) '.' counter(counter-ch11-zabbix-visualisation-chapter-5) ' ' }
-                .print-site-enumerate-headings #ch11-zabbix-visualisation-chapter h5 {  counter-increment: counter-ch11-zabbix-visualisation-chapter-5 }
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-graphs h5:before { content: '16.1.' counter(counter-ch11-zabbix-visualisation-graphs-2) '.' counter(counter-ch11-zabbix-visualisation-graphs-3) '.' counter(counter-ch11-zabbix-visualisation-graphs-4) '.' counter(counter-ch11-zabbix-visualisation-graphs-5) ' ' }
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-graphs h5 {  counter-increment: counter-ch11-zabbix-visualisation-graphs-5 }
+            
+.print-site-enumerate-headings #ch11-zabbix-visualisation-dashboards > h1:before { content: '16.2 ' }
+
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-dashboards h2:before { content: '16.2.' counter(counter-ch11-zabbix-visualisation-dashboards-2) ' ' }
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-dashboards h2 {  counter-reset: counter-ch11-zabbix-visualisation-dashboards-3  counter-ch11-zabbix-visualisation-dashboards-4  counter-ch11-zabbix-visualisation-dashboards-5 ;  counter-increment: counter-ch11-zabbix-visualisation-dashboards-2 }
+            
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-dashboards h3:before { content: '16.2.' counter(counter-ch11-zabbix-visualisation-dashboards-2) '.' counter(counter-ch11-zabbix-visualisation-dashboards-3) ' ' }
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-dashboards h3 {  counter-reset: counter-ch11-zabbix-visualisation-dashboards-4  counter-ch11-zabbix-visualisation-dashboards-5 ;  counter-increment: counter-ch11-zabbix-visualisation-dashboards-3 }
+            
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-dashboards h4:before { content: '16.2.' counter(counter-ch11-zabbix-visualisation-dashboards-2) '.' counter(counter-ch11-zabbix-visualisation-dashboards-3) '.' counter(counter-ch11-zabbix-visualisation-dashboards-4) ' ' }
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-dashboards h4 {  counter-reset: counter-ch11-zabbix-visualisation-dashboards-5 ;  counter-increment: counter-ch11-zabbix-visualisation-dashboards-4 }
+            
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-dashboards h5:before { content: '16.2.' counter(counter-ch11-zabbix-visualisation-dashboards-2) '.' counter(counter-ch11-zabbix-visualisation-dashboards-3) '.' counter(counter-ch11-zabbix-visualisation-dashboards-4) '.' counter(counter-ch11-zabbix-visualisation-dashboards-5) ' ' }
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-dashboards h5 {  counter-increment: counter-ch11-zabbix-visualisation-dashboards-5 }
+            
+.print-site-enumerate-headings #ch11-zabbix-visualisation-maps > h1:before { content: '16.3 ' }
+
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-maps h2:before { content: '16.3.' counter(counter-ch11-zabbix-visualisation-maps-2) ' ' }
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-maps h2 {  counter-reset: counter-ch11-zabbix-visualisation-maps-3  counter-ch11-zabbix-visualisation-maps-4  counter-ch11-zabbix-visualisation-maps-5 ;  counter-increment: counter-ch11-zabbix-visualisation-maps-2 }
+            
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-maps h3:before { content: '16.3.' counter(counter-ch11-zabbix-visualisation-maps-2) '.' counter(counter-ch11-zabbix-visualisation-maps-3) ' ' }
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-maps h3 {  counter-reset: counter-ch11-zabbix-visualisation-maps-4  counter-ch11-zabbix-visualisation-maps-5 ;  counter-increment: counter-ch11-zabbix-visualisation-maps-3 }
+            
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-maps h4:before { content: '16.3.' counter(counter-ch11-zabbix-visualisation-maps-2) '.' counter(counter-ch11-zabbix-visualisation-maps-3) '.' counter(counter-ch11-zabbix-visualisation-maps-4) ' ' }
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-maps h4 {  counter-reset: counter-ch11-zabbix-visualisation-maps-5 ;  counter-increment: counter-ch11-zabbix-visualisation-maps-4 }
+            
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-maps h5:before { content: '16.3.' counter(counter-ch11-zabbix-visualisation-maps-2) '.' counter(counter-ch11-zabbix-visualisation-maps-3) '.' counter(counter-ch11-zabbix-visualisation-maps-4) '.' counter(counter-ch11-zabbix-visualisation-maps-5) ' ' }
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-maps h5 {  counter-increment: counter-ch11-zabbix-visualisation-maps-5 }
+            
+.print-site-enumerate-headings #ch11-zabbix-visualisation-built-in-reports > h1:before { content: '16.4 ' }
+
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-built-in-reports h2:before { content: '16.4.' counter(counter-ch11-zabbix-visualisation-built-in-reports-2) ' ' }
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-built-in-reports h2 {  counter-reset: counter-ch11-zabbix-visualisation-built-in-reports-3  counter-ch11-zabbix-visualisation-built-in-reports-4  counter-ch11-zabbix-visualisation-built-in-reports-5 ;  counter-increment: counter-ch11-zabbix-visualisation-built-in-reports-2 }
+            
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-built-in-reports h3:before { content: '16.4.' counter(counter-ch11-zabbix-visualisation-built-in-reports-2) '.' counter(counter-ch11-zabbix-visualisation-built-in-reports-3) ' ' }
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-built-in-reports h3 {  counter-reset: counter-ch11-zabbix-visualisation-built-in-reports-4  counter-ch11-zabbix-visualisation-built-in-reports-5 ;  counter-increment: counter-ch11-zabbix-visualisation-built-in-reports-3 }
+            
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-built-in-reports h4:before { content: '16.4.' counter(counter-ch11-zabbix-visualisation-built-in-reports-2) '.' counter(counter-ch11-zabbix-visualisation-built-in-reports-3) '.' counter(counter-ch11-zabbix-visualisation-built-in-reports-4) ' ' }
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-built-in-reports h4 {  counter-reset: counter-ch11-zabbix-visualisation-built-in-reports-5 ;  counter-increment: counter-ch11-zabbix-visualisation-built-in-reports-4 }
+            
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-built-in-reports h5:before { content: '16.4.' counter(counter-ch11-zabbix-visualisation-built-in-reports-2) '.' counter(counter-ch11-zabbix-visualisation-built-in-reports-3) '.' counter(counter-ch11-zabbix-visualisation-built-in-reports-4) '.' counter(counter-ch11-zabbix-visualisation-built-in-reports-5) ' ' }
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-built-in-reports h5 {  counter-increment: counter-ch11-zabbix-visualisation-built-in-reports-5 }
+            
+.print-site-enumerate-headings #ch11-zabbix-visualisation-automated-pdf-reports > h1:before { content: '16.5 ' }
+
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-automated-pdf-reports h2:before { content: '16.5.' counter(counter-ch11-zabbix-visualisation-automated-pdf-reports-2) ' ' }
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-automated-pdf-reports h2 {  counter-reset: counter-ch11-zabbix-visualisation-automated-pdf-reports-3  counter-ch11-zabbix-visualisation-automated-pdf-reports-4  counter-ch11-zabbix-visualisation-automated-pdf-reports-5 ;  counter-increment: counter-ch11-zabbix-visualisation-automated-pdf-reports-2 }
+            
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-automated-pdf-reports h3:before { content: '16.5.' counter(counter-ch11-zabbix-visualisation-automated-pdf-reports-2) '.' counter(counter-ch11-zabbix-visualisation-automated-pdf-reports-3) ' ' }
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-automated-pdf-reports h3 {  counter-reset: counter-ch11-zabbix-visualisation-automated-pdf-reports-4  counter-ch11-zabbix-visualisation-automated-pdf-reports-5 ;  counter-increment: counter-ch11-zabbix-visualisation-automated-pdf-reports-3 }
+            
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-automated-pdf-reports h4:before { content: '16.5.' counter(counter-ch11-zabbix-visualisation-automated-pdf-reports-2) '.' counter(counter-ch11-zabbix-visualisation-automated-pdf-reports-3) '.' counter(counter-ch11-zabbix-visualisation-automated-pdf-reports-4) ' ' }
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-automated-pdf-reports h4 {  counter-reset: counter-ch11-zabbix-visualisation-automated-pdf-reports-5 ;  counter-increment: counter-ch11-zabbix-visualisation-automated-pdf-reports-4 }
+            
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-automated-pdf-reports h5:before { content: '16.5.' counter(counter-ch11-zabbix-visualisation-automated-pdf-reports-2) '.' counter(counter-ch11-zabbix-visualisation-automated-pdf-reports-3) '.' counter(counter-ch11-zabbix-visualisation-automated-pdf-reports-4) '.' counter(counter-ch11-zabbix-visualisation-automated-pdf-reports-5) ' ' }
+                .print-site-enumerate-headings #ch11-zabbix-visualisation-automated-pdf-reports h5 {  counter-increment: counter-ch11-zabbix-visualisation-automated-pdf-reports-5 }
             
 .print-site-enumerate-headings #section-17 > h1:before { content: '17 ' }
 .print-site-enumerate-headings #ch12-zabbix-api-chapter > h1:before { content: '17.1 ' }
