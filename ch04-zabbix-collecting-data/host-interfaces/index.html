@@ -2626,17 +2626,19 @@ attempt for items that use this interface:</p>
 <li><span style="color: red;">Not available</span> - The last data collection attempt
   failed. (timeout, connection refused, authentication failure, etc.) Usually
   the details will also show the error reason for the failure.</li>
-<li><span style="color: grey;">Unknown</span> - This can have a few reasons:</li>
+<li><span style="color: grey;">Unknown</span> - This can have a few reasons:<ul>
 <li>There has been no data collection attempt on this interface yet or</li>
 <li>The host is disabled or</li>
 <li>The host is set to be monitored by a proxy that is currently unavailable.</li>
 <li>The host is set to be monitored by a proxy that has not yet collected data 
-    from this host.</li>
+  from this host.</li>
 <li>All items that use this interface are disabled.</li>
 <li>Zabbix server or the proxy monitoring this host has no pollers configured
-    to collect data from this type of interface. (e.g. no SNMP pollers configured
-    to collect data from SNMP interfaces or no Agent pollers configured to collect
-    data from Zabbix Agent interfaces)</li>
+  to collect data from this type of interface. (e.g. no SNMP pollers configured
+  to collect data from SNMP interfaces or no Agent pollers configured to collect
+  data from Zabbix Agent interfaces)</li>
+</ul>
+</li>
 </ul>
 <h3 id="active-checks-availability">Active checks availability</h3>
 <p>On the details popup of the Zabbix Agent availability icon (ZBX), you will see 
@@ -2651,12 +2653,13 @@ parameter in the Zabbix agent configuration file and defaults to 60 seconds.
 If the Zabbix server or proxy has not received a subsequent heartbeat from the agent for 
 a period of 2 times the <code>HeartbeatFrequency</code>, the status will switch to 
 <span style="color: red;">Not available</span>.</p>
-<p>???+ warning Zabbix agents older than 6.2</p>
-<div class="language-text highlight"><pre><span></span><code>The heartbeat mechanism was introduced in Zabbix 6.2, so for Zabbix agents
+<details class="warning" open="open">
+<summary>Zabbix agents older than 6.2</summary>
+<p>The heartbeat mechanism was introduced in Zabbix 6.2, so for Zabbix agents
 older than version 6.2, the Active checks interface status will always
-remain &lt;span style=&quot;color: grey;&quot;&gt;Unknown&lt;/span&gt; as there are no heartbeats
-being sent by the agent to determine the availability status.
-</code></pre></div>
+remain <span style="color: grey;">Unknown</span> as there are no heartbeats
+being sent by the agent to determine the availability status.</p>
+</details>
 <h3 id="overall-interface-availability">Overall interface availability</h3>
 <p>The status of the interface type availability icon is determined by the status 
 of all interfaces of that specific type and can have the following colors:</p>
