@@ -2611,9 +2611,9 @@ from your monitoring system comes with additional security risks.</p>
 <span style="color: grey;">Grey</span>. This color determines the interfaces'
 current availability and is shown in a few places in the Zabbix frontend:</p>
 <ul>
-<li>On the host overview page (Monitoring → Hosts)</li>
-<li>On the hosts configuration page (Data Collection → Hosts)</li>
-<li>On the host configuration page when editing a host (Data Collection → Hosts → [Host name])</li>
+<li>On the host overview page (<strong>Monitoring</strong> → <strong>Hosts</strong>)</li>
+<li>On the hosts configuration page (<strong>Data Collection</strong> → <strong>Hosts</strong>)</li>
+<li>On the host configuration page when editing a host (<strong>Data Collection</strong> → <strong>Hosts</strong> → <em>[Host name]</em>)</li>
 </ul>
 <p>When you hover over, or click on one of the availability icons, you will get a 
 tooltip with the current status and possible error reason of each individual 
@@ -2641,6 +2641,10 @@ attempt for items that use this interface:</p>
 </li>
 </ul>
 <h3 id="active-checks-availability">Active checks availability</h3>
+<p>Zabbix agent checks can be either passive or active. We will discuss the differences
+between these two types of checks in the next chapter, but for now it's important
+to know that both exist and differ in their communication methods with the Zabbix
+server or proxy.</p>
 <p>On the details popup of the Zabbix Agent availability icon (ZBX), you will see 
 that there is an additional interface <strong>Active checks</strong> automatically added whenever
 the host has any item of the type '<em>Zabbix agent (active)</em>' enabled.</p>

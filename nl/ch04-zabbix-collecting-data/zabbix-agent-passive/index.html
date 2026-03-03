@@ -1087,10 +1087,10 @@ communication.
 </li>
       
         <li class="md-nav__item">
-  <a href="#zabbix-side-configuration" class="md-nav__link">
+  <a href="#server-side-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Zabbix side configuration
+        Server side configuration
       
     </span>
   </a>
@@ -2340,10 +2340,10 @@ communication.
 </li>
       
         <li class="md-nav__item">
-  <a href="#zabbix-side-configuration" class="md-nav__link">
+  <a href="#server-side-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Zabbix side configuration
+        Server side configuration
       
     </span>
   </a>
@@ -2492,10 +2492,23 @@ groundwork for building a proper monitoring solution. We have prepared our syste
 before monitoring, which is the most important part to avoid <code>Monitoring fatigue</code>
 later on.</p>
 <details class="note" open="open">
-<summary>Note</summary>
-<p><code>Monitoring fatigue</code> and <code>Alert fatigue</code> are two terms heard in monitoring and observability.</p>
-<p><code>Alert fatigue</code> happens in Zabbix when you configure too many (incorrect) triggers. When you flood your dashboards or even external media like Teams or Signal with too many alerts your users will not respond to them any longer.</p>
-<p><code>Monitoring fatigue</code> happens in Zabbix when you misconfigure things like dashboards, items, host groups, tags and other internal systems that keep things structured. The result is that you or your co-workers do not want to use your own system any longer as it does not deliver the right information easily enough.</p>
+<summary>Monitoring fatigue and Alert fatigue</summary>
+<p><strong>Monitoring fatigue</strong> and <strong>Alert fatigue</strong> are two terms heard in monitoring 
+and observability:</p>
+<ul>
+<li>
+<p><strong>Alert fatigue</strong> happens in Zabbix when you configure too many (incorrect) 
+  triggers. When you flood your dashboards or even external media like Teams 
+  or Signal with too many alerts your users will not respond to them any longer.</p>
+</li>
+<li>
+<p><strong>Monitoring fatigue</strong> happens in Zabbix when you misconfigure things like 
+  dashboards, items, host groups, tags and other internal systems that keep 
+  things structured. The result is that you or your co-workers do not want 
+  to use your own system any longer as it does not deliver the right 
+  information easily enough.</p>
+</li>
+</ul>
 </details>
 <p>Now, we are ready to start monitoring an actual system.</p>
 <h2 id="agent-basics">Agent basics</h2>
@@ -2514,8 +2527,14 @@ communicates over the network. In Zabbix we have two methods of communication.</
   target towards the Zabbix server (or proxy). The Zabbix server is listening
   on a port waiting for the monitoring target to send data.</li>
 </ul>
-<p>As you can imagine there is quite a big difference between these two methods of communication. Often times it depends on the protocol which method is preferred. For example SNMP traps are always an active type of check.</p>
-<p>The Zabbix agent however can communicate in either <code>Active</code> or <code>Passive</code> mode. It can even do those simultaneously. Simultaneous communication can be useful when you want to use <code>Passive</code> mode for all communication, but still want to execute some items that are <code>Active</code> only. <code>Active</code> items can do everything <code>Passive</code> items can do however.</p>
+<p>As you can imagine there is quite a big difference between these two methods of 
+communication. Often times it depends on the protocol which method is preferred.
+For example SNMP traps are always an active type of check.</p>
+<p>The Zabbix agent however can communicate in either <code>Active</code> or <code>Passive</code> mode. 
+It can even do those simultaneously. Simultaneous communication can be useful when
+you want to use <code>Passive</code> mode for all communication, but still want to execute
+some items that are <code>Active</code> only. <code>Active</code> items can do everything <code>Passive</code> 
+items can do however.</p>
 <p>Before we can configure either though, we will have to install our Zabbix agent
 first. When installing on Linux and Windows we have a choice between two different
 agents, <code>Zabbix agent</code> and <code>Zabbix agent 2</code>. Both of these Zabbix agents are still
@@ -2567,6 +2586,17 @@ between them is in Programming language and features.</p>
 </tr>
 </tbody>
 </table>
+<p>???* note </p>
+<div class="language-text highlight"><pre><span></span><code>As you can see, `Zabbix agent 2` is the more feature-rich agent and is the 
+recommended agent to use when available. However, `Zabbix agent` is equally 
+supported and can be used when `Zabbix agent 2` is not available for your platform 
+or if you have specific use cases that require `Zabbix agent`. For example, if you 
+want to use a C Loadable Module that has not yet been ported to `Zabbix agent 2`, 
+you will have to use `Zabbix agent`.
+Also, as C is a lower level programming language, `Zabbix agent` can be more
+performant in certain use cases such as monitoring embedded devices or devices
+with very limited resources.
+</code></pre></div>
 <h2 id="agent-installation-on-linux">Agent installation on Linux</h2>
 <p>Installation on Linux can be done in one of three ways. Through direct install
 files like <code>.rpm</code> and <code>.deb</code>, by building from sources and through packages pulled
@@ -2575,41 +2605,33 @@ Zabbix agent will be updated when updating with commands like <code>dnf update</
 <code>apt upgrade</code>. Keep in mind, Zabbix agent is a piece of software just like any
 other and as such news versions will contain security and bug fixes. Whatever
 installation method you choose, keep your Zabbix agent up-to-date.</p>
-<p>We will be using the packages on both RedHat-based and Ubuntu to install <code>Zabbix agent 2</code>.
-To use the packages we will add the Zabbix repository first.</p>
-<div class="admonition info">
-<p class="admonition-title">add zabbix repository</p>
-<p>Redhat</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="l l-Scalar l-Scalar-Plain">rpm -Uvh https://repo.zabbix.com/zabbix/7.2/release/rocky/9/noarch/zabbix-release-latest-7.2.el9.noarch.rpm</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="l l-Scalar l-Scalar-Plain">dnf clean all</span>
-</span></code></pre></div>
-<p>Ubuntu</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="l l-Scalar l-Scalar-Plain">sudo wget https://repo.zabbix.com/zabbix/7.2/release/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_7.2+ubuntu24.04_all.deb</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="l l-Scalar l-Scalar-Plain">sudo dpkg -i zabbix-release_latest_7.2+ubuntu24.04_all.deb</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="l l-Scalar l-Scalar-Plain">sudo apt update</span>
-</span></code></pre></div>
-</div>
+<p>We will be using the packages on RedHat-, SUSE-based or Ubuntu to install 
+<code>Zabbix agent 2</code>. To use the packages we will need to prepare our system 
+as outlined in chapter: <a href="../../ch00-getting-started/preparation/"><em>Getting started</em></a>.
+Only adding the Zabbix repository is mandatory here, however following the 
+<a href="../ch00-getting-started/Requiremens.md"><em>Requirements</em></a> outlined in that chapter
+is also recommended to make sure you have all the necessary tools to work with
+Zabbix.</p>
 <p>After adding the repository, we should be able to install <code>Zabbix agent 2</code>.</p>
 <div class="admonition info">
 <p class="admonition-title">install Zabbix agent 2 package</p>
 <p>Redhat</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="l l-Scalar l-Scalar-Plain">dnf install zabbix-agent2</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dnf<span class="w"> </span>install<span class="w"> </span>zabbix-agent2
 </span></code></pre></div>
+<p>SUSE
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>zypper<span class="w"> </span>install<span class="w"> </span>zabbix-agent2
+</span></code></pre></div></p>
 <p>Ubuntu</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="l l-Scalar l-Scalar-Plain">sudo apt install zabbix-agent2</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>zabbix-agent2
 </span></code></pre></div>
 </div>
 <p>After installation make sure to start and enable the Zabbix agent.</p>
 <div class="admonition info">
-<p class="admonition-title">start Zabbix agent 2</p>
-<p>Redhat</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="l l-Scalar l-Scalar-Plain">systemctl start zabbix-agent2</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="l l-Scalar l-Scalar-Plain">systemctl enable zabbix-agent2</span>
+<p class="admonition-title">Start and enable Zabbix agent 2</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="l l-Scalar l-Scalar-Plain">systemctl enable zabbix-agent2 --now</span>
 </span></code></pre></div>
 </div>
-<p>Your agent is now installed under the <code>zabbix</code> user and ready to be configured.
-On a Linux based system, by default we can find all of the Zabbix configuration
-files in <code>/etc/zabbix/</code>. Specifically we want to edit <code>/etc/zabbix/zabbix_agent2.conf</code>.</p>
+<p>Your agent is now installed under the <code>zabbix</code> user and ready to be configured.</p>
 <h2 id="agent-installation-on-windows">Agent installation on Windows</h2>
 <p>On Windows, we have two options to install our Zabbix agent. Through downloading
 the <code>.exe</code> file and placing the configuration files in the right location or the
@@ -2627,59 +2649,138 @@ file and it will take us to the wizard window.</p>
 <p>Step 1 is a simple welcome screen, nothing to do here except click on <code>Next</code>.</p>
 <p><img align="center" alt="Zabbix Agent Windows install step 1" src="../../../ch04-zabbix-collecting-data/datacollection/ch04.16-windows-agent-install-step2.png" /></p>
 <p><em>4.15 Zabbix Agent Windows install step 2</em></p>
-<p>For step 2, make sure to read the <code>License Agreement</code> (or don't, we do not give legal advice). Then click <code>Next</code>.</p>
+<p>For step 2, make sure to read the <code>License Agreement</code> (or don't, we do not give 
+legal advice). Then click <code>Next</code>.</p>
 <p><img align="center" alt="Zabbix Agent Windows install step 1" src="../../../ch04-zabbix-collecting-data/datacollection/ch04.17-windows-agent-install-step3.png" /></p>
 <p><em>4.15 Zabbix Agent Windows install step 3</em></p>
-<p>For step 3 we have some more actions to execute. By default the Zabbix agent on Windows <code>.msi</code> installer includes <code>Zabbix sender</code> and <code>Zabbix get</code>. These are separate utilities that we do not need on every Windows server. I will not install them now, but we can always use the <code>.msi</code> to install them later. The Zabbix agent will function fine without them.</p>
+<p>For step 3 we have some more actions to execute. By default the Zabbix agent on
+Windows <code>.msi</code> installer includes <code>Zabbix sender</code> and <code>Zabbix get</code>. These are
+separate utilities that we do not need on every Windows server. I will not install
+them now, but we can always use the <code>.msi</code> to install them later. The Zabbix agent
+will function fine without them.</p>
 <p><img align="center" alt="Zabbix Agent Windows install step 1" src="../../../ch04-zabbix-collecting-data/datacollection/ch04.18-windows-agent-install-step4.png" /></p>
 <p><em>4.15 Zabbix Agent Windows install step 4</em></p>
-<p>Step 4 is our most important step. Here we will already configure our Zabbix agent configuration file, straight from the <code>.msi</code> installer. Let's make sure to set the <code>Hostname</code>, <code>Zabbix server IP/DNS</code> (<code>192.168.46.6</code> in our case) and let's also set the <code>Server or proxy for active checks</code> parameter. As you can see we could also immediately configure encryption with the <code>Enable PSK</code> option, but we will do this later.</p>
+<p>Step 4 is our most important step. Here we will already configure our Zabbix agent
+configuration file, straight from the <code>.msi</code> installer. Let's make sure to set
+the <code>Hostname</code>, <code>Zabbix server IP/DNS</code> (<code>192.168.46.6</code> in our case) and let's
+also set the <code>Server or proxy for active checks</code> parameter. As you can see we
+could also immediately configure encryption with the <code>Enable PSK</code> option, but
+we will do this later.</p>
 <p><img align="center" alt="Zabbix Agent Windows install step 1" src="../../../ch04-zabbix-collecting-data/datacollection/ch04.19-windows-agent-install-step5.png" /></p>
 <p><em>4.15 Zabbix Agent Windows install step 5</em></p>
-<p>Now there is nothing left to do except press <code>Install</code> and our Zabbix agent will be both installed and configured.</p>
+<p>Now there is nothing left to do except press <code>Install</code> and our Zabbix agent will
+be both installed and configured.</p>
 <h2 id="agent-installation-on-unix">Agent installation on Unix</h2>
-<p>For Unix based systems, simply download the files on the Zabbix download page for either <code>AIX</code>, <code>FreeBSD</code>, <code>OpenBSD</code> or <code>Solaris</code>.</p>
+<p>For Unix based systems, simply download the files on the Zabbix download page for
+ either <code>AIX</code>, <code>FreeBSD</code>, <code>OpenBSD</code> or <code>Solaris</code>.</p>
 <p><a href="https://www.zabbix.com/download_agents">https://www.zabbix.com/download_agents</a></p>
 <h2 id="agent-installation-on-macos">Agent installation on MacOS</h2>
-<p>For MacOS systems, simply download the files on the Zabbix download page and run through the <code>.pkg</code> installer.</p>
+<p>For MacOS systems, simply download the files on the Zabbix download page and run
+through the <code>.pkg</code> installer.</p>
 <p><a href="https://www.zabbix.com/download_agents?os=macOS">https://www.zabbix.com/download_agents?os=macOS</a></p>
 <h2 id="agent-side-configuration">Agent side configuration</h2>
-<p>Configuring the Zabbix agent is similar for all installations. Whether you are on <code>Linux</code>, <code>Unix</code>, <code>Windows</code> or <code>MacOS</code> you will always find the <code>../zabbix_agent2.conf</code> file. The parameters in this configuration file are mostly the same, regardless of the operating system.</p>
-<p>For <code>Passive</code> Zabbix agent connections we have only one important parameters to configure out of the box. The <code>Server=</code> parameter. This parameter functions as an allowlist, where we can add IP addresses, IP ranges and DNS entries to a list. All of the entries in this <code>Server=</code> allowlist will be allowed to make a connection to the <code>Passive</code> Zabbix agent and collect data from it.</p>
-<p>Edit your configuration file to include your Zabbix server (or proxy) IP address, IP range or DNS entry.</p>
+<p>Configuring the Zabbix agent is similar for all installations. Whether you are on
+<code>Linux</code>, <code>Unix</code>, <code>Windows</code> or <code>MacOS</code> you will always find the <code>zabbix_agent2.conf</code> file.
+The parameters in this configuration file are mostly the same, regardless of the
+operating system.</p>
+<div class="admonition warning">
+<p class="admonition-title">SUSE Linux</p>
+<p>On SUSE Linux (SLES or OpenSUSE) 16 or higher, the Zabbix agent configuration
+file is located at <code>/usr/etc/zabbix/zabbix_agent2.conf</code> and needs to be copied
+to <code>/etc/zabbix/</code> before editing. This is because SUSE Linux has a specific way
+of handling configuration files for packages and does not allow direct editing of
+files in <code>/usr/etc/</code>. After copying the file to <code>/etc/zabbix/</code>, you can edit 
+it as usual.</p>
+<p>Alternatively, you can create an additional configuration file in the 
+<code>/etc/zabbix/zabbix_agent2.conf.d/</code> directory and include your custom 
+configuration there. This way you can keep the original configuration file 
+intact and only add your custom settings in the new file.</p>
+</div>
+<p>For <code>Passive</code> Zabbix agent connections we have only one important parameters to
+configure out of the box. The <code>Server=</code> parameter. This parameter functions as an
+allowlist, where we can add IP addresses, IP ranges and DNS entries to a list.
+All of the entries in this <code>Server=</code> allowlist will be allowed to make a connection
+to the <code>Passive</code> Zabbix agent and collect data from it.</p>
+<p>Edit your configuration file to include your Zabbix server (or proxy) IP address,
+IP range or DNS entry.</p>
 <div class="admonition info">
 <p class="admonition-title">edit the Server= parameter</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="l l-Scalar l-Scalar-Plain">Server=127.0.0.1,192.168.46.30</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="na">Server</span><span class="o">=</span><span class="s">127.0.0.1,192.168.46.30</span>
 </span></code></pre></div>
 </div>
-<p>As you can see in the example, I've left <code>127.0.0.1</code>. Although not required, this can be useful in certain situations. Through the use of a comma <code>,</code> we have indicated that both <code>127.0.0.1</code> and <code>192.168.46.30</code> are allowed to connect. If you are running Zabbix server in HA mode or if you are using Proxy Groups, make sure to include all entries for the Zabbix components that need to connect.</p>
-<p>After making changes to the Zabbix agent configuration file, make sure to restart the Windows service. On Linux systems use <code>sytemctl</code> to restart.</p>
+<p>As you can see in the example, I've left <code>127.0.0.1</code>. Although not required, this
+can be useful in certain situations. Through the use of a comma <code>,</code> we have indicated
+that both <code>127.0.0.1</code> and <code>192.168.46.30</code> are allowed to connect. If you are running
+Zabbix server in HA mode or if you are using Proxy Groups, make sure to include all
+entries for the Zabbix components that need to connect.</p>
+<p>After making changes to the Zabbix agent configuration file, make sure to restart
+the Zabbix Agent 2 service. On Windows systems, use the service manager, on Linux
+systems use <code>sytemctl</code> to restart.</p>
 <div class="admonition info">
-<p class="admonition-title">restart Zabbix agent</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="l l-Scalar l-Scalar-Plain">systemctl restart zabbix-agent2</span>
-</span></code></pre></div>
+<p class="admonition-title">Restart Zabbix agent</p>
+<p>Linux
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>systemctl<span class="w"> </span>restart<span class="w"> </span>zabbix-agent2
+</span></code></pre></div></p>
 </div>
 <p>If you do not restart, the changes will not take effect.</p>
-<h2 id="zabbix-side-configuration">Zabbix side configuration</h2>
-<p>On the Zabbix server side we can now create a new host to monitor. Let's call it <code>zbx-agent-passive-rocky</code> or <code>zbx-agent-passive-windows</code> and let's add the interface.</p>
+<p>Also make sure to check if you have a local firewall running on your system. 
+If you do, to be able to use the <code>Passive</code> agent, make sure to configure the 
+firewall to allow incoming connections to the service <code>zabbix-agent</code> or explicitly
+open up the port <code>10050/tcp</code> to allow the Zabbix server or proxy to connect
+to the agent.</p>
+<h2 id="server-side-configuration">Server side configuration</h2>
+<p>On the Zabbix server side we can now create a new host to monitor. Let's call
+it <code>zbx-agent-passive-rocky</code> or <code>zbx-agent-passive-windows</code> and let's add the interface.</p>
 <p><img align="left" alt="Zabbix Agent passive Linux host" src="../../../ch04-zabbix-collecting-data/datacollection/ch04.20-passive-agent-linux-host.png" /></p>
 <p><em>4.20 Zabbix Agent passive Linux host</em></p>
 <p>For Windows it looks similar.</p>
 <p><img align="left" alt="Zabbix Agent passive Windows host" src="../../../ch04-zabbix-collecting-data/datacollection/ch04.21-passive-agent-windows-host.png" /></p>
 <p><em>4.21 Zabbix Agent passive Windows host</em></p>
-<p>With the host added, correctly with an interface, we can now start monitoring. To do so, let's create one <code>Zabbix agent</code> item type as an example. For your new host <code>zbx-agent-passive-rocky</code> or <code>zbx-agent-passive-windows</code> in the Zabbix frontend, click on <code>Items</code> and then <code>Create item</code> in the top right corner.</p>
-<p>Let's create an item <code>System hostname</code>, making sure that if we have more system items alphabetical sorting will group them together. For <code>Passive</code> Zabbix agent the type <code>Zabbix agent</code> is used and we have to specific an <code>Interface</code>. We will use the item key <code>system.hostname</code>.</p>
+<p>With the host added, correctly with an interface, we can now start monitoring.
+To do so, let's create one <code>Zabbix agent</code> item type as an example. For your new host
+<code>zbx-agent-passive-rocky</code> or <code>zbx-agent-passive-windows</code> in the Zabbix frontend,
+click on <code>Items</code> and then <code>Create item</code> in the top right corner.</p>
+<p>Let's create an item <code>System hostname</code>, making sure that if we have more system
+items alphabetical sorting will group them together. For <code>Passive</code> Zabbix agent
+the type <code>Zabbix agent</code> is used and we have to specific an <code>Interface</code>. We will
+use the item key <code>system.hostname</code>.</p>
 <p><img align="left" alt="Zabbix Agent passive host item" src="../../../ch04-zabbix-collecting-data/datacollection/ch04.22-passive-agent-item.png" /></p>
 <p><em>4.22 Zabbix Agent passive host item</em></p>
-<p>Do not forget to add the standard <code>Component</code> tag to the item to follow the best practise.</p>
+<p>Do not forget to add the standard <code>component</code> tag to the item to follow the best
+practice.</p>
 <p><img align="left" alt="Zabbix Agent passive host item tag" src="../../../ch04-zabbix-collecting-data/datacollection/ch04.23-passive-agent-item-tag.png" /></p>
 <p><em>4.23 Zabbix Agent passive host item tag</em></p>
+<p>Also on the server side, make sure to have the right firewall rules in place.
+For <code>Active</code> agent communication, the Zabbix agent will connect to the Zabbix
+server as service <code>zabbix-server</code> on port <code>10051/tcp</code>.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>Installing the Zabbix agent can be done with either <code>Zabbix agent</code> or <code>Zabbix agent 2</code>. By now <code>Zabbix agent 2</code> is recommended when available, but <code>Zabbix agent</code> is also still fully supported. Make sure to install the Zabbix agent through the most easily secured method and keep it updated.</p>
-<p>Once installed, for <code>Passive</code> communication we will use the <code>Server=</code> parameter to keep our agent secured. We do not want everyone to be able to connect to this agent, even when there might still be a firewall or two in between.</p>
-<p>Last but not least, keep <code>Active</code> versus <code>Passive</code> in mind. Depending on where the server is located, it might be preferred to open up ports through your firewall(s) incoming our outgoing. Usually we prefer <code>Active</code> communication, because it means we do not have to give a central server (Zabbix server and proxy) access to all our servers. But in specific cases <code>Passive</code> might be preferred.</p>
+<p>Installing the Zabbix agent can be done with either <code>Zabbix agent</code> or 
+<code>Zabbix agent 2</code>. By now <code>Zabbix agent 2</code> is recommended when available, but 
+<code>Zabbix agent</code> is also fully supported. Make sure to install the Zabbix 
+agent through the most easily secured method and keep it updated.</p>
+<p>Once installed, for <code>Passive</code> communication we will use the <code>Server=</code> parameter 
+to keep our agent secured. We do not want everyone to be able to connect to this 
+agent, even when there might still be a firewall or two in between.</p>
+<p>Last but not least, keep <code>Active</code> versus <code>Passive</code> in mind. Depending on where
+the server is located, it might be preferred to open up ports through your firewall(s)
+incoming or outgoing. Usually we prefer <code>Active</code> communication, because it means
+we do not have to give a central server (Zabbix server and proxy) access to all
+our servers and we distribute a bit of the load. But in specific cases <code>Passive</code>
+might be preferred.</p>
 <h2 id="questions">Questions</h2>
+<ul>
+<li>What are the differences between <code>Zabbix agent</code> and <code>Zabbix agent 2</code>?</li>
+<li>What are the differences between <code>Active</code> and <code>Passive</code> communication? And
+  which one is preferred in your environment? Why?</li>
+<li>What are the differences in firewall rules when using <code>Active</code> versus <code>Passive</code> communication?</li>
+</ul>
 <h2 id="useful-urls">Useful URLs</h2>
+<ul>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/concepts/agent">https://www.zabbix.com/documentation/current/en/manual/concepts/agent</a></li>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/concepts/agent2">https://www.zabbix.com/documentation/current/en/manual/concepts/agent2</a></li>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/installation/install_from_packages">https://www.zabbix.com/documentation/current/en/manual/installation/install_from_packages</a></li>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/appendix/agent_comparison">https://www.zabbix.com/documentation/current/en/manual/appendix/agent_comparison</a></li>
+</ul>
 
 
 
