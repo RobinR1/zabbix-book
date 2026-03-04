@@ -2368,104 +2368,119 @@ server, fetches item configs, and pushes data continuously for proactive monitor
 
 
 <h1 id="zabbix-agent-active-monitoring">Zabbix Agent Active monitoring</h1>
-<p>In the previous part we installed our Zabbix agent and started monitoring a host in the <code>Passive</code> mode. When we use <code>Passive</code> mode the Zabbix server or proxy will connect to the Zabbix agent and request specific item data. The item data is returned within the same TCP session. From a security aspect this means that we need to allow our Zabbix servers or proxies to connect to many different servers.</p>
-<p>For security reasons this might not be the best course of action. Instead let's look at the Zabbix agent in <code>Active</code> mode. In <code>Active</code> mode or Zabbix agent will be configured to initiate the connection to the Zabbix server or proxy. It will request its configuration data and receive it back in the same TCP session. After receiving its configuration it can then start sending the item data according to the configuration received. The connection as such is always initiated from the Zabbix agent side, meaning you will allow your many agents to connect to your Zabbix servers or proxies instead.</p>
+<p>In the previous section we installed our Zabbix agent and started monitoring a host
+in the <code>Passive</code> mode. But as mentioned before, the Zabbix agent can also work in 
+<code>Active</code> mode which has different advantages.</p>
+<p>So let's now look at the Zabbix agent in <code>Active</code> mode. In <code>Active</code> mode our 
+Zabbix agent will be configured to initiate the connection to the Zabbix server 
+or proxy. It will request its configuration data and receive it back in the same
+TCP session. After receiving its configuration it will then start sending the 
+requested item data according to the configuration received. The connection as 
+such is always initiated from the Zabbix agent side, meaning you will have to allow
+your many agents to connect to your Zabbix servers or proxies instead.</p>
 <p><img align="center" alt="Zabbix Agent active hosts" src="../datacollection/ch04.24-windows-linux-active-agent.png" /></p>
 <p><em>4.24 Zabbix Agent active hosts</em></p>
 <h2 id="setting-up-the-active-agent">Setting up the active agent</h2>
-<p>It's possible to set-up a Zabbix agent to work in both passive and active mode at the same time. Sometimes, we see this as passive mode was being used but an active only check is added later. The Zabbix agent in active mode can execute all item keys, whereas the passive agent cannot execute log item keys. Another reason to prefer active mode in most cases. For clarity, in our example we will use a different linux and windows server for the active agent. We will call these hosts:</p>
+<p>It's possible to set-up a Zabbix agent to work in both passive and active mode 
+at the same time. Sometimes, we see this as passive mode was being used but an 
+active only check is added later.  For clarity, in our example we will use a 
+different linux and windows server for the active agent. 
+We will call these hosts:</p>
 <ul>
 <li><strong>zbx-agent-active-rocky</strong></li>
 <li><strong>zbx-agent-active-windows</strong></li>
 </ul>
-<p>Because the Zabbix active agent will need to know where to request its configuration and where to start sending data, the setup for the active agent is quite different. The set-up process however is the same for both Linux and Windows. Let's start by editing the Zabbix agent configuration file.</p>
-<div class="admonition info">
-<p class="admonition-title">open Zabbix agent configuration file</p>
-<p>Linux usually:</p>
-<p>``` vim /etc/zabbix/zabbix_agent2.conf
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Windows usually:
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>``` Open C:\Program Files\Zabbix agent\zabbix_agent2.conf with a text editor
-</span></code></pre></div></p>
-</div>
-<p>Once the configuration is open, there are two important parameters in the configuration file. First, let's make sure our Zabbix agent will know where to connect to.</p>
-<div class="admonition info">
+<p>Installation of the Zabbix agent here is the same as described in the previous section,
+so we will not go through that again. We will start with the configuration of the active agent.
+However, as explained in the Active vs Passive comparison in the previous section,
+it is especially important to have correct time synchronization when using <code>Active</code> agents. 
+Refer to the chapter: <a href="../../ch00-getting-started/Requirements/"><em>Getting started</em></a>
+to set up a time server.</p>
+<p>Because the Zabbix active agent will need to know where to request its configuration
+and where to start sending data to, the setup for the active agent is a bit different.
+The set-up process however is the same for both Linux and Windows. Let's start 
+by editing the Zabbix agent configuration file.</p>
+<p>There are two important parameters to configure. First, let's make sure our 
+Zabbix agent will know where to connect to.</p>
+<div class="admonition example">
 <p class="admonition-title">edit ServerActive parameter</p>
-<p><code>ServerActive=192.168.46.30</code></p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="na">ServerActive</span><span class="o">=</span><span class="s">192.168.46.30</span>
+</span></code></pre></div>
 </div>
-<p>In the example <code>192.168.46.30</code> is the IP address of our Zabbix server (or proxy). Do not forget to remove <code>127.0.0.1</code> in this case. Its important to remember that our Zabbix agent in active mode will connect to every single IP address or DNS name entered in the <code>ServerActive=</code> parameter. Unlike <code>Server=</code> which functions as an allowlist.</p>
-<p>Next up, our Zabbix agent needs to know which configuration data to collect. It will connect to the Zabbix server (or proxy) on the IP specified and send over its <code>Hostname=</code> parameter. By default this is set to <code>Hostname=Zabbix server</code> which is incorrect in all cases except the Zabbix server itself. Lets change the configuration.</p>
-<div class="admonition info">
-<p class="admonition-title">edit Hostname parameter</p>
+<p>In the example <code>192.168.46.30</code> is the IP address of our Zabbix server (or proxy).
+Do not forget to remove <code>127.0.0.1</code> in this case. Its important to remember that
+our Zabbix agent in active mode will connect to every single IP address or DNS
+name entered in the <code>ServerActive=</code> parameter. Unlike the <code>Server=</code> parameter we
+used to setup passive mode, which functions as an allowlist.</p>
+<p>Next up, our Zabbix agent needs to know which configuration data to collect. It
+will connect to the Zabbix server (or proxy) on the IP specified and send over
+its <code>Hostname=</code> parameter. By default this is set to <code>Hostname=Zabbix server</code>
+which is incorrect in all cases except maybe on the Zabbix server itself.
+So we need to change this parameter:</p>
+<div class="admonition example">
+<p class="admonition-title">Edit Hostname parameter</p>
 <p>Linux:</p>
-<p>``` Hostname=zbx-agent-active-rocky
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Windows
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>``` Hostname=zbx-agent-active-windows
-</span></code></pre></div></p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="na">Hostname</span><span class="o">=</span><span class="s">zbx-agent-active-rocky</span>
+</span></code></pre></div>
+<p>Windows</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="na">Hostname</span><span class="o">=</span><span class="s">zbx-agent-active-windows</span>
+</span></code></pre></div>
 </div>
-<p>It is also possible to comment the <code>#Hostname=</code> parameters, in which case it will use the <code>system.hostname</code> item key to determine the hostname. This makes it easy for environments where the hostname is the same on the system as it will be in Zabbix (best practice).</p>
-<p>There is also the <code>HostnameItem=</code> parameter which you can use to set your own item to determine the hostname used. This can be an existing item, but also a <code>UserParameter</code> (more on those later). With this functionality, you can even execute a bash or powershell script to set a custom hostname like that.</p>
-<p>With this configuration set you can restart the Zabbix agent to make the changes take effect. In <code>Windows</code> restart the service, for <code>Linux</code> issue the command below.</p>
+<p>It is also possible to comment the <code>#Hostname=</code> parameters, in which case it will
+use the <code>system.hostname</code> item key to determine the hostname. This makes it easy
+for environments where the hostname is the same on the system as it will be in
+Zabbix (best practice).</p>
+<p>There is also the <code>HostnameItem=</code> parameter which you can use to set your own
+item to determine the hostname used. This can be an existing item, but also a 
+<code>UserParameter</code> (more on those later). With this functionality, you can even
+execute a bash or powershell script to set a custom hostname like that.</p>
+<p>With this configuration set you can restart the Zabbix agent to make the changes
+take effect. In <code>Windows</code> restart the Zabbix Agent 2 service using the Services 
+management console, for <code>Linux</code> issue the command below.</p>
 <div class="admonition info">
-<p class="admonition-title">restart Zabbix agent</p>
-<p><code>systemctl restart zabbix-agent2</code></p>
+<p class="admonition-title">Restart Zabbix agent on Linux</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>systemctl<span class="w"> </span>restart<span class="w"> </span>zabbix-agent2
+</span></code></pre></div>
 </div>
-<p>This finalizes the configuration file changes. Now we need to configure the host in Zabbix.</p>
+<p>This finalizes the configuration file changes. Now we need to configure the host
+ in Zabbix.</p>
 <p><img align="center" alt="Zabbix Agent active hosts in Zabbix" src="../datacollection/ch04.25-windows-linux-active-agent-host.png" /></p>
 <p><em>4.25 Zabbix Agent active hosts in Zabbix</em></p>
-<p>All we need to do here is make sure to match the hostname of what we configured in the Zabbix agent configuration file. Keep in mind that the <code>Hostname</code> field has to match the <code>Hostname=</code> parameter in the configuration file. The <code>Visible name</code> field does not have effect on the active agent functioning.</p>
-<p>We also add the host to the correct host group and that is all for now.</p>
+<p>All we need to do here is make sure to match the hostname of what we configured
+in the Zabbix agent configuration file. Keep in mind that the <code>Hostname</code> field
+has to match the <code>Hostname=</code> parameter in the configuration file. 
+The <code>Visible name</code> field does not have effect on the active agent functioning.</p>
 <h2 id="creating-active-items">Creating active items</h2>
-<p>Now that these settings all configured we can now start to create some items on our active agent host in Zabbix frontend. Let's click on <code>Items</code> for our host and configure a new Zabbix active type items.</p>
+<p>Now that the agent is configured to perform active checks, we can now start to
+create some items on our active agent host in Zabbix frontend. Let's click on
+<code>Items</code> for our host and configure a new Zabbix active type items.</p>
 <p><img align="center" alt="Zabbix Agent active item" src="../datacollection/ch04.26-active-agent-item.png" /></p>
 <p><em>4.26 Zabbix Agent active item</em></p>
-<p>Make sure to set the item <code>Type</code> to <code>Zabbix agent (active)</code>. Most item keys will be the same between <code>Passive</code> and <code>Active</code> mode, but the <code>Type</code> needs to be set correctly.</p>
+<p>Make sure to set the item <code>Type</code> to <code>Zabbix agent (active)</code>. Most item keys will
+be the same between <code>Passive</code> and <code>Active</code> mode, but the <code>Type</code> needs to be set
+correctly.</p>
 <p>Also, do not forget to add the tag to this item.</p>
 <p><img align="center" alt="Zabbix Agent active item tag" src="../datacollection/ch04.27-active-agent-item-tag.png" /></p>
 <p><em>4.27 Zabbix Agent active item tag</em></p>
 <p>Your <code>ZBX</code> icon for this host should now turn green, even in active mode.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>Zabbix agent in <code>Passive</code> and in <code>Active</code> mode are quite similar. Their main difference being their methods of communications and some different functionalities outside of their core functions being the same. One big difference we haven't mentioned yet however is timestamps. The Zabbix server or proxy communicating with a Zabbix agent in<code>Passive</code> mode adds the timestamp for a collected value at the Zabbix server or proxy side. In <code>Active</code> mode however the timestamp is added directly upon item value collection on the Zabbix agent side. This makes the Zabbix agent in <code>Active</code> mode more accurate with timestamps, but more sensitive for incorrect time settings on your monitoring targets. Keep in mind to set-up NTP when using the Zabbix agent in <code>Active</code> mode, a good idea even outside of Zabbix monitoring. The Zabbix agent in <code>Active</code> mode will always use UTC+0 and send over the timestamp in unixtime.</p>
-<p>Finally, let's do a bit of a comparison between the two modes.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;"></th>
-<th style="text-align: left;">Active Zabbix agent</th>
-<th style="text-align: left;">Passive Zabbix agent</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">Timestamp</td>
-<td style="text-align: left;">Zabbix agent</td>
-<td style="text-align: left;">Zabbix server or proxy</td>
-</tr>
-<tr>
-<td style="text-align: left;">(event)log items</td>
-<td style="text-align: left;">Supported</td>
-<td style="text-align: left;">Not supported</td>
-</tr>
-<tr>
-<td style="text-align: left;">Port</td>
-<td style="text-align: left;">No port listening, connect to 10051</td>
-<td style="text-align: left;">Listening on 10050</td>
-</tr>
-<tr>
-<td style="text-align: left;">Hostname</td>
-<td style="text-align: left;">Has to match</td>
-<td style="text-align: left;">Can be anything</td>
-</tr>
-<tr>
-<td style="text-align: left;">Remote commands</td>
-<td style="text-align: left;">Supported</td>
-<td style="text-align: left;">Supported</td>
-</tr>
-</tbody>
-</table>
+<p>In this section we have seen how to set-up a Zabbix agent in <code>Active</code> mode. We
+have created a new host in Zabbix and configured it to match the <code>Hostname</code> parameter
+in the Zabbix agent configuration file. We have also created a new item of type
+<code>Zabbix agent (active)</code> to start collecting data from our active agent.</p>
+<p>We have now seen both the <code>Passive</code> and <code>Active</code> mode of the Zabbix agent. Both have their
+advantages and disadvantages, and both can be used in different scenarios.</p>
 <h2 id="questions">Questions</h2>
+<ul>
+<li>Why does the <code>Hostname</code> parameter need to match the hostname in Zabbix?</li>
+<li>Why is time synchronization important for active agents?</li>
+<li>Can you use the same host for both passive and active checks?</li>
+</ul>
 <h2 id="useful-urls">Useful URLs</h2>
+<ul>
+<li><a href="https://blog.zabbix.com/zabbix-agent-active-vs-passive/">https://blog.zabbix.com/zabbix-agent-active-vs-passive/</a></li>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/appendix/items/activepassive">https://www.zabbix.com/documentation/current/en/manual/appendix/items/activepassive</a></li>
+</ul>
 
 
 
