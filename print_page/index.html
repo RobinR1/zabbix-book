@@ -12985,18 +12985,18 @@ for the collected value, which may reduce accuracy.</p>
   having the same agent being queried from multiple <em>hosts</em> in the Zabbix frontend.</li>
 </ul>
 <p><strong>Pros:</strong>
-- Simple to configure and manage.
-- Ideal for environments where the server can directly access the agent.
-- Supports concurrent checks, reducing delays caused by slow scripts or commands.</p>
+  - Simple to configure and manage.
+  - Ideal for environments where the server can directly access the agent.
+  - Supports concurrent checks, reducing delays caused by slow scripts or commands.</p>
 <p><strong>Cons:</strong>
-- Increases server load and network traffic as the number of agents and items 
-  grows.
-- Requires additional firewall/NAT configuration for incoming connections on all
-  monitored hosts, which may pose security risks.
-- Data collection fails if the server cannot reach the agent.
-- Some items (e.g., log items) are not supported in passive mode.
-- Timestamps are less accurate, as they reflect when the server receives the data,
-  not when the agent collects it.</p>
+  - Increases server load and network traffic as the number of agents and items 
+    grows.
+  - Requires additional firewall/NAT configuration for incoming connections on all
+    monitored hosts, which may pose security risks.
+  - Data collection fails if the server cannot reach the agent.
+  - Some items (e.g., log items) are not supported in passive mode.
+  - Timestamps are less accurate, as they reflect when the server receives the data,
+    not when the agent collects it.</p>
 <hr />
 <h4 id="ch04-zabbix-collecting-data-zabbix-agent-passive-active-mode">Active Mode</h4>
 <p>In <strong>Active</strong> mode, the agent proactively requests item lists from the server 
@@ -13010,28 +13010,28 @@ cannot directly access the agent.</p>
   accuracy but requiring synchronized time between the agent and server.</li>
 </ul>
 <p><strong>Pros:</strong>
-- Reduces server load by eliminating constant polling.
-- Works well in restricted network environments, as the agent initiates the 
-  connection.
-- Improves scalability in large environments by distributing part of the load.
-- Supports buffering of item values during server outages (Agent 2 only).
-- Provides more accurate timestamps, as they are set by the agent at the time 
-  of collection.</p>
+  - Reduces server load by eliminating constant polling.
+  - Works well in restricted network environments, as the agent initiates the 
+    connection.
+  - Improves scalability in large environments by distributing part of the load.
+  - Supports buffering of item values during server outages (Agent 2 only).
+  - Provides more accurate timestamps, as they are set by the agent at the time 
+    of collection.</p>
 <p><strong>Cons:</strong>
-- Requires the hostname in the agent configuration to match the hostname in the 
-  Zabbix frontend, reducing flexibility.
-- Uses a single thread for data collection, so slow checks can delay subsequent 
-  ones.
-- Accurate time synchronization between the agent and server is critical for 
-  data integrity.</p>
+  - Requires the hostname in the agent configuration to match the hostname in the 
+    Zabbix frontend, reducing flexibility.
+  - Uses a single thread for data collection, so slow checks can delay subsequent 
+    ones.
+  - Accurate time synchronization between the agent and server is critical for 
+    data integrity.</p>
 <hr />
 <h4 id="ch04-zabbix-collecting-data-zabbix-agent-passive-choosing-between-active-and-passive-modes">Choosing Between Active and Passive Modes</h4>
 <p>The choice depends on your environment and requirements:
-- Use <strong>Passive</strong> mode for simplicity and direct server-agent communication.
-- Use <strong>Active</strong> mode to reduce server load or navigate network restrictions.
-- A <strong>hybrid approach</strong> is often optimal: for example, use <strong>Active</strong> mode for 
-  most checks and <strong>Passive</strong> mode for specific items (e.g., long-running checks
-  or those requiring different hostnames).</p>
+  - Use <strong>Passive</strong> mode for simplicity and direct server-agent communication.
+  - Use <strong>Active</strong> mode to reduce server load or navigate network restrictions.
+  - A <strong>hybrid approach</strong> is often optimal: for example, use <strong>Active</strong> mode for 
+    most checks and <strong>Passive</strong> mode for specific items (e.g., long-running checks
+    or those requiring different hostnames).</p>
 <p>Finally, let's do a bit of a comparison between the two modes.</p>
 <table>
 <thead>
