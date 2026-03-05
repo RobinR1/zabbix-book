@@ -12941,6 +12941,7 @@ and observability:</p>
 </ul>
 </details>
 <p>Now, we are ready to start monitoring an actual system.</p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-zabbix-agent-passive-agent-basics">Agent basics</h2>
 <p>We have prepared an example setup in our Book LAB environment.</p>
 <p><img align="center" alt="Zabbix Agent passive hosts" src="../ch04-zabbix-collecting-data/datacollection/ch04.14-windows-linux-agent.png" /></p>
@@ -12965,146 +12966,116 @@ It can even do those simultaneously. Simultaneous communication can be useful wh
 you want to use <code>Passive</code> mode for all communication, but still want to execute
 some items that are <code>Active</code> only. <code>Active</code> items can do everything <code>Passive</code> 
 items can do however.</p>
-<h3 id="ch04-zabbix-collecting-data-zabbix-agent-passive-active-vs-passive-communication">Active vs Passive communication</h3>
-<p>The Zabbix agent can operate in two modes: <code>Active</code> and <code>Passive</code>. Each 
-mode has distinct behaviors and use cases, affecting how the agent communicates 
-with the Zabbix server.</p>
-<h4 id="ch04-zabbix-collecting-data-zabbix-agent-passive-passive-agent-mode">Passive Agent Mode</h4>
-<p>In <code>Passive</code> mode, the Zabbix server initiates the connection to the agent to 
-request data. </p>
-<p>For each <code>Passive</code> item, the server will periodically poll the agent for 
-the metric, and then wait for the agent to collect and return the requested data
-or until the item <code>Timeout</code> setting is reached. The item data is then returned
-by the agent within the same TCP session which is then closed.</p>
-<p>The timestamp of the item is set by the server on the collected value, 
-not by the agent when it collects the item. This may result in less accurate 
-timestamps.</p>
-<p>The Zabbix agent can start multiple passive threads (default: 3), allowing for 
-simultaneous checks. This means that if one check (for example a custom script)
-takes longer to finish, the other threads can continue serving metrics on server
-request.</p>
-<p>This mode is straightforward and works well in environments where the server can
-reliably reach the agent.</p>
-<p><strong>Pros:</strong></p>
+<hr />
+<h3 id="ch04-zabbix-collecting-data-zabbix-agent-passive-active-vs-passive-communication-in-zabbix-agent">Active vs. Passive Communication in Zabbix Agent</h3>
+<p>The Zabbix agent supports two communication modes: <strong>Active</strong> and <strong>Passive</strong>. 
+Each mode has distinct behaviors, use cases, and implications for performance and 
+configuration.</p>
+<hr />
+<h4 id="ch04-zabbix-collecting-data-zabbix-agent-passive-passive-mode">Passive Mode</h4>
+<p>In <strong>Passive</strong> mode, the Zabbix server initiates the connection to the agent to 
+request data. The server polls the agent for each metric, waits for the response, 
+and closes the connection after receiving the data. The server sets the timestamp 
+for the collected value, which may reduce accuracy.</p>
 <ul>
-<li>Simple to configure and manage.</li>
-<li>Works well when the Zabbix server or proxy can directly access the agent.</li>
-<li>Zabbix agent can start multiple passive threads (default: 3), allowing for 
-    simultaneous checks. </li>
-<li>Is not bound to the hostname configured in the agent configuration file, 
-    which means that you can use the same agent configuration file on multiple
-    hosts and just change the hostname on the Zabbix frontend. Or even query the
-    same agent from multiple <em>hosts</em> in the Zabbix frontend.</li>
+<li><strong>Concurrency:</strong> The agent can handle multiple simultaneous checks using 
+  multiple threads (default: 3).</li>
+<li><strong>Flexibility:</strong> The agent is not bound to the hostname in its configuration 
+  file, allowing the same configuration to be reused across multiple hosts or 
+  having the same agent being queried from multiple <em>hosts</em> in the Zabbix frontend.</li>
 </ul>
-<p><strong>Cons:</strong></p>
+<p><strong>Pros:</strong>
+- Simple to configure and manage.
+- Ideal for environments where the server can directly access the agent.
+- Supports concurrent checks, reducing delays caused by slow scripts or commands.</p>
+<p><strong>Cons:</strong>
+- Increases server load and network traffic as the number of agents and items 
+  grows.
+- Requires additional firewall/NAT configuration for incoming connections on all
+  monitored hosts, which may pose security risks.
+- Data collection fails if the server cannot reach the agent.
+- Some items (e.g., log items) are not supported in passive mode.
+- Timestamps are less accurate, as they reflect when the server receives the data,
+  not when the agent collects it.</p>
+<hr />
+<h4 id="ch04-zabbix-collecting-data-zabbix-agent-passive-active-mode">Active Mode</h4>
+<p>In <strong>Active</strong> mode, the agent proactively requests item lists from the server 
+and periodically sends collected metrics without waiting for server requests. 
+This mode is useful in environments with strict firewall rules or when the server 
+cannot directly access the agent.</p>
 <ul>
-<li>The server must actively poll each agent for each item, which can increase
-    network traffic and server load as the number of agents and passive items grows.</li>
-<li>If the agent is behind a firewall or NAT, additional configuration may be
-    required to allow incoming connections from the server. This however can be
-    a security risk or even not allowed by your network policies.</li>
-<li>If the server cannot reach the agent, data collection will be interrupted 
-    until the connection is restored.</li>
-<li>A few items, such as log item keys, can not be executed in passive mode.</li>
-<li>Timestamps may be less accurate as they are set to the time when the server 
-    receives the data, not when the agent collects it.</li>
+<li><strong>Buffering:</strong> Zabbix Agent 2 can buffer active check results during server 
+  outages, ensuring uninterrupted data collection.</li>
+<li><strong>Timestamps:</strong> The agent sets the timestamp for collected values, improving 
+  accuracy but requiring synchronized time between the agent and server.</li>
 </ul>
-<h4 id="ch04-zabbix-collecting-data-zabbix-agent-passive-active-agent-mode">Active Agent Mode</h4>
-<p>In <code>Active</code> mode, the Zabbix agent takes the initiative to send data to the 
-server. The agent will ask the server what items to check and then
-periodically collect and send requested metrics to the server or proxy without
-waiting for a request. This mode is particularly useful in environments where
-the agent cannot be directly accessed by the server due to network restrictions 
-or security policies.</p>
-<p>Additionally, when using Zabbix Agent 2, you can configure it to buffer active 
-check results in case the server or proxy is not available for a short time, 
-ensuring that data collection is not interrupted.</p>
-<p>During data collection, the agent will add a timestamp to the collected value 
-directly on the agent side, which can provide more accurate timestamps. However,
-this also means that if the agent's time is not synchronized with the server,
-it can lead to issues with data accuracy and trigger evaluations. So when using
-<code>Active</code> mode it is important to have a time server configured on your monitoring
-targets as outlined in the chapter: <a href="#ch00-getting-started-requirements"><em>Getting started</em></a>.</p>
-<p><strong>Pros:</strong></p>
-<ul>
-<li>Reduces the load on the Zabbix server by eliminating the need for constant 
-    polling.</li>
-<li>Works well in environments with strict firewall rules or NAT, as the agent 
-    initiates the connection.</li>
-<li>Can improve performance and scalability in large environments due to some
-    load being distributed.</li>
-<li>Zabbix Agent 2 can be configured to buffer active checks in case the server 
-    is not available for a short time, ensuring that data collection is not 
-    interrupted.</li>
-<li>Timestamps are more accurate as they are set by the agent at the time of
-    collection, not by the server when it receives the data.</li>
-</ul>
-<p><strong>Cons:</strong></p>
-<ul>
-<li>Requires the hostname set in the Zabbix agent configuration to match the 
-    hostname configured in the Zabbix frontend, which can make it less flexible 
-    in certain scenarios.</li>
-<li>Active checks use a single thread for collecting andsending data, which means
-    that if a check takes longer to perform, it will delay subsequent checks.</li>
-<li>Correct time synchronization on both the agent and server is crucial for 
-    accurate data and trigger evaluations.</li>
-</ul>
-<h4 id="ch04-zabbix-collecting-data-zabbix-agent-passive-choosing-between-active-and-passive-modes">Choosing between Active and Passive modes</h4>
-<p>As you see, both <code>Active</code> and <code>Passive</code> modes have their own advantages and 
-disadvantages. The choice between them depends on your specific environment and 
-requirements. If your Zabbix server can reliably access the agents and you prefer 
-a simpler configuration, <code>Passive</code> mode may be suitable. However, if you have 
-network restrictions or want to reduce server load, <code>Active</code> mode may be the better 
-choice.</p>
-<p>In many cases, a combination of both modes can be used to leverage the advantages
-of each. For example, you might use <code>Active</code> mode for most checks but configure
-specific items in <code>Passive</code> mode, such as longer running checks to prevent other
-checks from being delayed. Or checks that require a different hostname than the 
-one configured in the agent configuration file. </p>
+<p><strong>Pros:</strong>
+- Reduces server load by eliminating constant polling.
+- Works well in restricted network environments, as the agent initiates the 
+  connection.
+- Improves scalability in large environments by distributing part of the load.
+- Supports buffering of item values during server outages (Agent 2 only).
+- Provides more accurate timestamps, as they are set by the agent at the time 
+  of collection.</p>
+<p><strong>Cons:</strong>
+- Requires the hostname in the agent configuration to match the hostname in the 
+  Zabbix frontend, reducing flexibility.
+- Uses a single thread for data collection, so slow checks can delay subsequent 
+  ones.
+- Accurate time synchronization between the agent and server is critical for 
+  data integrity.</p>
+<hr />
+<h4 id="ch04-zabbix-collecting-data-zabbix-agent-passive-choosing-between-active-and-passive-modes">Choosing Between Active and Passive Modes</h4>
+<p>The choice depends on your environment and requirements:
+- Use <strong>Passive</strong> mode for simplicity and direct server-agent communication.
+- Use <strong>Active</strong> mode to reduce server load or navigate network restrictions.
+- A <strong>hybrid approach</strong> is often optimal: for example, use <strong>Active</strong> mode for 
+  most checks and <strong>Passive</strong> mode for specific items (e.g., long-running checks
+  or those requiring different hostnames).</p>
 <p>Finally, let's do a bit of a comparison between the two modes.</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;"></th>
-<th style="text-align: left;">Active Zabbix agent</th>
-<th style="text-align: left;">Passive Zabbix agent</th>
+<th>Feature</th>
+<th>Active Agent</th>
+<th>Passive Agent</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">Timestamp</td>
-<td style="text-align: left;">Zabbix agent</td>
-<td style="text-align: left;">Zabbix server or proxy</td>
+<td>Timestamp</td>
+<td>Set by agent</td>
+<td>Set by server/proxy</td>
 </tr>
 <tr>
-<td style="text-align: left;">(event)log items</td>
-<td style="text-align: left;">Supported</td>
-<td style="text-align: left;">Not supported</td>
+<td>Log Items</td>
+<td>Supported</td>
+<td>Not supported</td>
 </tr>
 <tr>
-<td style="text-align: left;">Port</td>
-<td style="text-align: left;">No port listening, connect to 10051</td>
-<td style="text-align: left;">Listening on 10050</td>
+<td>Port</td>
+<td>Connects to server port 10051</td>
+<td>Listens on 10050</td>
 </tr>
 <tr>
-<td style="text-align: left;">Hostname</td>
-<td style="text-align: left;">Has to match</td>
-<td style="text-align: left;">Can be anything</td>
+<td>Hostname</td>
+<td>Must match frontend configuration</td>
+<td>Flexible</td>
 </tr>
 <tr>
-<td style="text-align: left;">Remote commands</td>
-<td style="text-align: left;">Supported</td>
-<td style="text-align: left;">Supported</td>
+<td>Remote Commands</td>
+<td>Supported</td>
+<td>Supported</td>
 </tr>
 <tr>
-<td style="text-align: left;">Concurrency</td>
-<td style="text-align: left;">Single thread</td>
-<td style="text-align: left;">Multiple threads</td>
+<td>Concurrency</td>
+<td>Single thread</td>
+<td>Multiple threads</td>
 </tr>
 <tr>
-<td style="text-align: left;">Buffering on outage</td>
-<td style="text-align: left;">Yes (if configured on Agent 2)</td>
-<td style="text-align: left;">No</td>
+<td>Buffering on Outage</td>
+<td>Yes (Agent 2)</td>
+<td>No</td>
 </tr>
 </tbody>
 </table>
@@ -13112,6 +13083,7 @@ one configured in the agent configuration file. </p>
 fit your needs.</p>
 <p>In the current section we will start with the <code>Passive</code> mode, and in the next 
 section we will look at the <code>Active</code> mode.</p>
+<hr />
 <h3 id="ch04-zabbix-collecting-data-zabbix-agent-passive-zabbix-agent-vs-zabbix-agent-2">Zabbix agent vs Zabbix agent 2</h3>
 <p>Before we can configure either though, we will have to install our Zabbix agent
 first. When installing on Linux and Windows we have a choice between two different
@@ -13176,6 +13148,7 @@ Also, as C is a lower level programming language, <code>Zabbix agent</code> can 
 performant in certain use cases such as monitoring embedded devices or devices
 with very limited resources.</p>
 </details>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-zabbix-agent-passive-agent-installation-on-linux">Agent installation on Linux</h2>
 <p>Installation on Linux can be done in one of three ways. Through direct install
 files like <code>.rpm</code> and <code>.deb</code>, by building from sources and through packages pulled
@@ -13211,6 +13184,7 @@ Zabbix.</p>
 </span></code></pre></div>
 </div>
 <p>Your agent is now installed under the <code>zabbix</code> user and ready to be configured.</p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-zabbix-agent-passive-agent-installation-on-windows">Agent installation on Windows</h2>
 <p>On Windows, we have two options to install our Zabbix agent. Through downloading
 the <code>.exe</code> file and placing the configuration files in the right location or the
@@ -13249,14 +13223,17 @@ we will do this later.</p>
 <p><em>4.15 Zabbix Agent Windows install step 5</em></p>
 <p>Now there is nothing left to do except press <code>Install</code> and our Zabbix agent will
 be both installed and configured.</p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-zabbix-agent-passive-agent-installation-on-unix">Agent installation on Unix</h2>
 <p>For Unix based systems, simply download the files on the Zabbix download page for
  either <code>AIX</code>, <code>FreeBSD</code>, <code>OpenBSD</code> or <code>Solaris</code>.</p>
 <p><a href="https://www.zabbix.com/download_agents">https://www.zabbix.com/download_agents</a></p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-zabbix-agent-passive-agent-installation-on-macos">Agent installation on MacOS</h2>
 <p>For MacOS systems, simply download the files on the Zabbix download page and run
 through the <code>.pkg</code> installer.</p>
 <p><a href="https://www.zabbix.com/download_agents?os=macOS">https://www.zabbix.com/download_agents?os=macOS</a></p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-zabbix-agent-passive-agent-side-configuration">Agent side configuration</h2>
 <p>Configuring the Zabbix agent is similar for all installations. Whether you are on
 <code>Linux</code>, <code>Unix</code>, <code>Windows</code> or <code>MacOS</code> you will always find the <code>zabbix_agent2.conf</code> file.
@@ -13304,6 +13281,7 @@ If you do, to be able to use the <code>Passive</code> agent, make sure to config
 firewall to allow incoming connections to the service <code>zabbix-agent</code> or explicitly
 open up the port <code>10050/tcp</code> to allow the Zabbix server or proxy to connect
 to the agent.</p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-zabbix-agent-passive-server-side-configuration">Server side configuration</h2>
 <p>On the Zabbix server side we can now create a new host to monitor. Let's call
 it <code>zbx-agent-passive-rocky</code> or <code>zbx-agent-passive-windows</code> and let's add the interface.</p>
@@ -13326,6 +13304,7 @@ use the item key <code>system.hostname</code>.</p>
 practice.</p>
 <p><img align="left" alt="Zabbix Agent passive host item tag" src="../ch04-zabbix-collecting-data/datacollection/ch04.23-passive-agent-item-tag.png" /></p>
 <p><em>4.23 Zabbix Agent passive host item tag</em></p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-zabbix-agent-passive-conclusion">Conclusion</h2>
 <p>We learned about the two communication methods of the Zabbix agent, <code>Active</code> and 
 <code>Passive</code>. We discussed the differences between these two methods and their pros 
@@ -13340,18 +13319,22 @@ to keep our agent secured. We do not want everyone to be able to connect and que
 this agent, even when there might still be a firewall or two in between.</p>
 <p>Finaly, we created a host and an item to start monitoring with our <code>Passive</code> 
 Zabbix agent.</p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-zabbix-agent-passive-questions">Questions</h2>
 <ul>
 <li>What are the differences between <code>Zabbix agent</code> and <code>Zabbix agent 2</code>?</li>
 <li>What are the differences between <code>Passive</code> and <code>Active</code> Zabbix agent communication?</li>
 <li>Why may you want to use <code>Passive</code> mode for a long running custom script item?</li>
 </ul>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-zabbix-agent-passive-useful-urls">Useful URLs</h2>
 <ul>
 <li><a href="https://www.zabbix.com/documentation/current/en/manual/concepts/agent">https://www.zabbix.com/documentation/current/en/manual/concepts/agent</a></li>
 <li><a href="https://www.zabbix.com/documentation/current/en/manual/concepts/agent2">https://www.zabbix.com/documentation/current/en/manual/concepts/agent2</a></li>
 <li><a href="https://www.zabbix.com/documentation/current/en/manual/installation/install_from_packages">https://www.zabbix.com/documentation/current/en/manual/installation/install_from_packages</a></li>
 <li><a href="https://www.zabbix.com/documentation/current/en/manual/appendix/agent_comparison">https://www.zabbix.com/documentation/current/en/manual/appendix/agent_comparison</a></li>
+<li><a href="https://blog.zabbix.com/zabbix-agent-active-vs-passive/">https://blog.zabbix.com/zabbix-agent-active-vs-passive/</a></li>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/appendix/items/activepassive">https://www.zabbix.com/documentation/current/en/manual/appendix/items/activepassive</a></li>
 </ul></section><section class="print-page" id="ch04-zabbix-collecting-data-zabbix-agent-active" heading-number="9.7"><nav class='md-tags'><span class='md-tag'>advanced</span></nav><h1 id="zabbix-agent-active-monitoring">Zabbix Agent Active monitoring</h1>
 <p>In the previous section we installed our Zabbix agent and started monitoring a host
 in the <code>Passive</code> mode. But as mentioned before, the Zabbix agent can also work in 
