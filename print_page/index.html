@@ -13155,7 +13155,7 @@ files like <code>.rpm</code> and <code>.deb</code>, by building from sources and
 from the repository. Installation through the packages is preferred as this means
 Zabbix agent will be updated when updating with commands like <code>dnf update</code> and
 <code>apt upgrade</code>. Keep in mind, Zabbix agent is a piece of software just like any
-other and as such news versions will contain security and bug fixes. Whatever
+other and as such new versions will contain security and bug fixes. Whatever
 installation method you choose, keep your Zabbix agent up-to-date.</p>
 <p>We will be using the packages on RedHat-, SUSE-based or Ubuntu to install 
 <code>Zabbix agent 2</code>. To use the packages we will need to prepare our system 
@@ -13256,11 +13256,11 @@ All of the entries in this <code>Server=</code> allowlist will be allowed to mak
 to the <code>Passive</code> Zabbix agent and collect data from it.</p>
 <p>Edit your configuration file to include your Zabbix server (or proxy) IP address,
 IP range or DNS entry.</p>
-<div class="admonition info">
-<p class="admonition-title">edit the Server= parameter</p>
+<details class="example" open="open">
+<summary>Edit the Server= parameter</summary>
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#ch04-zabbix-collecting-data-zabbix-agent-passive-__codelineno-4-1"></a><span class="na">Server</span><span class="o">=</span><span class="s">127.0.0.1,192.168.46.30</span>
 </span></code></pre></div>
-</div>
+</details>
 <p>As you can see in the example, I've left <code>127.0.0.1</code>. Although not required, this
 can be useful in certain situations. Through the use of a comma <code>,</code> we have indicated
 that both <code>127.0.0.1</code> and <code>192.168.46.30</code> are allowed to connect. If you are running
@@ -13348,6 +13348,7 @@ such is always initiated from the Zabbix agent side, meaning you will have to al
 your many agents to connect to your Zabbix servers or proxies instead.</p>
 <p><img align="center" alt="Zabbix Agent active hosts" src="../ch04-zabbix-collecting-data/datacollection/ch04.24-windows-linux-active-agent.png" /></p>
 <p><em>4.24 Zabbix Agent active hosts</em></p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-zabbix-agent-active-setting-up-the-active-agent">Setting up the active agent</h2>
 <p>It's possible to set-up a Zabbix agent to work in both passive and active mode 
 at the same time. Sometimes, we see this as passive mode was being used but an 
@@ -13370,11 +13371,11 @@ The set-up process however is the same for both Linux and Windows. Let's start
 by editing the Zabbix agent configuration file.</p>
 <p>There are two important parameters to configure. First, let's make sure our 
 Zabbix agent will know where to connect to.</p>
-<div class="admonition example">
-<p class="admonition-title">edit ServerActive parameter</p>
+<details class="example" open="open">
+<summary>Set ServerActive parameter</summary>
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#ch04-zabbix-collecting-data-zabbix-agent-active-__codelineno-0-1"></a><span class="na">ServerActive</span><span class="o">=</span><span class="s">192.168.46.30</span>
 </span></code></pre></div>
-</div>
+</details>
 <p>In the example <code>192.168.46.30</code> is the IP address of our Zabbix server (or proxy).
 Do not forget to remove <code>127.0.0.1</code> in this case. Its important to remember that
 our Zabbix agent in active mode will connect to every single IP address or DNS
@@ -13385,15 +13386,15 @@ will connect to the Zabbix server (or proxy) on the IP specified and send over
 its <code>Hostname=</code> parameter. By default this is set to <code>Hostname=Zabbix server</code>
 which is incorrect in all cases except maybe on the Zabbix server itself.
 So we need to change this parameter:</p>
-<div class="admonition example">
-<p class="admonition-title">Edit Hostname parameter</p>
+<details class="example" open="open">
+<summary>Set Hostname parameter</summary>
 <p>Linux:</p>
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#ch04-zabbix-collecting-data-zabbix-agent-active-__codelineno-1-1"></a><span class="na">Hostname</span><span class="o">=</span><span class="s">zbx-agent-active-rocky</span>
 </span></code></pre></div>
 <p>Windows</p>
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#ch04-zabbix-collecting-data-zabbix-agent-active-__codelineno-2-1"></a><span class="na">Hostname</span><span class="o">=</span><span class="s">zbx-agent-active-windows</span>
 </span></code></pre></div>
-</div>
+</details>
 <p>It is also possible to comment the <code>#Hostname=</code> parameters, in which case it will
 use the <code>system.hostname</code> item key to determine the hostname. This makes it easy
 for environments where the hostname is the same on the system as it will be in
@@ -13418,6 +13419,7 @@ management console, for <code>Linux</code> issue the command below.</p>
 in the Zabbix agent configuration file. Keep in mind that the <code>Hostname</code> field
 has to match the <code>Hostname=</code> parameter in the configuration file. 
 The <code>Visible name</code> field does not have effect on the active agent functioning.</p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-zabbix-agent-active-creating-active-items">Creating active items</h2>
 <p>Now that the agent is configured to perform active checks, we can now start to
 create some items on our active agent host in Zabbix frontend. Let's click on
@@ -13431,6 +13433,7 @@ correctly.</p>
 <p><img align="center" alt="Zabbix Agent active item tag" src="../ch04-zabbix-collecting-data/datacollection/ch04.27-active-agent-item-tag.png" /></p>
 <p><em>4.27 Zabbix Agent active item tag</em></p>
 <p>Your <code>ZBX</code> icon for this host should now turn green, even in active mode.</p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-zabbix-agent-active-conclusion">Conclusion</h2>
 <p>In this section we have seen how to set-up a Zabbix agent in <code>Active</code> mode. We
 have created a new host in Zabbix and configured it to match the <code>Hostname</code> parameter
@@ -13438,12 +13441,14 @@ in the Zabbix agent configuration file. We have also created a new item of type
 <code>Zabbix agent (active)</code> to start collecting data from our active agent.</p>
 <p>We have now seen both the <code>Passive</code> and <code>Active</code> mode of the Zabbix agent. Both have their
 advantages and disadvantages, and both can be used in different scenarios.</p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-zabbix-agent-active-questions">Questions</h2>
 <ul>
 <li>Why does the <code>Hostname</code> parameter need to match the hostname in Zabbix?</li>
 <li>Why is time synchronization important for active agents?</li>
 <li>Can you use the same host for both passive and active checks?</li>
 </ul>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-zabbix-agent-active-useful-urls">Useful URLs</h2>
 <ul>
 <li><a href="https://blog.zabbix.com/zabbix-agent-active-vs-passive/">https://blog.zabbix.com/zabbix-agent-active-vs-passive/</a></li>

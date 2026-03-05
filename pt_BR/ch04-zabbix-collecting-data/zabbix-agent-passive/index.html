@@ -2859,7 +2859,7 @@ files like <code>.rpm</code> and <code>.deb</code>, by building from sources and
 from the repository. Installation through the packages is preferred as this means
 Zabbix agent will be updated when updating with commands like <code>dnf update</code> and
 <code>apt upgrade</code>. Keep in mind, Zabbix agent is a piece of software just like any
-other and as such news versions will contain security and bug fixes. Whatever
+other and as such new versions will contain security and bug fixes. Whatever
 installation method you choose, keep your Zabbix agent up-to-date.</p>
 <p>We will be using the packages on RedHat-, SUSE-based or Ubuntu to install 
 <code>Zabbix agent 2</code>. To use the packages we will need to prepare our system 
@@ -2960,11 +2960,11 @@ All of the entries in this <code>Server=</code> allowlist will be allowed to mak
 to the <code>Passive</code> Zabbix agent and collect data from it.</p>
 <p>Edit your configuration file to include your Zabbix server (or proxy) IP address,
 IP range or DNS entry.</p>
-<div class="admonition info">
-<p class="admonition-title">edit the Server= parameter</p>
+<details class="example" open="open">
+<summary>Edit the Server= parameter</summary>
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="na">Server</span><span class="o">=</span><span class="s">127.0.0.1,192.168.46.30</span>
 </span></code></pre></div>
-</div>
+</details>
 <p>As you can see in the example, I've left <code>127.0.0.1</code>. Although not required, this
 can be useful in certain situations. Through the use of a comma <code>,</code> we have indicated
 that both <code>127.0.0.1</code> and <code>192.168.46.30</code> are allowed to connect. If you are running
