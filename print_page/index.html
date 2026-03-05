@@ -12329,6 +12329,7 @@ to end up with a certain type of monitoring.</p>
 into what each of those parts does. Logically, that would start with <code>Items</code> looking
 at the image above. But before we can start discussing <code>Items</code> there is another 
 concept we need to understand.</p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-dataflow-hosts">Hosts</h2>
 <p>To create <code>Items</code> in Zabbix, we first need to create <code>Hosts</code>. A <code>host</code> is nothing
 more than a container (not the Docker kind), it's something that contains <code>Items</code>,
@@ -12341,11 +12342,13 @@ target is something we want to monitor. This can be a server in your datacenter,
 a virtual machine on your hypervisor, a Docker container or even just a website.
 Everything you want to monitor in Zabbix will need a host and the host will then
 contain your monitoring configuration on its entities.</p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-dataflow-items">Items</h2>
 <p><code>Items</code> in Zabbix are Metrics. One <code>Item</code> is usually a single metric we'd like to
 collect, with the exception being bulk metric collection which we will discuss
 later on in the book. When we want to create our <code>Items</code> we can do this on a host
 and we can actually create an unlimited amount of <code>Items</code> on a host.</p>
+<hr />
 <h3 id="ch04-zabbix-collecting-data-dataflow-preprocessing">Preprocessing</h3>
 <p>But we cannot stop there with <code>Items</code> just yet, as we also mentioned an additional
 part of our dataflow. It is possible to change the collected metric on an item before
@@ -12358,6 +12361,7 @@ of such items. It is a part of the item, but not mandatory on every single item.
 <li>Collect metric and change before storing in the database? <strong>Add preprocessing</strong></li>
 </ul>
 <p>We will discuss this in more detail later on in the book as well.</p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-dataflow-triggers">Triggers</h2>
 <p>With all of the collected metrics, we can now also start to create triggers if we
 would want to. A trigger is Zabbix is nothing more than a bit of configuration on
@@ -12370,6 +12374,7 @@ item(s) used in the logical expression the trigger can go or stay in on of two s
 <li><strong>OK</strong>: When the logical expression is FALSE</li>
 </ul>
 <p>This is how we define if our data is in a good or a bad state.</p>
+<hr />
 <h3 id="ch04-zabbix-collecting-data-dataflow-events">Events</h3>
 <p>When we discuss triggers however, we cannot skip past the Events. Whenever a trigger
 changes state, for example it was in OK state and goes into the PROBLEM state, then
@@ -12383,6 +12388,7 @@ triggers:</p>
 <p>These problem events are what you will see in the frontend when you navigate to
 <code>Monitoring</code> | <code>Problems</code>, but they are also very important in the next step in
 the Zabbix dataflow <code>Actions</code>.</p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-dataflow-actions">Actions</h2>
 <p>Actions are the last step in our Zabbix dataflow and they are kind of split into
 two parts. An action consists of <code>Conditions</code> and <code>Operations</code>. This is going to
@@ -12398,6 +12404,7 @@ Telegram. But an operation could also be, execute the reboot command on this hos
 <p>As you can imagine, the conditions will be very important to make sure that operation
 on that action are only executed when we specifically want it to. We do not want to
 for example reboot a host without the right problem being first detected.</p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-dataflow-conclusion">Conclusion</h2>
 <p>To summarize, all the steps in the dataflow work together to make sure that you can
 build the perfect Zabbix environment. When we put the entire dataflow together it
@@ -12424,6 +12431,7 @@ since we mentioned that all events are always send to all action for evaluation.
 This can be useful, for example if you want to split you messaging and your script
 execution in different action to keep things organised.</p>
 <p>Now that we understand the various parts of our Zabbix dataflow we can dive deeper into creating the configuration for the steps in the dataflow.</p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-dataflow-questions">Questions</h2>
 <ul>
 <li>Can you give two examples of what a "host" could represent in Zabbix, besides a server?</li>
@@ -12431,6 +12439,7 @@ execution in different action to keep things organised.</p>
 <li>What are the two possible states of a trigger, and what do they mean?</li>
 <li>Why is it important to carefully define the conditions in an action?</li>
 </ul>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-dataflow-useful-urls">Useful URLs</h2>
 <ul>
 <li><a href="https://www.zabbix.com/documentation/current/en/manual/config/items">https://www.zabbix.com/documentation/current/en/manual/config/items</a></li>
@@ -12442,6 +12451,7 @@ execution in different action to keep things organised.</p>
 dataflow steps to get from collecting data to sending out alerts. 
 The first part of the dataflow is to create a host, so that is what we are now going to tackle
 in this part.</p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-hosts-creating-a-host">Creating a host</h2>
 <p>As we mentioned, Hosts in Zabbix are nothing more than a container (not the Docker kind).
 They contain our <code>Items</code>, <code>Triggers</code>, <code>graphs</code>, <code>Low Level Discovery</code> rules and <code>Web scenarios</code>.  </p>
@@ -12456,6 +12466,7 @@ and in the top right corner click on the <code>Create host</code> button. This w
 </ul>
 <p>These are the only two mandatory fields in the host creation window. If we fill these two, 
 we can create our host. </p>
+<hr />
 <h3 id="ch04-zabbix-collecting-data-hosts-host-name">Host name</h3>
 <p>The <code>Host name</code> is very important. It functions as both the technical name of the host we will
 use in various different locations, but it is also used as the <code>Visible name</code> by default. This 
@@ -12475,6 +12486,7 @@ monitoring target. The monitoring target, being whatever you are trying to monit
 Whether that is a physical or virtual server, a website, a database server or 
 a specific database on that database server. Every host in Zabbix is a monitoring target, 
 i.e. something you are trying to monitor.</p>
+<hr />
 <h3 id="ch04-zabbix-collecting-data-hosts-visible-name">Visible name</h3>
 <p>Now, we didn't mention it as it is not a mandatory field. Nevertheless, we need to discuss
 the <code>Visible name</code> field before we continue with the <code>Host groups</code>. Although not mandatory,
@@ -12494,6 +12506,7 @@ different character encoding in the Zabbix database. </p>
 special character. Keep in mind however, that this can create confusion. You now need to remember
 two different names for the same host. As such, visible names are only recommended when you really need
 them or if you are trying to work around something. Otherwise, there is no need to use them.</p>
+<hr />
 <h3 id="ch04-zabbix-collecting-data-hosts-host-groups">Host groups</h3>
 <p>In <a href="#ch02-zabbix-installation-host-groups">Chapter 02</a> of the book, we had a deep dive into setting up various different host groups to keep
 our Zabbix environment structured. When we create a host, we can now start using one of
@@ -12509,6 +12522,7 @@ you want to create the host group.</p>
 fields empty as they are optional. Another very important element of a host is
 the interfaces field, but we will cover that in a later section.
 Finally click on the <code>Add</code> button to create the host.</p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-hosts-conclusion">Conclusion</h2>
 <p>In this section we have learned how to create a host in Zabbix. We have covered
 the important fields like <code>Host name</code>, <code>Visible name</code> and <code>Host groups</code>.
@@ -12516,12 +12530,14 @@ We have also discussed best practices around naming conventions for hosts in Zab
 and when to use the visible name field. Finally, we created our first host
 called <code>simple-checks</code> in the <code>Linux/Servers</code> host group, which we will use
 in the next section to create our first items.</p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-hosts-questions">Questions</h2>
 <ul>
 <li>What is the purpose of a host in Zabbix?</li>
 <li>What is the difference between the "Host name" and "Visible name" fields when creating a host?</li>
 <li>Why is it recommended to only add a host to the lowest level of subgroups when assigning host groups?</li>
 </ul>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-hosts-useful-urls">Useful URLs</h2>
 <ul>
 <li><a href="https://www.zabbix.com/documentation/current/en/manual/config/hosts/host">https://www.zabbix.com/documentation/current/en/manual/config/hosts/host</a></li>
@@ -12533,6 +12549,7 @@ checks we can do, executed from the Zabbix server or proxy towards our monitorin
 checks contain protocol checks such as <code>ICMP Ping</code>, <code>TCP/UDP</code> but also built in <code>VMware</code> monitoring.</p>
 <p>Without further ado, let's set up our first items. Please keep in mind that we will be building
 everything on a host level for now. Check out <a href="#ch06-zabbix-templates-chapter">Chapter 06</a> to learn how to do this properly on a template.</p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-simple-checks-building-the-item">Building the item</h2>
 <p>We shall start with a simple ICMP Ping check on our host <code>simple-checks</code> in the
 <code>Servers/Linux</code> host group, created in the <a href="#ch04-zabbix-collecting-data-hosts">previous section</a>. 
@@ -12549,6 +12566,7 @@ item work.</p>
 <li><strong>Name</strong> - a descriptive name of the item</li>
 <li><strong>Key</strong> - the unique identifier of the item</li>
 </ul>
+<hr />
 <h3 id="ch04-zabbix-collecting-data-simple-checks-item-name">Item Name</h3>
 <p>The <code>Item name</code> in Zabbix is a very important field for all of our items. This is going
 to be the first thing you see when looking for you configuration, but also the main identifier
@@ -12582,6 +12600,7 @@ would have nicely sorted them together. While right now, there are CPU items rig
 memory related items. It creates a bit of a mess, making Zabbix harder to read. </p>
 <p>If you want to spend (waste?) 30 minutes of your time hearing all about sorting data in various
 different places in Zabbix. The following video is highly recommended: https://www.youtube.com/watch?v=5etxbNPrygU</p>
+<hr />
 <h3 id="ch04-zabbix-collecting-data-simple-checks-item-key">Item Key</h3>
 <p>Next up is the item key, an important part of setting up your Zabbix item as it will serve as
 the uniqueness criteria for the creation of this entity. There are two types of item keys:</p>
@@ -12604,6 +12623,7 @@ of the uniqueness of the item keys. For example:</p>
   each parameter divided by a comma(<code>,</code>). Optional parameters are marked by the <code>&lt;&gt;</code> signs, whereas
   mandatory parameters have no pre/suffix.</li>
 </ul>
+<hr />
 <h3 id="ch04-zabbix-collecting-data-simple-checks-icmp-ping">ICMP Ping</h3>
 <p>With all of this in mind, let's finish the creation our ICMP Ping item. First, we will give our
 new item a name. Since this is a simple ICMP Ping to the host lets go for:</p>
@@ -12638,6 +12658,7 @@ FpingLocation=/usr/sbin/fping
 Fping6Location=/usr/sbin/fping6
 ```
 </code></pre></div>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-simple-checks-tcpudp-ports">TCP/UDP Ports</h2>
 <p>Another useful simple check you can create is the TCP (and UDP) port check. With these 4 item keys 
 we can monitor the availability and performance of TCP and UDP ports. There are 4 built-in keys
@@ -12658,6 +12679,7 @@ If we fill in the <code>service</code> parameter with <code>ssh, ldap, smtp, ftp
 tcp, https, telnet</code> it will use the correct (default) port automatically, as well
 as do an additional check to make sure the port is actually being used by that
 service.</p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-simple-checks-conclusion">Conclusion</h2>
 <p>The simple checks are mainly used for ICMP ping and Port checks, which means they
 are quite useful for almost every host. It's always a good idea to do some basic
@@ -12666,6 +12688,7 @@ network availability checks on your hosts.</p>
 create things like items. Keeping things structured in your environment means that
 you and your colleagues will have an easier time using your monitoring and
 observability platform.</p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-simple-checks-questions">Questions</h2>
 <ul>
 <li>What are simple checks in Zabbix and what are they used for?</li>
@@ -12673,6 +12696,7 @@ observability platform.</p>
 <li>What is the difference between built-in and user-defined item keys in Zabbix?</li>
 <li>Why is it recommended to add a tag with the name <code>component</code> to every item created in Zabbix?</li>
 </ul>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-simple-checks-useful-urls">Useful URLs</h2>
 <p><a href="https://www.youtube.com/watch?v=5etxbNPrygU">https://www.youtube.com/watch?v=5etxbNPrygU</a>
 <a href="https://www.zabbix.com/documentation/7.4/en/manual/config/items/itemtypes/simple_checks">https://www.zabbix.com/documentation/7.4/en/manual/config/items/itemtypes/simple_checks</a>
@@ -12703,6 +12727,7 @@ the items for monitoring. </p>
 <p>Besides these matches, there are also various items like the <code>Simple check</code> items
 that can use all four interface types. These items will then only use the interface
 IP or DNS to connect to the remote monitoring target.</p>
+<hr />
 <h3 id="ch04-zabbix-collecting-data-host-interfaces-agentzbx-and-jmx">Agent/ZBX and JMX</h3>
 <p>The Zabbix agent type interface and JMX interface work quite similarly. Both
 interface types allow us to define four things. </p>
@@ -12728,6 +12753,7 @@ follow is:</p>
 down. If it's dynamic, use DNS as you will save yourself the administrative
 overhead.</p>
 </details>
+<hr />
 <h3 id="ch04-zabbix-collecting-data-host-interfaces-snmp">SNMP</h3>
 <p>The SNMP interface has the most options of all four interface types. The reason
 for this is because the SNMP type interface allows us to specify the SNMP details
@@ -12784,6 +12810,7 @@ but higher security is better in this case. </p>
 MD5 and DES are both no longer recommended due to the possibility to brute force
 the passwords with consumer grade hardware amongst other risks. That's why SHA1
 and AES128 or higher is always recommended. </p>
+<hr />
 <h3 id="ch04-zabbix-collecting-data-host-interfaces-ipmi">IPMI</h3>
 <p>For <code>IPMI agent</code> type items we want to add the <code>IPMI</code> type interface. We can use
 it to connect to <code>BMC's (Baseboard Management Controller)</code> like <code>iDRAC</code> and <code>iLo</code>.
@@ -12813,6 +12840,7 @@ in most scenarios. <code>Callback</code> will allow us to access alerts, <code>U
 allow us to access monitoring data. If need higher privilege levels to execute
 commands on the <code>BMC</code> as well, this is possible. But keep in mind, write access
 from your monitoring system comes with additional security risks.</p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-host-interfaces-interface-availability">Interface availability</h2>
 <p>All four interface types, also come with an icon that can turn <span style="color: green;">Green</span>,
 <span style="color: orange;">Orange</span>, <span style="color: red;">Red</span> or
@@ -12848,6 +12876,7 @@ attempt for items that use this interface:</p>
 </ul>
 </li>
 </ul>
+<hr />
 <h3 id="ch04-zabbix-collecting-data-host-interfaces-active-checks-availability">Active checks availability</h3>
 <p>Zabbix agent checks can be either passive or active. We will discuss the differences
 between these two types of checks in the next chapter, but for now it's important
@@ -12872,6 +12901,7 @@ older than version 6.2, the Active checks interface status will always
 remain <span style="color: grey;">Unknown</span> as there are no heartbeats
 being sent by the agent to determine the availability status.</p>
 </details>
+<hr />
 <h3 id="ch04-zabbix-collecting-data-host-interfaces-overall-interface-availability">Overall interface availability</h3>
 <p>The status of the interface type availability icon is determined by the status 
 of all interfaces of that specific type and can have the following colors:</p>
@@ -12883,6 +12913,7 @@ of all interfaces of that specific type and can have the following colors:</p>
 <li><span style="color: grey;">Grey</span> - At least one interface of this type is unknown,
   but none of the interfaces of this type are unavailable.</li>
 </ul>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-host-interfaces-conclusion">Conclusion</h2>
 <p>When configuring your host interfaces in Zabbix, we need to match our <code>Item type</code>
 to our <code>Interface type</code>. When we have the correct <code>Host interface</code> configured we
@@ -12895,6 +12926,7 @@ do not have an effect on interface availability and the availability icon.</p>
 most secure option that your monitoring target supports. This will make sure your
 Zabbix environment is more secure, even if a bad actor would be present on your 
 network somehow.</p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-host-interfaces-questions">Questions</h2>
 <ul>
 <li>What are the four types of host interfaces in Zabbix, and what is each used for?</li>
@@ -12908,6 +12940,7 @@ network somehow.</p>
 <li>How is the availability of "Active checks" determined for Zabbix Agent 
   interfaces?</li>
 </ul>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-host-interfaces-useful-urls">Useful URLs</h2>
 <ul>
 <li><a href="https://www.zabbix.com/documentation/current/en/manual/quickstart/host">https://www.zabbix.com/documentation/current/en/manual/quickstart/host</a></li>

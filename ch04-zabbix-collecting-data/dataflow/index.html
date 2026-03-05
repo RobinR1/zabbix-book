@@ -2510,6 +2510,7 @@ to end up with a certain type of monitoring.</p>
 into what each of those parts does. Logically, that would start with <code>Items</code> looking
 at the image above. But before we can start discussing <code>Items</code> there is another 
 concept we need to understand.</p>
+<hr />
 <h2 id="hosts">Hosts</h2>
 <p>To create <code>Items</code> in Zabbix, we first need to create <code>Hosts</code>. A <code>host</code> is nothing
 more than a container (not the Docker kind), it's something that contains <code>Items</code>,
@@ -2522,11 +2523,13 @@ target is something we want to monitor. This can be a server in your datacenter,
 a virtual machine on your hypervisor, a Docker container or even just a website.
 Everything you want to monitor in Zabbix will need a host and the host will then
 contain your monitoring configuration on its entities.</p>
+<hr />
 <h2 id="items">Items</h2>
 <p><code>Items</code> in Zabbix are Metrics. One <code>Item</code> is usually a single metric we'd like to
 collect, with the exception being bulk metric collection which we will discuss
 later on in the book. When we want to create our <code>Items</code> we can do this on a host
 and we can actually create an unlimited amount of <code>Items</code> on a host.</p>
+<hr />
 <h3 id="preprocessing">Preprocessing</h3>
 <p>But we cannot stop there with <code>Items</code> just yet, as we also mentioned an additional
 part of our dataflow. It is possible to change the collected metric on an item before
@@ -2539,6 +2542,7 @@ of such items. It is a part of the item, but not mandatory on every single item.
 <li>Collect metric and change before storing in the database? <strong>Add preprocessing</strong></li>
 </ul>
 <p>We will discuss this in more detail later on in the book as well.</p>
+<hr />
 <h2 id="triggers">Triggers</h2>
 <p>With all of the collected metrics, we can now also start to create triggers if we
 would want to. A trigger is Zabbix is nothing more than a bit of configuration on
@@ -2551,6 +2555,7 @@ item(s) used in the logical expression the trigger can go or stay in on of two s
 <li><strong>OK</strong>: When the logical expression is FALSE</li>
 </ul>
 <p>This is how we define if our data is in a good or a bad state.</p>
+<hr />
 <h3 id="events">Events</h3>
 <p>When we discuss triggers however, we cannot skip past the Events. Whenever a trigger
 changes state, for example it was in OK state and goes into the PROBLEM state, then
@@ -2564,6 +2569,7 @@ triggers:</p>
 <p>These problem events are what you will see in the frontend when you navigate to
 <code>Monitoring</code> | <code>Problems</code>, but they are also very important in the next step in
 the Zabbix dataflow <code>Actions</code>.</p>
+<hr />
 <h2 id="actions">Actions</h2>
 <p>Actions are the last step in our Zabbix dataflow and they are kind of split into
 two parts. An action consists of <code>Conditions</code> and <code>Operations</code>. This is going to
@@ -2579,6 +2585,7 @@ Telegram. But an operation could also be, execute the reboot command on this hos
 <p>As you can imagine, the conditions will be very important to make sure that operation
 on that action are only executed when we specifically want it to. We do not want to
 for example reboot a host without the right problem being first detected.</p>
+<hr />
 <h2 id="conclusion">Conclusion</h2>
 <p>To summarize, all the steps in the dataflow work together to make sure that you can
 build the perfect Zabbix environment. When we put the entire dataflow together it
@@ -2605,6 +2612,7 @@ since we mentioned that all events are always send to all action for evaluation.
 This can be useful, for example if you want to split you messaging and your script
 execution in different action to keep things organised.</p>
 <p>Now that we understand the various parts of our Zabbix dataflow we can dive deeper into creating the configuration for the steps in the dataflow.</p>
+<hr />
 <h2 id="questions">Questions</h2>
 <ul>
 <li>Can you give two examples of what a "host" could represent in Zabbix, besides a server?</li>
@@ -2612,6 +2620,7 @@ execution in different action to keep things organised.</p>
 <li>What are the two possible states of a trigger, and what do they mean?</li>
 <li>Why is it important to carefully define the conditions in an action?</li>
 </ul>
+<hr />
 <h2 id="useful-urls">Useful URLs</h2>
 <ul>
 <li><a href="https://www.zabbix.com/documentation/current/en/manual/config/items">https://www.zabbix.com/documentation/current/en/manual/config/items</a></li>

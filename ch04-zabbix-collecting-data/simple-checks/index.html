@@ -2454,6 +2454,7 @@ checks we can do, executed from the Zabbix server or proxy towards our monitorin
 checks contain protocol checks such as <code>ICMP Ping</code>, <code>TCP/UDP</code> but also built in <code>VMware</code> monitoring.</p>
 <p>Without further ado, let's set up our first items. Please keep in mind that we will be building
 everything on a host level for now. Check out <a href="../../ch06-zabbix-templates/chapter/">Chapter 06</a> to learn how to do this properly on a template.</p>
+<hr />
 <h2 id="building-the-item">Building the item</h2>
 <p>We shall start with a simple ICMP Ping check on our host <code>simple-checks</code> in the
 <code>Servers/Linux</code> host group, created in the <a href="../hosts/">previous section</a>. 
@@ -2470,6 +2471,7 @@ item work.</p>
 <li><strong>Name</strong> - a descriptive name of the item</li>
 <li><strong>Key</strong> - the unique identifier of the item</li>
 </ul>
+<hr />
 <h3 id="item-name">Item Name</h3>
 <p>The <code>Item name</code> in Zabbix is a very important field for all of our items. This is going
 to be the first thing you see when looking for you configuration, but also the main identifier
@@ -2503,6 +2505,7 @@ would have nicely sorted them together. While right now, there are CPU items rig
 memory related items. It creates a bit of a mess, making Zabbix harder to read. </p>
 <p>If you want to spend (waste?) 30 minutes of your time hearing all about sorting data in various
 different places in Zabbix. The following video is highly recommended: https://www.youtube.com/watch?v=5etxbNPrygU</p>
+<hr />
 <h3 id="item-key">Item Key</h3>
 <p>Next up is the item key, an important part of setting up your Zabbix item as it will serve as
 the uniqueness criteria for the creation of this entity. There are two types of item keys:</p>
@@ -2525,6 +2528,7 @@ of the uniqueness of the item keys. For example:</p>
   each parameter divided by a comma(<code>,</code>). Optional parameters are marked by the <code>&lt;&gt;</code> signs, whereas
   mandatory parameters have no pre/suffix.</li>
 </ul>
+<hr />
 <h3 id="icmp-ping">ICMP Ping</h3>
 <p>With all of this in mind, let's finish the creation our ICMP Ping item. First, we will give our
 new item a name. Since this is a simple ICMP Ping to the host lets go for:</p>
@@ -2559,6 +2563,7 @@ FpingLocation=/usr/sbin/fping
 Fping6Location=/usr/sbin/fping6
 ```
 </code></pre></div>
+<hr />
 <h2 id="tcpudp-ports">TCP/UDP Ports</h2>
 <p>Another useful simple check you can create is the TCP (and UDP) port check. With these 4 item keys 
 we can monitor the availability and performance of TCP and UDP ports. There are 4 built-in keys
@@ -2579,6 +2584,7 @@ If we fill in the <code>service</code> parameter with <code>ssh, ldap, smtp, ftp
 tcp, https, telnet</code> it will use the correct (default) port automatically, as well
 as do an additional check to make sure the port is actually being used by that
 service.</p>
+<hr />
 <h2 id="conclusion">Conclusion</h2>
 <p>The simple checks are mainly used for ICMP ping and Port checks, which means they
 are quite useful for almost every host. It's always a good idea to do some basic
@@ -2587,6 +2593,7 @@ network availability checks on your hosts.</p>
 create things like items. Keeping things structured in your environment means that
 you and your colleagues will have an easier time using your monitoring and
 observability platform.</p>
+<hr />
 <h2 id="questions">Questions</h2>
 <ul>
 <li>What are simple checks in Zabbix and what are they used for?</li>
@@ -2594,6 +2601,7 @@ observability platform.</p>
 <li>What is the difference between built-in and user-defined item keys in Zabbix?</li>
 <li>Why is it recommended to add a tag with the name <code>component</code> to every item created in Zabbix?</li>
 </ul>
+<hr />
 <h2 id="useful-urls">Useful URLs</h2>
 <p><a href="https://www.youtube.com/watch?v=5etxbNPrygU">https://www.youtube.com/watch?v=5etxbNPrygU</a>
 <a href="https://www.zabbix.com/documentation/7.4/en/manual/config/items/itemtypes/simple_checks">https://www.zabbix.com/documentation/7.4/en/manual/config/items/itemtypes/simple_checks</a>

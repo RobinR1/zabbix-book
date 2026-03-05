@@ -2428,6 +2428,7 @@ names, host groups, and best practices for monitoring setup.
 dataflow steps to get from collecting data to sending out alerts. 
 The first part of the dataflow is to create a host, so that is what we are now going to tackle
 in this part.</p>
+<hr />
 <h2 id="creating-a-host">Creating a host</h2>
 <p>As we mentioned, Hosts in Zabbix are nothing more than a container (not the Docker kind).
 They contain our <code>Items</code>, <code>Triggers</code>, <code>graphs</code>, <code>Low Level Discovery</code> rules and <code>Web scenarios</code>.  </p>
@@ -2442,6 +2443,7 @@ and in the top right corner click on the <code>Create host</code> button. This w
 </ul>
 <p>These are the only two mandatory fields in the host creation window. If we fill these two, 
 we can create our host. </p>
+<hr />
 <h3 id="host-name">Host name</h3>
 <p>The <code>Host name</code> is very important. It functions as both the technical name of the host we will
 use in various different locations, but it is also used as the <code>Visible name</code> by default. This 
@@ -2461,6 +2463,7 @@ monitoring target. The monitoring target, being whatever you are trying to monit
 Whether that is a physical or virtual server, a website, a database server or 
 a specific database on that database server. Every host in Zabbix is a monitoring target, 
 i.e. something you are trying to monitor.</p>
+<hr />
 <h3 id="visible-name">Visible name</h3>
 <p>Now, we didn't mention it as it is not a mandatory field. Nevertheless, we need to discuss
 the <code>Visible name</code> field before we continue with the <code>Host groups</code>. Although not mandatory,
@@ -2480,6 +2483,7 @@ different character encoding in the Zabbix database. </p>
 special character. Keep in mind however, that this can create confusion. You now need to remember
 two different names for the same host. As such, visible names are only recommended when you really need
 them or if you are trying to work around something. Otherwise, there is no need to use them.</p>
+<hr />
 <h3 id="host-groups">Host groups</h3>
 <p>In <a href="../../ch02-zabbix-installation/host-groups/">Chapter 02</a> of the book, we had a deep dive into setting up various different host groups to keep
 our Zabbix environment structured. When we create a host, we can now start using one of
@@ -2495,6 +2499,7 @@ you want to create the host group.</p>
 fields empty as they are optional. Another very important element of a host is
 the interfaces field, but we will cover that in a later section.
 Finally click on the <code>Add</code> button to create the host.</p>
+<hr />
 <h2 id="conclusion">Conclusion</h2>
 <p>In this section we have learned how to create a host in Zabbix. We have covered
 the important fields like <code>Host name</code>, <code>Visible name</code> and <code>Host groups</code>.
@@ -2502,12 +2507,14 @@ We have also discussed best practices around naming conventions for hosts in Zab
 and when to use the visible name field. Finally, we created our first host
 called <code>simple-checks</code> in the <code>Linux/Servers</code> host group, which we will use
 in the next section to create our first items.</p>
+<hr />
 <h2 id="questions">Questions</h2>
 <ul>
 <li>What is the purpose of a host in Zabbix?</li>
 <li>What is the difference between the "Host name" and "Visible name" fields when creating a host?</li>
 <li>Why is it recommended to only add a host to the lowest level of subgroups when assigning host groups?</li>
 </ul>
+<hr />
 <h2 id="useful-urls">Useful URLs</h2>
 <ul>
 <li><a href="https://www.zabbix.com/documentation/current/en/manual/config/hosts/host">https://www.zabbix.com/documentation/current/en/manual/config/hosts/host</a></li>

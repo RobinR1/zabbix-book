@@ -2495,6 +2495,7 @@ the items for monitoring. </p>
 <p>Besides these matches, there are also various items like the <code>Simple check</code> items
 that can use all four interface types. These items will then only use the interface
 IP or DNS to connect to the remote monitoring target.</p>
+<hr />
 <h3 id="agentzbx-and-jmx">Agent/ZBX and JMX</h3>
 <p>The Zabbix agent type interface and JMX interface work quite similarly. Both
 interface types allow us to define four things. </p>
@@ -2520,6 +2521,7 @@ follow is:</p>
 down. If it's dynamic, use DNS as you will save yourself the administrative
 overhead.</p>
 </details>
+<hr />
 <h3 id="snmp">SNMP</h3>
 <p>The SNMP interface has the most options of all four interface types. The reason
 for this is because the SNMP type interface allows us to specify the SNMP details
@@ -2576,6 +2578,7 @@ but higher security is better in this case. </p>
 MD5 and DES are both no longer recommended due to the possibility to brute force
 the passwords with consumer grade hardware amongst other risks. That's why SHA1
 and AES128 or higher is always recommended. </p>
+<hr />
 <h3 id="ipmi">IPMI</h3>
 <p>For <code>IPMI agent</code> type items we want to add the <code>IPMI</code> type interface. We can use
 it to connect to <code>BMC's (Baseboard Management Controller)</code> like <code>iDRAC</code> and <code>iLo</code>.
@@ -2605,6 +2608,7 @@ in most scenarios. <code>Callback</code> will allow us to access alerts, <code>U
 allow us to access monitoring data. If need higher privilege levels to execute
 commands on the <code>BMC</code> as well, this is possible. But keep in mind, write access
 from your monitoring system comes with additional security risks.</p>
+<hr />
 <h2 id="interface-availability">Interface availability</h2>
 <p>All four interface types, also come with an icon that can turn <span style="color: green;">Green</span>,
 <span style="color: orange;">Orange</span>, <span style="color: red;">Red</span> or
@@ -2640,6 +2644,7 @@ attempt for items that use this interface:</p>
 </ul>
 </li>
 </ul>
+<hr />
 <h3 id="active-checks-availability">Active checks availability</h3>
 <p>Zabbix agent checks can be either passive or active. We will discuss the differences
 between these two types of checks in the next chapter, but for now it's important
@@ -2664,6 +2669,7 @@ older than version 6.2, the Active checks interface status will always
 remain <span style="color: grey;">Unknown</span> as there are no heartbeats
 being sent by the agent to determine the availability status.</p>
 </details>
+<hr />
 <h3 id="overall-interface-availability">Overall interface availability</h3>
 <p>The status of the interface type availability icon is determined by the status 
 of all interfaces of that specific type and can have the following colors:</p>
@@ -2675,6 +2681,7 @@ of all interfaces of that specific type and can have the following colors:</p>
 <li><span style="color: grey;">Grey</span> - At least one interface of this type is unknown,
   but none of the interfaces of this type are unavailable.</li>
 </ul>
+<hr />
 <h2 id="conclusion">Conclusion</h2>
 <p>When configuring your host interfaces in Zabbix, we need to match our <code>Item type</code>
 to our <code>Interface type</code>. When we have the correct <code>Host interface</code> configured we
@@ -2687,6 +2694,7 @@ do not have an effect on interface availability and the availability icon.</p>
 most secure option that your monitoring target supports. This will make sure your
 Zabbix environment is more secure, even if a bad actor would be present on your 
 network somehow.</p>
+<hr />
 <h2 id="questions">Questions</h2>
 <ul>
 <li>What are the four types of host interfaces in Zabbix, and what is each used for?</li>
@@ -2700,6 +2708,7 @@ network somehow.</p>
 <li>How is the availability of "Active checks" determined for Zabbix Agent 
   interfaces?</li>
 </ul>
+<hr />
 <h2 id="useful-urls">Useful URLs</h2>
 <ul>
 <li><a href="https://www.zabbix.com/documentation/current/en/manual/quickstart/host">https://www.zabbix.com/documentation/current/en/manual/quickstart/host</a></li>
