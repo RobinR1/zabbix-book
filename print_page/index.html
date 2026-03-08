@@ -14106,7 +14106,7 @@ It's quite brutal but in our test environment it will help you out.</p>
 </details>
 <hr />
 <h2 id="ch04-zabbix-collecting-data-snmp-polling-snmp-monitoring-in-zabbix">SNMP Monitoring in Zabbix</h2>
-<p>Now that we have covered how SNMP works, it's time to put that knowledge into
+<p>Now that we have covered how SNMP itself works, it's time to put that knowledge into
 practice. We'll start up our Zabbix instance and begin monitoring, but first,
 it's crucial to understand the two different methods Zabbix offers for retrieving
 SNMP information from a device.</p>
@@ -14123,64 +14123,76 @@ administrative domain.  Note that it is possible for SNMP entities in
 different administrative domains to have the same value for</code>snmpEngineID`. Federation of administrative domains may necessitate
 assignment of new values.</p>
 </div>
+<p>Zabbix supports two distinct approaches for SNMP monitoring: synchronous (legacy) 
+and asynchronous (recommended). Each method has unique characteristics, performance 
+implications, and use cases.</p>
 <hr />
-<h4 id="ch04-zabbix-collecting-data-snmp-polling-legacy-snmp-monitoring">Legacy SNMP Monitoring</h4>
-<p>The traditional method for SNMP monitoring is <em>synchronous</em>. It uses a <strong>single OID</strong>
-placed directly into the item's SNMP OID field. Zabbix will wait for a response
-before it moves on to the next check.</p>
-<ul>
-<li><strong>OID</strong>: A single textual or numeric OID is used to retrieve a single value synchronously.
-  For example: <code>1.3.6.1.2.1.31.1.1.1.6.3</code>.</li>
-<li>The timeout for these items is governed by the <code>Timeout</code> parameter in the <strong>Zabbix
-  server configuration file</strong>. To make this method functional, the <code>StartPollers</code>
-  parameter must also be correctly configured.</li>
-</ul>
-<p>When we talk about bulk processing in legacy it can be interesting to have a look
-at the Zabbix documentation about this subject.
-<a href="https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/snmp#internal-workings-of-combined-processing">https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/snmp#internal-workings-of-combined-processing</a></p>
-<hr />
-<h4 id="ch04-zabbix-collecting-data-snmp-polling-asynchronous-snmp-monitoring-recommended">Asynchronous SNMP Monitoring (Recommended)</h4>
-<p>The newer, <strong>recommended</strong> approach is <em>asynchronous</em> and provides much better
-performance. It leverages native SNMP bulk requests (<code>GetBulkRequest-PDUs</code>).</p>
+<h4 id="ch04-zabbix-collecting-data-snmp-polling-synchronous-snmp-monitoring">Synchronous SNMP Monitoring</h4>
+<p>In <em>synchronous</em> mode, Zabbix queries SNMP devices one OID at a time, waiting for
+a response before proceeding to the next check. This method is straightforward 
+but can become inefficient in large environments.</p>
 <ul>
 <li>
-<p><strong><code>walk[OID1, OID2, ...]</code></strong>: This retrieves a subtree of values.
-  ???+ example</p>
-<p><div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-22-1"></a>walk[1.3.6.1.2.1.2.2.1.2,1.3.6.1.2.1.2.2.1.3]
-</span></code></pre></div>
-- <strong><code>get[OID]</code></strong>: This retrieves a single value asynchronously.
-  ???+ example</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-23-1"></a>get[1.3.6.1.2.1.31.1.1.1.6.3]
-</span></code></pre></div>
+<p><strong>OID Handling</strong>:
+  A single textual or numeric OID (e.g., 1.3.6.1.2.1.31.1.1.1.6.3) is specified
+  in the item’s SNMP OID field.</p>
+</li>
+<li>
+<p><strong>Configuration</strong>:
+  Timeout and performance are controlled by the 'Timeout' and 'StartPollers'
+  parameters in the Zabbix server configuration file.</p>
+</li>
+<li>
+<p><strong>Combined processing</strong>:
+  In legacy synchronous monitoring, Zabbix can combine multiple OIDs into a 
+  single request to optimize performance. However, this still operates within 
+  the synchronous framework, meaning Zabbix will wait for the combined response
+  before moving on to the next check.
+  For more details about combined processing, refer to the <a href="https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/snmp#internal-workings-of-combined-processing">Zabbix documentation: Internal workings of combined processing.</a></p>
 </li>
 </ul>
-<p>With asynchronous monitoring, timeout settings can be configured per item. It's
-best to set a low timeout value to avoid long delays if a device is unreachable,
-as Zabbix will attempt up to 5 retries. A 3-second timeout, for instance, could
-result in a 15-second wait.</p>
-<p>All <code>walk[OID]</code> and <code>get[OID]</code> items are executed asynchronously, meaning Zabbix
-does not need to wait for one response before starting other checks. DNS resolution
-is also handled asynchronously. The maximum concurrency for these checks is 1000,
-defined by the <code>MaxConcurrentChecksPerPoller</code> parameter. The number of SNMP pollers
-dedicated to this method is set by the <code>StartSNMPPollers</code> parameter.</p>
-<h4 id="ch04-zabbix-collecting-data-snmp-polling-synchronous-versus-asynchronous-polling">Synchronous versus Asynchronous Polling</h4>
-<p>Zabbix can also use two different internal methods for polling:</p>
-<p><strong>Synchronous Polling</strong></p>
-<p>Synchronous polling means the Zabbix server queries one SNMP OID at a time and waits
-for the response before continuing. This is simpler and ensures accurate timing,
-but it can become slow when monitoring hundreds or thousands of items per second.</p>
+<p><strong>Characteristics</strong>:
+- Sequential, blocking, and predictable timing.
+- <strong>Use Case</strong>: Small environments or scenarios requiring precise timing.</p>
+<hr />
+<h4 id="ch04-zabbix-collecting-data-snmp-polling-asynchronous-snmp-monitoring">Asynchronous SNMP Monitoring</h4>
+<p><em>Asynchronous</em> monitoring leverages native SNMP bulk requests (<code>GetBulkRequest-PDUs</code>)
+and parallel processing, significantly improving performance and scalability.</p>
+<div class="admonition warning">
+<p class="admonition-title">Bulk Requests and Combined Processing</p>
+<p><em>Combined processing</em> is a feature of the legacy synchronous SNMP monitoring method
+and is not to be confused with the <em>bulk request</em> capabilities of asynchronous
+monitoring. In earlier versions of Zabbix, <em>combined processing</em> however was called
+"bulk processing" which can lead to confusion. The key difference is that combined
+processing still operates within a synchronous framework, while asynchronous monitoring
+uses true SNMP bulk requests to retrieve multiple OIDs in parallel without waiting
+for each response.</p>
+</div>
 <ul>
-<li>Characteristics: Sequential, blocking, predictable timing</li>
-<li>Use case: Small environments or when timing precision is critical</li>
+<li><strong>OID Handling</strong>:</li>
+<li><strong><code>walk[OID1, OID2, ...]</code></strong>: Retrieves a subtree of values 
+   (e.g., <code>walk[1.3.6.1.2.1.2.2.1.2,1.3.6.1.2.1.2.2.1.3]</code>).</li>
+<li>
+<p><strong><code>get[OID]</code></strong>: Retrieves a single value asynchronously 
+    (e.g., <code>get[1.3.6.1.2.1.31.1.1.1.6.3]</code>).</p>
+</li>
+<li>
+<p><strong>Configuration</strong>*:</p>
+</li>
+<li>Timeout settings are configurable per item. A low timeout is recommended to
+    avoid delays. As Zabbix retries up to 5 times, a 3-second timeout could lead
+    to a 15-second wait if a device is unreachable.</li>
+<li>Concurrency is managed by the <code>MaxConcurrentChecksPerPoller</code> parameter (max 
+    1000 checks) and <code>StartSNMPPollers</code>.</li>
+<li>DNS resolution is handled asynchronously.</li>
 </ul>
-<p><strong>Asynchronous Polling</strong></p>
-<p>Asynchronous polling sends multiple SNMP requests in parallel without waiting for
-each response before sending the next. This dramatically increases performance
-and reduces latency in large environments.</p>
+<p><strong>Characteristics</strong>:</p>
 <ul>
-<li>Characteristics: Parallel, non-blocking, more efficient</li>
-<li>Use case: Large-scale Zabbix installations with many SNMP hosts</li>
+<li>Parallel, non-blocking, and highly efficient.</li>
+<li><strong>Use Case</strong>: Large-scale environments with many SNMP hosts.</li>
 </ul>
+<hr />
+<h4 id="ch04-zabbix-collecting-data-snmp-polling-comparison-of-snmp-monitoring-methods">Comparison of SNMP Monitoring Methods</h4>
 <table>
 <thead>
 <tr>
@@ -14212,7 +14224,7 @@ and reduces latency in large environments.</p>
 </tbody>
 </table>
 <hr />
-<h3 id="ch04-zabbix-collecting-data-snmp-polling-polling-your-first-oid-in-zabbix"><strong>Polling Your First OID in Zabbix</strong></h3>
+<h3 id="ch04-zabbix-collecting-data-snmp-polling-polling-your-first-oid-in-zabbix">Polling Your First OID in Zabbix</h3>
 <p>Let's begin by polling our first OID in Zabbix. As you may recall from a previous
 <code>snmpwalk</code> command, querying <code>.1.3.6.1.2.1.2.2.1.2</code> returned two results, identifying
 the network interfaces on the device:</p>
@@ -14224,18 +14236,20 @@ the network interfaces on the device:</p>
 locate the correct OID. While a MIB file would provide a clear map of all available
 OIDs, this isn't always an option. A common method to discover the correct OID is
 to perform a broader <code>snmpwalk</code> by removing the last digit from the initial OID.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-24-1"></a>snmpwalk<span class="w"> </span>-v2c<span class="w"> </span>-c<span class="w"> </span>public<span class="w"> </span>&lt;IP_ADDRESS&gt;<span class="w"> </span>.1.3.6.1.2.1.2.2.1
-</span></code></pre></div>
-<p>This command returns a more extensive list of MIB objects.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-25-1"></a>IF-MIB::ifIndex.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">1</span>
-</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-25-2"></a>IF-MIB::ifIndex.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">2</span>
-</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-25-3"></a>IF-MIB::ifDescr.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>STRING:<span class="w"> </span>lo
-</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-25-4"></a>IF-MIB::ifDescr.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>STRING:<span class="w"> </span>enp0s1
-</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-25-5"></a>...
-</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-25-6"></a>IF-MIB::ifInOctets.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">697830615</span>
-</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-25-7"></a>IF-MIB::ifInOctets.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">49954965</span>
-</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-25-8"></a>...
-</span></code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Finding the correct OID with snmpwalk</p>
+<p>This command returns a more extensive list of MIB objects:
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-22-1"></a><span class="gp">localhost:~ $ </span>snmpwalk<span class="w"> </span>-v2c<span class="w"> </span>-c<span class="w"> </span>public<span class="w"> </span>&lt;IP_ADDRESS&gt;<span class="w"> </span>.1.3.6.1.2.1.2.2.1
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-22-2"></a><span class="go">IF-MIB::ifIndex.1 = INTEGER: 1</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-22-3"></a><span class="go">IF-MIB::ifIndex.2 = INTEGER: 2</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-22-4"></a><span class="go">IF-MIB::ifDescr.1 = STRING: lo</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-22-5"></a><span class="go">IF-MIB::ifDescr.2 = STRING: enp0s1</span>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-22-6"></a><span class="go">...</span>
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-22-7"></a><span class="go">IF-MIB::ifInOctets.1 = Counter32: 697830615</span>
+</span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-22-8"></a><span class="go">IF-MIB::ifInOctets.2 = Counter32: 49954965</span>
+</span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-22-9"></a><span class="go">...</span>
+</span></code></pre></div></p>
+</div>
 <p>From this output, we can see that the index for our target network card, <code>enp0s1</code>,
 is <code>2</code>. This confirms that we can use this index to find the correct data.
 The output <code>IF-MIB::ifInOctets.2 = Counter32: 49954965</code> appears to be the value
@@ -14243,62 +14257,66 @@ we need, but this is not the raw OID.</p>
 <p>To convert this human-readable output into a numerical OID that Zabbix can use,
 we can add the <code>-On</code> flag to our <code>snmpwalk</code> command, which converts the output
 to its numerical form.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-26-1"></a>snmpwalk<span class="w"> </span>-v2c<span class="w"> </span>-c<span class="w"> </span>public<span class="w"> </span>&lt;IP_ADDRESS&gt;<span class="w"> </span>IF-MIB::ifInOctets.2<span class="w"> </span>-On
-</span></code></pre></div>
-<p>The result is the specific OID for the inbound octets on the <code>enp0s1</code> interface:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-1"></a>.1.3.6.1.2.1.2.2.1.10.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">50050587</span>
-</span></code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Converting OID to numerical form with snmpwalk</p>
+</div>
+<p>The result of next command will be the specific OID for the inbound octets
+  on the <code>enp0s1</code> interface:
+  <div class="language-shell-session highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-23-1"></a><span class="gp">localhost:~ $ </span>snmpwalk<span class="w"> </span>-v2c<span class="w"> </span>-c<span class="w"> </span>public<span class="w"> </span>&lt;IP_ADDRESS&gt;<span class="w"> </span>IF-MIB::ifInOctets.2<span class="w"> </span>-On
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-23-2"></a><span class="go">.1.3.6.1.2.1.2.2.1.10.2 = Counter32: 50050587</span>
+</span></code></pre></div></p>
 <p>This is the OID you would use to configure an SNMP item in Zabbix to monitor the
 network traffic for this specific interface.</p>
 <p>Another useful tool that will help here is <code>snmptranslate</code> which does the same
 thing and also the other way back.</p>
-<div class="admonition info">
+<div class="admonition example">
 <p class="admonition-title">snmptranslate</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-28-1"></a>snmptranslate -On IF-MIB::ifInOctets.2
-</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-28-2"></a>.1.3.6.1.2.1.2.2.1.10.2
-</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-28-3"></a>
-</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-28-4"></a>snmptranslate .1.3.6.1.2.1.2.2.1.10.2
-</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-28-5"></a>IF-MIB::ifInOctets.2
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-24-1"></a><span class="gp">localhost:~ $ </span>snmptranslate<span class="w"> </span>-On<span class="w"> </span>IF-MIB::ifInOctets.2
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-24-2"></a><span class="go">.1.3.6.1.2.1.2.2.1.10.2</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-24-3"></a>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-24-4"></a><span class="gp">localhost:~ $ </span>snmptranslate<span class="w"> </span>.1.3.6.1.2.1.2.2.1.10.2
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-24-5"></a><span class="go">IF-MIB::ifInOctets.2</span>
 </span></code></pre></div>
 </div>
 <p>There is yet another tool that helps to visualise a SNMP table with the easy to
 remember name ... <code>snmptable</code>. This tool allows you to see the data more easy
 then a simple a snmp walk. To stay with our network cards have a look at this
 output.</p>
-<div class="admonition info">
+<div class="admonition example">
 <p class="admonition-title">snmptable</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-29-1"></a>snmptable<span class="w"> </span>-v<span class="w"> </span>2c<span class="w"> </span>-c<span class="w"> </span>public<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>IF-MIB::ifTable
-</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-29-2"></a>SNMP<span class="w"> </span>table:<span class="w"> </span>IF-MIB::ifTable
-</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-29-3"></a>
-</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-29-4"></a><span class="w"> </span>ifIndex<span class="w"> </span>ifDescr<span class="w">    </span>ifType<span class="w">           </span>ifMtu<span class="w">  </span>ifSpeed<span class="w">    </span>ifPhysAddress<span class="w">     </span>ifAdminStatus
-</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-29-5"></a><span class="w">   </span><span class="m">1</span><span class="w">      </span>lo<span class="w">        </span>softwareLoopback<span class="w"> </span><span class="m">65536</span><span class="w">  </span><span class="m">10000000</span><span class="w">                     </span>up
-</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-29-6"></a><span class="w">   </span><span class="m">2</span><span class="w">  </span>enp0s1<span class="w">        </span>ethernetCsmacd<span class="w">    </span><span class="m">1500</span><span class="w">        </span><span class="m">0</span><span class="w">    </span><span class="m">76</span>:ae:5:aa:5f:45<span class="w">  </span>up
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-25-1"></a><span class="gp">localhost:~ $ </span>snmptable<span class="w"> </span>-v<span class="w"> </span>2c<span class="w"> </span>-c<span class="w"> </span>public<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>IF-MIB::ifTable
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-25-2"></a><span class="go">SNMP table: IF-MIB::ifTable</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-25-3"></a>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-25-4"></a><span class="go"> ifIndex ifDescr    ifType           ifMtu  ifSpeed    ifPhysAddress     ifAdminStatus</span>
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-25-5"></a><span class="go">   1      lo        softwareLoopback 65536  10000000                     up</span>
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-25-6"></a><span class="go">   2  enp0s1        ethernetCsmacd    1500        0    76:ae:5:aa:5f:45  up</span>
 </span></code></pre></div>
 </div>
+<hr />
 <h3 id="ch04-zabbix-collecting-data-snmp-polling-polling-a-single-snmp-item">Polling a single SNMP item</h3>
 <p>Ok enough with the theory let's create an actual item in Zabbix. Create a new
 host with the name <code>SNMP Device</code> and place it in a group <code>SNMP Devices</code>. We also
 need to tell Zabbix where we can find our SNMP device as Zabbix is doing the
 polling (Or if we use a Proxy it will be the proxy.)</p>
-<p>So let's add a <code>SNMP Interface</code> and give it the IP of the device we would like
+<p>So let's add a <strong>SNMP Interface</strong> and give it the IP of the device we would like
 to monitor. If you have been following our steps on the local machine you can
-use ip 127.0.0.1, our own server.</p>
+use ip <code>127.0.0.1</code>, our own server.</p>
 <p><img alt="Host Interface" src="../ch04-zabbix-collecting-data/snmp-polling/ch04.29-snmp-host-.png" /></p>
 <p><em>4.29 SNMP Interface</em></p>
 <p>Once our host is created and saved with the correct interface we have to create
-an item on the host. Click on <code>items</code> next to the host <code>SNMP Device</code>. On the top
-right click the box <code>Create item</code> you will be greeted with another form to fill
+an item on the host. Click on <strong>items</strong> next to the host <code>SNMP Device</code>. On the top
+right click the box <strong>Create item</strong> you will be greeted with another form to fill
 in the item information.</p>
 <ul>
-<li><strong>Name:</strong> In traffic enp0s1 (A short descriptive name)</li>
-<li><strong>Type:</strong> SNMP Agent</li>
-<li><strong>Key:</strong> snmp.in (free form short descriptive)</li>
-<li><strong>Type of information:</strong> Numeric(Unsigned)</li>
+<li><strong>Name:</strong> <code>In traffic enp0s1</code> (A short descriptive name)</li>
+<li><strong>Type:</strong> <em>SNMP Agent</em></li>
+<li><strong>Key:</strong> <code>snmp.in</code> (free form short descriptive)</li>
+<li><strong>Type of information:</strong> <em>Numeric (Unsigned)</em></li>
 <li><strong>Host interface:</strong> The SNMP interface we created on our host. If you have
   more then 1 interface just select the one you need.</li>
-<li><strong>SNMP OID:</strong> get[oid] to retrieve the information or only the oid but then it
+<li><strong>SNMP OID:</strong> <code>get[&lt;OID&gt;]</code> to retrieve the information or only the <code>&lt;OID&gt;</code> but then it
   will use synchronous polling.</li>
-<li><strong>Units:</strong> The data is in bytes so use B.</li>
+<li><strong>Units:</strong> The data is in bytes so use <code>B</code>.</li>
 </ul>
 <p><img alt="snmp-polling/../ch04-zabbix-collecting-data/snmp-polling/ch04.30-snmp-item.png" src="../ch04-zabbix-collecting-data/snmp-polling/ch04.30-snmp-item.png" /></p>
 <p><em>04.30 SNMP Item</em></p>
@@ -14306,18 +14324,19 @@ in the item information.</p>
 items are usually counters. Meaning the device is just counting the amount of
 traffic that passed the interface. This means the counter will always go up as
 more data passes the interface over time. So we need to calculate a delta.</p>
-<p>For this we can use preprocessing steps so let's move to the tab <code>preprocessing</code>
+<p>For this we can use preprocessing steps so let's move to the tab <strong>preprocessing</strong>
 first before we save it.</p>
-<p>Add a preprocessing step with the name <code>Change per second</code></p>
+<p>Add a <em>preprocessing step</em> with the name <code>Change per second</code></p>
 <p><img alt="snmp-polling/../ch04-zabbix-collecting-data/snmp-polling/ch04.31-snmp-item-preprocessing.png" src="../ch04-zabbix-collecting-data/snmp-polling/ch04.31-snmp-item-preprocessing.png" /></p>
 <p><em>snmp preprocessing</em></p>
-<p>We can now safe the item and have a look at our latest data page we should have
+<p>We can now save the item and have a look at our latest data page we should have
 a nice graph with our data over time.</p>
-<p>If you decide to use the test button before you safe the item (this is always a
-good idea then don't forget that Zabbix needs 2 item values tot calculate the
-difference. ) So you will have to test the <code>Get value and test</code> button twice.</p>
-<p>Also don't forget to select the <code>Get value from host</code> box so Zabbix retrieves it
+<p>If you decide to use the test button before you save the item (which is always a
+good idea) then don't forget that Zabbix needs two item values to calculate the
+difference. So you will have to press the <strong>Get value and test</strong> button twice.</p>
+<p>Also don't forget to select the <strong>Get value from host</strong> box so Zabbix retrieves it
 from the host.</p>
+<hr />
 <h4 id="ch04-zabbix-collecting-data-snmp-polling-how-does-change-per-second-work">How does change per second work ?</h4>
 <p>Given a counter value sampled at two different times:</p>
 <ul>
@@ -14330,120 +14349,128 @@ from the host.</p>
 $$</p>
 <p>where ( t_2 - t_1 ) is the time elapsed in seconds.</p>
 <hr />
-<p><strong>If the counter rolls over</strong> (i.e., ( C_2 &lt; C_1 )), and the max counter value is ( M ), then adjust as:</p>
+<p><strong>If the counter rolls over</strong> (i.e., ( C_2 &lt; C_1 )), and the max counter value
+is ( M ), then adjust as:</p>
 <p>$$
 \text{Rate} = \frac{(M - C_1) + C_2 + 1}{t_2 - t_1}
 $$</p>
+<hr />
 <h3 id="ch04-zabbix-collecting-data-snmp-polling-polling-a-list-of-item">Polling a list of item</h3>
-<p>Let's do the same for our snmp walk item. This time we will look for the
+<p>Let's do the same for our snmp-walk item. This time we will look for the
 information from all our interfaces. For this we need to find our correct OID
 first. This can be done with <code>snmptranslate</code> which will convert our table name
 to an OID,</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-30-1"></a>snmptranslate<span class="w"> </span>-On<span class="w"> </span>IF-MIB::ifTable
-</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-30-2"></a>.1.3.6.1.2.1.2.2
+<div class="admonition example">
+<p class="admonition-title">Finding the OID for a table with snmptranslate</p>
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-26-1"></a><span class="gp">localhost:~ $ </span>snmptranslate<span class="w"> </span>-On<span class="w"> </span>IF-MIB::ifTable
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-26-2"></a><span class="go">.1.3.6.1.2.1.2.2</span>
 </span></code></pre></div>
+</div>
 <p>This is the OID we can use in our item. Let's clone our previous item and make
 some changes.</p>
 <ul>
-<li><strong>Name:</strong> ifTable (or another descriptive name)</li>
-<li><strong>Key:</strong> snmp.ifTable</li>
+<li><strong>Name:</strong> <code>ifTable</code> (or another descriptive name)</li>
+<li><strong>Key:</strong> <code>snmp.ifTable</code></li>
 <li><strong>Type of information:</strong>: Text</li>
-<li><strong>SNMP OID:</strong> walk[.1.3.6.1.2.1.2.2]</li>
+<li><strong>SNMP OID:</strong> <code>walk[.1.3.6.1.2.1.2.2]</code></li>
 </ul>
-<p>The rest can stay as is just remove the preprocessing step we added in earlier
+<p>The rest can stay as is, just remove the <em>preprocessing step</em> we added in the earlier
 example as this item will return us a whole list of information.</p>
 <p><img alt="snmp-polling/../ch04-zabbix-collecting-data/snmp-polling/ch04.32-snmp-walk.png" src="../ch04-zabbix-collecting-data/snmp-polling/ch04.32-snmp-walk.png" /></p>
 <p><em>04.32 SNMP Walk</em></p>
-<p>When we press the <code>Get value and test</code> button in the test item screen we get a
+<p>When we press the <strong>Get value and test</strong> button in the test item screen we get a
 whole list of data.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-1"></a>.1.3.6.1.2.1.2.2.1.1.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">1</span>
-</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-2"></a>.1.3.6.1.2.1.2.2.1.1.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">2</span>
-</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-3"></a>.1.3.6.1.2.1.2.2.1.2.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>STRING:<span class="w"> </span><span class="s2">&quot;lo&quot;</span>
-</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-4"></a>.1.3.6.1.2.1.2.2.1.2.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>STRING:<span class="w"> </span><span class="s2">&quot;enp0s1&quot;</span>
-</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-5"></a>.1.3.6.1.2.1.2.2.1.3.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">24</span>
-</span><span id="__span-31-6"><a id="__codelineno-31-6" name="__codelineno-31-6" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-6"></a>.1.3.6.1.2.1.2.2.1.3.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">6</span>
-</span><span id="__span-31-7"><a id="__codelineno-31-7" name="__codelineno-31-7" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-7"></a>.1.3.6.1.2.1.2.2.1.4.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">65536</span>
-</span><span id="__span-31-8"><a id="__codelineno-31-8" name="__codelineno-31-8" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-8"></a>.1.3.6.1.2.1.2.2.1.4.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">1500</span>
-</span><span id="__span-31-9"><a id="__codelineno-31-9" name="__codelineno-31-9" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-9"></a>.1.3.6.1.2.1.2.2.1.5.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Gauge32:<span class="w"> </span><span class="m">10000000</span>
-</span><span id="__span-31-10"><a id="__codelineno-31-10" name="__codelineno-31-10" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-10"></a>.1.3.6.1.2.1.2.2.1.5.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Gauge32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-31-11"><a id="__codelineno-31-11" name="__codelineno-31-11" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-11"></a>.1.3.6.1.2.1.2.2.1.6.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>STRING:<span class="w"> </span><span class="s2">&quot;&quot;</span>
-</span><span id="__span-31-12"><a id="__codelineno-31-12" name="__codelineno-31-12" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-12"></a>.1.3.6.1.2.1.2.2.1.6.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>STRING:<span class="w"> </span><span class="s2">&quot;76:ae:5:aa:5f:45&quot;</span>
-</span><span id="__span-31-13"><a id="__codelineno-31-13" name="__codelineno-31-13" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-13"></a>.1.3.6.1.2.1.2.2.1.7.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">1</span>
-</span><span id="__span-31-14"><a id="__codelineno-31-14" name="__codelineno-31-14" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-14"></a>.1.3.6.1.2.1.2.2.1.7.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">1</span>
-</span><span id="__span-31-15"><a id="__codelineno-31-15" name="__codelineno-31-15" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-15"></a>.1.3.6.1.2.1.2.2.1.8.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">1</span>
-</span><span id="__span-31-16"><a id="__codelineno-31-16" name="__codelineno-31-16" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-16"></a>.1.3.6.1.2.1.2.2.1.8.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">1</span>
-</span><span id="__span-31-17"><a id="__codelineno-31-17" name="__codelineno-31-17" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-17"></a>.1.3.6.1.2.1.2.2.1.9.1<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
-</span><span id="__span-31-18"><a id="__codelineno-31-18" name="__codelineno-31-18" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-18"></a>.1.3.6.1.2.1.2.2.1.9.2<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
-</span><span id="__span-31-19"><a id="__codelineno-31-19" name="__codelineno-31-19" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-19"></a>.1.3.6.1.2.1.2.2.1.10.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">69417222</span>
-</span><span id="__span-31-20"><a id="__codelineno-31-20" name="__codelineno-31-20" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-20"></a>.1.3.6.1.2.1.2.2.1.10.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">59215034</span>
-</span><span id="__span-31-21"><a id="__codelineno-31-21" name="__codelineno-31-21" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-21"></a>.1.3.6.1.2.1.2.2.1.11.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">6460587</span>
-</span><span id="__span-31-22"><a id="__codelineno-31-22" name="__codelineno-31-22" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-22"></a>.1.3.6.1.2.1.2.2.1.11.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">113038</span>
-</span><span id="__span-31-23"><a id="__codelineno-31-23" name="__codelineno-31-23" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-23"></a>.1.3.6.1.2.1.2.2.1.12.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-31-24"><a id="__codelineno-31-24" name="__codelineno-31-24" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-24"></a>.1.3.6.1.2.1.2.2.1.12.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-31-25"><a id="__codelineno-31-25" name="__codelineno-31-25" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-25"></a>.1.3.6.1.2.1.2.2.1.13.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-31-26"><a id="__codelineno-31-26" name="__codelineno-31-26" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-26"></a>.1.3.6.1.2.1.2.2.1.13.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-31-27"><a id="__codelineno-31-27" name="__codelineno-31-27" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-27"></a>.1.3.6.1.2.1.2.2.1.14.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-31-28"><a id="__codelineno-31-28" name="__codelineno-31-28" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-28"></a>.1.3.6.1.2.1.2.2.1.14.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-31-29"><a id="__codelineno-31-29" name="__codelineno-31-29" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-29"></a>.1.3.6.1.2.1.2.2.1.15.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-31-30"><a id="__codelineno-31-30" name="__codelineno-31-30" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-30"></a>.1.3.6.1.2.1.2.2.1.15.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-31-31"><a id="__codelineno-31-31" name="__codelineno-31-31" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-31"></a>.1.3.6.1.2.1.2.2.1.16.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">69417222</span>
-</span><span id="__span-31-32"><a id="__codelineno-31-32" name="__codelineno-31-32" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-32"></a>.1.3.6.1.2.1.2.2.1.16.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">44139841</span>
-</span><span id="__span-31-33"><a id="__codelineno-31-33" name="__codelineno-31-33" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-33"></a>.1.3.6.1.2.1.2.2.1.17.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">6460587</span>
-</span><span id="__span-31-34"><a id="__codelineno-31-34" name="__codelineno-31-34" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-34"></a>.1.3.6.1.2.1.2.2.1.17.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">97398</span>
-</span><span id="__span-31-35"><a id="__codelineno-31-35" name="__codelineno-31-35" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-35"></a>.1.3.6.1.2.1.2.2.1.18.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-31-36"><a id="__codelineno-31-36" name="__codelineno-31-36" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-36"></a>.1.3.6.1.2.1.2.2.1.18.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-31-37"><a id="__codelineno-31-37" name="__codelineno-31-37" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-37"></a>.1.3.6.1.2.1.2.2.1.19.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-31-38"><a id="__codelineno-31-38" name="__codelineno-31-38" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-38"></a>.1.3.6.1.2.1.2.2.1.19.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-31-39"><a id="__codelineno-31-39" name="__codelineno-31-39" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-39"></a>.1.3.6.1.2.1.2.2.1.20.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-31-40"><a id="__codelineno-31-40" name="__codelineno-31-40" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-40"></a>.1.3.6.1.2.1.2.2.1.20.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-31-41"><a id="__codelineno-31-41" name="__codelineno-31-41" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-41"></a>.1.3.6.1.2.1.2.2.1.21.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Gauge32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-31-42"><a id="__codelineno-31-42" name="__codelineno-31-42" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-42"></a>.1.3.6.1.2.1.2.2.1.21.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Gauge32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-31-43"><a id="__codelineno-31-43" name="__codelineno-31-43" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-43"></a>.1.3.6.1.2.1.2.2.1.22.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>OID:<span class="w"> </span>.0.0
-</span><span id="__span-31-44"><a id="__codelineno-31-44" name="__codelineno-31-44" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-31-44"></a>.1.3.6.1.2.1.2.2.1.22.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>OID:<span class="w"> </span>.0.0
+<details class="example" open="open">
+<summary>Output of SNMP walk in Zabbix</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-1"></a>.1.3.6.1.2.1.2.2.1.1.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">1</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-2"></a>.1.3.6.1.2.1.2.2.1.1.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">2</span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-3"></a>.1.3.6.1.2.1.2.2.1.2.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>STRING:<span class="w"> </span><span class="s2">&quot;lo&quot;</span>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-4"></a>.1.3.6.1.2.1.2.2.1.2.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>STRING:<span class="w"> </span><span class="s2">&quot;enp0s1&quot;</span>
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-5"></a>.1.3.6.1.2.1.2.2.1.3.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">24</span>
+</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-6"></a>.1.3.6.1.2.1.2.2.1.3.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">6</span>
+</span><span id="__span-27-7"><a id="__codelineno-27-7" name="__codelineno-27-7" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-7"></a>.1.3.6.1.2.1.2.2.1.4.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">65536</span>
+</span><span id="__span-27-8"><a id="__codelineno-27-8" name="__codelineno-27-8" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-8"></a>.1.3.6.1.2.1.2.2.1.4.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">1500</span>
+</span><span id="__span-27-9"><a id="__codelineno-27-9" name="__codelineno-27-9" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-9"></a>.1.3.6.1.2.1.2.2.1.5.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Gauge32:<span class="w"> </span><span class="m">10000000</span>
+</span><span id="__span-27-10"><a id="__codelineno-27-10" name="__codelineno-27-10" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-10"></a>.1.3.6.1.2.1.2.2.1.5.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Gauge32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-27-11"><a id="__codelineno-27-11" name="__codelineno-27-11" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-11"></a>.1.3.6.1.2.1.2.2.1.6.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>STRING:<span class="w"> </span><span class="s2">&quot;&quot;</span>
+</span><span id="__span-27-12"><a id="__codelineno-27-12" name="__codelineno-27-12" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-12"></a>.1.3.6.1.2.1.2.2.1.6.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>STRING:<span class="w"> </span><span class="s2">&quot;76:ae:5:aa:5f:45&quot;</span>
+</span><span id="__span-27-13"><a id="__codelineno-27-13" name="__codelineno-27-13" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-13"></a>.1.3.6.1.2.1.2.2.1.7.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">1</span>
+</span><span id="__span-27-14"><a id="__codelineno-27-14" name="__codelineno-27-14" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-14"></a>.1.3.6.1.2.1.2.2.1.7.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">1</span>
+</span><span id="__span-27-15"><a id="__codelineno-27-15" name="__codelineno-27-15" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-15"></a>.1.3.6.1.2.1.2.2.1.8.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">1</span>
+</span><span id="__span-27-16"><a id="__codelineno-27-16" name="__codelineno-27-16" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-16"></a>.1.3.6.1.2.1.2.2.1.8.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">1</span>
+</span><span id="__span-27-17"><a id="__codelineno-27-17" name="__codelineno-27-17" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-17"></a>.1.3.6.1.2.1.2.2.1.9.1<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+</span><span id="__span-27-18"><a id="__codelineno-27-18" name="__codelineno-27-18" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-18"></a>.1.3.6.1.2.1.2.2.1.9.2<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+</span><span id="__span-27-19"><a id="__codelineno-27-19" name="__codelineno-27-19" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-19"></a>.1.3.6.1.2.1.2.2.1.10.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">69417222</span>
+</span><span id="__span-27-20"><a id="__codelineno-27-20" name="__codelineno-27-20" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-20"></a>.1.3.6.1.2.1.2.2.1.10.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">59215034</span>
+</span><span id="__span-27-21"><a id="__codelineno-27-21" name="__codelineno-27-21" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-21"></a>.1.3.6.1.2.1.2.2.1.11.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">6460587</span>
+</span><span id="__span-27-22"><a id="__codelineno-27-22" name="__codelineno-27-22" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-22"></a>.1.3.6.1.2.1.2.2.1.11.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">113038</span>
+</span><span id="__span-27-23"><a id="__codelineno-27-23" name="__codelineno-27-23" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-23"></a>.1.3.6.1.2.1.2.2.1.12.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-27-24"><a id="__codelineno-27-24" name="__codelineno-27-24" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-24"></a>.1.3.6.1.2.1.2.2.1.12.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-27-25"><a id="__codelineno-27-25" name="__codelineno-27-25" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-25"></a>.1.3.6.1.2.1.2.2.1.13.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-27-26"><a id="__codelineno-27-26" name="__codelineno-27-26" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-26"></a>.1.3.6.1.2.1.2.2.1.13.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-27-27"><a id="__codelineno-27-27" name="__codelineno-27-27" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-27"></a>.1.3.6.1.2.1.2.2.1.14.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-27-28"><a id="__codelineno-27-28" name="__codelineno-27-28" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-28"></a>.1.3.6.1.2.1.2.2.1.14.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-27-29"><a id="__codelineno-27-29" name="__codelineno-27-29" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-29"></a>.1.3.6.1.2.1.2.2.1.15.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-27-30"><a id="__codelineno-27-30" name="__codelineno-27-30" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-30"></a>.1.3.6.1.2.1.2.2.1.15.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-27-31"><a id="__codelineno-27-31" name="__codelineno-27-31" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-31"></a>.1.3.6.1.2.1.2.2.1.16.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">69417222</span>
+</span><span id="__span-27-32"><a id="__codelineno-27-32" name="__codelineno-27-32" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-32"></a>.1.3.6.1.2.1.2.2.1.16.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">44139841</span>
+</span><span id="__span-27-33"><a id="__codelineno-27-33" name="__codelineno-27-33" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-33"></a>.1.3.6.1.2.1.2.2.1.17.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">6460587</span>
+</span><span id="__span-27-34"><a id="__codelineno-27-34" name="__codelineno-27-34" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-34"></a>.1.3.6.1.2.1.2.2.1.17.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">97398</span>
+</span><span id="__span-27-35"><a id="__codelineno-27-35" name="__codelineno-27-35" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-35"></a>.1.3.6.1.2.1.2.2.1.18.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-27-36"><a id="__codelineno-27-36" name="__codelineno-27-36" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-36"></a>.1.3.6.1.2.1.2.2.1.18.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-27-37"><a id="__codelineno-27-37" name="__codelineno-27-37" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-37"></a>.1.3.6.1.2.1.2.2.1.19.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-27-38"><a id="__codelineno-27-38" name="__codelineno-27-38" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-38"></a>.1.3.6.1.2.1.2.2.1.19.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-27-39"><a id="__codelineno-27-39" name="__codelineno-27-39" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-39"></a>.1.3.6.1.2.1.2.2.1.20.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-27-40"><a id="__codelineno-27-40" name="__codelineno-27-40" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-40"></a>.1.3.6.1.2.1.2.2.1.20.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-27-41"><a id="__codelineno-27-41" name="__codelineno-27-41" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-41"></a>.1.3.6.1.2.1.2.2.1.21.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Gauge32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-27-42"><a id="__codelineno-27-42" name="__codelineno-27-42" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-42"></a>.1.3.6.1.2.1.2.2.1.21.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Gauge32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-27-43"><a id="__codelineno-27-43" name="__codelineno-27-43" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-43"></a>.1.3.6.1.2.1.2.2.1.22.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>OID:<span class="w"> </span>.0.0
+</span><span id="__span-27-44"><a id="__codelineno-27-44" name="__codelineno-27-44" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-27-44"></a>.1.3.6.1.2.1.2.2.1.22.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>OID:<span class="w"> </span>.0.0
 </span></code></pre></div>
-<p>So we have the traffic in but we would like to find traffic out as well of
-course. Let's use our walk item to extract the outgoing traffic for this we need
-to create a dependent item.</p>
-<p>Go to <code>Data collection</code> - <code>Hosts</code> and click on <code>Items</code>. You should be able to
+</details>
+<p>So we have the <em>traffic in</em> metrics but we would like to find <em>traffic out</em> metrics
+as well of course. Let's use our <code>walk</code> item to extract the outgoing traffic. For
+this we need to create a dependent item.</p>
+<p>Go to <strong>Data collection</strong> - <strong>Hosts</strong> and click on <strong>Items</strong>. You should be able to
 see our newly created <code>ifTable</code> item and 3 dots before it's name.</p>
-<p>Click on those 3 dots and select <code>Create dependent item</code> from the list.
-Fill in the new item with the following information.</p>
+<p>Click on those 3 dots and select <strong>Create dependent item</strong> from the list.
+Fill in the new item with the following information:</p>
 <ul>
-<li><strong>Name:</strong> Out traffic enp0s1</li>
-<li><strong>Type:</strong> dependent item</li>
-<li><strong>Key:</strong> snmp.out</li>
-<li><strong>Type of information:</strong> Unsigned</li>
-<li><strong>Master item:</strong> Already filled in but should be our item ifTable that we made
+<li><strong>Name:</strong> <code>Out traffic enp0s1</code></li>
+<li><strong>Type:</strong> <em>Dependent item</em></li>
+<li><strong>Key:</strong> <code>snmp.out</code></li>
+<li><strong>Type of information:</strong> <em>Unsigned</em></li>
+<li><strong>Master item:</strong> Already filled in but should be our item <code>ifTable</code> that we made
   before.</li>
-<li><strong>Units:</strong> B</li>
+<li><strong>Units:</strong> <code>B</code></li>
 </ul>
 <p><img alt="snmp-polling/../ch04-zabbix-collecting-data/snmp-polling/ch04.33-snmp-dependent-item.png" src="../ch04-zabbix-collecting-data/snmp-polling/ch04.33-snmp-dependent-item.png" /></p>
 <p><em>04.33 Dependent SNMP Item</em></p>
 <p>This item as is at the moment is an exact copy of our master item so we need to
-add some preprocessing steps first. Let's go to the tab <code>preprocessing</code> and add
+add some <em>preprocessing steps</em> first. Let's go to the tab <strong>Preprocessing</strong> and add
 our first step.</p>
-<p>Add the step <code>SNMP walk value</code> and after it paste the OID we want <code>.1.3.6.1.2.1.2.2.1.16.1</code>
-and choose <code>unchanged</code>.</p>
-<div class="admonition info">
+<p>Add the step <strong>SNMP walk value</strong> and paste the OID in the <strong>Parameter</strong> field: 
+<code>.1.3.6.1.2.1.2.2.1.16.1</code> and choose <strong>Unchanged</strong>.</p>
+<div class="admonition example">
 <p class="admonition-title">find our correct OID</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-32-1"></a>snmptranslate<span class="w"> </span>IF-MIB::ifOutOctets.1<span class="w"> </span>-On
-</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-32-2"></a>.1.3.6.1.2.1.2.2.1.16.1
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-28-1"></a><span class="gp">localhost:~ $ </span>snmptranslate<span class="w"> </span>IF-MIB::ifOutOctets.1<span class="w"> </span>-On
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-28-2"></a><span class="go">.1.3.6.1.2.1.2.2.1.16.1</span>
 </span></code></pre></div>
 </div>
-<p>Remember from our previous item we need to calculate the <code>Changes per second</code>
-so add this as the second preprocessing step.</p>
+<p>Remember from our previous item we need to calculate the <strong>Changes per second</strong>
+so add this as the second <em>preprocessing step</em>.</p>
 <p><img alt="snmp-polling/../ch04-zabbix-collecting-data/snmp-polling/ch04.34-snmp-item-preprocessing.png" src="../ch04-zabbix-collecting-data/snmp-polling/ch04.34-snmp-item-preprocessing.png" /></p>
 <p><em>04.34 preprocessing
 steps</em></p>
-<p>Going now to our latest data page will show use the In and Our traffic for our
+<p>Going now to the <strong>Latest data</strong> page, it will show the "In" and "Out" traffic for our
 network card but with data gathered in different ways. Both ways use the
-synchronous pollers but the last way will gather all data at once and then
-pre-process it.</p>
+<em>synchronous</em> pollers but the last way will gather all data at once and then
+use preprocessing to extract and calculate the required values for the specific items.</p>
 <p>After you have added more items you can remove the option to keep history from
 your master items.</p>
 <h2 id="ch04-zabbix-collecting-data-snmp-polling-conclusion">Conclusion</h2>
 <p>SNMP polling remains a vital method for monitoring network devices when agents
-aren't an option. With Zabbix's asynchronous polling, checks can run in parallel,
+are not an option. With Zabbix's asynchronous polling, checks can run in parallel,
 dramatically improving performance and lowering the load on both your server and
 the network. SNMPv3 should be your go-to choice, delivering authentication and
 encryption to secure sensitive data. The SNMP walk item type adds another advantage
