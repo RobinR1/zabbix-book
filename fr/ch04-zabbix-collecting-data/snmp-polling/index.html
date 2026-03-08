@@ -1612,10 +1612,10 @@ security risk.</p>
 this is just an example output it will differ from your result.</p>
 <details class="example" open="open">
 <summary>Example output of snmpstatus</summary>
-<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="go">    localhost:~ $ snmpstatus -v2c -c public 127.0.0.1</span>
-</span><span id="__span-4-2"><a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="go">    [UDP: [127.0.0.1]:161-&gt;[0.0.0.0]:33310]=&gt;[Linux localhost.localdomain 5.14.0-570.28.1.el9_6.aarch64</span>
-</span><span id="__span-4-3"><a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="gp">    #</span><span class="m">1</span><span class="w"> </span>SMP<span class="w"> </span>PREEMPT_DYNAMIC<span class="w"> </span>Thu<span class="w"> </span>Jul<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">07</span>:50:10<span class="w"> </span>EDT<span class="w"> </span><span class="m">2025</span><span class="w"> </span>aarch64<span class="o">]</span><span class="w"> </span>Up:<span class="w"> </span><span class="m">1</span>:24:36.58
-</span><span id="__span-4-4"><a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="go">    Interfaces: 2, Recv/Trans packets: 355763/355129 | IP: 37414/35988</span>
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="gp">localhost:~ $ </span>snmpstatus<span class="w"> </span>-v2c<span class="w"> </span>-c<span class="w"> </span>public<span class="w"> </span><span class="m">127</span>.0.0.1
+</span><span id="__span-4-2"><a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="go">[UDP: [127.0.0.1]:161-&gt;[0.0.0.0]:33310]=&gt;[Linux localhost.localdomain 5.14.0-570.28.1.el9_6.aarch64</span>
+</span><span id="__span-4-3"><a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="gp">#</span><span class="m">1</span><span class="w"> </span>SMP<span class="w"> </span>PREEMPT_DYNAMIC<span class="w"> </span>Thu<span class="w"> </span>Jul<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">07</span>:50:10<span class="w"> </span>EDT<span class="w"> </span><span class="m">2025</span><span class="w"> </span>aarch64<span class="o">]</span><span class="w"> </span>Up:<span class="w"> </span><span class="m">1</span>:24:36.58
+</span><span id="__span-4-4"><a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="go">Interfaces: 2, Recv/Trans packets: 355763/355129 | IP: 37414/35988</span>
 </span></code></pre></div>
 </details>
 <p>This output provides a concise summary of the device's status, indicating a successful
@@ -1908,14 +1908,20 @@ work out of the box with what is already configured in our <code>snmpd.conf</cod
 </span><span id="__span-20-3"><a href="#__codelineno-20-3" id="__codelineno-20-3" name="__codelineno-20-3"></a>snmpwalk<span class="w"> </span>-v3<span class="w"> </span>-l<span class="w"> </span>authPriv<span class="w"> </span>-u<span class="w"> </span>secureuser<span class="w"> </span>-a<span class="w"> </span>SHA<span class="w"> </span>-A<span class="w"> </span>AuthP@ssSec#1<span class="w"> </span>-x<span class="w"> </span>AES<span class="w"> </span>-X<span class="w"> </span>PrivP@ssSec#2<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>.1.3.6.1.2.1.2.2.1.2
 </span></code></pre></div>
 </details>
-<details class="note" open="open">
-<summary>Note</summary>
+<details class="tip" open="open">
+<summary>Troubleshooting SNMPv3 Authentication Issues</summary>
 <p>If you change the config file and adapt the passwords and for some reason
-they do not get accepted, do not worry, just restart the service again.
-If things still don't work, you can remove the persistent key file:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a href="#__codelineno-21-1" id="__codelineno-21-1" name="__codelineno-21-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/var/lib/net-snmp/snmpd.conf
+they do not get accepted, do not worry:
+  - Check if your passwords contain special characters that might need to be
+    escaped in the command line. For bash, these include: <code>$</code>, <code>&amp;</code>, <code>*</code>, <code>(</code>,
+    <code>)</code>, <code>!</code>, etc. If your password contains any of these characters, you need
+    to escape them with a backslash (<code>\</code>) or enclose the entire password in
+    single quotes (<code>'</code>) to prevent the shell from interpreting them.
+  - If there are no special characters used, just try restarting the service.
+  - If things still don't work, you can try removing the persistent key file:
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a href="#__codelineno-21-1" id="__codelineno-21-1" name="__codelineno-21-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/var/lib/net-snmp/snmpd.conf
 </span></code></pre></div>
-It's quite brutal but in our test environment it will help you out.</p>
+    It's quite brutal but in our test environment it should help you out.</p>
 </details>
 <hr/>
 <h2 id="snmp-monitoring-in-zabbix">SNMP Monitoring in Zabbix</h2>
