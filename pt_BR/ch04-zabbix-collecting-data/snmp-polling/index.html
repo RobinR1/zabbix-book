@@ -799,7 +799,7 @@ get/walk methods with secure SNMPv3 to monitor network devices efficiently.
 <span class="md-ellipsis">
     
   
-    Database checks via agent
+    Database checks via Zabbix agent 2
   
 
     
@@ -1430,7 +1430,7 @@ into human-readable names.</p>
 </ol>
 <hr/>
 <h2 id="net-snmp">Net-SNMP</h2>
-<p>The Simple Network Management Protocol (SNMP) is a widely used protocol for monitoring
+<p>The <em>Simple Network Management Protocol</em> (SNMP) is a widely used protocol for monitoring
 and managing networked devices. It operates primarily over UDP port 161, though in
 certain cases, SNMP agents or proxies may also support TCP port 161 for enhanced
 reliability or integration with specific tools. SNMP allows administrators to query
@@ -1444,7 +1444,7 @@ two approaches:</p>
   server or a dedicated virtual machine.</li>
 </ul>
 <p>In this chapter, we will walk through the installation and configuration of a basic
-SNMP agent on a Rocky or Ubuntu based Zabbix server. However, the same setup can
+SNMP agent on a RedHat, Suse or Ubuntu based Zabbix server. However, the same setup can
 be applied to any compatible Linux system.</p>
 <p>Note: If you're using a device already present on your network, ensure:</p>
 <ul>
@@ -1468,6 +1468,7 @@ exactly do.</p>
 <li><strong>snmpwalk:</strong> Walks an entire OID subtree and displays all of its values.</li>
 <li><strong>snmpstatus:</strong> Provides a summary of a device's basic status.</li>
 </ul>
+<hr/>
 <h3 id="testing-an-snmp-device-where-to-start">Testing an SNMP Device: Where to Start?</h3>
 <p>When you're looking to test an SNMP device, it's crucial to understand the available
 SNMP versions and which ones you should prioritize. Currently, there are three
@@ -1483,16 +1484,21 @@ commonly used versions: <strong>SNMPv1</strong>, <strong>SNMPv2c</strong>, and <
   secure and advanced option. It provides encryption, authentication, and user
   management, which are essential for secure networks.</li>
 </ul>
+<hr/>
 <h4 id="your-first-test-attempt-snmpv2c-and-the-public-community-string">Your First Test Attempt: SNMPv2c and the 'public' Community String</h4>
 <p>To begin your testing, we recommend trying to connect to your device using <strong>SNMPv2c</strong>
 and the standard <strong>community string 'public'</strong>. Many devices ship with these default
 settings, though it's certainly insecure for production environments.</p>
 <p>You can use the <code>snmpstatus</code> command for this. Here’s an example of how you might
 do this in your terminal:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="w">   </span>snmpstatus<span class="w"> </span>-v<span class="w"> </span>2c<span class="w"> </span>-c<span class="w"> </span>public<span class="w"> </span><span class="o">[</span>IP-address_of_the_device<span class="o">]</span>
+<details class="example" open="open">
+<summary>Testing SNMPv2c with the 'public' community string</summary>
+</details>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="w">  </span>snmpstatus<span class="w"> </span>-v<span class="w"> </span>2c<span class="w"> </span>-c<span class="w"> </span>public<span class="w"> </span><span class="o">[</span>IP-address_of_the_device<span class="o">]</span>
 </span></code></pre></div>
 <p>Replace <code>[IP-address_of_the_device]</code> with the actual IP address or hostname of the
 device you wish to test.</p>
+<hr/>
 <h4 id="what-if-you-get-no-information-back">What if You Get No Information Back?</h4>
 <p>If you don't receive any information after this attempt, don't panic. It simply means
 the default settings likely don't apply to your device, or there might be a network
@@ -1505,13 +1511,17 @@ your network.</p>
    is the configured community string (similar to a password) for read-only and
    potentially read- write access? It's rarely 'public' in a properly configured
    environment.</li>
-<li><strong>Username, Authentication, and Privacy (for v3)</strong>: If your device uses SNMPv3,
-   you'll need more specific information:
-   - <strong>Username</strong>: What username has been created for SNMPv3?
-   - <strong>Authentication Protocol and Password</strong>: Which authentication protocol (e.g.,
-     MD5, SHA) is used, and what is its corresponding password?
-   - <strong>Privacy Protocol and Password</strong>: Which encryption protocol (e.g., DES, AES)
-     is used, and what is its corresponding password?</li>
+<li>
+<p><strong>Username, Authentication, and Privacy (for v3)</strong>: If your device uses SNMPv3,
+   you'll need more specific information:</p>
+<ul>
+<li><strong>Username</strong>: What username has been created for SNMPv3?</li>
+<li><strong>Authentication Protocol and Password</strong>: Which authentication protocol (e.g.,
+  MD5, SHA) is used, and what is its corresponding password?</li>
+<li><strong>Privacy Protocol and Password</strong>: Which encryption protocol (e.g., DES, AES)
+  is used, and what is its corresponding password?</li>
+</ul>
+</li>
 </ol>
 <p><strong>Next, consider potential network issues:</strong></p>
 <p>Even if your device is correctly configured, network obstacles can prevent SNMP communication.

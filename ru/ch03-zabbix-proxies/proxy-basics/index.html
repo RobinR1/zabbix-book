@@ -2169,10 +2169,10 @@ relevant data to be received and processed by the Zabbix server; but you won't l
 any historical data.</p>
 <hr />
 <h2 id="active-versus-passive-proxy">Active versus Passive proxy</h2>
-<p>Zabbix proxies have been available since Zabbix 1.6. At that time they where 
-available only as what we know today as <strong>Active proxies</strong>. <em>Active</em> means that 
-the proxy will initiate the connection by itself to the Zabbix Server. In 
-version 1.8.3 <em>passive</em> proxies where introduced. This allowes the server to 
+<p>Zabbix proxies have been available since Zabbix 1.6. At that time they where
+available only as what we know today as <strong>Active proxies</strong>. <em>Active</em> means that
+the proxy will initiate the connection by itself to the Zabbix Server. In
+version 1.8.3 <em>passive</em> proxies where introduced. This allows the server to
 connect to the proxy instead of the other way around.</p>
 <p>As mentioned before Zabbix agents can be both active <em>and</em> passive however proxies
 cannot be both so we have to choose the way of the communication when we configure
@@ -2185,11 +2185,11 @@ an <em>active proxy</em> and a <em>passive agent</em> working together.</p>
 </details>
 <hr />
 <h3 id="active-proxy">Active proxy</h3>
-<p>In <em>active</em> mode, the proxy takes full control of its operational settings. This 
-includes managing when it checks for new configuration updates and when it sends 
+<p>In <em>active</em> mode, the proxy takes full control of its operational settings. This
+includes managing when it checks for new configuration updates and when it sends
 collected data to the server. </p>
-<p>It’s important to note that the key settings for an <em>active proxy</em> are defined 
-exclusively in the <em>Zabbix proxy</em> configuration. Any adjustments to these 
+<p>It’s important to note that the key settings for an <em>active proxy</em> are defined
+exclusively in the <em>Zabbix proxy</em> configuration. Any adjustments to these
 parameters should be made directly within the proxy configuration files.</p>
 <p>These are the proxy configuration settings you will need to set in <em>active</em> mode:</p>
 <ul>

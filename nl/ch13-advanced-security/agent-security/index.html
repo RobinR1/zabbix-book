@@ -2107,7 +2107,7 @@ We have to keep this in mind when setting up the PSK identity and I usually use 
 <li><em>TLSPSKIdentity</em>: The plain text non-secret identity used for PSK encryption.</li>
 <li><em>TLSPSKFile</em>: The path to the file where the secret PSK is stored.</li>
 </ul>
-<p>As you might have noticed, I have set both <code>TLSConnect</code> and <code>TLSAccept</code>. This is something recommended to always do to safeguard against configuration mistakes. Let's say you only use the Active Zabbix agent connection, but left <code>TLSConnect</code> set to <code>unencrypted</code>. If your Zabbix agent allows passive agent connections (due to configuration error, history or on purpose) an unencrypted connection will still be allowed. Recommendation, set both alway unless you have a good reason not to.</p>
+<p>As you might have noticed, I have set both <code>TLSConnect</code> and <code>TLSAccept</code>. This is something recommended to always do to safeguard against configuration mistakes. Let's say you only use the Active Zabbix agent connection, but left <code>TLSConnect</code> set to <code>unencrypted</code>. If your Zabbix agent allows passive agent connections (due to configuration error, history or on purpose) an unencrypted connection will still be allowed. Recommendation, set both always unless you have a good reason not to.</p>
 <p>We're not done with the configuration on the Zabbix agent side however, we still need to create the PSK. There is a simple command to execute and create the PSK.</p>
 <div class="admonition info">
 <p class="admonition-title">Create agent.psk file with new pre-shared key</p>

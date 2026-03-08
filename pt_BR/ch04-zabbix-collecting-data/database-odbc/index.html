@@ -825,7 +825,7 @@ and more to track performance and availability metrics.
 <span class="md-ellipsis">
     
   
-    Database checks via agent
+    Database checks via Zabbix agent 2
   
 
     
@@ -1505,7 +1505,7 @@ environments.</p>
 <ul>
 <li><code>msodbcsql18</code></li>
 </ul>
-<p>Installation usually requires enabling Microsoft’s official repository and accepting the license agreement.</p>
+<p>Installation usually requires enabling Microsoft's official repository and accepting the license agreement.</p>
 <p>Example (RHEL/Rocky-based systems):</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>msodbcsql18
 </span></code></pre></div>
@@ -1605,14 +1605,15 @@ environments.</p>
 </ul>
 <p>In production environments, the ODBC driver should be treated as a critical infrastructure
 component.</p>
-<p>???+ note:</p>
-<div class="language-text highlight"><pre><span></span><code>There are many ODBC drivers available for additional databases such as Oracle,
+<details class="note" open="open">
+<summary>Note</summary>
+<p>There are many ODBC drivers available for additional databases such as Oracle,
 Db2, SAP HANA, and others. However, driver quality, maintenance cadence, and
 production stability vary significantly. Before relying on less common drivers
 in a monitoring environment, perform controlled testing and validate behavior
 under load. Monitoring reliability depends as much on the driver as on Zabbix
-itself.
-</code></pre></div>
+itself.</p>
+</details>
 <hr/>
 <h3 id="testing-the-dsn">Testing the DSN</h3>
 <p>Always validate connectivity before configuring Zabbix.</p>
@@ -1948,8 +1949,14 @@ Metric items define <em>how it behaves</em>.</p>
 <p>Server-wide timeout:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-29-1"><a href="#__codelineno-29-1" id="__codelineno-29-1" name="__codelineno-29-1"></a>Timeout=5
 </span></code></pre></div>
-<p>Slow queries block pollers and may cascade into monitoring delays.</p>
-<p>Use proxies to isolate database monitoring from the central server.</p>
+<p>Slow queries block pollers and may cascade into monitoring delays.
+Use proxies to isolate database monitoring from the central server.</p>
+<details class="note" open="open">
+<summary>Note</summary>
+</details>
+<p>Starting from Zabbix 7.0 This parameter will be less important as the
+   "Database monitor" item now can have custom Timeout per each SQL query/item
+   ranging from 1s to 10m</p>
 <hr/>
 <h2 id="connection-pooling">Connection Pooling</h2>
 <p>Enable unixODBC pooling. Beginning with unixODBC 2.0.0, the driver manager supports
@@ -2090,7 +2097,7 @@ with choosing the best approach.</p>
 <p>Offload ODBC checks to a Zabbix Proxy in medium and large environments. This prevents
 database instability from affecting the central monitoring server.</p>
 <h3 id="monitor-the-monitoring">Monitor the Monitoring</h3>
-<p>When you use ODBC checks on Zabbix dont't forget to monitor you congiguration in
+<p>When you use ODBC checks on Zabbix don't forget to monitor you congiguration in
 Zabbix. It's always a goot idea to have a look at the following metrics:</p>
 <ul>
 <li>ODBC poller busy percentage</li>

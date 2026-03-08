@@ -2126,7 +2126,7 @@
   <a href="#ch04-zabbix-collecting-data-database-agent" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Database checks via agent
+        Database checks via Zabbix agent 2
       
     </span>
   </a>
@@ -3454,7 +3454,7 @@
   <a href="#ch04-zabbix-collecting-data-database-agent" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Database checks via agent
+        Database checks via Zabbix agent 2
       
     </span>
   </a>
@@ -5126,7 +5126,7 @@ fails to start. If you then see lines like this in your system logging
 <p>This is caused by the fact that the SystemD generated Quadlet service contains
 a dependency to the system-wide special target <code>network-online.target</code> which
 normally indicates the system's network is fully up and running. However on
-certain Linux distriutions or with specific networking configurations the
+certain Linux distributions or with specific networking configurations the
 system network components may not correctly notify SystemD that the network is
 "online", causing <code>network-online.target</code> to never get activated. This in turn
 makes that Podman will wait until it times out, thinking the network is not 
@@ -6869,10 +6869,13 @@ machine. </p>
 <div class="admonition info">
 <p class="admonition-title">install frontend packages</p>
 <p>Red Hat
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#ch01-zabbix-components-zabbix-frontend-__codelineno-0-1"></a><span class="c1"># When using MySQL/MariaDB</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#ch01-zabbix-components-zabbix-frontend-__codelineno-0-2"></a>dnf<span class="w"> </span>install<span class="w"> </span>zabbix-nginx-conf<span class="w"> </span>zabbix-web-mysql
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#ch01-zabbix-components-zabbix-frontend-__codelineno-0-3"></a><span class="c1"># or when using PostgreSQL</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#ch01-zabbix-components-zabbix-frontend-__codelineno-0-4"></a>dnf<span class="w"> </span>install<span class="w"> </span>zabbix-nginx-conf<span class="w"> </span>zabbix-web-pgsql
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#ch01-zabbix-components-zabbix-frontend-__codelineno-0-1"></a><span class="c1"># List all available php modules and active php-8.2</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#ch01-zabbix-components-zabbix-frontend-__codelineno-0-2"></a>dnf<span class="w"> </span>module<span class="w"> </span>list<span class="w"> </span>php<span class="w"> </span>-y
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#ch01-zabbix-components-zabbix-frontend-__codelineno-0-3"></a>dnf<span class="w"> </span>module<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>php:8.2
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#ch01-zabbix-components-zabbix-frontend-__codelineno-0-4"></a><span class="c1"># When using MySQL/MariaDB</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#ch01-zabbix-components-zabbix-frontend-__codelineno-0-5"></a>dnf<span class="w"> </span>install<span class="w"> </span>zabbix-nginx-conf<span class="w"> </span>zabbix-web-mysql
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#ch01-zabbix-components-zabbix-frontend-__codelineno-0-6"></a><span class="c1"># or when using PostgreSQL</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#ch01-zabbix-components-zabbix-frontend-__codelineno-0-7"></a>dnf<span class="w"> </span>install<span class="w"> </span>zabbix-nginx-conf<span class="w"> </span>zabbix-web-pgsql
 </span></code></pre></div>
 SUSE
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#ch01-zabbix-components-zabbix-frontend-__codelineno-1-1"></a><span class="c1"># When using MySQL/MariaDB</span>
@@ -10519,10 +10522,10 @@ relevant data to be received and processed by the Zabbix server; but you won't l
 any historical data.</p>
 <hr />
 <h2 id="ch03-zabbix-proxies-proxy-basics-active-versus-passive-proxy">Active versus Passive proxy</h2>
-<p>Zabbix proxies have been available since Zabbix 1.6. At that time they where 
-available only as what we know today as <strong>Active proxies</strong>. <em>Active</em> means that 
-the proxy will initiate the connection by itself to the Zabbix Server. In 
-version 1.8.3 <em>passive</em> proxies where introduced. This allowes the server to 
+<p>Zabbix proxies have been available since Zabbix 1.6. At that time they where
+available only as what we know today as <strong>Active proxies</strong>. <em>Active</em> means that
+the proxy will initiate the connection by itself to the Zabbix Server. In
+version 1.8.3 <em>passive</em> proxies where introduced. This allows the server to
 connect to the proxy instead of the other way around.</p>
 <p>As mentioned before Zabbix agents can be both active <em>and</em> passive however proxies
 cannot be both so we have to choose the way of the communication when we configure
@@ -10535,11 +10538,11 @@ an <em>active proxy</em> and a <em>passive agent</em> working together.</p>
 </details>
 <hr />
 <h3 id="ch03-zabbix-proxies-proxy-basics-active-proxy">Active proxy</h3>
-<p>In <em>active</em> mode, the proxy takes full control of its operational settings. This 
-includes managing when it checks for new configuration updates and when it sends 
+<p>In <em>active</em> mode, the proxy takes full control of its operational settings. This
+includes managing when it checks for new configuration updates and when it sends
 collected data to the server. </p>
-<p>It’s important to note that the key settings for an <em>active proxy</em> are defined 
-exclusively in the <em>Zabbix proxy</em> configuration. Any adjustments to these 
+<p>It’s important to note that the key settings for an <em>active proxy</em> are defined
+exclusively in the <em>Zabbix proxy</em> configuration. Any adjustments to these
 parameters should be made directly within the proxy configuration files.</p>
 <p>These are the proxy configuration settings you will need to set in <em>active</em> mode:</p>
 <ul>
@@ -11150,7 +11153,7 @@ you used a different one):</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#ch03-zabbix-proxies-proxies-as-container-__codelineno-6-1"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>start<span class="w"> </span>zabbix-proxy-sqlite.service
 </span></code></pre></div>
 </details>
-<p>This command may take a few minutes as it wil download the required Zabbix Proxy
+<p>This command may take a few minutes as it will download the required Zabbix Proxy
 container from the docker registry.</p>
 <p>To verify that the container started correctly, you can inspect the running containers
 with:</p>
@@ -11310,7 +11313,7 @@ timer.</p>
 <p>This setup is not recommended for production environments without a proper rollback
 plan. Floating tags like <code>:latest</code> or <code>:trunk-centos</code> can introduce breaking
 changes unexpectedly. For production use, fixed version tags (e.g. <code>7.0.13-centos</code>)
-are generaly recommended since they offer greater stability and control.</p>
+are generally recommended since they offer greater stability and control.</p>
 </details>
 <hr />
 <h2 id="ch03-zabbix-proxies-proxies-as-container-conclusion">Conclusion</h2>
@@ -13002,7 +13005,7 @@ items can do however.</p>
 <hr />
 <h3 id="ch04-zabbix-collecting-data-zabbix-agent-passive-active-vs-passive-communication-in-zabbix-agent">Active vs. Passive Communication in Zabbix Agent</h3>
 <p>The Zabbix agent supports two communication modes: <strong>Active</strong> and <strong>Passive</strong>. 
-Each mode has distinct behaviors, use cases, and implications for performance and 
+Each mode has distinct behaviours, use cases, and implications for performance and 
 configuration.</p>
 <hr />
 <h4 id="ch04-zabbix-collecting-data-zabbix-agent-passive-passive-mode">Passive Mode</h4>
@@ -13350,7 +13353,7 @@ agent through the most easily secured method and keep it updated.</p>
 <p>Once installed, for <code>Passive</code> communication we used the <code>Server=</code> parameter 
 to keep our agent secured. We do not want everyone to be able to connect and query
 this agent, even when there might still be a firewall or two in between.</p>
-<p>Finaly, we created a host and an item to start monitoring with our <code>Passive</code> 
+<p>Finally, we created a host and an item to start monitoring with our <code>Passive</code> 
 Zabbix agent.</p>
 <hr />
 <h2 id="ch04-zabbix-collecting-data-zabbix-agent-passive-questions">Questions</h2>
@@ -13614,7 +13617,7 @@ into human-readable names.</p>
 </ol>
 <hr />
 <h2 id="ch04-zabbix-collecting-data-snmp-polling-net-snmp">Net-SNMP</h2>
-<p>The Simple Network Management Protocol (SNMP) is a widely used protocol for monitoring
+<p>The <em>Simple Network Management Protocol</em> (SNMP) is a widely used protocol for monitoring
 and managing networked devices. It operates primarily over UDP port 161, though in
 certain cases, SNMP agents or proxies may also support TCP port 161 for enhanced
 reliability or integration with specific tools. SNMP allows administrators to query
@@ -13628,7 +13631,7 @@ two approaches:</p>
   server or a dedicated virtual machine.</li>
 </ul>
 <p>In this chapter, we will walk through the installation and configuration of a basic
-SNMP agent on a Rocky or Ubuntu based Zabbix server. However, the same setup can
+SNMP agent on a RedHat, Suse or Ubuntu based Zabbix server. However, the same setup can
 be applied to any compatible Linux system.</p>
 <p>Note: If you're using a device already present on your network, ensure:</p>
 <ul>
@@ -13652,6 +13655,7 @@ exactly do.</p>
 <li><strong>snmpwalk:</strong> Walks an entire OID subtree and displays all of its values.</li>
 <li><strong>snmpstatus:</strong> Provides a summary of a device's basic status.</li>
 </ul>
+<hr />
 <h3 id="ch04-zabbix-collecting-data-snmp-polling-testing-an-snmp-device-where-to-start">Testing an SNMP Device: Where to Start?</h3>
 <p>When you're looking to test an SNMP device, it's crucial to understand the available
 SNMP versions and which ones you should prioritize. Currently, there are three
@@ -13667,16 +13671,21 @@ commonly used versions: <strong>SNMPv1</strong>, <strong>SNMPv2c</strong>, and <
   secure and advanced option. It provides encryption, authentication, and user
   management, which are essential for secure networks.</li>
 </ul>
+<hr />
 <h4 id="ch04-zabbix-collecting-data-snmp-polling-your-first-test-attempt-snmpv2c-and-the-public-community-string">Your First Test Attempt: SNMPv2c and the 'public' Community String</h4>
 <p>To begin your testing, we recommend trying to connect to your device using <strong>SNMPv2c</strong>
 and the standard <strong>community string 'public'</strong>. Many devices ship with these default
 settings, though it's certainly insecure for production environments.</p>
 <p>You can use the <code>snmpstatus</code> command for this. Here’s an example of how you might
 do this in your terminal:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-0-1"></a><span class="w">   </span>snmpstatus<span class="w"> </span>-v<span class="w"> </span>2c<span class="w"> </span>-c<span class="w"> </span>public<span class="w"> </span><span class="o">[</span>IP-address_of_the_device<span class="o">]</span>
+<details class="example" open="open">
+<summary>Testing SNMPv2c with the 'public' community string</summary>
+</details>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#ch04-zabbix-collecting-data-snmp-polling-__codelineno-0-1"></a><span class="w">  </span>snmpstatus<span class="w"> </span>-v<span class="w"> </span>2c<span class="w"> </span>-c<span class="w"> </span>public<span class="w"> </span><span class="o">[</span>IP-address_of_the_device<span class="o">]</span>
 </span></code></pre></div>
 <p>Replace <code>[IP-address_of_the_device]</code> with the actual IP address or hostname of the
 device you wish to test.</p>
+<hr />
 <h4 id="ch04-zabbix-collecting-data-snmp-polling-what-if-you-get-no-information-back">What if You Get No Information Back?</h4>
 <p>If you don't receive any information after this attempt, don't panic. It simply means
 the default settings likely don't apply to your device, or there might be a network
@@ -13689,13 +13698,17 @@ your network.</p>
    is the configured community string (similar to a password) for read-only and
    potentially read- write access? It's rarely 'public' in a properly configured
    environment.</li>
-<li><strong>Username, Authentication, and Privacy (for v3)</strong>: If your device uses SNMPv3,
-   you'll need more specific information:
-   - <strong>Username</strong>: What username has been created for SNMPv3?
-   - <strong>Authentication Protocol and Password</strong>: Which authentication protocol (e.g.,
-     MD5, SHA) is used, and what is its corresponding password?
-   - <strong>Privacy Protocol and Password</strong>: Which encryption protocol (e.g., DES, AES)
-     is used, and what is its corresponding password?</li>
+<li>
+<p><strong>Username, Authentication, and Privacy (for v3)</strong>: If your device uses SNMPv3,
+   you'll need more specific information:</p>
+<ul>
+<li><strong>Username</strong>: What username has been created for SNMPv3?</li>
+<li><strong>Authentication Protocol and Password</strong>: Which authentication protocol (e.g.,
+  MD5, SHA) is used, and what is its corresponding password?</li>
+<li><strong>Privacy Protocol and Password</strong>: Which encryption protocol (e.g., DES, AES)
+  is used, and what is its corresponding password?</li>
+</ul>
+</li>
 </ol>
 <p><strong>Next, consider potential network issues:</strong></p>
 <p>Even if your device is correctly configured, network obstacles can prevent SNMP communication.
@@ -18532,7 +18545,7 @@ environments.</p>
 <ul>
 <li><code>msodbcsql18</code></li>
 </ul>
-<p>Installation usually requires enabling Microsoft’s official repository and accepting the license agreement.</p>
+<p>Installation usually requires enabling Microsoft's official repository and accepting the license agreement.</p>
 <p>Example (RHEL/Rocky-based systems):</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#ch04-zabbix-collecting-data-database-odbc-__codelineno-8-1"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>msodbcsql18
 </span></code></pre></div>
@@ -18632,14 +18645,15 @@ environments.</p>
 </ul>
 <p>In production environments, the ODBC driver should be treated as a critical infrastructure
 component.</p>
-<p>???+ note:</p>
-<div class="language-text highlight"><pre><span></span><code>There are many ODBC drivers available for additional databases such as Oracle,
+<details class="note" open="open">
+<summary>Note</summary>
+<p>There are many ODBC drivers available for additional databases such as Oracle,
 Db2, SAP HANA, and others. However, driver quality, maintenance cadence, and
 production stability vary significantly. Before relying on less common drivers
 in a monitoring environment, perform controlled testing and validate behavior
 under load. Monitoring reliability depends as much on the driver as on Zabbix
-itself.
-</code></pre></div>
+itself.</p>
+</details>
 <hr />
 <h3 id="ch04-zabbix-collecting-data-database-odbc-testing-the-dsn">Testing the DSN</h3>
 <p>Always validate connectivity before configuring Zabbix.</p>
@@ -18975,8 +18989,14 @@ Metric items define <em>how it behaves</em>.</p>
 <p>Server-wide timeout:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#ch04-zabbix-collecting-data-database-odbc-__codelineno-29-1"></a>Timeout=5
 </span></code></pre></div>
-<p>Slow queries block pollers and may cascade into monitoring delays.</p>
-<p>Use proxies to isolate database monitoring from the central server.</p>
+<p>Slow queries block pollers and may cascade into monitoring delays.
+Use proxies to isolate database monitoring from the central server.</p>
+<details class="note" open="open">
+<summary>Note</summary>
+</details>
+<p>Starting from Zabbix 7.0 This parameter will be less important as the
+   "Database monitor" item now can have custom Timeout per each SQL query/item
+   ranging from 1s to 10m</p>
 <hr />
 <h2 id="ch04-zabbix-collecting-data-database-odbc-connection-pooling">Connection Pooling</h2>
 <p>Enable unixODBC pooling. Beginning with unixODBC 2.0.0, the driver manager supports
@@ -19117,7 +19137,7 @@ with choosing the best approach.</p>
 <p>Offload ODBC checks to a Zabbix Proxy in medium and large environments. This prevents
 database instability from affecting the central monitoring server.</p>
 <h3 id="ch04-zabbix-collecting-data-database-odbc-monitor-the-monitoring">Monitor the Monitoring</h3>
-<p>When you use ODBC checks on Zabbix dont't forget to monitor you congiguration in
+<p>When you use ODBC checks on Zabbix don't forget to monitor you congiguration in
 Zabbix. It's always a goot idea to have a look at the following metrics:</p>
 <ul>
 <li>ODBC poller busy percentage</li>
@@ -19175,8 +19195,132 @@ it becomes a silent performance risk.</p>
 <li>https://www.zabbix.com/forum/zabbix-help/413055-installation-and-configuration-of-mssql-by-odbc-docker</li>
 <li>https://blog.zabbix.com/database-odbc-monitoring-with-zabbix/8076/</li>
 <li>https://www.zabbix.com/documentation/7.4/en/manual/config/items/itemtypes/odbc_checks?hl=ODBC%2Cmonitoring</li>
-</ul></section><section class="print-page" id="ch04-zabbix-collecting-data-database-agent" heading-number="9.18"><nav class='md-tags'><span class='md-tag'>advanced</span></nav><h1 id="database-checks-via-agent">Database checks via agent</h1>
+</ul></section><section class="print-page" id="ch04-zabbix-collecting-data-database-agent" heading-number="9.18"><nav class='md-tags'><span class='md-tag'>advanced</span></nav><h1 id="database-checks-via-zabbix-agent-2">Database checks via Zabbix agent 2</h1>
+<p>Now that we have covered database monitoring by ODBC, you might have some security questions. Because with ODBC, you will always have to open up your database for remote connections by our Zabbix server or proxy. For some environments, this might be out of the question. ODBC monitoring also requires additional tooling to be installed, which is something you will need to maintain.</p>
+<p>The Zabbix agent 2 however, comes with built-in functionality to monitor some of the most popular SQL and no-SQL databases.
+- MariaDB
+- MySQL
+- PostgreSQL
+- Microsoft SQL
+- Oracle
+- Redis
+- MongoDB</p>
+<p>The great part about using the Zabbix agent for monitoring your database is, you most likely already have the Zabbix agent installed on the Windows or Linux server running that database. Since the Zabbix agent is running on the local machine, the Zabbix agent can now be used to connect using localhost (127.0.0.1) to the database.</p>
+<p><img align="center" alt="Zabbix ODBC vs Agent Database connection*" src="../ch04-zabbix-collecting-data/database-agent/ch04.xx-odbc-vs-agent.png" />
+<em>4.x Zabbix ODBC vs Agent Database connection</em></p>
+<h2 id="ch04-zabbix-collecting-data-database-agent-plugin-installation">Plugin installation</h2>
+<p>It's important to note that for Zabbix agent 2 to support database monitoring, you might have to install some additional plugin packages. This is the case specifically for:</p>
+<ul>
+<li>PostgreSQL</li>
+<li>Microsoft SQL</li>
+<li>MongoDB</li>
+</ul>
+<p>To install the packages on Linux is not too much additional work, as we should already have the Zabbix repository available. Simply issues the following command to install the additional package(s) and you should be ready to go.</p>
+<div class="admonition info">
+<p class="admonition-title">Install Zabbix agent 2 database monitoring plugins</p>
+<p>RHEL-based:</p>
+<p>``` dnf install zabbix-agent2-plugin-mongodb zabbix-agent2-plugin-mssql zabbix-agent2-plugin-postgresql
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-0-1"></a>Debian based:
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-0-3"></a>``` apt install zabbix-agent2-plugin-mongodb zabbix-agent2-plugin-mssql zabbix-agent2-plugin-postgresql
+</span></code></pre></div></p>
+<p>SUSE:</p>
+<p><code>zypper in zabbix-agent2-plugin-mongodb zabbix-agent2-plugin-mssql zabbix-agent2-plugin-postgresql</code></p>
+</div>
+<p>On Windows we do have some additional steps, as we need to download an additional MSI. We can find the MSI at the following URL.</p>
+<p><a href="https://cdn.zabbix.com/zabbix/binaries/stable/">https://cdn.zabbix.com/zabbix/binaries/stable/</a></p>
+<p>It's also possible to download the packages from <a href="https://www.zabbix.com/download_agents?">https://www.zabbix.com/download_agents?</a>. At this website simply select <code>OS Distribution</code> as <code>Windows</code> and at <code>Encryption</code> select <code>No encryption</code>. This will show you the <code>Zabbix agent2 plugins vx.x.x</code> MSI download link for your selected Windows version.</p>
+<p>We are going to assume you have already installed the Zabbix agent 2 and the plugins on your server. If you do not know how, check out the previous part of this chapter titled <code>Zabbix Agent installation and Passive monitoring</code> and the steps above.</p>
+<h2 id="ch04-zabbix-collecting-data-database-agent-setting-up-microsoft-sql-monitoring">Setting up Microsoft SQL monitoring</h2>
+<p>Let's have a look at how to monitor a Microsoft SQL server using the Zabbix agent 2 database monitoring. Before we do this however, make sure to create a new user dedicated to monitoring in your Microsoft SQL server. This user will have limited permissions, to make sure that if the user becomes compromised, any attacker does not have a large vector of attack using the account.</p>
+<div class="admonition info">
+<p class="admonition-title">Create zbx_monitor user</p>
+<p>SQL server command:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-1-1"></a>CREATE LOGIN zbx_monitor WITH PASSWORD = &#39;change-the-password-here&#39;
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-1-2"></a>GRANT VIEW SERVER PERFORMANCE STATE TO zbx_monitor
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-1-3"></a>GRANT VIEW ANY DEFINITION TO zbx_monitor
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-1-4"></a>USE msdb
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-1-5"></a>CREATE USER zbx_monitor FOR LOGIN zbx_monitor
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-1-6"></a>GRANT EXECUTE ON msdb.dbo.agent_datetime TO zbx_monitor
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-1-7"></a>GRANT SELECT ON msdb.dbo.sysjobactivity TO zbx_monitor
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-1-8"></a>GRANT SELECT ON msdb.dbo.sysjobservers TO zbx_monitor
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-1-9"></a>GRANT SELECT ON msdb.dbo.sysjobs TO zbx_monitor
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-1-10"></a>GO
+</span></code></pre></div>
+</div>
+<p>For the default setup with a Microsoft SQL server, things are fairly simple. First, we go to <code>Data collection</code> | <code>Hosts</code> and create a new host for our Windows server.</p>
+<p><img align="center" alt="Host creation - Windows server SQL" src="../ch04-zabbix-collecting-data/database-agent/ch04.x-host-creation-windows-server-sql.png" /></p>
+<p><em>4.x Host creation - Windows server SQL</em></p>
+<p>With the host created, it's important to note here we used the template <code>MSSQL by Zabbix agent 2</code>. This is a default template provided by Zabbix which will already include most of the important statistics you'd need monitoring a Microsoft SQL server. It's possible to monitor SQL servers using the Zabbix agent in both <code>passive</code> and <code>active</code> mode. If you'd like to use <code>active</code> mode just clone template <code>MSSQL by Zabbix agent 2</code> to <code>MSSQL by Zabbix agent 2 active</code> and change all <code>item types</code> to <code>Zabbix agent (active)</code>.</p>
+<p>In the end it does not matter if you use a passive or active agent, as long as you have the agent connection setup we can do the next step. We need to configure our Zabbix agent to connect to the database server via the network. We do this using the macros on the host.</p>
+<p><img align="center" alt="Windows server SQL host macros" src="../ch04-zabbix-collecting-data/database-agent/ch04.x-windows-server-sql-macros.png" /></p>
+<p><em>4.x Windows server SQL host macros</em></p>
+<p>Since the agent is installed on the server running Microsoft SQL, we can simply connect to <code>localhost</code> or <code>127.0.0.1</code>. That means the connection from the Zabbix agent towards the Microsoft SQL server never leaves the server itself and we do not need to expose our SQL server port to the network for our Zabbix server or proxy. Combined with Zabbix agent active mode, a limited Microsoft SQL user and agent encryption, we can guarantee a secure setup that is ready for high-risk environments like banks, hospitals, air traffic and even military applications. This is the biggest advantage of using the Zabbix agent 2 database monitoring, compared to ODBC.</p>
+<p>Once we fill out the <code>{$MSSQL.USER}</code>, <code>{$MSSQL.PASSWORD}</code> and <code>{$MSSQL.URI}</code> macros, the Zabbix agent should be able to connect to our SQL server. Navigating to <code>Monitoring</code> | <code>Latest data</code> should now show us a bunch of data from the SQL server marking the successful configuration of our monitoring.</p>
+<p><img align="center" alt="Microsoft SQL server data" src="../ch04-zabbix-collecting-data/database-agent/ch04.x-windows-server-sql-data.png" /></p>
+<p><em>4.x Microsoft SQL server data</em></p>
+<details class="note" open="open">
+<summary>Note</summary>
+<p>Keep in mind that your Microsoft SQL server might be using a different port for connecting the the SQL server. Make sure to specify the correct port when setting up the <code>{$MSSQL.URI}</code> macro, you can find the port in the SQL server configuration.</p>
+</details>
+<h3 id="ch04-zabbix-collecting-data-database-agent-custom-microsoft-sql-queries">Custom Microsoft SQL queries</h3>
+<p>Let's say the Zabbix template isn't going to fit every single thing you might want to monitor on your SQL server. How do you add some custom monitoring to the Zabbix agent 2 database monitoring? With ODBC we could simply add the query to the frontend and ODBC would execute it for us. For the Zabbix agent, there are some additional steps required. </p>
+<p>First, let's make sure our agent configuration is setup correctly. Whenever we install the Zabbix agent 2 with any of the plugins, there will be additional configuration files located in the zabbix_agent2.d folder.</p>
+<ul>
+<li><em>Windows</em>: <code>C:\Program Files\Zabbix Agent 2\zabbix_agent2.d\</code></li>
+<li><em>Linux</em>: <code>/etc/zabbix/zabbix_agent2.d/</code></li>
+</ul>
+<p>For our Microsoft SQL server running on Windows we are looking for the file <code>C:\Program Files\Zabbix Agent 2\zabbix_agent2.d\mssql.conf</code>. Open the file and edit the following two lines.</p>
+<div class="admonition info">
+<p class="admonition-title">mssql.conf plugin configuration file edit</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-2-1"></a>### Option: Plugins.MSSQL.CustomQueriesDir
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-2-2"></a>#   Filepath to a directory containing user defined .sql files with custom
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-2-3"></a>#   queries that the plugin can execute.
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-2-4"></a>#   If not set the default path will take the drive name from `ProgramFiles` environment.
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-2-5"></a>#   Replace &quot;*&quot; with the hard drive name.
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-2-6"></a>#
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-2-7"></a># Mandatory: no
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-2-8"></a># Default:
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-2-9"></a># Plugins.MSSQL.CustomQueriesDir=*:\Program Files\Zabbix Agent 2\Custom Queries\MSSQL
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-2-10"></a>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-2-11"></a>Plugins.MSSQL.CustomQueriesDir=C:\Program Files\Zabbix Agent 2\Custom Queries\MSSQL
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-2-12"></a>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-2-13"></a>### Option: Plugins.MSSQL.CustomQueriesEnabled
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-2-14"></a>#   If set enables the execution of the `mssql.custom.query`item key and the plugin will 
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-2-15"></a>#   search for custom query files in directory specified by 
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-2-16"></a>#   Plugins.MSSQL.CustomQueriesDir config option.
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-2-17"></a>#
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-2-18"></a># Mandatory: no
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-2-19"></a># Default:
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-2-20"></a># Plugins.MSSQL.CustomQueriesEnabled=false
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-2-21"></a>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-2-22"></a>Plugins.MSSQL.CustomQueriesEnabled=true
+</span></code></pre></div>
+</div>
+<p>We set the folder to <code>C:\Program Files\Zabbix Agent 2\Custom Queries\MSSQL</code> and that's where we will place our new SQL files. Make sure to create the folder in that path and let's create the following file in the new folder.</p>
+<div class="admonition info">
+<p class="admonition-title">mssql.conf plugin configuration file edit</p>
+<p>C:\Program Files\Zabbix Agent 2\Custom Queries\MSSQL\sleeping_sessions.sql</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-3-1"></a>SELECT COUNT(*) AS sleeping_sessions
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#ch04-zabbix-collecting-data-database-agent-__codelineno-3-2"></a>FROM sys.dm_exec_sessions WHERE status = &#39;sleeping&#39;;
+</span></code></pre></div>
+</div>
+<p>With the edits made and the folders and file created, we can restart the <code>Zabbix agent 2</code> service and navigate to the Zabbix frontend. Here we will create a new item to monitor this <code>sleeping sessions</code> query we created. Navigate to <code>Data collection</code> | <code>Hosts</code> and go to <code>Items</code>. Then click on <code>Create item</code>. Preferably you would add the item to a template, but for now let's create it here.</p>
+<p><img align="center" alt="Microsoft SQL server custom query" src="../ch04-zabbix-collecting-data/database-agent/ch04.x-windows-server-sql-custom-query.png" /></p>
+<p><em>4.x Microsoft SQL server custom query</em></p>
+<p>The full key is <code>mssql.custom.query["{$MSSQL.URI}","{$MSSQL.USER}","{$MSSQL.PASSWORD}",sleeping-sessions]</code></p>
+<p>Make sure to add some preprocessing with the type <code>JSONPath</code> using the <code>Parameter</code>: <code>$..sleeping_sessions.first()</code>.</p>
+<p><img align="center" alt="Microsoft SQL server custom query preprocessing" src="../ch04-zabbix-collecting-data/database-agent/ch04.x-windows-server-sql-custom-query-preprocessing.png" /></p>
+<p><em>4.x Microsoft SQL server custom query preprocessing</em></p>
+<p>Don't forget to add a tag to the item.</p>
+<p><img align="center" alt="Microsoft SQL server custom query tag" src="../ch04-zabbix-collecting-data/database-agent/ch04.x-windows-server-sql-custom-query-tag.png" /></p>
+<p><em>4.x Microsoft SQL server custom query tag</em></p>
+<p>This item should now return a nice numeric value which you can see at <code>Monitoring</code> | <code>Latest data</code>.</p>
+<h2 id="ch04-zabbix-collecting-data-database-agent-setting-up-redis-and-mongodb-monitoring">Setting up Redis and MongoDB monitoring</h2>
 <h2 id="ch04-zabbix-collecting-data-database-agent-conclusion">Conclusion</h2>
+<p>Monitoring databases through the Zabbix agent 2 provides a secure and efficient alternative to traditional ODBC based monitoring. Because the agent runs locally on the database server, it can connect directly to the database using localhost or 127.0.0.1. This eliminates the need to expose database ports to the network for the Zabbix server or proxy, significantly reducing the attack surface.</p>
+<p>With the built-in database plugins and official templates, most common monitoring metrics are available immediately after configuration. This allows us to quickly gain insight into the health and performance of their database systems without relying on external scripts or additional monitoring frameworks.</p>
+<p>For environments with specific monitoring requirements, the agent also supports custom SQL queries. By enabling the custom query functionality and placing .sql files in the configured directory, we can easily extend the default monitoring capabilities. These custom checks can then be integrated into Zabbix items and processed using preprocessing steps to extract the desired values.</p>
 <h2 id="ch04-zabbix-collecting-data-database-agent-questions">Questions</h2>
 <h2 id="ch04-zabbix-collecting-data-database-agent-useful-urls">Useful URLs</h2></section><section class="print-page" id="ch04-zabbix-collecting-data-zabbix-trapper" heading-number="9.19"><nav class='md-tags'><span class='md-tag'>advanced</span></nav><h1 id="zabbix-trapper">Zabbix trapper</h1>
 <p>So you already know what is the difference between <code>Active</code> and <code>Passive</code>
@@ -19395,9 +19539,181 @@ you should definitely try it out.</p>
 <li><a href="https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/trapper">https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/trapper</a></li>
 <li><a href="https://www.zabbix.com/documentation/current/en/manpages/zabbix_sender">https://www.zabbix.com/documentation/current/en/manpages/zabbix_sender</a></li>
 </ul></section><section class="print-page" id="ch04-zabbix-collecting-data-external-checks" heading-number="9.20"><nav class='md-tags'><span class='md-tag'>advanced</span></nav><h1 id="external-checks">External checks</h1>
+<p>Zabbix is remarkably capable out of the box, but the real world has a
+habit of throwing requirements at you that no built in item type can
+neatly address. Maybe you need to query a proprietary API, scrape a
+value from a legacy system, or run a bespoke health check that only your
+team understands. That is exactly the problem external checks solve.
+An external check is a Zabbix item that, instead of communicating
+directly with a host, asks the Zabbix server (or proxy) to run an
+arbitrary shell script or binary on its behalf. Whatever that script
+prints to standard output becomes the item value. No agent is required
+on the monitored host, the script runs entirely on the Zabbix server
+or proxy machine.</p>
+<h2 id="ch04-zabbix-collecting-data-external-checks-how-it-works">How It Works</h2>
+<p>When the item is due for collection, Zabbix looks up the ExternalScripts
+directory (configured in zabbix_server.conf or zabbix_proxy.conf) and
+forks a new process to execute the named script. The script runs under
+the same OS user as the Zabbix server or proxy process, so file
+permissions and environment variables must be set up accordingly.
+The item key follows this syntax:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#ch04-zabbix-collecting-data-external-checks-__codelineno-0-1"></a><span class="na">script[&lt;parameter1&gt;,&lt;parameter2&gt;,...]</span>
+</span></code></pre></div>
+<p>If no parameters are needed, either of the following forms is
+acceptable:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#ch04-zabbix-collecting-data-external-checks-__codelineno-1-1"></a><span class="na">script</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#ch04-zabbix-collecting-data-external-checks-__codelineno-1-2"></a><span class="na">script[]</span>
+</span></code></pre></div>
+<p>Parameters are passed to the script as individual quoted command line
+arguments. Zabbix macros such as {HOST.CONN} or {HOST.NAME} can be used
+inside parameter values, they are resolved before the script is
+called. This means you can write a single generic script and rely on
+macros to supply the host-specific details at runtime.</p>
+<details class="note" open="open">
+<summary>Note</summary>
+<p>When a host is monitored through a Zabbix proxy, the
+external check script is executed by the proxy, not by the central
+server. Make sure your scripts are deployed on every machine that needs
+to run them.</p>
+</details>
+<h2 id="ch04-zabbix-collecting-data-external-checks-return-value-and-error-handling">Return Value and Error Handling</h2>
+<p>The item value is formed from whatever the script writes to standard
+output (stdout), combined with any message written to standard error
+(stderr). Trailing whitespace is stripped automatically. The total
+return value of the script is capped at 16 MB, this should be more than
+enough for any reasonable monitoring purpose.</p>
+<p><strong>There are however a few situations worth knowing about:</strong></p>
+<ul>
+<li>If the script cannot be found or Zabbix lacks execute permission,
+  the item becomes unsupported and an error message is logged.</li>
+<li>If the script times out, it is terminated, the item becomes
+  unsupported, and a timeout error is recorded.</li>
+<li>For text-type items (character, log, or text), a non-empty stderr
+  output alone does not cause the item to become unsupported.</li>
+</ul>
+<p>!!!+ warning</p>
+<div class="language-text highlight"><pre><span></span><code>Every external check creates a new forked process. Running dozens of them
+at a short collection interval can noticeably impact Zabbix server
+performance. Use external checks for things that genuinely cannot be done
+another way, and keep collection intervals as long as your monitoring
+requirements allow.
+</code></pre></div>
+<h2 id="ch04-zabbix-collecting-data-external-checks-practical-example-counting-logged-in-users">Practical example : Counting Logged-In Users</h2>
+<p>To show you an easy example, let's build something you can try right now on the
+machine where Zabbix is installed. The script will count how many users are
+currently logged into the local system, using the who command, which is part of the
+standard coreutils package present on every installation.</p>
+<p>You will create the item on the Zabbix server host itself the one
+that already appears in your host list as "Zabbix server". The script
+runs locally on that same machine, so there is nothing to connect to and
+no credentials to manage.</p>
+<h3 id="ch04-zabbix-collecting-data-external-checks-creating-the-script">Creating the Script</h3>
+<p>Create the file 'check_logged_users.sh' in the ExternalScripts directory.
+On most systems this is <strong>/usr/lib/zabbix/externalscripts/</strong> you can check your
+zabbix_server.conf if unsure:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#ch04-zabbix-collecting-data-external-checks-__codelineno-2-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#ch04-zabbix-collecting-data-external-checks-__codelineno-2-2"></a><span class="c1"># Returns the number of users currently logged into the system.</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#ch04-zabbix-collecting-data-external-checks-__codelineno-2-3"></a><span class="c1"># No arguments needed.</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#ch04-zabbix-collecting-data-external-checks-__codelineno-2-4"></a>who<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+</span></code></pre></div>
+<p>That is the entire script, four lines including the comments. The who
+command lists one line per active login session; wc -l counts those
+lines. </p>
+<p>Make the script executable:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#ch04-zabbix-collecting-data-external-checks-__codelineno-3-1"></a>chmod<span class="w"> </span>+x<span class="w"> </span>/usr/lib/zabbix/externalscripts/check_logged_users.sh
+</span></code></pre></div>
+<p>You can verify it works straight away by running it manually as the
+zabbix user:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#ch04-zabbix-collecting-data-external-checks-__codelineno-4-1"></a>sudo<span class="w"> </span>-u<span class="w"> </span>zabbix<span class="w"> </span>/usr/lib/zabbix/externalscripts/check_logged_users.sh
+</span></code></pre></div>
+<h3 id="ch04-zabbix-collecting-data-external-checks-create-the-item-in-zabbix">Create the Item in Zabbix</h3>
+<p>Now that we have our script we need to create an item in Zabbix as our final
+step. In the Zabbix web interface, go to <code>Data collection → Hosts</code>, open the
+Zabbix server host, and add a new item with these settings:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Field</th>
+<th style="text-align: left;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">Number of logged-in users</td>
+</tr>
+<tr>
+<td style="text-align: left;">Type</td>
+<td style="text-align: left;">External check</td>
+</tr>
+<tr>
+<td style="text-align: left;">Key</td>
+<td style="text-align: left;">check_logged_users.sh</td>
+</tr>
+<tr>
+<td style="text-align: left;">Type of information</td>
+<td style="text-align: left;">Numeric (unsigned)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Units</td>
+<td style="text-align: left;">users</td>
+</tr>
+<tr>
+<td style="text-align: left;">Update interval</td>
+<td style="text-align: left;">1m</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ch04-zabbix-collecting-data-external-checks-check-the-result">Check the Result</h3>
+<p>Save the item and navigate to <code>Monitoring → Latest data</code>. Within a minute
+you should see a value like 2 ( depending on your system ) appear next to your
+new item, reflecting the number of active sessions on the Zabbix server at that
+moment. Open a second terminal to SSH in, wait for the next collection cycle,
+and watch the number go up to 3 ( or 1 higher then previous number ). Close it,
+and it comes back down. From here you could add a trigger to alert when the count
+exceeds an expected threshold, useful for detecting unexpected logins on a
+production server.</p>
+<div class="admonition note">
+<p class="admonition-title">A word of wisdom when it comes to scripts</p>
+<p>A colleague of me once created an external check
+that itself called another monitoring tool, which in turn called a
+Python script that imported a module and complained about a missing
+dependency.</p>
+<p>The lesson: keep your external scripts as simple and self-contained as
+possible. If your script needs a PhD thesis to maintain, it probably
+deserves to be a proper Zabbix plugin instead.</p>
+</div>
 <h2 id="ch04-zabbix-collecting-data-external-checks-conclusion">Conclusion</h2>
+<p>External checks give you an escape hatch from the boundaries of built-in Zabbix
+item types. You write a script, drop it in the ExternalScripts directory,
+and reference it with a standard item key. Zabbix handles scheduling, macro
+substitution, and value storage, you only have to worry about what the script
+does. Used sensibly and sparingly, external checks are one of the most powerful
+extensibility mechanisms Zabbix offers.</p>
 <h2 id="ch04-zabbix-collecting-data-external-checks-questions">Questions</h2>
-<h2 id="ch04-zabbix-collecting-data-external-checks-useful-urls">Useful URLs</h2></section><section class="print-page" id="ch04-zabbix-collecting-data-browser" heading-number="9.21"><nav class='md-tags'><span class='md-tag'>advanced</span><span class='md-tag'>expert</span></nav><h1 id="browser-item">Browser item</h1>
+<ul>
+<li>
+<p>You configure an external check on a host that is monitored through a Zabbix proxy.
+  On which machine does the script actually execute</p>
+</li>
+<li>
+<p>An external check item suddenly becomes unsupported and the error message reads
+  "Cannot execute external check command." What are the two most likely causes ?</p>
+</li>
+<li>
+<p>You have written a script that takes 45 seconds to complete. The item's update interval
+  is set to 1 minute. What risk does this create, and what would you do to address it?</p>
+</li>
+<li>
+<p>Your script writes a warning message to stderr but also returns a valid numeric value
+  on stdout. The item type is set to Numeric (unsigned). Will the item become unsupported?
+  What would happen if the item type were set to Text instead?</p>
+</li>
+</ul>
+<h2 id="ch04-zabbix-collecting-data-external-checks-useful-urls">Useful URLs</h2>
+<ul>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/external">https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/external</a></li>
+</ul></section><section class="print-page" id="ch04-zabbix-collecting-data-browser" heading-number="9.21"><nav class='md-tags'><span class='md-tag'>advanced</span><span class='md-tag'>expert</span></nav><h1 id="browser-item">Browser item</h1>
 <h2 id="ch04-zabbix-collecting-data-browser-foundational-concepts-and-synthetic-monitoring-architecture">Foundational Concepts and Synthetic Monitoring Architecture</h2>
 <p>The introduction of the Browser Item in Zabbix 7.0 marked a significant
 expansion of monitoring capabilities, allowing Zabbix to serve not only as a traditional
@@ -20834,7 +21150,310 @@ about. We usually pick on of 5 options.</p>
 <p>It is also a good idea to keep your trigger names short and descriptive. <code>CPU utilization &gt;90%</code> is a lot easier to understand than <code>CPU utilization on the server has been over 90% for the past three minutes</code>. People are usually in a rush, especially when there is a problem with IT infrastructure. The more reading you have to do in that situation, the less likely you are to see the issue straight away.</p>
 <p>The best tip regarding triggers? A good trigger shows you the problem. A great trigger instantly makes you think of where to go and what to do to solve it.</p>
 <h2 id="ch05-zabbix-triggers-triggers-questions">Questions</h2>
-<h2 id="ch05-zabbix-triggers-triggers-useful-urls">Useful URLs</h2></section><section class="print-page" id="ch05-zabbix-triggers-advanced-triggers" heading-number="10.3"><nav class='md-tags'><span class='md-tag'>expert</span></nav><h1 id="advanced-triggers">Advanced triggers</h1></section></section>
+<h2 id="ch05-zabbix-triggers-triggers-useful-urls">Useful URLs</h2></section><section class="print-page" id="ch05-zabbix-triggers-advanced-triggers" heading-number="10.3"><nav class='md-tags'><span class='md-tag'>expert</span></nav><h1 id="advanced-triggers">Advanced triggers</h1>
+<p>You have just learned in the previous chapter what is a trigger in Zabbix and
+how to create one. Now we will go deeper and learn, how to create triggers with
+some more complexity in mind.</p>
+<p>So trigger, in its most simple definition or use cases, is a threshold. It is
+as simple as some metric hitting a limit and our trigger catches it. Take as an
+example disk space - it grows constantly until reaches some predefined value -
+say 80% - and we simply evaluate it for each collected value.</p>
+<p>However, real world in many cases is more complex than ever growing disk space.
+Something might be growing and getting cleaned, something might be important
+only on certain time frames and something might need to join multiple different
+items into one evaluation. Thus we need to adapt our monitoring approaches and
+templates to this complexity of real world. Fortunately, Zabbix has it all
+covered with wide variety of trigger functions and features around trigger
+logic.</p>
+<p>But first things first. There are few fundamental concepts behind advanced
+triggers which must be understood in order to master them. Let's quickly run
+through them.</p>
+<h2 id="ch05-zabbix-triggers-advanced-triggers-recovery-expression">Recovery expression</h2>
+<p>As mentioned, in most trivial understanding, trigger is just a threshold. But
+even in such cases, you might want to apply some different threshold for the
+recovery of specific event - to reduce flapping. Flapping is a constant state
+switching between "PROBLEM" and "OK" in cases you balance on the edge of the
+defined threshold.</p>
+<p>For the sake of clarity, say that we have value constantly growing but not
+ever-growing in terms of deltas between two consecutive values. It might go down
+a little bit and then grow again. Something like this:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#ch05-zabbix-triggers-advanced-triggers-__codelineno-0-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#ch05-zabbix-triggers-advanced-triggers-__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#ch05-zabbix-triggers-advanced-triggers-__codelineno-0-3"></a><span class="c1"># time in seconds for current hour</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#ch05-zabbix-triggers-advanced-triggers-__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#ch05-zabbix-triggers-advanced-triggers-__codelineno-0-5"></a><span class="nv">seconds</span><span class="o">=</span><span class="k">$(($(</span>date<span class="w"> </span>+%s<span class="k">)</span><span class="o">%</span><span class="m">3600</span><span class="k">))</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#ch05-zabbix-triggers-advanced-triggers-__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#ch05-zabbix-triggers-advanced-triggers-__codelineno-0-7"></a><span class="o">((</span><span class="w"> </span>seconds<span class="w"> </span>&lt;<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">))</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nv">seconds</span><span class="o">=</span><span class="m">2</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#ch05-zabbix-triggers-advanced-triggers-__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#ch05-zabbix-triggers-advanced-triggers-__codelineno-0-9"></a><span class="nv">random</span><span class="o">=</span><span class="k">$((</span><span class="nv">RANDOM</span><span class="o">%</span><span class="k">$((</span><span class="nv">seconds</span><span class="o">/</span><span class="m">2</span><span class="k">))</span><span class="o">-</span><span class="k">$((</span><span class="nv">seconds</span><span class="o">/</span><span class="m">4</span><span class="k">))))</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#ch05-zabbix-triggers-advanced-triggers-__codelineno-0-10"></a>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#ch05-zabbix-triggers-advanced-triggers-__codelineno-0-11"></a><span class="nb">echo</span><span class="w"> </span><span class="k">$((</span><span class="nv">seconds</span><span class="o">+</span><span class="nv">random</span><span class="k">))</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#ch05-zabbix-triggers-advanced-triggers-__codelineno-0-12"></a>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#ch05-zabbix-triggers-advanced-triggers-__codelineno-0-13"></a><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
+</span></code></pre></div>
+<p>This script will produce us ever-growing value until the end of each hour, but
+it will not be growing in linear way.</p>
+<p>So in case you have a trigger set to some specific threshold you will face the
+following situation: trigger switches between "PROBLEM" and "OK" each time this
+specific threshold is hit.</p>
+<p>Now imagine an alert on each of those events! You would receive tens of
+notifications which would basically talk about one and the same problem. So in
+order to avoid it, you can keep the original trigger expression, just add
+recovery expression along. This recovery expression would have smaller value
+if compared to original problem expression and that is how you would avoid
+flapping in such situations. It would only fall into "OK" state when the
+problem is really fixed (beginning of each hour in our example):</p>
+<p><img alt="Advanced triggers - recovery expression" src="../ch05-zabbix-triggers/advanced-triggers/ch05.xx-advanced-triggers-recovery-expression.png" /></p>
+<p>Difference just with this small idea is huge - less monitoring noise, less
+alerts:</p>
+<p><img alt="Advanced triggers - recovery expression" src="../ch05-zabbix-triggers/advanced-triggers/ch05.xx-advanced-triggers-recovery-expression-vs-simple-threshold.png" /></p>
+<h2 id="ch05-zabbix-triggers-advanced-triggers-trigger-dependency">Trigger dependency</h2>
+<p>Trigger dependency is a simple yet powerful concept to keep your set of active
+events clean. Imagine same or similar problem but with different thresholds,
+for example 80% and 90% of used disk space. You would not like to have two
+triggers in "PROBLEM" state once you suddenly reached 95% of used disk space.
+So in this case, trigger with lower threshold can depend on the one with higher
+threshold and produce only single event, because in this particular case it is
+useless to state that you reached 80%.</p>
+<p>You can think of more use cases where trigger dependency might be useful. It can
+be applied not only to evaluate same metric with several different thresholds,
+but also to implement some other hierarchy-based type of checks. For example,
+you can choose to not display HTTP based checks if ICMP ping fails (check OSI
+model).</p>
+<p>For example, say we have set of HTTP based triggers, which would show something
+wasn't retrieved successfully - either there was no HTTP 200 in response headers
+or no response received at all during last 5 minutes. Why this second part you
+may ask, why not just evaluating returned status code? Well - timeout, expired
+certificate, DNS not resolving target - are all as bad as getting non 200 HTTP
+response status code, when you expect one. If you have a trigger which is
+simply evaluating such item's values, you would miss this "other" type of
+failures, because they don't mean any code - there is simply no code returned
+(check OSI model once again). Since no code is returned, our item will not
+store anything.</p>
+<p>Similar goes to ICMP ping trigger - it checks if ping failed or there was no
+data for last 3 minutes:</p>
+<p><img alt="Advanced triggers - no dependencies" src="../ch05-zabbix-triggers/advanced-triggers/ch05.xx-advanced-triggers-no-dependencies.png" /></p>
+<details class="info" open="open">
+<summary>Info</summary>
+<p>Disclaimer: these triggers are not perfect since <code>nodata()</code> might fire for
+short time immediately after the template is applied due to no data being
+there yet. However, it serves the purpose of demonstrating the importance
+of trigger dependency.</p>
+</details>
+<p>Let's apply it to "thezabixbook.com" host - and it has a typo (note double "b"
+is missing in the "zabbix"). What happens, is that data can't be retrieved, host
+can't be pinged:</p>
+<p><img alt="Advanced triggers - no dependencies result" src="../ch05-zabbix-triggers/advanced-triggers/ch05.xx-advanced-triggers-no-dependencies-result.png" /></p>
+<p>Result is obvious and expected - you have all the triggers displayed. However,
+what if there were much more triggers to be displayed, and even worse, each of
+them having some alerting on top? You would most likely wish to receive just
+one notification instead of many in this very case.</p>
+<p>So here comes the "trigger dependency". We will configure all HTTP based
+triggers to depend on ICMP ping one. It is done in trigger configuration, tab
+"Dependencies":</p>
+<p><img alt="Advanced triggers - dependency configuration" src="../ch05-zabbix-triggers/advanced-triggers/ch05.xx-advanced-triggers-dependency-config.png" /></p>
+<p>Keep in mind that you are not limited to just one dependency - you can add more.
+Once added, all the triggers for which you configure dependencies, will display
+them under their names:</p>
+<p><img alt="Advanced triggers - with dependencies" src="../ch05-zabbix-triggers/advanced-triggers/ch05.xx-advanced-triggers-dependencies.png" /></p>
+<p>And we can see that from now on, only one event is generated and displayed:</p>
+<p><img alt="Advanced triggers - no dependencies result" src="../ch05-zabbix-triggers/advanced-triggers/ch05.xx-advanced-triggers-dependencies-result.png" /></p>
+<details class="tip" open="open">
+<summary>Tip</summary>
+<p>You can see that our HTTP based triggers are configured for 5 minutes of
+failures or "silence" and ICMP ping one uses 3-minute windows. This is done
+on purpose - if same window was used, HTTP triggers could fire first, before
+the ICMP ping trigger appears - depending on which item values are
+collected first. So we use shorter evaluation interval on "more important"
+trigger in order to avoid even this short appearance of the ones that
+depend on it.</p>
+</details>
+<h2 id="ch05-zabbix-triggers-advanced-triggers-context-macros">Context macros</h2>
+<p>Context macros can help you set different thresholds for different checks
+of same nature. This is extremely useful in the world of LLD - you can have
+one macro for some "default" threshold and override it, if needed, by providing
+some context to it. For example, different file systems can have different
+thresholds.</p>
+<p>Here we have different thresholds for different discovered entities. Default is
+95 and we have two exceptions:</p>
+<p><img alt="Advanced triggers - no dependencies result" src="../ch05-zabbix-triggers/advanced-triggers/ch05.xx-advanced-triggers-context-macros.png" /></p>
+<p>So the trigger prototype will look like:</p>
+<p><img alt="Advanced triggers - no dependencies result" src="../ch05-zabbix-triggers/advanced-triggers/ch05.xx-advanced-triggers-context-macros-trigger-config.png" /></p>
+<p>And real events will then be like this (note the different thresholds for "a"
+and "h"):</p>
+<p><img alt="Advanced triggers - no dependencies result" src="../ch05-zabbix-triggers/advanced-triggers/ch05.xx-advanced-triggers-context-macros-trigger-result.png" /></p>
+<p>While constructing advanced triggers, you will find this concept being nicely
+incorporated into the big picture of trigger efficiency.</p>
+<h2 id="ch05-zabbix-triggers-advanced-triggers-macros-in-trigger-names">Macros in trigger names</h2>
+<p>In most simple case, trigger / event names are static text. However, it is very
+useful to understand, that certain macros are supported in trigger names as
+well (see "Useful URLs" section, "Macros supported by location"). To add even
+more, not only macros themselves, but also macro functions are supported. So,
+for example, you can extract certain parts of collected item value and put it
+directly into event name. This makes your monitoring setup dynamic, flexible
+and professional. Also, this works very well in combination with "Multiple
+PROBLEM event generation", so let's look into it in more details below.</p>
+<h2 id="ch05-zabbix-triggers-advanced-triggers-multiple-problem-event-generation">Multiple PROBLEM event generation</h2>
+<p>This one is kind of trivial - you can choose to generate either single PROBLEM
+event or many of them if the same trigger condition is being met multiple
+times. This is useful if the same item collects many different things. Then you
+might use "Multiple" to create event on each and every unique case caught by
+such item. For example, imagine catching all the lines from web server log,
+where HTTP 404 status code was returned. You can catch those as multiple
+events, and, as we just learned, display some more details (e.g. path in this
+case) directly in trigger / event name:</p>
+<p><img alt="Advanced triggers - multiple events - config" src="../ch05-zabbix-triggers/advanced-triggers/ch05.xx-advanced-triggers-multiple-regsub-config.png" /></p>
+<p>This item / trigger combination will catch and display all of the 404 lines,
+with exact path of URL that was "Not found":</p>
+<p><img alt="Advanced triggers - multiple events - result" src="../ch05-zabbix-triggers/advanced-triggers/ch05.xx-advanced-triggers-multiple-regsub-result.png" /></p>
+<p>In this case, real access log lines were the following:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#ch05-zabbix-triggers-advanced-triggers-__codelineno-1-1"></a>192.168.1.253 - - [04/Mar/2026:22:58:59 +0000] &quot;GET /test HTTP/1.1&quot; 404 491 &quot;-&quot; &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36&quot;
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#ch05-zabbix-triggers-advanced-triggers-__codelineno-1-2"></a>192.168.1.253 - - [04/Mar/2026:22:59:03 +0000] &quot;GET /hello/world HTTP/1.1&quot; 404 491 &quot;-&quot; &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36&quot;
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#ch05-zabbix-triggers-advanced-triggers-__codelineno-1-3"></a>192.168.1.253 - - [04/Mar/2026:22:59:05 +0000] &quot;GET /zabbix/book HTTP/1.1&quot; 404 491 &quot;-&quot; &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36&quot;
+</span></code></pre></div>
+<p>See the beauty here? Displaying only the part that matters for us. And nothing
+else but simple regexp and native Zabbix features does it!</p>
+<details class="warning" open="open">
+<summary>Warning</summary>
+<p>Be careful when using "Multiple" and <code>nodata()</code> function in the same
+trigger. This will lead into new problem event each time trigger is
+evaluated.</p>
+</details>
+<p>Following the previous warning, here is an example of such setup:</p>
+<p><img alt="Advanced triggers - multiple events - no data" src="../ch05-zabbix-triggers/advanced-triggers/ch05.xx-advanced-triggers-multiple-events-no-data.png" /></p>
+<h2 id="ch05-zabbix-triggers-advanced-triggers-know-your-data">Know your data</h2>
+<p>Last thing worth to be mentioned here is the most simple one, however, it might
+be the most important one!</p>
+<p>There is no silver bullet when we talk about complex data evaluations. Thus
+first you need to know very well, what are you collecting and what to expect
+from the data that you collect. With such understanding, you can apply correct
+triggers on top of your data with much more ease. So if uncertain about what
+exactly is it to be collected, it is good idea not to rush with the triggers at
+the same moment you create items. Simply leave data collection part working for
+a while and construct triggers once you gather some knowledge about potential
+correct trigger expressions.</p>
+<h2 id="ch05-zabbix-triggers-advanced-triggers-examples">Examples</h2>
+<p>Now that we have some prerequisites covered, let's proceed with several
+examples of the triggers that might be considered as "advanced".</p>
+<p>Again, these are just few examples and there are much more trigger functions
+to be used, we can't cover each and every of them. Also, specific function
+(or combination of them) to be used highly depends on the nature of data that is
+collected.</p>
+<h2 id="ch05-zabbix-triggers-advanced-triggers-time-component">Time component</h2>
+<p>One of the most simple examples that can make simple triggers more advanced is
+adding time component to it. Zabbix has multiple different functions for this.
+For example, you have trigger which is important only on day time, so you
+can easily do this:</p>
+<p><img alt="Advanced triggers - time component" src="../ch05-zabbix-triggers/advanced-triggers/ch05.xx-advanced-triggers-time-component.png" /></p>
+<p>In similar way, you can "split" the trigger into several different ones, for
+example have different thresholds or severity level for the same metric over
+the day and night or for working days and weekends. Adding time component is
+also useful to reduce noise caused by some known heavy activities, which would
+otherwise cause triggers to appear - say some nightly backup process.</p>
+<h2 id="ch05-zabbix-triggers-advanced-triggers-reducing-flapping-even-more">Reducing flapping even more</h2>
+<p>While explaining recovery expressions, we were still operating in simple
+thresholds. However, no one limits you to use only them.</p>
+<p>For example, say that under normal conditions our metric is typically "0", but
+might sometimes have short few minutes long spikes. Under real "incident", value
+rises and stays there for longer than "few minutes", however it might as well
+fall back to "0" for a minute and go back to higher values.</p>
+<p>Given all those conditions, simple "threshold" type of a trigger (based on
+evaluating just "last" value) is not enough, even if used with another
+threshold for recovery.</p>
+<p>That is where we can go with some more complexity in mind. We can evaluate not
+a single value, but several values in a row with functions <code>min()</code>, <code>max()</code>,
+<code>sum()</code> or <code>avg()</code>.</p>
+<p>For example, we will treat any big spike lasting for 3 minutes in a row as an
+incident, as well as treating incident is over only if it drops and stays low
+for 10 minutes in a row:</p>
+<p><img alt="Advanced triggers - more functions" src="../ch05-zabbix-triggers/advanced-triggers/ch05.xx-advanced-triggers-more-functions.png" /></p>
+<p>Macros in this trigger configuration are set accordingly:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#ch05-zabbix-triggers-advanced-triggers-__codelineno-2-1"></a>{$INCIDENT_START_WINDOW} =&gt; 3m
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#ch05-zabbix-triggers-advanced-triggers-__codelineno-2-2"></a>{$INCIDENT_START_THRESHOLD} =&gt; 100
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#ch05-zabbix-triggers-advanced-triggers-__codelineno-2-3"></a>{$INCIDENT_END_THRESHOLD} =&gt; 5
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#ch05-zabbix-triggers-advanced-triggers-__codelineno-2-4"></a>{$INCIDENT_END_WINDOW} =&gt; 10m
+</span></code></pre></div>
+<p>So now let's illustrate how it would look like during real incident:</p>
+<p><img alt="Advanced triggers - more functions - result" src="../ch05-zabbix-triggers/advanced-triggers/ch05.xx-advanced-triggers-more-functions-result.png" /></p>
+<p>See that it works exactly as we wanted:</p>
+<ul>
+<li>we have only one event produced here</li>
+<li>short drops during the "incident" don't resolve the issue</li>
+<li>"incident" is only resolved if there is 10 minutes of "silence"</li>
+<li>short spikes, even above threshold, don't cause "incident"</li>
+</ul>
+<h2 id="ch05-zabbix-triggers-advanced-triggers-is-it-stuck">Is it stuck?</h2>
+<p>In this example we have an item which stays at "0" most of the time and once
+in a while shows some big number, which gradually goes down back to "0". This
+collected number being greater than 0 is not a problem on its own, problem is
+when it goes down and never reaches zero - it kind of gets stuck. Imagine some
+queue to be processed and such item showing records in this queue.</p>
+<p>So what we want to catch here is this "stuck" situation. Fortunately, there
+is a trigger function exactly for this purpose - <code>changecount()</code>. This function
+evaluates number of changes during defined period. Given that constant "0" would
+not mean anything wrong, we must combine it with simple threshold and that is
+how we can catch the defined issue in fast and reliable way.</p>
+<p><img alt="Advanced triggers - detecting stuck" src="../ch05-zabbix-triggers/advanced-triggers/ch05.xx-advanced-triggers-stuck-config.png" /></p>
+<p>And now we can see it in action - first case is regular processing, second one
+is stuck - exactly what we intended to catch! After "fixing" it - trigger goes
+away:</p>
+<p><img alt="Advanced triggers - detecting stuck - result" src="../ch05-zabbix-triggers/advanced-triggers/ch05.xx-advanced-triggers-stuck-result.png" /></p>
+<h2 id="ch05-zabbix-triggers-advanced-triggers-is-it-growing-fast">Is it growing fast?</h2>
+<p>Back to the disk space. We already know how to evaluate disk space in smarter
+way than simple threshold (flapping reduction with different recovery
+expression). But we can implement even smarter ideas. For instance, what if we
+would like to know the fact, that not only used disk space reached some
+threshold, but it did it fast? This could be useful, because such trigger
+would most likely indicate more urgent issue than used disk space growing at
+regular pace.</p>
+<p>First you need delta - be it separate item or trigger level evaluation.
+Separate item brings more clarity - you can put it into graphs and get a visual
+picture of what has happened.</p>
+<p>Then comes the trigger logic itself. Here in this example you see a threshold
+of 60% and growing tempo (sum of delta values) per 10 minutes is set to 1%.
+Recovery expression expects used disk space value to either drop below 55% or
+growing tempo to be less than 1% during 30-minute window.</p>
+<p>Full trigger configuration is this:</p>
+<p><img alt="Advanced triggers - growing fast" src="../ch05-zabbix-triggers/advanced-triggers/ch05.xx-advanced-triggers-growing-fast-config.png" /></p>
+<p>Macros in this trigger configuration are set accordingly:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#ch05-zabbix-triggers-advanced-triggers-__codelineno-3-1"></a>{$DISK_FULL_PCT_DELTA_WARN} =&gt; 60
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#ch05-zabbix-triggers-advanced-triggers-__codelineno-3-2"></a>{$DISK_FULL_PCT_DELTA_THRESHOLD} =&gt; 1
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#ch05-zabbix-triggers-advanced-triggers-__codelineno-3-3"></a>{$DISK_FULL_PCT_DELTA_WINDOW} =&gt; 10m
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#ch05-zabbix-triggers-advanced-triggers-__codelineno-3-4"></a>{$DISK_FULL_PCT_DELTA_THRESHOLD} =&gt; 1
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#ch05-zabbix-triggers-advanced-triggers-__codelineno-3-5"></a>{$DISK_FULL_PCT_DELTA_RECOVERY_WINDOW} =&gt; 30m
+</span></code></pre></div>
+<p>From trigger expression it is clear, that we use context macros here. So these
+thresholds can be adjusted per each filesystem.</p>
+<p>And we can see how nicely it works. If disk used space grows slowly - trigger
+is silent. If disk grows fast, but threshold not yet reached - trigger is
+silent. And only once it grows fast and 60% is reached - we know about it:</p>
+<p><img alt="Advanced triggers - growing fast - result" src="../ch05-zabbix-triggers/advanced-triggers/ch05.xx-advanced-triggers-growing-fast-result.png" /></p>
+<p>Note that delta value here is displayed on right Y axis and overall used disk
+space is on the left.</p>
+<p>We discussed disk space here, but this approach can obviously be applied
+anywhere else. It can also be applied in the opposite manner - if something
+drops too fast.</p>
+<h2 id="ch05-zabbix-triggers-advanced-triggers-conclusion">Conclusion</h2>
+<p>You can't construct perfect triggers without perfectly knowing the data that you
+collect in the first place. By understanding what you collect, you have a wide
+variety of trigger functions provided by Zabbix to evaluate this data. Don't
+think of triggers as being simple thresholds, unless it is really something that
+you truly need. By exploring possible trigger functions and being creative, you
+will be able to create advanced trigger logic, which will help to reduce noise
+on monitoring events and improve monitoring quality.</p>
+<h2 id="ch05-zabbix-triggers-advanced-triggers-questions">Questions</h2>
+<ul>
+<li>Is there a way to specify different condition to close the problem, than the
+one under which it started?</li>
+<li>Are triggers capable to evaluate only the latest collected item value?</li>
+<li>Can we apply more that one trigger function in same trigger?</li>
+<li>Can one trigger evaluate multiple different items?</li>
+</ul>
+<h2 id="ch05-zabbix-triggers-advanced-triggers-useful-urls">Useful URLs</h2>
+<ul>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/config/triggers">https://www.zabbix.com/documentation/current/en/manual/config/triggers</a></li>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/appendix/macros/supported_by_location">https://www.zabbix.com/documentation/current/en/manual/appendix/macros/supported_by_location</a></li>
+</ul></section></section>
                     <section class='print-page md-section' id='section-11' heading-number='11'>
                         <h1>Chapter 06 : Templates<a class='headerlink' href='#section-11' title='Permanent link'></a>
                         </h1>
@@ -25004,7 +25623,7 @@ We have to keep this in mind when setting up the PSK identity and I usually use 
 <li><em>TLSPSKIdentity</em>: The plain text non-secret identity used for PSK encryption.</li>
 <li><em>TLSPSKFile</em>: The path to the file where the secret PSK is stored.</li>
 </ul>
-<p>As you might have noticed, I have set both <code>TLSConnect</code> and <code>TLSAccept</code>. This is something recommended to always do to safeguard against configuration mistakes. Let's say you only use the Active Zabbix agent connection, but left <code>TLSConnect</code> set to <code>unencrypted</code>. If your Zabbix agent allows passive agent connections (due to configuration error, history or on purpose) an unencrypted connection will still be allowed. Recommendation, set both alway unless you have a good reason not to.</p>
+<p>As you might have noticed, I have set both <code>TLSConnect</code> and <code>TLSAccept</code>. This is something recommended to always do to safeguard against configuration mistakes. Let's say you only use the Active Zabbix agent connection, but left <code>TLSConnect</code> set to <code>unencrypted</code>. If your Zabbix agent allows passive agent connections (due to configuration error, history or on purpose) an unencrypted connection will still be allowed. Recommendation, set both always unless you have a good reason not to.</p>
 <p>We're not done with the configuration on the Zabbix agent side however, we still need to create the PSK. There is a simple command to execute and create the PSK.</p>
 <div class="admonition info">
 <p class="admonition-title">Create agent.psk file with new pre-shared key</p>
@@ -26894,7 +27513,7 @@ files the database consists of. A physical backup can be either consistent or
 non-consistent, also called "hot". A consistent backup can be restored as is, but
 a non-consistent backup has to be recovered using archived log files. Taking a 
 consistent backup usually has performance implications, as all writes to the 
-datafiles must be postponed for the duration of the backup. 
+data files must be postponed for the duration of the backup. 
 A logical backup can only restore data to the point in time where the dump has
 been taken, while a physical backup can be recovered to any point in time using 
 the archived logs. For this reason, a physical backup is a more secure and and
@@ -26921,7 +27540,7 @@ and file backups in this topic within the book.</p>
 Dumping the database content to a flat file is the easiest and simplest method.
 Physical backups requires more effort, usually installing a backup agent and
 configuring the backup software as well as configuring the database to run with 
-archiving of the database logs, and continous deletion of the archived logs.
+archiving of the database logs, and continuous deletion of the archived logs.
 With regular backups of the database and the archived logs, a restore is possible 
 to the latest committed transaction in most databases.</p>
 <p>For dumping the contents of the database, various tools exists:</p>
@@ -27169,7 +27788,7 @@ security incidents can render both the database and its backups unusable.</p>
 of the database server and can be accessed during a full system failure.</p>
 <h3 id="ch14-zabbix-maintenance-taking-backups-hot-standby-database">Hot standby database</h3>
 <p>While it is important to take a backup/dump of the database at regular intervals, 
-it can be a timeconsuming task restoring this backup. For this reason, it can make
+it can be a time consuming task restoring this backup. For this reason, it can make
 sense to maintain a standby database, which is constantly synced with the changes
 that occurs in the active database, thus having a restored and recovered copy of
 the database running and ready to take over, should a disaster occur on the active 
