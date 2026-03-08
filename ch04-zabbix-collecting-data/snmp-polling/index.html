@@ -1941,8 +1941,8 @@ different administrative domains to have the same value for
 <code>snmpEngineID</code>. Federation of administrative domains may necessitate
 assignment of new values.</p>
 </div>
-<p>Zabbix supports two distinct approaches for SNMP monitoring: synchronous (legacy) 
-and asynchronous (recommended). Each method has unique characteristics, performance 
+<p>Zabbix supports two distinct approaches for SNMP monitoring: <em>synchronous</em> (legacy) 
+and <em>asynchronous</em> (recommended). Each method has unique characteristics, performance 
 implications, and use cases.</p>
 <hr/>
 <h4 id="synchronous-snmp-monitoring">Synchronous SNMP Monitoring</h4>
@@ -1970,8 +1970,8 @@ but can become inefficient in large environments.</p>
 </li>
 </ul>
 <p><strong>Characteristics</strong>:
-- Sequential, blocking, and predictable timing.
-- <strong>Use Case</strong>: Small environments or scenarios requiring precise timing.</p>
+    - Sequential, blocking, and predictable timing.
+    - <strong>Use Case</strong>: Small environments or scenarios requiring precise timing.</p>
 <hr/>
 <h4 id="asynchronous-snmp-monitoring">Asynchronous SNMP Monitoring</h4>
 <p><em>Asynchronous</em> monitoring leverages native SNMP bulk requests (<code>GetBulkRequest-PDUs</code>)
@@ -1987,28 +1987,30 @@ uses true SNMP bulk requests to retrieve multiple OIDs in parallel without waiti
 for each response.</p>
 </div>
 <ul>
-<li><strong>OID Handling</strong>:</li>
-<li><strong><code>walk[OID1, OID2, ...]</code></strong>: Retrieves a subtree of values 
-   (e.g., <code>walk[1.3.6.1.2.1.2.2.1.2,1.3.6.1.2.1.2.2.1.3]</code>).</li>
 <li>
-<p><strong><code>get[OID]</code></strong>: Retrieves a single value asynchronously 
-    (e.g., <code>get[1.3.6.1.2.1.31.1.1.1.6.3]</code>).</p>
+<p><strong>OID Handling</strong>:</p>
+<ul>
+<li><strong><code>walk[OID1, OID2, ...]</code></strong>: Retrieves a subtree of values 
+(e.g., <code>walk[1.3.6.1.2.1.2.2.1.2,1.3.6.1.2.1.2.2.1.3]</code>).</li>
+<li><strong><code>get[OID]</code></strong>: Retrieves a single value asynchronously 
+  (e.g., <code>get[1.3.6.1.2.1.31.1.1.1.6.3]</code>).</li>
+</ul>
 </li>
 <li>
 <p><strong>Configuration</strong>*:</p>
-</li>
+<ul>
 <li>Timeout settings are configurable per item. A low timeout is recommended to
-    avoid delays. As Zabbix retries up to 5 times, a 3-second timeout could lead
-    to a 15-second wait if a device is unreachable.</li>
+  avoid delays. As Zabbix retries up to 5 times, a 3-second timeout could lead
+  to a 15-second wait if a device is unreachable.</li>
 <li>Concurrency is managed by the <code>MaxConcurrentChecksPerPoller</code> parameter (max 
-    1000 checks) and <code>StartSNMPPollers</code>.</li>
+  1000 checks) and <code>StartSNMPPollers</code>.</li>
 <li>DNS resolution is handled asynchronously.</li>
 </ul>
-<p><strong>Characteristics</strong>:</p>
-<ul>
-<li>Parallel, non-blocking, and highly efficient.</li>
-<li><strong>Use Case</strong>: Large-scale environments with many SNMP hosts.</li>
+</li>
 </ul>
+<p><strong>Characteristics</strong>:
+    - Parallel, non-blocking, and highly efficient.
+    - <strong>Use Case</strong>: Large-scale environments with many SNMP hosts.</p>
 <hr/>
 <h4 id="comparison-of-snmp-monitoring-methods">Comparison of SNMP Monitoring Methods</h4>
 <table>
