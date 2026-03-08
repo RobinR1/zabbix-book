@@ -2168,17 +2168,17 @@ from the host.</p>
 <h4 id="how-does-change-per-second-work">How does change per second work ?</h4>
 <p>Given a counter value sampled at two different times:</p>
 <ul>
-<li>At time ( t_1 ), the counter value is ( C_1 ).</li>
-<li>At time ( t_2 ), the counter value is ( C_2 ).</li>
+<li>At time ( $t_1$ ), the counter value is ( $C_1$ ).</li>
+<li>At time ( $t_2$ ), the counter value is ( $C_2$ ).</li>
 </ul>
 <p>The change per second (rate) is calculated as:</p>
 <p>$$
 \text{Rate} = \frac{C_2 - C_1}{t_2 - t_1}
 $$</p>
-<p>where ( t_2 - t_1 ) is the time elapsed in seconds.</p>
+<p>where ( $t_2$ - $t_1$ ) is the time elapsed in seconds.</p>
 <hr/>
-<p><strong>If the counter rolls over</strong> (i.e., ( C_2 &lt; C_1 )), and the max counter value
-is ( M ), then adjust as:</p>
+<p><strong>If the counter rolls over</strong> (i.e., ( $C_2$ &lt; $C_1$ )), and the max counter value
+is ( $M$ ), then adjust as:</p>
 <p>$$
 \text{Rate} = \frac{(M - C_1) + C_2 + 1}{t_2 - t_1}
 $$</p>
