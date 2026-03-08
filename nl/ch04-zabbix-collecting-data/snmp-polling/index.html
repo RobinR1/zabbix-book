@@ -2168,20 +2168,20 @@ from the host.</p>
 <h4 id="how-does-change-per-second-work">How does change per second work ?</h4>
 <p>Given a counter value sampled at two different times:</p>
 <ul>
-<li>At time $t_1$, the counter value is $C_1$.</li>
-<li>At time $t_2$ the counter value is $C_2$.</li>
+<li>At time <span class="arithmatex">\(t_1\)</span>, the counter value is <span class="arithmatex">\(C_1\)</span>.</li>
+<li>At time <span class="arithmatex">\(t_2\)</span> the counter value is <span class="arithmatex">\(C_2\)</span>.</li>
 </ul>
 <p>The change per second (rate) is calculated as:</p>
-<p>$$
+<div class="arithmatex">\[
 \text{Rate} = \frac{C_2 - C_1}{t_2 - t_1}
-$$</p>
-<p>where $t_2 - t_1$ is the time elapsed in seconds.</p>
+\]</div>
+<p>where <span class="arithmatex">\(t_2 - t_1\)</span> is the time elapsed in seconds.</p>
 <hr/>
-<p><strong>If the counter rolls over</strong> (i.e., $C_2 &lt; C_1$, and the max counter value
-is $M$, then adjust as:</p>
-<p>$$
+<p><strong>If the counter rolls over</strong> (i.e., <span class="arithmatex">\(C_2 &lt; C_1\)</span>, and the max counter value
+is <span class="arithmatex">\(M\)</span>, then adjust as:</p>
+<div class="arithmatex">\[
 \text{Rate} = \frac{(M - C_1) + C_2 + 1}{t_2 - t_1}
-$$</p>
+\]</div>
 <hr/>
 <h3 id="polling-a-list-of-item">Polling a list of item</h3>
 <p>Let's do the same for our snmp-walk item. This time we will look for the

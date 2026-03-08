@@ -11460,7 +11460,7 @@ an even workload across the proxy infrastructure.</p>
 </table>
 <h3 id="ch03-zabbix-proxies-proxy-groups-load-balancing-time-window">Load Balancing Time Window</h3>
 <ul>
-<li>If a proxy group is flagged as unbalanced, the Proxy Group Manager will <strong>wait until the grace period of $10 \times$ the failover delay has expired</strong>.</li>
+<li>If a proxy group is flagged as unbalanced, the Proxy Group Manager will <strong>wait until the grace period of <span class="arithmatex">\(10 \times\)</span> the failover delay has expired</strong>.</li>
 <li>This grace period prevents redistribution based on temporary spikes. If the imbalance persists, host redistribution is performed.</li>
 </ul>
 <h3 id="ch03-zabbix-proxies-proxy-groups-agent-configuration-rules">Agent Configuration Rules</h3>
@@ -11510,7 +11510,7 @@ an even workload across the proxy infrastructure.</p>
 <tr>
 <td style="text-align: left;"><strong>Minimum number of proxies</strong></td>
 <td style="text-align: left;">Minimum required online proxies for the group to be considered <em>Online</em>.</td>
-<td style="text-align: left;">Use $N-1$ if you want one proxy failure tolerance.</td>
+<td style="text-align: left;">Use <span class="arithmatex">\(N-1\)</span> if you want one proxy failure tolerance.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Proxies</strong></td>
@@ -11903,12 +11903,12 @@ This can be done by looking at the URL when clicking on them.</p>
 <tr>
 <td style="text-align: left;"><strong>Hosts remain on a failed proxy</strong></td>
 <td style="text-align: left;">Proxy is still within the <strong>Failover period</strong> OR proxy group is <em>Offline</em>.</td>
-<td style="text-align: left;"><strong>Reduce <code>Failover period</code></strong> in the group configuration. Ensure <code>Minimum number of proxies</code> is set correctly (e.g., $N-1$).</td>
+<td style="text-align: left;"><strong>Reduce <code>Failover period</code></strong> in the group configuration. Ensure <code>Minimum number of proxies</code> is set correctly (e.g., <span class="arithmatex">\(N-1\)</span>).</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Load balancing does not occur</strong></td>
-<td style="text-align: left;">Host difference is below the imbalance threshold (less than 10 hosts difference <strong>or</strong> less than $2\times$ average).</td>
-<td style="text-align: left;">This is <strong>expected behavior</strong>. The imbalance must exceed the $10$ host and $2\times$ factor rules.</td>
+<td style="text-align: left;">Host difference is below the imbalance threshold (less than 10 hosts difference <strong>or</strong> less than <span class="arithmatex">\(2\times\)</span> average).</td>
+<td style="text-align: left;">This is <strong>expected behavior</strong>. The imbalance must exceed the <span class="arithmatex">\(10\)</span> host and <span class="arithmatex">\(2\times\)</span> factor rules.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Proxy not receiving new configuration</strong></td>
@@ -14355,20 +14355,20 @@ from the host.</p>
 <h4 id="ch04-zabbix-collecting-data-snmp-polling-how-does-change-per-second-work">How does change per second work ?</h4>
 <p>Given a counter value sampled at two different times:</p>
 <ul>
-<li>At time $t_1$, the counter value is $C_1$.</li>
-<li>At time $t_2$ the counter value is $C_2$.</li>
+<li>At time <span class="arithmatex">\(t_1\)</span>, the counter value is <span class="arithmatex">\(C_1\)</span>.</li>
+<li>At time <span class="arithmatex">\(t_2\)</span> the counter value is <span class="arithmatex">\(C_2\)</span>.</li>
 </ul>
 <p>The change per second (rate) is calculated as:</p>
-<p>$$
+<div class="arithmatex">\[
 \text{Rate} = \frac{C_2 - C_1}{t_2 - t_1}
-$$</p>
-<p>where $t_2 - t_1$ is the time elapsed in seconds.</p>
+\]</div>
+<p>where <span class="arithmatex">\(t_2 - t_1\)</span> is the time elapsed in seconds.</p>
 <hr />
-<p><strong>If the counter rolls over</strong> (i.e., $C_2 &lt; C_1$, and the max counter value
-is $M$, then adjust as:</p>
-<p>$$
+<p><strong>If the counter rolls over</strong> (i.e., <span class="arithmatex">\(C_2 &lt; C_1\)</span>, and the max counter value
+is <span class="arithmatex">\(M\)</span>, then adjust as:</p>
+<div class="arithmatex">\[
 \text{Rate} = \frac{(M - C_1) + C_2 + 1}{t_2 - t_1}
-$$</p>
+\]</div>
 <hr />
 <h3 id="ch04-zabbix-collecting-data-snmp-polling-polling-a-list-of-item">Polling a list of item</h3>
 <p>Let's do the same for our snmp-walk item. This time we will look for the
@@ -20705,7 +20705,7 @@ need it for our calculated item.</p>
 <hr />
 <p><strong>Calculated Item: P99 Network Latency (15 minutes)</strong></p>
 <p>For effective trend analysis and anomaly detection, the system aggregates the
-ICMP response times to derive the $99^{th}$ percentile using the last 15 minutes
+ICMP response times to derive the <span class="arithmatex">\(99^{th}\)</span> percentile using the last 15 minutes
 of collected data.</p>
 <table>
 <thead>
@@ -20993,7 +20993,7 @@ beyond simply collecting raw data and focused on the true value of a robust syst
 <p>Key Takeaways
 - <strong>Percentile Power:</strong> We established that relying on average metrics can
   dangerously obscure intermittent performance issues like microbursts and congestion.
-  Techniques like calculating the $99^{th}$ percentile ($P99$) with a Calculated
+  Techniques like calculating the <span class="arithmatex">\(99^{th}\)</span> percentile (<span class="arithmatex">\(P99\)</span>) with a Calculated
   Item provide a far more accurate representation of actual user experience and
   true network quality.
 - <strong>Calculated Items:</strong> These tools allow us to apply complex mathematical logic,

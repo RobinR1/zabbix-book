@@ -1351,7 +1351,7 @@ an even workload across the proxy infrastructure.</p>
 </table>
 <h3 id="load-balancing-time-window">Load Balancing Time Window</h3>
 <ul>
-<li>If a proxy group is flagged as unbalanced, the Proxy Group Manager will <strong>wait until the grace period of $10 \times$ the failover delay has expired</strong>.</li>
+<li>If a proxy group is flagged as unbalanced, the Proxy Group Manager will <strong>wait until the grace period of <span class="arithmatex">\(10 \times\)</span> the failover delay has expired</strong>.</li>
 <li>This grace period prevents redistribution based on temporary spikes. If the imbalance persists, host redistribution is performed.</li>
 </ul>
 <h3 id="agent-configuration-rules">Agent Configuration Rules</h3>
@@ -1401,7 +1401,7 @@ an even workload across the proxy infrastructure.</p>
 <tr>
 <td style="text-align: left;"><strong>Minimum number of proxies</strong></td>
 <td style="text-align: left;">Minimum required online proxies for the group to be considered <em>Online</em>.</td>
-<td style="text-align: left;">Use $N-1$ if you want one proxy failure tolerance.</td>
+<td style="text-align: left;">Use <span class="arithmatex">\(N-1\)</span> if you want one proxy failure tolerance.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Proxies</strong></td>
@@ -1794,12 +1794,12 @@ This can be done by looking at the URL when clicking on them.</p>
 <tr>
 <td style="text-align: left;"><strong>Hosts remain on a failed proxy</strong></td>
 <td style="text-align: left;">Proxy is still within the <strong>Failover period</strong> OR proxy group is <em>Offline</em>.</td>
-<td style="text-align: left;"><strong>Reduce <code>Failover period</code></strong> in the group configuration. Ensure <code>Minimum number of proxies</code> is set correctly (e.g., $N-1$).</td>
+<td style="text-align: left;"><strong>Reduce <code>Failover period</code></strong> in the group configuration. Ensure <code>Minimum number of proxies</code> is set correctly (e.g., <span class="arithmatex">\(N-1\)</span>).</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Load balancing does not occur</strong></td>
-<td style="text-align: left;">Host difference is below the imbalance threshold (less than 10 hosts difference <strong>or</strong> less than $2\times$ average).</td>
-<td style="text-align: left;">This is <strong>expected behavior</strong>. The imbalance must exceed the $10$ host and $2\times$ factor rules.</td>
+<td style="text-align: left;">Host difference is below the imbalance threshold (less than 10 hosts difference <strong>or</strong> less than <span class="arithmatex">\(2\times\)</span> average).</td>
+<td style="text-align: left;">This is <strong>expected behavior</strong>. The imbalance must exceed the <span class="arithmatex">\(10\)</span> host and <span class="arithmatex">\(2\times\)</span> factor rules.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Proxy not receiving new configuration</strong></td>
