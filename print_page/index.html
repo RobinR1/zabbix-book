@@ -14160,9 +14160,10 @@ but can become inefficient in large environments.</p>
   For more details about combined processing, refer to the <a href="https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/snmp#internal-workings-of-combined-processing">Zabbix documentation: Internal workings of combined processing.</a></p>
 </li>
 </ul>
-<p><strong>Characteristics</strong>:
-    - Sequential, blocking, and predictable timing.
-    - <strong>Use Case</strong>: Small environments or scenarios requiring precise timing.</p>
+<p><strong>Characteristics</strong>:</p>
+<div class="language-text highlight"><pre><span></span><code>- Sequential, blocking, and predictable timing.
+- **Use Case**: Small environments or scenarios requiring precise timing.
+</code></pre></div>
 <hr />
 <h4 id="ch04-zabbix-collecting-data-snmp-polling-asynchronous-snmp-monitoring">Asynchronous SNMP Monitoring</h4>
 <p><em>Asynchronous</em> monitoring leverages native SNMP bulk requests (<code>GetBulkRequest-PDUs</code>)
@@ -14188,7 +14189,7 @@ for each response.</p>
 </ul>
 </li>
 <li>
-<p><strong>Configuration</strong>*:</p>
+<p><strong>Configuration</strong>:</p>
 <ul>
 <li>Timeout settings are configurable per item. A low timeout is recommended to
   avoid delays. As Zabbix retries up to 5 times, a 3-second timeout could lead
@@ -14199,9 +14200,10 @@ for each response.</p>
 </ul>
 </li>
 </ul>
-<p><strong>Characteristics</strong>:
-    - Parallel, non-blocking, and highly efficient.
-    - <strong>Use Case</strong>: Large-scale environments with many SNMP hosts.</p>
+<p><strong>Characteristics</strong>:</p>
+<div class="language-text highlight"><pre><span></span><code>- Parallel, non-blocking, and highly efficient.
+- **Use Case**: Large-scale environments with many SNMP hosts.
+</code></pre></div>
 <hr />
 <h4 id="ch04-zabbix-collecting-data-snmp-polling-comparison-of-snmp-monitoring-methods">Comparison of SNMP Monitoring Methods</h4>
 <table>
