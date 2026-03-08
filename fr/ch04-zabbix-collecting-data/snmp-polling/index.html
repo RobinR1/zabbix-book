@@ -1911,17 +1911,19 @@ work out of the box with what is already configured in our <code>snmpd.conf</cod
 <details class="tip" open="open">
 <summary>Troubleshooting SNMPv3 Authentication Issues</summary>
 <p>If you change the config file and adapt the passwords and for some reason
-they do not get accepted, do not worry:
-  - Check if your passwords contain special characters that might need to be
-    escaped in the command line. For bash, these include: <code>$</code>, <code>&amp;</code>, <code>*</code>, <code>(</code>,
-    <code>)</code>, <code>!</code>, etc. If your password contains any of these characters, you need
-    to escape them with a backslash (<code>\</code>) or enclose the entire password in
-    single quotes (<code>'</code>) to prevent the shell from interpreting them.
-  - If there are no special characters used, just try restarting the service.
-  - If things still don't work, you can try removing the persistent key file:
-    <div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a href="#__codelineno-21-1" id="__codelineno-21-1" name="__codelineno-21-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/var/lib/net-snmp/snmpd.conf
+they do not get accepted, do not worry:</p>
+<ul>
+<li>Check if your passwords contain special characters that might need to be
+  escaped in the command line. For bash, these include: <code>$</code>, <code>&amp;</code>, <code>*</code>, <code>(</code>,
+  <code>)</code>, <code>!</code>, etc. If your password contains any of these characters, you need
+  to escape them with a backslash (<code>\</code>) or enclose the entire password in
+  single quotes (<code>'</code>) to prevent the shell from interpreting them.</li>
+<li>If there are no special characters used, just try restarting the service.</li>
+<li>If things still don't work, you can try removing the persistent key file:
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a href="#__codelineno-21-1" id="__codelineno-21-1" name="__codelineno-21-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/var/lib/net-snmp/snmpd.conf
 </span></code></pre></div>
-    It's quite brutal but in our test environment it should help you out.</p>
+  It's quite brutal but in our test environment it should help you out.</li>
+</ul>
 </details>
 <hr/>
 <h2 id="snmp-monitoring-in-zabbix">SNMP Monitoring in Zabbix</h2>
@@ -1934,12 +1936,13 @@ SNMP information from a device.</p>
 <p>The RFC3411 Specs specify that an EngineID needs to be unique this is very
 important for monitoring. You will see errors like Bad parse of ASN.1 if you
 have a conflict.</p>
-<p>Within an administrative domain, an <code>snmpEngineID is the unique and
+<p>Within an administrative domain, an <code>snmpEngineID</code> is the unique and
 unambiguous identifier of an SNMP engine.  Since there is a one-to-
 one association between SNMP engines and SNMP entities, it also
 uniquely and unambiguously identifies the SNMP entity within that
 administrative domain.  Note that it is possible for SNMP entities in
-different administrative domains to have the same value for</code>snmpEngineID`. Federation of administrative domains may necessitate
+different administrative domains to have the same value for
+<code>snmpEngineID</code>. Federation of administrative domains may necessitate
 assignment of new values.</p>
 </div>
 <p>Zabbix supports two distinct approaches for SNMP monitoring: synchronous (legacy) 
