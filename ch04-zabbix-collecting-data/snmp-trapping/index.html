@@ -490,7 +490,16 @@ faster event detection, and efficient network monitoring.
       
     </span>
 </a>
-<nav aria-label="SNMP Traps flow in Zabbix" class="md-nav">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#-config-flowchart-subgraphtitlemargin-bottom-30-flowchart-tb-traps-section-top-subgraph-trapssnmp-traps-active-monitoring-direction-lr-dev2network-device-trapdsnmptrapd-daemon-handlersnmptt-or-perl-script-zbxtzabbix-server-or-proxy-dbtzabbix-database-ui2zabbix-frontend-user2user-dev2-snmp-trap-udp-162-trapd-trapd-handler-script-handler-handler-trap-log-zbxt-zbxt-dbt-dbt-ui2-ui2-displays-event-user2-end-invisible-connector-to-force-vertical-stacking-traps-polling-polling-section-bottom-subgraph-pollingsnmp-polling-passive-monitoring-direction-lr-zbxzabbix-server-or-proxy-pollersnmp-poller-process-devnetwork-device-zbx-poller-poller-snmp-get-udp-161-dev-dev-snmp-response-poller-poller-dbpzabbix-database-dbp-ui1zabbix-frontend-ui1-displays-polled-data-user1user-end-styling-style-polling-fillf0fff0stroke3a3stroke-width1px-style-traps-fillf0f8ffstroke339stroke-width1px-style-zbx-fille0ffe0stroke3a3-style-dev-fillffefd5strokec96-style-dev2-fillffefd5strokec96-style-trapd-fillf9f9f9stroke777-style-handler-fillf0f8ffstroke339-style-zbxt-fille0ffe0stroke3a3-style-dbp-fillfffbe0stroke996-style-dbt-fillfffbe0stroke996-style-ui1-fille8e8ffstroke669-style-ui2-fille8e8ffstroke669-style-user1-fillfff0f0strokec33-style-user2-fillfff0f0strokec33">
+<span class="md-ellipsis">
+      
+        --- config: flowchart: subGraphTitleMargin: bottom: 30 --- flowchart TB %% --- Traps section (top) --- subgraph TRAPS[SNMP Traps Active Monitoring] direction LR DEV2[Network Device] TRAPD[snmptrapd Daemon] HANDLER[SNMPTT or perl script] ZBXT[Zabbix Server or Proxy] DBT[Zabbix Database] UI2[Zabbix Frontend] USER2[User] DEV2 --&gt;|SNMP Trap UDP 162| TRAPD TRAPD --&gt;|Handler Script| HANDLER HANDLER --&gt;|Trap Log| ZBXT ZBXT --&gt; DBT DBT --&gt; UI2 UI2 --&gt;|Displays event| USER2 end %% --- Invisible connector to force vertical stacking --- TRAPS ~~~ POLLING %% --- Polling section (bottom) --- subgraph POLLING[SNMP Polling Passive Monitoring] direction LR ZBX[Zabbix Server or Proxy] POLLER[SNMP Poller Process] DEV[Network Device] ZBX --&gt; POLLER POLLER --&gt;|SNMP GET UDP 161| DEV DEV --&gt;|SNMP Response| POLLER POLLER --&gt; DBP[Zabbix Database] DBP --&gt; UI1[Zabbix Frontend] UI1 --&gt;|Displays polled data| USER1[User] end %% --- Styling --- style POLLING fill:#f0fff0,stroke:#3a3,stroke-width:1px style TRAPS fill:#f0f8ff,stroke:#339,stroke-width:1px style ZBX fill:#e0ffe0,stroke:#3a3 style DEV fill:#ffefd5,stroke:#c96 style DEV2 fill:#ffefd5,stroke:#c96 style TRAPD fill:#f9f9f9,stroke:#777 style HANDLER fill:#f0f8ff,stroke:#339 style ZBXT fill:#e0ffe0,stroke:#3a3 style DBP fill:#fffbe0,stroke:#996 style DBT fill:#fffbe0,stroke:#996 style UI1 fill:#e8e8ff,stroke:#669 style UI2 fill:#e8e8ff,stroke:#669 style USER1 fill:#fff0f0,stroke:#c33 style USER2 fill:#fff0f0,stroke:#c33
+      
+    </span>
+</a>
+<nav aria-label="--- config: flowchart: subGraphTitleMargin: bottom: 30 --- flowchart TB %% --- Traps section (top) --- subgraph TRAPS[SNMP Traps Active Monitoring] direction LR DEV2[Network Device] TRAPD[snmptrapd Daemon] HANDLER[SNMPTT or perl script] ZBXT[Zabbix Server or Proxy] DBT[Zabbix Database] UI2[Zabbix Frontend] USER2[User] DEV2 --&gt;|SNMP Trap UDP 162| TRAPD TRAPD --&gt;|Handler Script| HANDLER HANDLER --&gt;|Trap Log| ZBXT ZBXT --&gt; DBT DBT --&gt; UI2 UI2 --&gt;|Displays event| USER2 end %% --- Invisible connector to force vertical stacking --- TRAPS ~~~ POLLING %% --- Polling section (bottom) --- subgraph POLLING[SNMP Polling Passive Monitoring] direction LR ZBX[Zabbix Server or Proxy] POLLER[SNMP Poller Process] DEV[Network Device] ZBX --&gt; POLLER POLLER --&gt;|SNMP GET UDP 161| DEV DEV --&gt;|SNMP Response| POLLER POLLER --&gt; DBP[Zabbix Database] DBP --&gt; UI1[Zabbix Frontend] UI1 --&gt;|Displays polled data| USER1[User] end %% --- Styling --- style POLLING fill:#f0fff0,stroke:#3a3,stroke-width:1px style TRAPS fill:#f0f8ff,stroke:#339,stroke-width:1px style ZBX fill:#e0ffe0,stroke:#3a3 style DEV fill:#ffefd5,stroke:#c96 style DEV2 fill:#ffefd5,stroke:#c96 style TRAPD fill:#f9f9f9,stroke:#777 style HANDLER fill:#f0f8ff,stroke:#339 style ZBXT fill:#e0ffe0,stroke:#3a3 style DBP fill:#fffbe0,stroke:#996 style DBT fill:#fffbe0,stroke:#996 style UI1 fill:#e8e8ff,stroke:#669 style UI2 fill:#e8e8ff,stroke:#669 style USER1 fill:#fff0f0,stroke:#c33 style USER2 fill:#fff0f0,stroke:#c33" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#snmp-trap-flow-active-monitoring">
@@ -533,15 +542,6 @@ faster event detection, and efficient network monitoring.
 <nav aria-label="Setting up SNMP traps with zabbix_trap_receiver" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#open-the-firewall-for-snmp-trap-traffic">
-<span class="md-ellipsis">
-      
-        Open the Firewall for SNMP Trap Traffic
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#install-required-snmp-packages">
 <span class="md-ellipsis">
       
@@ -549,6 +549,19 @@ faster event detection, and efficient network monitoring.
       
     </span>
 </a>
+<nav aria-label="Install Required SNMP Packages" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#open-the-firewall-for-incoming-snmp-trap-traffic">
+<span class="md-ellipsis">
+      
+        Open the Firewall for incoming SNMP Trap Traffic
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#install-zabbix_trap_receiverpl">
@@ -569,31 +582,26 @@ faster event detection, and efficient network monitoring.
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#explanation">
+<a class="md-nav__link" href="#configure-zabbix-server">
 <span class="md-ellipsis">
       
-        Explanation:
+        Configure Zabbix Server
+      
+    </span>
+</a>
+<nav aria-label="Configure Zabbix Server" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#selinux">
+<span class="md-ellipsis">
+      
+        SELinux
       
     </span>
 </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#edit-the-perl-script">
-<span class="md-ellipsis">
-      
-        Edit the perl script
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#enable-snmp-trap-support-in-zabbix">
-<span class="md-ellipsis">
-      
-        Enable SNMP Trap Support in Zabbix
-      
-    </span>
-</a>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#enable-and-start-snmptrapd">
@@ -612,6 +620,19 @@ faster event detection, and efficient network monitoring.
       
     </span>
 </a>
+<nav aria-label="(Optional) Rotate the Trap Log File" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#test-log-rotation-manually">
+<span class="md-ellipsis">
+      
+        Test log-rotation manually
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#conclusion">
@@ -626,26 +647,13 @@ faster event detection, and efficient network monitoring.
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#setting-up-snmp-traps-with-bash-parser">
+<a class="md-nav__link" href="#alternative-setting-up-snmp-traps-with-bash-parser">
 <span class="md-ellipsis">
       
-        Setting up SNMP traps with bash parser
+        Alternative: Setting up SNMP traps with bash parser
       
     </span>
 </a>
-<nav aria-label="Setting up SNMP traps with bash parser" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#bash-script-to-accept-the-trap">
-<span class="md-ellipsis">
-      
-        Bash script to accept the trap
-      
-    </span>
-</a>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#testing-and-debugging">
@@ -657,15 +665,6 @@ faster event detection, and efficient network monitoring.
 </a>
 <nav aria-label="Testing and debugging" class="md-nav">
 <ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#to-test-rotation-manually">
-<span class="md-ellipsis">
-      
-        To test rotation manually
-      
-    </span>
-</a>
-</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#testing-snmp-trap-reception">
 <span class="md-ellipsis">
@@ -752,10 +751,10 @@ faster event detection, and efficient network monitoring.
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#optional-bulletproof-solution">
+<a class="md-nav__link" href="#sending-a-more-realistic-trap-example">
 <span class="md-ellipsis">
       
-        (optional) Bulletproof solution
+        Sending a More Realistic Trap Example
       
     </span>
 </a>
@@ -796,6 +795,15 @@ faster event detection, and efficient network monitoring.
 <span class="md-ellipsis">
       
         Include another vendor
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#optional-bulletproof-solution">
+<span class="md-ellipsis">
+      
+        (optional) Bulletproof solution
       
     </span>
 </a>
@@ -1200,7 +1208,16 @@ faster event detection, and efficient network monitoring.
       
     </span>
 </a>
-<nav aria-label="SNMP Traps flow in Zabbix" class="md-nav">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#-config-flowchart-subgraphtitlemargin-bottom-30-flowchart-tb-traps-section-top-subgraph-trapssnmp-traps-active-monitoring-direction-lr-dev2network-device-trapdsnmptrapd-daemon-handlersnmptt-or-perl-script-zbxtzabbix-server-or-proxy-dbtzabbix-database-ui2zabbix-frontend-user2user-dev2-snmp-trap-udp-162-trapd-trapd-handler-script-handler-handler-trap-log-zbxt-zbxt-dbt-dbt-ui2-ui2-displays-event-user2-end-invisible-connector-to-force-vertical-stacking-traps-polling-polling-section-bottom-subgraph-pollingsnmp-polling-passive-monitoring-direction-lr-zbxzabbix-server-or-proxy-pollersnmp-poller-process-devnetwork-device-zbx-poller-poller-snmp-get-udp-161-dev-dev-snmp-response-poller-poller-dbpzabbix-database-dbp-ui1zabbix-frontend-ui1-displays-polled-data-user1user-end-styling-style-polling-fillf0fff0stroke3a3stroke-width1px-style-traps-fillf0f8ffstroke339stroke-width1px-style-zbx-fille0ffe0stroke3a3-style-dev-fillffefd5strokec96-style-dev2-fillffefd5strokec96-style-trapd-fillf9f9f9stroke777-style-handler-fillf0f8ffstroke339-style-zbxt-fille0ffe0stroke3a3-style-dbp-fillfffbe0stroke996-style-dbt-fillfffbe0stroke996-style-ui1-fille8e8ffstroke669-style-ui2-fille8e8ffstroke669-style-user1-fillfff0f0strokec33-style-user2-fillfff0f0strokec33">
+<span class="md-ellipsis">
+      
+        --- config: flowchart: subGraphTitleMargin: bottom: 30 --- flowchart TB %% --- Traps section (top) --- subgraph TRAPS[SNMP Traps Active Monitoring] direction LR DEV2[Network Device] TRAPD[snmptrapd Daemon] HANDLER[SNMPTT or perl script] ZBXT[Zabbix Server or Proxy] DBT[Zabbix Database] UI2[Zabbix Frontend] USER2[User] DEV2 --&gt;|SNMP Trap UDP 162| TRAPD TRAPD --&gt;|Handler Script| HANDLER HANDLER --&gt;|Trap Log| ZBXT ZBXT --&gt; DBT DBT --&gt; UI2 UI2 --&gt;|Displays event| USER2 end %% --- Invisible connector to force vertical stacking --- TRAPS ~~~ POLLING %% --- Polling section (bottom) --- subgraph POLLING[SNMP Polling Passive Monitoring] direction LR ZBX[Zabbix Server or Proxy] POLLER[SNMP Poller Process] DEV[Network Device] ZBX --&gt; POLLER POLLER --&gt;|SNMP GET UDP 161| DEV DEV --&gt;|SNMP Response| POLLER POLLER --&gt; DBP[Zabbix Database] DBP --&gt; UI1[Zabbix Frontend] UI1 --&gt;|Displays polled data| USER1[User] end %% --- Styling --- style POLLING fill:#f0fff0,stroke:#3a3,stroke-width:1px style TRAPS fill:#f0f8ff,stroke:#339,stroke-width:1px style ZBX fill:#e0ffe0,stroke:#3a3 style DEV fill:#ffefd5,stroke:#c96 style DEV2 fill:#ffefd5,stroke:#c96 style TRAPD fill:#f9f9f9,stroke:#777 style HANDLER fill:#f0f8ff,stroke:#339 style ZBXT fill:#e0ffe0,stroke:#3a3 style DBP fill:#fffbe0,stroke:#996 style DBT fill:#fffbe0,stroke:#996 style UI1 fill:#e8e8ff,stroke:#669 style UI2 fill:#e8e8ff,stroke:#669 style USER1 fill:#fff0f0,stroke:#c33 style USER2 fill:#fff0f0,stroke:#c33
+      
+    </span>
+</a>
+<nav aria-label="--- config: flowchart: subGraphTitleMargin: bottom: 30 --- flowchart TB %% --- Traps section (top) --- subgraph TRAPS[SNMP Traps Active Monitoring] direction LR DEV2[Network Device] TRAPD[snmptrapd Daemon] HANDLER[SNMPTT or perl script] ZBXT[Zabbix Server or Proxy] DBT[Zabbix Database] UI2[Zabbix Frontend] USER2[User] DEV2 --&gt;|SNMP Trap UDP 162| TRAPD TRAPD --&gt;|Handler Script| HANDLER HANDLER --&gt;|Trap Log| ZBXT ZBXT --&gt; DBT DBT --&gt; UI2 UI2 --&gt;|Displays event| USER2 end %% --- Invisible connector to force vertical stacking --- TRAPS ~~~ POLLING %% --- Polling section (bottom) --- subgraph POLLING[SNMP Polling Passive Monitoring] direction LR ZBX[Zabbix Server or Proxy] POLLER[SNMP Poller Process] DEV[Network Device] ZBX --&gt; POLLER POLLER --&gt;|SNMP GET UDP 161| DEV DEV --&gt;|SNMP Response| POLLER POLLER --&gt; DBP[Zabbix Database] DBP --&gt; UI1[Zabbix Frontend] UI1 --&gt;|Displays polled data| USER1[User] end %% --- Styling --- style POLLING fill:#f0fff0,stroke:#3a3,stroke-width:1px style TRAPS fill:#f0f8ff,stroke:#339,stroke-width:1px style ZBX fill:#e0ffe0,stroke:#3a3 style DEV fill:#ffefd5,stroke:#c96 style DEV2 fill:#ffefd5,stroke:#c96 style TRAPD fill:#f9f9f9,stroke:#777 style HANDLER fill:#f0f8ff,stroke:#339 style ZBXT fill:#e0ffe0,stroke:#3a3 style DBP fill:#fffbe0,stroke:#996 style DBT fill:#fffbe0,stroke:#996 style UI1 fill:#e8e8ff,stroke:#669 style UI2 fill:#e8e8ff,stroke:#669 style USER1 fill:#fff0f0,stroke:#c33 style USER2 fill:#fff0f0,stroke:#c33" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#snmp-trap-flow-active-monitoring">
@@ -1243,15 +1260,6 @@ faster event detection, and efficient network monitoring.
 <nav aria-label="Setting up SNMP traps with zabbix_trap_receiver" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#open-the-firewall-for-snmp-trap-traffic">
-<span class="md-ellipsis">
-      
-        Open the Firewall for SNMP Trap Traffic
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#install-required-snmp-packages">
 <span class="md-ellipsis">
       
@@ -1259,6 +1267,19 @@ faster event detection, and efficient network monitoring.
       
     </span>
 </a>
+<nav aria-label="Install Required SNMP Packages" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#open-the-firewall-for-incoming-snmp-trap-traffic">
+<span class="md-ellipsis">
+      
+        Open the Firewall for incoming SNMP Trap Traffic
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#install-zabbix_trap_receiverpl">
@@ -1279,31 +1300,26 @@ faster event detection, and efficient network monitoring.
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#explanation">
+<a class="md-nav__link" href="#configure-zabbix-server">
 <span class="md-ellipsis">
       
-        Explanation:
+        Configure Zabbix Server
+      
+    </span>
+</a>
+<nav aria-label="Configure Zabbix Server" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#selinux">
+<span class="md-ellipsis">
+      
+        SELinux
       
     </span>
 </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#edit-the-perl-script">
-<span class="md-ellipsis">
-      
-        Edit the perl script
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#enable-snmp-trap-support-in-zabbix">
-<span class="md-ellipsis">
-      
-        Enable SNMP Trap Support in Zabbix
-      
-    </span>
-</a>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#enable-and-start-snmptrapd">
@@ -1322,6 +1338,19 @@ faster event detection, and efficient network monitoring.
       
     </span>
 </a>
+<nav aria-label="(Optional) Rotate the Trap Log File" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#test-log-rotation-manually">
+<span class="md-ellipsis">
+      
+        Test log-rotation manually
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#conclusion">
@@ -1336,26 +1365,13 @@ faster event detection, and efficient network monitoring.
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#setting-up-snmp-traps-with-bash-parser">
+<a class="md-nav__link" href="#alternative-setting-up-snmp-traps-with-bash-parser">
 <span class="md-ellipsis">
       
-        Setting up SNMP traps with bash parser
+        Alternative: Setting up SNMP traps with bash parser
       
     </span>
 </a>
-<nav aria-label="Setting up SNMP traps with bash parser" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#bash-script-to-accept-the-trap">
-<span class="md-ellipsis">
-      
-        Bash script to accept the trap
-      
-    </span>
-</a>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#testing-and-debugging">
@@ -1367,15 +1383,6 @@ faster event detection, and efficient network monitoring.
 </a>
 <nav aria-label="Testing and debugging" class="md-nav">
 <ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#to-test-rotation-manually">
-<span class="md-ellipsis">
-      
-        To test rotation manually
-      
-    </span>
-</a>
-</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#testing-snmp-trap-reception">
 <span class="md-ellipsis">
@@ -1462,10 +1469,10 @@ faster event detection, and efficient network monitoring.
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#optional-bulletproof-solution">
+<a class="md-nav__link" href="#sending-a-more-realistic-trap-example">
 <span class="md-ellipsis">
       
-        (optional) Bulletproof solution
+        Sending a More Realistic Trap Example
       
     </span>
 </a>
@@ -1506,6 +1513,15 @@ faster event detection, and efficient network monitoring.
 <span class="md-ellipsis">
       
         Include another vendor
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#optional-bulletproof-solution">
+<span class="md-ellipsis">
+      
+        (optional) Bulletproof solution
       
     </span>
 </a>
@@ -1582,31 +1598,31 @@ Unlike traditional SNMP polling, which periodically queries devices for status
 updates, SNMP traps deliver real-time alerts directly from network equipment
 the moment an event occurs, no waiting for the next polling cycle.</p>
 <p>In this chapter, you'll learn how to set up SNMP trap handling in Zabbix, from
-installing and configuring snmptrapd to integrating it with the Zabbix server.
+installing and configuring <em>snmptrapd</em> to integrating it with the Zabbix server.
 You'll also discover how to analyse, filter, and map incoming traps using regular
 expressions, and how to link them with triggers and notifications for instant
 visibility into network issues.</p>
 <p>Whether you're monitoring switches, routers, UPS systems, or firewalls, mastering
 SNMP traps in Zabbix gives you faster event detection, reduced network load, and
 deeper operational insight.</p>
+<hr/>
 <h2 id="traps-versus-polling">Traps versus Polling</h2>
-<p>In Zabbix, SNMP (Simple Network Management Protocol) is one of the most common
+<p>In Zabbix, SNMP (<em>Simple Network Management Protocol</em>) is one of the most common
 methods for monitoring network devices such as switches, routers, firewalls, and
 UPS systems.
 There are two main ways Zabbix can receive information from an SNMP-enabled device:</p>
 <ul>
-<li>Polling (active monitoring) See our topic SNMP Polling in Chapter 4.</li>
+<li>Polling (active monitoring) See previous topic <a href="../snmp-polling/">SNMP Polling</a>.</li>
 <li>Traps (passive monitoring)</li>
 </ul>
 <p>To understand the differences between trapping and polling and understand the
 advantages and disadvantages lets have a quick overview:</p>
-<ul>
-<li>With SNMP polling, the Zabbix server or proxy periodically queries the device for
+<hr/>
+<h3 id="polling">Polling</h3>
+<p>With SNMP polling, the Zabbix server or proxy periodically queries the device for
 specific values using SNMP GET requests. For example, CPU load, interface status,
 temperature ... The device responds with the current data, and Zabbix stores it
-in the database.</li>
-</ul>
-<h3 id="polling">Polling</h3>
+in the database.</p>
 <p>Polling is a client initiated and scheduled process. It is predictable, reliable,
 and suitable for continuous metrics that change over time.</p>
 <p><strong>Advantages:</strong></p>
@@ -1620,10 +1636,11 @@ and suitable for continuous metrics that change over time.</p>
 <li>Generates more network traffic on large infrastructures.</li>
 <li>Delays between polls mean slower event detection.</li>
 <li>If a device goes down, Zabbix won't notice until the next polling cycle. (This
-can be detected by using the nodata function or using "SNMP agent availability"
-item but not for individual items unless every items has the nodata function and
-this is also a bad idea.)</li>
+  can be detected by using the <code>nodata</code> function or using "<em>SNMP agent availability</em>"
+  item but not for individual items unless every items has the <code>nodata</code> function and
+  this is also a bad idea.)</li>
 </ul>
+<hr/>
 <h3 id="trapping">Trapping</h3>
 <p>SNMP traps work the opposite way. The device itself sends a message (trap) to the
 Zabbix system when an event occurs. For example, a power failure, link down, or
@@ -1683,21 +1700,31 @@ something happens. No waiting or polling required.</p>
 </table>
 <hr/>
 <h2 id="snmp-traps-flow-in-zabbix">SNMP Traps flow in Zabbix</h2>
-<pre class="mermaid"><code>flowchart TB
+<h2 id="-config-flowchart-subgraphtitlemargin-bottom-30-flowchart-tb-traps-section-top-subgraph-trapssnmp-traps-active-monitoring-direction-lr-dev2network-device-trapdsnmptrapd-daemon-handlersnmptt-or-perl-script-zbxtzabbix-server-or-proxy-dbtzabbix-database-ui2zabbix-frontend-user2user-dev2-snmp-trap-udp-162-trapd-trapd-handler-script-handler-handler-trap-log-zbxt-zbxt-dbt-dbt-ui2-ui2-displays-event-user2-end-invisible-connector-to-force-vertical-stacking-traps-polling-polling-section-bottom-subgraph-pollingsnmp-polling-passive-monitoring-direction-lr-zbxzabbix-server-or-proxy-pollersnmp-poller-process-devnetwork-device-zbx-poller-poller-snmp-get-udp-161-dev-dev-snmp-response-poller-poller-dbpzabbix-database-dbp-ui1zabbix-frontend-ui1-displays-polled-data-user1user-end-styling-style-polling-fillf0fff0stroke3a3stroke-width1px-style-traps-fillf0f8ffstroke339stroke-width1px-style-zbx-fille0ffe0stroke3a3-style-dev-fillffefd5strokec96-style-dev2-fillffefd5strokec96-style-trapd-fillf9f9f9stroke777-style-handler-fillf0f8ffstroke339-style-zbxt-fille0ffe0stroke3a3-style-dbp-fillfffbe0stroke996-style-dbt-fillfffbe0stroke996-style-ui1-fille8e8ffstroke669-style-ui2-fille8e8ffstroke669-style-user1-fillfff0f0strokec33-style-user2-fillfff0f0strokec33"><pre class="mermaid"><code>---
+config:
+  flowchart:
+    subGraphTitleMargin:
+      bottom: 30
+---
+flowchart TB
     %% --- Traps section (top) ---
-    subgraph TRAPS[Traps]
-        direction TB
-        TITLET["SNMP Traps<br/>Acrive Monitoring"]
-        WIDE["                                                                 "]
-        DEV2[Network Device]
-        TRAPD[snmptrapd Daemon]
-        HANDLER[SNMPTT or perl script]
-        ZBXT[Zabbix Server or Proxy]
-        DBT[Zabbix Database]
-        UI2[Zabbix Frontend]
+    subgraph TRAPS[SNMP Traps
+                   Active Monitoring]
+        direction LR
+        DEV2[Network
+             Device]
+        TRAPD[snmptrapd
+              Daemon]
+        HANDLER[SNMPTT
+                or perl script]
+        ZBXT[Zabbix Server
+             or Proxy]
+        DBT[Zabbix 
+            Database]
+        UI2[Zabbix 
+            Frontend]
         USER2[User]
 
-        TITLET --&gt; DEV2
         DEV2 --&gt;|SNMP Trap UDP 162| TRAPD
         TRAPD --&gt;|Handler Script| HANDLER
         HANDLER --&gt;|Trap Log| ZBXT
@@ -1707,18 +1734,21 @@ something happens. No waiting or polling required.</p>
     end
 
     %% --- Invisible connector to force vertical stacking ---
-    TRAPS -.-&gt; POLLING
+    TRAPS ~~~ POLLING
 
     %% --- Polling section (bottom) ---
-    subgraph POLLING[Polling]
+    subgraph POLLING[SNMP Polling
+                     Passive Monitoring]
         direction LR
-        TITLEP["SNMP Polling<br/>Passive Monitoring"]
-        ZBX[Zabbix Server or Proxy]
+        ZBX[Zabbix Server
+            or Proxy]
+        POLLER[SNMP Poller 
+               Process]
         DEV[Network Device]
-        TITLEP --&gt; ZBX
-        ZBX --&gt;|SNMP GET UDP 161| DEV
-        DEV --&gt;|SNMP Response| ZBX
-        ZBX --&gt; DBP[Zabbix Database]
+        ZBX --&gt; POLLER
+        POLLER --&gt;|SNMP GET UDP 161| DEV
+        DEV --&gt;|SNMP Response| POLLER
+        POLLER --&gt; DBP[Zabbix Database]
         DBP --&gt; UI1[Zabbix Frontend]
         UI1 --&gt;|Displays polled data| USER1[User]
     end
@@ -1726,9 +1756,6 @@ something happens. No waiting or polling required.</p>
     %% --- Styling ---
     style POLLING fill:#f0fff0,stroke:#3a3,stroke-width:1px
     style TRAPS fill:#f0f8ff,stroke:#339,stroke-width:1px
-    style WIDE fill:none,stroke:none
-    style TITLEP fill:transparent,stroke:transparent
-    style TITLET fill:transparent,stroke:transparent
     style ZBX fill:#e0ffe0,stroke:#3a3
     style DEV fill:#ffefd5,stroke:#c96
     style DEV2 fill:#ffefd5,stroke:#c96
@@ -1741,88 +1768,90 @@ something happens. No waiting or polling required.</p>
     style UI2 fill:#e8e8ff,stroke:#669
     style USER1 fill:#fff0f0,stroke:#c33
     style USER2 fill:#fff0f0,stroke:#c33
-</code></pre>
+</code></pre></h2>
 <h3 id="snmp-trap-flow-active-monitoring">SNMP Trap Flow (Active Monitoring)</h3>
 <p>In an SNMP Trap setup, communication is device initiated. Meaning the network
 device sends an event message to Zabbix the moment something happens.
-This is called active monitoring because Zabbix doesn't need to query the device
+This is called active monitoring because Zabbix does not need to query the device
 periodically.</p>
 <p><strong>Step-by-step flow:</strong></p>
 <ul>
 <li>
-<p><strong>Network Device:</strong>
-When an event occurs (for example, a power failure, interface down, or temperature
+<p><strong>Network Device:</strong></p>
+<p>When an event occurs (for example, a power failure, interface down, or temperature
 alarm), the device immediately sends an SNMP Trap to the configured destination
 on UDP port 162.</p>
 </li>
 <li>
-<p><strong>snmptrapd Daemon:</strong>
-The Net-SNMP daemon <strong>snmptrapd</strong>  listens for incoming traps.
+<p><strong>snmptrapd Daemon:</strong></p>
+<p>The Net-SNMP daemon <strong>snmptrapd</strong>  listens for incoming traps.
 It acts as a relay between the device and Zabbix, executing a handler script
 whenever a trap is received.</p>
 </li>
 <li>
-<p><strong>Trap Handler / Log File:</strong>
-The handler script (often zabbix_trap_receiver.pl or SNMPTT) processes the trap
+<p><strong>Trap Handler / Log File:</strong></p>
+<p>The handler script (often zabbix_trap_receiver.pl or SNMPTT) processes the trap
 and writes it into a log file, usually "/var/log/snmptrap/snmptrap.log."
 This file contains the raw trap data including timestamps, source IPs, and OIDs.</p>
 </li>
 <li>
-<p><strong>Zabbix Server or Proxy:</strong>
-The Zabbix component (server or proxy) monitors the trap log for new entries and
+<p><strong>Zabbix Server or Proxy:</strong></p>
+<p>The Zabbix component (server or proxy) monitors the trap log for new entries and
 matches them against configured SNMP trap items. These items use regular expressions
 or string filters to extract relevant data.</p>
 </li>
 <li>
-<p><strong>Zabbix Database:</strong>
-Once processed, the trap information is stored in the database like any other
+<p><strong>Zabbix Database:</strong></p>
+<p>Once processed, the trap information is stored in the database like any other
 item value.</p>
 </li>
 <li>
-<p><strong>Zabbix Frontend:</strong>
-The event becomes visible in the Zabbix frontend almost instantly showing up in
+<p><strong>Zabbix Frontend:</strong></p>
+<p>The event becomes visible in the Zabbix frontend almost instantly showing up in
 Latest Data, Problems, or triggering actions and notifications based on your configuration.</p>
 </li>
 </ul>
-<details class="note" open="open">
-<summary>Note</summary>
+<details class="tip" open="open">
+<summary>Tip</summary>
 <p>SNMP traps deliver real-time alerts without polling overhead, making them
 ideal for event driven devices like UPSs, firewalls, or network switches.</p>
 </details>
-<h3 id="snmp-polling-flow-passive-monitoring"><strong>SNMP Polling Flow (Passive Monitoring)</strong></h3>
+<hr/>
+<h3 id="snmp-polling-flow-passive-monitoring">SNMP Polling Flow (Passive Monitoring)</h3>
 <p>In contrast, SNMP Polling is Zabbix initiated.
 This is called passive monitoring because the Zabbix server (or proxy)  queries
 the device at a set interval to retrieve values.</p>
 <p><strong>Step-by-step flow:</strong></p>
 <ul>
 <li>
-<p><strong>Zabbix Server or Proxy:</strong>
-Periodically sends an SNMP GET request to the device using UDP port 161.
+<p><strong>Zabbix Server or Proxy:</strong></p>
+<p>Periodically sends an SNMP GET request to the device using UDP port 161.
 Each SNMP item in Zabbix corresponds to a specific OID (Object Identifier) that
 defines which metric is requested (e.g., CPU usage, interface status).</p>
 </li>
 <li>
-<p><strong>Network Device:</strong>
-Responds to the SNMP GET request with the current value of the requested OID.</p>
+<p><strong>Network Device:</strong></p>
+<p>Responds to the SNMP GET request with the current value of the requested OID.</p>
 </li>
 <li>
-<p><strong>Zabbix Database:</strong>
-The response data is stored in the database with a timestamp for trend analysis
+<p><strong>Zabbix Database:</strong></p>
+<p>The response data is stored in the database with a timestamp for trend analysis
 and historical graphing.</p>
 </li>
 <li>
-<p><strong>Zabbix Frontend:</strong>
-Displays the collected values in graphs, dashboards, and triggers thresholds if
+<p><strong>Zabbix Frontend:</strong></p>
+<p>Displays the collected values in graphs, dashboards, and triggers thresholds if
 defined.</p>
 </li>
 </ul>
-<details class="note" open="open">
-<summary>Note</summary>
-<p>Polling provides consistent, periodic data collection. Ideal for metrics like
+<details class="tip" open="open">
+<summary>Tip</summary>
+<p>SNMP polling provides consistent, periodic data collection. Ideal for metrics like
 bandwidth usage, temperature, or CPU load. However, it may have a small delay
 between data updates depending on the polling interval (e.g., every 30s,
 1min, etc.).</p>
 </details>
+<hr/>
 <h3 id="summary">Summary</h3>
 <table>
 <thead>
@@ -1880,119 +1909,235 @@ data, achieving complete SNMP visibility with minimal overhead.</p>
 </div>
 <hr/>
 <h2 id="setting-up-snmp-traps-with-zabbix_trap_receiver">Setting up SNMP traps with zabbix_trap_receiver</h2>
+<p>SNMP traps allow network devices to actively send event information to the 
+Zabbix server, enabling near real-time alerting without periodic polling.</p>
 <p>In this section, we'll configure Zabbix to receive and process SNMP traps using
-the Perl script zabbix_trap_receiver.pl. SNMP traps allow network devices to actively
-send event information to the Zabbix server, enabling near real-time alerting without
-periodic polling.</p>
-<h3 id="open-the-firewall-for-snmp-trap-traffic"><strong>Open the Firewall for SNMP Trap Traffic</strong></h3>
-<p>By default, SNMP traps are received on UDP port 162.
-Make sure this port is open on your Zabbix server:</p>
-<div class="admonition info">
-<p class="admonition-title">Open firewall port 162/udp</p>
-<p>Red Hat
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--add-port<span class="o">=</span><span class="m">162</span>/udp<span class="w"> </span>--permanent
-</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--reload
-</span></code></pre></div></p>
-<p>Ubuntu
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>sudo ufw allow 162/udp
-</span></code></pre></div></p>
-</div>
-<p>This allows incoming traps from SNMP-enabled devices.</p>
-<h3 id="install-required-snmp-packages"><strong>Install Required SNMP Packages</strong></h3>
-<p>The snmptrapd daemon and Perl bindings are needed for trap handling.</p>
+the Perl script <code>zabbix_trap_receiver.pl</code>. Do note that this is just one of the
+available methods to receive SNMP traps in Zabbix, but it is the most commonly used
+and is supported by the Zabbix team.</p>
+<hr/>
+<h3 id="install-required-snmp-packages">Install Required SNMP Packages</h3>
+<p>First of all we need to be able to accept incomming SNMP trap connections
+on our Zabbix server. This is done by installing the <em>snmptrapd</em> daemon, which is
+part of the Net-SNMP suite. We also need the Perl bindings for SNMP to run the
+trap receiver script that will process incoming traps and write them to a log file
+that Zabbix can read.</p>
 <div class="admonition info">
 <p class="admonition-title">Install needed packages</p>
 <p>Red Hat
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>net-snmp-utils<span class="w"> </span>net-snmp-perl<span class="w"> </span>net-snmp
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>net-snmp-utils<span class="w"> </span>net-snmp-perl<span class="w"> </span>net-snmp
+</span></code></pre></div></p>
+<p>Suse
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>zypper<span class="w"> </span>install<span class="w"> </span>net-snmp<span class="w"> </span>perl-SNMP
 </span></code></pre></div></p>
 <p>Ubuntu
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>sudo apt install snmpd snmp libsnmp-dev snmptrapd
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>sudo apt install snmpd snmp libsnmp-dev snmptrapd
 </span></code></pre></div></p>
 </div>
 <p>This installs the SNMP tools, daemon, and Perl modules used by Zabbix's receiver
 script.</p>
-<h3 id="install-zabbix_trap_receiverpl"><strong>Install zabbix_trap_receiver.pl</strong></h3>
-<p>Download the latest zabbix_trap_receiver.pl script from the official
-Zabbix source archive <a href="https://cdn.zabbix.com/zabbix/sources/stable/">https://cdn.zabbix.com/zabbix/sources/stable/</a></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>sudo<span class="w"> </span>wget<span class="w"> </span>https://cdn.zabbix.com/zabbix/sources/stable/8.0/zabbix-8.0.0.tar.gz
+<hr/>
+<h4 id="open-the-firewall-for-incoming-snmp-trap-traffic">Open the Firewall for incoming SNMP Trap Traffic</h4>
+<p>By default, SNMP traps are received on port 162, most commonly using UDP, but 
+can also use TCP.
+Make sure this port is open on your Zabbix server:</p>
+<div class="admonition info">
+<p class="admonition-title">Open firewall port 162/udp</p>
+<p>Red Hat / Suse
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--add-service<span class="o">=</span>snmptrap<span class="w"> </span>--permanent
+</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--reload
+</span></code></pre></div></p>
+<p>Ubuntu
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>sudo ufw allow snmptrap
+</span><span id="__span-4-2"><a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a>sudo ufw reload
+</span></code></pre></div></p>
+</div>
+<p>This allows incoming traps from SNMP-enabled devices to be received by the 
+<em>snmptrapd</em> daemon.</p>
+<hr/>
+<h3 id="install-zabbix_trap_receiverpl">Install zabbix_trap_receiver.pl</h3>
+<p>Next, we need to set up the trap receiver script that will process incoming traps
+and write them to a log file that Zabbix can read. This script is provided by 
+the Zabbix team and is commonly used to integrate SNMP traps with Zabbix.</p>
+<details class="tip" open="open">
+<summary>Tip</summary>
+<p>Alternatively, you can use a custom script or SNMPTT (SNMP Trap Translator) if 
+you prefer. We will give an example of creating a bash script later on, but
+for now let's use the official Zabbix Perl script.</p>
+</details>
+<p>Download the latest <code>zabbix_trap_receiver.pl</code> script from the official
+Zabbix GIT repository: <a href="https://git.zabbix.com/projects/ZBX/repos/zabbix/browse/misc/snmptrap">https://git.zabbix.com/projects/ZBX/repos/zabbix/browse/misc/snmptrap</a>)</p>
+<div class="admonition info">
+<p class="admonition-title">Download zabbix_trap_receiver.pl</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>sudo<span class="w"> </span>wget<span class="w"> </span>https://git.zabbix.com/projects/ZBX/repos/zabbix/raw/misc/snmptrap/zabbix_trap_receiver.pl
 </span></code></pre></div>
-<p>Once downloaded, extract the file and copy the script to /usr/bin and make it executable:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>sudo<span class="w"> </span>tar<span class="w"> </span>-xvf<span class="w"> </span>zabbix-8.0.0.tar.gz
-</span><span id="__span-5-2"><a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a>sudo<span class="w"> </span>cp<span class="w"> </span>zabbix-8.0.0/misc/snmptrap/zabbix_trap_receiver.pl<span class="w"> </span>/usr/bin/.
-</span><span id="__span-5-3"><a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/usr/bin/zabbix_trap_receiver.pl
+</div>
+<p>Once downloaded, move the script to /usr/bin and make it executable:</p>
+<div class="admonition info">
+<p class="admonition-title">Install zabbix_trap_receiver.pl</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>sudo<span class="w"> </span>mv<span class="w"> </span>zabbix_trap_receiver.pl<span class="w"> </span>/usr/local/bin/
+</span><span id="__span-6-2"><a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/usr/local/bin/zabbix_trap_receiver.pl
 </span></code></pre></div>
-<p>This script receives traps from snmptrapd and writes them to a log file that Zabbix
-can read.</p>
-<h3 id="configure-snmptrapd"><strong>Configure snmptrapd</strong></h3>
-<p>Edit the SNMP trap daemon configuration file:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>sudo<span class="w"> </span>vi<span class="w"> </span>/etc/snmp/snmptrapd.conf
+<p>If you have SELinux enabled, you will need to set the correct context for the
+script:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>sudo<span class="w"> </span>restorecon<span class="w"> </span>-v<span class="w"> </span>/usr/local/bin/zabbix_trap_receiver.pl
 </span></code></pre></div>
-<p>Append the following lines:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>authCommunity<span class="w"> </span>execute<span class="w"> </span>public
-</span><span id="__span-7-2"><a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a>perl<span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="s2">"/usr/bin/zabbix_trap_receiver.pl"</span><span class="p">;</span>
+</div>
+<p>This script will receive traps from <em>snmptrapd</em> and write them to a log file that Zabbix
+can read. By default, the script writes to <code>/tmp/zabbix_traps.tmp</code>, but we will
+configure it to write to a different location in the next step.</p>
+<div class="admonition info">
+<p class="admonition-title">Configure the perl script</p>
+<p>Edit the trap receiver script:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>sudo<span class="w"> </span>vi<span class="w"> </span>/usr/local/bin/zabbix_trap_receiver.pl
 </span></code></pre></div>
-<h3 id="explanation"><strong>Explanation:</strong></h3>
-<ul>
-<li>authCommunity execute public allows traps from devices using the community
-  string public.</li>
-<li>The perl do line executes the Zabbix Perl handler for each incoming trap.</li>
-</ul>
-<h3 id="edit-the-perl-script"><strong>Edit the perl script</strong></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>sudo<span class="w"> </span>vi<span class="w"> </span>/usr/bin/zabbix_trap_receiver.pl
-</span></code></pre></div>
-<p>Replace <code>$SNMPTrapperFile = '/tmp/zabbix_traps.tmp';</code> with:</p>
+<p>Set the desired log file path in the script by searching for the line that 
+defines <code>$SNMPTrapperFile</code> and updating it to:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="nv">$SNMPTrapperFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'/var/log/zabbix_traps_archive/zabbix_traps.log'</span><span class="p">;</span>
 </span></code></pre></div>
-<h3 id="enable-snmp-trap-support-in-zabbix"><strong>Enable SNMP Trap Support in Zabbix</strong></h3>
-<p>Edit the Zabbix server configuration file:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>sudo<span class="w"> </span>vi<span class="w"> </span>/etc/zabbix/zabbix_server.conf
-</span></code></pre></div>
-<p>Uncomment or add the following parameters:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="nv">StartSNMPTrapper</span><span class="o">=</span><span class="m">1</span>
-</span><span id="__span-11-2"><a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="nv">SNMPTrapperFile</span><span class="o">=</span>/var/log/zabbix_traps_archive/zabbix_traps.log
-</span></code></pre></div>
-<details class="note" open="open">
-<summary>Note</summary>
-<ul>
-<li>StartSNMPTrapper=1 enables the Zabbix SNMP trapper process.</li>
-<li>The SNMPTrapperFile path must match exactly the path used inside zabbix_trap_receiver.pl.</li>
-</ul>
-</details>
-<p>Restart the Zabbix server to apply changes:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>zabbix-server
-</span></code></pre></div>
-<h3 id="enable-and-start-snmptrapd"><strong>Enable and Start snmptrapd</strong></h3>
-<p>Activate and start the SNMP trap daemon so it launches at boot:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>snmptrapd<span class="w"> </span>--now
-</span></code></pre></div>
-<p>This service will now listen on UDP 162 and feed incoming traps to Zabbix.</p>
-<h3 id="optional-rotate-the-trap-log-file"><strong>(Optional) Rotate the Trap Log File</strong></h3>
-<p>Zabbix writes all traps into a temporary log file.
-To prevent this file from growing indefinitely, configure log rotation.</p>
+</div>
+<p>Of course, for the script to be able to write to this file, the directory must 
+exist and have the appropriate permissions.</p>
+<div class="admonition info">
+<p class="admonition-title">Create log directory for traps</p>
 <p>Create the directory:</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/var/log/zabbix_traps_archive
-</span><span id="__span-14-2"><a href="#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">755</span><span class="w"> </span>/var/log/zabbix_traps_archive
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/var/log/zabbix_traps_archive
+</span><span id="__span-10-2"><a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">755</span><span class="w"> </span>/var/log/zabbix_traps_archive
 </span></code></pre></div>
 On ubuntu only :</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a href="#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a>chown<span class="w"> </span>Debian-snmp:<span class="w"> </span>/var/log/zabbix_traps_archive/
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a>chown<span class="w"> </span>Debian-snmp:<span class="w"> </span>/var/log/zabbix_traps_archive/
 </span></code></pre></div>
-<p>Next we create a logrotate configuration file <code>/etc/logrotate.d/zabbix_traps</code>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a href="#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a>sudo<span class="w"> </span>vi<span class="w"> </span>/etc/logrotate.d/zabbix_traps
+</div>
+<hr/>
+<h3 id="configure-snmptrapd">Configure snmptrapd</h3>
+<p>So now that we have the trap receiver script installed and configured, we need to tell 
+<em>snmptrapd</em> to use it to process incoming traps. This is done by editing the
+<code>/etc/snmp/snmptrapd.conf</code> file and adding the appropriate configuration to execute
+the script for each incoming trap.</p>
+<div class="admonition info">
+<p class="admonition-title">Configure snmptrapd</p>
+<p>Edit the SNMP trap daemon configuration file:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a>sudo<span class="w"> </span>vi<span class="w"> </span>/etc/snmp/snmptrapd.conf
+</span></code></pre></div>
+<p>Add following lines:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a>authCommunity execute public
+</span><span id="__span-13-2"><a href="#__codelineno-13-2" id="__codelineno-13-2" name="__codelineno-13-2"></a>perl do "/usr/local/bin/zabbix_trap_receiver.pl";
+</span></code></pre></div>
+</div>
+<p><strong>Explanation:</strong></p>
+<div class="language-text highlight"><pre><span></span><code>- `authCommunity execute public` allows traps from devices using the community
+string public.
+- The `perl do` line executes the Zabbix Perl handler for each incoming trap.
+</code></pre></div>
+<hr/>
+<h3 id="configure-zabbix-server">Configure Zabbix Server</h3>
+<p>Now we need to make sure that the Zabbix server is configured to read from this
+log file:</p>
+<div class="admonition info">
+<p class="admonition-title">Enable SNMP Trap Support in Zabbix</p>
+<p>Edit the Zabbix server configuration file:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a>sudo<span class="w"> </span>vi<span class="w"> </span>/etc/zabbix/zabbix_server.d/snmp_trapper.conf
+</span></code></pre></div>
+<p>Uncomment or add the following parameters:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a href="#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="nv">StartSNMPTrapper</span><span class="o">=</span><span class="m">1</span>
+</span><span id="__span-15-2"><a href="#__codelineno-15-2" id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="nv">SNMPTrapperFile</span><span class="o">=</span>/var/log/zabbix_traps_archive/zabbix_traps.log
+</span></code></pre></div>
+</div>
+<p><strong>Explanation:</strong></p>
+<div class="language-text highlight"><pre><span></span><code>- `StartSNMPTrapper=1` enables the Zabbix SNMP trapper process.
+- The `SNMPTrapperFile` path must match exactly the path used inside
+  `zabbix_trap_receiver.pl`.
+</code></pre></div>
+<p>Restart the Zabbix server to apply changes:</p>
+<div class="admonition info">
+<p class="admonition-title">Restart Zabbix server</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a href="#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>zabbix-server
+</span></code></pre></div>
+</div>
+<hr/>
+<h4 id="selinux">SELinux</h4>
+<p>If SELinux is enabled on your system, you may need to create a custom policy to
+allow the Zabbix Server to read the trap log file. 
+You can create a policy module using the <code>audit2allow</code> tool based on the denied
+actions logged in the audit logs.</p>
+<p>First check for any denied actions related to the Zabbix server and the trap log
+file:</p>
+<details class="example" open="open">
+<summary>Check for SELinux denials</summary>
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-17-1"><a href="#__codelineno-17-1" id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="gp">localhost:~$ </span>sudo<span class="w"> </span>ausearch<span class="w"> </span>-c<span class="w"> </span><span class="s1">'zabbix_server'</span><span class="w"> </span>-ts<span class="w"> </span>recent
+</span><span id="__span-17-2"><a href="#__codelineno-17-2" id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="go">time-&gt;Sun Mar  8 23:04:40 2026</span>
+</span><span id="__span-17-3"><a href="#__codelineno-17-3" id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="go">type=AVC msg=audit(1773007480.439:3417): avc:  denied  { read } for  pid=5278 comm="zabbix_server" name="zabbix_traps.log" dev="vda3" ino=21234 scontext=system_u:system_r:zabbix_t:s0 tcontext=system_u:object_r:snmpd_log_t:s0 tclass=file permissive=0</span>
+</span></code></pre></div>
+</details>
+<p>If you see any denied actions related to reading the trap log file like in the 
+example above, you can create a custom policy module:</p>
+<div class="admonition info">
+<p class="admonition-title">Create SELinux policy module for Zabbix SNMP trap log access</p>
+<p>Create a custom policy based on the denials:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a href="#__codelineno-18-1" id="__codelineno-18-1" name="__codelineno-18-1"></a>ausearch<span class="w"> </span>-c<span class="w"> </span><span class="s1">'zabbix_server'</span><span class="w"> </span>-ts<span class="w"> </span>recent<span class="w"> </span>--raw<span class="w"> </span><span class="p">|</span><span class="w"> </span>audit2allow<span class="w"> </span>-M<span class="w"> </span>my-zabbixserver-snmptrap
+</span><span id="__span-18-2"><a href="#__codelineno-18-2" id="__codelineno-18-2" name="__codelineno-18-2"></a>semodule<span class="w"> </span>-X<span class="w"> </span><span class="m">300</span><span class="w"> </span>-i<span class="w"> </span>my-zabbixserver-snmptrap.pp
+</span></code></pre></div></p>
+</div>
+<hr/>
+<h3 id="enable-and-start-snmptrapd">Enable and Start snmptrapd</h3>
+<p>Finally, activate and start the SNMP trap daemon so it launches at boot:</p>
+<div class="admonition info">
+<p class="admonition-title">Enable and start snmptrapd</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a href="#__codelineno-19-1" id="__codelineno-19-1" name="__codelineno-19-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>snmptrapd<span class="w"> </span>--now
+</span></code></pre></div>
+</div>
+<p>This service will now listen on UDP 162 and feed incoming traps to Zabbix.</p>
+<div class="admonition warning">
+<p class="admonition-title">Important</p>
+<p>Any changes in the <code>/etc/snmp/snmptrapd.conf</code> file or the trap receiver script 
+will require a restart of the <em>snmptrapd</em> service to take effect as <em>snmptrapd</em>
+reads its configuration <em>and</em> the script only at startup. It will execute the
+script from memory for each incoming trap to avoid the overhead of reading 
+the script from disk again for every trap.</p>
+</div>
+<hr/>
+<h3 id="optional-rotate-the-trap-log-file">(Optional) Rotate the Trap Log File</h3>
+<p>Zabbix writes all traps into a temporary log file.
+To prevent this file from growing indefinitely, you can configure log rotation
+using <em>logrotate</em>. The <em>logrotate</em> utility will automatically rotate, compress, 
+and manage old logfiles and is installed by default on most Linux distributions.
+If not, you can install it using your package manager, but we will assume it's 
+already installed.</p>
+<div class="admonition info">
+<p class="admonition-title">Configure log rotation for trap log</p>
+<p>Create a new logrotate configuration file <code>/etc/logrotate.d/zabbix_traps</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a href="#__codelineno-20-1" id="__codelineno-20-1" name="__codelineno-20-1"></a>sudo<span class="w"> </span>vi<span class="w"> </span>/etc/logrotate.d/zabbix_traps
 </span></code></pre></div>
 <p>Add the following content to this file.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a href="#__codelineno-17-1" id="__codelineno-17-1" name="__codelineno-17-1"></a>/var/log/zabbix_traps_archive/zabbix_traps.log<span class="w"> </span><span class="o">{</span>
-</span><span id="__span-17-2"><a href="#__codelineno-17-2" id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="w">    </span>weekly
-</span><span id="__span-17-3"><a href="#__codelineno-17-3" id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="w">    </span>size<span class="w"> </span>10M
-</span><span id="__span-17-4"><a href="#__codelineno-17-4" id="__codelineno-17-4" name="__codelineno-17-4"></a><span class="w">    </span>compress
-</span><span id="__span-17-5"><a href="#__codelineno-17-5" id="__codelineno-17-5" name="__codelineno-17-5"></a><span class="w">    </span>notifempty
-</span><span id="__span-17-6"><a href="#__codelineno-17-6" id="__codelineno-17-6" name="__codelineno-17-6"></a><span class="w">    </span>dateext
-</span><span id="__span-17-7"><a href="#__codelineno-17-7" id="__codelineno-17-7" name="__codelineno-17-7"></a><span class="w">    </span>dateformat<span class="w"> </span>-%Y%m%d
-</span><span id="__span-17-8"><a href="#__codelineno-17-8" id="__codelineno-17-8" name="__codelineno-17-8"></a><span class="w">    </span>missingok
-</span><span id="__span-17-9"><a href="#__codelineno-17-9" id="__codelineno-17-9" name="__codelineno-17-9"></a><span class="w">    </span>olddir<span class="w"> </span>/var/log/zabbix_traps_archive
-</span><span id="__span-17-10"><a href="#__codelineno-17-10" id="__codelineno-17-10" name="__codelineno-17-10"></a><span class="w">    </span>maxage<span class="w"> </span><span class="m">365</span>
-</span><span id="__span-17-11"><a href="#__codelineno-17-11" id="__codelineno-17-11" name="__codelineno-17-11"></a><span class="w">    </span>rotate<span class="w"> </span><span class="m">10</span>
-</span><span id="__span-17-12"><a href="#__codelineno-17-12" id="__codelineno-17-12" name="__codelineno-17-12"></a><span class="o">}</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a href="#__codelineno-21-1" id="__codelineno-21-1" name="__codelineno-21-1"></a>/var/log/zabbix_traps_archive/zabbix_traps.log<span class="w"> </span><span class="o">{</span>
+</span><span id="__span-21-2"><a href="#__codelineno-21-2" id="__codelineno-21-2" name="__codelineno-21-2"></a><span class="w">    </span>weekly
+</span><span id="__span-21-3"><a href="#__codelineno-21-3" id="__codelineno-21-3" name="__codelineno-21-3"></a><span class="w">    </span>size<span class="w"> </span>10M
+</span><span id="__span-21-4"><a href="#__codelineno-21-4" id="__codelineno-21-4" name="__codelineno-21-4"></a><span class="w">    </span>compress
+</span><span id="__span-21-5"><a href="#__codelineno-21-5" id="__codelineno-21-5" name="__codelineno-21-5"></a><span class="w">    </span>notifempty
+</span><span id="__span-21-6"><a href="#__codelineno-21-6" id="__codelineno-21-6" name="__codelineno-21-6"></a><span class="w">    </span>dateext
+</span><span id="__span-21-7"><a href="#__codelineno-21-7" id="__codelineno-21-7" name="__codelineno-21-7"></a><span class="w">    </span>dateformat<span class="w"> </span>-%Y%m%d
+</span><span id="__span-21-8"><a href="#__codelineno-21-8" id="__codelineno-21-8" name="__codelineno-21-8"></a><span class="w">    </span>missingok
+</span><span id="__span-21-9"><a href="#__codelineno-21-9" id="__codelineno-21-9" name="__codelineno-21-9"></a><span class="w">    </span>olddir<span class="w"> </span>/var/log/zabbix_traps_archive
+</span><span id="__span-21-10"><a href="#__codelineno-21-10" id="__codelineno-21-10" name="__codelineno-21-10"></a><span class="w">    </span>maxage<span class="w"> </span><span class="m">365</span>
+</span><span id="__span-21-11"><a href="#__codelineno-21-11" id="__codelineno-21-11" name="__codelineno-21-11"></a><span class="w">    </span>rotate<span class="w"> </span><span class="m">10</span>
+</span><span id="__span-21-12"><a href="#__codelineno-21-12" id="__codelineno-21-12" name="__codelineno-21-12"></a><span class="o">}</span>
 </span></code></pre></div>
+</div>
+<p><strong>Explanation:</strong></p>
+<div class="language-text highlight"><pre><span></span><code>- This configuration rotates the trap log `weekly` or when it exceeds 
+  `size 10M` except `notifempty` and it will not fail on `missingok`.
+- Old logs are `compress`ed and stored in the same `olddir`ectory with a 
+  `dateext`ension in `dateformat -%Y%m%d`.
+- It keeps up to `rotate 10` rotated logs and deletes logs older than 
+  `maxage 365` days.
+</code></pre></div>
+<h4 id="test-log-rotation-manually">Test log-rotation manually</h4>
+<p>You can manually test the log rotation to ensure it's working correctly:</p>
+<div class="admonition info">
+<p class="admonition-title">Force log rotation</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a href="#__codelineno-22-1" id="__codelineno-22-1" name="__codelineno-22-1"></a>sudo<span class="w"> </span>logrotate<span class="w"> </span>--force<span class="w"> </span>/etc/logrotate.d/zabbix_traps
+</span></code></pre></div>
+</div>
 <h3 id="conclusion"><strong>Conclusion</strong></h3>
 <p>You've now configured Zabbix to:</p>
 <ul>
@@ -2002,63 +2147,81 @@ On ubuntu only :</p>
 <li>Rotate the trap log automatically</li>
 <li>Verify correct trap delivery and troubleshoot via SELinux if needed</li>
 </ul>
-<p>Once traps are arriving, you can create SNMP trap items in Zabbix (type SNMP trap,
-key snmptrap[regex]) to trigger events, alerts, and dashboards.</p>
-<h2 id="setting-up-snmp-traps-with-bash-parser">Setting up SNMP traps with bash parser</h2>
+<p>Once traps are arriving, you can create SNMP trap items in Zabbix (type <strong>SNMP trap</strong>,
+key <code>snmptrap[&lt;regex&gt;]</code>) to trigger events, alerts, and dashboards.</p>
+<h2 id="alternative-setting-up-snmp-traps-with-bash-parser">Alternative: Setting up SNMP traps with bash parser</h2>
 <p>Using <code>perl</code> parser script might feel the only way to do trap parsing which
 is not true. <code>bash</code> script will use less dependencies and can be shortcut
 to get a working setup faster.</p>
-<h3 id="bash-script-to-accept-the-trap">Bash script to accept the trap</h3>
-<p>Create a file <code>/usr/bin/zabbix_trap_receiver.sh</code> with content:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a href="#__codelineno-18-1" id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="ch">#!/bin/bash</span>
-</span><span id="__span-18-2"><a href="#__codelineno-18-2" id="__codelineno-18-2" name="__codelineno-18-2"></a>
-</span><span id="__span-18-3"><a href="#__codelineno-18-3" id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="c1"># Outcome will be produced into a file</span>
-</span><span id="__span-18-4"><a href="#__codelineno-18-4" id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="nv">OUT</span><span class="o">=</span>/var/log/zabbix_traps_archive/zabbix_traps.log
-</span><span id="__span-18-5"><a href="#__codelineno-18-5" id="__codelineno-18-5" name="__codelineno-18-5"></a>
-</span><span id="__span-18-6"><a href="#__codelineno-18-6" id="__codelineno-18-6" name="__codelineno-18-6"></a><span class="c1"># Put contents of SNMP trap from stdin into a variable</span>
-</span><span id="__span-18-7"><a href="#__codelineno-18-7" id="__codelineno-18-7" name="__codelineno-18-7"></a><span class="nv">ALL</span><span class="o">=</span><span class="k">$(</span>tee<span class="k">)</span>
-</span><span id="__span-18-8"><a href="#__codelineno-18-8" id="__codelineno-18-8" name="__codelineno-18-8"></a>
-</span><span id="__span-18-9"><a href="#__codelineno-18-9" id="__codelineno-18-9" name="__codelineno-18-9"></a><span class="c1"># Extract IP where trap is coming from</span>
-</span><span id="__span-18-10"><a href="#__codelineno-18-10" id="__codelineno-18-10" name="__codelineno-18-10"></a><span class="nv">HOST</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$ALL</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">"^UDP"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-Eo<span class="w"> </span><span class="s2">"[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1<span class="k">)</span>
-</span><span id="__span-18-11"><a href="#__codelineno-18-11" id="__codelineno-18-11" name="__codelineno-18-11"></a>
-</span><span id="__span-18-12"><a href="#__codelineno-18-12" id="__codelineno-18-12" name="__codelineno-18-12"></a><span class="c1"># Append SNMP trap into the log file</span>
-</span><span id="__span-18-13"><a href="#__codelineno-18-13" id="__codelineno-18-13" name="__codelineno-18-13"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"ZBXTRAP </span><span class="nv">$HOST</span>
-</span><span id="__span-18-14"><a href="#__codelineno-18-14" id="__codelineno-18-14" name="__codelineno-18-14"></a><span class="k">$(</span>date<span class="k">)</span>
-</span><span id="__span-18-15"><a href="#__codelineno-18-15" id="__codelineno-18-15" name="__codelineno-18-15"></a><span class="nv">$ALL</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>--append<span class="w"> </span><span class="s2">"</span><span class="nv">$OUT</span><span class="s2">"</span>
+<details class="example" open="open">
+<summary>Bash script to accept the trap</summary>
+<p>Create a file <code>/usr/local/bin/zabbix_trap_receiver.sh</code> with content:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a href="#__codelineno-23-1" id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-23-2"><a href="#__codelineno-23-2" id="__codelineno-23-2" name="__codelineno-23-2"></a>
+</span><span id="__span-23-3"><a href="#__codelineno-23-3" id="__codelineno-23-3" name="__codelineno-23-3"></a><span class="c1"># Outcome will be produced into a file</span>
+</span><span id="__span-23-4"><a href="#__codelineno-23-4" id="__codelineno-23-4" name="__codelineno-23-4"></a><span class="nv">OUT</span><span class="o">=</span>/var/log/zabbix_traps_archive/zabbix_traps.log
+</span><span id="__span-23-5"><a href="#__codelineno-23-5" id="__codelineno-23-5" name="__codelineno-23-5"></a>
+</span><span id="__span-23-6"><a href="#__codelineno-23-6" id="__codelineno-23-6" name="__codelineno-23-6"></a><span class="c1"># Put contents of SNMP trap from stdin into a variable</span>
+</span><span id="__span-23-7"><a href="#__codelineno-23-7" id="__codelineno-23-7" name="__codelineno-23-7"></a><span class="nv">ALL</span><span class="o">=</span><span class="k">$(</span>tee<span class="k">)</span>
+</span><span id="__span-23-8"><a href="#__codelineno-23-8" id="__codelineno-23-8" name="__codelineno-23-8"></a>
+</span><span id="__span-23-9"><a href="#__codelineno-23-9" id="__codelineno-23-9" name="__codelineno-23-9"></a><span class="c1"># Extract IP where trap is coming from</span>
+</span><span id="__span-23-10"><a href="#__codelineno-23-10" id="__codelineno-23-10" name="__codelineno-23-10"></a><span class="nv">HOST</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$ALL</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">"^UDP"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-Eo<span class="w"> </span><span class="s2">"[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1<span class="k">)</span>
+</span><span id="__span-23-11"><a href="#__codelineno-23-11" id="__codelineno-23-11" name="__codelineno-23-11"></a>
+</span><span id="__span-23-12"><a href="#__codelineno-23-12" id="__codelineno-23-12" name="__codelineno-23-12"></a><span class="c1"># Append SNMP trap into the log file</span>
+</span><span id="__span-23-13"><a href="#__codelineno-23-13" id="__codelineno-23-13" name="__codelineno-23-13"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"ZBXTRAP </span><span class="nv">$HOST</span>
+</span><span id="__span-23-14"><a href="#__codelineno-23-14" id="__codelineno-23-14" name="__codelineno-23-14"></a><span class="k">$(</span>date<span class="k">)</span>
+</span><span id="__span-23-15"><a href="#__codelineno-23-15" id="__codelineno-23-15" name="__codelineno-23-15"></a><span class="nv">$ALL</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>--append<span class="w"> </span><span class="s2">"</span><span class="nv">$OUT</span><span class="s2">"</span>
 </span></code></pre></div>
+</details>
 <p>The most important part is for the message to hold keyword <code>ZBXTRAP</code>
-which is followed by IP address.</p>
+which is followed by the IP address.</p>
 <div class="admonition tip">
-<p class="admonition-title">tip</p>
+<p class="admonition-title">Tip</p>
 <p>The bash <code>HOST</code> variable can be redefined to extract an IP address
-from actual trap message, therefore giving an opportunity
-automatically forward and store message in appropriate host in Zabbix.</p>
+from the actual trap message, therefore giving an opportunity to
+automatically forward and store messages in the appropriate host in Zabbix.</p>
 </div>
-<p>To enable trap parser inside <code>/etc/snmp/snmptrapd.conf</code> instead of using:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a href="#__codelineno-19-1" id="__codelineno-19-1" name="__codelineno-19-1"></a>perl do "/usr/bin/zabbix_trap_receiver.pl";
+<div class="admonition info">
+<p class="admonition-title">Configure snmptrapd to use bash parser</p>
+<p>To enable the bash trap parser, inside <code>/etc/snmp/snmptrapd.conf</code>, instead 
+of using:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-24-1"><a href="#__codelineno-24-1" id="__codelineno-24-1" name="__codelineno-24-1"></a>perl do "/usr/local/bin/zabbix_trap_receiver.pl";
 </span></code></pre></div>
 <p>use:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-20-1"><a href="#__codelineno-20-1" id="__codelineno-20-1" name="__codelineno-20-1"></a>traphandle default /usr/bin/zabbix_trap_receiver.sh
+<div class="language-text highlight"><pre><span></span><code><span id="__span-25-1"><a href="#__codelineno-25-1" id="__codelineno-25-1" name="__codelineno-25-1"></a>traphandle default /usr/local/bin/zabbix_trap_receiver.sh
 </span></code></pre></div>
+</div>
 <hr/>
 <h2 id="testing-and-debugging">Testing and debugging</h2>
-<h3 id="to-test-rotation-manually">To test rotation manually</h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a href="#__codelineno-21-1" id="__codelineno-21-1" name="__codelineno-21-1"></a>sudo<span class="w"> </span>logrotate<span class="w"> </span>--force<span class="w"> </span>/etc/logrotate.d/zabbix_traps
-</span></code></pre></div>
 <h3 id="testing-snmp-trap-reception">Testing SNMP Trap Reception</h3>
-<p>We can simulate a trap manually using the snmptrap command.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a href="#__codelineno-22-1" id="__codelineno-22-1" name="__codelineno-22-1"></a>Example<span class="w"> </span><span class="m">1</span>:<span class="w"> </span>SNMP<span class="w"> </span>v1<span class="w"> </span>Test<span class="w"> </span>Trap
-</span><span id="__span-22-2"><a href="#__codelineno-22-2" id="__codelineno-22-2" name="__codelineno-22-2"></a>sudo<span class="w"> </span>snmptrap<span class="w"> </span>-v<span class="w"> </span><span class="m">1</span><span class="w"> </span>-c<span class="w"> </span>public<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span><span class="s1">'.1.3.6.1.6.3.1.1.5.4'</span><span class="w"> </span><span class="s1">'0.0.0.0'</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">33</span><span class="w"> </span><span class="s1">'55'</span><span class="w"> </span>.1.3.6.1.6.3.1.1.5.4<span class="w"> </span>s<span class="w"> </span><span class="s2">"eth0"</span>
+<p>First we open the log file to monitor incoming traps in real-time:</p>
+<div class="admonition info">
+<p class="admonition-title">Monitor trap log file</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a href="#__codelineno-26-1" id="__codelineno-26-1" name="__codelineno-26-1"></a>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/zabbix_traps_archive/zabbix_traps.log
 </span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a href="#__codelineno-23-1" id="__codelineno-23-1" name="__codelineno-23-1"></a>Example<span class="w"> </span><span class="m">2</span>:<span class="w"> </span>SNMP<span class="w"> </span>v2c<span class="w"> </span>Test<span class="w"> </span>Trap
-</span><span id="__span-23-2"><a href="#__codelineno-23-2" id="__codelineno-23-2" name="__codelineno-23-2"></a>sudo<span class="w"> </span>snmptrap<span class="w"> </span>-v<span class="w"> </span>2c<span class="w"> </span>-c<span class="w"> </span>public<span class="w"> </span>localhost<span class="w"> </span><span class="s1">''</span><span class="w"> </span><span class="m">1</span>.3.6.1.4.1.8072.2.3.0.1<span class="w"> </span><span class="m">1</span>.3.6.1.4.1.8072.2.3.2.1<span class="w"> </span>i<span class="w"> </span><span class="m">123456</span>
-</span></code></pre></div>
+</div>
+<p>Next, we can simulate a trap manually using the <code>snmptrap</code> command in a separate 
+terminal.</p>
+<details class="example" open="open">
+<summary>Send test SNMP traps</summary>
+<p>Example 1: SNMP v1 Test Trap
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a href="#__codelineno-27-1" id="__codelineno-27-1" name="__codelineno-27-1"></a>sudo<span class="w"> </span>snmptrap<span class="w"> </span>-v<span class="w"> </span><span class="m">1</span><span class="w"> </span>-c<span class="w"> </span>public<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span><span class="s1">'.1.3.6.1.6.3.1.1.5.4'</span><span class="w"> </span><span class="s1">'0.0.0.0'</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">33</span><span class="w"> </span><span class="s1">'55'</span><span class="w"> </span>.1.3.6.1.6.3.1.1.5.4<span class="w"> </span>s<span class="w"> </span><span class="s2">"eth0"</span>
+</span></code></pre></div></p>
+<p>Example 2: SNMP v2c Test Trap
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a href="#__codelineno-28-1" id="__codelineno-28-1" name="__codelineno-28-1"></a>sudo<span class="w"> </span>snmptrap<span class="w"> </span>-v<span class="w"> </span>2c<span class="w"> </span>-c<span class="w"> </span>public<span class="w"> </span>localhost<span class="w"> </span><span class="s1">''</span><span class="w"> </span><span class="m">1</span>.3.6.1.4.1.8072.2.3.0.1<span class="w"> </span><span class="m">1</span>.3.6.1.4.1.8072.2.3.2.1<span class="w"> </span>i<span class="w"> </span><span class="m">123456</span>
+</span></code></pre></div></p>
+</details>
+<p>When you now verify the terminal with the log file, you should see the trap 
+message with the source IP and timestamp displayed.</p>
 <p>While using "zabbix_trap_receiver.pl" as a parser, the perl dependencies will be
 validated only at the runtime when receiving the actual message. It can be handy
 to see if the status of service is still healthy. Running the "status" for the
 systemd service automatically prints the most recent log lines of snmptrapd.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a href="#__codelineno-24-1" id="__codelineno-24-1" name="__codelineno-24-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>snmptrapd
+<div class="admonition info">
+<p class="admonition-title">Check snmptrapd status</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a href="#__codelineno-29-1" id="__codelineno-29-1" name="__codelineno-29-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>snmptrapd
 </span></code></pre></div>
+</div>
 <p>For troubleshooting efficiency:</p>
 <ul>
 <li>
@@ -2068,181 +2231,194 @@ systemd service automatically prints the most recent log lines of snmptrapd.</p>
 <p>Correct order is: restart service, send trap, run status</p>
 </li>
 </ul>
+<hr/>
 <h3 id="testing-snmp-trap-reception-without-upd-channel">Testing SNMP Trap reception without UPD channel</h3>
-<p>This method helps to simulate an SNMP trap message even if device currently
+<p>This method helps to simulate a SNMP trap message even if the device currently
 cannot send one.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a href="#__codelineno-25-1" id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"ZBXTRAP 127.0.0.1</span>
-</span><span id="__span-25-2"><a href="#__codelineno-25-2" id="__codelineno-25-2" name="__codelineno-25-2"></a><span class="k">$(</span>date<span class="k">)</span>
-</span><span id="__span-25-3"><a href="#__codelineno-25-3" id="__codelineno-25-3" name="__codelineno-25-3"></a><span class="s2">line two</span>
-</span><span id="__span-25-4"><a href="#__codelineno-25-4" id="__codelineno-25-4" name="__codelineno-25-4"></a><span class="s2">line three"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>--append<span class="w"> </span>/var/log/zabbix_traps_archive/zabbix_traps.log
+<div class="admonition info">
+<p class="admonition-title">Simulate SNMP trap message</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a href="#__codelineno-30-1" id="__codelineno-30-1" name="__codelineno-30-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"ZBXTRAP 127.0.0.1</span>
+</span><span id="__span-30-2"><a href="#__codelineno-30-2" id="__codelineno-30-2" name="__codelineno-30-2"></a><span class="k">$(</span>date<span class="k">)</span>
+</span><span id="__span-30-3"><a href="#__codelineno-30-3" id="__codelineno-30-3" name="__codelineno-30-3"></a><span class="s2">line two</span>
+</span><span id="__span-30-4"><a href="#__codelineno-30-4" id="__codelineno-30-4" name="__codelineno-30-4"></a><span class="s2">line three"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>--append<span class="w"> </span>/var/log/zabbix_traps_archive/zabbix_traps.log
 </span></code></pre></div>
+</div>
 <p>The most important part is having keyword "ZBXTRAP" (all caps) followed by the
 IP address. The IP must belong to an <strong>existing SNMP interface</strong> behind 
 Zabbix proxy/server.</p>
+<hr/>
 <h3 id="validate-if-proxyserver-runs-a-correct-mapping">Validate if proxy/server runs a correct mapping</h3>
-<p>If the host is not yet made in frontend, that is perfect opportunity to validate
-if Zabbix proxy/server service has recognised the mapping with a zabbix_traps.log file.</p>
-<p>Every time the trap message is sent (and the device is not yet registered in GUI), 
-it should print a line about "unmatched trap received from"</p>
-<p>Send a test trap</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-26-1"><a href="#__codelineno-26-1" id="__codelineno-26-1" name="__codelineno-26-1"></a>sudo snmptrap -v 1 -c public 127.0.0.1 '.1.3.6.1.6.3.1.1.5.4' '0.0.0.0' 6 33 '55' .1.3.6.1.6.3.1.1.5.4 s "eth0"
+<p>If the host is not yet configured in frontend, that is a perfect opportunity to validate
+if the Zabbix proxy/server service has recognised the mapping with a <code>zabbix_traps.log</code> file.</p>
+<p>Every time a trap message is received for an unknown host in Zabbix it will
+print a line about "unmatched trap received from" in the log file.</p>
+<div class="admonition info">
+<p class="admonition-title">Send a test trap</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-31-1"><a href="#__codelineno-31-1" id="__codelineno-31-1" name="__codelineno-31-1"></a>sudo snmptrap -v 1 -c public 127.0.0.1 '.1.3.6.1.6.3.1.1.5.4' '0.0.0.0' 6 33 '55' .1.3.6.1.6.3.1.1.5.4 s "eth0"
 </span></code></pre></div>
-<p>Check immediately</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a href="#__codelineno-27-1" id="__codelineno-27-1" name="__codelineno-27-1"></a>date
-</span><span id="__span-27-2"><a href="#__codelineno-27-2" id="__codelineno-27-2" name="__codelineno-27-2"></a>grep<span class="w"> </span><span class="s2">"unmatched trap received from"</span><span class="w"> </span>/var/log/zabbix/zabbix_proxy.log
-</span></code></pre></div>
-<p>If the line appear, it's a solid indication the settings about
-StartSNMPTrapper and SNMPTrapperFile is configured correctly.</p>
-<h3 id="selinux-considerations">SELinux considerations</h3>
-<p>If SELinux is enabled and traps are not being processed, check for denied actions:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a href="#__codelineno-28-1" id="__codelineno-28-1" name="__codelineno-28-1"></a>sudo<span class="w"> </span>ausearch<span class="w"> </span>-m<span class="w"> </span>AVC,USER_AVC<span class="w"> </span>-ts<span class="w"> </span>recent
+</div>
+<p>Immediately after sending the trap, check the Zabbix proxy/server log for any 
+unmatched trap messages:</p>
+<div class="admonition example">
+<p class="admonition-title">Check for unmatched trap messages in Zabbix logs</p>
+<p>Zabbix Proxy:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a href="#__codelineno-32-1" id="__codelineno-32-1" name="__codelineno-32-1"></a>date
+</span><span id="__span-32-2"><a href="#__codelineno-32-2" id="__codelineno-32-2" name="__codelineno-32-2"></a>grep<span class="w"> </span><span class="s2">"unmatched trap received from"</span><span class="w"> </span>/var/log/zabbix/zabbix_proxy.log
 </span></code></pre></div></p>
-<p>Adjust SELinux policies or create exceptions for /usr/bin/zabbix_trap_receiver.pl and the trap log directory as needed.</p>
-<h3 id="optional-snmpv3-trap-configuration">(Optional) SNMPv3 Trap Configuration</h3>
-<p>If using SNMPv3 for secure traps, you can define users directly in snmptrapd.conf:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a href="#__codelineno-29-1" id="__codelineno-29-1" name="__codelineno-29-1"></a>createUser<span class="w"> </span>-e<span class="w"> </span>&lt;engineid&gt;<span class="w"> </span>&lt;user&gt;<span class="w"> </span>SHA<span class="w"> </span>&lt;key&gt;<span class="w"> </span>AES<span class="w"> </span>&lt;key&gt;
-</span><span id="__span-29-2"><a href="#__codelineno-29-2" id="__codelineno-29-2" name="__codelineno-29-2"></a>authUser<span class="w"> </span>log,execute<span class="w"> </span>&lt;user&gt;
-</span><span id="__span-29-3"><a href="#__codelineno-29-3" id="__codelineno-29-3" name="__codelineno-29-3"></a>perl<span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="s2">"/usr/bin/zabbix_trap_receiver.pl"</span><span class="p">;</span>
+</div>
+<p>If the line appears, it's a solid indication the settings <code>StartSNMPTrapper</code> 
+and <code>SNMPTrapperFile</code> are configured correctly.</p>
+<hr/>
+<h3 id="selinux-considerations">SELinux considerations</h3>
+<p>If SELinux is enabled and traps are not being processed, check for denied actions:</p>
+<div class="admonition info">
+<p class="admonition-title">Check for SELinux denials related to Zabbix trap reception</p>
+<p>Specific for the zabbix process:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a href="#__codelineno-33-1" id="__codelineno-33-1" name="__codelineno-33-1"></a>ausearch<span class="w"> </span>-c<span class="w"> </span><span class="s1">'zabbix_server'</span><span class="w"> </span>-ts<span class="w"> </span>recent
 </span></code></pre></div>
+replace <code>zabbix_server</code> with <code>zabbix_proxy</code> if you are using a proxy.</p>
+<p>more generally for any AVC denials:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-34-1"><a href="#__codelineno-34-1" id="__codelineno-34-1" name="__codelineno-34-1"></a>sudo<span class="w"> </span>ausearch<span class="w"> </span>-m<span class="w"> </span>AVC,USER_AVC<span class="w"> </span>-ts<span class="w"> </span>recent
+</span></code></pre></div></p>
+</div>
+<p>Adjust SELinux policies or create exceptions for <code>/usr/local/bin/zabbix_trap_receiver.pl</code>
+and the trap log directory as needed.</p>
+<h3 id="optional-snmpv3-trap-configuration">(Optional) SNMPv3 Trap Configuration</h3>
+<p>If using SNMPv3 for secure traps, you can define users directly in <code>/etc/snmp/snmptrapd.conf</code>:</p>
+<div class="admonition info">
+<p class="admonition-title">Configure SNMPv3 trap user</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-35-1"><a href="#__codelineno-35-1" id="__codelineno-35-1" name="__codelineno-35-1"></a>createUser<span class="w"> </span>-e<span class="w"> </span>&lt;engineid&gt;<span class="w"> </span>&lt;user&gt;<span class="w"> </span>SHA<span class="w"> </span>&lt;key&gt;<span class="w"> </span>AES<span class="w"> </span>&lt;key&gt;
+</span><span id="__span-35-2"><a href="#__codelineno-35-2" id="__codelineno-35-2" name="__codelineno-35-2"></a>authUser<span class="w"> </span>log,execute<span class="w"> </span>&lt;user&gt;
+</span><span id="__span-35-3"><a href="#__codelineno-35-3" id="__codelineno-35-3" name="__codelineno-35-3"></a>perl<span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="s2">"/usr/bin/zabbix_trap_receiver.pl"</span><span class="p">;</span>
+</span></code></pre></div>
+</div>
 <p>This adds authentication and encryption for trap communication.</p>
+<hr/>
 <h3 id="desperate-snmptrapdconf-for-snmpv2">Desperate snmptrapd.conf for SNMPv2</h3>
 <p>If community names for SNMPv2 traps are not known and deadlines are approaching,
-we can allow every SNMP trap message to come in
-by ignoring all community names.</p>
-<p>Add at the beginning of existing configuration file add:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-30-1"><a href="#__codelineno-30-1" id="__codelineno-30-1" name="__codelineno-30-1"></a>disableAuthorization yes 
+we can allow every SNMP trap message to come in by ignoring all community strings.</p>
+<p>Add at the beginning of the existing <code>/etc/snmp/snmptrapd.conf</code> file:</p>
+<div class="admonition info">
+<p class="admonition-title">Allow all SNMP traps regardless of community string</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-36-1"><a href="#__codelineno-36-1" id="__codelineno-36-1" name="__codelineno-36-1"></a>disableAuthorization yes 
 </span></code></pre></div>
+</div>
 <p>For example with a bash parser it's enough to have only 2 active lines
 to make it functional and have confidence that trap receiving is working.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-31-1"><a href="#__codelineno-31-1" id="__codelineno-31-1" name="__codelineno-31-1"></a>echo "
-</span><span id="__span-31-2"><a href="#__codelineno-31-2" id="__codelineno-31-2" name="__codelineno-31-2"></a># Allow everyone to register a message
-</span><span id="__span-31-3"><a href="#__codelineno-31-3" id="__codelineno-31-3" name="__codelineno-31-3"></a>disableAuthorization yes
-</span><span id="__span-31-4"><a href="#__codelineno-31-4" id="__codelineno-31-4" name="__codelineno-31-4"></a>
-</span><span id="__span-31-5"><a href="#__codelineno-31-5" id="__codelineno-31-5" name="__codelineno-31-5"></a># Forward message to parser script
-</span><span id="__span-31-6"><a href="#__codelineno-31-6" id="__codelineno-31-6" name="__codelineno-31-6"></a>traphandle default /usr/bin/zabbix_trap_receiver.sh
-</span><span id="__span-31-7"><a href="#__codelineno-31-7" id="__codelineno-31-7" name="__codelineno-31-7"></a>" | sudo tee /etc/snmp/snmptrapd.conf
+<details class="example" open="open">
+<summary>Minimal snmptrapd.conf for SNMPv2 traps</summary>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-37-1"><a href="#__codelineno-37-1" id="__codelineno-37-1" name="__codelineno-37-1"></a>echo "
+</span><span id="__span-37-2"><a href="#__codelineno-37-2" id="__codelineno-37-2" name="__codelineno-37-2"></a># Allow everyone to register a message
+</span><span id="__span-37-3"><a href="#__codelineno-37-3" id="__codelineno-37-3" name="__codelineno-37-3"></a>disableAuthorization yes
+</span><span id="__span-37-4"><a href="#__codelineno-37-4" id="__codelineno-37-4" name="__codelineno-37-4"></a>
+</span><span id="__span-37-5"><a href="#__codelineno-37-5" id="__codelineno-37-5" name="__codelineno-37-5"></a># Forward message to parser script
+</span><span id="__span-37-6"><a href="#__codelineno-37-6" id="__codelineno-37-6" name="__codelineno-37-6"></a>traphandle default /usr/bin/zabbix_trap_receiver.sh
+</span><span id="__span-37-7"><a href="#__codelineno-37-7" id="__codelineno-37-7" name="__codelineno-37-7"></a>" | sudo tee /etc/snmp/snmptrapd.conf
 </span></code></pre></div>
+</details>
 <p>This is only applicable to SNMPv2 traps. This will not work with SNMPv3 traps.</p>
+<div class="admonition warning">
+<p class="admonition-title">Security risk</p>
+<p>This configuration allows any SNMP trap message to be accepted regardless of
+the community string, which can pose a significant security risk. It is
+recommended to use this setting only temporarily for testing purposes and to
+revert to a more secure configuration as soon as possible.</p>
+</div>
 <h2 id="trap-mapping-and-preprocessing">Trap mapping and preprocessing</h2>
 <p>With SNMP traps now configured and the trap receiver operational, the next step
-is to create a host in the Zabbix frontend so we can link incoming traps to a
+is to create a host in the Zabbix frontend so that we can link incoming traps to a
 specific monitored device.</p>
 <p>In the Zabbix web interface, navigate to:
-Data collection → Hosts, and click Create host.</p>
+<strong>Data collection</strong> → <strong>Hosts</strong>, and click <strong>Create host</strong>.</p>
 <ul>
-<li><strong>Hostname :</strong> Network Switch 01</li>
+<li><strong>Hostname :</strong> <code>Network Switch 01</code></li>
 <li><strong>Host groups :</strong> SNMP Devices</li>
-<li><strong>Interfaces :</strong> SNMP with IP 127.0.0.1</li>
+<li><strong>Interfaces :</strong> SNMP with IP <code>127.0.0.1</code></li>
 </ul>
 <p><img alt="snmp-traps/ch04.35-snmp-host.png" src="../snmp-traps/ch04.35-snmp-host.png"/></p>
-<p>In Zabbix, the macro {$SNMP_COMMUNITY} is often defined globally under Administration
-→ Macros. This global macro provides a default SNMP community string used by all
+<p>In Zabbix, the macro <code>{$SNMP_COMMUNITY}</code> is often defined globally under <strong>Administration</strong>
+→ <strong>Macros</strong>. This <em>global</em> macro provides a default SNMP community string used by all
 hosts that rely on SNMP for polling or trap-based communication.</p>
 <p>However, a better approach, especially in larger or more secure environments is
-to define a unique SNMP community per device and override the global macro at the
+to define a unique SNMP community per device and override the global macro at
 host level. This allows for more granular access control and simplifies troubleshooting
 when multiple community strings are used across the network.</p>
 <h3 id="sending-a-test-trap">Sending a Test Trap</h3>
 <p>With the host and trap receiver configured, we can now simulate a link down event
 from our device by sending an SNMP trap manually from the command line:</p>
-<p>On the command line we can now sent a trap to mimic a Link down on our device.
-<code>snmptrap -v 2c -c public 127.0.0.1 '' 1.3.6.1.6.3.1.1.5.3</code></p>
+<p>On the command line we can now sent a trap to mimic a Link down on our device.</p>
+<details class="example" open="open">
+<summary>Send a test SNMP trap</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-38-1"><a href="#__codelineno-38-1" id="__codelineno-38-1" name="__codelineno-38-1"></a>snmptrap<span class="w"> </span>-v<span class="w"> </span>2c<span class="w"> </span>-c<span class="w"> </span>public<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span><span class="s1">''</span><span class="w"> </span><span class="m">1</span>.3.6.1.6.3.1.1.5.3
+</span></code></pre></div>
+</details>
 <p>This command sends a version 2c SNMP trap using the community string public to
-the local Zabbix trap receiver, emulating a linkDown event defined by
-OID 1.3.6.1.6.3.1.1.5.3.</p>
+the local Zabbix trap receiver, emulating a <em>linkDown</em> event defined by
+OID <code>1.3.6.1.6.3.1.1.5.3</code>.</p>
 <h3 id="verifying-trap-reception">Verifying Trap Reception</h3>
 <p>After sending the test trap, open the Zabbix frontend and navigate to:
-<code>Monitoring</code> → <code>Latest data</code></p>
+<strong>Monitoring</strong> → <strong>Latest data</strong></p>
 <p>Select the host <code>Network Switch 01</code>.
 If everything is configured correctly, you should now see data populated in your
 SNMP trap item, confirming that Zabbix successfully received and processed the
 trap.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-32-1"><a href="#__codelineno-32-1" id="__codelineno-32-1" name="__codelineno-32-1"></a>2025-10-13T21:10:58+0200 PDU INFO:
-</span><span id="__span-32-2"><a href="#__codelineno-32-2" id="__codelineno-32-2" name="__codelineno-32-2"></a>  errorindex                     0
-</span><span id="__span-32-3"><a href="#__codelineno-32-3" id="__codelineno-32-3" name="__codelineno-32-3"></a>  notificationtype               TRAP
-</span><span id="__span-32-4"><a href="#__codelineno-32-4" id="__codelineno-32-4" name="__codelineno-32-4"></a>  messageid                      0
-</span><span id="__span-32-5"><a href="#__codelineno-32-5" id="__codelineno-32-5" name="__codelineno-32-5"></a>  transactionid                  2
-</span><span id="__span-32-6"><a href="#__codelineno-32-6" id="__codelineno-32-6" name="__codelineno-32-6"></a>  receivedfrom                   UDP: [127.0.0.1]:50483-&gt;[127.0.0.1]:162
-</span><span id="__span-32-7"><a href="#__codelineno-32-7" id="__codelineno-32-7" name="__codelineno-32-7"></a>  community                      public
-</span><span id="__span-32-8"><a href="#__codelineno-32-8" id="__codelineno-32-8" name="__codelineno-32-8"></a>  requestid                      57240481
-</span><span id="__span-32-9"><a href="#__codelineno-32-9" id="__codelineno-32-9" name="__codelineno-32-9"></a>  version                        1
-</span><span id="__span-32-10"><a href="#__codelineno-32-10" id="__codelineno-32-10" name="__codelineno-32-10"></a>  errorstatus                    0
-</span><span id="__span-32-11"><a href="#__codelineno-32-11" id="__codelineno-32-11" name="__codelineno-32-11"></a>VARBINDS:
-</span><span id="__span-32-12"><a href="#__codelineno-32-12" id="__codelineno-32-12" name="__codelineno-32-12"></a>  DISMAN-EVENT-MIB::sysUpTimeInstance type=67 value=Timeticks: (227697) 0:37:56.97
-</span><span id="__span-32-13"><a href="#__codelineno-32-13" id="__codelineno-32-13" name="__codelineno-32-13"></a>  SNMPv2-MIB::snmpTrapOID.0      type=6  value=OID: IF-MIB::linkDown
+<details class="example" open="open">
+<summary>Example of received SNMP trap in latest data</summary>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-39-1"><a href="#__codelineno-39-1" id="__codelineno-39-1" name="__codelineno-39-1"></a>2025-10-13T21:10:58+0200 PDU INFO:
+</span><span id="__span-39-2"><a href="#__codelineno-39-2" id="__codelineno-39-2" name="__codelineno-39-2"></a>errorindex                     0
+</span><span id="__span-39-3"><a href="#__codelineno-39-3" id="__codelineno-39-3" name="__codelineno-39-3"></a>notificationtype               TRAP
+</span><span id="__span-39-4"><a href="#__codelineno-39-4" id="__codelineno-39-4" name="__codelineno-39-4"></a>messageid                      0
+</span><span id="__span-39-5"><a href="#__codelineno-39-5" id="__codelineno-39-5" name="__codelineno-39-5"></a>transactionid                  2
+</span><span id="__span-39-6"><a href="#__codelineno-39-6" id="__codelineno-39-6" name="__codelineno-39-6"></a>receivedfrom                   UDP: [127.0.0.1]:50483-&gt;[127.0.0.1]:162
+</span><span id="__span-39-7"><a href="#__codelineno-39-7" id="__codelineno-39-7" name="__codelineno-39-7"></a>community                      public
+</span><span id="__span-39-8"><a href="#__codelineno-39-8" id="__codelineno-39-8" name="__codelineno-39-8"></a>requestid                      57240481
+</span><span id="__span-39-9"><a href="#__codelineno-39-9" id="__codelineno-39-9" name="__codelineno-39-9"></a>version                        1
+</span><span id="__span-39-10"><a href="#__codelineno-39-10" id="__codelineno-39-10" name="__codelineno-39-10"></a>errorstatus                    0
+</span><span id="__span-39-11"><a href="#__codelineno-39-11" id="__codelineno-39-11" name="__codelineno-39-11"></a>VARBINDS:
+</span><span id="__span-39-12"><a href="#__codelineno-39-12" id="__codelineno-39-12" name="__codelineno-39-12"></a>DISMAN-EVENT-MIB::sysUpTimeInstance type=67 value=Timeticks: (227697) 0:37:56.97
+</span><span id="__span-39-13"><a href="#__codelineno-39-13" id="__codelineno-39-13" name="__codelineno-39-13"></a>SNMPv2-MIB::snmpTrapOID.0      type=6  value=OID: IF-MIB::linkDown
 </span></code></pre></div>
-<p>Sending a More Realistic Trap Example</p>
+</details>
+<h3 id="sending-a-more-realistic-trap-example">Sending a More Realistic Trap Example</h3>
 <p>In a real production environment, SNMP traps usually include additional variable
 bindings (varbinds) that describe the state of the affected interface or component.
 To better simulate a real-world scenario, we can extend our previous test command
 to include this extra information.</p>
 <p>Run the following command on the Zabbix server:</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a href="#__codelineno-33-1" id="__codelineno-33-1" name="__codelineno-33-1"></a>snmptrap<span class="w"> </span>-v<span class="w"> </span>2c<span class="w"> </span>-c<span class="w"> </span>public<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span><span class="s1">''</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-33-2"><a href="#__codelineno-33-2" id="__codelineno-33-2" name="__codelineno-33-2"></a><span class="w">  </span>IF-MIB::linkDown<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-33-3"><a href="#__codelineno-33-3" id="__codelineno-33-3" name="__codelineno-33-3"></a><span class="w">  </span>IF-MIB::ifIndex<span class="w"> </span>i<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-33-4"><a href="#__codelineno-33-4" id="__codelineno-33-4" name="__codelineno-33-4"></a><span class="w">  </span>IF-MIB::ifAdminStatus<span class="w"> </span>i<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-33-5"><a href="#__codelineno-33-5" id="__codelineno-33-5" name="__codelineno-33-5"></a><span class="w">  </span>IF-MIB::ifOperStatus<span class="w"> </span>i<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-33-6"><a href="#__codelineno-33-6" id="__codelineno-33-6" name="__codelineno-33-6"></a><span class="w">  </span>IF-MIB::ifName<span class="w"> </span>s<span class="w"> </span><span class="s2">"Gi0/1"</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-33-7"><a href="#__codelineno-33-7" id="__codelineno-33-7" name="__codelineno-33-7"></a><span class="w">  </span>IF-MIB::ifDescr<span class="w"> </span>s<span class="w"> </span><span class="s2">"GigabitEthernet0/1"</span>
+<details class="example" open="open">
+<summary>Send a more detailed SNMP trap</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-40-1"><a href="#__codelineno-40-1" id="__codelineno-40-1" name="__codelineno-40-1"></a>snmptrap<span class="w"> </span>-v<span class="w"> </span>2c<span class="w"> </span>-c<span class="w"> </span>public<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span><span class="s1">''</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-40-2"><a href="#__codelineno-40-2" id="__codelineno-40-2" name="__codelineno-40-2"></a>IF-MIB::linkDown<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-40-3"><a href="#__codelineno-40-3" id="__codelineno-40-3" name="__codelineno-40-3"></a>IF-MIB::ifIndex<span class="w"> </span>i<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-40-4"><a href="#__codelineno-40-4" id="__codelineno-40-4" name="__codelineno-40-4"></a>IF-MIB::ifAdminStatus<span class="w"> </span>i<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-40-5"><a href="#__codelineno-40-5" id="__codelineno-40-5" name="__codelineno-40-5"></a>IF-MIB::ifOperStatus<span class="w"> </span>i<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-40-6"><a href="#__codelineno-40-6" id="__codelineno-40-6" name="__codelineno-40-6"></a>IF-MIB::ifName<span class="w"> </span>s<span class="w"> </span><span class="s2">"Gi0/1"</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-40-7"><a href="#__codelineno-40-7" id="__codelineno-40-7" name="__codelineno-40-7"></a>IF-MIB::ifDescr<span class="w"> </span>s<span class="w"> </span><span class="s2">"GigabitEthernet0/1"</span>
 </span></code></pre></div>
-This will give use the following output:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-34-1"><a href="#__codelineno-34-1" id="__codelineno-34-1" name="__codelineno-34-1"></a>2025-10-13T21:53:15+0200 PDU INFO:
-</span><span id="__span-34-2"><a href="#__codelineno-34-2" id="__codelineno-34-2" name="__codelineno-34-2"></a>  errorstatus                    0
-</span><span id="__span-34-3"><a href="#__codelineno-34-3" id="__codelineno-34-3" name="__codelineno-34-3"></a>  version                        1
-</span><span id="__span-34-4"><a href="#__codelineno-34-4" id="__codelineno-34-4" name="__codelineno-34-4"></a>  requestid                      139495039
-</span><span id="__span-34-5"><a href="#__codelineno-34-5" id="__codelineno-34-5" name="__codelineno-34-5"></a>  community                      public
-</span><span id="__span-34-6"><a href="#__codelineno-34-6" id="__codelineno-34-6" name="__codelineno-34-6"></a>  transactionid                  14
-</span><span id="__span-34-7"><a href="#__codelineno-34-7" id="__codelineno-34-7" name="__codelineno-34-7"></a>  receivedfrom                   UDP: [127.0.0.1]:35753-&gt;[127.0.0.1]:162
-</span><span id="__span-34-8"><a href="#__codelineno-34-8" id="__codelineno-34-8" name="__codelineno-34-8"></a>  messageid                      0
-</span><span id="__span-34-9"><a href="#__codelineno-34-9" id="__codelineno-34-9" name="__codelineno-34-9"></a>  notificationtype               TRAP
-</span><span id="__span-34-10"><a href="#__codelineno-34-10" id="__codelineno-34-10" name="__codelineno-34-10"></a>  errorindex                     0
-</span><span id="__span-34-11"><a href="#__codelineno-34-11" id="__codelineno-34-11" name="__codelineno-34-11"></a>VARBINDS:
-</span><span id="__span-34-12"><a href="#__codelineno-34-12" id="__codelineno-34-12" name="__codelineno-34-12"></a>  DISMAN-EVENT-MIB::sysUpTimeInstance type=67 value=Timeticks: (481390) 1:20:13.90
-</span><span id="__span-34-13"><a href="#__codelineno-34-13" id="__codelineno-34-13" name="__codelineno-34-13"></a>  SNMPv2-MIB::snmpTrapOID.0      type=6  value=OID: IF-MIB::linkDown
-</span><span id="__span-34-14"><a href="#__codelineno-34-14" id="__codelineno-34-14" name="__codelineno-34-14"></a>  IF-MIB::ifIndex                type=2  value=INTEGER: 1
-</span><span id="__span-34-15"><a href="#__codelineno-34-15" id="__codelineno-34-15" name="__codelineno-34-15"></a>  IF-MIB::ifAdminStatus          type=2  value=INTEGER: 1
-</span><span id="__span-34-16"><a href="#__codelineno-34-16" id="__codelineno-34-16" name="__codelineno-34-16"></a>  IF-MIB::ifOperStatus           type=2  value=INTEGER: 1
-</span><span id="__span-34-17"><a href="#__codelineno-34-17" id="__codelineno-34-17" name="__codelineno-34-17"></a>  IF-MIB::ifName                 type=4  value=STRING: "Gi0/1"
-</span><span id="__span-34-18"><a href="#__codelineno-34-18" id="__codelineno-34-18" name="__codelineno-34-18"></a>  IF-MIB::ifDescr                type=4  value=STRING: "GigabitEthernet0/1"
+</details>
+<p>This will give use the following output:</p>
+<details class="example" open="open">
+<summary>Example of a more detailed SNMP trap in latest data</summary>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-41-1"><a href="#__codelineno-41-1" id="__codelineno-41-1" name="__codelineno-41-1"></a>2025-10-13T21:53:15+0200 PDU INFO:
+</span><span id="__span-41-2"><a href="#__codelineno-41-2" id="__codelineno-41-2" name="__codelineno-41-2"></a>errorstatus                    0
+</span><span id="__span-41-3"><a href="#__codelineno-41-3" id="__codelineno-41-3" name="__codelineno-41-3"></a>version                        1
+</span><span id="__span-41-4"><a href="#__codelineno-41-4" id="__codelineno-41-4" name="__codelineno-41-4"></a>requestid                      139495039
+</span><span id="__span-41-5"><a href="#__codelineno-41-5" id="__codelineno-41-5" name="__codelineno-41-5"></a>community                      public
+</span><span id="__span-41-6"><a href="#__codelineno-41-6" id="__codelineno-41-6" name="__codelineno-41-6"></a>transactionid                  14
+</span><span id="__span-41-7"><a href="#__codelineno-41-7" id="__codelineno-41-7" name="__codelineno-41-7"></a>receivedfrom                   UDP: [127.0.0.1]:35753-&gt;[127.0.0.1]:162
+</span><span id="__span-41-8"><a href="#__codelineno-41-8" id="__codelineno-41-8" name="__codelineno-41-8"></a>messageid                      0
+</span><span id="__span-41-9"><a href="#__codelineno-41-9" id="__codelineno-41-9" name="__codelineno-41-9"></a>notificationtype               TRAP
+</span><span id="__span-41-10"><a href="#__codelineno-41-10" id="__codelineno-41-10" name="__codelineno-41-10"></a>errorindex                     0
+</span><span id="__span-41-11"><a href="#__codelineno-41-11" id="__codelineno-41-11" name="__codelineno-41-11"></a>VARBINDS:
+</span><span id="__span-41-12"><a href="#__codelineno-41-12" id="__codelineno-41-12" name="__codelineno-41-12"></a>DISMAN-EVENT-MIB::sysUpTimeInstance type=67 value=Timeticks: (481390) 1:20:13.90
+</span><span id="__span-41-13"><a href="#__codelineno-41-13" id="__codelineno-41-13" name="__codelineno-41-13"></a>SNMPv2-MIB::snmpTrapOID.0      type=6  value=OID: IF-MIB::linkDown
+</span><span id="__span-41-14"><a href="#__codelineno-41-14" id="__codelineno-41-14" name="__codelineno-41-14"></a>IF-MIB::ifIndex                type=2  value=INTEGER: 1
+</span><span id="__span-41-15"><a href="#__codelineno-41-15" id="__codelineno-41-15" name="__codelineno-41-15"></a>IF-MIB::ifAdminStatus          type=2  value=INTEGER: 1
+</span><span id="__span-41-16"><a href="#__codelineno-41-16" id="__codelineno-41-16" name="__codelineno-41-16"></a>IF-MIB::ifOperStatus           type=2  value=INTEGER: 1
+</span><span id="__span-41-17"><a href="#__codelineno-41-17" id="__codelineno-41-17" name="__codelineno-41-17"></a>IF-MIB::ifName                 type=4  value=STRING: "Gi0/1"
+</span><span id="__span-41-18"><a href="#__codelineno-41-18" id="__codelineno-41-18" name="__codelineno-41-18"></a>IF-MIB::ifDescr                type=4  value=STRING: "GigabitEthernet0/1"
 </span></code></pre></div>
-<h3 id="optional-bulletproof-solution">(optional) Bulletproof solution</h3>
-<p>Official Zabbix SNMP templates do not require installing MIB files, targeting
-raw OIDs for data polling. If we continue this style for trapping too
-we can create a dependency free solution by enabling a "numerical" flag inside
-/etc/snmp/snmptrapd.conf</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-35-1"><a href="#__codelineno-35-1" id="__codelineno-35-1" name="__codelineno-35-1"></a>outputOption n
-</span></code></pre></div>
-<p>Edit the file, restart the snmptrapd service, send test trap, and check the log:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-36-1"><a href="#__codelineno-36-1" id="__codelineno-36-1" name="__codelineno-36-1"></a>tail -99 /var/log/zabbix_traps_archive/zabbix_traps.log
-</span></code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">In long run</p>
-<p>Using a numerical traps will take much more time to design a template.
-More time in creating items and triggers. Due to the '.' (dot) symbol of
-being a special character in the regular expression world, the items
-keys will require to escape. This makes solution not visually pleasant.
-Ignoring escaping the '.' will also work 99.9% of time, but it violates the
-idea of bulletproof and precise solution.</p>
-</div>
-<hr/>
-<p>Using numerical traps can be best direction if:</p>
-<ul>
-<li>
-<p>There is a big passion about bulletproof solution. Creating solution with
-bare minimum dependencies - MIBs are never required for Zabbix proxies.</p>
-</li>
-<li>
-<p>Template readability is not an issue. You are only person in the
-monitoring department. There are no team mates.</p>
-</li>
-<li>
-<p>Have a lot of time to design solution</p>
-</li>
-<li>
-<p>You are willing to share your masterpiece with the internet.
-Perhaps share it at GitHub</p>
-</li>
-</ul>
+</details>
 <h3 id="creating-snmp-trap-items">Creating SNMP Trap Items</h3>
 <p>Now that our host is configured and we've verified that traps are being received,
 we can create a set of items to store and process the trap data in a structured way.</p>
@@ -2253,156 +2429,243 @@ as the administrative and operational interface status.</p>
 <p>This item serves as the master collector for all incoming traps. Any dependent
 items you create later will use this as their source.</p>
 <p>In the Zabbix frontend, navigate to
-<code>Data collection</code> → <code>Hosts</code> → <code>Network Switch 01</code> → <code>Items</code>
+<strong>Data collection</strong> → <strong>Hosts</strong> → <em>Network Switch 01</em> → <strong>Items</strong>
 and click Create item.</p>
 <p>Configure the following parameters:</p>
 <ul>
-<li><strong>Name:</strong> SNMP Trap: Fallback</li>
+<li><strong>Name:</strong> <code>SNMP Trap: Fallback</code></li>
 <li><strong>Type:</strong> SNMP trap</li>
-<li><strong>Key:</strong> snmptrap.fallback</li>
+<li><strong>Key:</strong> <code>snmptrap.fallback</code></li>
 <li><strong>Type of information:</strong> Text</li>
 </ul>
-<p>Next we will create 2 dependent items. One item for the ifAdminStatus and another
-one for the ifOperStatus. You can do this by clicking on the 3 dots before our
+<p>Next we will create 2 dependent items. One item for the <code>ifAdminStatus</code> and another
+one for the <code>ifOperStatus</code>. You can do this by clicking on the 3 dots before our
 fallback item or by just creating a new item and selecting type <code>Dependent item</code></p>
 <ul>
-<li><strong>Name:</strong> Trap ifAdminStatus</li>
+<li><strong>Name:</strong> <code>Trap ifAdminStatus</code></li>
 <li><strong>Type:</strong> Dependent item</li>
-<li><strong>Key:</strong> trap.ifAdminStatus</li>
+<li><strong>Key:</strong> <code>trap.ifAdminStatus</code></li>
 <li><strong>Type of information:</strong> Numeric(unsigned)</li>
 <li><strong>Master item:</strong> (Select your fallback item as master item)</li>
 </ul>
-<p>Click on the <code>preprocessing</code> tab and select <code>Regular expression</code>.
+<p>Click on the <strong>Preprocessing</strong> tab and select <strong>Regular expression</strong>.
 use <code>IF-MIB::ifAdminStatus[\s\S]*?INTEGER:\s+(\d+)</code> in the Parameters field and
 <code>\1</code> in the Output box.</p>
-<p>Select the box <code>Custom on fail</code> and use the option <code>Discard value</code>.</p>
+<p>Select the box <strong>Custom on fail</strong> and use the option <strong>Discard value</strong>.</p>
 <p><img alt="snmp-traps/ch04.36-snmp-preprocessing.png" src="../snmp-traps/ch04.36-snmp-preprocessing.png"/></p>
 <p>Next we create our second item also dependent on our Fallback item.</p>
 <ul>
-<li><strong>Name:</strong> Trap ifOperStatus</li>
+<li><strong>Name:</strong> <code>Trap ifOperStatus</code></li>
 <li><strong>Type:</strong> Dependent item</li>
-<li><strong>Key:</strong> trap.ifAdminStatus</li>
+<li><strong>Key:</strong> <code>trap.ifOperStatus</code></li>
 <li><strong>Type of information:</strong> Numeric(unsigned)</li>
 <li><strong>Master item:</strong> (Select your fallback item as master item)</li>
 </ul>
-<p>Again go to the <code>Preprocessing</code> tab and enter following information.</p>
-<p>Select <code>Regular expression</code> and for Parameters enter <code>IF-MIB::ifOperStatus[\s\S]*?INTEGER:\s+(\d+)</code>
+<p>Again go to the <strong>Preprocessing</strong> tab and enter following information.</p>
+<p>Select <strong>Regular expression</strong> and as Parameters enter <code>IF-MIB::ifOperStatus[\s\S]*?INTEGER:\s+(\d+)</code>
 and <code>\1</code> in the Output box.</p>
-<p>Again add a <code>Custom on fail</code> step and select <code>Discard value</code>.</p>
+<p>Again add a <strong>Custom on fail</strong> step and select <strong>Discard value</strong>.</p>
 <p><img alt="ch04.37-snmp-preprocessing.png" src="../snmp-traps/ch04.36-snmp-preprocessing.png"/></p>
 <p>We have our items now but we still are missing our trigger. Go back to your host
 and click on the triggers and add the following trigger.</p>
-<p><strong>Name:</strong> Problem (Link down:)
-<strong>Severity:</strong> Warning</p>
-<p><strong>Problem expression:</strong> <code>last(/Network Switch 01/trap.ifOperStatus)=2 and last(/Network Switch 01/trap.ifAdminStatus)=2</code></p>
-<p><strong>Recovery expression:</strong> <code>last(/Network Switch 01/trap.ifOperStatus)=1 and last(/Network Switch 01/trap.ifAdminStatus)=1</code></p>
+<ul>
+<li><strong>Name:</strong> <code>Problem (Link down:)</code></li>
+<li><strong>Severity:</strong> Warning</li>
+<li><strong>Problem expression:</strong> <code>last(/Network Switch 01/trap.ifOperStatus)=2 and last(/Network Switch 01/trap.ifAdminStatus)=2</code></li>
+<li><strong>Recovery expression:</strong> <code>last(/Network Switch 01/trap.ifOperStatus)=1 and last(/Network Switch 01/trap.ifAdminStatus)=1</code></li>
+</ul>
 <p><img alt="snmp-traps/ch04.38-snmp-trigger.png" src="../snmp-traps/ch04.38-snmp-trigger.png"/></p>
-<p>Make sure to also select the box <code>Allow manual close.</code> This can help to close
+<p>Make sure to also select the box <strong>Allow manual close</strong>. This can help to close
 the problem in case we don't receive a TRAP.</p>
 <p>You should now be able to sent a trap to open and close a problem in Zabbix
 based on the status of the ifOperStatus and the ifAdminStatus </p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-37-1"><a href="#__codelineno-37-1" id="__codelineno-37-1" name="__codelineno-37-1"></a>snmptrap<span class="w"> </span>-v<span class="w"> </span>2c<span class="w"> </span>-c<span class="w"> </span>public<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span><span class="s1">''</span><span class="w"> </span>IF-MIB::linkDown<span class="w">   </span>IF-MIB::ifIndex<span class="w"> </span>i<span class="w"> </span><span class="m">1</span><span class="w">   </span>IF-MIB::ifAdminStatus<span class="w"> </span>i<span class="w"> </span><span class="m">2</span><span class="w">   </span>IF-MIB::ifOperStatus<span class="w"> </span>i<span class="w"> </span><span class="m">2</span><span class="w">   </span>IF-MIB::ifName<span class="w"> </span>s<span class="w"> </span><span class="s2">"Gi0/1"</span><span class="w">   </span>IF-MIB::ifDescr<span class="w"> </span>s<span class="w"> </span><span class="s2">"GigabitEthernet0/1"</span>
-</span><span id="__span-37-2"><a href="#__codelineno-37-2" id="__codelineno-37-2" name="__codelineno-37-2"></a>snmptrap<span class="w"> </span>-v<span class="w"> </span>2c<span class="w"> </span>-c<span class="w"> </span>public<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span><span class="s1">''</span><span class="w"> </span>IF-MIB::linkDown<span class="w">   </span>IF-MIB::ifIndex<span class="w"> </span>i<span class="w"> </span><span class="m">1</span><span class="w">   </span>IF-MIB::ifAdminStatus<span class="w"> </span>i<span class="w"> </span><span class="m">1</span><span class="w">   </span>IF-MIB::ifOperStatus<span class="w"> </span>i<span class="w"> </span><span class="m">1</span><span class="w">   </span>IF-MIB::ifName<span class="w"> </span>s<span class="w"> </span><span class="s2">"Gi0/1"</span><span class="w">   </span>IF-MIB::ifDescr<span class="w"> </span>s<span class="w"> </span><span class="s2">"GigabitEthernet0/1"</span>
+<details class="example" open="open">
+<summary>Send test SNMP traps to trigger the problem</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-42-1"><a href="#__codelineno-42-1" id="__codelineno-42-1" name="__codelineno-42-1"></a>snmptrap<span class="w"> </span>-v<span class="w"> </span>2c<span class="w"> </span>-c<span class="w"> </span>public<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span><span class="s1">''</span><span class="w"> </span>IF-MIB::linkDown<span class="w">   </span>IF-MIB::ifIndex<span class="w"> </span>i<span class="w"> </span><span class="m">1</span><span class="w">   </span>IF-MIB::ifAdminStatus<span class="w"> </span>i<span class="w"> </span><span class="m">2</span><span class="w">   </span>IF-MIB::ifOperStatus<span class="w"> </span>i<span class="w"> </span><span class="m">2</span><span class="w">   </span>IF-MIB::ifName<span class="w"> </span>s<span class="w"> </span><span class="s2">"Gi0/1"</span><span class="w">   </span>IF-MIB::ifDescr<span class="w"> </span>s<span class="w"> </span><span class="s2">"GigabitEthernet0/1"</span>
+</span><span id="__span-42-2"><a href="#__codelineno-42-2" id="__codelineno-42-2" name="__codelineno-42-2"></a>snmptrap<span class="w"> </span>-v<span class="w"> </span>2c<span class="w"> </span>-c<span class="w"> </span>public<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span><span class="s1">''</span><span class="w"> </span>IF-MIB::linkDown<span class="w">   </span>IF-MIB::ifIndex<span class="w"> </span>i<span class="w"> </span><span class="m">1</span><span class="w">   </span>IF-MIB::ifAdminStatus<span class="w"> </span>i<span class="w"> </span><span class="m">1</span><span class="w">   </span>IF-MIB::ifOperStatus<span class="w"> </span>i<span class="w"> </span><span class="m">1</span><span class="w">   </span>IF-MIB::ifName<span class="w"> </span>s<span class="w"> </span><span class="s2">"Gi0/1"</span><span class="w">   </span>IF-MIB::ifDescr<span class="w"> </span>s<span class="w"> </span><span class="s2">"GigabitEthernet0/1"</span>
 </span></code></pre></div>
+</details>
 <p>As a bonus you can add on the host a value map and link the items with it.</p>
 <p><img alt="snmp-traps/ch04.39-snmp-valuemap.png" src="../snmp-traps/ch04.39-snmp-valuemap.png"/></p>
-<p>If you don't like 2 different items and want to be more fancy you could create
-an dependent item like we did above and use JS instead of perl regex.</p>
-<p><div class="language-JavaScript highlight"><pre><span></span><code><span id="__span-38-1"><a href="#__codelineno-38-1" id="__codelineno-38-1" name="__codelineno-38-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="p">;</span>
-</span><span id="__span-38-2"><a href="#__codelineno-38-2" id="__codelineno-38-2" name="__codelineno-38-2"></a>
-</span><span id="__span-38-3"><a href="#__codelineno-38-3" id="__codelineno-38-3" name="__codelineno-38-3"></a><span class="kd">function</span><span class="w"> </span><span class="nx">grab</span><span class="p">(</span><span class="nx">re</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-38-4"><a href="#__codelineno-38-4" id="__codelineno-38-4" name="__codelineno-38-4"></a><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">re</span><span class="p">);</span>
-</span><span id="__span-38-5"><a href="#__codelineno-38-5" id="__codelineno-38-5" name="__codelineno-38-5"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">m</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">m</span><span class="p">[</span><span class="mf">1</span><span class="p">]</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">''</span><span class="p">;</span>
-</span><span id="__span-38-6"><a href="#__codelineno-38-6" id="__codelineno-38-6" name="__codelineno-38-6"></a><span class="p">}</span>
-</span><span id="__span-38-7"><a href="#__codelineno-38-7" id="__codelineno-38-7" name="__codelineno-38-7"></a>
-</span><span id="__span-38-8"><a href="#__codelineno-38-8" id="__codelineno-38-8" name="__codelineno-38-8"></a><span class="c1">// Extract fields from your sample payload</span>
-</span><span id="__span-38-9"><a href="#__codelineno-38-9" id="__codelineno-38-9" name="__codelineno-38-9"></a><span class="kd">var</span><span class="w"> </span><span class="nx">ifName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">grab</span><span class="p">(</span><span class="sr">/IF-MIB::ifName[\s\S]*?STRING:\s+"([^"]+)"/m</span><span class="p">);</span>
-</span><span id="__span-38-10"><a href="#__codelineno-38-10" id="__codelineno-38-10" name="__codelineno-38-10"></a><span class="kd">var</span><span class="w"> </span><span class="nx">admin</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nx">grab</span><span class="p">(</span><span class="sr">/IF-MIB::ifAdminStatus[\s\S]*?INTEGER:\s+(\d+)/m</span><span class="p">);</span>
-</span><span id="__span-38-11"><a href="#__codelineno-38-11" id="__codelineno-38-11" name="__codelineno-38-11"></a><span class="kd">var</span><span class="w"> </span><span class="nx">oper</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nx">grab</span><span class="p">(</span><span class="sr">/IF-MIB::ifOperStatus[\s\S]*?INTEGER:\s+(\d+)/m</span><span class="p">);</span>
-</span><span id="__span-38-12"><a href="#__codelineno-38-12" id="__codelineno-38-12" name="__codelineno-38-12"></a>
-</span><span id="__span-38-13"><a href="#__codelineno-38-13" id="__codelineno-38-13" name="__codelineno-38-13"></a><span class="c1">// Map 1/2/3 -&gt; up/down/testing</span>
-</span><span id="__span-38-14"><a href="#__codelineno-38-14" id="__codelineno-38-14" name="__codelineno-38-14"></a><span class="kd">var</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s1">'1'</span><span class="o">:</span><span class="s1">'up'</span><span class="p">,</span><span class="w"> </span><span class="s1">'2'</span><span class="o">:</span><span class="s1">'down'</span><span class="p">,</span><span class="w"> </span><span class="s1">'3'</span><span class="o">:</span><span class="s1">'testing'</span><span class="w"> </span><span class="p">};</span>
-</span><span id="__span-38-15"><a href="#__codelineno-38-15" id="__codelineno-38-15" name="__codelineno-38-15"></a><span class="kd">var</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">map</span><span class="p">[</span><span class="nx">admin</span><span class="p">]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">admin</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">'?'</span><span class="p">;</span>
-</span><span id="__span-38-16"><a href="#__codelineno-38-16" id="__codelineno-38-16" name="__codelineno-38-16"></a><span class="kd">var</span><span class="w"> </span><span class="nx">o</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">map</span><span class="p">[</span><span class="nx">oper</span><span class="p">]</span><span class="w">  </span><span class="o">||</span><span class="w"> </span><span class="nx">oper</span><span class="w">  </span><span class="o">||</span><span class="w"> </span><span class="s1">'?'</span><span class="p">;</span>
-</span><span id="__span-38-17"><a href="#__codelineno-38-17" id="__codelineno-38-17" name="__codelineno-38-17"></a><span class="kd">var</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ifName</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">'ifName=?'</span><span class="p">;</span>
-</span><span id="__span-38-18"><a href="#__codelineno-38-18" id="__codelineno-38-18" name="__codelineno-38-18"></a>
-</span><span id="__span-38-19"><a href="#__codelineno-38-19" id="__codelineno-38-19" name="__codelineno-38-19"></a><span class="k">return</span><span class="w"> </span><span class="s1">'interface='</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">' adminStatus='</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">' operStatus='</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">o</span><span class="p">;</span>
+<p>If you don't like 2 different items and want to have a more fancy solution you
+could create a dependent item like we did above and use JS instead of perl regex.</p>
+<details class="example" open="open">
+<summary>Using JS to extract multiple values from the trap message</summary>
+<div class="language-JavaScript highlight"><pre><span></span><code><span id="__span-43-1"><a href="#__codelineno-43-1" id="__codelineno-43-1" name="__codelineno-43-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="p">;</span>
+</span><span id="__span-43-2"><a href="#__codelineno-43-2" id="__codelineno-43-2" name="__codelineno-43-2"></a>
+</span><span id="__span-43-3"><a href="#__codelineno-43-3" id="__codelineno-43-3" name="__codelineno-43-3"></a><span class="kd">function</span><span class="w"> </span><span class="nx">grab</span><span class="p">(</span><span class="nx">re</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-43-4"><a href="#__codelineno-43-4" id="__codelineno-43-4" name="__codelineno-43-4"></a><span class="kd">var</span><span class="w"> </span><span class="nx">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">re</span><span class="p">);</span>
+</span><span id="__span-43-5"><a href="#__codelineno-43-5" id="__codelineno-43-5" name="__codelineno-43-5"></a><span class="k">return</span><span class="w"> </span><span class="nx">m</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">m</span><span class="p">[</span><span class="mf">1</span><span class="p">]</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">''</span><span class="p">;</span>
+</span><span id="__span-43-6"><a href="#__codelineno-43-6" id="__codelineno-43-6" name="__codelineno-43-6"></a><span class="p">}</span>
+</span><span id="__span-43-7"><a href="#__codelineno-43-7" id="__codelineno-43-7" name="__codelineno-43-7"></a>
+</span><span id="__span-43-8"><a href="#__codelineno-43-8" id="__codelineno-43-8" name="__codelineno-43-8"></a><span class="c1">// Extract fields from your sample payload</span>
+</span><span id="__span-43-9"><a href="#__codelineno-43-9" id="__codelineno-43-9" name="__codelineno-43-9"></a><span class="kd">var</span><span class="w"> </span><span class="nx">ifName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">grab</span><span class="p">(</span><span class="sr">/IF-MIB::ifName[\s\S]*?STRING:\s+"([^"]+)"/m</span><span class="p">);</span>
+</span><span id="__span-43-10"><a href="#__codelineno-43-10" id="__codelineno-43-10" name="__codelineno-43-10"></a><span class="kd">var</span><span class="w"> </span><span class="nx">admin</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nx">grab</span><span class="p">(</span><span class="sr">/IF-MIB::ifAdminStatus[\s\S]*?INTEGER:\s+(\d+)/m</span><span class="p">);</span>
+</span><span id="__span-43-11"><a href="#__codelineno-43-11" id="__codelineno-43-11" name="__codelineno-43-11"></a><span class="kd">var</span><span class="w"> </span><span class="nx">oper</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nx">grab</span><span class="p">(</span><span class="sr">/IF-MIB::ifOperStatus[\s\S]*?INTEGER:\s+(\d+)/m</span><span class="p">);</span>
+</span><span id="__span-43-12"><a href="#__codelineno-43-12" id="__codelineno-43-12" name="__codelineno-43-12"></a>
+</span><span id="__span-43-13"><a href="#__codelineno-43-13" id="__codelineno-43-13" name="__codelineno-43-13"></a><span class="c1">// Map 1/2/3 -&gt; up/down/testing</span>
+</span><span id="__span-43-14"><a href="#__codelineno-43-14" id="__codelineno-43-14" name="__codelineno-43-14"></a><span class="kd">var</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s1">'1'</span><span class="o">:</span><span class="s1">'up'</span><span class="p">,</span><span class="w"> </span><span class="s1">'2'</span><span class="o">:</span><span class="s1">'down'</span><span class="p">,</span><span class="w"> </span><span class="s1">'3'</span><span class="o">:</span><span class="s1">'testing'</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-43-15"><a href="#__codelineno-43-15" id="__codelineno-43-15" name="__codelineno-43-15"></a><span class="kd">var</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">map</span><span class="p">[</span><span class="nx">admin</span><span class="p">]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">admin</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">'?'</span><span class="p">;</span>
+</span><span id="__span-43-16"><a href="#__codelineno-43-16" id="__codelineno-43-16" name="__codelineno-43-16"></a><span class="kd">var</span><span class="w"> </span><span class="nx">o</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">map</span><span class="p">[</span><span class="nx">oper</span><span class="p">]</span><span class="w">  </span><span class="o">||</span><span class="w"> </span><span class="nx">oper</span><span class="w">  </span><span class="o">||</span><span class="w"> </span><span class="s1">'?'</span><span class="p">;</span>
+</span><span id="__span-43-17"><a href="#__codelineno-43-17" id="__codelineno-43-17" name="__codelineno-43-17"></a><span class="kd">var</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ifName</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">'ifName=?'</span><span class="p">;</span>
+</span><span id="__span-43-18"><a href="#__codelineno-43-18" id="__codelineno-43-18" name="__codelineno-43-18"></a>
+</span><span id="__span-43-19"><a href="#__codelineno-43-19" id="__codelineno-43-19" name="__codelineno-43-19"></a><span class="k">return</span><span class="w"> </span><span class="s1">'interface='</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">' adminStatus='</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">' operStatus='</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">o</span><span class="p">;</span>
 </span></code></pre></div>
-This will return output in latest data like <code>interface=Gi0/1 adminStatus=down operStatus=down</code></p>
-<p>Another solution way more easy could be to create a specific item instead of
-falling back on the fallback item that looks exactly for a link that goes Down
-or Up. This can be done by creating a specific item like this:</p>
-<p><code>snmptrap["IF-MIB::link(Down|Up)"]</code></p>
-<p>We could then create a trigger like:
-<code>str(/Network Switch 01/snmptrap["IF-MIB::link(Down|Up)"],"IF-MIB::linkDown")=1</code>
-and a recovery trigger like :
-<code>str(/Network Switch 01/snmptrap["IF-MIB::link(Down|Up)"],"IF-MIB::linkUp")=1</code></p>
-<p>As you can see the solutions are endless and SNMP traps are not so easy and
+<p>This will return output in latest data like </p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-44-1"><a href="#__codelineno-44-1" id="__codelineno-44-1" name="__codelineno-44-1"></a>interface=Gi0/1 adminStatus=down operStatus=down
+</span></code></pre></div>
+</details>
+<p>Another solution, way more easy, could be to create a specific item instead of
+falling back on the fallback item that looks exactly for a link that goes <em>Down</em>
+or <em>Up</em>. This can be done by creating a specific item like this:</p>
+<ul>
+<li><strong>Item Key:</strong> <code>snmptrap["IF-MIB::link(Down|Up)"]</code></li>
+</ul>
+<p>We could then create a trigger like:</p>
+<ul>
+<li><strong>Problem expression:</strong> <code>str(/Network Switch 01/snmptrap["IF-MIB::link(Down|Up)"],"IF-MIB::linkDown")=1</code></li>
+</ul>
+<p>and a recovery trigger like :</p>
+<ul>
+<li><strong>Recovery expression:</strong> <code>str(/Network Switch 01/snmptrap["IF-MIB::link(Down|Up)"],"IF-MIB::linkUp")=1</code></li>
+</ul>
+<p>As you can see, the possibilities are endless and SNMP traps are not so easy and
 probably need some tweaking before you have it all working like you want.</p>
 <details class="note" open="open">
 <summary>Note</summary>
-<p>The snmptrap.fallback is a good point to start with if you have no clue what
-traps to expect it can help you to discover all the traps and stay to be sure
+<p>The <code>snmptrap.fallback</code> is a good point to start with if you have no clue what
+traps to expect. It can help you to discover all the traps and make sure
 you catch all traps even if they are not configured on your host.</p>
 </details>
 <h2 id="deploying-bare-minimum-mib-files">Deploying bare minimum MIB files</h2>
 <p>Gathering proper MIB files might sounds a tedious and time consuming task.</p>
 <p>Installing too many MIBs will cause degradation for the
 SNMP trap translation process and slow down the SNMP polling process.</p>
-<p>Here is an universal method (treat it as one option) on how to obtain bare minimum
-MIBs to work with most of devices. This is useful for SNMP polling too.</p>
+<p>Usually the Linux distribution comes with a set of MIB files. For example, on
+Ubuntu, the <code>snmp-mibs-downloader</code> package, or on Suse the <code>snmp-mibs</code> package
+provides a collection of MIB files that can be used for SNMP monitoring. However,
+these MIBs may not cover all the devices in your network, especially if you have
+equipment from multiple vendors.</p>
+<p>Here is an universal method (treat it as one of many possible options) on how 
+to obtain bare minimum MIBs to work with most of devices. This is useful for 
+SNMP polling too.</p>
 <p>The project <a href="https://github.com/netdisco/netdisco-mibs">https://github.com/netdisco/netdisco-mibs</a>
-exist for 20 years and is a collection of MIBs for a lot of vendors. Dare I say: all vendors?</p>
-<p>To install/replace the Linux distribution stock MIB bundle:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-39-1"><a href="#__codelineno-39-1" id="__codelineno-39-1" name="__codelineno-39-1"></a><span class="c1"># move to /tmp</span>
-</span><span id="__span-39-2"><a href="#__codelineno-39-2" id="__codelineno-39-2" name="__codelineno-39-2"></a><span class="nb">cd</span><span class="w"> </span>/tmp
-</span><span id="__span-39-3"><a href="#__codelineno-39-3" id="__codelineno-39-3" name="__codelineno-39-3"></a>
-</span><span id="__span-39-4"><a href="#__codelineno-39-4" id="__codelineno-39-4" name="__codelineno-39-4"></a><span class="c1"># download</span>
-</span><span id="__span-39-5"><a href="#__codelineno-39-5" id="__codelineno-39-5" name="__codelineno-39-5"></a>curl<span class="w"> </span>-kL<span class="w"> </span>https://github.com/netdisco/netdisco-mibs/archive/refs/heads/master.zip<span class="w"> </span>-o<span class="w"> </span>/tmp/netdisco-mibs.zip
-</span><span id="__span-39-6"><a href="#__codelineno-39-6" id="__codelineno-39-6" name="__codelineno-39-6"></a>
-</span><span id="__span-39-7"><a href="#__codelineno-39-7" id="__codelineno-39-7" name="__codelineno-39-7"></a><span class="c1"># unpack. this will create '/tmp/netdisco-mibs-master' directory</span>
-</span><span id="__span-39-8"><a href="#__codelineno-39-8" id="__codelineno-39-8" name="__codelineno-39-8"></a>unzip<span class="w"> </span>/tmp/netdisco-mibs.zip<span class="w"> </span>-d<span class="w"> </span>/tmp
-</span><span id="__span-39-9"><a href="#__codelineno-39-9" id="__codelineno-39-9" name="__codelineno-39-9"></a>
-</span><span id="__span-39-10"><a href="#__codelineno-39-10" id="__codelineno-39-10" name="__codelineno-39-10"></a><span class="c1"># remove existing/official MIBs from Linux distribution</span>
-</span><span id="__span-39-11"><a href="#__codelineno-39-11" id="__codelineno-39-11" name="__codelineno-39-11"></a>rm<span class="w"> </span>-rf<span class="w"> </span>/usr/share/snmp/mibs/*
-</span><span id="__span-39-12"><a href="#__codelineno-39-12" id="__codelineno-39-12" name="__codelineno-39-12"></a>
-</span><span id="__span-39-13"><a href="#__codelineno-39-13" id="__codelineno-39-13" name="__codelineno-39-13"></a><span class="c1"># install Netdisco collection. it will move all directories which start with lower case letter or digit</span>
-</span><span id="__span-39-14"><a href="#__codelineno-39-14" id="__codelineno-39-14" name="__codelineno-39-14"></a>find<span class="w"> </span>/tmp/netdisco-mibs-master<span class="w"> </span>-mindepth<span class="w"> </span><span class="m">1</span><span class="w"> </span>-maxdepth<span class="w"> </span><span class="m">1</span><span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span>-name<span class="w"> </span><span class="s1">'[a-z0-9]*'</span><span class="w"> </span>-exec<span class="w"> </span>mv<span class="w"> </span><span class="o">{}</span><span class="w"> </span>/usr/share/snmp/mibs/<span class="w"> </span><span class="se">\;</span>
-</span><span id="__span-39-15"><a href="#__codelineno-39-15" id="__codelineno-39-15" name="__codelineno-39-15"></a>
-</span><span id="__span-39-16"><a href="#__codelineno-39-16" id="__codelineno-39-16" name="__codelineno-39-16"></a><span class="c1"># list what is installed</span>
-</span><span id="__span-39-17"><a href="#__codelineno-39-17" id="__codelineno-39-17" name="__codelineno-39-17"></a>ls<span class="w"> </span>-1<span class="w"> </span>/usr/share/snmp/mibs
-</span><span id="__span-39-18"><a href="#__codelineno-39-18" id="__codelineno-39-18" name="__codelineno-39-18"></a>
-</span><span id="__span-39-19"><a href="#__codelineno-39-19" id="__codelineno-39-19" name="__codelineno-39-19"></a><span class="c1"># cleanup</span>
-</span><span id="__span-39-20"><a href="#__codelineno-39-20" id="__codelineno-39-20" name="__codelineno-39-20"></a>rm<span class="w"> </span>-rf<span class="w"> </span>/tmp/netdisco*
+exist for 20 years and is a collection of MIBs for a lot of vendors. Dare I say: all vendors?
+We will download the collection and install the MIB files in the <code>/usr/local/share/snmp/mibs</code> directory.
+After that we will configure SNMP to use only the MIBS we require. </p>
+<div class="admonition warning">
+<p class="admonition-title">Performance impact</p>
+<p>Loading lots of MIBs will cause degradation for the SNMP trap translation 
+process and slow down the SNMP polling process.</p>
+<p>Also, you might get warnings like:</p>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-45-1"><a href="#__codelineno-45-1" id="__codelineno-45-1" name="__codelineno-45-1"></a>Warning: Module MAU-MIB was in /usr/local/share/snmp/mibs//DOT3-MAU-MIB.txt now is /usr/local/share/snmp/mibs//RFC2668-MIB.txt
+</span><span id="__span-45-2"><a href="#__codelineno-45-2" id="__codelineno-45-2" name="__codelineno-45-2"></a>Warning: Module DISMAN-EVENT-MIB was in /usr/local/share/snmp/mibs//EVENT-MIB.txt now is /usr/local/share/snmp/mibs//DISMAN-EVENT-MIB.txt
+</span><span id="__span-45-3"><a href="#__codelineno-45-3" id="__codelineno-45-3" name="__codelineno-45-3"></a>Warning: Module P-BRIDGE-MIB was in /usr/local/share/snmp/mibs//P-BRIDGE-MIB.txt now is /usr/local/share/snmp/mibs//P-BRIDGE.txt
 </span></code></pre></div>
+This is because several MIB files may have the same module name defined inside
+them. This may result in incorrect translation of OIDs and unexpected behavior.
+To avoid this, it's important to only load the MIB files that are necessary 
+for your specific devices/vendors and use cases.</p>
+</div>
+<details class="example" open="open">
+<summary>Install MIB files from Netdisco collection</summary>
+<p>Download and unpack the Netdisco MIB collection, then move the relevant MIB 
+files to the SNMP MIB directory:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-46-1"><a href="#__codelineno-46-1" id="__codelineno-46-1" name="__codelineno-46-1"></a>curl<span class="w"> </span>-kL<span class="w"> </span>https://github.com/netdisco/netdisco-mibs/archive/refs/heads/master.zip<span class="w"> </span>-o<span class="w"> </span>/tmp/netdisco-mibs.zip
+</span><span id="__span-46-2"><a href="#__codelineno-46-2" id="__codelineno-46-2" name="__codelineno-46-2"></a>unzip<span class="w"> </span>/tmp/netdisco-mibs.zip<span class="w"> </span>-d<span class="w"> </span>/tmp
+</span></code></pre></div>
+<p>Next, move the MIB files from the Netdisco collection to the SNMP MIB directory.
+The Netdisco collection organizes MIBs in subdirectories based on vendor names,
+and we will move only those directories that start with a lowercase letter or
+digit, which typically represent vendor-specific MIBs.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-47-1"><a href="#__codelineno-47-1" id="__codelineno-47-1" name="__codelineno-47-1"></a>find<span class="w"> </span>/tmp/netdisco-mibs-master<span class="w"> </span>-mindepth<span class="w"> </span><span class="m">1</span><span class="w"> </span>-maxdepth<span class="w"> </span><span class="m">1</span><span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span>-name<span class="w"> </span><span class="s1">'[a-z0-9]*'</span><span class="w"> </span>-exec<span class="w"> </span>mv<span class="w"> </span><span class="se">\{\}</span><span class="w"> </span>/usr/local/share/snmp/mibs/<span class="w"> </span><span class="se">\;</span>
+</span></code></pre></div>
+<p>Finally, we can clean up the temporary files:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-48-1"><a href="#__codelineno-48-1" id="__codelineno-48-1" name="__codelineno-48-1"></a>rm<span class="w"> </span>-rf<span class="w"> </span>/tmp/netdisco*
+</span></code></pre></div>
+</details>
 <p>To enable bare minimum MIBs we need to enable two catalogs "rfc" and "net-snmp".</p>
-<p>Overwrite/replace configuration by using:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-40-1"><a href="#__codelineno-40-1" id="__codelineno-40-1" name="__codelineno-40-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span>
-</span><span id="__span-40-2"><a href="#__codelineno-40-2" id="__codelineno-40-2" name="__codelineno-40-2"></a><span class="s2">mibs :</span>
-</span><span id="__span-40-3"><a href="#__codelineno-40-3" id="__codelineno-40-3" name="__codelineno-40-3"></a><span class="s2">mibdirs /usr/share/snmp/mibs/rfc:/usr/share/snmp/mibs/net-snmp</span>
-</span><span id="__span-40-4"><a href="#__codelineno-40-4" id="__codelineno-40-4" name="__codelineno-40-4"></a><span class="s2">mibs +ALL</span>
-</span><span id="__span-40-5"><a href="#__codelineno-40-5" id="__codelineno-40-5" name="__codelineno-40-5"></a><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/snmp/snmp.conf
+<p>Overwrite/replace <code>/etc/snmp/snmp.conf</code> by with:</p>
+<div class="admonition info">
+<p class="admonition-title">Configure SNMP to use RFC and Net-SNMP MIBs</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-49-1"><a href="#__codelineno-49-1" id="__codelineno-49-1" name="__codelineno-49-1"></a>mibdirs<span class="w"> </span>/usr/local/share/snmp/mibs/rfc
+</span><span id="__span-49-2"><a href="#__codelineno-49-2" id="__codelineno-49-2" name="__codelineno-49-2"></a>mibdirs<span class="w"> </span>+/usr/local/share/snmp/mibs/net-snmp
 </span></code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">Fun fact</p>
+<p>Notice the <code>+</code> sign before the second <code>mibdirs</code> directive. It is important 
+to have <code>+</code> sign before the second <code>mibdirs</code> directive to make sure that both
+directories are included in the MIB search path. The <code>+</code> sign tells the SNMP
+library to append the second directory to the existing search path rather
+than replacing it.</p>
+</div>
+<details class="tip" open="open">
+<summary>Fun fact</summary>
 <p>Modifying /etc/snmp/snmp.conf file the changes are applied on the fly.
 No need to restart anything.</p>
-</div>
+</details>
 <h3 id="include-another-vendor">Include another vendor</h3>
 <p>Let's say we need to work with Cisco equipment. We can double-check if vendor
 is included in Netdisco bundle. Grep for case insensitive name:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-41-1"><a href="#__codelineno-41-1" id="__codelineno-41-1" name="__codelineno-41-1"></a>ls<span class="w"> </span>-1<span class="w"> </span>/usr/share/snmp/mibs<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>Cisco
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-50-1"><a href="#__codelineno-50-1" id="__codelineno-50-1" name="__codelineno-50-1"></a>ls<span class="w"> </span>-1<span class="w"> </span>/usr/share/snmp/mibs<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>Cisco
 </span></code></pre></div>
 <p>If the vendor is in list, then include "cisco" directory
 together with "rfc" and "net-snmp" directory, like this:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-42-1"><a href="#__codelineno-42-1" id="__codelineno-42-1" name="__codelineno-42-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span>
-</span><span id="__span-42-2"><a href="#__codelineno-42-2" id="__codelineno-42-2" name="__codelineno-42-2"></a><span class="s2">mibs :</span>
-</span><span id="__span-42-3"><a href="#__codelineno-42-3" id="__codelineno-42-3" name="__codelineno-42-3"></a><span class="s2">mibdirs /usr/share/snmp/mibs/rfc:/usr/share/snmp/mibs/net-snmp:/usr/share/snmp/mibs/cisco</span>
-</span><span id="__span-42-4"><a href="#__codelineno-42-4" id="__codelineno-42-4" name="__codelineno-42-4"></a><span class="s2">mibs +ALL</span>
-</span><span id="__span-42-5"><a href="#__codelineno-42-5" id="__codelineno-42-5" name="__codelineno-42-5"></a><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/snmp/snmp.conf
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-51-1"><a href="#__codelineno-51-1" id="__codelineno-51-1" name="__codelineno-51-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span>
+</span><span id="__span-51-2"><a href="#__codelineno-51-2" id="__codelineno-51-2" name="__codelineno-51-2"></a><span class="s2">mibs :</span>
+</span><span id="__span-51-3"><a href="#__codelineno-51-3" id="__codelineno-51-3" name="__codelineno-51-3"></a><span class="s2">mibdirs /usr/share/snmp/mibs/rfc:/usr/share/snmp/mibs/net-snmp:/usr/share/snmp/mibs/cisco</span>
+</span><span id="__span-51-4"><a href="#__codelineno-51-4" id="__codelineno-51-4" name="__codelineno-51-4"></a><span class="s2">mibs +ALL</span>
+</span><span id="__span-51-5"><a href="#__codelineno-51-5" id="__codelineno-51-5" name="__codelineno-51-5"></a><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/snmp/snmp.conf
 </span></code></pre></div>
 <p>Adding multiple vendors is possible but it will slow down the translation speed.
 Adding plus one vendor usually add at least 1s more to the translation speed.</p>
+<h3 id="optional-bulletproof-solution">(optional) Bulletproof solution</h3>
+<p>Official Zabbix SNMP templates do not require installing MIB files, targeting
+raw OIDs for data polling. If we continue this style for trapping too
+we can create a dependency free solution by enabling a "numerical" flag inside
+<code>/etc/snmp/snmptrapd.conf</code>.</p>
+<div class="admonition info">
+<p class="admonition-title">Enable numerical traps in snmptrapd.conf</p>
+<p>Add or modify the following line in <code>/etc/snmp/snmptrapd.conf</code> to enable 
+numerical traps:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-52-1"><a href="#__codelineno-52-1" id="__codelineno-52-1" name="__codelineno-52-1"></a>outputOption n
+</span></code></pre></div>
+</div>
+<p>Next, restart the snmptrapd service, send test trap, and check the log:</p>
+<div class="admonition info">
+<p class="admonition-title">Check log for numerical traps</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-53-1"><a href="#__codelineno-53-1" id="__codelineno-53-1" name="__codelineno-53-1"></a>tail<span class="w"> </span>-99<span class="w"> </span>/var/log/zabbix_traps_archive/zabbix_traps.log
+</span></code></pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">In long run</p>
+<p>Using numerical OIDs in Zabbix SNMP items can significantly increase the 
+time required to design a template, since the dot (<code>.</code>) in numerical OIDs is a
+special character in regular expressions. This means that the dot must be
+escaped (e.g., <code>\.</code>) in the regex preprocessing steps to ensure proper parsing.
+Failing to escape the dot can lead to unexpected behavior, even if it appears
+to work correctly 99.9% of the time. Without escaping, the dot acts as a 
+wildcard, matching <em>any</em> character, which violates the principle of a precise
+and bulletproof solution. Proper escaping ensures that the OID is interpreted
+exactly as intended, eliminating ambiguity and potential errors in monitoring.</p>
+</div>
+<hr/>
+<p>Using numerical traps can be best direction if:</p>
+<ul>
+<li>
+<p>There is a big passion about bulletproof solution. Creating a solution with the
+  bare minimum of dependencies - MIBs are never required for Zabbix proxies.</p>
+</li>
+<li>
+<p>Template readability is not an issue. You are the only person in the
+  monitoring department. There are no team mates.</p>
+</li>
+<li>
+<p>Have a lot of time to design solution</p>
+</li>
+<li>
+<p>You are willing to share your masterpiece with the internet.
+  Perhaps share it at GitHub</p>
+</li>
+</ul>
 <h2 id="conclusion_1">Conclusion</h2>
 <p>We started by setting up the trap reception environment using snmptrapd and the
 zabbix_trap_receiver.pl script, then integrated it into Zabbix through the SNMP

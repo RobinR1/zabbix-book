@@ -569,6 +569,37 @@ get/walk methods with secure SNMPv3 to monitor network devices efficiently.
     </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#deploying-bare-minimum-mib-files">
+<span class="md-ellipsis">
+      
+        Deploying bare minimum MIB files
+      
+    </span>
+</a>
+<nav aria-label="Deploying bare minimum MIB files" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#include-another-vendor">
+<span class="md-ellipsis">
+      
+        Include another vendor
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#optional-bulletproof-mib-less-solution">
+<span class="md-ellipsis">
+      
+        (optional) Bulletproof, MIB-less solution
+      
+    </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -1148,6 +1179,37 @@ get/walk methods with secure SNMPv3 to monitor network devices efficiently.
 <span class="md-ellipsis">
       
         Installing SNMP Agent on a Linux Host
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#deploying-bare-minimum-mib-files">
+<span class="md-ellipsis">
+      
+        Deploying bare minimum MIB files
+      
+    </span>
+</a>
+<nav aria-label="Deploying bare minimum MIB files" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#include-another-vendor">
+<span class="md-ellipsis">
+      
+        Include another vendor
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#optional-bulletproof-mib-less-solution">
+<span class="md-ellipsis">
+      
+        (optional) Bulletproof, MIB-less solution
       
     </span>
 </a>
@@ -1922,6 +1984,160 @@ they do not get accepted, do not worry:</p>
 </ul>
 </details>
 <hr/>
+<h3 id="deploying-bare-minimum-mib-files">Deploying bare minimum MIB files</h3>
+<p>Gathering proper MIB files might sounds a tedious and time consuming task.</p>
+<p>Installing too many MIBs will cause degradation for the
+SNMP trap translation process and slow down the SNMP polling process.</p>
+<p>Usually the Linux distribution comes with a set of basic MIB files. For example, on
+Ubuntu, the <code>snmp-mibs-downloader</code> package, or on Suse the <code>snmp-mibs</code> package
+provides a collection of MIB files that can be used for SNMP monitoring. However,
+these MIBs may not cover all the devices in your network, especially if you have
+equipment from multiple vendors.</p>
+<p>Here is an universal method (treat it as one of many possible options) on how 
+to obtain bare minimum MIBs to work with most of devices. This is useful for both
+SNMP polling and trapping.</p>
+<p>The project <a href="https://github.com/netdisco/netdisco-mibs">https://github.com/netdisco/netdisco-mibs</a>
+exist for 20 years and is a collection of MIBs for a lot of vendors. Dare I say: all vendors?
+We will download the collection and install the MIB files in the <code>/usr/local/share/snmp/mibs</code> directory.
+After that we will configure SNMP to use only the MIBS we require. </p>
+<div class="admonition warning">
+<p class="admonition-title">Performance impact</p>
+<p>Loading lots of MIBs will cause degradation for the SNMP trap translation 
+process and slow down the SNMP polling process.</p>
+<p>Also, you might get warnings like:</p>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a href="#__codelineno-22-1" id="__codelineno-22-1" name="__codelineno-22-1"></a>Warning: Module MAU-MIB was in /usr/local/share/snmp/mibs//DOT3-MAU-MIB.txt now is /usr/local/share/snmp/mibs//RFC2668-MIB.txt
+</span><span id="__span-22-2"><a href="#__codelineno-22-2" id="__codelineno-22-2" name="__codelineno-22-2"></a>Warning: Module DISMAN-EVENT-MIB was in /usr/local/share/snmp/mibs//EVENT-MIB.txt now is /usr/local/share/snmp/mibs//DISMAN-EVENT-MIB.txt
+</span><span id="__span-22-3"><a href="#__codelineno-22-3" id="__codelineno-22-3" name="__codelineno-22-3"></a>Warning: Module P-BRIDGE-MIB was in /usr/local/share/snmp/mibs//P-BRIDGE-MIB.txt now is /usr/local/share/snmp/mibs//P-BRIDGE.txt
+</span></code></pre></div>
+This is because several MIB files may have the same module name defined inside
+them. This may result in incorrect translation of OIDs and unexpected behavior.
+To avoid this, it's important to only load the MIB files that are necessary 
+for your specific devices/vendors and use cases.</p>
+</div>
+<details class="example" open="open">
+<summary>Install MIB files from Netdisco collection</summary>
+<p>Download and unpack the Netdisco MIB collection, then move the relevant MIB 
+files to the SNMP MIB directory:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a href="#__codelineno-23-1" id="__codelineno-23-1" name="__codelineno-23-1"></a>curl<span class="w"> </span>-kL<span class="w"> </span>https://github.com/netdisco/netdisco-mibs/archive/refs/heads/master.zip<span class="w"> </span>-o<span class="w"> </span>/tmp/netdisco-mibs.zip
+</span><span id="__span-23-2"><a href="#__codelineno-23-2" id="__codelineno-23-2" name="__codelineno-23-2"></a>unzip<span class="w"> </span>/tmp/netdisco-mibs.zip<span class="w"> </span>-d<span class="w"> </span>/tmp
+</span></code></pre></div>
+<p>Next, move the MIB files from the Netdisco collection to the SNMP MIB directory.
+The Netdisco collection organizes MIBs in subdirectories based on vendor names,
+and we will move only those directories that start with a lowercase letter or
+digit, which typically represent vendor-specific MIBs.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a href="#__codelineno-24-1" id="__codelineno-24-1" name="__codelineno-24-1"></a>mkdir<span class="w"> </span>/usr/local/share/snmp/mibs
+</span><span id="__span-24-2"><a href="#__codelineno-24-2" id="__codelineno-24-2" name="__codelineno-24-2"></a>find<span class="w"> </span>/tmp/netdisco-mibs-master<span class="w"> </span>-mindepth<span class="w"> </span><span class="m">1</span><span class="w"> </span>-maxdepth<span class="w"> </span><span class="m">1</span><span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span>-name<span class="w"> </span><span class="s1">'[a-z0-9]*'</span><span class="w"> </span>-exec<span class="w"> </span>mv<span class="w"> </span><span class="se">\{\}</span><span class="w"> </span>/usr/local/share/snmp/mibs/<span class="w"> </span><span class="se">\;</span>
+</span></code></pre></div>
+<p>Finally, we can clean up the temporary files:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a href="#__codelineno-25-1" id="__codelineno-25-1" name="__codelineno-25-1"></a>rm<span class="w"> </span>-rf<span class="w"> </span>/tmp/netdisco*
+</span></code></pre></div>
+</details>
+<p>To enable bare minimum MIBs we need to enable two catalogs "rfc" and "net-snmp".</p>
+<p>Overwrite/replace <code>/etc/snmp/snmp.conf</code> by with:</p>
+<div class="admonition info">
+<p class="admonition-title">Configure SNMP to use RFC and Net-SNMP MIBs</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a href="#__codelineno-26-1" id="__codelineno-26-1" name="__codelineno-26-1"></a>mibdirs<span class="w"> </span>/usr/local/share/snmp/mibs/rfc:/usr/local/share/snmp/mibs/net-snmp
+</span></code></pre></div>
+<p>This will override the OS default MIB search path and set it to include only
+the RFC and Net-SNMP MIBs, which are commonly used and provide a good starting
+point for most SNMP monitoring scenarios.</p>
+</div>
+<details class="tip" open="open">
+<summary>Fun fact</summary>
+<p>Modifying /etc/snmp/snmp.conf file the changes are applied on the fly.
+No need to restart anything.</p>
+</details>
+<div class="admonition warning">
+<p class="admonition-title">Repeat on each Server/Proxy</p>
+<p>If you have multiple Zabbix servers and/or proxies that will be processing SNMP traps,
+you will need to repeat this MIB installation and configuration process on each
+of those servers to ensure consistent trap translation and processing across
+your monitoring infrastructure.</p>
+</div>
+<hr/>
+<h4 id="include-another-vendor">Include another vendor</h4>
+<p>Let's say we need to work with Cisco equipment. We can double-check if vendor
+is included in Netdisco bundle. Grep for case insensitive name:</p>
+<details class="example" open="open">
+<summary>Check if Cisco MIBs are included in Netdisco collection</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a href="#__codelineno-27-1" id="__codelineno-27-1" name="__codelineno-27-1"></a>ls<span class="w"> </span>-1<span class="w"> </span>/usr/local/share/snmp/mibs<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>Cisco
+</span></code></pre></div>
+</details>
+<p>If the vendor is in list, then include "cisco" directory by adding an additional
+line in <code>/etc/snmp/snmp.conf</code>:</p>
+<details class="example" open="open">
+<summary>Include Cisco MIBs in SNMP configuration</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a href="#__codelineno-28-1" id="__codelineno-28-1" name="__codelineno-28-1"></a><span class="w">    </span>mibdirs<span class="w"> </span>/usr/local/share/snmp/mibs/rfc:/usr/local/share/snmp/mibs/net-snmp
+</span><span id="__span-28-2"><a href="#__codelineno-28-2" id="__codelineno-28-2" name="__codelineno-28-2"></a><span class="w">    </span><span class="c1"># Cisco MIBs</span>
+</span><span id="__span-28-3"><a href="#__codelineno-28-3" id="__codelineno-28-3" name="__codelineno-28-3"></a><span class="w">    </span>mibdirs<span class="w"> </span>+/usr/local/share/snmp/mibs/cisco
+</span></code></pre></div>
+<p>Note the <code>+</code> sign before the second <code>mibdirs</code> directive, which tells SNMP to append
+the Cisco MIBs to the existing search path rather than replacing it. This allows us
+to maintain the core RFC and Net-SNMP MIBs while adding vendor-specific MIBs as needed
+in a maintainable way.</p>
+</details>
+<div class="admonition warning">
+<p class="admonition-title">Performance impact</p>
+<p>Adding multiple vendors is possible but it will slow down the translation speed.
+Count on an additional 1s for each vendor added, as the SNMP engine needs to
+load and parse all MIB files in the specified directories to translate OIDs into
+human-readable names. 
+To mitigate this, ensure that on each server/proxy you only include the MIBs 
+that are relevant to the devices you are monitoring on that specific server/proxy,
+rather than loading a large number of unnecessary MIBs that can bloat the
+search path and slow down processing.</p>
+</div>
+<hr/>
+<h3 id="optional-bulletproof-mib-less-solution">(optional) Bulletproof, MIB-less solution</h3>
+<p>Official Zabbix SNMP templates do not require installing MIB files, as they target
+raw OIDs for data polling. If we continue this style for trapping too
+we can create a dependency-free solution by enabling a "numerical" flag inside
+<code>/etc/snmp/snmptrapd.conf</code>.</p>
+<div class="admonition info">
+<p class="admonition-title">Enable numerical traps in snmptrapd.conf</p>
+<p>Add or modify the following line in <code>/etc/snmp/snmptrapd.conf</code> to enable 
+numerical traps:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-29-1"><a href="#__codelineno-29-1" id="__codelineno-29-1" name="__codelineno-29-1"></a>outputOption n
+</span></code></pre></div>
+</div>
+<p>Next, restart the snmptrapd service, send test trap, and check the log:</p>
+<div class="admonition info">
+<p class="admonition-title">Check log for numerical traps</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a href="#__codelineno-30-1" id="__codelineno-30-1" name="__codelineno-30-1"></a>tail<span class="w"> </span>-99<span class="w"> </span>/var/log/zabbix_traps_archive/zabbix_traps.log
+</span></code></pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">In the long run</p>
+<p>Using numerical OIDs in Zabbix SNMP items can significantly increase the 
+time required to design a template, since the dot (<code>.</code>) in numerical OIDs is a
+special character in regular expressions. This means that the dot must be
+escaped (e.g., <code>\.</code>) in the regex preprocessing steps to ensure proper parsing.
+Failing to escape the dot can lead to unexpected behavior, even if it appears
+to work correctly 99.9% of the time. Without escaping, the dot acts as a 
+wildcard, matching <em>any</em> character, which violates the principle of a precise
+and bulletproof solution. Proper escaping ensures that the OID is interpreted
+exactly as intended, eliminating ambiguity and potential errors in monitoring.</p>
+</div>
+<hr/>
+<p>Using numerical traps can be best direction if:</p>
+<ul>
+<li>
+<p>There is a big passion about bulletproof solutions. Creating a solution with the
+  bare minimum of dependencies - MIBs are never required for Zabbix proxies.</p>
+</li>
+<li>
+<p>Template readability is not an issue. You are the only person in the
+  monitoring department. There are no team mates.</p>
+</li>
+<li>
+<p>Have a lot of time to design solution</p>
+</li>
+<li>
+<p>You are willing to share your masterpiece with the internet.
+  Perhaps share it at GitHub</p>
+</li>
+</ul>
+<hr/>
 <h2 id="snmp-monitoring-in-zabbix">SNMP Monitoring in Zabbix</h2>
 <p>Now that we have covered how SNMP itself works, it's time to put that knowledge into
 practice. We'll start up our Zabbix instance and begin monitoring, but first,
@@ -2063,15 +2279,15 @@ to perform a broader <code>snmpwalk</code> by removing the last digit from the i
 <div class="admonition example">
 <p class="admonition-title">Finding the correct OID with snmpwalk</p>
 <p>This command returns a more extensive list of MIB objects:
-<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-22-1"><a href="#__codelineno-22-1" id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="gp">localhost:~ $ </span>snmpwalk<span class="w"> </span>-v2c<span class="w"> </span>-c<span class="w"> </span>public<span class="w"> </span>&lt;IP_ADDRESS&gt;<span class="w"> </span>.1.3.6.1.2.1.2.2.1
-</span><span id="__span-22-2"><a href="#__codelineno-22-2" id="__codelineno-22-2" name="__codelineno-22-2"></a><span class="go">IF-MIB::ifIndex.1 = INTEGER: 1</span>
-</span><span id="__span-22-3"><a href="#__codelineno-22-3" id="__codelineno-22-3" name="__codelineno-22-3"></a><span class="go">IF-MIB::ifIndex.2 = INTEGER: 2</span>
-</span><span id="__span-22-4"><a href="#__codelineno-22-4" id="__codelineno-22-4" name="__codelineno-22-4"></a><span class="go">IF-MIB::ifDescr.1 = STRING: lo</span>
-</span><span id="__span-22-5"><a href="#__codelineno-22-5" id="__codelineno-22-5" name="__codelineno-22-5"></a><span class="go">IF-MIB::ifDescr.2 = STRING: enp0s1</span>
-</span><span id="__span-22-6"><a href="#__codelineno-22-6" id="__codelineno-22-6" name="__codelineno-22-6"></a><span class="go">...</span>
-</span><span id="__span-22-7"><a href="#__codelineno-22-7" id="__codelineno-22-7" name="__codelineno-22-7"></a><span class="go">IF-MIB::ifInOctets.1 = Counter32: 697830615</span>
-</span><span id="__span-22-8"><a href="#__codelineno-22-8" id="__codelineno-22-8" name="__codelineno-22-8"></a><span class="go">IF-MIB::ifInOctets.2 = Counter32: 49954965</span>
-</span><span id="__span-22-9"><a href="#__codelineno-22-9" id="__codelineno-22-9" name="__codelineno-22-9"></a><span class="go">...</span>
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-31-1"><a href="#__codelineno-31-1" id="__codelineno-31-1" name="__codelineno-31-1"></a><span class="gp">localhost:~ $ </span>snmpwalk<span class="w"> </span>-v2c<span class="w"> </span>-c<span class="w"> </span>public<span class="w"> </span>&lt;IP_ADDRESS&gt;<span class="w"> </span>.1.3.6.1.2.1.2.2.1
+</span><span id="__span-31-2"><a href="#__codelineno-31-2" id="__codelineno-31-2" name="__codelineno-31-2"></a><span class="go">IF-MIB::ifIndex.1 = INTEGER: 1</span>
+</span><span id="__span-31-3"><a href="#__codelineno-31-3" id="__codelineno-31-3" name="__codelineno-31-3"></a><span class="go">IF-MIB::ifIndex.2 = INTEGER: 2</span>
+</span><span id="__span-31-4"><a href="#__codelineno-31-4" id="__codelineno-31-4" name="__codelineno-31-4"></a><span class="go">IF-MIB::ifDescr.1 = STRING: lo</span>
+</span><span id="__span-31-5"><a href="#__codelineno-31-5" id="__codelineno-31-5" name="__codelineno-31-5"></a><span class="go">IF-MIB::ifDescr.2 = STRING: enp0s1</span>
+</span><span id="__span-31-6"><a href="#__codelineno-31-6" id="__codelineno-31-6" name="__codelineno-31-6"></a><span class="go">...</span>
+</span><span id="__span-31-7"><a href="#__codelineno-31-7" id="__codelineno-31-7" name="__codelineno-31-7"></a><span class="go">IF-MIB::ifInOctets.1 = Counter32: 697830615</span>
+</span><span id="__span-31-8"><a href="#__codelineno-31-8" id="__codelineno-31-8" name="__codelineno-31-8"></a><span class="go">IF-MIB::ifInOctets.2 = Counter32: 49954965</span>
+</span><span id="__span-31-9"><a href="#__codelineno-31-9" id="__codelineno-31-9" name="__codelineno-31-9"></a><span class="go">...</span>
 </span></code></pre></div></p>
 </div>
 <p>From this output, we can see that the index for our target network card, <code>enp0s1</code>,
@@ -2085,8 +2301,8 @@ to its numerical form.</p>
 <p class="admonition-title">Converting OID to numerical form with snmpwalk</p>
 <p>The result of next command will be the specific OID for the inbound octets
 on the <code>enp0s1</code> interface:
-<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-23-1"><a href="#__codelineno-23-1" id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="gp">localhost:~ $ </span>snmpwalk<span class="w"> </span>-v2c<span class="w"> </span>-c<span class="w"> </span>public<span class="w"> </span>&lt;IP_ADDRESS&gt;<span class="w"> </span>IF-MIB::ifInOctets.2<span class="w"> </span>-On
-</span><span id="__span-23-2"><a href="#__codelineno-23-2" id="__codelineno-23-2" name="__codelineno-23-2"></a><span class="go">.1.3.6.1.2.1.2.2.1.10.2 = Counter32: 50050587</span>
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-32-1"><a href="#__codelineno-32-1" id="__codelineno-32-1" name="__codelineno-32-1"></a><span class="gp">localhost:~ $ </span>snmpwalk<span class="w"> </span>-v2c<span class="w"> </span>-c<span class="w"> </span>public<span class="w"> </span>&lt;IP_ADDRESS&gt;<span class="w"> </span>IF-MIB::ifInOctets.2<span class="w"> </span>-On
+</span><span id="__span-32-2"><a href="#__codelineno-32-2" id="__codelineno-32-2" name="__codelineno-32-2"></a><span class="go">.1.3.6.1.2.1.2.2.1.10.2 = Counter32: 50050587</span>
 </span></code></pre></div></p>
 </div>
 <p>This is the OID you would use to configure an SNMP item in Zabbix to monitor the
@@ -2095,11 +2311,11 @@ network traffic for this specific interface.</p>
 thing and also the other way back.</p>
 <div class="admonition example">
 <p class="admonition-title">snmptranslate</p>
-<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-24-1"><a href="#__codelineno-24-1" id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="gp">localhost:~ $ </span>snmptranslate<span class="w"> </span>-On<span class="w"> </span>IF-MIB::ifInOctets.2
-</span><span id="__span-24-2"><a href="#__codelineno-24-2" id="__codelineno-24-2" name="__codelineno-24-2"></a><span class="go">.1.3.6.1.2.1.2.2.1.10.2</span>
-</span><span id="__span-24-3"><a href="#__codelineno-24-3" id="__codelineno-24-3" name="__codelineno-24-3"></a>
-</span><span id="__span-24-4"><a href="#__codelineno-24-4" id="__codelineno-24-4" name="__codelineno-24-4"></a><span class="gp">localhost:~ $ </span>snmptranslate<span class="w"> </span>.1.3.6.1.2.1.2.2.1.10.2
-</span><span id="__span-24-5"><a href="#__codelineno-24-5" id="__codelineno-24-5" name="__codelineno-24-5"></a><span class="go">IF-MIB::ifInOctets.2</span>
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-33-1"><a href="#__codelineno-33-1" id="__codelineno-33-1" name="__codelineno-33-1"></a><span class="gp">localhost:~ $ </span>snmptranslate<span class="w"> </span>-On<span class="w"> </span>IF-MIB::ifInOctets.2
+</span><span id="__span-33-2"><a href="#__codelineno-33-2" id="__codelineno-33-2" name="__codelineno-33-2"></a><span class="go">.1.3.6.1.2.1.2.2.1.10.2</span>
+</span><span id="__span-33-3"><a href="#__codelineno-33-3" id="__codelineno-33-3" name="__codelineno-33-3"></a>
+</span><span id="__span-33-4"><a href="#__codelineno-33-4" id="__codelineno-33-4" name="__codelineno-33-4"></a><span class="gp">localhost:~ $ </span>snmptranslate<span class="w"> </span>.1.3.6.1.2.1.2.2.1.10.2
+</span><span id="__span-33-5"><a href="#__codelineno-33-5" id="__codelineno-33-5" name="__codelineno-33-5"></a><span class="go">IF-MIB::ifInOctets.2</span>
 </span></code></pre></div>
 </div>
 <p>There is yet another tool that helps to visualise a SNMP table with the easy to
@@ -2108,12 +2324,12 @@ then a simple a snmp walk. To stay with our network cards have a look at this
 output.</p>
 <div class="admonition example">
 <p class="admonition-title">snmptable</p>
-<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-25-1"><a href="#__codelineno-25-1" id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="gp">localhost:~ $ </span>snmptable<span class="w"> </span>-v<span class="w"> </span>2c<span class="w"> </span>-c<span class="w"> </span>public<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>IF-MIB::ifTable
-</span><span id="__span-25-2"><a href="#__codelineno-25-2" id="__codelineno-25-2" name="__codelineno-25-2"></a><span class="go">SNMP table: IF-MIB::ifTable</span>
-</span><span id="__span-25-3"><a href="#__codelineno-25-3" id="__codelineno-25-3" name="__codelineno-25-3"></a>
-</span><span id="__span-25-4"><a href="#__codelineno-25-4" id="__codelineno-25-4" name="__codelineno-25-4"></a><span class="go"> ifIndex ifDescr    ifType           ifMtu  ifSpeed    ifPhysAddress     ifAdminStatus</span>
-</span><span id="__span-25-5"><a href="#__codelineno-25-5" id="__codelineno-25-5" name="__codelineno-25-5"></a><span class="go">   1      lo        softwareLoopback 65536  10000000                     up</span>
-</span><span id="__span-25-6"><a href="#__codelineno-25-6" id="__codelineno-25-6" name="__codelineno-25-6"></a><span class="go">   2  enp0s1        ethernetCsmacd    1500        0    76:ae:5:aa:5f:45  up</span>
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-34-1"><a href="#__codelineno-34-1" id="__codelineno-34-1" name="__codelineno-34-1"></a><span class="gp">localhost:~ $ </span>snmptable<span class="w"> </span>-v<span class="w"> </span>2c<span class="w"> </span>-c<span class="w"> </span>public<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>IF-MIB::ifTable
+</span><span id="__span-34-2"><a href="#__codelineno-34-2" id="__codelineno-34-2" name="__codelineno-34-2"></a><span class="go">SNMP table: IF-MIB::ifTable</span>
+</span><span id="__span-34-3"><a href="#__codelineno-34-3" id="__codelineno-34-3" name="__codelineno-34-3"></a>
+</span><span id="__span-34-4"><a href="#__codelineno-34-4" id="__codelineno-34-4" name="__codelineno-34-4"></a><span class="go"> ifIndex ifDescr    ifType           ifMtu  ifSpeed    ifPhysAddress     ifAdminStatus</span>
+</span><span id="__span-34-5"><a href="#__codelineno-34-5" id="__codelineno-34-5" name="__codelineno-34-5"></a><span class="go">   1      lo        softwareLoopback 65536  10000000                     up</span>
+</span><span id="__span-34-6"><a href="#__codelineno-34-6" id="__codelineno-34-6" name="__codelineno-34-6"></a><span class="go">   2  enp0s1        ethernetCsmacd    1500        0    76:ae:5:aa:5f:45  up</span>
 </span></code></pre></div>
 </div>
 <hr/>
@@ -2186,8 +2402,8 @@ first. This can be done with <code>snmptranslate</code> which will convert our t
 to an OID,</p>
 <div class="admonition example">
 <p class="admonition-title">Finding the OID for a table with snmptranslate</p>
-<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-26-1"><a href="#__codelineno-26-1" id="__codelineno-26-1" name="__codelineno-26-1"></a><span class="gp">localhost:~ $ </span>snmptranslate<span class="w"> </span>-On<span class="w"> </span>IF-MIB::ifTable
-</span><span id="__span-26-2"><a href="#__codelineno-26-2" id="__codelineno-26-2" name="__codelineno-26-2"></a><span class="go">.1.3.6.1.2.1.2.2</span>
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-35-1"><a href="#__codelineno-35-1" id="__codelineno-35-1" name="__codelineno-35-1"></a><span class="gp">localhost:~ $ </span>snmptranslate<span class="w"> </span>-On<span class="w"> </span>IF-MIB::ifTable
+</span><span id="__span-35-2"><a href="#__codelineno-35-2" id="__codelineno-35-2" name="__codelineno-35-2"></a><span class="go">.1.3.6.1.2.1.2.2</span>
 </span></code></pre></div>
 </div>
 <p>This is the OID we can use in our item. Let's clone our previous item and make
@@ -2206,50 +2422,50 @@ example as this item will return us a whole list of information.</p>
 whole list of data.</p>
 <details class="example" open="open">
 <summary>Output of SNMP walk in Zabbix</summary>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a href="#__codelineno-27-1" id="__codelineno-27-1" name="__codelineno-27-1"></a>.1.3.6.1.2.1.2.2.1.1.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">1</span>
-</span><span id="__span-27-2"><a href="#__codelineno-27-2" id="__codelineno-27-2" name="__codelineno-27-2"></a>.1.3.6.1.2.1.2.2.1.1.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">2</span>
-</span><span id="__span-27-3"><a href="#__codelineno-27-3" id="__codelineno-27-3" name="__codelineno-27-3"></a>.1.3.6.1.2.1.2.2.1.2.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>STRING:<span class="w"> </span><span class="s2">"lo"</span>
-</span><span id="__span-27-4"><a href="#__codelineno-27-4" id="__codelineno-27-4" name="__codelineno-27-4"></a>.1.3.6.1.2.1.2.2.1.2.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>STRING:<span class="w"> </span><span class="s2">"enp0s1"</span>
-</span><span id="__span-27-5"><a href="#__codelineno-27-5" id="__codelineno-27-5" name="__codelineno-27-5"></a>.1.3.6.1.2.1.2.2.1.3.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">24</span>
-</span><span id="__span-27-6"><a href="#__codelineno-27-6" id="__codelineno-27-6" name="__codelineno-27-6"></a>.1.3.6.1.2.1.2.2.1.3.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">6</span>
-</span><span id="__span-27-7"><a href="#__codelineno-27-7" id="__codelineno-27-7" name="__codelineno-27-7"></a>.1.3.6.1.2.1.2.2.1.4.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">65536</span>
-</span><span id="__span-27-8"><a href="#__codelineno-27-8" id="__codelineno-27-8" name="__codelineno-27-8"></a>.1.3.6.1.2.1.2.2.1.4.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">1500</span>
-</span><span id="__span-27-9"><a href="#__codelineno-27-9" id="__codelineno-27-9" name="__codelineno-27-9"></a>.1.3.6.1.2.1.2.2.1.5.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Gauge32:<span class="w"> </span><span class="m">10000000</span>
-</span><span id="__span-27-10"><a href="#__codelineno-27-10" id="__codelineno-27-10" name="__codelineno-27-10"></a>.1.3.6.1.2.1.2.2.1.5.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Gauge32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-27-11"><a href="#__codelineno-27-11" id="__codelineno-27-11" name="__codelineno-27-11"></a>.1.3.6.1.2.1.2.2.1.6.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>STRING:<span class="w"> </span><span class="s2">""</span>
-</span><span id="__span-27-12"><a href="#__codelineno-27-12" id="__codelineno-27-12" name="__codelineno-27-12"></a>.1.3.6.1.2.1.2.2.1.6.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>STRING:<span class="w"> </span><span class="s2">"76:ae:5:aa:5f:45"</span>
-</span><span id="__span-27-13"><a href="#__codelineno-27-13" id="__codelineno-27-13" name="__codelineno-27-13"></a>.1.3.6.1.2.1.2.2.1.7.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">1</span>
-</span><span id="__span-27-14"><a href="#__codelineno-27-14" id="__codelineno-27-14" name="__codelineno-27-14"></a>.1.3.6.1.2.1.2.2.1.7.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">1</span>
-</span><span id="__span-27-15"><a href="#__codelineno-27-15" id="__codelineno-27-15" name="__codelineno-27-15"></a>.1.3.6.1.2.1.2.2.1.8.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">1</span>
-</span><span id="__span-27-16"><a href="#__codelineno-27-16" id="__codelineno-27-16" name="__codelineno-27-16"></a>.1.3.6.1.2.1.2.2.1.8.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">1</span>
-</span><span id="__span-27-17"><a href="#__codelineno-27-17" id="__codelineno-27-17" name="__codelineno-27-17"></a>.1.3.6.1.2.1.2.2.1.9.1<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
-</span><span id="__span-27-18"><a href="#__codelineno-27-18" id="__codelineno-27-18" name="__codelineno-27-18"></a>.1.3.6.1.2.1.2.2.1.9.2<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
-</span><span id="__span-27-19"><a href="#__codelineno-27-19" id="__codelineno-27-19" name="__codelineno-27-19"></a>.1.3.6.1.2.1.2.2.1.10.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">69417222</span>
-</span><span id="__span-27-20"><a href="#__codelineno-27-20" id="__codelineno-27-20" name="__codelineno-27-20"></a>.1.3.6.1.2.1.2.2.1.10.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">59215034</span>
-</span><span id="__span-27-21"><a href="#__codelineno-27-21" id="__codelineno-27-21" name="__codelineno-27-21"></a>.1.3.6.1.2.1.2.2.1.11.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">6460587</span>
-</span><span id="__span-27-22"><a href="#__codelineno-27-22" id="__codelineno-27-22" name="__codelineno-27-22"></a>.1.3.6.1.2.1.2.2.1.11.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">113038</span>
-</span><span id="__span-27-23"><a href="#__codelineno-27-23" id="__codelineno-27-23" name="__codelineno-27-23"></a>.1.3.6.1.2.1.2.2.1.12.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-27-24"><a href="#__codelineno-27-24" id="__codelineno-27-24" name="__codelineno-27-24"></a>.1.3.6.1.2.1.2.2.1.12.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-27-25"><a href="#__codelineno-27-25" id="__codelineno-27-25" name="__codelineno-27-25"></a>.1.3.6.1.2.1.2.2.1.13.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-27-26"><a href="#__codelineno-27-26" id="__codelineno-27-26" name="__codelineno-27-26"></a>.1.3.6.1.2.1.2.2.1.13.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-27-27"><a href="#__codelineno-27-27" id="__codelineno-27-27" name="__codelineno-27-27"></a>.1.3.6.1.2.1.2.2.1.14.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-27-28"><a href="#__codelineno-27-28" id="__codelineno-27-28" name="__codelineno-27-28"></a>.1.3.6.1.2.1.2.2.1.14.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-27-29"><a href="#__codelineno-27-29" id="__codelineno-27-29" name="__codelineno-27-29"></a>.1.3.6.1.2.1.2.2.1.15.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-27-30"><a href="#__codelineno-27-30" id="__codelineno-27-30" name="__codelineno-27-30"></a>.1.3.6.1.2.1.2.2.1.15.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-27-31"><a href="#__codelineno-27-31" id="__codelineno-27-31" name="__codelineno-27-31"></a>.1.3.6.1.2.1.2.2.1.16.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">69417222</span>
-</span><span id="__span-27-32"><a href="#__codelineno-27-32" id="__codelineno-27-32" name="__codelineno-27-32"></a>.1.3.6.1.2.1.2.2.1.16.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">44139841</span>
-</span><span id="__span-27-33"><a href="#__codelineno-27-33" id="__codelineno-27-33" name="__codelineno-27-33"></a>.1.3.6.1.2.1.2.2.1.17.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">6460587</span>
-</span><span id="__span-27-34"><a href="#__codelineno-27-34" id="__codelineno-27-34" name="__codelineno-27-34"></a>.1.3.6.1.2.1.2.2.1.17.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">97398</span>
-</span><span id="__span-27-35"><a href="#__codelineno-27-35" id="__codelineno-27-35" name="__codelineno-27-35"></a>.1.3.6.1.2.1.2.2.1.18.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-27-36"><a href="#__codelineno-27-36" id="__codelineno-27-36" name="__codelineno-27-36"></a>.1.3.6.1.2.1.2.2.1.18.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-27-37"><a href="#__codelineno-27-37" id="__codelineno-27-37" name="__codelineno-27-37"></a>.1.3.6.1.2.1.2.2.1.19.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-27-38"><a href="#__codelineno-27-38" id="__codelineno-27-38" name="__codelineno-27-38"></a>.1.3.6.1.2.1.2.2.1.19.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-27-39"><a href="#__codelineno-27-39" id="__codelineno-27-39" name="__codelineno-27-39"></a>.1.3.6.1.2.1.2.2.1.20.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-27-40"><a href="#__codelineno-27-40" id="__codelineno-27-40" name="__codelineno-27-40"></a>.1.3.6.1.2.1.2.2.1.20.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-27-41"><a href="#__codelineno-27-41" id="__codelineno-27-41" name="__codelineno-27-41"></a>.1.3.6.1.2.1.2.2.1.21.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Gauge32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-27-42"><a href="#__codelineno-27-42" id="__codelineno-27-42" name="__codelineno-27-42"></a>.1.3.6.1.2.1.2.2.1.21.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Gauge32:<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-27-43"><a href="#__codelineno-27-43" id="__codelineno-27-43" name="__codelineno-27-43"></a>.1.3.6.1.2.1.2.2.1.22.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>OID:<span class="w"> </span>.0.0
-</span><span id="__span-27-44"><a href="#__codelineno-27-44" id="__codelineno-27-44" name="__codelineno-27-44"></a>.1.3.6.1.2.1.2.2.1.22.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>OID:<span class="w"> </span>.0.0
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-36-1"><a href="#__codelineno-36-1" id="__codelineno-36-1" name="__codelineno-36-1"></a>.1.3.6.1.2.1.2.2.1.1.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">1</span>
+</span><span id="__span-36-2"><a href="#__codelineno-36-2" id="__codelineno-36-2" name="__codelineno-36-2"></a>.1.3.6.1.2.1.2.2.1.1.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">2</span>
+</span><span id="__span-36-3"><a href="#__codelineno-36-3" id="__codelineno-36-3" name="__codelineno-36-3"></a>.1.3.6.1.2.1.2.2.1.2.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>STRING:<span class="w"> </span><span class="s2">"lo"</span>
+</span><span id="__span-36-4"><a href="#__codelineno-36-4" id="__codelineno-36-4" name="__codelineno-36-4"></a>.1.3.6.1.2.1.2.2.1.2.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>STRING:<span class="w"> </span><span class="s2">"enp0s1"</span>
+</span><span id="__span-36-5"><a href="#__codelineno-36-5" id="__codelineno-36-5" name="__codelineno-36-5"></a>.1.3.6.1.2.1.2.2.1.3.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">24</span>
+</span><span id="__span-36-6"><a href="#__codelineno-36-6" id="__codelineno-36-6" name="__codelineno-36-6"></a>.1.3.6.1.2.1.2.2.1.3.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">6</span>
+</span><span id="__span-36-7"><a href="#__codelineno-36-7" id="__codelineno-36-7" name="__codelineno-36-7"></a>.1.3.6.1.2.1.2.2.1.4.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">65536</span>
+</span><span id="__span-36-8"><a href="#__codelineno-36-8" id="__codelineno-36-8" name="__codelineno-36-8"></a>.1.3.6.1.2.1.2.2.1.4.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">1500</span>
+</span><span id="__span-36-9"><a href="#__codelineno-36-9" id="__codelineno-36-9" name="__codelineno-36-9"></a>.1.3.6.1.2.1.2.2.1.5.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Gauge32:<span class="w"> </span><span class="m">10000000</span>
+</span><span id="__span-36-10"><a href="#__codelineno-36-10" id="__codelineno-36-10" name="__codelineno-36-10"></a>.1.3.6.1.2.1.2.2.1.5.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Gauge32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-36-11"><a href="#__codelineno-36-11" id="__codelineno-36-11" name="__codelineno-36-11"></a>.1.3.6.1.2.1.2.2.1.6.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>STRING:<span class="w"> </span><span class="s2">""</span>
+</span><span id="__span-36-12"><a href="#__codelineno-36-12" id="__codelineno-36-12" name="__codelineno-36-12"></a>.1.3.6.1.2.1.2.2.1.6.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>STRING:<span class="w"> </span><span class="s2">"76:ae:5:aa:5f:45"</span>
+</span><span id="__span-36-13"><a href="#__codelineno-36-13" id="__codelineno-36-13" name="__codelineno-36-13"></a>.1.3.6.1.2.1.2.2.1.7.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">1</span>
+</span><span id="__span-36-14"><a href="#__codelineno-36-14" id="__codelineno-36-14" name="__codelineno-36-14"></a>.1.3.6.1.2.1.2.2.1.7.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">1</span>
+</span><span id="__span-36-15"><a href="#__codelineno-36-15" id="__codelineno-36-15" name="__codelineno-36-15"></a>.1.3.6.1.2.1.2.2.1.8.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">1</span>
+</span><span id="__span-36-16"><a href="#__codelineno-36-16" id="__codelineno-36-16" name="__codelineno-36-16"></a>.1.3.6.1.2.1.2.2.1.8.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>INTEGER:<span class="w"> </span><span class="m">1</span>
+</span><span id="__span-36-17"><a href="#__codelineno-36-17" id="__codelineno-36-17" name="__codelineno-36-17"></a>.1.3.6.1.2.1.2.2.1.9.1<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+</span><span id="__span-36-18"><a href="#__codelineno-36-18" id="__codelineno-36-18" name="__codelineno-36-18"></a>.1.3.6.1.2.1.2.2.1.9.2<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+</span><span id="__span-36-19"><a href="#__codelineno-36-19" id="__codelineno-36-19" name="__codelineno-36-19"></a>.1.3.6.1.2.1.2.2.1.10.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">69417222</span>
+</span><span id="__span-36-20"><a href="#__codelineno-36-20" id="__codelineno-36-20" name="__codelineno-36-20"></a>.1.3.6.1.2.1.2.2.1.10.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">59215034</span>
+</span><span id="__span-36-21"><a href="#__codelineno-36-21" id="__codelineno-36-21" name="__codelineno-36-21"></a>.1.3.6.1.2.1.2.2.1.11.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">6460587</span>
+</span><span id="__span-36-22"><a href="#__codelineno-36-22" id="__codelineno-36-22" name="__codelineno-36-22"></a>.1.3.6.1.2.1.2.2.1.11.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">113038</span>
+</span><span id="__span-36-23"><a href="#__codelineno-36-23" id="__codelineno-36-23" name="__codelineno-36-23"></a>.1.3.6.1.2.1.2.2.1.12.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-36-24"><a href="#__codelineno-36-24" id="__codelineno-36-24" name="__codelineno-36-24"></a>.1.3.6.1.2.1.2.2.1.12.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-36-25"><a href="#__codelineno-36-25" id="__codelineno-36-25" name="__codelineno-36-25"></a>.1.3.6.1.2.1.2.2.1.13.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-36-26"><a href="#__codelineno-36-26" id="__codelineno-36-26" name="__codelineno-36-26"></a>.1.3.6.1.2.1.2.2.1.13.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-36-27"><a href="#__codelineno-36-27" id="__codelineno-36-27" name="__codelineno-36-27"></a>.1.3.6.1.2.1.2.2.1.14.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-36-28"><a href="#__codelineno-36-28" id="__codelineno-36-28" name="__codelineno-36-28"></a>.1.3.6.1.2.1.2.2.1.14.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-36-29"><a href="#__codelineno-36-29" id="__codelineno-36-29" name="__codelineno-36-29"></a>.1.3.6.1.2.1.2.2.1.15.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-36-30"><a href="#__codelineno-36-30" id="__codelineno-36-30" name="__codelineno-36-30"></a>.1.3.6.1.2.1.2.2.1.15.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-36-31"><a href="#__codelineno-36-31" id="__codelineno-36-31" name="__codelineno-36-31"></a>.1.3.6.1.2.1.2.2.1.16.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">69417222</span>
+</span><span id="__span-36-32"><a href="#__codelineno-36-32" id="__codelineno-36-32" name="__codelineno-36-32"></a>.1.3.6.1.2.1.2.2.1.16.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">44139841</span>
+</span><span id="__span-36-33"><a href="#__codelineno-36-33" id="__codelineno-36-33" name="__codelineno-36-33"></a>.1.3.6.1.2.1.2.2.1.17.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">6460587</span>
+</span><span id="__span-36-34"><a href="#__codelineno-36-34" id="__codelineno-36-34" name="__codelineno-36-34"></a>.1.3.6.1.2.1.2.2.1.17.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">97398</span>
+</span><span id="__span-36-35"><a href="#__codelineno-36-35" id="__codelineno-36-35" name="__codelineno-36-35"></a>.1.3.6.1.2.1.2.2.1.18.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-36-36"><a href="#__codelineno-36-36" id="__codelineno-36-36" name="__codelineno-36-36"></a>.1.3.6.1.2.1.2.2.1.18.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-36-37"><a href="#__codelineno-36-37" id="__codelineno-36-37" name="__codelineno-36-37"></a>.1.3.6.1.2.1.2.2.1.19.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-36-38"><a href="#__codelineno-36-38" id="__codelineno-36-38" name="__codelineno-36-38"></a>.1.3.6.1.2.1.2.2.1.19.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-36-39"><a href="#__codelineno-36-39" id="__codelineno-36-39" name="__codelineno-36-39"></a>.1.3.6.1.2.1.2.2.1.20.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-36-40"><a href="#__codelineno-36-40" id="__codelineno-36-40" name="__codelineno-36-40"></a>.1.3.6.1.2.1.2.2.1.20.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Counter32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-36-41"><a href="#__codelineno-36-41" id="__codelineno-36-41" name="__codelineno-36-41"></a>.1.3.6.1.2.1.2.2.1.21.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>Gauge32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-36-42"><a href="#__codelineno-36-42" id="__codelineno-36-42" name="__codelineno-36-42"></a>.1.3.6.1.2.1.2.2.1.21.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>Gauge32:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-36-43"><a href="#__codelineno-36-43" id="__codelineno-36-43" name="__codelineno-36-43"></a>.1.3.6.1.2.1.2.2.1.22.1<span class="w"> </span><span class="o">=</span><span class="w"> </span>OID:<span class="w"> </span>.0.0
+</span><span id="__span-36-44"><a href="#__codelineno-36-44" id="__codelineno-36-44" name="__codelineno-36-44"></a>.1.3.6.1.2.1.2.2.1.22.2<span class="w"> </span><span class="o">=</span><span class="w"> </span>OID:<span class="w"> </span>.0.0
 </span></code></pre></div>
 </details>
 <p>So we have the <em>traffic in</em> metrics but we would like to find <em>traffic out</em> metrics
@@ -2277,8 +2493,8 @@ our first step.</p>
 <code>.1.3.6.1.2.1.2.2.1.16.1</code> and choose <strong>Unchanged</strong>.</p>
 <div class="admonition example">
 <p class="admonition-title">find our correct OID</p>
-<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-28-1"><a href="#__codelineno-28-1" id="__codelineno-28-1" name="__codelineno-28-1"></a><span class="gp">localhost:~ $ </span>snmptranslate<span class="w"> </span>IF-MIB::ifOutOctets.1<span class="w"> </span>-On
-</span><span id="__span-28-2"><a href="#__codelineno-28-2" id="__codelineno-28-2" name="__codelineno-28-2"></a><span class="go">.1.3.6.1.2.1.2.2.1.16.1</span>
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-37-1"><a href="#__codelineno-37-1" id="__codelineno-37-1" name="__codelineno-37-1"></a><span class="gp">localhost:~ $ </span>snmptranslate<span class="w"> </span>IF-MIB::ifOutOctets.1<span class="w"> </span>-On
+</span><span id="__span-37-2"><a href="#__codelineno-37-2" id="__codelineno-37-2" name="__codelineno-37-2"></a><span class="go">.1.3.6.1.2.1.2.2.1.16.1</span>
 </span></code></pre></div>
 </div>
 <p>Remember from our previous item we need to calculate the <strong>Changes per second</strong>
@@ -2292,6 +2508,7 @@ network card but with data gathered in different ways. Both ways use the
 use preprocessing to extract and calculate the required values for the specific items.</p>
 <p>After you have added more items you can remove the option to keep history from
 your master items.</p>
+<hr/>
 <h2 id="conclusion">Conclusion</h2>
 <p>SNMP polling remains a vital method for monitoring network devices when agents
 are not an option. With Zabbix's asynchronous polling, checks can run in parallel,
@@ -2306,13 +2523,16 @@ And with asynchronous speed, SNMPv3 security, and bulk walks at your disposal, y
 ready to monitor more devices, in less time, with greater confidence. Now it's
 time to put these capabilities to work and see just how far your monitoring can
 go.</p>
+<hr/>
 <h2 id="questions">Questions</h2>
 <ul>
 <li>Why is it better use SNMPv3 instead of v2c or v1 ?</li>
 <li>Do I need to configure pollers for SNMP ? If so which pollers ?</li>
+<li>Should I install MIB files on my Zabbix server ? What about proxies ?</li>
 <li>Can I still use the old style to monitor SNMP ? Should I start using get[]
   and walk[] instead ?</li>
 </ul>
+<hr/>
 <h2 id="useful-urls">Useful URLs</h2>
 <ul>
 <li><a href="https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/snmp">https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/snmp</a></li>
