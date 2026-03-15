@@ -2115,7 +2115,7 @@ numerical traps:</p>
 <p>Using numerical OIDs in Zabbix SNMP items can significantly increase the 
 time required to design a template, since the dot (<code>.</code>) in numerical OIDs is a
 special character in regular expressions. This means that the dot must be
-escaped (e.g., <code>\.</code>) in the regex preprocessing steps to ensure proper parsing.
+escaped (e.g., <code>\.</code>) in any regex preprocessing steps to ensure proper parsing.
 Failing to escape the dot can lead to unexpected behavior, even if it appears
 to work correctly 99.9% of the time. Without escaping, the dot acts as a 
 wildcard, matching <em>any</em> character, which violates the principle of a precise

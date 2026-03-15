@@ -483,23 +483,14 @@ faster event detection, and efficient network monitoring.
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#snmp-traps-flow-in-zabbix">
+<a class="md-nav__link" href="#snmp-flows-in-zabbix">
 <span class="md-ellipsis">
       
-        SNMP Traps flow in Zabbix
+        SNMP flows in Zabbix
       
     </span>
 </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#-config-flowchart-subgraphtitlemargin-bottom-30-flowchart-tb-traps-section-top-subgraph-trapssnmp-traps-active-monitoring-direction-lr-dev2network-device-trapdsnmptrapd-daemon-handlersnmptt-or-perl-script-zbxtzabbix-server-or-proxy-dbtzabbix-database-ui2zabbix-frontend-user2user-dev2-snmp-trap-udp-162-trapd-trapd-handler-script-handler-handler-trap-log-zbxt-zbxt-dbt-dbt-ui2-ui2-displays-event-user2-end-invisible-connector-to-force-vertical-stacking-traps-polling-polling-section-bottom-subgraph-pollingsnmp-polling-passive-monitoring-direction-lr-zbxzabbix-server-or-proxy-pollersnmp-poller-process-devnetwork-device-zbx-poller-poller-snmp-get-udp-161-dev-dev-snmp-response-poller-poller-dbpzabbix-database-dbp-ui1zabbix-frontend-ui1-displays-polled-data-user1user-end-styling-style-polling-fillf0fff0stroke3a3stroke-width1px-style-traps-fillf0f8ffstroke339stroke-width1px-style-zbx-fille0ffe0stroke3a3-style-dev-fillffefd5strokec96-style-dev2-fillffefd5strokec96-style-trapd-fillf9f9f9stroke777-style-handler-fillf0f8ffstroke339-style-zbxt-fille0ffe0stroke3a3-style-dbp-fillfffbe0stroke996-style-dbt-fillfffbe0stroke996-style-ui1-fille8e8ffstroke669-style-ui2-fille8e8ffstroke669-style-user1-fillfff0f0strokec33-style-user2-fillfff0f0strokec33">
-<span class="md-ellipsis">
-      
-        --- config: flowchart: subGraphTitleMargin: bottom: 30 --- flowchart TB %% --- Traps section (top) --- subgraph TRAPS[SNMP Traps Active Monitoring] direction LR DEV2[Network Device] TRAPD[snmptrapd Daemon] HANDLER[SNMPTT or perl script] ZBXT[Zabbix Server or Proxy] DBT[Zabbix Database] UI2[Zabbix Frontend] USER2[User] DEV2 --&gt;|SNMP Trap UDP 162| TRAPD TRAPD --&gt;|Handler Script| HANDLER HANDLER --&gt;|Trap Log| ZBXT ZBXT --&gt; DBT DBT --&gt; UI2 UI2 --&gt;|Displays event| USER2 end %% --- Invisible connector to force vertical stacking --- TRAPS ~~~ POLLING %% --- Polling section (bottom) --- subgraph POLLING[SNMP Polling Passive Monitoring] direction LR ZBX[Zabbix Server or Proxy] POLLER[SNMP Poller Process] DEV[Network Device] ZBX --&gt; POLLER POLLER --&gt;|SNMP GET UDP 161| DEV DEV --&gt;|SNMP Response| POLLER POLLER --&gt; DBP[Zabbix Database] DBP --&gt; UI1[Zabbix Frontend] UI1 --&gt;|Displays polled data| USER1[User] end %% --- Styling --- style POLLING fill:#f0fff0,stroke:#3a3,stroke-width:1px style TRAPS fill:#f0f8ff,stroke:#339,stroke-width:1px style ZBX fill:#e0ffe0,stroke:#3a3 style DEV fill:#ffefd5,stroke:#c96 style DEV2 fill:#ffefd5,stroke:#c96 style TRAPD fill:#f9f9f9,stroke:#777 style HANDLER fill:#f0f8ff,stroke:#339 style ZBXT fill:#e0ffe0,stroke:#3a3 style DBP fill:#fffbe0,stroke:#996 style DBT fill:#fffbe0,stroke:#996 style UI1 fill:#e8e8ff,stroke:#669 style UI2 fill:#e8e8ff,stroke:#669 style USER1 fill:#fff0f0,stroke:#c33 style USER2 fill:#fff0f0,stroke:#c33
-      
-    </span>
-</a>
-<nav aria-label="--- config: flowchart: subGraphTitleMargin: bottom: 30 --- flowchart TB %% --- Traps section (top) --- subgraph TRAPS[SNMP Traps Active Monitoring] direction LR DEV2[Network Device] TRAPD[snmptrapd Daemon] HANDLER[SNMPTT or perl script] ZBXT[Zabbix Server or Proxy] DBT[Zabbix Database] UI2[Zabbix Frontend] USER2[User] DEV2 --&gt;|SNMP Trap UDP 162| TRAPD TRAPD --&gt;|Handler Script| HANDLER HANDLER --&gt;|Trap Log| ZBXT ZBXT --&gt; DBT DBT --&gt; UI2 UI2 --&gt;|Displays event| USER2 end %% --- Invisible connector to force vertical stacking --- TRAPS ~~~ POLLING %% --- Polling section (bottom) --- subgraph POLLING[SNMP Polling Passive Monitoring] direction LR ZBX[Zabbix Server or Proxy] POLLER[SNMP Poller Process] DEV[Network Device] ZBX --&gt; POLLER POLLER --&gt;|SNMP GET UDP 161| DEV DEV --&gt;|SNMP Response| POLLER POLLER --&gt; DBP[Zabbix Database] DBP --&gt; UI1[Zabbix Frontend] UI1 --&gt;|Displays polled data| USER1[User] end %% --- Styling --- style POLLING fill:#f0fff0,stroke:#3a3,stroke-width:1px style TRAPS fill:#f0f8ff,stroke:#339,stroke-width:1px style ZBX fill:#e0ffe0,stroke:#3a3 style DEV fill:#ffefd5,stroke:#c96 style DEV2 fill:#ffefd5,stroke:#c96 style TRAPD fill:#f9f9f9,stroke:#777 style HANDLER fill:#f0f8ff,stroke:#339 style ZBXT fill:#e0ffe0,stroke:#3a3 style DBP fill:#fffbe0,stroke:#996 style DBT fill:#fffbe0,stroke:#996 style UI1 fill:#e8e8ff,stroke:#669 style UI2 fill:#e8e8ff,stroke:#669 style USER1 fill:#fff0f0,stroke:#c33 style USER2 fill:#fff0f0,stroke:#c33" class="md-nav">
+<nav aria-label="SNMP flows in Zabbix" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#snmp-trap-flow-active-monitoring">
@@ -1169,23 +1160,14 @@ faster event detection, and efficient network monitoring.
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#snmp-traps-flow-in-zabbix">
+<a class="md-nav__link" href="#snmp-flows-in-zabbix">
 <span class="md-ellipsis">
       
-        SNMP Traps flow in Zabbix
+        SNMP flows in Zabbix
       
     </span>
 </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#-config-flowchart-subgraphtitlemargin-bottom-30-flowchart-tb-traps-section-top-subgraph-trapssnmp-traps-active-monitoring-direction-lr-dev2network-device-trapdsnmptrapd-daemon-handlersnmptt-or-perl-script-zbxtzabbix-server-or-proxy-dbtzabbix-database-ui2zabbix-frontend-user2user-dev2-snmp-trap-udp-162-trapd-trapd-handler-script-handler-handler-trap-log-zbxt-zbxt-dbt-dbt-ui2-ui2-displays-event-user2-end-invisible-connector-to-force-vertical-stacking-traps-polling-polling-section-bottom-subgraph-pollingsnmp-polling-passive-monitoring-direction-lr-zbxzabbix-server-or-proxy-pollersnmp-poller-process-devnetwork-device-zbx-poller-poller-snmp-get-udp-161-dev-dev-snmp-response-poller-poller-dbpzabbix-database-dbp-ui1zabbix-frontend-ui1-displays-polled-data-user1user-end-styling-style-polling-fillf0fff0stroke3a3stroke-width1px-style-traps-fillf0f8ffstroke339stroke-width1px-style-zbx-fille0ffe0stroke3a3-style-dev-fillffefd5strokec96-style-dev2-fillffefd5strokec96-style-trapd-fillf9f9f9stroke777-style-handler-fillf0f8ffstroke339-style-zbxt-fille0ffe0stroke3a3-style-dbp-fillfffbe0stroke996-style-dbt-fillfffbe0stroke996-style-ui1-fille8e8ffstroke669-style-ui2-fille8e8ffstroke669-style-user1-fillfff0f0strokec33-style-user2-fillfff0f0strokec33">
-<span class="md-ellipsis">
-      
-        --- config: flowchart: subGraphTitleMargin: bottom: 30 --- flowchart TB %% --- Traps section (top) --- subgraph TRAPS[SNMP Traps Active Monitoring] direction LR DEV2[Network Device] TRAPD[snmptrapd Daemon] HANDLER[SNMPTT or perl script] ZBXT[Zabbix Server or Proxy] DBT[Zabbix Database] UI2[Zabbix Frontend] USER2[User] DEV2 --&gt;|SNMP Trap UDP 162| TRAPD TRAPD --&gt;|Handler Script| HANDLER HANDLER --&gt;|Trap Log| ZBXT ZBXT --&gt; DBT DBT --&gt; UI2 UI2 --&gt;|Displays event| USER2 end %% --- Invisible connector to force vertical stacking --- TRAPS ~~~ POLLING %% --- Polling section (bottom) --- subgraph POLLING[SNMP Polling Passive Monitoring] direction LR ZBX[Zabbix Server or Proxy] POLLER[SNMP Poller Process] DEV[Network Device] ZBX --&gt; POLLER POLLER --&gt;|SNMP GET UDP 161| DEV DEV --&gt;|SNMP Response| POLLER POLLER --&gt; DBP[Zabbix Database] DBP --&gt; UI1[Zabbix Frontend] UI1 --&gt;|Displays polled data| USER1[User] end %% --- Styling --- style POLLING fill:#f0fff0,stroke:#3a3,stroke-width:1px style TRAPS fill:#f0f8ff,stroke:#339,stroke-width:1px style ZBX fill:#e0ffe0,stroke:#3a3 style DEV fill:#ffefd5,stroke:#c96 style DEV2 fill:#ffefd5,stroke:#c96 style TRAPD fill:#f9f9f9,stroke:#777 style HANDLER fill:#f0f8ff,stroke:#339 style ZBXT fill:#e0ffe0,stroke:#3a3 style DBP fill:#fffbe0,stroke:#996 style DBT fill:#fffbe0,stroke:#996 style UI1 fill:#e8e8ff,stroke:#669 style UI2 fill:#e8e8ff,stroke:#669 style USER1 fill:#fff0f0,stroke:#c33 style USER2 fill:#fff0f0,stroke:#c33
-      
-    </span>
-</a>
-<nav aria-label="--- config: flowchart: subGraphTitleMargin: bottom: 30 --- flowchart TB %% --- Traps section (top) --- subgraph TRAPS[SNMP Traps Active Monitoring] direction LR DEV2[Network Device] TRAPD[snmptrapd Daemon] HANDLER[SNMPTT or perl script] ZBXT[Zabbix Server or Proxy] DBT[Zabbix Database] UI2[Zabbix Frontend] USER2[User] DEV2 --&gt;|SNMP Trap UDP 162| TRAPD TRAPD --&gt;|Handler Script| HANDLER HANDLER --&gt;|Trap Log| ZBXT ZBXT --&gt; DBT DBT --&gt; UI2 UI2 --&gt;|Displays event| USER2 end %% --- Invisible connector to force vertical stacking --- TRAPS ~~~ POLLING %% --- Polling section (bottom) --- subgraph POLLING[SNMP Polling Passive Monitoring] direction LR ZBX[Zabbix Server or Proxy] POLLER[SNMP Poller Process] DEV[Network Device] ZBX --&gt; POLLER POLLER --&gt;|SNMP GET UDP 161| DEV DEV --&gt;|SNMP Response| POLLER POLLER --&gt; DBP[Zabbix Database] DBP --&gt; UI1[Zabbix Frontend] UI1 --&gt;|Displays polled data| USER1[User] end %% --- Styling --- style POLLING fill:#f0fff0,stroke:#3a3,stroke-width:1px style TRAPS fill:#f0f8ff,stroke:#339,stroke-width:1px style ZBX fill:#e0ffe0,stroke:#3a3 style DEV fill:#ffefd5,stroke:#c96 style DEV2 fill:#ffefd5,stroke:#c96 style TRAPD fill:#f9f9f9,stroke:#777 style HANDLER fill:#f0f8ff,stroke:#339 style ZBXT fill:#e0ffe0,stroke:#3a3 style DBP fill:#fffbe0,stroke:#996 style DBT fill:#fffbe0,stroke:#996 style UI1 fill:#e8e8ff,stroke:#669 style UI2 fill:#e8e8ff,stroke:#669 style USER1 fill:#fff0f0,stroke:#c33 style USER2 fill:#fff0f0,stroke:#c33" class="md-nav">
+<nav aria-label="SNMP flows in Zabbix" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#snmp-trap-flow-active-monitoring">
@@ -1635,8 +1617,8 @@ something happens. No waiting or polling required.</p>
 </tbody>
 </table>
 <hr/>
-<h2 id="snmp-traps-flow-in-zabbix">SNMP Traps flow in Zabbix</h2>
-<h2 id="-config-flowchart-subgraphtitlemargin-bottom-30-flowchart-tb-traps-section-top-subgraph-trapssnmp-traps-active-monitoring-direction-lr-dev2network-device-trapdsnmptrapd-daemon-handlersnmptt-or-perl-script-zbxtzabbix-server-or-proxy-dbtzabbix-database-ui2zabbix-frontend-user2user-dev2-snmp-trap-udp-162-trapd-trapd-handler-script-handler-handler-trap-log-zbxt-zbxt-dbt-dbt-ui2-ui2-displays-event-user2-end-invisible-connector-to-force-vertical-stacking-traps-polling-polling-section-bottom-subgraph-pollingsnmp-polling-passive-monitoring-direction-lr-zbxzabbix-server-or-proxy-pollersnmp-poller-process-devnetwork-device-zbx-poller-poller-snmp-get-udp-161-dev-dev-snmp-response-poller-poller-dbpzabbix-database-dbp-ui1zabbix-frontend-ui1-displays-polled-data-user1user-end-styling-style-polling-fillf0fff0stroke3a3stroke-width1px-style-traps-fillf0f8ffstroke339stroke-width1px-style-zbx-fille0ffe0stroke3a3-style-dev-fillffefd5strokec96-style-dev2-fillffefd5strokec96-style-trapd-fillf9f9f9stroke777-style-handler-fillf0f8ffstroke339-style-zbxt-fille0ffe0stroke3a3-style-dbp-fillfffbe0stroke996-style-dbt-fillfffbe0stroke996-style-ui1-fille8e8ffstroke669-style-ui2-fille8e8ffstroke669-style-user1-fillfff0f0strokec33-style-user2-fillfff0f0strokec33"><pre class="mermaid"><code>---
+<h2 id="snmp-flows-in-zabbix">SNMP flows in Zabbix</h2>
+<pre class="mermaid"><code>---
 config:
   flowchart:
     subGraphTitleMargin:
@@ -1704,7 +1686,9 @@ flowchart TB
     style UI2 fill:#e8e8ff,stroke:#669
     style USER1 fill:#fff0f0,stroke:#c33
     style USER2 fill:#fff0f0,stroke:#c33
-</code></pre></h2>
+</code></pre>
+<p><em>4.33 SNMP Traps vs Polling Flow</em></p>
+<hr/>
 <h3 id="snmp-trap-flow-active-monitoring">SNMP Trap Flow (Active Monitoring)</h3>
 <p>In an SNMP Trap setup, communication is device initiated. Meaning the network
 device sends an event message to Zabbix the moment something happens.
@@ -1872,6 +1856,11 @@ that Zabbix can read.</p>
 </div>
 <p>This installs the SNMP tools, daemon, and Perl modules used by Zabbix's receiver
 script.</p>
+<p>Refer to previous topic <a href="../snmp-polling/#deploying-bare-minimum-mib-files">SNMP Polling: Deploying Bare Minimum MIB Files</a>
+on how to install MIB files if you want to have human readable trap messages in 
+the log file. 
+This is optional but highly recommended for easier troubleshooting and better 
+visibility of trap contents.</p>
 <hr/>
 <h4 id="open-the-firewall-for-incoming-snmp-trap-traffic">Open the Firewall for incoming SNMP Trap Traffic</h4>
 <p>By default, SNMP traps are received on port 162, most commonly using UDP, but 

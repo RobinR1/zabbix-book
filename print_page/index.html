@@ -14240,7 +14240,7 @@ numerical traps:</p>
 <p>Using numerical OIDs in Zabbix SNMP items can significantly increase the 
 time required to design a template, since the dot (<code>.</code>) in numerical OIDs is a
 special character in regular expressions. This means that the dot must be
-escaped (e.g., <code>\.</code>) in the regex preprocessing steps to ensure proper parsing.
+escaped (e.g., <code>\.</code>) in any regex preprocessing steps to ensure proper parsing.
 Failing to escape the dot can lead to unexpected behavior, even if it appears
 to work correctly 99.9% of the time. Without escaping, the dot acts as a 
 wildcard, matching <em>any</em> character, which violates the principle of a precise
@@ -14776,8 +14776,8 @@ something happens. No waiting or polling required.</p>
 </tbody>
 </table>
 <hr />
-<h2 id="ch04-zabbix-collecting-data-snmp-trapping-snmp-traps-flow-in-zabbix">SNMP Traps flow in Zabbix</h2>
-<h2 id="ch04-zabbix-collecting-data-snmp-trapping--config-flowchart-subgraphtitlemargin-bottom-30-flowchart-tb-traps-section-top-subgraph-trapssnmp-traps-active-monitoring-direction-lr-dev2network-device-trapdsnmptrapd-daemon-handlersnmptt-or-perl-script-zbxtzabbix-server-or-proxy-dbtzabbix-database-ui2zabbix-frontend-user2user-dev2-snmp-trap-udp-162-trapd-trapd-handler-script-handler-handler-trap-log-zbxt-zbxt-dbt-dbt-ui2-ui2-displays-event-user2-end-invisible-connector-to-force-vertical-stacking-traps-polling-polling-section-bottom-subgraph-pollingsnmp-polling-passive-monitoring-direction-lr-zbxzabbix-server-or-proxy-pollersnmp-poller-process-devnetwork-device-zbx-poller-poller-snmp-get-udp-161-dev-dev-snmp-response-poller-poller-dbpzabbix-database-dbp-ui1zabbix-frontend-ui1-displays-polled-data-user1user-end-styling-style-polling-fillf0fff0stroke3a3stroke-width1px-style-traps-fillf0f8ffstroke339stroke-width1px-style-zbx-fille0ffe0stroke3a3-style-dev-fillffefd5strokec96-style-dev2-fillffefd5strokec96-style-trapd-fillf9f9f9stroke777-style-handler-fillf0f8ffstroke339-style-zbxt-fille0ffe0stroke3a3-style-dbp-fillfffbe0stroke996-style-dbt-fillfffbe0stroke996-style-ui1-fille8e8ffstroke669-style-ui2-fille8e8ffstroke669-style-user1-fillfff0f0strokec33-style-user2-fillfff0f0strokec33"><pre  class="mermaid"><code>---
+<h2 id="ch04-zabbix-collecting-data-snmp-trapping-snmp-flows-in-zabbix">SNMP flows in Zabbix</h2>
+<pre  class="mermaid"><code>---
 config:
   flowchart:
     subGraphTitleMargin:
@@ -14845,7 +14845,9 @@ flowchart TB
     style UI2 fill:#e8e8ff,stroke:#669
     style USER1 fill:#fff0f0,stroke:#c33
     style USER2 fill:#fff0f0,stroke:#c33
-</code></pre></h2>
+</code></pre>
+<p><em>4.33 SNMP Traps vs Polling Flow</em></p>
+<hr />
 <h3 id="ch04-zabbix-collecting-data-snmp-trapping-snmp-trap-flow-active-monitoring">SNMP Trap Flow (Active Monitoring)</h3>
 <p>In an SNMP Trap setup, communication is device initiated. Meaning the network
 device sends an event message to Zabbix the moment something happens.
@@ -15013,6 +15015,11 @@ that Zabbix can read.</p>
 </div>
 <p>This installs the SNMP tools, daemon, and Perl modules used by Zabbix's receiver
 script.</p>
+<p>Refer to previous topic <a href="#ch04-zabbix-collecting-data-snmp-polling-deploying-bare-minimum-mib-files">SNMP Polling: Deploying Bare Minimum MIB Files</a>
+on how to install MIB files if you want to have human readable trap messages in 
+the log file. 
+This is optional but highly recommended for easier troubleshooting and better 
+visibility of trap contents.</p>
 <hr />
 <h4 id="ch04-zabbix-collecting-data-snmp-trapping-open-the-firewall-for-incoming-snmp-trap-traffic">Open the Firewall for incoming SNMP Trap Traffic</h4>
 <p>By default, SNMP traps are received on port 162, most commonly using UDP, but 
