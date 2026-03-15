@@ -1553,9 +1553,9 @@ do this in your terminal:</p>
 <summary>Testing SNMPv2c with the 'public' community string</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="w">  </span>snmpstatus<span class="w"> </span>-v<span class="w"> </span>2c<span class="w"> </span>-c<span class="w"> </span>public<span class="w"> </span><span class="o">[</span>IP-address_of_the_device<span class="o">]</span>
 </span></code></pre></div>
-</details>
 <p>Replace <code>[IP-address_of_the_device]</code> with the actual IP address or hostname of the
 device you wish to test.</p>
+</details>
 <hr/>
 <h4 id="what-if-you-get-no-information-back">What if You Get No Information Back?</h4>
 <p>If you don't receive any information after this attempt, don't panic. It simply means
@@ -2044,7 +2044,7 @@ point for most SNMP monitoring scenarios.</p>
 </div>
 <details class="tip" open="open">
 <summary>Fun fact</summary>
-<p>Modifying /etc/snmp/snmp.conf file the changes are applied on the fly.
+<p>Changes to the <code>/etc/snmp/snmp.conf</code> file are applied on the fly.
 No need to restart anything.</p>
 </details>
 <div class="admonition warning">
