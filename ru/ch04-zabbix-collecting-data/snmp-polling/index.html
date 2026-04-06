@@ -1924,7 +1924,7 @@ and Configure the Firewall</p>
 From your Zabbix server or any SNMP client system with net-snmp-utils installed:</p>
 <details class="example" open="open">
 <summary>Testing SNMP functionality with snmpwalk</summary>
-<p>Repace <code>&lt;IP_ADDRESS&gt;</code> with the IP of the client where you installed the SNMP
+<p>Replace <code>&lt;IP_ADDRESS&gt;</code> with the IP of the client where you installed the SNMP
 config. If localhost you can use <code>127.0.0.1</code>.</p>
 <p>General system info (sysDescr, sysUptime, etc.)
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a>snmpwalk<span class="w"> </span>-v2c<span class="w"> </span>-c<span class="w"> </span>public<span class="w"> </span>&lt;IP_ADDRESS&gt;<span class="w"> </span>.1.3.6.1.2.1.1
@@ -2104,7 +2104,7 @@ numerical traps:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-29-1"><a href="#__codelineno-29-1" id="__codelineno-29-1" name="__codelineno-29-1"></a>outputOption n
 </span></code></pre></div>
 </div>
-<p>Next, restart the snmptrapd service, send test trap, and check the log:</p>
+<p>Next, restart the snmptrapd service, send test anananany, and check the log:</p>
 <div class="admonition info">
 <p class="admonition-title">Check log for numerical traps</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a href="#__codelineno-30-1" id="__codelineno-30-1" name="__codelineno-30-1"></a>tail<span class="w"> </span>-99<span class="w"> </span>/var/log/zabbix_traps_archive/zabbix_traps.log
@@ -2421,7 +2421,7 @@ some changes.</p>
 <p>The rest can stay as is, just remove the <em>preprocessing step</em> we added in the earlier
 example as this item will return us a whole list of information.</p>
 <p><img alt="snmp-polling/ch04.32-snmp-walk.png" src="../../../ch04-zabbix-collecting-data/snmp-polling/ch04.32-snmp-walk.png"/></p>
-<p><em>4.32 SNMP Walk</em></p>
+<p><em>4.31 SNMP Walk</em></p>
 <p>When we press the <strong>Get value and test</strong> button in the test item screen we get a
 whole list of data.</p>
 <details class="example" open="open">
@@ -2489,7 +2489,7 @@ Fill in the new item with the following information:</p>
 <li><strong>Units:</strong> <code>B</code></li>
 </ul>
 <p><img alt="snmp-polling/ch04.33-snmp-dependent-item.png" src="../../../ch04-zabbix-collecting-data/snmp-polling/ch04.33-snmp-dependent-item.png"/></p>
-<p><em>4.33 Dependent SNMP Item</em></p>
+<p><em>4.32 Dependent SNMP Item</em></p>
 <p>This item as is at the moment is an exact copy of our master item so we need to
 add some <em>preprocessing steps</em> first. Let's go to the tab <strong>Preprocessing</strong> and add
 our first step.</p>
