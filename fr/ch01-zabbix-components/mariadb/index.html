@@ -45,7 +45,7 @@ and configure firewall rules if necessary.
     
     
       
-        <title>Installing a MariaDB Database - Zabbix Book</title>
+        <title>Installation d'une base de données MariaDB - Zabbix Book</title>
       
     
     
@@ -85,14 +85,14 @@ and configure firewall rules if necessary.
     
     
 
-    <meta property="og:title" content="Installing a MariaDB Database">
+    <meta property="og:title" content="Installation d'une base de données MariaDB">
     <meta property="og:description" content="This section from The Zabbix Book titled &#34;Installing a MariaDB Database&#34; guides you through installing MariaDB as the database backend for Zabbix. It covers two installation methods: using OS vendor-provided packages or the official MariaDB repositories. The section includes steps to start and secure the MariaDB server, create a Zabbix database with appropriate users, and configure firewall rules if necessary.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thezabbixbook.com/fr/ch01-zabbix-components/mariadb/">
     <meta property="og:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Installing a MariaDB Database">
+    <meta name="twitter:title" content="Installation d'une base de données MariaDB">
     <meta name="twitter:description" content="This section from The Zabbix Book titled &#34;Installing a MariaDB Database&#34; guides you through installing MariaDB as the database backend for Zabbix. It covers two installation methods: using OS vendor-provided packages or the official MariaDB repositories. The section includes steps to start and secure the MariaDB server, create a Zabbix database with appropriate users, and configure firewall rules if necessary.">
     <meta name="twitter:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
     <meta property="og:image:width" content="1200">
@@ -117,7 +117,7 @@ and configure firewall rules if necessary.
     <div data-md-component="skip">
       
         
-        <a href="#installing-a-mariadb-database" class="md-skip">
+        <a href="#installation-dune-base-de-donnees-mariadb" class="md-skip">
           Aller au contenu
         </a>
       
@@ -175,7 +175,7 @@ and configure firewall rules if necessary.
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Installing a MariaDB Database
+              Installation d'une base de données MariaDB
             
           </span>
         </div>
@@ -235,7 +235,7 @@ and configure firewall rules if necessary.
         
           <li class="md-select__item">
             <a href="../../../pt_BR/ch01-zabbix-components/mariadb/" hreflang="pt_BR" class="md-select__link">
-              Brazillian Portugese
+              Brazilian Portuguese
             </a>
           </li>
         
@@ -636,7 +636,7 @@ and configure firewall rules if necessary.
   <span class="md-ellipsis">
     
   
-    Zabbix architecture
+    Architecture de Zabbix
   
 
     
@@ -723,7 +723,7 @@ and configure firewall rules if necessary.
   <span class="md-ellipsis">
     
   
-    Database choices
+    Choix de la base de données
   
 
     
@@ -760,7 +760,7 @@ and configure firewall rules if necessary.
   <span class="md-ellipsis">
     
   
-    Installing a MariaDB Database
+    Installation d'une base de données MariaDB
   
 
     
@@ -778,7 +778,7 @@ and configure firewall rules if necessary.
   <span class="md-ellipsis">
     
   
-    Installing a MariaDB Database
+    Installation d'une base de données MariaDB
   
 
     
@@ -804,10 +804,10 @@ and configure firewall rules if necessary.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installing-mariadb-server-and-client-from-os-vendor-provided-packages" class="md-nav__link">
+  <a href="#installer-le-serveur-et-le-client-mariadb-a-partir-des-paquets-fournis-par-lediteur-du-systeme-dexploitation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installing MariaDB Server and Client from OS Vendor-Provided Packages
+        Installer le serveur et le client MariaDB à partir des paquets fournis par l'éditeur du système d'exploitation
       
     </span>
   </a>
@@ -953,7 +953,7 @@ and configure firewall rules if necessary.
   <span class="md-ellipsis">
     
   
-    Installing a PostgreSQL database
+    Installation d'une base de données PostgreSQL
   
 
     
@@ -989,7 +989,7 @@ and configure firewall rules if necessary.
   <span class="md-ellipsis">
     
   
-    Installing the Zabbix server
+    Installation du serveur Zabbix.
   
 
     
@@ -1017,7 +1017,7 @@ and configure firewall rules if necessary.
   <span class="md-ellipsis">
     
   
-    Installing the frontend
+    Installation du frontend
   
 
     
@@ -1964,10 +1964,10 @@ and configure firewall rules if necessary.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installing-mariadb-server-and-client-from-os-vendor-provided-packages" class="md-nav__link">
+  <a href="#installer-le-serveur-et-le-client-mariadb-a-partir-des-paquets-fournis-par-lediteur-du-systeme-dexploitation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installing MariaDB Server and Client from OS Vendor-Provided Packages
+        Installer le serveur et le client MariaDB à partir des paquets fournis par l'éditeur du système d'exploitation
       
     </span>
   </a>
@@ -2208,19 +2208,20 @@ and configure firewall rules if necessary.
   
 
 
-<h1 id="installing-a-mariadb-database">Installing a MariaDB Database</h1>
-<p>In this section we will install the MariaDB server and -client packages. This
-will provide the necessary components to run and manage MariaDB as your Zabbix
-database backend.</p>
-<p>If you prefer to use PostgreSQL as your database backend, you can skip this
-section and proceed to the <a href="../postgresql/"><em>Installing the PostgreSQL Database</em></a>
-section.</p>
-<p>???+ tip "MySQL/Percona" If you prefer to use MySQL or Percona instead of
-MariaDB, the installation and configuration steps are very similar. Generally,
-you would replace <code>mariadb</code> with <code>mysql</code> in the package names and commands.</p>
-<h2 id="installing-mariadb-server-and-client-from-os-vendor-provided-packages">Installing MariaDB Server and Client from OS Vendor-Provided Packages</h2>
-<p>To install the distribution default MariaDB server and client, execute the
-following command:</p>
+<h1 id="installation-dune-base-de-donnees-mariadb">Installation d'une base de données MariaDB</h1>
+<p>Dans cette section, nous allons installer les paquets MariaDB serveur et client.
+Cela fournira les composants nécessaires pour exécuter et gérer MariaDB en tant
+que base de données Zabbix.</p>
+<p>Si vous préférez utiliser PostgreSQL comme base de données, vous pouvez sauter
+cette section et passer à la section <a href="../postgresql/"><em>Installation de la base de données
+PostgreSQL</em></a>.</p>
+<p>???+ tip "MySQL/Percona" Si vous préférez utiliser MySQL ou Percona au lieu de
+MariaDB, les étapes d'installation et de configuration sont très similaires. En
+général, vous remplacerez <code>mariadb</code> par <code>mysql</code> dans les noms de paquets et les
+commandes.</p>
+<h2 id="installer-le-serveur-et-le-client-mariadb-a-partir-des-paquets-fournis-par-lediteur-du-systeme-dexploitation">Installer le serveur et le client MariaDB à partir des paquets fournis par l'éditeur du système d'exploitation</h2>
+<p>Pour installer le serveur et le client MariaDB par défaut de la distribution,
+exécutez la commande suivante :</p>
 <div class="admonition info">
 <p class="admonition-title">Install distribution version of Mariadb</p>
 <p>Red Hat

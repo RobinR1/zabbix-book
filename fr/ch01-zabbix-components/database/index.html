@@ -41,7 +41,7 @@ the appropriate database backend and packages for your Zabbix installation.
     
     
       
-        <title>Database choices - Zabbix Book</title>
+        <title>Choix de la base de données - Zabbix Book</title>
       
     
     
@@ -81,14 +81,14 @@ the appropriate database backend and packages for your Zabbix installation.
     
     
 
-    <meta property="og:title" content="Database choices">
+    <meta property="og:title" content="Choix de la base de données">
     <meta property="og:description" content="This section from The Zabbix Book titled &#34;Database choices&#34; helps you select the appropriate database backend and packages for your Zabbix installation.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thezabbixbook.com/fr/ch01-zabbix-components/database/">
     <meta property="og:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Database choices">
+    <meta name="twitter:title" content="Choix de la base de données">
     <meta name="twitter:description" content="This section from The Zabbix Book titled &#34;Database choices&#34; helps you select the appropriate database backend and packages for your Zabbix installation.">
     <meta name="twitter:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
     <meta property="og:image:width" content="1200">
@@ -113,7 +113,7 @@ the appropriate database backend and packages for your Zabbix installation.
     <div data-md-component="skip">
       
         
-        <a href="#database-choices" class="md-skip">
+        <a href="#choix-de-la-base-de-donnees" class="md-skip">
           Aller au contenu
         </a>
       
@@ -171,7 +171,7 @@ the appropriate database backend and packages for your Zabbix installation.
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Database choices
+              Choix de la base de données
             
           </span>
         </div>
@@ -231,7 +231,7 @@ the appropriate database backend and packages for your Zabbix installation.
         
           <li class="md-select__item">
             <a href="../../../pt_BR/ch01-zabbix-components/database/" hreflang="pt_BR" class="md-select__link">
-              Brazillian Portugese
+              Brazilian Portuguese
             </a>
           </li>
         
@@ -632,7 +632,7 @@ the appropriate database backend and packages for your Zabbix installation.
   <span class="md-ellipsis">
     
   
-    Zabbix architecture
+    Architecture de Zabbix
   
 
     
@@ -728,7 +728,7 @@ the appropriate database backend and packages for your Zabbix installation.
   <span class="md-ellipsis">
     
   
-    Database choices
+    Choix de la base de données
   
 
     
@@ -746,7 +746,7 @@ the appropriate database backend and packages for your Zabbix installation.
   <span class="md-ellipsis">
     
   
-    Database choices
+    Choix de la base de données
   
 
     
@@ -772,10 +772,10 @@ the appropriate database backend and packages for your Zabbix installation.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#choosing-a-database-backend-for-zabbix" class="md-nav__link">
+  <a href="#choisir-un-backend-de-base-de-donnees-pour-zabbix" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Choosing a Database Backend for Zabbix
+        Choisir un backend de base de données pour Zabbix
       
     </span>
   </a>
@@ -849,7 +849,7 @@ the appropriate database backend and packages for your Zabbix installation.
   <span class="md-ellipsis">
     
   
-    Installing a MariaDB Database
+    Installation d'une base de données MariaDB
   
 
     
@@ -877,7 +877,7 @@ the appropriate database backend and packages for your Zabbix installation.
   <span class="md-ellipsis">
     
   
-    Installing a PostgreSQL database
+    Installation d'une base de données PostgreSQL
   
 
     
@@ -913,7 +913,7 @@ the appropriate database backend and packages for your Zabbix installation.
   <span class="md-ellipsis">
     
   
-    Installing the Zabbix server
+    Installation du serveur Zabbix.
   
 
     
@@ -941,7 +941,7 @@ the appropriate database backend and packages for your Zabbix installation.
   <span class="md-ellipsis">
     
   
-    Installing the frontend
+    Installation du frontend
   
 
     
@@ -1888,10 +1888,10 @@ the appropriate database backend and packages for your Zabbix installation.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#choosing-a-database-backend-for-zabbix" class="md-nav__link">
+  <a href="#choisir-un-backend-de-base-de-donnees-pour-zabbix" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Choosing a Database Backend for Zabbix
+        Choisir un backend de base de données pour Zabbix
       
     </span>
   </a>
@@ -2060,13 +2060,14 @@ the appropriate database backend and packages for your Zabbix installation.
   
 
 
-<h1 id="database-choices">Database choices</h1>
-<h2 id="choosing-a-database-backend-for-zabbix">Choosing a Database Backend for Zabbix</h2>
-<p>A critical decision when managing Zabbix installations is selecting the database
-backend. Zabbix supports several database options: MySQL/Percona, MariaDB,
-PostgreSQL (including TimescaleDB), and Oracle (up to Zabbix 7.0).</p>
+<h1 id="choix-de-la-base-de-donnees">Choix de la base de données</h1>
+<h2 id="choisir-un-backend-de-base-de-donnees-pour-zabbix">Choisir un backend de base de données pour Zabbix</h2>
+<p>Une décision critique dans la gestion des installations Zabbix est la sélection
+du backend de la base de données. Zabbix supporte plusieurs options de base de
+données : MySQL/Percona, MariaDB, PostgreSQL (y compris TimescaleDB) et Oracle
+(jusqu'à Zabbix 7.0).</p>
 <details class="warning" open="open">
-<summary>Oracle Database deprecation</summary>
+<summary>Dépréciation de la base de données Oracle</summary>
 <p>Zabbix 7.0 marks the final release to offer support for Oracle Database.
 Consequently, systems running Zabbix 7.0 or any prior version must undertake
 a database migration to either PostgreSQL, MySQL, or a compatible fork such
@@ -2074,17 +2075,20 @@ as MariaDB before upgrading to a later Zabbix release. This migration is a
 mandatory step to ensure continued functionality and compatibility with future
 Zabbix versions.</p>
 </details>
-<p>All supported databases perform similarly under typical Zabbix workloads, and
-Zabbix treats them equally in terms of functionality. As such, the choice
-primarily depends on your or your team’s familiarity with a particular database
-system. One notable exception is TimescaleDB, a PostgreSQL extension optimized
-for time-series data. This makes it especially well-suited for monitoring
-applications like Zabbix, which handle large volumes of timestamped data.</p>
-<p>In large-scale environments with high-frequency data collection, TimescaleDB can
-deliver significant performance benefits, including improved query speeds and
-built-in compression to reduce storage requirements. However, these advantages
-come with added complexity during installation and a few restrictions on
-historical data retention.</p>
+<p>Toutes les bases de données prises en charge ont des performances similaires
+dans les charges de travail typiques de Zabbix, et Zabbix les traite de la même
+manière en termes de fonctionnalités. En tant que tel, le choix dépend
+principalement de votre familiarité ou de celle de votre équipe avec un système
+de base de données particulier. Une exception notable est TimescaleDB, une
+extension de PostgreSQL optimisée pour les données de séries temporelles. Elle
+est donc particulièrement bien adaptée aux applications de surveillance telles
+que Zabbix, qui traitent d'importants volumes de données horodatées.</p>
+<p>Dans les environnements à grande échelle avec une collecte de données à haute
+fréquence, TimescaleDB peut offrir des avantages significatifs en termes de
+performances, y compris des vitesses de requêtes améliorées et une compression
+intégrée pour réduire les besoins en stockage. Cependant, ces avantages
+s'accompagnent d'une complexité accrue lors de l'installation et de quelques
+restrictions sur la conservation des données historiques.</p>
 <details class="tip" open="open">
 <summary>TimescaleDB installation</summary>
 <p>Given its advanced nature, TimescaleDB is not essential for most Zabbix users.

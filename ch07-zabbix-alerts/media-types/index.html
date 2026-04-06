@@ -231,7 +231,7 @@ webhook, or chat integrations to ensure critical issues never go unnoticed.
         
           <li class="md-select__item">
             <a href="../../pt_BR/ch07-zabbix-alerts/media-types/" hreflang="pt_BR" class="md-select__link">
-              Brazillian Portugese
+              Brazilian Portuguese
             </a>
           </li>
         
@@ -1071,6 +1071,283 @@ webhook, or chat integrations to ensure critical issues never go unnoticed.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#the-four-media-type-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Four Media Type Categories
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Settings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#email" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Email
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Email">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SMS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Script">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#important-security-consideration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Important Security Consideration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#webhook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Webhook
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Webhook">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-built-integrations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-built Integrations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-fields_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-a-custom-webhook-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing a Custom Webhook Script
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assigning-media-to-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assigning Media to Users
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step-configuring-an-email-media-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step-by-Step: Configuring an Email Media Type
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step-by-Step: Configuring an Email Media Type">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-create-a-new-media-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — Create a New Media Type
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-configure-the-smtp-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — Configure the SMTP Settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-set-retry-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — Set Retry Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-configure-message-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — Configure Message Templates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-save-and-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5 — Save and Test
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-assign-to-a-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6 — Assign to a User
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-7-verify-in-an-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7 — Verify in an Action
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-notification-delivery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting Notification Delivery
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exporting-and-importing-media-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exporting and Importing Media Types
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Best Practices
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#conclusion" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1126,7 +1403,7 @@ webhook, or chat integrations to ensure critical issues never go unnoticed.
   <span class="md-ellipsis">
     
   
-    Scripts
+    Custom Alert Scripts
   
 
     
@@ -1687,6 +1964,283 @@ webhook, or chat integrations to ensure critical issues never go unnoticed.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#the-four-media-type-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Four Media Type Categories
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Settings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#email" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Email
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Email">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SMS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Script">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#important-security-consideration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Important Security Consideration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#webhook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Webhook
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Webhook">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-built-integrations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-built Integrations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-fields_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-a-custom-webhook-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing a Custom Webhook Script
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assigning-media-to-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assigning Media to Users
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step-configuring-an-email-media-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step-by-Step: Configuring an Email Media Type
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step-by-Step: Configuring an Email Media Type">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-create-a-new-media-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — Create a New Media Type
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-configure-the-smtp-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — Configure the SMTP Settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-set-retry-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — Set Retry Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-configure-message-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — Configure Message Templates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-save-and-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5 — Save and Test
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-assign-to-a-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6 — Assign to a User
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-7-verify-in-an-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7 — Verify in an Action
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-notification-delivery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting Notification Delivery
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exporting-and-importing-media-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exporting and Importing Media Types
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Best Practices
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#conclusion" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1820,9 +2374,586 @@ webhook, or chat integrations to ensure critical issues never go unnoticed.
 
 
 <h1 id="media-types">Media types</h1>
+<p>Before Zabbix can actually notify anyone about a problem, it needs to know <em>how</em>
+to reach them. That is exactly what media types are for. A media type defines the
+delivery channel, the mechanism Zabbix uses to send a notification. Think of it
+as the difference between sending a letter versus making a phone call: the
+message may be the same, but the channel is completely different, and each
+channel needs its own configuration.</p>
+<p>In Zabbix 8.0, media types live under <strong>Alerts → Media types</strong> in the menu on the
+left. This is where you define <em>all</em> the delivery channels your installation will
+use, before any of them can be assigned to users or referenced in actions.</p>
+<p>It is important to understand that a media type on its own does nothing. It is just
+a reusable configuration template. The full notification chain in Zabbix always
+involves three pieces working together:</p>
+<ol>
+<li><strong>A media type</strong> : defines the delivery channel and its technical settings (SMTP
+   server, webhook URL, script name, etc.).</li>
+<li><strong>A user media assignment</strong> : connects a specific user to a media type, supplying
+   that user's personal contact details (email address, phone number, Slack user
+   ID, etc.) and optionally restricting which severities or time windows apply.</li>
+<li><strong>An action</strong> : defines when to send a notification and to which users.</li>
+</ol>
+<p>If any of these three pieces is missing or misconfigured, notifications will not
+be delivered. Keep this triangle in mind as you read through the rest of this
+chapter and the <code>Actions</code> chapter that follows.</p>
+<hr />
+<h2 id="the-four-media-type-categories">The Four Media Type Categories</h2>
+<p>Zabbix 8.0 supports four kinds of media types. Each has its own configuration
+form, but they all share a set of common settings that we will cover first.</p>
+<ul>
+<li>
+<p><strong>Email</strong> : Is the most commonly used type and is built directly into the
+  <code>Zabbix server</code>. No external scripts are required. Zabbix connects to
+  an SMTP server and delivers messages.</p>
+</li>
+<li>
+<p><strong>SMS</strong> : Sends text messages via a GSM modem physically attached to the
+  <code>Zabbix server</code>. This is a legacy option and rarely used in modern deployments,
+  but it remains available. The sms modem is usually connected to a serial port
+  or USB port with the help of some special software like smstools.</p>
+</li>
+<li>
+<p><strong>Script</strong> : Lets you execute any custom script or binary on the <code>Zabbix server</code>
+  when a notification needs to be sent. This is how you can integrate with almost
+  anything. PagerDuty, a ticketing system, a proprietary API, ... as long as you
+  can write a script that talks to it.</p>
+</li>
+<li>
+<p><strong>Webhook</strong> : Is the modern evolution of Script. Instead of running a local script,
+  Zabbix executes a JavaScript function internally (using the Duktape JS engine
+  embedded in the server) that makes HTTP requests. Zabbix ships with a large
+  collection of ready to use webhook integrations for services like Slack,
+  Microsoft Teams, Telegram, Opsgenie, Jira, and many more. This is the preferred
+  approach for new integrations.</p>
+</li>
+</ul>
+<hr />
+<h2 id="common-settings">Common Settings</h2>
+<p>Regardless of which type you are configuring, every media type shares the following
+fields at the top of its configuration form.</p>
+<ul>
+<li>
+<p><strong>Name</strong> : is simply a descriptive label. Choose something meaningful, if you have
+  multiple email configurations (for example, one for internal alerts and one for
+  customer notifications), the name is the only thing distinguishing them in
+  dropdown lists.</p>
+</li>
+<li>
+<p><strong>Type</strong> : selects which of the four categories above you are configuring.</p>
+</li>
+<li>
+<p><strong>Description</strong> : is optional free text. Use it. Documenting what the media type
+  is for, which external service it connects to, and any non obvious configuration
+  choices. This saves a great deal of confusion later.</p>
+</li>
+<li>
+<p><strong>Enabled/Disabled</strong> : toggle. A disabled media type will not deliver any
+  notifications even if it is assigned to users and referenced in actions. This
+  is useful when you need to temporarily suppress a channel without deleting its
+  configuration.</p>
+</li>
+<li>
+<p><strong>Message templates</strong> : every media type can carry default message templates for
+  each event type:</p>
+</li>
+</ul>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="na">- Problem</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="na">- Problem recovery</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="na">- Problem update</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="na">- Service</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="na">- Service recovery</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="na">- Service update</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="na">- Disscovery</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="na">- Auto registration</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="na">- Internal problem.</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="na">- Internal problem recovery</span>
+</span></code></pre></div>
+<p>These templates define the subject and body that Zabbix uses when no action-level
+  template overrides them. They support Zabbix macros (like <code>{HOST.NAME}</code>,
+  <code>{TRIGGER.NAME}</code>, <code>{EVENT.SEVERITY}</code>, etc.), which are substituted at send time.
+  We will look at a full example template in the step-by-step section below.</p>
+<ul>
+<li>
+<p><strong>Concurrent sessions</strong> : controls how many simultaneous alert notifications this
+  media type is allowed to process at once. For most installations, the default
+  (one) is fine. Webhooks to fast external APIs can sometimes benefit from a higher
+  value. Increasing this also increases load on the Zabbix server. Also don't
+  forget to increase in the <code>Zabbix server</code> config the option <code>StartAlerters</code>
+  if needed.</p>
+</li>
+<li>
+<p><strong>Attempts</strong> and <strong>Attempt interval</strong> : if a notification fails to deliver
+  (for example, the SMTP server is temporarily unavailable), Zabbix will retry.
+  The <em>Attempts</em> field sets how many total tries it will make (minimum 1,
+  maximum 100), and <em>Attempt interval</em> sets how long Zabbix waits between retries.
+  A sensible default for email is 3 attempts with a 5-minute interval.</p>
+</li>
+</ul>
+<hr />
+<h2 id="email">Email</h2>
+<p>The Email media type is the one most Zabbix installations configure first. Zabbix
+acts as an SMTP client and delivers messages through your mail server.</p>
+<h3 id="configuration-fields">Configuration Fields</h3>
+<ul>
+<li>
+<p><strong>SMTP server</strong> : the hostname or IP address of the mail server Zabbix should
+  connect to. If you are using an internal relay, this is typically your organization's
+  mail relay hostname.</p>
+</li>
+<li>
+<p><strong>SMTP server port</strong> : the TCP port to connect on. The most common values are 25
+  (plain SMTP), 465 (SMTPS — SSL/TLS from the start of the connection), and 587
+  (SMTP with STARTTLS).</p>
+</li>
+<li>
+<p><strong>SMTP helo</strong> : the HELO/EHLO hostname Zabbix presents when connecting to the
+  SMTP server. This should be the fully qualified domain name of the <code>Zabbix server</code>.</p>
+</li>
+<li>
+<p><strong>SMTP email</strong> : the sender address that will appear in the <code>From:</code> header. Make
+  sure this address is permitted to send mail through the SMTP server you specified,
+  otherwise you may encounter relay rejection or SPF failures.</p>
+</li>
+<li>
+<p><strong>Connection security</strong> : controls how the SMTP connection is encrypted. Choose
+  from <strong>None</strong> (plain text, not recommended for production), <strong>STARTTLS</strong> (upgrades
+  an unencrypted connection to TLS after the initial handshake), or <strong>SSL/TLS</strong>
+  (TLS from the very first byte, used with port 465).</p>
+</li>
+<li>
+<p><strong>SSL verify peer</strong> and <strong>SSL verify host</strong> : when using TLS, these control
+  whether the server's certificate is validated. In a production environment,
+  both should be enabled. Disabling them is useful only for testing with self-signed
+  certificates and should not be left off permanently.</p>
+</li>
+<li>
+<p><strong>Authentication</strong> : SMTP authentication. If your mail server requires a username
+  and password, select <strong>Normal</strong> and enter the credentials. If no authentication
+  is needed (for example, a local relay that accepts mail from the Zabbix server
+  by IP), leave this as <strong>None</strong>.</p>
+</li>
+<li>
+<p><strong>Username / Password</strong> : the SMTP credentials, visible only when Authentication
+  is set to Normal.</p>
+</li>
+</ul>
+<details class="note" open="open">
+<summary>Note</summary>
+<p>When using Gmail or Microsoft 365 as the outgoing mail server, standard <code>username
+/password</code> authentication may be blocked by modern security policies. Zabbix ships
+with a dedicated <strong>Automated Gmail/Office365 media type</strong> that uses OAuth2, which
+is the correct approach for those services. See the Zabbix documentation for
+the OAuth2 setup guide.</p>
+</details>
+<hr />
+<h2 id="sms">SMS</h2>
+<p>The SMS media type sends messages through a GSM modem connected to the Zabbix server
+via a serial port or USB-serial adapter.</p>
+<p><strong>GSM modem</strong> — the path to the serial device, for example <code>/dev/ttyUSB0</code> or <code>/dev/ttyS0</code>.</p>
+<p>This type has very limited configuration options because the complexity lies in
+the physical hardware setup. The modem must be powered, the SIM card must have
+credit or an active plan, and the device path must be accessible by the user running
+the Zabbix server process. Testing is done by observing whether test notifications
+actually arrive on a phone.</p>
+<p>SMS is largely superseded by webhook integrations with modern messaging platforms,
+but remains useful in environments where internet access is restricted or in
+industrial monitoring scenarios where SMS is a hard requirement.</p>
+<hr />
+<h2 id="script">Script</h2>
+<p>The Script media type runs a custom script located in the <code>AlertScriptsPath</code>
+directory on the Zabbix server. By default this is <code>/usr/lib/zabbix/alertscripts/</code>
+on most Linux distributions, though this can be changed in the Zabbix server
+configuration file (<code>/etc/zabbix/zabbix_server.conf</code>).</p>
+<p><strong>Script name</strong> — just the filename of the script, without a path. Zabbix will
+look for it in <code>AlertScriptsPath</code>. The script must be executable by the user running
+the Zabbix server.</p>
+<p><strong>Script parameters</strong> — a list of arguments passed to the script. Each parameter
+is specified on a separate line. Parameters support Zabbix macros. A typical
+setup passes three arguments: <code>{ALERT.SENDTO}</code> (the user's contact details from
+their media assignment), <code>{ALERT.SUBJECT}</code>, and <code>{ALERT.MESSAGE}</code>.</p>
+<p>The script receives the parameters as positional arguments: <code>$1</code>, <code>$2</code>, <code>$3</code>, etc.
+The script's exit code matters: exit 0 means success; any non-zero exit code is
+treated as a failure, and Zabbix will log the error and retry according to the
+<em>Attempts</em> setting.</p>
+<p>Checkout the next topic <code>Custom Alert Scripts</code> if you like to find out more on
+how to configure this in Zabbix.</p>
+<h3 id="important-security-consideration">Important Security Consideration</h3>
+<p>Scripts run as the user that owns the Zabbix server process (typically
+<code>zabbix</code>). Make sure scripts do not have world-writable permissions and that the
+<code>AlertScriptsPath</code> directory itself is not writable by untrusted users. Never
+place scripts outside of <code>AlertScriptsPath</code>.</p>
+<hr />
+<h2 id="webhook">Webhook</h2>
+<p>Webhooks are the most powerful and flexible media type in Zabbix 8.0. Instead of
+running an external script, Zabbix executes a JavaScript function internally.
+This function has access to a built-in HTTP client object (<code>CurlHttpRequest</code>)
+and can make GET, POST, PUT, or DELETE requests to any HTTP/HTTPS endpoint.</p>
+<h3 id="pre-built-integrations">Pre-built Integrations</h3>
+<p>Zabbix ships with dozens of ready-to-use webhook templates accessible from the
+<em>Import</em> button on the Media types list page. These cover popular services
+including Slack, Microsoft Teams, Telegram, PagerDuty, Opsgenie, Jira, Jira Service
+Management, ServiceNow, Zendesk, Pushover, Discord, Mattermost, VictorOps, and
+more. For most teams, the answer to "how do I send alerts to Slack?" is simply:
+import the Slack webhook, fill in your Slack token, and you're done.</p>
+<h3 id="configuration-fields_1">Configuration Fields</h3>
+<p><strong>Script</strong>: the JavaScript code that runs when Zabbix needs to send a notification.
+The function receives a <code>value</code> object that contains all available macros. It
+should return a string on success (which Zabbix logs as the result) or throw an
+error on failure.</p>
+<p><strong>Parameters</strong>: key-value pairs that are made available inside the script via the
+<code>params</code> object (or via the macros <code>{$PARAM_NAME}</code> in the script). This is how
+you inject configuration like API tokens, channel names, or webhook URLs without
+hardcoding them in the script itself. Parameters can include Zabbix macros such
+as <code>{ALERT.MESSAGE}</code> or <code>{ALERT.SENDTO}</code>.</p>
+<p><strong>Timeout</strong>: the maximum time in seconds the script is allowed to run. If the
+script does not complete within this time, Zabbix kills it and treats it as a failure.</p>
+<p><strong>Process tags</strong>: If enabled, Zabbix passes event tags into the webhook script,
+which can be useful for routing or enriching the notification.</p>
+<p><strong>Include event menu entry</strong>: Adds a link to the event in the Zabbix frontend
+as part of the notification, useful when the target system supports clickable
+URLs.</p>
+<p><strong>Message templates</strong>: like all media types, webhooks can have default message
+templates per event type.</p>
+<hr />
+<h3 id="writing-a-custom-webhook-script">Writing a Custom Webhook Script</h3>
+<p>If no pre-built integration exists for your target service, writing your own
+webhook script is straightforward. Before you wire it up to a real endpoint,
+it is worth testing against a public HTTP inspection tool so you can see exactly
+what Zabbix sends. <strong>webhook.site</strong> is ideal for this: open
+<a href="https://webhook.site">https://webhook.site</a> in your browser and you immediately
+get a unique URL that captures every request made to it, showing headers, body,
+and status, no account or setup required.</p>
+<p>Use that URL during development, then swap it for your real endpoint once everything
+looks correct.</p>
+<p>Here is a minimal webhook script that posts a JSON notification:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kd">var</span><span class="w"> </span><span class="nx">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="w">     </span><span class="nx">params</span><span class="p">.</span><span class="nx">host</span><span class="p">,</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="s2">&quot;subject&quot;</span><span class="o">:</span><span class="w">  </span><span class="nx">params</span><span class="p">.</span><span class="nx">subject</span><span class="p">,</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="s2">&quot;message&quot;</span><span class="o">:</span><span class="w">  </span><span class="nx">params</span><span class="p">.</span><span class="nx">message</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">};</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="kd">var</span><span class="w"> </span><span class="nx">payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="kd">var</span><span class="w"> </span><span class="nx">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpRequest</span><span class="p">();</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="nx">request</span><span class="p">.</span><span class="nx">addHeader</span><span class="p">(</span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="p">);</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="kd">var</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">request</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">endpoint_url</span><span class="p">,</span><span class="w"> </span><span class="nx">payload</span><span class="p">);</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">getStatus</span><span class="p">()</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="mf">200</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="s1">&#39;Unexpected HTTP status &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">request</span><span class="p">.</span><span class="nx">getStatus</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;: &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">response</span><span class="p">;</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="p">}</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">;</span>
+</span></code></pre></div>
+<p>To wire this up for testing:</p>
+<ol>
+<li>Go to Alerts → Media types and click Create media type.</li>
+<li>Set the Type to Webhook and paste the script above into the Script field.</li>
+<li>Under Parameters, add four entries:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">endpoint_url</td>
+<td style="text-align: left;">(your webhook.site URL)</td>
+</tr>
+<tr>
+<td style="text-align: left;">host</td>
+<td style="text-align: left;">{HOST.NAME}</td>
+</tr>
+<tr>
+<td style="text-align: left;">subject</td>
+<td style="text-align: left;">{ALERT.SUBJECT}</td>
+</tr>
+<tr>
+<td style="text-align: left;">message</td>
+<td style="text-align: left;">{ALERT.MESSAGE}</td>
+</tr>
+</tbody>
+</table>
+<p>Parameter names are case-sensitive. A typo or capital letter will cause that field
+to silently disappear from the JSON output with no error message. If a field is
+missing from the webhook.site output, the parameter name is the first thing to check.</p>
+<p>Click <code>Add</code> to save the media type.</p>
+<p>Testing with the Test button, you can click <code>Test</code> on the media type form to verify
+that the script parses and runs without errors. However, the Test button runs in
+a restricted sandbox that does not have access to the HTTP client, so no request
+will ever reach webhook.site from there. It is still useful for catching syntax
+errors and verifying that your parameters are defined correctly, but it cannot
+substitute for a real end-to-end test. Testing end-to-end with webhook.site, to
+actually see a request land on webhook.site you need the full notification chain
+in place:</p>
+<p>Assign the media type to your user (go to Users → Users, open the user, Media tab,
+click <code>Add</code>, select the webhook media type, enter anything in Send to since the
+script does not use it, and enable all severities).</p>
+<p>Make sure an action exists under <code>Alerts → Actions → Trigger actions</code> that sends
+to your user. Trigger a real problem. The quickest way is to create a dummy trigger
+with an expression that is immediately true, such as <code>last(/your-host/system.uptime) &gt; 0</code>.
+The moment that trigger fires, Zabbix runs the webhook script for real and the
+request will appear in webhook.site within seconds.</p>
+<p><img alt="webhook" src="ch07-1-webhook.png" /></p>
+<p><em>7.1
+webhook</em></p>
+<p>Once you see the request on webhook.site and the JSON looks correct, the media type
+is working. Disable or delete the dummy trigger, replace the endpoint_url parameter
+value with your real endpoint, and the setup is production ready.
+For server-side logging during development, the Zabbix object is available in the
+script environment. Zabbix.Log(4, 'response was: ' + response) writes to the
+<code>Zabbix server</code> log at debug level 4, which is useful for tracing what a script
+is doing when a problem only appears in production and not during testing.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>HttpRequest is the correct object name in Zabbix 5.4 and later, including
+Zabbix 8.0. Older documentation and community examples often reference
+CurlHttpRequest, which was the name used in Zabbix 5.2 and older and no longer
+works. If you copy a webhook script from an external source and it throws a
+ReferenceError: identifier 'CurlHttpRequest' undefined error, replacing
+CurlHttpRequest with HttpRequest and updating the method names to lowercase
+(addHeader, post, getStatus) is all that is needed.</p>
+</div>
+<hr />
+<h2 id="assigning-media-to-users">Assigning Media to Users</h2>
+<p>Defining a media type is only the first step. To actually receive notifications,
+each user must have the media type assigned in their profile, along with their
+personal contact details for that channel. Navigate to <strong>Users → Users</strong>, click
+on a user, go to the <strong>Media</strong> tab, and click <strong>Add</strong>.</p>
+<p><strong>Type</strong> selects which media type this assignment uses.</p>
+<p><strong>Send to</strong> is the user's contact address for this channel. What you enter here
+depends entirely on the media type. For email it is the email address. For a
+custom script it becomes the value of <code>{ALERT.SENDTO}</code>, which Zabbix passes as
+the first argument <code>$1</code> to the script. For a webhook it flows into the script
+via whatever parameter you have mapped to <code>{ALERT.SENDTO}</code> — for Slack, that is
+the channel name. The key point is that Zabbix itself does not interpret or
+validate this field beyond storing it; the media type script or SMTP layer is
+what actually uses it.</p>
+<p><strong>When active</strong> defines the time window during which this assignment is active,
+using Zabbix's time period syntax. <code>1-7,00:00-24:00</code> means always active.
+<code>1-5,08:00-18:00</code> restricts to weekdays during business hours. This lets you,
+for example, configure an SMS assignment that only fires outside business hours
+when nobody is watching dashboards.</p>
+<p><strong>Use if severity</strong> is a set of checkboxes covering all six trigger severities:
+Not classified, Information, Warning, Average, High, and Disaster. Only problems
+at a checked severity will be delivered through this assignment. A typical setup
+gives email all severities and SMS only High and Disaster.</p>
+<p><strong>Status</strong> enables or disables this specific assignment without touching the media
+type or user account. A common use case is temporarily disabling an assignment for
+a user who is on leave.</p>
+<p>A single user can carry as many media assignments as needed. Multiple assignments
+of the same media type are valid too. For example, two email assignments sending
+to different addresses, one for all severities and one restricted to Disaster that
+also copies a management distribution list.</p>
+<hr />
+<h2 id="step-by-step-configuring-an-email-media-type">Step-by-Step: Configuring an Email Media Type</h2>
+<p>Let's walk through setting up a working email media type from scratch.</p>
+<h3 id="step-1-create-a-new-media-type">Step 1 — Create a New Media Type</h3>
+<p>In the Zabbix frontend, go to <strong>Alerts → Media types</strong> and click <strong>Create media
+type</strong> in the top-right corner.</p>
+<p>Set the <strong>Name</strong> to something descriptive, such as <code>Email - Internal SMTP</code>, and
+set the <strong>Type</strong> to <code>Email</code>. Use the <strong>Description</strong> field to note which relay
+is being used and why — this saves confusion when you have multiple email media
+types or revisit the configuration months later.</p>
+<h3 id="step-2-configure-the-smtp-settings">Step 2 — Configure the SMTP Settings</h3>
+<p>Fill in the connection details:</p>
+<ul>
+<li><strong>SMTP server</strong>: <code>mail.example.internal</code></li>
+<li><strong>SMTP server port</strong>: <code>587</code></li>
+<li><strong>SMTP helo</strong>: <code>zabbix.example.internal</code> (the Zabbix server's FQDN)</li>
+<li><strong>SMTP email</strong>: <code>zabbix-alerts@example.internal</code></li>
+<li><strong>Connection security</strong>: <code>STARTTLS</code></li>
+<li><strong>SSL verify peer</strong>: checked</li>
+<li><strong>SSL verify host</strong>: checked</li>
+<li><strong>Authentication</strong>: <code>Normal</code></li>
+<li><strong>Username</strong>: <code>zabbix-alerts@example.internal</code></li>
+<li><strong>Password</strong>: <em>(your SMTP password)</em></li>
+</ul>
+<p>Port 587 with STARTTLS is the recommended choice for modern mail servers. If your
+relay requires SSL/TLS from the start of the connection, use port 465 and set
+<strong>Connection security</strong> to <code>SSL/TLS</code> instead.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is just an example setup, not a working configuration. You need to add
+the correct SMTP server address etc ... .</p>
+</div>
+<h3 id="step-3-set-retry-parameters">Step 3 — Set Retry Parameters</h3>
+<p>Leave <strong>Concurrent sessions</strong> at <code>1</code> for email. Set <strong>Attempts</strong> to <code>3</code> and <strong>Attempt
+interval</strong> to <code>5m</code>, Zabbix will retry up to three times with a five minute gap
+if the SMTP server is temporarily unavailable.</p>
+<h3 id="step-4-configure-message-templates">Step 4 — Configure Message Templates</h3>
+<p>Click <strong>Message templates</strong> and then <strong>Add</strong> to create a template for the
+<strong>Problem</strong> event type.</p>
+<p>Subject:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Problem: {EVENT.NAME}
+</span></code></pre></div></p>
+<p>Message body:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Problem started at {EVENT.TIME} on {EVENT.DATE}
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Problem name: {EVENT.NAME}
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Host: {HOST.NAME}
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>Severity: {EVENT.SEVERITY}
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>Operational data: {EVENT.OPDATA}
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>Original problem ID: {EVENT.ID}
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>{EVENT.URL}
+</span></code></pre></div></p>
+<p>Then add a second template for <strong>Problem recovery</strong>:</p>
+<p>Subject:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Resolved in {EVENT.DURATION}: {EVENT.NAME}
+</span></code></pre></div></p>
+<p>Message body:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Problem resolved at {EVENT.RECOVERY.TIME} on {EVENT.RECOVERY.DATE}
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>Problem name: {EVENT.NAME}
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>Host: {HOST.NAME}
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>Severity: {EVENT.SEVERITY}
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>Original problem ID: {EVENT.ID}
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>{EVENT.URL}
+</span></code></pre></div></p>
+<p>It is also worth adding templates for <strong>Problem update</strong> and <strong>Internal problem</strong>
+while you are here, so all event types produce sensible messages rather than falling
+back to Zabbix's bare-bones defaults.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A list of all macros that you can use here can be found at the following
+location: <a href="https://www.zabbix.com/documentation/current/&#10;en/manual/appendix/macros/supported_by_location">https://www.zabbix.com/documentation/current/en/manual/appendix/
+macros/supported_by_location</a></p>
+</div>
+<h3 id="step-5-save-and-test">Step 5 — Save and Test</h3>
+<p>Click <strong>Add</strong> to save. Then click <strong>Test</strong>, enter a real email address in the <strong>Send
+to</strong> field, and click <strong>Test</strong> again. Zabbix will attempt delivery immediately
+and show the result inline — either a confirmation or the exact SMTP error. This
+is the quickest way to catch misconfigured relay settings before they cause missed
+alerts in production.</p>
+<h3 id="step-6-assign-to-a-user">Step 6 — Assign to a User</h3>
+<p>Go to <strong>Users → Users</strong>, open the user who should receive notifications, click
+the <strong>Media</strong> tab, and click <strong>Add</strong>.</p>
+<ul>
+<li><strong>Type</strong>: <code>Email - Internal SMTP</code></li>
+<li><strong>Send to</strong>: <code>your.name@example.internal</code></li>
+<li><strong>When active</strong>: <code>1-7,00:00-24:00</code></li>
+<li><strong>Use if severity</strong>: all severities checked</li>
+<li><strong>Status</strong>: Enabled</li>
+</ul>
+<p>Click <strong>Add</strong> then <strong>Update</strong> to save the user profile.</p>
+<h3 id="step-7-verify-in-an-action">Step 7 — Verify in an Action</h3>
+<p>A configured media type and a user media assignment are necessary but not sufficient
+on their own. You also need at least one enabled Action under <strong>Alerts → Actions
+→ Trigger actions</strong> that includes this user (or a group they belong to) as a recipient.
+Without a matching action, no notification will ever be triggered. Actions are covered
+in the next section of this chapter.</p>
+<hr />
+<h2 id="troubleshooting-notification-delivery">Troubleshooting Notification Delivery</h2>
+<p>When notifications are not arriving, work through the following checks in order.
+The first two alone resolve the majority of cases.</p>
+<p><strong>Check the Action log first.</strong> Go to <strong>Reports → Action log</strong>. This shows every
+delivery attempt Zabbix has made, its status (Sent, In progress, or Failed), and
+the full error message when something went wrong. Always start here — the error
+message usually tells you exactly what is broken.</p>
+<p><strong>Confirm the action exists and is enabled.</strong> The most common reason notifications
+never appear in the Action log at all is that no action matches the event. Go to
+<strong>Alerts → Actions → Trigger actions</strong> and verify that at least one enabled action
+covers the problem conditions and targets the right user or group.</p>
+<p><strong>Verify the media type is enabled.</strong> Open the media type and confirm the status
+is Enabled. A disabled media type produces no entries in the Action log and gives
+no obvious indication that something is wrong.</p>
+<p><strong>Verify the user's media assignment is enabled.</strong> Go to the user's profile, Media
+tab, and check that the assignment status is Enabled.</p>
+<p><strong>Check severity filters.</strong> If the media assignment is restricted to certain severities
+and the trigger fires at a severity that is not checked, no notification is sent.</p>
+<p><strong>Check time period restrictions.</strong> If <strong>When active</strong> is set to business hours
+and the problem occurs outside that window, no notification is sent.</p>
+<p><strong>Test the media type directly.</strong> Use the <strong>Test</strong> button on the media type configuration
+form. This exercises the delivery channel in isolation, independently of actions,
+triggers, and user assignments — useful for confirming that SMTP settings or
+webhook tokens are still valid.</p>
+<p><strong>Check the Zabbix server log.</strong> The server log at <code>/var/log/zabbix/zabbix_server.log</code>
+contains detailed output from alert processing. Temporarily increasing <code>DebugLevel</code>
+to <code>4</code> in <code>zabbix_server.conf</code> (and reloading the server) produces significantly
+more detail and is often the fastest way to diagnose a webhook script that fails
+in production but passes the Test button.</p>
+<hr />
+<h2 id="exporting-and-importing-media-types">Exporting and Importing Media Types</h2>
+<p>Media type configurations can be exported to XML and imported on another Zabbix
+instance, which is useful for promoting configurations between environments or
+keeping them in version control.</p>
+<p>To export, go to <strong>Alerts → Media types</strong>, check the box next to one or more media
+types, and select <strong>Export</strong> from the action menu below the list. To import,
+click the <strong>Import</strong> button in the top-right corner of the same page and select
+the XML file. If a media type with the same name already exists, Zabbix will
+ask whether to update it or skip it.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Passwords entered directly into media type fields, such as the SMTP password,
+are not included in the export. You will need to re-enter them after importing.
+User macro <em>references</em> like <code>{$SLACK_TOKEN}</code> are exported normally; only the
+underlying macro values are masked in the UI, and those are managed separately
+under <strong>Alerts → Macros</strong>.</p>
+</div>
+<hr />
+<h2 id="best-practices">Best Practices</h2>
+<p><strong>Store credentials in secret user macros.</strong> Rather than typing SMTP passwords
+or API tokens directly into media type fields, create a Secret user macro under
+<strong>Alerts → Macros</strong> and reference it as <code>{$MACRO_NAME}</code> in the media type configuration.
+The value is masked in the UI, excluded from exports, and can be rotated in one
+place without editing every media type that uses it.</p>
+<p><strong>Always define message templates.</strong> If neither the action nor the media type
+carries a message template for an event type, Zabbix falls back to a minimal
+default that omits most useful context. At minimum, define templates for Problem
+and Problem recovery on every media type you deploy.</p>
+<p><strong>Test before going live.</strong> Use the <strong>Test</strong> button to verify a new media type
+before attaching it to production actions. The few seconds this takes is nothing
+compared to discovering a broken SMTP configuration during an actual incident.</p>
+<p><strong>Watch for silent failures.</strong> A media type can fail consistently for days without
+any visible indication unless you are actively monitoring the Action log. Periodic
+check <strong>Reports → Action log</strong>, filter by status Failed, this is a simple habit
+that catches problems early.</p>
+<p><strong>Keep configurations in version control.</strong> Export your media type XML files and
+commit them alongside your other infrastructure configuration. This makes it
+straightforward to reproduce your notification setup on a new instance or recover
+from an accidental change.</p>
 <h2 id="conclusion">Conclusion</h2>
+<p>Media types are the foundation of Zabbix's notification system. Without a properly
+configured media type, no amount of trigger tuning or action configuration will
+result in a notification reaching a human. The key points to carry forward are:
+the media type defines the delivery channel and its technical settings; the
+<code>user media</code> assignment connects a channel to a specific person with their contact
+address, severity filter, and time window; and an action defines the conditions
+under which Zabbix decides to send. All three must be in place. A gap in any one
+of them and notifications will not flow.</p>
+<p>In the next section we look at Actions in detail, where you define the logic that
+decides when to notify, who to notify, and what to say.</p>
 <h2 id="questions">Questions</h2>
+<ul>
+<li>
+<p>What are the three components that must all be in place for Zabbix to successfully
+  deliver a notification? What happens if any one of them is missing?</p>
+</li>
+<li>
+<p>A media type is described as a "reusable configuration template." What does that
+  mean in practice — how does a single media type serve multiple users with different
+  contact addresses?</p>
+</li>
+<li>
+<p>What is the difference between the Script and Webhook media types? In what situation
+  would you choose one over the other?</p>
+</li>
+<li>
+<p>You need a user to receive SMS alerts only for High and Disaster severities, and
+  only outside of business hours. Which two fields in the user's media assignment
+  control this behaviour?</p>
+</li>
+</ul>
 <h2 id="useful-urls">Useful URLs</h2>
+<ul>
+<li><a href="https://smstools3.kekekasvi.com/">https://smstools3.kekekasvi.com/</a></li>
+<li><a href="https://webhook.site/">https://webhook.site/</a></li>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/config/notifications/media">https://www.zabbix.com/documentation/current/en/manual/config/notifications/media</a></li>
+</ul>
 
 
 

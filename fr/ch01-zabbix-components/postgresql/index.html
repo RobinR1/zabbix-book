@@ -46,7 +46,7 @@ firewall rules if necessary.
     
     
       
-        <title>Installing a PostgreSQL database - Zabbix Book</title>
+        <title>Installation d'une base de données PostgreSQL - Zabbix Book</title>
       
     
     
@@ -86,14 +86,14 @@ firewall rules if necessary.
     
     
 
-    <meta property="og:title" content="Installing a PostgreSQL database">
+    <meta property="og:title" content="Installation d'une base de données PostgreSQL">
     <meta property="og:description" content="This section from The Zabbix Book titled &#34;Installing a PostgreSQL database&#34; guides you through installing PostgreSQL as an alternative database backend for Zabbix. It covers installation methods using OS vendor-provided packages or official PostgreSQL repositories, with specific commands for Red Hat, SUSE, and Ubuntu systems. The section also includes steps to start and secure the PostgreSQL server, create the Zabbix database and users, and configure firewall rules if necessary.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thezabbixbook.com/fr/ch01-zabbix-components/postgresql/">
     <meta property="og:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Installing a PostgreSQL database">
+    <meta name="twitter:title" content="Installation d'une base de données PostgreSQL">
     <meta name="twitter:description" content="This section from The Zabbix Book titled &#34;Installing a PostgreSQL database&#34; guides you through installing PostgreSQL as an alternative database backend for Zabbix. It covers installation methods using OS vendor-provided packages or official PostgreSQL repositories, with specific commands for Red Hat, SUSE, and Ubuntu systems. The section also includes steps to start and secure the PostgreSQL server, create the Zabbix database and users, and configure firewall rules if necessary.">
     <meta name="twitter:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
     <meta property="og:image:width" content="1200">
@@ -118,7 +118,7 @@ firewall rules if necessary.
     <div data-md-component="skip">
       
         
-        <a href="#installing-a-postgresql-database" class="md-skip">
+        <a href="#installation-dune-base-de-donnees-postgresql" class="md-skip">
           Aller au contenu
         </a>
       
@@ -176,7 +176,7 @@ firewall rules if necessary.
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Installing a PostgreSQL database
+              Installation d'une base de données PostgreSQL
             
           </span>
         </div>
@@ -236,7 +236,7 @@ firewall rules if necessary.
         
           <li class="md-select__item">
             <a href="../../../pt_BR/ch01-zabbix-components/postgresql/" hreflang="pt_BR" class="md-select__link">
-              Brazillian Portugese
+              Brazilian Portuguese
             </a>
           </li>
         
@@ -637,7 +637,7 @@ firewall rules if necessary.
   <span class="md-ellipsis">
     
   
-    Zabbix architecture
+    Architecture de Zabbix
   
 
     
@@ -724,7 +724,7 @@ firewall rules if necessary.
   <span class="md-ellipsis">
     
   
-    Database choices
+    Choix de la base de données
   
 
     
@@ -752,7 +752,7 @@ firewall rules if necessary.
   <span class="md-ellipsis">
     
   
-    Installing a MariaDB Database
+    Installation d'une base de données MariaDB
   
 
     
@@ -789,7 +789,7 @@ firewall rules if necessary.
   <span class="md-ellipsis">
     
   
-    Installing a PostgreSQL database
+    Installation d'une base de données PostgreSQL
   
 
     
@@ -807,7 +807,7 @@ firewall rules if necessary.
   <span class="md-ellipsis">
     
   
-    Installing a PostgreSQL database
+    Installation d'une base de données PostgreSQL
   
 
     
@@ -833,10 +833,10 @@ firewall rules if necessary.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installing-postgresql-server-and-client-from-os-vendor-provided-packages" class="md-nav__link">
+  <a href="#installation-du-serveur-et-du-client-postgresql-a-partir-des-paquets-fournis-par-lediteur-du-systeme-dexploitation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installing PostgreSQL Server and Client from OS Vendor-Provided Packages
+        Installation du serveur et du client PostgreSQL à partir des paquets fournis par l'éditeur du système d'exploitation
       
     </span>
   </a>
@@ -990,7 +990,7 @@ firewall rules if necessary.
   <span class="md-ellipsis">
     
   
-    Installing the Zabbix server
+    Installation du serveur Zabbix.
   
 
     
@@ -1018,7 +1018,7 @@ firewall rules if necessary.
   <span class="md-ellipsis">
     
   
-    Installing the frontend
+    Installation du frontend
   
 
     
@@ -1965,10 +1965,10 @@ firewall rules if necessary.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installing-postgresql-server-and-client-from-os-vendor-provided-packages" class="md-nav__link">
+  <a href="#installation-du-serveur-et-du-client-postgresql-a-partir-des-paquets-fournis-par-lediteur-du-systeme-dexploitation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installing PostgreSQL Server and Client from OS Vendor-Provided Packages
+        Installation du serveur et du client PostgreSQL à partir des paquets fournis par l'éditeur du système d'exploitation
       
     </span>
   </a>
@@ -2209,18 +2209,19 @@ firewall rules if necessary.
   
 
 
-<h1 id="installing-a-postgresql-database">Installing a PostgreSQL database</h1>
-<p>Alternatively to MariaDB/MySQL, you can choose to use PostgreSQL as the database
-backend for Zabbix. Similar to MariaDB, PostgreSQL can be installed using either
-the OS vendor-provided packages or the official PostgreSQL repositories.</p>
-<p>If you already have installed MariaDB in the previous section, you can skip this
-section.</p>
-<p>As of writing PostgreSQL 13-18 are supported by Zabbix. Check the Zabbix
-documentation for an up-to-date list of supported versions for your Zabbix
-version. Usually it's a good idea to go with the latest version that is
-supported by Zabbix.</p>
+<h1 id="installation-dune-base-de-donnees-postgresql">Installation d'une base de données PostgreSQL</h1>
+<p>En alternative à MariaDB/MySQL, vous pouvez choisir d'utiliser PostgreSQL comme
+base de données pour Zabbix. Comme pour MariaDB, PostgreSQL peut être installé
+en utilisant soit les paquets fournis par le fournisseur du système
+d'exploitation, soit les dépôts officiels de PostgreSQL.</p>
+<p>Si vous avez déjà installé MariaDB dans la section précédente, vous pouvez
+sauter cette section.</p>
+<p>A ce jour, PostgreSQL 13-18 est supporté par Zabbix. Consultez la documentation
+de Zabbix pour une liste à jour des versions supportées pour votre version de
+Zabbix. En général, c'est une bonne idée d'utiliser la dernière version
+supportée par Zabbix.</p>
 <details class="tip" open="open">
-<summary>TimescaleDB extension</summary>
+<summary>Extension de TimescaleDB</summary>
 <p>Zabbix also supports the extension TimescaleDB but due to its advanced nature, 
 we won't cover it in this chapter. Refer to <a href="../../ch13-advanced-security/partitioning-postgresql-database/"><em>Partitioning PostgreSQL with TimescaleDB</em></a>
 for detailed instructions on that topic. </p>
@@ -2231,7 +2232,7 @@ If you choose to install PostgreSQL from the OS vendor-provided packages,
 you will need to compile and install the TimescaleDB extension from source.</p>
 </details>
 <hr />
-<h2 id="installing-postgresql-server-and-client-from-os-vendor-provided-packages">Installing PostgreSQL Server and Client from OS Vendor-Provided Packages</h2>
+<h2 id="installation-du-serveur-et-du-client-postgresql-a-partir-des-paquets-fournis-par-lediteur-du-systeme-dexploitation">Installation du serveur et du client PostgreSQL à partir des paquets fournis par l'éditeur du système d'exploitation</h2>
 <p>To install the distribution default PostgreSQL server, execute the following
 commands:</p>
 <div class="admonition info">
@@ -2479,7 +2480,7 @@ this command (provided that PostgreSQL is currently running):</p>
 </span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>local    all        all                                        peer
 </span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a># IPv4 local connections
 </span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>host     zabbix         zabbix-srv      &lt;ip from zabbix server/24&gt;     scram-sha-256
-</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>host     zabbix         zabbix-web      &lt;ip from zabbix server/24&gt;     scram-sha-256
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>host     zabbix         zabbix-web      &lt;ip from zabbix frontend/24&gt;   scram-sha-256
 </span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>host     all            all             127.0.0.1/32                   scram-sha-256
 </span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a># IPv6 local connections:
 </span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>host    zabbix          zabbix-srv      ::1/128                 scram-sha-256

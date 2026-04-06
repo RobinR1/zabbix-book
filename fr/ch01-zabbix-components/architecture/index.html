@@ -43,7 +43,7 @@ perform the installation of the components in next sections.
     
     
       
-        <title>Zabbix architecture - Zabbix Book</title>
+        <title>Architecture de Zabbix - Zabbix Book</title>
       
     
     
@@ -83,14 +83,14 @@ perform the installation of the components in next sections.
     
     
 
-    <meta property="og:title" content="Zabbix architecture">
+    <meta property="og:title" content="Architecture de Zabbix">
     <meta property="og:description" content="This section from The Zabbix Book titled &#34;Zabbix architecture&#34; explains the modular structure of a Zabbix setup. It highlights the roles of each component and their interdependencies, while providing an introduction to how we will perform the installation of the components in next sections.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thezabbixbook.com/fr/ch01-zabbix-components/architecture/">
     <meta property="og:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Zabbix architecture">
+    <meta name="twitter:title" content="Architecture de Zabbix">
     <meta name="twitter:description" content="This section from The Zabbix Book titled &#34;Zabbix architecture&#34; explains the modular structure of a Zabbix setup. It highlights the roles of each component and their interdependencies, while providing an introduction to how we will perform the installation of the components in next sections.">
     <meta name="twitter:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
     <meta property="og:image:width" content="1200">
@@ -115,7 +115,7 @@ perform the installation of the components in next sections.
     <div data-md-component="skip">
       
         
-        <a href="#zabbix-architecture" class="md-skip">
+        <a href="#architecture-de-zabbix" class="md-skip">
           Aller au contenu
         </a>
       
@@ -173,7 +173,7 @@ perform the installation of the components in next sections.
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Zabbix architecture
+              Architecture de Zabbix
             
           </span>
         </div>
@@ -233,7 +233,7 @@ perform the installation of the components in next sections.
         
           <li class="md-select__item">
             <a href="../../../pt_BR/ch01-zabbix-components/architecture/" hreflang="pt_BR" class="md-select__link">
-              Brazillian Portugese
+              Brazilian Portuguese
             </a>
           </li>
         
@@ -643,7 +643,7 @@ perform the installation of the components in next sections.
   <span class="md-ellipsis">
     
   
-    Zabbix architecture
+    Architecture de Zabbix
   
 
     
@@ -729,7 +729,7 @@ perform the installation of the components in next sections.
   <span class="md-ellipsis">
     
   
-    Installing the Zabbix server
+    Installation du serveur Zabbix.
   
 
     
@@ -757,7 +757,7 @@ perform the installation of the components in next sections.
   <span class="md-ellipsis">
     
   
-    Installing the frontend
+    Installation du frontend
   
 
     
@@ -1795,18 +1795,18 @@ perform the installation of the components in next sections.
   
 
 
-<h1 id="zabbix-architecture">Zabbix architecture</h1>
-<p>In this chapter, we will walk through the process of installing the Zabbix
-server. There are many different ways to setup a Zabbix server. We will cover
-the most common setups with MariaDB and PostgreSQL on RHEL- and SLES-based
-distro's and Ubuntu.</p>
-<p>Before beginning the installation, it is important to understand the
-architecture of Zabbix. The Zabbix server is structured in a modular fashion,
-composed of three main components, which we will discuss in detail.</p>
+<h1 id="architecture-de-zabbix">Architecture de Zabbix</h1>
+<p>Dans ce chapitre, nous allons suivre le processus d'installation du serveur
+Zabbix. Il existe de nombreuses façons de configurer un serveur Zabbix. Nous
+couvrirons les configurations les plus courantes avec MariaDB et PostgreSQL sur
+les distributions basées sur RHEL et SLES et Ubuntu.</p>
+<p>Avant de commencer l'installation, il est important de comprendre l'architecture
+de Zabbix. Le serveur Zabbix est structuré de manière modulaire et se compose de
+trois éléments principaux, que nous allons examiner en détail.</p>
 <ul>
-<li>The Zabbix server</li>
-<li>The Zabbix web server</li>
-<li>The Zabbix database</li>
+<li>Le serveur Zabbix</li>
+<li>Le serveur web Zabbix (frontend)</li>
+<li>La base de données Zabbix</li>
 </ul>
 <div class="admonition abstract">
 <p class="admonition-title">Creation of DB users</p>

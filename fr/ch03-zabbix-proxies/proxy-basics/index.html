@@ -44,7 +44,7 @@ scalability and efficiency.
     
     
       
-        <title>Proxy basics - Zabbix Book</title>
+        <title>Les bases du proxy - Zabbix Book</title>
       
     
     
@@ -84,14 +84,14 @@ scalability and efficiency.
     
     
 
-    <meta property="og:title" content="Proxy basics">
+    <meta property="og:title" content="Les bases du proxy">
     <meta property="og:description" content="This chapter from The Zabbix Book, titled &#34;Proxy Basics,&#34; introduces the role of proxies in a Zabbix environment. It explains how proxies collect monitoring data, forward it to the server, and help reduce load in distributed setups. The guide covers installation, configuration, and when to use proxies for scalability and efficiency.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thezabbixbook.com/fr/ch03-zabbix-proxies/proxy-basics/">
     <meta property="og:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Proxy basics">
+    <meta name="twitter:title" content="Les bases du proxy">
     <meta name="twitter:description" content="This chapter from The Zabbix Book, titled &#34;Proxy Basics,&#34; introduces the role of proxies in a Zabbix environment. It explains how proxies collect monitoring data, forward it to the server, and help reduce load in distributed setups. The guide covers installation, configuration, and when to use proxies for scalability and efficiency.">
     <meta name="twitter:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
     <meta property="og:image:width" content="1200">
@@ -116,7 +116,7 @@ scalability and efficiency.
     <div data-md-component="skip">
       
         
-        <a href="#proxy-basics" class="md-skip">
+        <a href="#les-bases-du-proxy" class="md-skip">
           Aller au contenu
         </a>
       
@@ -174,7 +174,7 @@ scalability and efficiency.
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Proxy basics
+              Les bases du proxy
             
           </span>
         </div>
@@ -234,7 +234,7 @@ scalability and efficiency.
         
           <li class="md-select__item">
             <a href="../../../pt_BR/ch03-zabbix-proxies/proxy-basics/" hreflang="pt_BR" class="md-select__link">
-              Brazillian Portugese
+              Brazilian Portuguese
             </a>
           </li>
         
@@ -731,7 +731,7 @@ scalability and efficiency.
   <span class="md-ellipsis">
     
   
-    Proxies and the Web services component
+    Proxies et composants des Web services
   
 
     
@@ -768,7 +768,7 @@ scalability and efficiency.
   <span class="md-ellipsis">
     
   
-    Proxy basics
+    Les bases du proxy
   
 
     
@@ -786,7 +786,7 @@ scalability and efficiency.
   <span class="md-ellipsis">
     
   
-    Proxy basics
+    Les bases du proxy
   
 
     
@@ -812,10 +812,10 @@ scalability and efficiency.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-is-a-zabbix-proxy" class="md-nav__link">
+  <a href="#quest-ce-quun-proxy-zabbix" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What is a Zabbix Proxy
+        Qu'est-ce qu'un proxy Zabbix ?
       
     </span>
   </a>
@@ -945,7 +945,7 @@ scalability and efficiency.
   <span class="md-ellipsis">
     
   
-    Active and Passive proxies
+    Proxies actifs et passifs
   
 
     
@@ -973,7 +973,7 @@ scalability and efficiency.
   <span class="md-ellipsis">
     
   
-    Running Proxies as containers
+    Exécuter des proxies en tant que conteneurs
   
 
     
@@ -1824,10 +1824,10 @@ scalability and efficiency.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-is-a-zabbix-proxy" class="md-nav__link">
+  <a href="#quest-ce-quun-proxy-zabbix" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What is a Zabbix Proxy
+        Qu'est-ce qu'un proxy Zabbix ?
       
     </span>
   </a>
@@ -2034,23 +2034,25 @@ scalability and efficiency.
   
 
 
-<h1 id="proxy-basics">Proxy basics</h1>
-<p>In this chapter we will explain what a proxy is, why you may need or consider
-it, what the basic requirements are and what the difference is between <em>Active
-proxies</em> and <em>Passive proxies</em>.</p>
+<h1 id="les-bases-du-proxy">Les bases du proxy</h1>
+<p>Dans ce chapitre, nous expliquerons ce qu'est un proxy, pourquoi vous pouvez en
+avoir besoin ou l'envisager, quelles sont les exigences de base et quelle est la
+différence entre <em>Proxy actifs</em> et <em>Proxy passifs</em>.</p>
 <hr />
-<h2 id="what-is-a-zabbix-proxy">What is a Zabbix Proxy</h2>
-<p>A Zabbix proxy is actually a kind of lightweight Zabbix server process that
-collects monitoring data from devices on behalf of the real Zabbix server. It's
-designed to offload the server by handling data collection tasks, which is
-particularly useful in distributed environments or when monitoring remote
-locations with limited connectivity.</p>
-<p>The proxy gathers the requested performance and availability data from monitored
-devices, applications, and services, then forwards this information to the
-Zabbix server for processing and storage. This architecture helps reduce network
-traffic, simplifies network firewall configurations and improves the overall
-efficiency of your monitoring system.</p>
-<p>So in short a Zabbix proxy can be used to:</p>
+<h2 id="quest-ce-quun-proxy-zabbix">Qu'est-ce qu'un proxy Zabbix ?</h2>
+<p>Un proxy Zabbix est en fait une sorte de processus serveur Zabbix léger qui
+collecte les données de surveillance des périphériques pour le compte du serveur
+Zabbix réel. Il est conçu pour décharger le serveur en gérant les tâches de
+collecte de données, ce qui est particulièrement utile dans les environnements
+distribués ou lors de la surveillance de sites distants avec une connectivité
+limitée.</p>
+<p>Le proxy rassemble les données de performance et de disponibilité requises à
+partir des appareils, applications et services surveillés, puis transmet ces
+informations au serveur Zabbix en vue de leur traitement et de leur stockage.
+Cette architecture permet de réduire le trafic réseau, de simplifier les
+configurations de pare-feu et d'améliorer l'efficacité globale de votre système
+de surveillance.</p>
+<p>En résumé, un proxy Zabbix peut être utilisé pour :</p>
 <ul>
 <li>Monitor remote locations</li>
 <li>Monitor devices on separate network segments</li>
@@ -2169,7 +2171,7 @@ lose any historical data.</p>
 <p>Zabbix proxies have been available since Zabbix 1.6. At that time they where
 available only as what we know today as <strong>Active proxies</strong>. <em>Active</em> means that
 the proxy will initiate the connection by itself to the Zabbix Server. In
-version 1.8.3 <em>passive</em> proxies where introduced. This allowes the server to
+version 1.8.3 <em>passive</em> proxies where introduced. This allows the server to
 connect to the proxy instead of the other way around.</p>
 <p>As mentioned before Zabbix agents can be both active <em>and</em> passive however
 proxies cannot be both so we have to choose the way of the communication when we

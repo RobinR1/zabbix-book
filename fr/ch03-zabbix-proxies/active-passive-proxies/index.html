@@ -43,7 +43,7 @@ covers setup, use cases, and how to choose the right mode for your environment.
     
     
       
-        <title>Active and Passive proxies - Zabbix Book</title>
+        <title>Proxies actifs et passifs - Zabbix Book</title>
       
     
     
@@ -83,14 +83,14 @@ covers setup, use cases, and how to choose the right mode for your environment.
     
     
 
-    <meta property="og:title" content="Active and Passive proxies">
+    <meta property="og:title" content="Proxies actifs et passifs">
     <meta property="og:description" content="This chapter from The Zabbix Book, titled &#34;Active and Passive Proxies,&#34; explores the two proxy modes available in Zabbix. It explains how active proxies push data to the server, while passive proxies wait for polling requests. The guide covers setup, use cases, and how to choose the right mode for your environment.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thezabbixbook.com/fr/ch03-zabbix-proxies/active-passive-proxies/">
     <meta property="og:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Active and Passive proxies">
+    <meta name="twitter:title" content="Proxies actifs et passifs">
     <meta name="twitter:description" content="This chapter from The Zabbix Book, titled &#34;Active and Passive Proxies,&#34; explores the two proxy modes available in Zabbix. It explains how active proxies push data to the server, while passive proxies wait for polling requests. The guide covers setup, use cases, and how to choose the right mode for your environment.">
     <meta name="twitter:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
     <meta property="og:image:width" content="1200">
@@ -115,7 +115,7 @@ covers setup, use cases, and how to choose the right mode for your environment.
     <div data-md-component="skip">
       
         
-        <a href="#active-and-passive-proxies" class="md-skip">
+        <a href="#proxies-actifs-et-passifs" class="md-skip">
           Aller au contenu
         </a>
       
@@ -173,7 +173,7 @@ covers setup, use cases, and how to choose the right mode for your environment.
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Active and Passive proxies
+              Proxies actifs et passifs
             
           </span>
         </div>
@@ -233,7 +233,7 @@ covers setup, use cases, and how to choose the right mode for your environment.
         
           <li class="md-select__item">
             <a href="../../../pt_BR/ch03-zabbix-proxies/active-passive-proxies/" hreflang="pt_BR" class="md-select__link">
-              Brazillian Portugese
+              Brazilian Portuguese
             </a>
           </li>
         
@@ -730,7 +730,7 @@ covers setup, use cases, and how to choose the right mode for your environment.
   <span class="md-ellipsis">
     
   
-    Proxies and the Web services component
+    Proxies et composants des Web services
   
 
     
@@ -758,7 +758,7 @@ covers setup, use cases, and how to choose the right mode for your environment.
   <span class="md-ellipsis">
     
   
-    Proxy basics
+    Les bases du proxy
   
 
     
@@ -795,7 +795,7 @@ covers setup, use cases, and how to choose the right mode for your environment.
   <span class="md-ellipsis">
     
   
-    Active and Passive proxies
+    Proxies actifs et passifs
   
 
     
@@ -813,7 +813,7 @@ covers setup, use cases, and how to choose the right mode for your environment.
   <span class="md-ellipsis">
     
   
-    Active and Passive proxies
+    Proxies actifs et passifs
   
 
     
@@ -839,15 +839,15 @@ covers setup, use cases, and how to choose the right mode for your environment.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#zabbix-gui-configuration" class="md-nav__link">
+  <a href="#configuration-de-linterface-graphique-de-zabbix" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Zabbix GUI configuration
+        Configuration de l'interface graphique de Zabbix
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Zabbix GUI configuration">
+    <nav class="md-nav" aria-label="Configuration de l&#39;interface graphique de Zabbix">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -955,7 +955,7 @@ covers setup, use cases, and how to choose the right mode for your environment.
   <span class="md-ellipsis">
     
   
-    Running Proxies as containers
+    Exécuter des proxies en tant que conteneurs
   
 
     
@@ -1806,15 +1806,15 @@ covers setup, use cases, and how to choose the right mode for your environment.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#zabbix-gui-configuration" class="md-nav__link">
+  <a href="#configuration-de-linterface-graphique-de-zabbix" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Zabbix GUI configuration
+        Configuration de l'interface graphique de Zabbix
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Zabbix GUI configuration">
+    <nav class="md-nav" aria-label="Configuration de l&#39;interface graphique de Zabbix">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1999,17 +1999,17 @@ covers setup, use cases, and how to choose the right mode for your environment.
   
 
 
-<h1 id="active-and-passive-proxies">Active and Passive proxies</h1>
-<p>Whether you want to install an Active proxy or a Passive one, much of the
-installation and configuration steps are the same.</p>
+<h1 id="proxies-actifs-et-passifs">Proxies actifs et passifs</h1>
+<p>Que vous souhaitiez installer un proxy actif ou passif, la plupart des étapes
+d'installation et de configuration sont les mêmes.</p>
 <hr />
-<h2 id="zabbix-gui-configuration">Zabbix GUI configuration</h2>
-<p>There are 2 things we need to do when we like to setup a Zabbix proxy and one of
-those steps is adding the proxy in the frontend of Zabbix. So from the menu
-let's select <code>Administration</code> =&gt; <code>Proxies</code> and click in the upper right corner
-on <code>Create proxy</code>.</p>
-<p><img alt="Create proxy" src="../../../ch03-zabbix-proxies/active-passive-proxies/ch03-add-active-proxy.png" /></p>
-<p><em>3.3 Create proxy</em></p>
+<h2 id="configuration-de-linterface-graphique-de-zabbix">Configuration de l'interface graphique de Zabbix</h2>
+<p>Il y a deux choses que nous devons faire lorsque nous voulons configurer un
+proxy Zabbix et l'une de ces étapes est d'ajouter le proxy dans le frontend de
+Zabbix. Dans le menu, sélectionnez <code>Administration</code> =&gt; <code>Proxies</code> et cliquez dans
+le coin supérieur droit sur <code>Create proxy</code>.</p>
+<p><img alt="Créer un proxy" src="../../../ch03-zabbix-proxies/active-passive-proxies/ch03-add-active-proxy.png" /></p>
+<p><em>3.3 Créer un proxy</em></p>
 <p>Once pressed, a new modal form will pop-up where we need to fill in some
 information.</p>
 <hr />

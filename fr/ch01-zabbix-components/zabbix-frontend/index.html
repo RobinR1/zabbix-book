@@ -47,7 +47,7 @@ timezone, and time format.
     
     
       
-        <title>Installing the frontend - Zabbix Book</title>
+        <title>Installation du frontend - Zabbix Book</title>
       
     
     
@@ -87,14 +87,14 @@ timezone, and time format.
     
     
 
-    <meta property="og:title" content="Installing the frontend">
+    <meta property="og:title" content="Installation du frontend">
     <meta property="og:description" content="This section from The Zabbix Book titled &#34;Installing the frontend&#34; provides step-by-step instructions for installing the Zabbix frontend with NGINX on various Linux distributions. It covers the installation of necessary packages, configuration of SELinux and SystemD for PHP-FPM, and modification of the NGINX configuration to serve the Zabbix frontend on port 80. Additionally, it guides users through the initial setup of the Zabbix frontend, including database connection configuration and basic settings such as instance name, timezone, and time format.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thezabbixbook.com/fr/ch01-zabbix-components/zabbix-frontend/">
     <meta property="og:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Installing the frontend">
+    <meta name="twitter:title" content="Installation du frontend">
     <meta name="twitter:description" content="This section from The Zabbix Book titled &#34;Installing the frontend&#34; provides step-by-step instructions for installing the Zabbix frontend with NGINX on various Linux distributions. It covers the installation of necessary packages, configuration of SELinux and SystemD for PHP-FPM, and modification of the NGINX configuration to serve the Zabbix frontend on port 80. Additionally, it guides users through the initial setup of the Zabbix frontend, including database connection configuration and basic settings such as instance name, timezone, and time format.">
     <meta name="twitter:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
     <meta property="og:image:width" content="1200">
@@ -119,7 +119,7 @@ timezone, and time format.
     <div data-md-component="skip">
       
         
-        <a href="#installing-the-frontend" class="md-skip">
+        <a href="#installation-du-frontend" class="md-skip">
           Aller au contenu
         </a>
       
@@ -177,7 +177,7 @@ timezone, and time format.
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Installing the frontend
+              Installation du frontend
             
           </span>
         </div>
@@ -237,7 +237,7 @@ timezone, and time format.
         
           <li class="md-select__item">
             <a href="../../../pt_BR/ch01-zabbix-components/zabbix-frontend/" hreflang="pt_BR" class="md-select__link">
-              Brazillian Portugese
+              Brazilian Portuguese
             </a>
           </li>
         
@@ -638,7 +638,7 @@ timezone, and time format.
   <span class="md-ellipsis">
     
   
-    Zabbix architecture
+    Architecture de Zabbix
   
 
     
@@ -723,7 +723,7 @@ timezone, and time format.
   <span class="md-ellipsis">
     
   
-    Installing the Zabbix server
+    Installation du serveur Zabbix.
   
 
     
@@ -760,7 +760,7 @@ timezone, and time format.
   <span class="md-ellipsis">
     
   
-    Installing the frontend
+    Installation du frontend
   
 
     
@@ -778,7 +778,7 @@ timezone, and time format.
   <span class="md-ellipsis">
     
   
-    Installing the frontend
+    Installation du frontend
   
 
     
@@ -804,10 +804,10 @@ timezone, and time format.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installing-the-frontend-with-nginx" class="md-nav__link">
+  <a href="#installer-le-frontend-avec-nginx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installing the frontend with NGINX
+        Installer le frontend avec NGINX
       
     </span>
   </a>
@@ -1789,10 +1789,10 @@ timezone, and time format.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installing-the-frontend-with-nginx" class="md-nav__link">
+  <a href="#installer-le-frontend-avec-nginx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installing the frontend with NGINX
+        Installer le frontend avec NGINX
       
     </span>
   </a>
@@ -1932,22 +1932,25 @@ timezone, and time format.
   
 
 
-<h1 id="installing-the-frontend">Installing the frontend</h1>
-<p>Before configuring the Zabbix frontend, ensure the system meets the requirements
-and is prepared as outlined in the previous chapter: <a href="../../ch00-getting-started/Requirements/"><em>Getting
-started</em></a>. This server can be the same
-one where the Zabbix server packages were previously installed, or it can be a
-separate machine.</p>
-<p>Perform all subsequent steps on the server designated for the frontend.</p>
+<h1 id="installation-du-frontend">Installation du frontend</h1>
+<p>Avant de configurer le frontend Zabbix, assurez-vous que le système répond aux
+exigences et qu'il est préparé comme indiqué dans le chapitre précédent :
+<a href="../../ch00-getting-started/Requirements/"><em>Démarrage</em></a>. Ce serveur peut être le
+même que celui sur lequel le serveur Zabbix a été précédemment installés, ou il
+peut s'agir d'une machine séparée.</p>
+<p>Effectuez toutes les étapes suivantes sur le serveur désigné pour le frontend.</p>
 <hr />
-<h2 id="installing-the-frontend-with-nginx">Installing the frontend with NGINX</h2>
+<h2 id="installer-le-frontend-avec-nginx">Installer le frontend avec NGINX</h2>
 <div class="admonition info">
-<p class="admonition-title">install frontend packages</p>
+<p class="admonition-title">installer les paquets frontend</p>
 <p>Red Hat
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># When using MySQL/MariaDB</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>dnf<span class="w"> </span>install<span class="w"> </span>zabbix-nginx-conf<span class="w"> </span>zabbix-web-mysql
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># or when using PostgreSQL</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>dnf<span class="w"> </span>install<span class="w"> </span>zabbix-nginx-conf<span class="w"> </span>zabbix-web-pgsql
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># List all available php modules and active php-8.2</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>dnf<span class="w"> </span>module<span class="w"> </span>list<span class="w"> </span>php<span class="w"> </span>-y
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>dnf<span class="w"> </span>module<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>php:8.2
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># When using MySQL/MariaDB</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>dnf<span class="w"> </span>install<span class="w"> </span>zabbix-nginx-conf<span class="w"> </span>zabbix-web-mysql
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># or when using PostgreSQL</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>dnf<span class="w"> </span>install<span class="w"> </span>zabbix-nginx-conf<span class="w"> </span>zabbix-web-pgsql
 </span></code></pre></div>
 SUSE
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># When using MySQL/MariaDB</span>
@@ -1974,8 +1977,8 @@ The actual URL for web scripting module may be different depending on particular
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>zabbix-frontend-php<span class="w"> </span>php8.3-pgsql<span class="w"> </span>zabbix-nginx-conf
 </span></code></pre></div></p>
 </div>
-<p>This command will install the front-end packages along with the required
-dependencies for Nginx.</p>
+<p>Cette commande installera les paquets front-end ainsi que les dépendances
+requises pour Nginx.</p>
 <p>As of SUSE 16 SELinux is now the default security module instead of AppArmor. By
 default PHP-FPM is not allowed by SELinux on SUSE to
 - map exec memory required for PHP JIT compilation,

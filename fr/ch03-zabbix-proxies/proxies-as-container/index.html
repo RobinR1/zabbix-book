@@ -44,7 +44,7 @@ environments.
     
     
       
-        <title>Running Proxies as containers - Zabbix Book</title>
+        <title>Exécuter des proxies en tant que conteneurs - Zabbix Book</title>
       
     
     
@@ -84,14 +84,14 @@ environments.
     
     
 
-    <meta property="og:title" content="Running Proxies as containers">
+    <meta property="og:title" content="Exécuter des proxies en tant que conteneurs">
     <meta property="og:description" content="This chapter from The Zabbix Book, titled &#34;Proxies as Containers,&#34; explains how to deploy Zabbix proxies using container technologies like Docker or Podman. It covers installation, configuration, and networking considerations, showing how containerized proxies simplify scaling and management in modern monitoring environments.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thezabbixbook.com/fr/ch03-zabbix-proxies/proxies-as-container/">
     <meta property="og:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Running Proxies as containers">
+    <meta name="twitter:title" content="Exécuter des proxies en tant que conteneurs">
     <meta name="twitter:description" content="This chapter from The Zabbix Book, titled &#34;Proxies as Containers,&#34; explains how to deploy Zabbix proxies using container technologies like Docker or Podman. It covers installation, configuration, and networking considerations, showing how containerized proxies simplify scaling and management in modern monitoring environments.">
     <meta name="twitter:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
     <meta property="og:image:width" content="1200">
@@ -116,7 +116,7 @@ environments.
     <div data-md-component="skip">
       
         
-        <a href="#running-proxies-as-containers" class="md-skip">
+        <a href="#executer-des-proxies-en-tant-que-conteneurs" class="md-skip">
           Aller au contenu
         </a>
       
@@ -174,7 +174,7 @@ environments.
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Running Proxies as containers
+              Exécuter des proxies en tant que conteneurs
             
           </span>
         </div>
@@ -234,7 +234,7 @@ environments.
         
           <li class="md-select__item">
             <a href="../../../pt_BR/ch03-zabbix-proxies/proxies-as-container/" hreflang="pt_BR" class="md-select__link">
-              Brazillian Portugese
+              Brazilian Portuguese
             </a>
           </li>
         
@@ -731,7 +731,7 @@ environments.
   <span class="md-ellipsis">
     
   
-    Proxies and the Web services component
+    Proxies et composants des Web services
   
 
     
@@ -759,7 +759,7 @@ environments.
   <span class="md-ellipsis">
     
   
-    Proxy basics
+    Les bases du proxy
   
 
     
@@ -787,7 +787,7 @@ environments.
   <span class="md-ellipsis">
     
   
-    Active and Passive proxies
+    Proxies actifs et passifs
   
 
     
@@ -824,7 +824,7 @@ environments.
   <span class="md-ellipsis">
     
   
-    Running Proxies as containers
+    Exécuter des proxies en tant que conteneurs
   
 
     
@@ -842,7 +842,7 @@ environments.
   <span class="md-ellipsis">
     
   
-    Running Proxies as containers
+    Exécuter des proxies en tant que conteneurs
   
 
     
@@ -868,22 +868,22 @@ environments.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#setting-up-containers" class="md-nav__link">
+  <a href="#mise-en-place-de-conteneurs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Setting up containers
+        Mise en place de conteneurs
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Setting up containers">
+    <nav class="md-nav" aria-label="Mise en place de conteneurs">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#add-the-proxy-to-the-zabbix-frontend" class="md-nav__link">
+  <a href="#ajouter-le-proxy-au-frontend-zabbix" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Add the proxy to the zabbix frontend
+        Ajouter le proxy au frontend zabbix
       
     </span>
   </a>
@@ -1885,22 +1885,22 @@ environments.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#setting-up-containers" class="md-nav__link">
+  <a href="#mise-en-place-de-conteneurs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Setting up containers
+        Mise en place de conteneurs
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Setting up containers">
+    <nav class="md-nav" aria-label="Mise en place de conteneurs">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#add-the-proxy-to-the-zabbix-frontend" class="md-nav__link">
+  <a href="#ajouter-le-proxy-au-frontend-zabbix" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Add the proxy to the zabbix frontend
+        Ajouter le proxy au frontend zabbix
       
     </span>
   </a>
@@ -2156,25 +2156,25 @@ environments.
   
 
 
-<h1 id="running-proxies-as-containers">Running Proxies as containers</h1>
-<p>As discussed in the previous section, Zabbix proxies offer a lightweight and
-efficient solution for distributed monitoring. Leveraging SQLite as their
-backend database, they are inherently flexible and portable, making them
-well-suited for deployment in containerized environments. This chapter provides
-a step-by-step guide on deploying a Zabbix proxy within a container, outlining
-configuration options and best practices for optimal performance and
-maintainability.</p>
+<h1 id="executer-des-proxies-en-tant-que-conteneurs">Exécuter des proxies en tant que conteneurs</h1>
+<p>Comme nous l'avons vu dans la section précédente, les proxys Zabbix offrent une
+solution légère et efficace pour la surveillance distribuée. S'appuyant sur
+SQLite comme base de données, ils sont flexibles et portables, ce qui les rend
+bien adaptés au déploiement dans des environnements conteneurisés. Ce chapitre
+fournit un guide étape par étape sur le déploiement d'un proxy Zabbix dans un
+conteneur, en soulignant les options de configuration et les meilleures
+pratiques pour une performance et une maintenabilité optimales.</p>
 <hr />
-<h2 id="setting-up-containers">Setting up containers</h2>
-<p>For this setup, you will need a virtual machine (VM) with Podman installed to
-deploy the Zabbix proxy container. This container will then be configured to
-communicate with your Zabbix server.</p>
-<p>Refer to the <a href="../../ch00-getting-started/preparation/#preparing-the-system-for-running-containers-using-podman"><em>Preparing the system for
+<h2 id="mise-en-place-de-conteneurs">Mise en place de conteneurs</h2>
+<p>Pour cette configuration, vous aurez besoin d'une machine virtuelle (VM) avec
+Podman installé pour déployer le conteneur proxy Zabbix. Ce conteneur sera
+ensuite configuré pour communiquer avec votre serveur Zabbix.</p>
+<p>Reportez-vous au chapitre <a href="../../ch00-getting-started/preparation/#preparing-the-system-for-running-containers-using-podman"><em>Préparer le système pour
 Zabbix</em></a>
-chapter for instructions on preparing your system for running containers using
-Podman.</p>
+pour obtenir des instructions sur la préparation de votre système pour
+l'exécution de conteneurs à l'aide de Podman.</p>
 <hr />
-<h3 id="add-the-proxy-to-the-zabbix-frontend">Add the proxy to the zabbix frontend</h3>
+<h3 id="ajouter-le-proxy-au-frontend-zabbix">Ajouter le proxy au frontend zabbix</h3>
 <p><img alt="Add the proxy" src="../../../ch03-zabbix-proxies/proxy-containers/ch03-container-proxy-new.png" /></p>
 <p><em>3.9 Add proxy to frontend</em></p>
 <p>To keep the configuration straightforward, we will deploy an active Zabbix
@@ -2278,8 +2278,8 @@ you used a different one):</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>start<span class="w"> </span>zabbix-proxy-sqlite.service
 </span></code></pre></div>
 </details>
-<p>This command may take a few minutes as it wil download the required Zabbix Proxy
-container from the docker registry.</p>
+<p>This command may take a few minutes as it will download the required Zabbix
+Proxy container from the docker registry.</p>
 <p>To verify that the container started correctly, you can inspect the running
 containers with:</p>
 <details class="example" open="open">
@@ -2441,7 +2441,7 @@ auto-update timer.</p>
 <p>This setup is not recommended for production environments without a proper rollback
 plan. Floating tags like <code>:latest</code> or <code>:trunk-centos</code> can introduce breaking
 changes unexpectedly. For production use, fixed version tags (e.g. <code>7.0.13-centos</code>)
-are generaly recommended since they offer greater stability and control.</p>
+are generally recommended since they offer greater stability and control.</p>
 </details>
 <hr />
 <h2 id="conclusion">Conclusion</h2>
