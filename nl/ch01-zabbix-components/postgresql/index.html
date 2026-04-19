@@ -1578,6 +1578,8 @@ firewall rules if necessary.
       
         
       
+        
+      
     
     
     
@@ -1593,7 +1595,7 @@ firewall rules if necessary.
   
   
   
-    <a href="../../ch10-zabbix-discovery/network-host-discovery/" class="md-nav__link">
+    <a href="../../ch10-zabbix-discovery/chapter/" class="md-nav__link">
       
   
   
@@ -1865,6 +1867,8 @@ firewall rules if necessary.
   
     
     
+      
+        
       
         
       
@@ -2271,74 +2275,82 @@ het toevoegen van de PostgreSQL repository aan je systeem.</p>
 <hr />
 <h3 id="de-postgresql-repository-toevoegen">De PostgreSQL repository toevoegen</h3>
 <p>Set up the PostgreSQL repository with the following commands:</p>
-<p>Check
+<p>Kijk op
 <a href="https://www.postgresql.org/download/linux/">https://www.postgresql.org/download/linux/</a>
-for more information.</p>
-<div class="admonition info">
-<p class="admonition-title">Add PostgreSQL repo</p>
-<p>Red Hat
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Install the repository RPM:</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>dnf<span class="w"> </span>install<span class="w"> </span>https://download.postgresql.org/pub/repos/yum/reporpms/EL-9-x86_64/pgdg-redhat-repo-latest.noarch.rpm
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Disable the built-in PostgreSQL module:</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>dnf<span class="w"> </span>-qy<span class="w"> </span>module<span class="w"> </span>disable<span class="w"> </span>postgresql
-</span></code></pre></div></p>
-<p>SUSE
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Import the repository signing key:</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>rpm<span class="w"> </span>--import<span class="w"> </span>https://zypp.postgresql.org/keys/PGDG-RPM-GPG-KEY-SLES16
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Install the repository RPM:</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>zypper<span class="w"> </span>install<span class="w"> </span>https://download.postgresql.org/pub/repos/zypp/reporpms/SLES-16-x86_64/pgdg-suse-repo-latest.noarch.rpm
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># Update the package lists:</span>
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>zypper<span class="w"> </span>refresh
-</span></code></pre></div></p>
-<div class="admonition warning">
-<p class="admonition-title">openSUSE Leap</p>
-<p>Since the official PostgreSQL packages are specifically built for use on 
-SUSE Linux Enterprise Server (SLES), you will get an error trying to install the
-repository on openSUSE Leap. We can however safely ignore this problem by
-choosing to "break the package by ignoring some of its dependencies" as
-long as you match the SLES version with your openSUSE version:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Problem: 1: nothing provides &#39;sles-release&#39; needed by the to be installed pgdg-suse-repo-42.0-48PGDG.noarch
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a> Solution 1: do not install pgdg-suse-repo-42.0-48PGDG.noarch
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a> Solution 2: break pgdg-suse-repo-42.0-48PGDG.noarch by ignoring some of its dependencies
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>Choose from above solutions by number or cancel [1/2/c/d/?] (c): 2
-</span></code></pre></div>
-</div>
-<details class="note" open="open">
-<summary>Suse Linux Enterprise Server</summary>
-<p>On SUSE Linux Enterprise Server (SLES), ensure you are subscribed to the
-"SUSE Package Hub extension" repository to access necessary dependency
-packages required for the Official PostgreSQL installation. On SLES 15
-you will also need the "Desktop Applications Module":</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># On SLES 16</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>suseconnect<span class="w"> </span>-p<span class="w"> </span>PackageHub/16.0/x86_64
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># On SLES 15</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>SUSEConnect<span class="w"> </span>-p<span class="w"> </span>sle-module-desktop-applications/15.7/x86_64
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>SUSEConnect<span class="w"> </span>-p<span class="w"> </span>PackageHub/15.7/x86_64
-</span></code></pre></div>
-</details>
-<p>Ubuntu
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Import the repository signing key:</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>curl<span class="w"> </span>ca-certificates
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>sudo<span class="w"> </span>install<span class="w"> </span>-d<span class="w"> </span>/usr/share/postgresql-common/pgdg
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>sudo<span class="w"> </span>curl<span class="w"> </span>-o<span class="w"> </span>/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc<span class="w"> </span>--fail<span class="w"> </span>https://www.postgresql.org/media/keys/ACCC4CF8.asc
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="c1"># Create the repository configuration file:</span>
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>sudo<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;echo &quot;deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main&quot; &gt; /etc/apt/sources.list.d/pgdg.list&#39;</span>
-</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
-</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="c1"># Update the package lists:</span>
-</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
-</span></code></pre></div></p>
-</div>
+voor meer informatie.</p>
+<p>!!! info "PostgreSQL repo toevoegen".</p>
+<div class="language-text highlight"><pre><span></span><code>Red Hat
+```bash
+# Install the repository RPM:
+dnf install https://download.postgresql.org/pub/repos/yum/reporpms/EL-9-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+
+# Disable the built-in PostgreSQL module:
+dnf -qy module disable postgresql
+```
+
+SUSE
+```bash
+# Import the repository signing key:
+rpm --import https://zypp.postgresql.org/keys/PGDG-RPM-GPG-KEY-SLES16
+
+# Install the repository RPM:
+zypper install https://download.postgresql.org/pub/repos/zypp/reporpms/SLES-16-x86_64/pgdg-suse-repo-latest.noarch.rpm
+
+# Update the package lists:
+zypper refresh
+```
+
+!!! warning &quot;openSUSE Leap&quot;
+
+    Since the official PostgreSQL packages are specifically built for use on 
+    SUSE Linux Enterprise Server (SLES), you will get an error trying to install the
+    repository on openSUSE Leap. We can however safely ignore this problem by
+    choosing to &quot;break the package by ignoring some of its dependencies&quot; as
+    long as you match the SLES version with your openSUSE version:
+
+    ```
+    Problem: 1: nothing provides &#39;sles-release&#39; needed by the to be installed pgdg-suse-repo-42.0-48PGDG.noarch
+     Solution 1: do not install pgdg-suse-repo-42.0-48PGDG.noarch
+     Solution 2: break pgdg-suse-repo-42.0-48PGDG.noarch by ignoring some of its dependencies
+
+    Choose from above solutions by number or cancel [1/2/c/d/?] (c): 2
+    ```
+
+???+ note &quot;Suse Linux Enterprise Server&quot;
+
+    On SUSE Linux Enterprise Server (SLES), ensure you are subscribed to the
+    &quot;SUSE Package Hub extension&quot; repository to access necessary dependency
+    packages required for the Official PostgreSQL installation. On SLES 15
+    you will also need the &quot;Desktop Applications Module&quot;:
+
+    ```bash
+    # On SLES 16
+    suseconnect -p PackageHub/16.0/x86_64
+
+    # On SLES 15
+    SUSEConnect -p sle-module-desktop-applications/15.7/x86_64
+    SUSEConnect -p PackageHub/15.7/x86_64
+    ```
+
+Ubuntu
+```bash
+# Import the repository signing key:
+sudo apt install curl ca-certificates
+sudo install -d /usr/share/postgresql-common/pgdg
+sudo curl -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc --fail https://www.postgresql.org/media/keys/ACCC4CF8.asc
+
+# Create the repository configuration file:
+sudo sh -c &#39;echo &quot;deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main&quot; &gt; /etc/apt/sources.list.d/pgdg.list&#39;
+
+# Update the package lists:
+sudo apt update
+```
+</code></pre></div>
 <hr />
 <h3 id="installing-the-postgresql-server-and-client">Installing the PostgreSQL Server and Client</h3>
-<p>With the PostgreSQL repositories configured, you are now ready to install the
-PostgreSQL server and client packages. This will provide the necessary
-components to run and manage your database.</p>
+<p>Met de PostgreSQL repositories geconfigureerd, ben je nu klaar om de PostgreSQL
+server en client pakketten te installeren. Dit levert de benodigde componenten
+om je database te draaien en te beheren.</p>
 <div class="admonition info">
 <p class="admonition-title">Install PostgreSQL from official repositories</p>
 <p>Red Hat

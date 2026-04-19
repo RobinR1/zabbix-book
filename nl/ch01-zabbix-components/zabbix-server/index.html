@@ -1413,6 +1413,8 @@ file for any issues.
       
         
       
+        
+      
     
     
     
@@ -1428,7 +1430,7 @@ file for any issues.
   
   
   
-    <a href="../../ch10-zabbix-discovery/network-host-discovery/" class="md-nav__link">
+    <a href="../../ch10-zabbix-discovery/chapter/" class="md-nav__link">
       
   
   
@@ -1700,6 +1702,8 @@ file for any issues.
   
     
     
+      
+        
       
         
       
@@ -2031,36 +2035,38 @@ verbindingsinstellingen zal bevatten:</p>
 <code>&lt;database-user&gt;</code>, <code>&lt;database-paswoord&gt;</code>, en <code>&lt;database-port&gt;</code> door de juiste
 waarden voor jouw setup. Dit zorgt ervoor dat de Zabbix server kan communiceren
 met je database.</p>
-<p>Ensure that there is no <code>#</code> (comment symbol) in front of the configuration
-parameters, as Zabbix will treat lines beginning with <code>#</code> as comments, ignoring
-them during execution. Additionally, double-check for duplicate configuration
-lines; if there are multiple lines with the same parameter, Zabbix will use the
-value from the last occurrence.</p>
-<p>For our setup, the configuration will look like this:</p>
-<div class="admonition example">
-<p class="admonition-title">Example database.conf</p>
-<p>MariaDB/MySQL:
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># MariaDB database configuration</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="na">DBHost</span><span class="o">=</span><span class="s">&lt;ip or dns of your MariaDB server&gt;</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="na">DBName</span><span class="o">=</span><span class="s">zabbix</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="na">DBUser</span><span class="o">=</span><span class="s">zabbix-srv</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="na">DBPassword</span><span class="o">=</span><span class="s">&lt;your super secret password&gt;</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="na">DBPort</span><span class="o">=</span><span class="s">3306</span>
-</span></code></pre></div></p>
-<p>PostgreSQL:
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># PostgreSQL database configuration</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="na">DBHost</span><span class="o">=</span><span class="s">&lt;ip or dns of your PostgreSQL server&gt;</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="na">DBName</span><span class="o">=</span><span class="s">zabbix</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="na">DBSchema</span><span class="o">=</span><span class="s">zabbix_server</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="na">DBUser</span><span class="o">=</span><span class="s">zabbix-srv</span>
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="na">DBPassword</span><span class="o">=</span><span class="s">&lt;your super secret password&gt;</span>
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="na">DBPort</span><span class="o">=</span><span class="s">5432</span>
-</span></code></pre></div></p>
-</div>
+<p>Zorg ervoor dat er geen <code>#</code> (commentaarsymbool) voor de configuratieparameters
+staat, omdat Zabbix regels die beginnen met <code>#</code> als commentaar zal behandelen en
+negeren tijdens de uitvoering. Controleer bovendien dubbel op dubbele
+configuratieregels; als er meerdere regels zijn met dezelfde parameter, gebruikt
+Zabbix de waarde van de laatste regel.</p>
+<p>Voor onze opstelling ziet de configuratie er als volgt uit:</p>
+<p>!!! example "Voorbeeld database.conf".</p>
+<div class="language-text highlight"><pre><span></span><code>MariaDB/MySQL:
+```ini
+# MariaDB database configuration
+DBHost=&lt;ip or dns of your MariaDB server&gt;
+DBName=zabbix
+DBUser=zabbix-srv
+DBPassword=&lt;your super secret password&gt;
+DBPort=3306
+```
+
+PostgreSQL:
+```ini
+# PostgreSQL database configuration
+DBHost=&lt;ip or dns of your PostgreSQL server&gt;
+DBName=zabbix
+DBSchema=zabbix_server
+DBUser=zabbix-srv
+DBPassword=&lt;your super secret password&gt;
+DBPort=5432
+```
+</code></pre></div>
 <p>In this example:</p>
 <ul>
-<li>DBHost refers to the host where your database is running (use localhost if
-  it's on the same machine).</li>
+<li>DBHost verwijst naar de host waar je database draait (gebruik localhost als
+  het op dezelfde machine is).</li>
 <li>DBName is the name of the Zabbix database.</li>
 <li>DBSchema is the schema name used in PostgreSQL (only needed for PostgreSQL).</li>
 <li>DBUser is the database user.</li>

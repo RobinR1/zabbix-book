@@ -1099,6 +1099,8 @@ and protecting your monitoring data with encrypted connections.
       
         
       
+        
+      
     
     
     
@@ -1114,7 +1116,7 @@ and protecting your monitoring data with encrypted connections.
   
   
   
-    <a href="../../ch10-zabbix-discovery/network-host-discovery/" class="md-nav__link">
+    <a href="../../ch10-zabbix-discovery/chapter/" class="md-nav__link">
       
   
   
@@ -1617,17 +1619,6 @@ and protecting your monitoring data with encrypted connections.
 </li>
         
           <li class="md-nav__item">
-  <a href="#adapt-your-apache-zabbix-config" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Adapt your Apache Zabbix config
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#restart-all-services-and-allow-https-traffic" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1675,7 +1666,7 @@ and protecting your monitoring data with encrypted connections.
   <a href="#setup-lets-encrypt-without-local-a-dns-server" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Setup Let;s encrypt without local a DNS server
+        Setup Let's encrypt without local a DNS server
       
     </span>
   </a>
@@ -1684,17 +1675,6 @@ and protecting your monitoring data with encrypted connections.
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#securing-the-frontend-with-lets-encrypt-on-nginx_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Securing the Frontend with Let's Encrypt on Nginx
-      
-    </span>
-  </a>
   
 </li>
       
@@ -1894,6 +1874,8 @@ and protecting your monitoring data with encrypted connections.
   
     
     
+      
+        
       
         
       
@@ -2167,17 +2149,6 @@ and protecting your monitoring data with encrypted connections.
 </li>
         
           <li class="md-nav__item">
-  <a href="#adapt-your-apache-zabbix-config" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Adapt your Apache Zabbix config
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#restart-all-services-and-allow-https-traffic" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2225,7 +2196,7 @@ and protecting your monitoring data with encrypted connections.
   <a href="#setup-lets-encrypt-without-local-a-dns-server" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Setup Let;s encrypt without local a DNS server
+        Setup Let's encrypt without local a DNS server
       
     </span>
   </a>
@@ -2234,17 +2205,6 @@ and protecting your monitoring data with encrypted connections.
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#securing-the-frontend-with-lets-encrypt-on-nginx_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Securing the Frontend with Let's Encrypt on Nginx
-      
-    </span>
-  </a>
   
 </li>
       
@@ -2571,13 +2531,13 @@ Ubuntu
 <div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>ToDo
 </span></code></pre></div></p>
 </div>
-<h4 id="adapt-your-apache-zabbix-config">Adapt your Apache Zabbix config</h4>
 <h4 id="restart-all-services-and-allow-https-traffic">Restart all services and allow https traffic</h4>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>systemctl<span class="w"> </span>restart<span class="w"> </span>php-fpm.service
 </span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx
 </span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
 </span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>firewall-cmd<span class="w"> </span>--add-service<span class="o">=</span>https<span class="w"> </span>--permanent
-</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>firewall-cmd<span class="w"> </span>--reload
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>firewall-cmd<span class="w"> </span>--add-service<span class="o">=</span>http<span class="w"> </span>--permanent
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>firewall-cmd<span class="w"> </span>--reload
 </span></code></pre></div>
 <p>When we go to our url <code>http://&lt;IP or DNS&gt;/</code> we get redirected to our <code>https://</code> page and when we check we can see that our site is secure:</p>
 <p><img alt="SSL Ok" src="cert-ok.png" /></p>
@@ -2608,7 +2568,8 @@ is going to be easy.</p>
 </span></code></pre></div>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># add firewall config</span>
 </span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>firewall-cmd<span class="w"> </span>--permanent<span class="w"> </span>--add-service<span class="o">=</span>https
-</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>firewall-cmd<span class="w"> </span>--reload
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>firewall-cmd<span class="w"> </span>--permanent<span class="w"> </span>--add-service<span class="o">=</span>http
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>firewall-cmd<span class="w"> </span>--reload
 </span></code></pre></div>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># Obtain the SSL certificate</span>
 </span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>sudo<span class="w"> </span>certbot<span class="w"> </span>--nginx<span class="w"> </span>-d<span class="w"> </span>yourdomain.com<span class="w"> </span>-d<span class="w"> </span>www.yourdomain.com
@@ -2617,7 +2578,7 @@ is going to be easy.</p>
 you had not renamed your file with the domain name you have alter the config
 file yourself.
 You can take a look for an example to the next topic.</p>
-<h3 id="setup-lets-encrypt-without-local-a-dns-server">Setup Let;s encrypt without local a DNS server</h3>
+<h3 id="setup-lets-encrypt-without-local-a-dns-server">Setup Let's encrypt without local a DNS server</h3>
 <p>In case you like to test this at home it's a bit more complex if you don't have a
 DNS server at home but still possible with DNS-01 if you have bought a domain and
 are able to configure the TXT records for this domain. In this case we can use
@@ -2651,7 +2612,8 @@ get.acme.</p>
 <p>Next step is to alter your NGINX config and open the firewall on port 443</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># Configure the firewall</span>
 </span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>firewall-cmd<span class="w"> </span>--add-service<span class="o">=</span>https<span class="w"> </span>--permanent
-</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>firewall-cmd<span class="w"> </span>--reload
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>firewall-cmd<span class="w"> </span>--add-service<span class="o">=</span>htts<span class="w"> </span>--permanent
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>firewall-cmd<span class="w"> </span>--reload
 </span></code></pre></div>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># Add to your hosts file the domain zabbix.&lt;mydomain.com&gt;</span>
 </span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>vi<span class="w"> </span>/etc/hosts
@@ -2680,13 +2642,12 @@ get.acme.</p>
 </span></code></pre></div>
 <p>You can now browse to the url zabbix.mydomain.com and you should have a working
 certificate.</p>
-<details class="note" open="open">
-<summary>Note</summary>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>You should probably add a bit more security to your webserver this is only
 the bare minimum to make ssl working, A good place to start is probably
 https://cipherlist.eu/</p>
-</details>
-<h2 id="securing-the-frontend-with-lets-encrypt-on-nginx_1">Securing the Frontend with Let's Encrypt on Nginx</h2>
+</div>
 
 
 

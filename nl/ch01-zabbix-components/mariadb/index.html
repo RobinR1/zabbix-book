@@ -1577,6 +1577,8 @@ and configure firewall rules if necessary.
       
         
       
+        
+      
     
     
     
@@ -1592,7 +1594,7 @@ and configure firewall rules if necessary.
   
   
   
-    <a href="../../ch10-zabbix-discovery/network-host-discovery/" class="md-nav__link">
+    <a href="../../ch10-zabbix-discovery/chapter/" class="md-nav__link">
       
   
   
@@ -1864,6 +1866,8 @@ and configure firewall rules if necessary.
   
     
     
+      
+        
       
         
       
@@ -2272,47 +2276,51 @@ invoeren. Zodra de opslagplaats is geconfigureerd, kun je doorgaan met de
 installatie van MariaDB met behulp van je pakketbeheerder.</p>
 <p>The latest config can be found here:
 <a href="https://mariadb.org/download/?t=repo-config">https://mariadb.org/download/?t=repo-config</a></p>
-<p>Here's an example configuration for MariaDB 11.4 repositories:</p>
-<div class="admonition example">
-<p class="admonition-title">Mariadb repository configuration</p>
-<p>Red Hat
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># MariaDB 11.4 RedHatEnterpriseLinux repository list - created 2025-02-21 10:15 UTC</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1"># https://mariadb.org/download/</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">[mariadb]</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">MariaDB</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1"># rpm.mariadb.org is a dynamic mirror if your preferred mirror goes offline. See https://mariadb.org/mirrorbits/ for details.</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="c1"># baseurl = https://rpm.mariadb.org/11.4/rhel/$releasever/$basearch</span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="na">baseurl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">https://mirror.bouwhuis.network/mariadb/yum/11.4/rhel/$releasever/$basearch</span>
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="c1"># gpgkey = https://rpm.mariadb.org/RPM-GPG-KEY-MariaDB</span>
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="na">gpgkey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">https://mirror.bouwhuis.network/mariadb/yum/RPM-GPG-KEY-MariaDB</span>
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="na">gpgcheck</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span>
-</span></code></pre></div></p>
-<p>SUSE
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># MariaDB 11.4 openSUSE repository list - created 2025-12-29 14:34 UTC</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1"># https://mariadb.org/download/</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">[mariadb]</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">MariaDB</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="c1"># rpm.mariadb.org is a dynamic mirror if your preferred mirror goes offline. See https://mariadb.org/mirrorbits/ for details.</span>
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="c1"># baseurl = https://rpm.mariadb.org/11.4/opensuse/$releasever/$basearch</span>
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># baseurl = https://rpm.mariadb.org/11.4/opensuse/$releasever/$basearch</span>
-</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="na">baseurl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">https://mirror.bouwhuis.network/mariadb/yum/11.4/opensuse/$releasever/$basearch</span>
-</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="c1"># gpgkey = https://rpm.mariadb.org/RPM-GPG-KEY-MariaDB</span>
-</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="na">gpgkey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">https://mirror.bouwhuis.network/mariadb/yum/RPM-GPG-KEY-MariaDB</span>
-</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="na">gpgcheck</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span>
-</span></code></pre></div></p>
-<p>Ubuntu
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># MariaDB 11.4 repository list - created 2025-02-21 11:42 UTC</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="c1"># https://mariadb.org/download/</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nt">X-Repolib-Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MariaDB</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nt">Types</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deb</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="c1"># deb.mariadb.org is a dynamic mirror if your preferred mirror goes offline. See https://mariadb.org/mirrorbits/ for details.</span>
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="c1"># URIs: https://deb.mariadb.org/11.4/ubuntu</span>
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="nt">URIs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://mirror.bouwhuis.network/mariadb/repo/11.4/ubuntu</span>
-</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="nt">Suites</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noble</span>
-</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="nt">Components</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main main/debug</span>
-</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="nt">Signed-By</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/apt/keyrings/mariadb-keyring.pgp</span>
-</span></code></pre></div></p>
-</div>
+<p>Hier is een voorbeeldconfiguratie voor MariaDB 11.4 repositories:</p>
+<p>!!! example "Mariadb archiefconfiguratie".</p>
+<div class="language-text highlight"><pre><span></span><code>Red Hat
+```ini
+# MariaDB 11.4 RedHatEnterpriseLinux repository list - created 2025-02-21 10:15 UTC
+# https://mariadb.org/download/
+[mariadb]
+name = MariaDB
+# rpm.mariadb.org is a dynamic mirror if your preferred mirror goes offline. See https://mariadb.org/mirrorbits/ for details.
+# baseurl = https://rpm.mariadb.org/11.4/rhel/$releasever/$basearch
+baseurl = https://mirror.bouwhuis.network/mariadb/yum/11.4/rhel/$releasever/$basearch
+# gpgkey = https://rpm.mariadb.org/RPM-GPG-KEY-MariaDB
+gpgkey = https://mirror.bouwhuis.network/mariadb/yum/RPM-GPG-KEY-MariaDB
+gpgcheck = 1
+```
+
+SUSE
+```ini
+# MariaDB 11.4 openSUSE repository list - created 2025-12-29 14:34 UTC
+# https://mariadb.org/download/
+[mariadb]
+name = MariaDB
+# rpm.mariadb.org is a dynamic mirror if your preferred mirror goes offline. See https://mariadb.org/mirrorbits/ for details.
+# baseurl = https://rpm.mariadb.org/11.4/opensuse/$releasever/$basearch
+# baseurl = https://rpm.mariadb.org/11.4/opensuse/$releasever/$basearch
+baseurl = https://mirror.bouwhuis.network/mariadb/yum/11.4/opensuse/$releasever/$basearch
+# gpgkey = https://rpm.mariadb.org/RPM-GPG-KEY-MariaDB
+gpgkey = https://mirror.bouwhuis.network/mariadb/yum/RPM-GPG-KEY-MariaDB
+gpgcheck = 1
+```
+
+Ubuntu
+```  yaml
+# MariaDB 11.4 repository list - created 2025-02-21 11:42 UTC
+# https://mariadb.org/download/
+X-Repolib-Name: MariaDB
+Types: deb
+# deb.mariadb.org is a dynamic mirror if your preferred mirror goes offline. See https://mariadb.org/mirrorbits/ for details.
+# URIs: https://deb.mariadb.org/11.4/ubuntu
+URIs: https://mirror.bouwhuis.network/mariadb/repo/11.4/ubuntu
+Suites: noble
+Components: main main/debug
+Signed-By: /etc/apt/keyrings/mariadb-keyring.pgp
+```
+</code></pre></div>
 <p>After saving the file, ensure that everything is properly set up and that your
 preferred MariaDB version is compatible with your Zabbix version to avoid
 potential integration issues.</p>

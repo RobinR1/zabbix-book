@@ -701,7 +701,7 @@ secure and centralized access management for the Zabbix frontend.
   <span class="md-ellipsis">
     
   
-    Frontend explained
+    Объяснение фронтенда
   
 
     
@@ -729,7 +729,7 @@ secure and centralized access management for the Zabbix frontend.
   <span class="md-ellipsis">
     
   
-    Host Groups
+    Группы узлов
   
 
     
@@ -757,7 +757,7 @@ secure and centralized access management for the Zabbix frontend.
   <span class="md-ellipsis">
     
   
-    User Groups
+    Группы пользователей
   
 
     
@@ -785,7 +785,7 @@ secure and centralized access management for the Zabbix frontend.
   <span class="md-ellipsis">
     
   
-    User Roles
+    Роли пользователей
   
 
     
@@ -1055,13 +1055,41 @@ secure and centralized access management for the Zabbix frontend.
 </li>
       
         <li class="md-nav__item">
-  <a href="#ms-cloud" class="md-nav__link">
+  <a href="#microsoft-entra-id-azure-ad" class="md-nav__link">
     <span class="md-ellipsis">
       
-        MS Cloud
+        Microsoft Entra ID (Azure AD)
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Microsoft Entra ID (Azure AD)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-entra-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configure Entra ID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zabbix-saml-configuration_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zabbix SAML configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1132,7 +1160,7 @@ secure and centralized access management for the Zabbix frontend.
   <span class="md-ellipsis">
     
   
-    Multi factor authentication
+    Многофакторная аутентификация
   
 
     
@@ -1610,6 +1638,8 @@ secure and centralized access management for the Zabbix frontend.
       
         
       
+        
+      
     
     
     
@@ -1625,7 +1655,7 @@ secure and centralized access management for the Zabbix frontend.
   
   
   
-    <a href="../../ch10-zabbix-discovery/network-host-discovery/" class="md-nav__link">
+    <a href="../../ch10-zabbix-discovery/chapter/" class="md-nav__link">
       
   
   
@@ -1902,6 +1932,8 @@ secure and centralized access management for the Zabbix frontend.
       
         
       
+        
+      
     
     
     
@@ -2069,13 +2101,41 @@ secure and centralized access management for the Zabbix frontend.
 </li>
       
         <li class="md-nav__item">
-  <a href="#ms-cloud" class="md-nav__link">
+  <a href="#microsoft-entra-id-azure-ad" class="md-nav__link">
     <span class="md-ellipsis">
       
-        MS Cloud
+        Microsoft Entra ID (Azure AD)
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Microsoft Entra ID (Azure AD)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-entra-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configure Entra ID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zabbix-saml-configuration_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zabbix SAML configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2447,7 +2507,79 @@ that the frontend correctly handles SAML authentication requests.</p>
 </span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="x">//$SSO[&#39;SETTINGS&#39;]              = [];</span>
 </span></code></pre></div>
 <hr />
-<h2 id="ms-cloud">MS Cloud</h2>
+<h2 id="microsoft-entra-id-azure-ad">Microsoft Entra ID (Azure AD)</h2>
+<p>Integrating Microsoft Entra ID as a SAML Identity Provider for Zabbix follows the same core principles as other IdPs, but with Microsoft’s own structure and terminology layered on top. To get it to work, we will have to do some clicking around in the Microsoft Azure UI.</p>
+<h3 id="configure-entra-id">Configure Entra ID</h3>
+<p>First, navigate to the the Microsoft Entra admin center. You can type the name in the search bar and it should come right up.</p>
+<p><img align="center" alt="Microsoft Entra ID" src="../../../ch02-zabbix-installation/external-auth/ch02.x-ms-entra-id-app.png" /></p>
+<p><em>2.x Microsoft Entra ID</em></p>
+<p>Here you should be able to find an <code>add</code> button and then navigate to <code>Enterprise application</code>. This is where we are going to create the SAML integration by clicking on <code>Create your own application</code>.</p>
+<p>Choose a simple descriptive name here. My recommendation is to go with something like <code>Zabbix SAML</code>. You will have to use the option <code>Integrate any other application you don’t find in the gallery</code>.</p>
+<p><img align="center" alt="Microsoft Entra ID - Create app" src="../../../ch02-zabbix-installation/external-auth/ch02.x-ms-entra-id-create-app.png" /></p>
+<p><em>2.x Microsoft Entra ID - Create app</em></p>
+<p>After creating the application, open it and go to <code>Manage</code> | <code>Single sign-on</code>, where you can enable <code>SAML</code>. This should present you with the form to configure all the details needed. </p>
+<p>We can now set the <code>Basic SAML Configuration</code>
+Configure the following:
+- Identifier (Entity ID)
+https://your_zabbix_server/zabbix
+- Reply URL (ACS URL)
+https://your_zabbix_server/zabbix/index_sso.php?acs</p>
+<p><img align="center" alt="Microsoft Entra ID - Basic configuration" src="../../../ch02-zabbix-installation/external-auth/ch02.x-ms-entra-id-basic.png" /></p>
+<p><em>2.x Microsoft Entra ID - Basic configuration</em></p>
+<p>Next, at <code>Attributes &amp; Claims</code> we need to specify some claims. Click <code>Add new claim</code> and add at least the following:
+- <code>user_email</code> with <code>Source attribute</code> set to <code>user.mail</code>
+- <code>user_name</code> with <code>Source attribute</code> set to <code>user.givenname</code>
+- <code>user_lastname</code> with <code>Source attribute</code> set to <code>user.surname</code></p>
+<p><img align="center" alt="Microsoft Entra ID - Claim" src="../../../ch02-zabbix-installation/external-auth/ch02.x-ms-entra-id-claim.png" /></p>
+<p><em>2.x Microsoft Entra ID - Claim</em></p>
+<p>We also need to add click on <code>Add a group claim</code> to make sure our users groups can be sent to Zabbix. Add the following.</p>
+<p><img align="center" alt="Microsoft Entra ID - Group claims" src="../../../ch02-zabbix-installation/external-auth/ch02.x-ms-entra-id-group-claims.png" /></p>
+<p><em>2.x Microsoft Entra ID - Group claims</em></p>
+<p>Now, let's download the <code>Certificate (Base64)</code> under <code>SAML Certificates</code> and save it as <code>idp.crt</code>. Then we upload this to the Zabbix server(s).</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>scp<span class="w"> </span>idp.crt<span class="w"> </span>user@zabbix_server_ip:/usr/share/zabbix/ui/conf/certs/
+</span></code></pre></div>
+<p>The login to the Zabbix server and set the permissions.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>chmod<span class="w"> </span><span class="m">644</span><span class="w"> </span>entra.cer
+</span></code></pre></div>
+<p>While on the Zabbix server, edit the Zabbix web server configuration at <code>../zabbix.conf.php</code>, usually found in the directory below.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>/etc/zabbix/web/zabbix.conf.php
+</span></code></pre></div>
+<p>At the part about SAML configuration, make sure to add these two settings.</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="x">$SSO[&#39;IDP_CERT&#39;]                = &#39;conf/certs/entra.cer&#39;;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="x">$SSO[&#39;SETTINGS&#39;]                = [&#39;use_proxy_headers&#39; =&gt; true];</span>
+</span></code></pre></div>
+<p>In the last steps, we can now start the configuration of Zabbix SAML.</p>
+<h3 id="zabbix-saml-configuration_1">Zabbix SAML configuration</h3>
+<p>In the Entra ID Application configuration window you should now find the URLs we need to configure Zabbix.</p>
+<p><img align="center" alt="Microsoft Entra ID - SAML URLs" src="../../../ch02-zabbix-installation/external-auth/ch02.x-ms-entra-id-saml-urls.png" /></p>
+<p><em>2.x Microsoft Entra ID - SAML URLs</em></p>
+<p>Copy the <code>Login URL</code> as the <code>SSO service URL</code> and <code>SLO service URL</code>. The <code>Microsoft Entra Identifier</code> can go into the <code>IdP entity ID</code> field.</p>
+<p>Fill in the <code>Username attribute</code> as <code>user_email</code> and the <code>SP entity ID</code> as the name of your application, in this case <code>Zabbix SAML</code>.</p>
+<p><img align="center" alt="Microsoft Entra ID - Zabbix basic SAML configuration" src="../../../ch02-zabbix-installation/external-auth/ch02.x-ms-entra-id-zabbix-basic-config.png" /></p>
+<p><em>2.x Microsoft Entra ID - Zabbix basic SAML configuration</em></p>
+<p>If you press <code>Update</code> now, I would recommend you to test these settings first.</p>
+<details class="note" open="open">
+<summary>Note</summary>
+<p>Keep in mind, for SAML to work at this point, your users will have to be manually created in Zabbix under <code>Users</code> | <code>Users</code> . You will need to make sure their username matches the <code>Username attribute</code> which in our example is the user their email address.</p>
+</details>
+<p>If you'd like to continue the work however and make SAML truly worthwhile, we can <code>Enable JIT provisioning</code>. To configure the setting click on <code>Configure JIT provisioning</code>. We will the fill out the <code>Group name attribute</code> as <code>groups</code>, the <code>User name attribute</code> as <code>user_name</code> and the <code>User last name attribute</code> as <code>user_lastname</code>. </p>
+<p>To map the permissions in Azure to permissions in Zabbix, we need to set up the group mappings. At <code>User group mapping</code> click on the small <code>Add</code> button. Fill out your <code>SAML group pattern</code> with the name of your group in Azure. The select the <code>User groups</code> and <code>User roles</code> to assign permissions in Zabbix, like below.</p>
+<p><img align="center" alt="Microsoft Entra ID - Zabbix SAML group configuration" src="../../../ch02-zabbix-installation/external-auth/ch02.x-ms-entra-id-zabbix-group-config.png" /></p>
+<p><em>2.x Microsoft Entra ID - Zabbix SAML group configuration</em></p>
+<p>The end result should look something like the image below, but in your environment you will probably add more groups. It is also possible to map certain media types to the user, for example by mapping the <code>user_email</code> attribute to an email media type.</p>
+<p><img align="center" alt="Microsoft Entra ID - Zabbix SAML JIT configuration" src="../../../ch02-zabbix-installation/external-auth/ch02.x-ms-entra-id-zabbix-jit-config.png" /></p>
+<p><em>2.x Microsoft Entra ID - Zabbix SAML JIT configuration</em></p>
+<details class="note" open="open">
+<summary>Note</summary>
+<p>With SAML and JIT provisioning enabled, Zabbix will automatically create users on their first successful login. This means you do not need to pre-create users manually.</p>
+<p>If you want more control over user lifecycle management beyond first login, that’s where SCIM comes in. SCIM allows your Identity Provider (like Entra ID) to continuously synchronize users with Zabbix.</p>
+<p>The key difference:</p>
+<ul>
+<li><strong>JIT provisioning</strong>: creates users and checks permissions only when the user logs in</li>
+<li><strong>SCIM provisioning</strong>: keeps users continuously in sync (create, update and disable, even if they never log in)</li>
+</ul>
+<p>SCIM is useful in environments where you want strict control and up-to-date user states without relying on user logins. However, it is not required as JIT already covers the majority of use cases with far less setup complexity.</p>
+</details>
 <hr />
 <h2 id="okta">Okta</h2>
 <hr />

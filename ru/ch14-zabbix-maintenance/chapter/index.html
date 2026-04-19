@@ -39,7 +39,7 @@
     
     
       
-        <title>Zabbix maintenance - Zabbix Book</title>
+        <title>Zabbix Maintenance - Zabbix Book</title>
       
     
     
@@ -79,14 +79,14 @@
     
     
 
-    <meta property="og:title" content="Zabbix maintenance">
+    <meta property="og:title" content="Zabbix Maintenance">
     <meta property="og:description" content="A free, community driven online resource to master Zabbix: built to give back, sustain the community, and help you become truly empowered with monitoring.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thezabbixbook.com/ru/ch14-zabbix-maintenance/chapter/">
     <meta property="og:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Zabbix maintenance">
+    <meta name="twitter:title" content="Zabbix Maintenance">
     <meta name="twitter:description" content="A free, community driven online resource to master Zabbix: built to give back, sustain the community, and help you become truly empowered with monitoring.">
     <meta name="twitter:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
     <meta property="og:image:width" content="1200">
@@ -174,7 +174,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Zabbix maintenance
+              Zabbix Maintenance
             
           </span>
         </div>
@@ -1101,6 +1101,8 @@
       
         
       
+        
+      
     
     
     
@@ -1116,7 +1118,7 @@
   
   
   
-    <a href="../../ch10-zabbix-discovery/network-host-discovery/" class="md-nav__link">
+    <a href="../../ch10-zabbix-discovery/chapter/" class="md-nav__link">
       
   
   
@@ -1406,7 +1408,7 @@
   <span class="md-ellipsis">
     
   
-    Zabbix maintenance
+    Zabbix Maintenance
   
 
     
@@ -1548,6 +1550,8 @@
   
     
     
+      
+        
       
         
       
@@ -1730,16 +1734,46 @@
   
 
 
-<h1 id="zabbix-maintenance">Zabbix maintenance</h1>
-<p>Maintaining a stable and efficient Zabbix environment requires more than just
-monitoring external systems, it also involves taking care of Zabbix itself. This
-chapter explores the key aspects of Zabbix maintenance, including setting up regular
-backups to protect your data, using Zabbix's internal health checks to monitor
-its own performance, and applying upgrades to stay current with new features and
-security fixes. We'll also cover Zabbix's built-in maintenance mode, which allows
-you to schedule downtime for hosts and services without triggering unnecessary
-alerts. Together, these practices help ensure your monitoring system remains
-reliable, resilient, and ready to scale.</p>
+<h1 id="zabbix-maintenance">Zabbix Maintenance</h1>
+<p>A monitoring system that cannot monitor itself is only half a system.</p>
+<p>This chapter covers four operational practices that keep Zabbix reliable over
+time. They are independent by nature but share a common purpose: ensuring the
+platform you depend on during incidents remains healthy, recoverable, and current.</p>
+<p>The chapter opens with <strong>maintenance periods</strong>, Zabbix's built-in mechanism for
+suppressing alerts during planned work. A maintenance period defines a time window
+and a scope for a specific hosts or host groups, during which problem notifications
+can be paused. Zabbix continues collecting data throughout, but alert actions are
+held back if we prefer. Maintenance periods can be scheduled as one-time windows
+or recurring patterns, scoped to specific problem tags so that only relevant
+alerts are suppressed, and created programmatically through the Zabbix API
+to integrate with external change management workflows.</p>
+<p>From there the chapter moves to <strong>internal health checks</strong>, which allow Zabbix to
+monitor its own operational state. Through a set of internal items with keys
+beginning with <code>zabbix[...]</code>, the server exposes metrics for process utilization,
+queue depth, cache usage, and data throughput. These metrics are collected against
+a virtual internal host that requires no agent or network interface. Built-in
+templates and dashboards surface this data visually, and triggers can raise alerts
+when process utilization climbs or queues begin to grow, giving administrators
+early warning of performance degradation before it affects monitoring quality.</p>
+<p>The third section covers <strong>backup strategies</strong>. Because Zabbix stores all
+configuration, history, and trends in a single database, a reliable database
+backup is sufficient to recover most of a Zabbix environment. The chapter covers
+logical dumps using <code>mysqldump</code>, <code>mariadb-dump</code>, and <code>pg_dump</code> for smaller
+installations, and physical backup approaches including WAL archiving and dedicated
+tools such as PgBackRest and PgBarman for larger PostgreSQL environments. Alongside
+the database, a set of configuration files and custom scripts deserve equal
+attention: alert scripts, external checks, and web server configuration are easy
+to overlook and time-consuming to rebuild from memory.</p>
+<p>The chapter closes with <strong>upgrades</strong>, where the real complexity rarely lies in
+Zabbix itself. The Zabbix server applies all missing database schema patches
+automatically on startup, making it possible to upgrade directly from much older
+versions without intermediate steps. What determines whether an upgrade succeeds
+is the surrounding stack: the operating system, database engine, PHP version, and
+any extensions such as TimescaleDB. Upgrading all of these layers simultaneously
+is the most common cause of upgrade failures. The chapter examines why
+migration-based upgrades are often safer than in-place upgrades, how replication
+can be used to reduce downtime, and why database index health deserves explicit
+attention whenever the underlying OS or database engine changes.</p>
 
 
 

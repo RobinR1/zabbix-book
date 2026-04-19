@@ -731,7 +731,7 @@ scalability and efficiency.
   <span class="md-ellipsis">
     
   
-    Proxy's en de webservicescomponent
+    Proxy's en de Zabbix webservice
   
 
     
@@ -812,10 +812,10 @@ scalability and efficiency.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-is-a-zabbix-proxy" class="md-nav__link">
+  <a href="#wat-is-een-zabbix-proxy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What is a Zabbix Proxy
+        Wat is een Zabbix Proxy
       
     </span>
   </a>
@@ -945,7 +945,7 @@ scalability and efficiency.
   <span class="md-ellipsis">
     
   
-    Active and Passive proxies
+    Actieve en passieve proxy's
   
 
     
@@ -973,7 +973,7 @@ scalability and efficiency.
   <span class="md-ellipsis">
     
   
-    Running Proxies as containers
+    Proxies draaien als containers
   
 
     
@@ -1437,6 +1437,8 @@ scalability and efficiency.
       
         
       
+        
+      
     
     
     
@@ -1452,7 +1454,7 @@ scalability and efficiency.
   
   
   
-    <a href="../../ch10-zabbix-discovery/network-host-discovery/" class="md-nav__link">
+    <a href="../../ch10-zabbix-discovery/chapter/" class="md-nav__link">
       
   
   
@@ -1729,6 +1731,8 @@ scalability and efficiency.
       
         
       
+        
+      
     
     
     
@@ -1824,10 +1828,10 @@ scalability and efficiency.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-is-a-zabbix-proxy" class="md-nav__link">
+  <a href="#wat-is-een-zabbix-proxy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What is a Zabbix Proxy
+        Wat is een Zabbix Proxy
       
     </span>
   </a>
@@ -2039,12 +2043,12 @@ scalability and efficiency.
 it, what the basic requirements are and what the difference is between <em>Active
 proxies</em> and <em>Passive proxies</em>.</p>
 <hr />
-<h2 id="what-is-a-zabbix-proxy">What is a Zabbix Proxy</h2>
-<p>A Zabbix proxy is actually a kind of lightweight Zabbix server process that
-collects monitoring data from devices on behalf of the real Zabbix server. It's
-designed to offload the server by handling data collection tasks, which is
-particularly useful in distributed environments or when monitoring remote
-locations with limited connectivity.</p>
+<h2 id="wat-is-een-zabbix-proxy">Wat is een Zabbix Proxy</h2>
+<p>Een Zabbix proxy is eigenlijk een soort lichtgewicht Zabbix serverproces dat
+monitoringgegevens van apparaten verzamelt namens de echte Zabbix server. Het is
+ontworpen om de server te ontlasten door gegevensverzamelingstaken af te
+handelen, wat vooral handig is in gedistribueerde omgevingen of bij het
+monitoren van afgelegen locaties met beperkte connectiviteit.</p>
 <p>The proxy gathers the requested performance and availability data from monitored
 devices, applications, and services, then forwards this information to the
 Zabbix server for processing and storage. This architecture helps reduce network
@@ -2296,7 +2300,7 @@ logs of the second trapper process.</p>
 </dd>
 <dt><code>zabbix_proxy --runtime-control snmp_cache_reload</code></dt>
 <dd>
-<p>Forces the proxy to reload its SNMP cache. This is useful if you’ve made
+<p>Forces the proxy to reload its SNMP cache. This is useful if you've made
 changes to SNMP configurations (e.g., updated community strings, OIDs, or device
 IPs) and want the proxy to immediately pick up the new settings without
 restarting the entire service.</p>
@@ -2305,7 +2309,7 @@ restarting the entire service.</p>
 <dd>
 <p>Generates diagnostic information for a specific section of the proxy’s
 operation. This is typically used for troubleshooting or performance analysis.
-The section parameter can target areas like historycache, preprocessing or
+The section parameter can target areas like history cache, preprocessing or
 locks. <em>Example</em>: <code>diaginfo=preprocessing</code> would provide detailed statistics
 about the preprocessing manager.</p>
 </dd>
@@ -2324,7 +2328,7 @@ the same as you would on a <em>Zabbix server</em>.</p>
   the <code>server</code> can connect to the proxy.</li>
 </ul>
 <p>Do note that for an active <em>Zabbix Agent</em> or <em>Zabbix Sender</em> to communicate with
-your proxy, wether it is an active or a passive one, this will require port
+your proxy, whether it is an active or a passive one, this will require port
 <code>10051/tcp</code> to be open on your proxy server:</p>
 <div class="admonition info">
 <p class="admonition-title">Open firewall for zabbix-trapper</p>

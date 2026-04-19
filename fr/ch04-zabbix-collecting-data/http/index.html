@@ -1997,6 +1997,8 @@ and content to ensure web services perform reliably and stay online.
       
         
       
+        
+      
     
     
     
@@ -2012,7 +2014,7 @@ and content to ensure web services perform reliably and stay online.
   
   
   
-    <a href="../../ch10-zabbix-discovery/network-host-discovery/" class="md-nav__link">
+    <a href="../../ch10-zabbix-discovery/chapter/" class="md-nav__link">
       
   
   
@@ -2284,6 +2286,8 @@ and content to ensure web services perform reliably and stay online.
   
     
     
+      
+        
       
         
       
@@ -2713,13 +2717,14 @@ is actually working, you need to monitor it at that level.</p>
 or HTTPS requests, authenticate, include custom headers, send payloads, and process
 responses as structured monitoring data. This makes it possible to monitor REST
 APIs, web services, internal micro-services, SaaS integrations, and even the Zabbix
-API itself,without external scripts or custom agents.</p>
+API itself, without external scripts or custom agents.</p>
 <p>At a beginner level, the HTTP agent answers the question “does this endpoint respond?”.
 At an expert level, it answers “is this application behaving correctly, securely,
 and predictably under real conditions?”.</p>
-<p>With the release of the Zabbix 7.x serie, the HTTP agent has become more efficient and
+<p>With the release of the Zabbix 7.x series, the HTTP agent has become more efficient and
 user friendly, featuring realtime configuration validation and improved connection
 handling.</p>
+<hr />
 <h3 id="how-the-http-agent-item-works">How the HTTP Agent Item Works</h3>
 <p>An HTTP agent item is executed by the Zabbix server or a Zabbix proxy. For each
 execution, Zabbix performs exactly one HTTP request based on the configured parameters
@@ -2728,19 +2733,20 @@ and stores a result derived from the response.</p>
 headers and body content. Interpretation is left entirely to preprocessing and
 triggers. This design makes the HTTP agent item flexible enough
 to support both simple availability checks and advanced API monitoring.</p>
-<p>Internally, Zabbix uses libcurl to perform HTTP and HTTPS requests. This is an
+<p>Internally, Zabbix uses <code>libcurl</code> to perform HTTP and HTTPS requests. This is an
 important implementation detail. Redirect handling, TLS negotiation, proxy
-behavior, timeout semantics, and error reporting all follow curl behavior.
-If a request can be reproduced successfully using the curl command line, it can
+behavior, timeout semantics, and error reporting all follow <code>curl</code> behavior.
+If a request can be reproduced successfully using the <code>curl</code> command line, it can
 almost always be made to work in Zabbix with the same parameters.</p>
+<hr />
 <h4 id="efficiency-persistent-and-asynchronous-connections">Efficiency: Persistent and Asynchronous Connections</h4>
-<p>Since Zabbix 7.0, the HTTP agent supports Persistent Connections. Instead of
+<p>As of Zabbix 7.0, the HTTP agent supports <strong>Persistent Connections</strong>. Instead of
 opening and closing a new TCP connection for every check, Zabbix can keep the
 connection open. This significantly reduces CPU overhead and network latency,
 especially when polling high frequency API endpoints.</p>
-<p>Also since Zabbix 7.0 HTTP pollers are asynchronous, execution order and timing
-are not as simple as “one poller, one request”.</p>
-<p>An HTTP poller can initiate hundreds of requests, (1000 per poller to be precise)
+<p>Also since Zabbix 7.0 HTTP pollers are <strong>asynchronous</strong>, execution order and timing
+is not as simple as “one poller, one request”.</p>
+<p>An HTTP poller can initiate <em>hundreds</em> of requests, (1000 per poller to be precise)
 wait for responses, and process completed transactions while other requests are
 still in flight. This makes HTTP monitoring efficient, but it also means that
 slow endpoints do not block fast ones, as long as poller capacity is not exhausted.</p>
@@ -2750,6 +2756,7 @@ is another reason why conservative timeout values and reasonable polling interva
 are critical in large environments.</p>
 <p>Understanding that HTTP agent items are asynchronous helps explain why increasing
 poller counts rarely fixes poorly behaving endpoints.</p>
+<hr />
 <h3 id="core-request-configuration">Core Request Configuration</h3>
 <p>Every HTTP agent item starts with a URL. This must be a fully qualified HTTP or
 HTTPS endpoint, including the scheme and path. Zabbix sends exactly what you
@@ -2769,12 +2776,13 @@ for advanced use cases discussed later.</p>
   available for interactive APIs.</li>
 <li><strong>Request Body:</strong> You can define a body for methods like POST. Zabbix has improved
   the handling of JSON and XML types. When you select these, Zabbix automatically
-  sets the correct Content-Type header (e.g., application/json) if you haven't
+  sets the correct <em>Content-Type</em> header (e.g., <code>application/json</code>) if you haven't
   specified one manually.</li>
 </ul>
 <p>Headers: This is where authentication tokens and vendor-specific requirements belong.</p>
-<p><strong>Expert Tip :</strong> Always use Secret Macros (e.g., {$API.TOKEN}) for headers containing
+<p><strong>Expert Tip :</strong> Always use Secret Macros (e.g., <code>{$API.TOKEN}</code>) for headers containing
 credentials to ensure they are masked in the UI and logs.</p>
+<hr />
 <h3 id="https-certificates-and-trust">HTTPS, Certificates, and Trust</h3>
 <p>HTTPS support for HTTP agent items depends on the environment in which the Zabbix
 server or proxy runs. HTTP agent items do not maintain their own certificate store.
@@ -2790,14 +2798,15 @@ not a solution.</p>
 <p>For APIs that require mutual TLS, Zabbix supports client certificates. The HTTP
 agent item references the certificate and private key, but the files themselves
 must exist on disk and be readable by the Zabbix process. Permission issues here
-often surface as generic TLS failures, so testing with curl using the same certificate
+often surface as generic TLS failures, so testing with <code>curl</code> using the same certificate
 and key is strongly recommended.</p>
+<hr />
 <h3 id="timeouts-what-they-really-mean">Timeouts: What They Really Mean</h3>
 <p>The timeout parameter of the HTTP agent item is often misunderstood, and the
 distinction matters in production.</p>
 <p>The configured timeout is not a single, shared budget for the entire request.
 Instead, it is applied to multiple blocking phases of the HTTP transaction,
-following libcurl behavior.</p>
+following <code>libcurl</code> behavior.</p>
 <p>Conceptually, the timeout applies to:</p>
 <ul>
 <li>DNS resolution</li>
@@ -2822,6 +2831,7 @@ than separate connect and read timeouts.</p>
 <p>From an expert perspective, this means the timeout should not be treated as a
 strict SLA boundary. Always leave margin between expected response time and
 configured timeout, especially for APIs that perform backend processing.</p>
+<hr />
 <h3 id="what-becomes-the-item-value">What Becomes the Item Value</h3>
 <p>The HTTP agent item allows you to choose what part of the HTTP response is stored
 as the item value.</p>
@@ -2832,34 +2842,38 @@ values from a single request. Storing only the status code creates a lightweight
 availability or correctness check with minimal processing overhead.</p>
 <p>At scale, choosing the correct retrieval mode reduces API load, minimizes network
 traffic, and keeps Zabbix performance predictable.</p>
+<hr />
 <h3 id="preprocessing-and-structured-data">Preprocessing and Structured Data</h3>
 <p>Most APIs return structured data, commonly JSON. Preprocessing allows Zabbix to
-extract specific values using JSONPath expressions, regular expressions, or text
+extract specific values using <em>JSONPath</em> expressions, regular expressions, or text
 transformations.</p>
 <p>A common expert pattern is to create one HTTP agent item that retrieves structured
 data and several dependent items that extract individual metrics. This avoids
 repeated API calls and ensures consistency between related values.</p>
 <p>Preprocessing is performed entirely on the Zabbix side after the request completes
 and does not affect the request itself.</p>
+<hr />
 <h3 id="http-agent-pollers-and-server-configuration">HTTP Agent Pollers and Server Configuration</h3>
 <p>HTTP agent items are executed by a dedicated pool of processes called HTTP pollers.
 These are separate from regular pollers and are configured explicitly in the Zabbix
 server or proxy configuration file.</p>
-<p>The number of HTTP pollers is controlled by the StartHTTPAgentPollers parameter.
-If this value is set to zero, HTTP agent items will not be executed at all, regardless
-of how many are configured in the frontend. This is an easy oversight when enabling
+<p>The number of HTTP pollers is determined by the <code>StartHTTPAgentPollers</code> server 
+configuration parameter.
+If this value is set to <code>0</code>, HTTP agent items will <strong>not</strong> be executed, even
+if they are configured in the frontend. This is an easy oversight when enabling
 HTTP monitoring for the first time.</p>
 <p>Choosing the correct number of HTTP pollers is not about matching the number of
-items one-to-one. Since Zabbix 7.0, HTTP pollers are fully asynchronous. A single
+items one-to-one. As of Zabbix 7.0, HTTP pollers are <strong>fully asynchronous</strong>. A single
 HTTP poller can manage up to 1000 concurrent HTTP requests internally, using
 non-blocking I/O.</p>
 <p>This is a fundamental architectural change compared to older Zabbix versions and
 explains why HTTP agent items scale far better than many users expect. Increasing
-StartHTTPAgentPollers is usually only required when dealing with extreme request
+<code>StartHTTPAgentPollers</code> is usually only required when dealing with extreme request
 volumes, very slow endpoints, or aggressive timeout values.</p>
 <p>From an expert perspective, it is often better to tune timeouts and polling intervals
 before increasing the number of HTTP pollers. Adding pollers increases concurrency,
 but it also increases memory usage and outbound network pressure.</p>
+<hr />
 <h3 id="accepted-http-response-codes-and-unsupported-items">Accepted HTTP Response Codes and Unsupported Items</h3>
 <p>By default, Zabbix expects HTTP responses to return status codes that are explicitly
 allowed for the item. If the response code does not match what is configured, the
@@ -2870,13 +2884,14 @@ item's definition.</p>
 <p>Zabbix allows you to define accepted response codes in a flexible way. You can
 specify a single code, a comma-separated list of codes, or ranges of codes. This
 makes it possible to model real application behavior accurately.</p>
-<p>For example, some APIs legitimately return 204 No Content on success, while others
-use 202 Accepted for asynchronous processing. If these codes are not listed as
+<p>For example, some APIs legitimately return <code>204 No Content</code> on success, while others
+use <code>202 Accepted</code> for asynchronous processing. If these codes are not listed as
 acceptable, Zabbix will mark the item unsupported even though the service is
 behaving correctly.</p>
 <p>At an expert level, this mechanism is extremely useful. It allows you to distinguish
 between “the endpoint responded, but not in an acceptable way” and genuine
 transport-level failures such as timeouts or TLS errors.</p>
+<hr />
 <h3 id="redirect-handling-limits">Redirect Handling Limits</h3>
 <p>When redirect following is enabled, Zabbix will automatically follow HTTP redirects.
 However, this behavior is not unlimited.</p>
@@ -2889,12 +2904,13 @@ rather than worked around.</p>
 <p>For authenticated APIs, redirects should be used with caution. Authentication
 headers are not always resent across redirects, especially when hosts or protocols
 change. Monitoring the final endpoint directly is often the safer choice.</p>
+<hr />
 <h3 id="enable-trapping-pushing-data-instead-of-pulling">Enable Trapping: Pushing Data Instead of Pulling</h3>
 <p>HTTP agent items are typically used in a polling model, where Zabbix initiates
 the request. However, Zabbix also supports a hybrid approach through the “Enable
 trapping” option.</p>
 <p>When trapping is enabled, the item can accept data pushed to it using zabbix_sender
-or the Zabbix API history.push method. This allows external systems or applications
+or the Zabbix API <code>history.push</code> method. This allows external systems or applications
 to send web content or processed results directly into Zabbix.</p>
 <p>This is particularly useful in scenarios where the web application itself is capable
 of detecting important events and generating alerts. Instead of Zabbix repeatedly
@@ -2903,37 +2919,40 @@ noteworthy happens.</p>
 <p>From an architectural standpoint, this turns the HTTP agent item into a flexible
 ingestion point rather than a pure polling mechanism. It is not a replacement for
 polling, but a powerful complement when event-driven monitoring makes more sense.</p>
+<hr />
 <h3 id="practical-example-monitoring-the-zabbix-api">Practical Example: Monitoring the Zabbix API</h3>
 <p>The Zabbix API itself is a good example of HTTP agent usage because it is strict,
 well-defined, and widely deployed.</p>
+<hr />
 <h4 id="authenticating-to-the-api">Authenticating to the API</h4>
 <p>The Zabbix API uses JSON-RPC over HTTP. Authentication is performed by calling
-the user.login method. Another better way is to use an API token and pass it in the
-Authorization header in the headers section.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Authorization<span class="w"> </span>:<span class="w"> </span>Bearer<span class="w"> </span><span class="o">{</span><span class="nv">$YOUR_TOKEN_MACRO</span><span class="o">}</span>
+the <code>user.login</code> method. Another better way is to use an API token and pass it in the
+<code>Authorization</code> header in the headers section.</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">Authorization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bearer {$YOUR_TOKEN_MACRO}</span>
 </span></code></pre></div>
 <p>The endpoint is typically:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>http://&lt;IP Address&gt;/api_jsonrpc.php
 </span></code></pre></div>
 <p>The HTTP agent item is configured with a POST request and the following body:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>{
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>  &quot;jsonrpc&quot;: &quot;2.0&quot;,
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>  &quot;method&quot;: &quot;apiinfo.version&quot;,
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>  &quot;params&quot;: {},
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>  &quot;id&quot;: 1
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>}
+<div class="language-json highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;apiinfo.version&quot;</span><span class="p">,</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>The <code>Content-Type</code> header must be set to <code>application/json</code>. Without it, the API
 will reject the request.</p>
+<p><img alt="http/ch04.60_http_item.png" src="../../../ch04-zabbix-collecting-data/http/ch04.60_http_item.png" /></p>
 <p>The response looks like this:</p>
-<p><div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>{
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>  &quot;jsonrpc&quot;: &quot;2.0&quot;,
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  &quot;result&quot;: &quot;8.0.0&quot;,
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>  &quot;id&quot;: 1
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>}
+<div class="language-json highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8.0.0&quot;</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">}</span>
 </span></code></pre></div>
-<img alt="http/ch04.60_http_item.png" src="../../../ch04-zabbix-collecting-data/http/ch04.60_http_item.png" /></p>
-<p>Using JSONPath preprocessing with $.result, the authentication token can be extracted.</p>
+<p>Using <em>JSONPath</em> preprocessing with <code>$.result</code>, the authentication token can be extracted.</p>
+<hr />
 <h4 id="retrieving-data">Retrieving Data</h4>
 <p>The returned version string can be stored as a text item or evaluated by triggers.
 While this example is simple, the same pattern applies to retrieving problem counts,
@@ -2941,25 +2960,33 @@ host statistics, or internal API data.</p>
 <p>HTTP agent items are best suited for stateless, deterministic API calls. Token
 reuse and session orchestration are intentionally limited and should be handled
 externally if required.</p>
+<hr />
 <h3 id="runtime-debugging-and-logging">Runtime Debugging and Logging</h3>
 <p>Debugging HTTP agent items does not require restarting the Zabbix server or proxy.
 Zabbix supports runtime log level control, including per-process adjustments.</p>
 <p>HTTP agent items are executed by HTTP poller processes. To debug HTTP agent behavior
 specifically, logging should be increased only for those processes.</p>
-<p>This is done using runtime control commands:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>zabbix_server -R log_level_increase=http poller
-</span></code></pre></div>
-<p>or on a proxy:</p>
+<p>This is done using runtime control commands <code>log_level_increase</code> and 
+<code>log_level_decrease</code> with the <code>http poller</code> target:</p>
+<details class="example" open="open">
+<summary>Runtime log level control commands for HTTP pollers</summary>
+</details>
+<p>Increasing HTTP poller logging:
+  <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>zabbix_server -R log_level_increase=http poller
+</span></code></pre></div></p>
+<p>Decreasing HTTP poller logging:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>zabbix_server -R log_level_decrease=http poller
 </span></code></pre></div>
-<p>This approach allows detailed libcurl-level diagnostics without restarting services
+<p>This approach allows detailed <code>libcurl</code>-level diagnostics without restarting services
 or flooding logs from unrelated processes.</p>
 <p>When debug logging is enabled, the Zabbix log will show detailed information about
 DNS resolution, TLS negotiation, certificate validation, proxy usage, and timeout
 behavior. These messages are the authoritative source of truth when troubleshooting
 HTTP agent issues.</p>
 <p>Always enable debugging on the node that actually executes the item. If a host is
-monitored via a proxy, increasing logging on the server will show nothing.</p>
+monitored via a proxy, increasing logging on the server will show nothing. Instead
+the proxy's logs must be examined with increased logging.</p>
+<hr />
 <h3 id="http-agent-item-parameters-reference">HTTP Agent Item Parameters Reference</h3>
 <p>The table below summarizes the key HTTP agent parameters and their purpose.</p>
 <table>
@@ -3028,6 +3055,7 @@ monitored via a proxy, increasing logging on the server will show nothing.</p>
 </tr>
 </tbody>
 </table>
+<hr />
 <h2 id="conclusion">Conclusion</h2>
 <p>The HTTP agent item is one of the most powerful and misunderstood tools in Zabbix.
 It allows Zabbix to observe systems the same way applications and users do: through
@@ -3039,6 +3067,7 @@ are validated, and how logging really works — is what turns it from a feature 
 a tool.</p>
 <p>Or, as every experienced API engineer eventually learns:</p>
 <p><strong><em>“HTTP is simple — until you assume it is.”</em></strong></p>
+<hr />
 <h2 id="questions">Questions</h2>
 <ul>
 <li>Why does the HTTP agent item treat an HTTP 500 response differently from a timeout
@@ -3048,6 +3077,7 @@ a tool.</p>
 <li>How does the asynchronous execution model of HTTP pollers change the way HTTP
   monitoring scales compared to traditional pollers?</li>
 </ul>
+<hr />
 <h2 id="useful-urls">Useful URLs</h2>
 <ul>
 <li><a href="https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/http">https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/http</a></li>

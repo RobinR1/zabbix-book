@@ -39,7 +39,7 @@
     
     
       
-        <title>Multi factor authentication - Zabbix Book</title>
+        <title>Многофакторная аутентификация - Zabbix Book</title>
       
     
     
@@ -79,14 +79,14 @@
     
     
 
-    <meta property="og:title" content="Multi factor authentication">
+    <meta property="og:title" content="Многофакторная аутентификация">
     <meta property="og:description" content="A free, community driven online resource to master Zabbix: built to give back, sustain the community, and help you become truly empowered with monitoring.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thezabbixbook.com/ru/ch02-zabbix-installation/mfa/">
     <meta property="og:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Multi factor authentication">
+    <meta name="twitter:title" content="Многофакторная аутентификация">
     <meta name="twitter:description" content="A free, community driven online resource to master Zabbix: built to give back, sustain the community, and help you become truly empowered with monitoring.">
     <meta name="twitter:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
     <meta property="og:image:width" content="1200">
@@ -111,7 +111,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#multi-factor-authentication" class="md-skip">
+        <a href="#_1" class="md-skip">
           Перейти к содержанию
         </a>
       
@@ -169,7 +169,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Multi factor authentication
+              Многофакторная аутентификация
             
           </span>
         </div>
@@ -692,7 +692,7 @@
   <span class="md-ellipsis">
     
   
-    Frontend explained
+    Объяснение фронтенда
   
 
     
@@ -720,7 +720,7 @@
   <span class="md-ellipsis">
     
   
-    Host Groups
+    Группы узлов
   
 
     
@@ -748,7 +748,7 @@
   <span class="md-ellipsis">
     
   
-    User Groups
+    Группы пользователей
   
 
     
@@ -776,7 +776,7 @@
   <span class="md-ellipsis">
     
   
-    User Roles
+    Роли пользователей
   
 
     
@@ -958,7 +958,7 @@
   <span class="md-ellipsis">
     
   
-    Multi factor authentication
+    Многофакторная аутентификация
   
 
     
@@ -976,7 +976,7 @@
   <span class="md-ellipsis">
     
   
-    Multi factor authentication
+    Многофакторная аутентификация
   
 
     
@@ -1002,10 +1002,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#time-based-one-time-password" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Time-based one-time password
+        Одноразовый пароль на основе времени
       
     </span>
   </a>
@@ -1024,7 +1024,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         Заключение
@@ -1035,7 +1035,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         Вопросы
@@ -1529,6 +1529,8 @@
       
         
       
+        
+      
     
     
     
@@ -1544,7 +1546,7 @@
   
   
   
-    <a href="../../ch10-zabbix-discovery/network-host-discovery/" class="md-nav__link">
+    <a href="../../ch10-zabbix-discovery/chapter/" class="md-nav__link">
       
   
   
@@ -1821,6 +1823,8 @@
       
         
       
+        
+      
     
     
     
@@ -1916,10 +1920,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#time-based-one-time-password" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Time-based one-time password
+        Одноразовый пароль на основе времени
       
     </span>
   </a>
@@ -1938,7 +1942,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         Заключение
@@ -1949,7 +1953,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         Вопросы
@@ -2088,32 +2092,32 @@
   
 
 
-<h1 id="multi-factor-authentication">Multi factor authentication</h1>
-<p>We all know that before you can start configuring Zabbix via WebUI you have to
-sign in. Zabbix has several options to provide better security for user
-passwords by configuring password policy:</p>
+<h1 id="_1">Многофакторная аутентификация</h1>
+<p>Все мы знаем, что прежде чем приступить к настройке Zabbix через WebUI,
+необходимо войти в систему. В Zabbix есть несколько возможностей для обеспечения
+большей безопасности паролей пользователей путем настройки политики паролей:</p>
 <ul>
-<li>Requirement for Minimum password length</li>
-<li>Requirements for password to contain an uppercase and a lowercase Latin
-  letter, a digit, a special character</li>
-<li>Requirement to avoid easy-to-guess passwords</li>
+<li>Требование к минимальной длине пароля</li>
+<li>Требовать чтобы пароль содержал прописную и строчную латинские буквы, цифру и
+  специальный символ</li>
+<li>Требование избегать легко угадываемых паролей</li>
 </ul>
-<p>To secure sign in process even more you can configure multi factor
-authentication (MFA). MFA protects Zabbix by using a second source of validation
-before granting access to its WebUI after a user enters his/her password
-correctly. Zabbix offers to types of MFA - Time-based one-time password (TOTP)
-and Duo MFA provider.</p>
+<p>Чтобы еще больше обезопасить процесс входа в систему, вы можете настроить
+многофакторную аутентификацию (MFA). MFA защищает Zabbix, используя второй
+источник проверки перед предоставлением доступа к его WebUI после того, как
+пользователь правильно введет свой пароль. Zabbix предлагает несколько типов MFA
+- одноразовый пароль на основе времени (TOTP) и Duo MFA.</p>
 <hr />
-<h2 id="time-based-one-time-password">Time-based one-time password</h2>
-<p>In the menu select <code>Users</code> section and then <code>Authentication</code></p>
-<p><img alt="MFA Settings initial" src="../../../ch02-zabbix-installation/external-auth/ch02.20-mfa_settings_initial.png" width="90%" /></p>
+<h2 id="_2">Одноразовый пароль на основе времени</h2>
+<p>В меню выберите раздел <code>Пользователи</code>, а затем <code>Аутентификация</code></p>
+<p><img alt="Начальные настройки MFA" src="../../../ch02-zabbix-installation/external-auth/ch02.20-mfa_settings_initial.png" width="90%" /></p>
 <p><em>2.20 Initial MFA settings</em></p>
 <p>Now in <code>MFA settings</code> tab select the <code>Enable multi-factor authentication</code>
 check-box, then select <code>TOTP</code> in Type drop-down list.</p>
 <p><img alt="MFA Settings TOTP" src="../../../ch02-zabbix-installation/external-auth/ch02.21-mfa_settings_TOTP_new.png" width="90%" /></p>
 <p><em>2.21 New MFA method</em></p>
-<p>In <code>Hash function</code> drop-down list you can choose SHA-1, SHA-256 or SHA-512, the
-higher number is the better security.</p>
+<p>В выпадающем списке <code>Hash function</code> вы можете выбрать SHA-1, SHA-256 или
+SHA-512, чем выше номер, тем выше безопасность.</p>
 <p>In <code>Code lentgh</code> you can select how many digits will be generated for you by
 Authenticator application on your phone.</p>
 <p>Click <code>Add</code> and then <code>Update</code>. Now you have TOTP MFA configured and it is the
@@ -2282,7 +2286,7 @@ push notification will be sent to your device and all you need is tap on
 user, or deactivate just click on it and experiment.</p>
 <p><img alt="MFA DUO " src="../../../ch02-zabbix-installation/external-auth/ch02.56-mfa_duo_users.png" width="98%" /></p>
 <p><em>2.56 New user registered in DUO</em></p>
-<h2 id="_1">Заключение</h2>
+<h2 id="_3">Заключение</h2>
 <p>Implementing Multi-Factor Authentication (MFA) in Zabbix is a powerful way to
 significantly advance your system’s security beyond the standard password
 policies. This chapter outlined how Zabbix supports two robust MFA mechanisms:</p>
@@ -2307,7 +2311,7 @@ user groups thus tailoring the security posture to organizational needs.</p>
 access but also fits within a broader strategy of robust authentication. Whether
 through TOTP or Duo, adding MFA demonstrates a commitment to safeguarding access
 to your Zabbix environment and fortifying your monitoring infrastructure.n</p>
-<h2 id="_2">Вопросы</h2>
+<h2 id="_4">Вопросы</h2>
 <ul>
 <li>
 <p>Why is relying on a password alone not sufficient to secure access to a Zabbix

@@ -696,7 +696,7 @@ adds an extra protection layer to your monitoring environment.
   <span class="md-ellipsis">
     
   
-    Frontend explained
+    Объяснение фронтенда
   
 
     
@@ -724,7 +724,7 @@ adds an extra protection layer to your monitoring environment.
   <span class="md-ellipsis">
     
   
-    Host Groups
+    Группы узлов
   
 
     
@@ -752,7 +752,7 @@ adds an extra protection layer to your monitoring environment.
   <span class="md-ellipsis">
     
   
-    User Groups
+    Группы пользователей
   
 
     
@@ -780,7 +780,7 @@ adds an extra protection layer to your monitoring environment.
   <span class="md-ellipsis">
     
   
-    User Roles
+    Роли пользователей
   
 
     
@@ -922,15 +922,15 @@ adds an extra protection layer to your monitoring environment.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#basic-authentication" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Basic authentication
+        Базовая аутентификация
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Basic authentication">
+    <nav class="md-nav" aria-label="Базовая аутентификация">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -972,7 +972,7 @@ adds an extra protection layer to your monitoring environment.
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         Заключение
@@ -983,7 +983,7 @@ adds an extra protection layer to your monitoring environment.
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         Вопросы
@@ -1083,7 +1083,7 @@ adds an extra protection layer to your monitoring environment.
   <span class="md-ellipsis">
     
   
-    Multi factor authentication
+    Многофакторная аутентификация
   
 
     
@@ -1561,6 +1561,8 @@ adds an extra protection layer to your monitoring environment.
       
         
       
+        
+      
     
     
     
@@ -1576,7 +1578,7 @@ adds an extra protection layer to your monitoring environment.
   
   
   
-    <a href="../../ch10-zabbix-discovery/network-host-discovery/" class="md-nav__link">
+    <a href="../../ch10-zabbix-discovery/chapter/" class="md-nav__link">
       
   
   
@@ -1853,6 +1855,8 @@ adds an extra protection layer to your monitoring environment.
       
         
       
+        
+      
     
     
     
@@ -1948,15 +1952,15 @@ adds an extra protection layer to your monitoring environment.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#basic-authentication" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Basic authentication
+        Базовая аутентификация
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Basic authentication">
+    <nav class="md-nav" aria-label="Базовая аутентификация">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1998,7 +2002,7 @@ adds an extra protection layer to your monitoring environment.
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         Заключение
@@ -2009,7 +2013,7 @@ adds an extra protection layer to your monitoring environment.
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         Вопросы
@@ -2149,26 +2153,29 @@ adds an extra protection layer to your monitoring environment.
 
 
 <h1 id="http">HTTP</h1>
-<p>HTTP authentication is one of external authentication methods provided by Zabbix
-and can be used to additionally secure your Zabbix WebUI with basic
-authentication mechanism at HTTP server level.</p>
-<p>Basic HTTP authentication protects Website (Zabbix WebUI) resources with a
-username and password. When a user attempts to access Zabbix WebUI, the browser
-pops up a dialog asking for credentials before sending anything over to Zabbix
-WebUI php code.</p>
-<p>An HTTP server has a file with credentials that is used to authenticate users.</p>
-<p>First let's see how we can configure basic authentication in HTTP server.</p>
+<p>HTTP-аутентификация - это один из внешних методов аутентификации,
+предоставляемых Zabbix, который можно использовать для дополнительной защиты
+веб-интерфейса Zabbix с помощью базового механизма аутентификации на уровне
+HTTP-сервера.</p>
+<p>Базовая HTTP-аутентификация защищает ресурсы веб-сайта (Zabbix WebUI) с помощью
+имени пользователя и пароля. Когда пользователь пытается получить доступ к
+Zabbix WebUI, браузер выводит диалог с запросом учетных данных, прежде чем
+отправить что-либо php-коду Zabbix WebUI.</p>
+<p>На HTTP-сервере есть файл с учетными данными, который используется для
+аутентификации пользователей.</p>
+<p>Сначала давайте посмотрим, как настроить базовую аутентификацию в HTTP-сервере.</p>
 <details class="warning" open="open">
 <summary>Warning</summary>
 <p>The examples below provide just minimum set of options to configure
 basic authentication. Please refer to respective HTTP server documentation
 for more details</p>
 </details>
-<h2 id="basic-authentication">Basic authentication</h2>
-<p>To enable basic authentication, we first need a "password-file" containing all
-usernames and passwords that are allowed to access the frontend.</p>
+<h2 id="_1">Базовая аутентификация</h2>
+<p>Чтобы включить базовую аутентификацию, нам сначала понадобится "файл паролей",
+содержащий все имена пользователей, которым разрешен доступ к фронтенду, и
+пароли.</p>
 <div class="admonition warning">
-<p class="admonition-title">Important</p>
+<p class="admonition-title">Важно</p>
 <p>Usernames configured for basic authentication in HTTP server
 must exist in Zabbix. But only passwords configured in HTTP server are used
 for users authentication.</p>
@@ -2297,7 +2304,7 @@ to sign out unless your authentication session expires. The only way to sign out
 is to clear cookies in your browser. Then you'll have to go through the Web
 server basic authentication procedure again.</p>
 <hr />
-<h2 id="_1">Заключение</h2>
+<h2 id="_2">Заключение</h2>
 <p>Configuring HTTP level authentication adds a critical layer of access control to
 your Zabbix Web UI by leveraging your web server's native authentication
 mechanisms. Whether using Nginx or Apache, this approach ensures that users are
@@ -2311,7 +2318,7 @@ server authentication settings with Zabbix's internal configuration, you can
 achieve seamless and secure user login workflows that blend frontend usability
 with robust protective measures.</p>
 <hr />
-<h2 id="_2">Вопросы</h2>
+<h2 id="_3">Вопросы</h2>
 <ul>
 <li>
 <p>What advantage does HTTP (web server based) authentication provide compared to

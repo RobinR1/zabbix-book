@@ -1842,6 +1842,8 @@ using built-in steps like regex, JSONPath, JavaScript, and value mapping.
       
         
       
+        
+      
     
     
     
@@ -1857,7 +1859,7 @@ using built-in steps like regex, JSONPath, JavaScript, and value mapping.
   
   
   
-    <a href="../../ch10-zabbix-discovery/network-host-discovery/" class="md-nav__link">
+    <a href="../../ch10-zabbix-discovery/chapter/" class="md-nav__link">
       
   
   
@@ -2134,6 +2136,8 @@ using built-in steps like regex, JSONPath, JavaScript, and value mapping.
       
         
       
+        
+      
     
     
     
@@ -2395,185 +2399,279 @@ using built-in steps like regex, JSONPath, JavaScript, and value mapping.
 
 
 <h1 id="preprocessing">Preprocessing</h1>
-<p>In the previous part of this book about SNMP polling we started using some preprocessing. We used it to extract data from our bulk collected SNMP items as well as manipulate how the data is stored in our Zabbix database.</p>
-<p>Without properly understanding this underlying technical functionality however, we do not have the correct foundation to understand what preprocessing is. As such, let's have a more detailed look into what preprocessing is exactly, how we can use it and why it is such an important part of our Zabbix environment.</p>
+<p>In the previous part of this book about <a href="../snmp-polling/">SNMP polling</a> we
+started using some preprocessing. We used it to extract data from our bulk
+collected SNMP items as well as manipulate how the data is stored in our Zabbix
+database.</p>
+<p>Without properly understanding this underlying technical functionality however,
+we do not have the correct foundation to understand what preprocessing is. As
+such, let's have a more detailed look into what preprocessing is exactly, how we
+can use it and why it is such an important part of our Zabbix environment.</p>
+<hr />
 <h2 id="preprocessing-functionality">Preprocessing functionality</h2>
-<p>The preprocessing functionality in our Zabbix environment is used to transform received data from our hosts on items. It allows us to process data before it is stored into our Zabbix database, it's right in the name preprocessing. Whenever we configure an item in our Zabbix environment, it's possible for us to apply the preprocessing logic and alter the incoming data.</p>
-<p>We do this on the item configuration, under the <code>preprocessing</code> tab of the item we are editing.</p>
+<p>The preprocessing functionality in our Zabbix environment is used to transform 
+received data from our hosts on items. It allows us to process data before it is 
+stored into our Zabbix database, it's right in the name "preprocessing". Whenever
+we configure an item in our Zabbix environment, it's possible for us to apply 
+the preprocessing logic and alter the incoming data.</p>
+<p>We do this on the item configuration, under the <strong>preprocessing</strong> tab of the item 
+we are editing.</p>
 <p><img alt="preprocessing/ch04.35-preprocessing-item-tab.png" src="../../../ch04-zabbix-collecting-data/preprocessing/ch04.35-preprocessing-item-tab.png" /></p>
 <p><em>4.35 Preprocessing item tab</em></p>
-<p>Here we can add our preprocessing steps by pressing the <code>add</code> button and selecting a step. However, before we dive deeper into how to create our steps let's have a look at exactly what preprocessing does within our Zabbix application.</p>
-<p>For our Zabbix monitoring to function as it does, we have to have a collector process running. A process like the Pollers, SNMP Pollers, Trappers and all of the other ones. These processes are in charge of connecting over the network to collect a value using a specific protocol like the Zabbix agent or SNMP. In case of the Trappers, the process is waiting around to receive data instead. They have one thing in common however and that is that at one point data will be received on that process. </p>
-<p>When the data is received, Zabbix server or proxy will always send data through the preprocessor. This happens before the data is stored in the Zabbix database and that is why it is called preprocessing. We process the data before we store it in the database.</p>
+<p>Here we can add our preprocessing steps by pressing the <strong>add</strong> button and selecting 
+a step. However, before we dive deeper into how to create our steps let's have a 
+look at exactly what preprocessing does within our Zabbix application.</p>
+<p>For our Zabbix monitoring to function as it does, we have to have a collector 
+process running. A process like the <em>Pollers</em>, <em>SNMP Pollers</em>, <em>Trappers</em> and all of 
+the other ones. These processes are in charge of connecting over the network to 
+collect a value using a specific protocol like the <em>Zabbix agent</em> or <em>SNMP</em>. In case 
+of the <em>Trappers</em>, the process is waiting around to receive data instead. They have 
+one thing in common however and that is that at one point data will be received 
+on that process. </p>
+<p>When the data is received, Zabbix server or -proxy will always send data through 
+the preprocessor. This happens before the data is stored in the Zabbix database 
+and that is why it is called <em>preprocessing</em>. We process the data before we store
+it in the database.</p>
 <p><img alt="preprocessing/ch04.36-preprocessing-basic-functionality.png" src="../../../ch04-zabbix-collecting-data/preprocessing/ch04.36-preprocessing-basic-functionality.png" />
 <em>4.36 Preprocessing basic functionality</em></p>
-<p>When data is received, Zabbix will internally kick of a few steps. First, it will add the received metric on your item to the preprocessing queue. From the processing queue, the processing manager will find a free preprocessing worker process will be found. One preprocessing worker can handle the preprocessing steps for a single item at the time. Once the preprocessing worker is done, the processed item moves on to the next step in our Zabbix server or proxy processes and the worker is free to handle the next item preprocessing.</p>
+<p>When data is received, Zabbix will internally kick of a few steps. First, it will 
+add the received metric on your item to the preprocessing queue. From the processing 
+queue, the processing manager will find a free preprocessing worker process and 
+submit the preprocessing task on it. One preprocessing worker can handle the
+preprocessing steps for a single item at the time. Once the preprocessing worker 
+is done, the processed item moves on to the next step in our Zabbix server or 
+-proxy processes and the worker is free to handle the next item preprocessing.</p>
+<hr />
 <h2 id="various-types-of-preprocessing">Various types of preprocessing</h2>
-<p>There are several types of preprocessing available, all of which will process and output our data in a different way. This is the current list of preprocessing steps available:</p>
-<ul>
-<li><strong>Regular expression</strong> is a simple way (once you understand regex) to extract data. </li>
-<li><strong>Replace</strong> is used to replace one value with another, especially useful to replace string with numeric.</li>
-<li><strong>Trim</strong> is used to trim characters from both the left and right side at the same time. </li>
-<li><strong>Right trim</strong> is used to trim characters from right side.</li>
-<li>
-<p><strong>Left trim</strong> is used to trim characters from left side.</p>
-</li>
-<li>
-<p><strong>XML XPath</strong> is used to extract specific data from XML.</p>
-</li>
-<li><strong>JSONPath</strong> is used to extract specific data from JSON.</li>
-<li><strong>CSV to JSON</strong> is used to convert collected CSV data to JSON.</li>
-<li>
-<p><strong>XML to JSON</strong> is used to convert collected XML data to JSON.</p>
-</li>
-<li>
-<p><strong>SNMP walk value</strong> is used to extract a specific SNMP OID from a larger SNMP walk. Also used to format UTF8 or MAC as HEX, as well as BITS as integer.</p>
-</li>
-<li><strong>SNMP walk to JSON</strong> is used to convert an SNMP walk to JSON format (ready for low level discovery).</li>
-<li>
-<p><strong>SNMP get value</strong> is used to format an SNMP get value in UTF8 or MAC format as HEX, as well as BITS as integer.</p>
-</li>
-<li>
-<p><strong>Custom multiplier</strong> is a simple mathematical multiplier, which can also be used to divide.</p>
-</li>
-<li>
-<p><strong>Simple change</strong> is a simple calculation to get the difference between the last and previous value.</p>
-</li>
-<li>
-<p><strong>Change per second</strong> is a calculation to get the difference between the last and previous value based on the number of seconds that have passed between them.</p>
-</li>
-<li>
-<p><strong>Boolean to decimal</strong> is used to convert the aforementioned value.</p>
-</li>
-<li><strong>Octal to decimal</strong> is used to convert the aforementioned value. </li>
-<li>
-<p><strong>HExadecimal to decimal</strong> is used to convert the aforementioned value. </p>
-</li>
-<li>
-<p><strong>Javascript</strong> is an extensive preprocessor, where we can use Javascript Duktape engine to apply complex scripts for processing.</p>
-</li>
-<li>
-<p><strong>In range</strong> is used to validate if the value falls within a defined range.</p>
-</li>
-<li><strong>Matches regular expression</strong> is used to validate if the value matches the regular expression. </li>
-<li><strong>Does not match regular expression</strong> is used to validate if the value does not match the regular expression. </li>
-<li><strong>Check for error in JSON</strong> is used to validate if there are errors in the received JSON.</li>
-<li><strong>Check for error in XML</strong> is used to validate if there are errors in the received XML.</li>
-<li><strong>Check for error using regular expression</strong> is used to validate if there are errors using an regular expression.</li>
-<li>
-<p><strong>Check for not supported value</strong> is used to validate if no value could be received.</p>
-</li>
-<li>
-<p><strong>Discard unchanged</strong> is used to discard any duplicate values. </p>
-</li>
-<li>
-<p><strong>Discard unchanged with heartbeat</strong> is used to discard any duplicate values, but still save it if the heartbeat has passed. </p>
-</li>
-<li>
-<p><strong>Prometheus pattern</strong> is used to extract values from prometheus data.</p>
-</li>
-<li><strong>Prometheus to JSON</strong> is used to convert prometheus data to JSON data (ready for low level discovery).</li>
-</ul>
+<p>There are several types of preprocessing steps available, all of which will process 
+and output our data in a different way. This is the current list of preprocessing
+steps available:</p>
+<p><strong>Text</strong>:
+Transform text data using the following methods:
+- <strong>Regular expression</strong> is a simple way (once you understand regex) to extract 
+  data. 
+- <strong>Replace</strong> is used to simply replace one value with another, especially useful
+  to replace string with numeric.
+- <strong>Trim</strong> is used to trim characters from both the left and right side at the
+  same time. 
+- <strong>Right trim</strong> is used to trim characters from right side.
+- <strong>Left trim</strong> is used to trim characters from left side.</p>
+<p><strong>Structured data</strong>:
+Parse and extract data from structured formats like XML, JSON, and CSV using 
+the following methods:
+- <strong>XML XPath</strong> is used to extract specific data from XML using XPath expressions.
+- <strong>JSONPath</strong> is used to extract specific data from JSON using JSONPath expressions.
+- <strong>CSV to JSON</strong> is used to convert collected CSV data to JSON.
+- <strong>XML to JSON</strong> is used to convert collected XML data to JSON.</p>
+<p><strong>SNMP</strong>:
+Process SNMP data using the following methods:
+- <strong>SNMP walk value</strong> is used to extract a specific SNMP OID from a larger SNMP
+  walk. Also used to format UTF8 or MAC as HEX, as well as BITS as integer.
+- <strong>SNMP walk to JSON</strong> is used to convert an SNMP walk to JSON format (ready 
+  for low level discovery).
+- <strong>SNMP get value</strong> is used to format an SNMP get value in UTF8 or MAC format 
+  as HEX, as well as BITS as integer.</p>
+<p><strong>Arithmetic:</strong>
+Perform arithmetic operations on numeric data using the following methods:
+- <strong>Custom multiplier</strong> is a simple mathematical multiplier, which can also be 
+  used to divide.</p>
+<p><strong>Change</strong>:
+Calculate the change between current (last) and previous values using the 
+following methods:
+- <strong>Simple change</strong> is a simple calculation to get the difference between the 
+  last and previous value.
+- <strong>Change per second</strong> is a calculation to get the difference between the last 
+  and previous value based on the number of seconds that have passed between them.</p>
+<p><strong>Numeral systems</strong>:
+Convert values in different numeral systems to decimal using the following methods:
+- <strong>Boolean to decimal</strong> is used to convert the aforementioned value.
+- <strong>Octal to decimal</strong> is used to convert the aforementioned value. 
+- <strong>HExadecimal to decimal</strong> is used to convert the aforementioned value. </p>
+<p><strong>Custom scripts</strong>:
+Process data using custom scripts with the following method:
+- <strong>Javascript</strong> is an extensive preprocessor, where we can use the built-in
+  Javascript Duktape engine to apply complex scripts for processing.</p>
+<p><strong>Validation</strong>:
+Validate data using the following methods:
+- <strong>In range</strong> is used to validate if the value falls within a defined range.
+- <strong>Matches regular expression</strong> is used to validate if the value matches the 
+  regular expression. 
+- <strong>Does not match regular expression</strong> is used to validate if the value does 
+  not match the regular expression. 
+- <strong>Check for error in JSON</strong> is used to validate if there are errors in the 
+  received JSON.
+- <strong>Check for error in XML</strong> is used to validate if there are errors in the 
+  received XML.
+- <strong>Check for error using regular expression</strong> is used to validate if there 
+  are errors using an regular expression.
+- <strong>Check for not supported value</strong> is used to validate if no value could be 
+  received.</p>
+<p><strong>Throttling</strong>:
+Throttle data to reduce storage using the following methods:
+- <strong>Discard unchanged</strong> is used to discard any duplicate values. 
+- <strong>Discard unchanged with heartbeat</strong> is used to discard any duplicate values,
+  but still save it if the heartbeat has passed. </p>
+<p><strong>Prometheus</strong>:
+Parse and extract data from Prometheus metrics using the following methods:
+- <strong>Prometheus pattern</strong> is used to extract values from prometheus data.
+- <strong>Prometheus to JSON</strong> is used to convert prometheus data to JSON data (ready
+  for low level discovery).</p>
+<hr />
 <h2 id="detailed-examples-of-most-important-preprocessing">Detailed examples of most important preprocessing</h2>
-<p>When working with Zabbix, you will find that depending on your environment, some preprocessing steps are used more than others. Some of the most used ones are important to properly understand their functioning. </p>
+<p>When working with Zabbix, you will find that depending on your environment, some 
+preprocessing steps are used more than others. Some of the most used ones are 
+important to properly understand their functioning. </p>
 <p><strong>Regular expression</strong>
-Regular expressions are a whole subject on its own, there are many books on the topic on its own. We won't going over the details here, for that we recommend going to https://regex101.com. On this website you can read extensive documentation about regular expressions, as well as test your existing ones. </p>
-<p>Let's start with a basic example, where we have an item that received the value: <strong>The error is value: 0</strong>. Let's say we want to get numeric value from the string, we could configure our preprocessing like this.</p>
+Regular expressions are a whole subject on its own, there are many books on the 
+topic on its own. We won't going over the details here, for that we recommend 
+going to https://regex101.com. On this website you can read extensive documentation 
+about regular expressions, as well as test your existing ones. </p>
+<p>Let's start with a basic example, where we have an item that received the value:
+<code>The error is value: 0</code>. Let's say we want to get numeric value from the string,
+we could configure our preprocessing like this.</p>
+<div class="admonition example">
+<p class="admonition-title">Example regular expression</p>
+<ul>
+<li>Regular expression: <code>The error is value:\s(\d+)</code></li>
+<li>Output format: <code>\1</code></li>
+</ul>
+</div>
 <p><img alt="preprocessing/ch04.37-preprocessing-regex.png" src="../../../ch04-zabbix-collecting-data/preprocessing/ch04.37-preprocessing-regex.png" />
 <em>4.37 Preprocessing regular expression</em></p>
-<p>This would then result in the value <strong>0</strong>, which we can store as the <code>Numeric (unsigned)</code> item type of information. The basic functionality of the regular expression preprocessing step as you can see is to extract values from larger data.</p>
+<p>This would then result in the value <code>0</code>, which we can store as a
+<strong>Numeric (unsigned)</strong> item type of information. The basic functionality of the 
+regular expression preprocessing step as you can see is to extract values from 
+larger data.</p>
 <p><strong>JSONPath and additional steps</strong>
-Within Zabbix monitoring, JSON data structures are used quite a lot. We can find it in Low Level Discovery, export files and it is often the data format sent back by API's. As such, being able to process JSON datasets is important and that is where JSONPath comes in. Let's say we have a basic JSON dataset we collected from an API.</p>
-<div class="admonition info">
+Within Zabbix monitoring, JSON data structures are used quite a lot. We can find
+it in Low Level Discovery, export files and it is often the data format sent back 
+by API's. As such, being able to process JSON datasets is important and that is 
+where <em>JSONPath</em> comes in. Let's say we have a basic JSON dataset we collected 
+from an API.</p>
+<div class="admonition example">
 <p class="admonition-title">Example JSON</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>{
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>&quot;hostname&quot;: &quot;webserver01&quot;,
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>&quot;c&quot;: true,
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>&quot;retry_count&quot;: 3
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>}
+<div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">&quot;hostname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;webserver01&quot;</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nt">&quot;retry_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">}</span>
 </span></code></pre></div>
 </div>
-<p>Now with JSONpath, we could extract these values. Let's say we want to get the <code>enabled</code> value and store it as a <code>Numeric (unsigned)</code> value. We could do the following.</p>
+<p>Now with JSONpath, we could extract these values. Let's say we want to get the 
+<code>enabled</code> value and store it as a <strong>Numeric (unsigned)</strong> value. We could do the 
+following.</p>
+<div class="admonition example">
+<p class="admonition-title">Example JSONPath</p>
+<ul>
+<li>JSONPath: <code>$.enabled</code></li>
+<li>Replace: <code>false</code> with <code>0</code></li>
+<li>Replace: <code>true</code> with <code>1</code></li>
+</ul>
+</div>
 <p><img alt="preprocessing/ch04.38-preprocessing-jsonpath.png" src="../../../ch04-zabbix-collecting-data/preprocessing/ch04.38-preprocessing-jsonpath.png" />
 <em>4.38 Preprocessing JSONPath</em></p>
-<p>This will extract the value <code>true</code>. However, as a bonus we said we would also to store this extracted value as a <code>Numeric (unsigned)</code> value. To do this, I used an additional 2 preprocessing steps <code>replace</code>. Replacing <code>false</code> with <code>0</code> and <code>true</code> with <code>1</code>. If we press the <code>Test all steps</code> button, we can see the result happen live.</p>
+<p>This will extract the value <code>true</code>. However, as a bonus we said we would also like
+to store this extracted value as a <strong>Numeric (unsigned)</strong> value. To do this, we
+used an additional 2 preprocessing steps of type <strong>Replace</strong> after the <strong>JSONPath</strong> 
+step, replacing <code>false</code> with <code>0</code> and <code>true</code> with <code>1</code>. If we press the 
+<strong>Test all steps</strong> button, we can see the result happen live.</p>
 <p><img alt="preprocessing/ch04.39-preprocessing-jsonpath-test.png" src="../../../ch04-zabbix-collecting-data/preprocessing/ch04.39-preprocessing-jsonpath-test.png" />
 <em>4.39 Preprocessing JSONPath test</em></p>
-<p>It's important to know that we can add an unlimited amount of preprocessing steps, but that Zabbix will always execute all of them in the order in which they are defined. First, we extract the value from JSON. Second, we try to replace <code>false</code> with <code>0</code> which didn't do anything as there was no match. Third, we replace <code>true</code> with <code>1</code> which worked. Now all we have to do is apply a value mapping to translate true and false back into human readable format. The big benefit here being that storing these kinds of values as <code>Numeric (unsigned)</code> gives us a lot more trigger functions as options for alerting. It also means we can now store the value in <code>Trend</code> tables, as only <code>Numeric</code> data types are stores as trends.</p>
+<p>It's important to know that we can add an unlimited amount of preprocessing 
+steps, but that Zabbix will always execute all of them in the order in which they 
+are defined. 
+  - First, we extract the value from JSON. 
+  - Second, we try to replace <code>false</code> with <code>0</code> which didn't do anything as there 
+    was no match. 
+  - Third, we replace <code>true</code> with <code>1</code> which worked.
+Now all we have to do is apply a <strong>value mapping</strong> onto the item to translate true
+and false back into human readable format. </p>
+<div class="admonition tip">
+<p class="admonition-title">Conversion to numeric values</p>
+<p>You might be asking, why do we want to convert true and false into 1 and 0?</p>
+<p>This has a few benefits, but the main one is that we can now store this value
+as a <strong>Numeric (unsigned)</strong> value. This means we can use it in numerical trigger 
+functions like <code>min()</code>, <code>max()</code>, <code>count()</code>, <code>sum()</code>, etc. We can also use it
+in graphs and other visualisations. Which is not possible if we store it as 
+a string value.
+Secondly, storing this value as a <strong>Numeric (unsigned)</strong> value means Zabbix can 
+also store it in its <code>Trends</code> table, which allows us to keep a longer (trend-)history of 
+this data. Again, this is not possible if we store it as a string value, as
+only numeric values are stored in trends.
+And lastly, it takes up less space in our database, especially if we have a
+high update interval and a lot of data points. Storing <code>true</code> and <code>false</code> as
+string values takes up more space than storing <code>1</code> and <code>0</code> as numeric values.</p>
+<p>So generally, it's always a good idea to convert string values into numeric 
+values whenever possible, as it allows us to use more of Zabbix's functionality and
+also saves us some space in our database.</p>
+</div>
+<hr />
 <p><strong>SNMP walk value</strong> </p>
+<p>TODO</p>
+<hr />
 <p><strong>SNMP walk to JSON</strong></p>
-<p><strong>Custom multiplier</strong> 
-The customer multiplier is simple, but important. In Zabbix you might often find that you receive a value, that you would want to store slightly differently. Specifically, this preprocessing step is often used to convert numbers to their base value. Your device might be giving you MegaBytes (MB) for example, where Zabbix would like us to store Bytes (B) instead. </p>
+<p>TODO</p>
+<hr />
+<p><strong>Custom multiplier</strong> </p>
+<p>The <em>customer multiplier</em> is simple, but important. In Zabbix you might often find 
+that you receive a value, that you would want to store slightly differently. 
+Specifically, this preprocessing step is often used to convert numbers to their 
+base value.</p>
+<p>Your device might be giving you a value in MegaBytes (MB) for example,
+where in Zabbix you would generally like to store Bytes (B) instead. </p>
+<div class="admonition example">
+<p class="admonition-title">Example custom multiplier</p>
+<ul>
+<li>Custom multiplier: <code>1048576</code> (1,024 * 1,024)</li>
+</ul>
+</div>
 <p><img alt="preprocessing/ch04.40-preprocessing-multiplier.png" src="../../../ch04-zabbix-collecting-data/preprocessing/ch04.40-preprocessing-multiplier.png" />
 <em>4.40 Preprocessing Custom Multiplier</em></p>
-<p>This will now store the received MegaByte value as Bytes. Now, we can set the item <code>Units</code> setting to B and it will convert the Bytes stored to a human readable Mega, Giga, Tera, etc.</p>
-<p>Storing base values is always preferred in Zabbix, so we can do the conversion with <code>Units</code> on the item later. This results in a more dynamic setup.</p>
-<p><strong>Simple Change and Change per second</strong>
-We quickly mentioned the <code>Simple Change</code> before, which calculates the difference between <code>Last</code> and <code>Previous</code> value. Change per second goes a step further however by introducing a time based calculation to the formula. </p>
-<p>A simple change calculation would look like this.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Position</th>
-<th style="text-align: left;">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">Last #1</td>
-<td style="text-align: left;">9</td>
-</tr>
-<tr>
-<td style="text-align: left;">Last #2 (previous)</td>
-<td style="text-align: left;">4</td>
-</tr>
-<tr>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">-----</td>
-</tr>
-<tr>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"><strong>5</strong></td>
-</tr>
-</tbody>
-</table>
-<p>We can see the result here is a simple <em>5</em>, using the formula <code>Last - Previous</code>. In Zabbix the last received value is often indicated by <code>Last #1</code> and the value before it as <code>Last #2</code>. Next, let's introduce the time based calculation with <code>Change per second</code>, so we see something more difficult.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Position</th>
-<th style="text-align: left;">Value</th>
-<th style="text-align: left;">Timestamp (Unixtime)</th>
-<th style="text-align: left;">Change per second</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">Last #1</td>
-<td style="text-align: left;">13</td>
-<td style="text-align: left;">1763282130</td>
-<td style="text-align: left;">7</td>
-</tr>
-<tr>
-<td style="text-align: left;">Last #2 (previous)</td>
-<td style="text-align: left;">6</td>
-<td style="text-align: left;">1763282100</td>
-<td style="text-align: left;">30</td>
-</tr>
-<tr>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">---- -</td>
-<td style="text-align: left;">------------------- -</td>
-<td style="text-align: left;">-------------------- /</td>
-</tr>
-<tr>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"><strong>7</strong></td>
-<td style="text-align: left;"><strong>30</strong></td>
-<td style="text-align: left;">0.23333333</td>
-</tr>
-</tbody>
-</table>
+<p>This will now store the received MegaByte value as Bytes by multiplying the incoming
+value by the custom multiplier. Now, we can set the item <code>Units</code> setting to <code>B</code> 
+and Zabbix will automatically convert the Bytes value stored to a human readable
+Mega, Giga, Tera, etc. when displayed in graphs, latest data, etc.</p>
+<div class="admonition tip">
+<p class="admonition-title">Base values</p>
+<p>Storing base values is always preferred in Zabbix, so we can do the conversion 
+with <code>Units</code> on the item later. This results in a more dynamic setup.</p>
+</div>
+<hr />
+<p><strong>Simple Change and Change per second</strong></p>
+<p>We quickly mentioned the <strong>Simple Change</strong> before, which calculates the difference 
+between <em>Last</em> and <em>Previous</em> value. <strong>Change per second</strong> goes a step further however
+by introducing a time based calculation to the formula. </p>
+<p>A <strong>Simple Change</strong> calculation looks like this.</p>
+<div class="admonition example">
+<p class="admonition-title">Example simple change</p>
+<div class="arithmatex">\[
+\begin{array}{r}
+last_1 = 9 \\
+- last_2 = 4 \\
+\hline
+5 \\
+\end{array}
+\]</div>
+</div>
+<p>We can see the result here is a simple <em>5</em>, using the formula <span class="arithmatex">\(last_1 - last_2\)</span>.
+In Zabbix the last received value is often indicated by <code>last #1</code> or <span class="arithmatex">\(last_1\)</span> and the value 
+before it as <code>last #2</code> or <span class="arithmatex">\(last_2\)</span> as in the "second last value". Next, let's introduce the
+time based calculation with <strong>Change per second</strong>, so we see something more difficult
+using the formula <span class="arithmatex">\(\frac{last_1 - last_2}{t_1 - t_2}\)</span></p>
+<div class="admonition example">
+<p class="admonition-title">Example change per second</p>
+<div class="arithmatex">\[
+\begin{array}{rcl}
+last_1 &amp; = &amp; 13 \quad (t_1 = 1763282130) \\
+last_2 &amp; = &amp; 6 \quad (t_2 = 1763282100) \\
+\hline
+\Delta last &amp; = &amp; last_1 - last_2 = 7 \\
+\Delta t &amp; = &amp; t_1 - t_2 = 30 \\
+\hline
+\frac{\Delta last}{\Delta t} &amp; = &amp; \frac{7}{30} \approx 0.23333333
+\end{array}
+\]</div>
+</div>
 <p>We can see the calculation is the same in principle, we subtract <code>Last #1</code> and <code>Last #2</code>. We also takes the Unixtime stamp of when <code>Last #1</code> and <code>Last #2</code> were collected, subtracting those. Subtracting those time values gives us the time passed between <code>Last #1</code> and <code>Last #2</code>. Then the last step is to divide the values, giving us an estimate of how much values were received per second. Of course, the shorter our update interval is, the closer the estimate. But it gives us an accurate average over time.</p>
 <p>This kind of calculation works with what we call <code>Counters</code>, values that always increase on our monitoring targets. For example, network interfaces Bits received/sent are often times counters. These work by calculating how much data has passed over the interface in total, often since the last reboot. Often times, a useless metric to us unless we convert it with <code>Change per second</code> when it gives us a nice <code>Bits/s</code>. This allows us to monitor network traffic over time, instead of just a total. </p>
 <p><strong>Javascript</strong>

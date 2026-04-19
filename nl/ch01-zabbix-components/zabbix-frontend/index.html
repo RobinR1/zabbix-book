@@ -1402,6 +1402,8 @@ timezone, and time format.
       
         
       
+        
+      
     
     
     
@@ -1417,7 +1419,7 @@ timezone, and time format.
   
   
   
-    <a href="../../ch10-zabbix-discovery/network-host-discovery/" class="md-nav__link">
+    <a href="../../ch10-zabbix-discovery/chapter/" class="md-nav__link">
       
   
   
@@ -1689,6 +1691,8 @@ timezone, and time format.
   
     
     
+      
+        
       
         
       
@@ -2003,7 +2007,7 @@ standaard geen toestemming krijgen van SystemD om te schrijven naar de
 <code>/etc/zabbix/web</code> directory die nodig is voor de Zabbix frontend setup. Om dit
 in te schakelen moeten we een drop-in bestand maken om dit toe te staan:</p>
 <div class="admonition info">
-<p class="admonition-title">SystemD: Allow PHP-FPM to write to /etc/zabbix/web</p>
+<p class="admonition-title">SystemD: PHP-FPM toestaan te schrijven naar /etc/zabbix/web</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>systemctl<span class="w"> </span>edit<span class="w"> </span>php-fpm
 </span></code></pre></div>
 <p>This will open an editor to create a drop-in file <code>/etc/systemd/system/php-fpm.service.d/override.conf</code>
