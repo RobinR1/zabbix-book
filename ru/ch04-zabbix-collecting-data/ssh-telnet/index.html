@@ -2222,59 +2222,115 @@ test connectivity, and collect data from servers and network devices.
 
 
 <h1 id="ssh-telnet">SSH / Telnet</h1>
-<p>Let's say you have a device that doesn't support SNMP, there is no API and it's just not exposing any data (or just the data you need) via any protocol. However, you are able to login to the device and you are able to execute commands through the SSH or Telnet terminal. In this case Zabbix can still provide you with a solid option to monitor the device.</p>
-<p>Zabbix provides us with the option to set up a remote connection through SSH or Telnet and execute any command we'd normally execute ourselves manually. We can then use our preprocessing rules and other methods to parse this information and create valuable monitoring metrics from it. </p>
+<p>Let's say you have a device that doesn't support SNMP, there is no API and it's 
+just not exposing any data (or just the data you need) via any protocol. However,
+you are able to login to the device and you are able to execute commands through
+the SSH or Telnet terminal. In this case Zabbix can still provide you with a
+solid option to monitor the device.</p>
+<p>Zabbix provides us with the option to set up a remote connection through SSH or
+Telnet and execute any command we'd normally execute ourselves manually. We can
+then use our preprocessing rules and other methods to parse this information and
+create valuable monitoring metrics from it. </p>
 <details class="security notice" open="open">
 <summary>Security</summary>
-<p>Please keep in mind that Telnet sends Usernames/Passwords unencrypted over your network. This means that it is not considered a secure connection and as such it should not be used. However, if you have a device that only exposes data via Telnet, Zabbix still provides you with the option to use the protocol at your own risk.</p>
+<p>Please keep in mind that Telnet sends Usernames/Passwords unencrypted over 
+your network. This means that it is not considered a secure connection and 
+as such it should not be used. However, if you have a device that only
+exposes data via Telnet, Zabbix still provides you with the option to use
+the protocol at your own risk.</p>
 </details>
+<hr />
 <h1 id="ssh-monitoring">SSH Monitoring</h1>
-<p>Let's start with the most used method, SSH. Since this is a secure encrypted connection, it is often times used to get data from devices that do not expose it via other protocols. However, our favourite use case for SSH monitoring is to get data from devices that do have SNMP or an API, but only expose certain data through the CLI. This gives you another option in gathering information you need that the vendor might not have properly exposed.</p>
-<p>In our Zabbix frontend, let's navigate to <code>Monitoring</code> | <code>Hosts</code> and create a new host for SSH and Telnet monitoring. Let's call it <code>cli-monitoring</code> and put it in the hostgroup XYZ.</p>
+<p>Let's start with the most used method, SSH. Since this is a secure encrypted 
+connection, it is often used to get data from devices that do not expose 
+it via other protocols. However, our favourite use case for SSH monitoring is to 
+get data from devices that do have SNMP or an API, but only expose certain data 
+through the CLI. This gives you another option in gathering information you need 
+that the vendor might not have properly exposed.</p>
+<p>In our Zabbix frontend, let's navigate to <strong>Monitoring</strong> → <strong>Hosts</strong> and create 
+a new host for SSH and Telnet monitoring. Let's call it <code>cli-monitoring</code> and 
+put it in the hostgroup XYZ.</p>
 <p><img align="left" alt="CLI Monitoring" src="../../../ch04-zabbix-collecting-data/ssh-telnet/ch04.xx-cli-monitoring-host.png" />
 <em>4.xx Zabbix CLI Monitoring host</em></p>
-<p>After creating the host, click on <code>Items</code> for this host and then in the top right corner click on <code>Create item</code>. We will set the <code>Type</code> to <code>SSH Agent</code>, which we will need to create SSH based checks. Something you might not expect about this item is that the <code>Key</code> is automatically filled in as:
-- <strong>ssh.run[<unique short description>,<ip>,<port>,<encoding>,<ssh options>,<subsystem>]</strong></p>
-<p>The key for SSH items is built in and we are thus forced to use this key format to make the item work. You can see however we get some key parameters to customise how it works.</p>
+<p>After creating the host, click on <strong>Items</strong> for this host and then in the top 
+right corner click on <strong>Create item</strong>. We will set the <strong>Type</strong> to <strong>SSH Agent</strong>,
+which we will need to create SSH based checks. Something you might not expect 
+about this item is that the <code>Key</code> is automatically filled in as:
+<code>ssh.run[&lt;unique short description&gt;,&lt;ip&gt;,&lt;port&gt;,&lt;encoding&gt;,&lt;ssh options&gt;,&lt;subsystem&gt;]</code></p>
+<p>The key for SSH items is built in and we are thus forced to use this key format 
+to make the item work. You can see however we get some key parameters to 
+customize how it works.</p>
 <ul>
-<li><strong><unique short description>: Is used to make this item unique, as we cannot have duplicate keys on Zabbix hosts.</strong></li>
-<li><strong><ip>: Can we used to specify the target IP Address for SSH to connect to. Can be used if no host interface is specified</strong></li>
-<li><strong><port>: Can be used to specify a different SSH port, the default is port 22.</strong></li>
-<li><strong><encoding>: How to decode the remote output, is it UTF-8 or ANSI for example.</strong></li>
-<li><strong><ssh options>: In case you have more SSH settings you want to use, these can be set here. For example you could set KexAlgorithms=curve25519-sha256;Ciphers=chacha20-poly1305@openssh.com to force stronger security</strong></li>
-<li><strong><subsystem>: If you'd like to force this connection to use a different SSH subsystem to connect into.</strong></li>
+<li><code>&lt;unique short description&gt;</code>: Is used to make this item unique, as we cannot 
+  have duplicate keys on Zabbix hosts.</li>
+<li><code>&lt;ip&gt;</code>: Can we used to specify the target IP Address for SSH to connect to. 
+  Can be used if no host interface is specified</li>
+<li><code>&lt;port&gt;</code>: Can be used to specify a different SSH port, the default is port 22.</li>
+<li><code>&lt;encoding&gt;</code>: How to decode the remote output, is it UTF-8 or ANSI for example.</li>
+<li><code>&lt;ssh options&gt;</code>: In case you have more SSH settings you want to use, these can
+  be set here. For example you could set <code>KexAlgorithms=curve25519-sha256;Ciphers=chacha20-poly1305@openssh.com</code>
+  to force stronger security</li>
+<li><code>&lt;subsystem&gt;</code>: If you'd like to force this connection to use a different SSH 
+  subsystem to connect into.</li>
 </ul>
-<p>As you can see we have a lot of options, but in most cases the <code>unique short description</code> and <code>ip</code> will be enough.</p>
-<p>Let's give the item the <code>Key</code> value <code>ssh.run[ssh.logins.10m,127.0.0.1]</code> and also a <code>Name</code> value <code>SSH Logins (10m)</code>. Then the trick to making this item works comes along, we need to login using SSH and execute commands.</p>
-<p>At <code>Authentication method</code> we will select <code>Password</code> for the example, but you are also able to select <code>Public key</code> as an option here. Going with <code>Public key</code> would allow you to set:
-- <strong>User name: The user to login as.</strong>
-- <strong>Public key file: The path to the Public key we will use to login.</strong>
-- <strong>Private key file: The path to the Private key we will use to login.</strong>
-- <strong>Key passphrase: The password to decrypt the Private key.</strong></p>
-<p>Keep in mind, when using SSH key authentication it is important to update you Zabbix server and/or Zabbix proxy configuration file. You can set the <code>SSHKeyLocation=</code> parameter to for example <code>SSHKeyLocation=/home/zabbix/.ssh/</code> which will be the path where the public and private keys for SSH checks (and actions) will be located. For example now you can fill in <code>Public key file</code> as <code>ssh-monitoring.pub</code> and it will use the full path <code>/home/zabbix/.ssh/ssh-monitoring.pub</code>.</p>
-<p>But as we mentioned let's start with by setting <code>Authentication method</code> to <code>Password</code>. I will set my <code>User name</code> to <code>ssh-monitoring</code> and set a strong secure <code>Password</code>.</p>
-<details class="fun security fact" open="open">
-<summary>Fun</summary>
-<p>That was a lie, I did in fact not set a secure password as this is only a LAB environment to write examples for this book. But YOU SHOULD set a strong password, especially in production. This is also the reason we use username ssh-monitoring as we will create a separate limited user account for SSH monitoring. DO NOT use root!</p>
+<p>As you can see we have a lot of options, but in most cases the 
+<code>&lt;unique short description&gt;</code> and <code>&lt;ip&gt;</code> will be enough.</p>
+<p>Let's give the item the <strong>Key</strong> value <code>ssh.run[ssh.logins.10m,127.0.0.1]</code> and 
+also a <strong>Name</strong> value <code>SSH Logins (10m)</code>. Then the trick to making this item 
+works comes along, we need to login using SSH and execute commands.</p>
+<p>At <strong>Authentication method</strong> we will select <strong>Password</strong> for the example, but
+you are also able to select <strong>Public key</strong> as an option here. Going with 
+<strong>Public key</strong> would allow you to set:
+- <strong>User name</strong>: The user to login as.
+- <strong>Public key file</strong>: The path to the Public key we will use to login.
+- <strong>Private key file</strong>: The path to the Private key we will use to login.
+- <strong>Key passphrase</strong>: The password to decrypt the Private key.</p>
+<p>Keep in mind, when using SSH key authentication it is important to update you
+Zabbix server and/or Zabbix proxy configuration file. You can set the 
+<code>SSHKeyLocation=</code> parameter to for example <code>SSHKeyLocation=/var/lib/zabbix/.ssh/</code>
+which will be the path where the public and private keys for SSH checks 
+(and actions) will be located. For example now you can fill in <code>Public key file</code>
+as <code>ssh-monitoring.pub</code> and it will use the full path 
+<code>/var/lib/zabbix/.ssh/ssh-monitoring.pub</code>. (We choose to use <code>/var/lib/zabbix/</code> 
+as this is the default Zabbix user home directory on Linux, preventing possible
+SELinux issues reading the SSH key files, but you can of course
+choose a different path as well, just make sure to update the <code>SSHKeyLocation</code>
+parameter accordingly and make sure the Zabbix user has the necessary permissions).</p>
+<p>But as we mentioned let's start with by setting <strong>Authentication method</strong> to
+<strong>Password</strong>. I will set my <strong>User name</strong> to <code>ssh-monitoring</code> and set a strong
+secure <strong>Password</strong>.</p>
+<details class="tip" open="open">
+<summary>Fun security fact</summary>
+<p>That was a lie, I did in fact not set a secure password as this is only a 
+LAB environment to write examples for this book. But YOU SHOULD set a strong 
+password, especially in production. This is also the reason we use username 
+<code>ssh-monitoring</code> as we will create a separate limited user account for SSH 
+monitoring. DO NOT use <code>root</code> or the device <code>admin</code> account unless the device
+does not has the ability to create a separate restricted user account!</p>
 </details>
-<p>Last but not least, let's add the command to execute in the <code>Executed script</code> field.</p>
-<div class="admonition info">
+<p>Last but not least, let's add the command to execute in the <strong>Executed script</strong> field.</p>
+<div class="admonition example">
 <p class="admonition-title">Executed script for SSH</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>journalctl<span class="w"> </span>-u<span class="w"> </span>sshd<span class="w"> </span>--since<span class="w"> </span><span class="s2">&quot;-10 min&quot;</span><span class="w"> </span>--no-pager<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;Accepted password&quot;</span>
 </span></code></pre></div>
 </div>
-<p>At the executed script part it is also possible to add multiple commands, which Zabbix will then execute line-by-line within the same SSH session. Another option is to execute an entire script located somewhere on your device. The options are quite endless. </p>
-<p>In this case we are executing a command through SSH on a Linux system, simply because it's an easy to explain and setup option. But of course, if I had the Zabbix agent installed on this server already I might as well have used a UserParameter (or remote command if preferred). SSH checks are way more useful on devices where no agent can be installed.</p>
-<p>Let's go to our Linux CLI and create the account on our Zabbix server on Linux for testing.</p>
-<div class="admonition info">
+<p>At the executed script part it is also possible to add multiple commands, which 
+Zabbix will then execute line-by-line within the same SSH session. Another 
+option is to execute an entire script located somewhere on your device. The 
+options are quite endless. </p>
+<p>In this case we are executing a command through SSH on a Linux system, simply 
+because it's an easy to explain and setup option. But of course, if I had the 
+Zabbix agent installed on this server already I might as well have used a 
+<code>UserParameter</code> (or remote command if preferred). SSH checks are way more useful
+on devices where no agent can be installed.</p>
+<p>Let's go to our Linux CLI and create the account on our Zabbix server on Linux
+for testing.</p>
+<div class="admonition example">
 <p class="admonition-title">Create ssh-monitoring user</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>useradd<span class="w"> </span>-m<span class="w"> </span>-s<span class="w"> </span>/bin/bash<span class="w"> </span>ssh-monitoring
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>passwd<span class="w"> </span>ssh-monitoring
 </span></code></pre></div>
-</div>
 <p>Set that secure password we discussed earlier and then give it limited permissions</p>
-<div class="admonition info">
-<p class="admonition-title">Set ssh-monitoring user permissions</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>systemd-journal<span class="w"> </span>ssh-monitor
 </span></code></pre></div>
 </div>
@@ -2284,39 +2340,84 @@ test connectivity, and collect data from servers and network devices.
 <p>Do not forget to add your tag.</p>
 <p><img align="left" alt="CLI Monitoring SSH item tag" src="../../../ch04-zabbix-collecting-data/ssh-telnet/ch04.xx-cli-monitoring-ssh-item-tag.png" />
 <em>4.xx Zabbix CLI Monitoring SSH item tag</em></p>
-<p>This should now work as expected and when you navigate to <code>Monitoring</code> | <code>Latest data</code> you should now see a value for this host.</p>
+<p>This should now work as expected and when you navigate to <strong>Monitoring</strong> → 
+<strong>Latest data</strong> you should now see a value for this host.</p>
 <details class="note" open="open">
 <summary>Note</summary>
-<p>If you are using selinux or a similar security tool, please keep in mind this can block Zabbix access to execute SSH as usual. You should check your audit logs and make sure to allow the SSH connection you'd like to setup. Do not over allow and keep things secure.</p>
+<p>If you are using SELinux or a similar security tool, please keep in mind 
+this can block Zabbix access to execute SSH as usual. You should check your 
+audit logs and make sure to allow the SSH connection you'd like to setup. 
+Do not over allow and keep things secure.</p>
 </details>
+<hr />
 <h1 id="telnet-monitoring">Telnet Monitoring</h1>
-<p>Telnet monitoring works almost in the exact same way as SSH monitoring, except of course the Telnet protocol is used in the background. When we navigate to <code>Items</code> for our <code>cli-monitoring</code> host again, we can click on <code>Create item</code> in the top right corner. </p>
-<p>Let's add the item <code>Type</code> as <code>TELNET agent</code> and you will see the <code>Key</code> field already filled out just like the SSH check:
-- <strong>telnet.run[<unique short description>,<ip>,<port>,<encoding>]</strong></p>
+<p>Telnet monitoring works almost in the exact same way as SSH monitoring, except 
+of course the Telnet protocol is used in the background. When we navigate to 
+<strong>Items</strong> for our <code>cli-monitoring</code> host again, we can click on <strong>Create item</strong> 
+in the top right corner. </p>
+<p>Let's add the item <strong>Type</strong> as <strong>TELNET agent</strong> and you will see the <strong>Key</strong>
+field already filled out just like the SSH check:
+<code>telnet.run[&lt;unique short description&gt;,&lt;ip&gt;,&lt;port&gt;,&lt;encoding&gt;]</code></p>
 <p>The fields are almost the same as SSH, with a few less options.
-- <strong><unique short description>: Is used to make this item unique, as we cannot have duplicate keys on Zabbix hosts.</strong>
-- <strong><ip>: Can we used to specify the target IP Address for Telnet to connect to. Can be used if no host interface is specified</strong>
-- <strong><port>: Can be used to specify a different Telnet port, the default is port 23.</strong>
-- <strong><encoding>: How to decode the remote output, is it UTF-8 or ANSI for example.</strong></p>
-<p>Let's set this one up similar to SSH with the item the <code>Key</code> value <code>telnet.run[telnet.logins.10m,127.0.0.1]</code> and also a <code>Name</code> value <code>Telnet Logins (10m)</code>. Of course we also need to specify a command to execute again, so let's add this to the <code>Executed script</code> field.</p>
-<div class="admonition info">
+- <code>&lt;unique short description&gt;</code>: Is used to make this item unique, as we cannot 
+  have duplicate keys on Zabbix hosts.
+- <code>&lt;ip&gt;</code>: Can we used to specify the target IP Address for Telnet to connect to.
+  Can be used if no host interface is specified
+- <code>&lt;port&gt;</code>: Can be used to specify a different Telnet port, the default is port
+  <code>23</code>.
+- <code>&lt;encoding&gt;</code>: How to decode the remote output, is it UTF-8 or ANSI for example.</p>
+<p>Let's set this one up similar to SSH with the item the <strong>Key</strong> value 
+<code>telnet.run[telnet.logins.10m,127.0.0.1]</code> and also a <strong>Name</strong> value 
+<code>Telnet Logins (10m)</code>. Of course we also need to specify a command to execute 
+again, so let's add this to the <strong>Executed script</strong> field.</p>
+<div class="admonition example">
 <p class="admonition-title">Executed script for SSH</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>journalctl<span class="w"> </span>--since<span class="w"> </span><span class="s2">&quot;-10 min&quot;</span><span class="w"> </span>--no-pager<span class="w"> </span>-t<span class="w"> </span><span class="k">in</span>.telnetd<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;LOGIN&quot;</span>
 </span></code></pre></div>
 </div>
-<p>For Telnet we will also need to specify the <code>User name</code> and <code>Password</code> fields again. Keep in mind, Telnet passwords are sent over the network unencrypted, so once a hacker is in your network the password will be known. If you do still choose to use Telnet for something, still try to set a secure password as this could help against unintelligent scripted attacks, but against a real targeted attack Telnet is useless. Only use Telnet if you make sure the user doesn't have any option to do something malicious on devices you do not care too much about. It really is a last resort monitoring option, so ask yourself is the monitoring worth more than security here?</p>
+<p>For Telnet we will also need to specify the <strong>User name</strong> and <strong>Password</strong> fields
+again. </p>
+<div class="admonition warning">
+<p class="admonition-title">Telnet is not secure, use with caution</p>
+<p>Keep in mind, Telnet passwords are sent over the network unencrypted, so
+once a hacker is in your network the password will be known. If you do still
+choose to use Telnet for something, still try to set a secure password as this
+could help against unintelligent scripted attacks, but against a real targeted
+attack Telnet is useless. Only use Telnet if you make sure the user doesn't have
+any option to do something malicious on devices you do not care too much about.
+It really is a last resort monitoring option, so ask yourself is the monitoring
+worth more than security here?</p>
+</div>
 <p>Again, let's double-check our item configuration, to make sure everything is set up correctly. </p>
 <p><img align="left" alt="CLI Monitoring Telnet item" src="../../../ch04-zabbix-collecting-data/ssh-telnet/ch04.xx-cli-monitoring-telnet-item.png" />
 <em>4.xx Zabbix CLI Monitoring Telnet item</em></p>
 <p>Do not forget to add your tag.</p>
 <p><img align="left" alt="CLI Monitoring Telnet item tag" src="../../../ch04-zabbix-collecting-data/ssh-telnet/ch04.xx-cli-monitoring-telnet-item-tag.png" />
 <em>4.xx Zabbix CLI Monitoring Telnet item tag</em></p>
-<p>Then, if you had a Telnet user set up. You can go to <code>Monitoring</code> | <code>Latest data</code> to check if the value is coming in.</p>
+<p>Then, if you had a Telnet user set up. You can go to <strong>Monitoring</strong> →
+<strong>Latest data</strong> to check if the value is coming in.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>SSH and Telnet monitoring provide you with a great fallback when traditional protocols like SNMP or API's simply aren't available. It might also be the case that a vendor hides important information within CLI commands. Using a limited user account, only granted access to specific commands, Zabbix can remotely authenticate and execute CLI commands or even entire scripts to get us raw terminal output that can be used as metrics.</p>
-<p>When working with these two options, of course SSH will be the preferred method as it grants us the correct security for modern environments. Telnet should only be used when absolutely all other options are exhausted. In any case, the workflow remains the same in both cases: log in, run a command, preprocess the output, and then use it just like any other metric you have collected.</p>
+<p>SSH and Telnet monitoring provide you with a great fallback when traditional
+protocols like SNMP or API's simply aren't available. It might also be the case 
+that a vendor hides important information within CLI commands. Using a limited 
+user account, only granted access to specific commands, Zabbix can remotely 
+authenticate and execute CLI commands or even entire scripts to get us raw 
+terminal output that can be used as metrics.</p>
+<p>When working with these two options, of course SSH will be the preferred method 
+as it grants us the correct security for modern environments. Telnet should only
+be used when absolutely all other options are exhausted. In any case, the 
+workflow remains the same in both cases: log in, run a command, preprocess the 
+output, and then use it just like any other metric you have collected.</p>
 <h2 id="questions">Questions</h2>
+<ul>
+<li>What is the main difference between SSH and Telnet monitoring?</li>
+<li>What is the main security risk of using Telnet monitoring?</li>
+</ul>
 <h2 id="useful-urls">Useful URLs</h2>
+<ul>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/ssh_checks">https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/ssh_checks</a></li>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/telnet_checks">https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/telnet_checks</a></li>
+</ul>
 
 
 

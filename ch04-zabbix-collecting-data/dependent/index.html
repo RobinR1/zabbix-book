@@ -2421,17 +2421,22 @@ efficiency.</p>
 <li>dependent item</li>
 <li>preprocessing</li>
 </ul>
-<p>Master item is just a regular Zabbix item. It can be any type of data collection
+<p><strong>Master item</strong> is just a regular Zabbix item. It can be any type of data collection
 behind it - say it can be "Zabbix agent", "Zabbix trapper", "HTTP agent" item
 or anything else.</p>
-<p>Once new value is collected for the master item, all of its dependent items
+<p><strong>Dependent item</strong> is an item which relies on master item for its value. It does not
+have its own data collection method, it just gets its value from the master item. The
+power of dependent item is in its <strong>preprocessing</strong>. It is the preprocessing which
+extracts the needed part of data from master item and transforms it into a separate
+metric making the dependent item a separate monitoring entity. </p>
+<p>Once a new value is collected for the master item, all of its dependent items
 are also updated. It has to be specified in dependent item's configuration,
 which item is the master item for it. One master item can have unlimited number
 of dependent items.</p>
 <details class="info" open="open">
 <summary>Info</summary>
-<p>Since dependent item gets updated on master item's value update, it does not
-have its own update interval</p>
+<p>Since dependent items get updated on master item's value update, they do not
+have their own update interval.</p>
 </details>
 <p>To be able to extract just the needed part of data from the master item, you
 will for sure want to apply some preprocessing. Preprocessing loves structured
@@ -2440,11 +2445,22 @@ content (e.g. json, csv, etc). This way, you will be able to extract needed
 data easier. When dealing with preprocessing, apply the most suitable method
 for particular data source format (e.g. use JSONPath for json) and understand
 your limits (e.g. regex is Perl flavor and JavaScript is Duktape underneath).</p>
+<details class="tip" open="open">
+<summary>Transform master item data into structured format</summary>
+<p>If your master item data is not structured, you can always apply some
+preprocessing on the master item to transform it into a structured format. 
+With the ability to use Javascript in preprocessing, you can do pretty much
+any type of transformation you want right in Zabbix itself, without a need to
+involve any external scripts.</p>
+</details>
+<hr />
 <h2 id="hello-world">Hello World</h2>
 <p>Let's go through an example, the most basic one, so that you would better
 understand how the dependent items get updated.</p>
 <p>First of all, we will have a simple bash script, which will create three lines
 of structured data.</p>
+<details class="example" open="open">
+<summary>Hello World script</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="ch">#!/bin/bash</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nv">master_result</span><span class="o">=</span>/tmp/master.txt
@@ -2458,7 +2474,7 @@ of structured data.</p>
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
 </span></code></pre></div>
 <p>This script is added to cron and is being run once a minute. It is kind of
-obvious what this script does - it outputs random number and has a prefix of
+obvious what this script does - it outputs a random number and has a prefix of
 one of the three letters: "a", "b" or "c":</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>binary@linux:~$<span class="w"> </span>cat<span class="w"> </span>/tmp/master.txt
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>a:<span class="w"> </span><span class="m">54</span>
@@ -2466,6 +2482,7 @@ one of the three letters: "a", "b" or "c":</p>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>c:<span class="w"> </span><span class="m">21</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>binary@linux:~$
 </span></code></pre></div>
+</details>
 <p>Now this data file becomes our "master item". It will be collected by Zabbix
 native item <code>vfs.file.contents</code>, like:</p>
 <p><img alt="Dependent items - first master item" src="ch04.xx-dependent-items-hello-world-master.png" /></p>
@@ -2473,8 +2490,8 @@ native item <code>vfs.file.contents</code>, like:</p>
 <summary>Info</summary>
 <p>Master item on its own has a little purpose of being stored, especially when
 it is huge. Its only purpose could be debugging, thus once operating 
-normally, it should not be stored and that will not affect dependent items
-in any way</p>
+normally, it should not be stored by setting <strong>History</strong> to <strong>Do not store</strong>
+in the master item's definition and that will not affect dependent items in any way</p>
 </details>
 <p>And then we can set our dependent items:</p>
 <p><img alt="Dependent items - first dependent item" src="ch04.xx-dependent-items-hello-world-dependent.png" /></p>
@@ -2486,6 +2503,7 @@ number from line starting with "a":</p>
 <p>Now data is being collected once and we have 3 separate numeric items, which we
 can use depending on our needs - draw some graphs, have some triggers on top, etc.</p>
 <p><img alt="Dependent items - first dependent items results" src="ch04.xx-dependent-items-hello-world-result.png" /></p>
+<hr />
 <h2 id="dependent-items-from-json">Dependent items from json</h2>
 <p>Previous example had a "Regular expression" as the preprocessing step. In real
 life, you might often face json as your master item, so preprocessing would be
@@ -2493,6 +2511,8 @@ different. Of course, regexp is a universal thing so it is also suitable to
 extract something from json, but there is a dedicated preprocessing type
 exactly for this purpose - <code>JSONPath</code>.</p>
 <p>So first let's modify our example script to produce json:</p>
+<details class="example" open="open">
+<summary>Hello World script - json</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="ch">#!/bin/bash</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nv">json</span><span class="o">=</span><span class="s2">&quot;{&quot;</span>
@@ -2508,9 +2528,7 @@ exactly for this purpose - <code>JSONPath</code>.</p>
 </span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
 </span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
 </span></code></pre></div>
-<p>Now we can have similar approach of one single master item and bunch of
-dependent items nearby. Just this time, we would have <code>JSONPath</code> as
-preprocessing step for dependent items.</p>
+<p>will produce something like:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>binary@linux:~$<span class="w"> </span>cat<span class="w"> </span>/tmp/master.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.&#39;</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="o">{</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="s2">&quot;a&quot;</span>:<span class="w"> </span><span class="s2">&quot;94&quot;</span>,
@@ -2519,14 +2537,19 @@ preprocessing step for dependent items.</p>
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="o">}</span>
 </span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>binary@linux:~$
 </span></code></pre></div>
+</details>
+<p>Now we can have similar approach of one single master item and bunch of
+dependent items nearby. Just this time, we would have <code>JSONPath</code> as
+preprocessing step for dependent items.</p>
 <p><img alt="Dependent items - first dependent item - json" src="ch04.xx-dependent-items-hello-world-dependent-preprocessing-json.png" /></p>
 <p>Easy and smooth!</p>
+<hr />
 <h2 id="dependent-items-and-lld">Dependent items and LLD</h2>
 <p>Now imagine our example script produces not <code>{a..c}</code> but a full alphabet,
 <code>{a..z}</code>. We could clone dependent items one by one, but that would also
 include editing the preprocessing step regexp each time as well. If you are
-familiar with LLD, you most likely see where this goes. We will apply LLD here
-and combine it with dependent items!</p>
+familiar with Low-Level Discovery (LLD), you most likely see where this goes. 
+We will apply LLD here and combine it with dependent items!</p>
 <p>For LLD, we will use <code>log_discovery.sh</code>, which makes it possible to perform LLD
 from log files (thus, also, from any other text files). Source for this script
 can be found in the "Useful URLs" section. It will have item prototypes of
@@ -2544,6 +2567,7 @@ create all of our items at once. Finally, thanks to the concept of "Dependent
 items", we are able to collect all of our data at once.</p>
 <p>This is truly beautiful once you understand it.</p>
 <p><img alt="Dependent items - LLD result" src="ch04.xx-dependent-items-hello-world-lld-result.png" /></p>
+<hr />
 <h2 id="conclusion">Conclusion</h2>
 <p>Dependent items concept is a great way to become more efficient in data
 collection under certain circumstances.</p>
@@ -2551,6 +2575,7 @@ collection under certain circumstances.</p>
 separate monitoring entities - think no more. Dependent items are here for you.
 Same is applicable to all the other cases when you want to collect data once
 but have multiple separate metrics out of it.</p>
+<hr />
 <h2 id="questions">Questions</h2>
 <ul>
 <li>Does master item have to be some special type of item or it can be collected
@@ -2558,6 +2583,7 @@ in any regular way?</li>
 <li>Are you limited in number of dependent items from one master item?</li>
 <li>What is the main benefit of using dependent items?</li>
 </ul>
+<hr />
 <h2 id="useful-urls">Useful URLs</h2>
 <ul>
 <li><a href="https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/dependent_items">https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/dependent_items</a></li>
