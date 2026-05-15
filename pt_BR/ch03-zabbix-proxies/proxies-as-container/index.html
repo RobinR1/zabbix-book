@@ -44,7 +44,7 @@ environments.
     
     
       
-        <title>Running Proxies as containers - Zabbix Book</title>
+        <title>Execução de proxies como contêineres - Zabbix Book</title>
       
     
     
@@ -84,14 +84,14 @@ environments.
     
     
 
-    <meta property="og:title" content="Running Proxies as containers">
+    <meta property="og:title" content="Execução de proxies como contêineres">
     <meta property="og:description" content="This chapter from The Zabbix Book, titled &#34;Proxies as Containers,&#34; explains how to deploy Zabbix proxies using container technologies like Docker or Podman. It covers installation, configuration, and networking considerations, showing how containerized proxies simplify scaling and management in modern monitoring environments.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thezabbixbook.com/pt_BR/ch03-zabbix-proxies/proxies-as-container/">
     <meta property="og:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Running Proxies as containers">
+    <meta name="twitter:title" content="Execução de proxies como contêineres">
     <meta name="twitter:description" content="This chapter from The Zabbix Book, titled &#34;Proxies as Containers,&#34; explains how to deploy Zabbix proxies using container technologies like Docker or Podman. It covers installation, configuration, and networking considerations, showing how containerized proxies simplify scaling and management in modern monitoring environments.">
     <meta name="twitter:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
     <meta property="og:image:width" content="1200">
@@ -116,7 +116,7 @@ environments.
     <div data-md-component="skip">
       
         
-        <a href="#running-proxies-as-containers" class="md-skip">
+        <a href="#execucao-de-proxies-como-conteineres" class="md-skip">
           Pular para conteúdo
         </a>
       
@@ -174,7 +174,7 @@ environments.
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Running Proxies as containers
+              Execução de proxies como contêineres
             
           </span>
         </div>
@@ -731,7 +731,7 @@ environments.
   <span class="md-ellipsis">
     
   
-    Proxies and the Zabbix web service
+    Proxies e o serviço da Web do Zabbix
   
 
     
@@ -787,7 +787,7 @@ environments.
   <span class="md-ellipsis">
     
   
-    Active and Passive proxies
+    Proxies ativos e passivos
   
 
     
@@ -824,7 +824,7 @@ environments.
   <span class="md-ellipsis">
     
   
-    Running Proxies as containers
+    Execução de proxies como contêineres
   
 
     
@@ -842,7 +842,7 @@ environments.
   <span class="md-ellipsis">
     
   
-    Running Proxies as containers
+    Execução de proxies como contêineres
   
 
     
@@ -868,22 +868,22 @@ environments.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#setting-up-containers" class="md-nav__link">
+  <a href="#configuracao-de-conteineres" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Setting up containers
+        Configuração de contêineres
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Setting up containers">
+    <nav class="md-nav" aria-label="Configuração de contêineres">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#add-the-proxy-to-the-zabbix-frontend" class="md-nav__link">
+  <a href="#adicionar-o-proxy-ao-front-end-do-zabbix" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Add the proxy to the zabbix frontend
+        Adicionar o proxy ao front-end do zabbix
       
     </span>
   </a>
@@ -891,10 +891,10 @@ environments.
 </li>
         
           <li class="md-nav__item">
-  <a href="#prepare-the-proxy-config" class="md-nav__link">
+  <a href="#preparar-a-configuracao-do-proxy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Prepare the Proxy config
+        Preparar a configuração do proxy
       
     </span>
   </a>
@@ -907,22 +907,22 @@ environments.
 </li>
       
         <li class="md-nav__item">
-  <a href="#upgrading-our-containers" class="md-nav__link">
+  <a href="#atualizando-nossos-conteineres" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Upgrading our containers
+        Atualizando nossos contêineres
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Upgrading our containers">
+    <nav class="md-nav" aria-label="Atualizando nossos contêineres">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#upgrading-manually" class="md-nav__link">
+  <a href="#atualizacao-manual" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Upgrading manually
+        Atualização manual
       
     </span>
   </a>
@@ -930,10 +930,10 @@ environments.
 </li>
         
           <li class="md-nav__item">
-  <a href="#upgrading-when-using-a-fixed-image-tag" class="md-nav__link">
+  <a href="#atualizacao-ao-usar-uma-tag-de-imagem-fixa" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Upgrading When Using a Fixed Image Tag
+        Atualização ao usar uma tag de imagem fixa
       
     </span>
   </a>
@@ -941,22 +941,22 @@ environments.
 </li>
         
           <li class="md-nav__item">
-  <a href="#upgrading-automatically" class="md-nav__link">
+  <a href="#atualizando-automaticamente" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Upgrading automatically
+        Atualizando automaticamente
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Upgrading automatically">
+    <nav class="md-nav" aria-label="Atualizando automaticamente">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#example-configuration" class="md-nav__link">
+  <a href="#exemplo-de-configuracao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example Configuration
+        Exemplo de configuração
       
     </span>
   </a>
@@ -964,10 +964,10 @@ environments.
 </li>
         
           <li class="md-nav__item">
-  <a href="#how-the-auto-update-process-works" class="md-nav__link">
+  <a href="#como-funciona-o-processo-de-atualizacao-automatica" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How the Auto-Update Process Works
+        Como funciona o processo de atualização automática
       
     </span>
   </a>
@@ -975,10 +975,10 @@ environments.
 </li>
         
           <li class="md-nav__item">
-  <a href="#enabling-the-auto-update-timer" class="md-nav__link">
+  <a href="#ativacao-do-cronometro-de-atualizacao-automatica" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Enabling the Auto-Update Timer
+        Ativação do cronômetro de atualização automática
       
     </span>
   </a>
@@ -991,10 +991,10 @@ environments.
 </li>
         
           <li class="md-nav__item">
-  <a href="#when-to-use-this-approach" class="md-nav__link">
+  <a href="#quando-usar-essa-abordagem" class="md-nav__link">
     <span class="md-ellipsis">
       
-        When to Use This Approach
+        Quando usar essa abordagem
       
     </span>
   </a>
@@ -1007,10 +1007,10 @@ environments.
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#conclusao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conclusion
+        Conclusão
       
     </span>
   </a>
@@ -1018,10 +1018,10 @@ environments.
 </li>
       
         <li class="md-nav__item">
-  <a href="#questions" class="md-nav__link">
+  <a href="#perguntas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Questions
+        Perguntas
       
     </span>
   </a>
@@ -1029,10 +1029,10 @@ environments.
 </li>
       
         <li class="md-nav__item">
-  <a href="#useful-urls" class="md-nav__link">
+  <a href="#urls-uteis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Useful URLs
+        URLs úteis
       
     </span>
   </a>
@@ -1889,22 +1889,22 @@ environments.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#setting-up-containers" class="md-nav__link">
+  <a href="#configuracao-de-conteineres" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Setting up containers
+        Configuração de contêineres
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Setting up containers">
+    <nav class="md-nav" aria-label="Configuração de contêineres">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#add-the-proxy-to-the-zabbix-frontend" class="md-nav__link">
+  <a href="#adicionar-o-proxy-ao-front-end-do-zabbix" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Add the proxy to the zabbix frontend
+        Adicionar o proxy ao front-end do zabbix
       
     </span>
   </a>
@@ -1912,10 +1912,10 @@ environments.
 </li>
         
           <li class="md-nav__item">
-  <a href="#prepare-the-proxy-config" class="md-nav__link">
+  <a href="#preparar-a-configuracao-do-proxy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Prepare the Proxy config
+        Preparar a configuração do proxy
       
     </span>
   </a>
@@ -1928,22 +1928,22 @@ environments.
 </li>
       
         <li class="md-nav__item">
-  <a href="#upgrading-our-containers" class="md-nav__link">
+  <a href="#atualizando-nossos-conteineres" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Upgrading our containers
+        Atualizando nossos contêineres
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Upgrading our containers">
+    <nav class="md-nav" aria-label="Atualizando nossos contêineres">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#upgrading-manually" class="md-nav__link">
+  <a href="#atualizacao-manual" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Upgrading manually
+        Atualização manual
       
     </span>
   </a>
@@ -1951,10 +1951,10 @@ environments.
 </li>
         
           <li class="md-nav__item">
-  <a href="#upgrading-when-using-a-fixed-image-tag" class="md-nav__link">
+  <a href="#atualizacao-ao-usar-uma-tag-de-imagem-fixa" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Upgrading When Using a Fixed Image Tag
+        Atualização ao usar uma tag de imagem fixa
       
     </span>
   </a>
@@ -1962,22 +1962,22 @@ environments.
 </li>
         
           <li class="md-nav__item">
-  <a href="#upgrading-automatically" class="md-nav__link">
+  <a href="#atualizando-automaticamente" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Upgrading automatically
+        Atualizando automaticamente
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Upgrading automatically">
+    <nav class="md-nav" aria-label="Atualizando automaticamente">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#example-configuration" class="md-nav__link">
+  <a href="#exemplo-de-configuracao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example Configuration
+        Exemplo de configuração
       
     </span>
   </a>
@@ -1985,10 +1985,10 @@ environments.
 </li>
         
           <li class="md-nav__item">
-  <a href="#how-the-auto-update-process-works" class="md-nav__link">
+  <a href="#como-funciona-o-processo-de-atualizacao-automatica" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How the Auto-Update Process Works
+        Como funciona o processo de atualização automática
       
     </span>
   </a>
@@ -1996,10 +1996,10 @@ environments.
 </li>
         
           <li class="md-nav__item">
-  <a href="#enabling-the-auto-update-timer" class="md-nav__link">
+  <a href="#ativacao-do-cronometro-de-atualizacao-automatica" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Enabling the Auto-Update Timer
+        Ativação do cronômetro de atualização automática
       
     </span>
   </a>
@@ -2012,10 +2012,10 @@ environments.
 </li>
         
           <li class="md-nav__item">
-  <a href="#when-to-use-this-approach" class="md-nav__link">
+  <a href="#quando-usar-essa-abordagem" class="md-nav__link">
     <span class="md-ellipsis">
       
-        When to Use This Approach
+        Quando usar essa abordagem
       
     </span>
   </a>
@@ -2028,10 +2028,10 @@ environments.
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#conclusao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conclusion
+        Conclusão
       
     </span>
   </a>
@@ -2039,10 +2039,10 @@ environments.
 </li>
       
         <li class="md-nav__item">
-  <a href="#questions" class="md-nav__link">
+  <a href="#perguntas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Questions
+        Perguntas
       
     </span>
   </a>
@@ -2050,10 +2050,10 @@ environments.
 </li>
       
         <li class="md-nav__item">
-  <a href="#useful-urls" class="md-nav__link">
+  <a href="#urls-uteis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Useful URLs
+        URLs úteis
       
     </span>
   </a>
@@ -2160,90 +2160,93 @@ environments.
   
 
 
-<h1 id="running-proxies-as-containers">Running Proxies as containers</h1>
-<p>As discussed in the previous section, Zabbix proxies offer a lightweight and
-efficient solution for distributed monitoring. Leveraging SQLite as their
-backend database, they are inherently flexible and portable, making them
-well-suited for deployment in containerized environments. This chapter provides
-a step-by-step guide on deploying a Zabbix proxy within a container, outlining
-configuration options and best practices for optimal performance and
-maintainability.</p>
+<h1 id="execucao-de-proxies-como-conteineres">Execução de proxies como contêineres</h1>
+<p>Conforme discutido na seção anterior, os proxies Zabbix oferecem uma solução
+leve e eficiente para o monitoramento distribuído. Aproveitando o SQLite como
+banco de dados backend, eles são inerentemente flexíveis e portáteis, o que os
+torna adequados para implantação em ambientes de contêineres. Este capítulo
+fornece um guia passo a passo sobre a implementação de um proxy Zabbix em um
+contêiner, descrevendo as opções de configuração e as práticas recomendadas para
+otimizar o desempenho e a manutenção.</p>
 <hr />
-<h2 id="setting-up-containers">Setting up containers</h2>
-<p>For this setup, you will need a virtual machine (VM) with Podman installed to
-deploy the Zabbix proxy container. This container will then be configured to
-communicate with your Zabbix server.</p>
-<p>Refer to the <a href="../../ch00-getting-started/preparation/#preparing-the-system-for-running-containers-using-podman"><em>Preparing the system for
+<h2 id="configuracao-de-conteineres">Configuração de contêineres</h2>
+<p>Para essa configuração, você precisará de uma máquina virtual (VM) com o Podman
+instalado para implantar o contêiner de proxy do Zabbix. Esse contêiner será
+então configurado para se comunicar com o servidor Zabbix.</p>
+<p>Consulte o capítulo <a href="../../ch00-getting-started/preparation/#preparing-the-system-for-running-containers-using-podman"><em>Preparando o sistema para o
 Zabbix</em></a>
-chapter for instructions on preparing your system for running containers using
-Podman.</p>
+para obter instruções sobre como preparar o sistema para executar contêineres
+usando o Podman.</p>
 <hr />
-<h3 id="add-the-proxy-to-the-zabbix-frontend">Add the proxy to the zabbix frontend</h3>
-<p><img alt="Add the proxy" src="../../../ch03-zabbix-proxies/proxy-containers/ch03-container-proxy-new.png" /></p>
-<p><em>3.9 Add proxy to frontend</em></p>
-<p>To keep the configuration straightforward, we will deploy an active Zabbix
-proxy. In this case, only two parameters need to be configured: the proxy's
-hostname (as defined in the Zabbix frontend) and the proxy’s IP address for
-communication with the Zabbix server.</p>
+<h3 id="adicionar-o-proxy-ao-front-end-do-zabbix">Adicionar o proxy ao front-end do zabbix</h3>
+<p><img alt="Adicionar o proxy" src="../../../ch03-zabbix-proxies/proxy-containers/ch03-container-proxy-new.png" /></p>
+<p><em>3.9 Adicionar proxy ao frontend</em></p>
+<p>Para manter a configuração simples, implantaremos um proxy Zabbix ativo. Nesse
+caso, apenas dois parâmetros precisam ser configurados: o nome do host do proxy
+(conforme definido no front-end do Zabbix) e o endereço IP do proxy para
+comunicação com o servidor Zabbix.</p>
 <hr />
-<h3 id="prepare-the-proxy-config">Prepare the Proxy config</h3>
-<p>The next step is to create a <code>.container</code> unit file for our Quadlet setup. This
-file should be placed in the directory <code>~/.config/containers/systemd/</code>. For
-example, we will create a file named <code>zabbix-proxy-sqlite.container</code>, which will
-define the configuration for running the Zabbix proxy container under SystemD
-using Podman.</p>
-<p>Ensure you are logged in as user <code>podman</code>.</p>
+<h3 id="preparar-a-configuracao-do-proxy">Preparar a configuração do proxy</h3>
+<p>A próxima etapa é criar um arquivo de unidade <code>.container</code> para a nossa
+configuração do Quadlet. Esse arquivo deve ser colocado no diretório
+<code>~/.config/containers/systemd/</code>. Por exemplo, criaremos um arquivo chamado
+<code>zabbix-proxy-sqlite.container</code>, que definirá a configuração para executar o
+contêiner do proxy Zabbix no SystemD usando o Podman.</p>
+<p>Verifique se você está conectado como usuário <code>podman</code>.</p>
 <div class="admonition info">
-<p class="admonition-title">Switch to user podman</p>
+<p class="admonition-title">Mudar para o usuário podman</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>-u<span class="w"> </span>podman<span class="w"> </span>-i
 </span></code></pre></div>
 </div>
-<details class="example" open="open">
-<summary>Creation of a .container systemd unit file</summary>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>vi<span class="w"> </span>~/.config/containers/systemd/zabbix-proxy-sqlite.container
-</span></code></pre></div>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">[Unit]</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="na">Description</span><span class="o">=</span><span class="s">ZabbixProxy</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">[Container]</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="na">Image</span><span class="o">=</span><span class="s">docker.io/zabbix/zabbix-proxy-sqlite3:7.0-centos-latest</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="na">ContainerName</span><span class="o">=</span><span class="s">ZabbixProxySqlite-Quadlet</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="na">AutoUpdate</span><span class="o">=</span><span class="s">registry</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="na">EnvironmentFile</span><span class="o">=</span><span class="s">ZabbixProxy.env</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="na">PublishPort</span><span class="o">=</span><span class="s">10051:10051</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="k">[Service]</span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="na">Restart</span><span class="o">=</span><span class="s">always</span>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="k">[Install]</span>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="na">WantedBy</span><span class="o">=</span><span class="s">default.target</span>
-</span></code></pre></div>
-</details>
-<p>The container image for the Zabbix proxy using SQLite can be sourced from Docker
-Hub. Specifically, we will use the image tagged 7.0-centos-latest, which is
-maintained by the official Zabbix project. This image can be found at:</p>
+<p>Exemplo "Criação de um arquivo de unidade do systemd .container"</p>
+<div class="language-text highlight"><pre><span></span><code>```bash
+vi ~/.config/containers/systemd/zabbix-proxy-sqlite.container
+```
+
+```ini
+[Unit]
+Description=ZabbixProxy
+
+[Container]
+Image=docker.io/zabbix/zabbix-proxy-sqlite3:7.0-centos-latest
+ContainerName=ZabbixProxySqlite-Quadlet
+AutoUpdate=registry
+EnvironmentFile=ZabbixProxy.env
+PublishPort=10051:10051
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target
+```
+</code></pre></div>
+<p>A imagem do contêiner para o proxy do Zabbix usando o SQLite pode ser obtida no
+Docker Hub. Especificamente, usaremos a imagem com a tag 7.0-centos-latest, que
+é mantida pelo projeto oficial do Zabbix. Essa imagem pode ser encontrada em:</p>
 <p><a href="https://hub.docker.com/r/zabbix/zabbix-proxy-sqlite3/tags?name=centos">https://hub.docker.com/r/zabbix/zabbix-proxy-sqlite3/tags?name=centos</a></p>
-<p>A complete list of available image tags, including different versions and
-operating system bases, is available on the image’s main page:</p>
+<p>Uma lista completa das tags de imagem disponíveis, incluindo diferentes versões
+e bases de sistemas operacionais, está disponível na página principal da imagem:</p>
 <p><a href="https://hub.docker.com/r/zabbix/zabbix-proxy-sqlite3">https://hub.docker.com/r/zabbix/zabbix-proxy-sqlite3</a></p>
-<p>For our purposes, the 7.0-centos-latest tag provides a CentOS-based container
-image that is well-suited for LTS environments, and it includes all necessary
-components to run the Zabbix proxy with SQLite.</p>
-<p>In addition to the <code>.container</code> unit file, we also need to create an environment
-file that defines the configuration variables for the container. This file must
-reside in the same directory as the <code>.container</code> file:
-<code>~/.config/containers/systemd/</code> and should be named <code>ZabbixProxy.env</code>, as
-referenced in our <code>.container</code> configuration.</p>
-<p>This environment file allows us to override default container settings by
-specifying environment variables used during container runtime. The list of
-supported variables and their functions is clearly documented on the container's
-Docker Hub page:</p>
+<p>Para nossos propósitos, a tag 7.0-centos-latest fornece uma imagem de contêiner
+baseada no CentOS que é adequada para ambientes LTS e inclui todos os
+componentes necessários para executar o proxy Zabbix com SQLite.</p>
+<p>Além do arquivo de unidade <code>.container</code>, também precisamos criar um arquivo de
+ambiente que defina as variáveis de configuração do contêiner. Esse arquivo deve
+residir no mesmo diretório que o arquivo <code>.container</code>:
+<code>~/.config/containers/systemd/</code> e deve ser nomeado <code>ZabbixProxy.env</code>, conforme
+referenciado em nossa configuração <code>.container</code>.</p>
+<p>Esse arquivo de ambiente nos permite substituir as configurações padrão do
+contêiner especificando as variáveis de ambiente usadas durante o tempo de
+execução do contêiner. A lista de variáveis suportadas e suas funções estão
+claramente documentadas na página do Docker Hub do contêiner:</p>
 <p><a href="https://hub.docker.com/r/zabbix/zabbix-proxy-sqlite3">https://hub.docker.com/r/zabbix/zabbix-proxy-sqlite3</a></p>
-<p>These variables allow you to configure key parameters such as the proxy mode,
-server address, hostname, database settings, and logging options, providing a
-flexible and declarative way to tailor the proxy’s behavior to your environment.</p>
-<p>Let's create the file <code>~/.config/containers/systemd/ZabbixProxy.env</code> and add the
-following content.</p>
+<p>Essas variáveis permitem configurar parâmetros importantes, como o modo de
+proxy, o endereço do servidor, o nome do host, as configurações do banco de
+dados e as opções de registro, fornecendo uma maneira flexível e declarativa de
+adaptar o comportamento do proxy ao seu ambiente.</p>
+<p>Vamos criar o arquivo <code>~/.config/containers/systemd/ZabbixProxy.env</code> e adicionar
+o seguinte conteúdo.</p>
 <div class="admonition info">
 <p class="admonition-title">~/.config/containers/systemd/ZabbixProxy.env</p>
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Zabbix proxy hostname as it appears in the Zabbix frontend</span>
@@ -2256,47 +2259,47 @@ following content.</p>
 </span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="na">ZBX_PROXYMODE</span><span class="o">=</span><span class="s">0</span>
 </span></code></pre></div>
 </div>
-<p>With our configuration now complete, the final step is to reload the systemd
-user daemon so it recognizes the new Quadlet unit. This can be done using the
-following command:</p>
+<p>Com a nossa configuração concluída, a etapa final é recarregar o daemon do
+usuário systemd para que ele reconheça a nova unidade Quadlet. Isso pode ser
+feito usando o seguinte comando:</p>
 <div class="admonition info">
-<p class="admonition-title">Reload SystemD user daemon</p>
+<p class="admonition-title">Recarregar o daemon do usuário SystemD</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>daemon-reload
 </span></code></pre></div>
 </div>
-<p>If everything is set up correctly, systemd will automatically generate a service
-unit for the container based on the <code>.container</code> file. You can verify that the
-unit has been registered by checking the output of <code>systemctl --user
+<p>Se tudo estiver configurado corretamente, o systemd gerará automaticamente uma
+unidade de serviço para o contêiner com base no arquivo <code>.container</code>. Você pode
+verificar se a unidade foi registrada verificando a saída de <code>systemctl --user
 list-unit-files</code>:</p>
-<details class="example" open="open">
-<summary>Verify if the new unit is registered correctly</summary>
+<details class="exemplo" open="open">
+<summary>Verifique se a nova unidade está registrada corretamente</summary>
 <div class="language-shell-session highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="go">podman@localhost:~&gt; systemctl --user list-unit-files | grep zabbix</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="go">zabbix-proxy-sqlite.service             generated -</span>
 </span></code></pre></div>
 </details>
-<p>You can now start the container using the <code>systemctl --user start</code> command. To
-start the container, use the following command (replacing the service name if
-you used a different one):</p>
-<details class="example" open="open">
-<summary>Start Zabbix Proxy container</summary>
+<p>Agora, você pode iniciar o contêiner usando o comando <code>systemctl --user start</code>.
+Para iniciar o contêiner, use o seguinte comando (substituindo o nome do serviço
+se tiver usado um diferente):</p>
+<details class="exemplo" open="open">
+<summary>Iniciar o contêiner do Zabbix Proxy</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>start<span class="w"> </span>zabbix-proxy-sqlite.service
 </span></code></pre></div>
 </details>
-<p>This command may take a few minutes as it will download the required Zabbix
-Proxy container from the docker registry.</p>
-<p>To verify that the container started correctly, you can inspect the running
-containers with:</p>
-<details class="example" open="open">
-<summary>Inspect running containers</summary>
+<p>Esse comando pode levar alguns minutos, pois ele fará o download do contêiner do
+Zabbix Proxy necessário a partir do registro do docker.</p>
+<p>Para verificar se o contêiner foi iniciado corretamente, você pode inspecionar
+os contêineres em execução com:</p>
+<details class="exemplo" open="open">
+<summary>Inspecionar contêineres em execução</summary>
 <div class="language-shell-session highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="go">podman@localhost:~&gt; podman ps</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="go">CONTAINER ID  IMAGE                                                   COMMAND               CREATED       STATUS       PORTS                     NAMES</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="go">b5716f8f379d  docker.io/zabbix/zabbix-proxy-sqlite3:7.0-centos-latest /usr/sbin/zabbix_...  2 hours ago   Up 2 hours   0.0.0.0:10051-&gt;10051/tcp  ZabbixProxySqlite-Quadlet</span>
 </span></code></pre></div>
 </details>
-<p>Take note of the <code>CONTAINER ID</code>—in this example, it is <code>b5716f8f379d</code>. You can
-then retrieve the container's logs using:</p>
-<details class="info" open="open">
-<summary>Retrieve container logs</summary>
+<p>Anote o ID do contêiner <code>` - neste exemplo, é</code>b5716f8f379d`. Em seguida, é
+possível recuperar os logs do contêiner usando:</p>
+<details class="informação" open="open">
+<summary>Recuperar registros de contêineres</summary>
 <p><div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>podman<span class="w"> </span>logs<span class="w"> </span>b5716f8f379d
 </span></code></pre></div>
 Where <code>b5716f8f379d</code> is the <code>CONTAINER ID</code> of your container</p>
@@ -2304,55 +2307,58 @@ Where <code>b5716f8f379d</code> is the <code>CONTAINER ID</code> of your contain
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>journalctl<span class="w"> </span>--user<span class="w"> </span>-u<span class="w"> </span>zabbix-proxy-sqlite.service
 </span></code></pre></div></p>
 </details>
-<p>This command will return the startup and runtime logs for the container, which
-are helpful for troubleshooting and verifying that the Zabbix proxy has started
-correctly.</p>
+<p>Esse comando retornará os registros de inicialização e de tempo de execução do
+contêiner, que são úteis para solucionar problemas e verificar se o proxy do
+Zabbix foi iniciado corretamente.</p>
 <hr />
-<h2 id="upgrading-our-containers">Upgrading our containers</h2>
-<p>At some point, you may be asking yourself: How do I upgrade my Zabbix
-containers? Fortunately, container upgrades are a straightforward process that
-can be handled either manually or through automation, depending on your
-deployment strategy.</p>
-<p>Throughout this book, we've been using the image tag <code>7.0-centos-latest</code>, which
-always pulls the most up-to-date CentOS-based Zabbix 7.0 image available at the
-time. This approach ensures you are running the latest fixes and improvements
-without specifying an exact version.</p>
-<p>Alternatively, you can opt for version specific tags such as <code>centos-7.0.13</code>,
-which allow you to maintain strict control over the version deployed. This can
-be helpful in environments where consistency and reproducibility are critical.</p>
-<p>In the following sections, we will explore both approaches: using the <code>latest</code>
-tag for automated updates and specifying fixed versions for controlled
-environments.</p>
+<h2 id="atualizando-nossos-conteineres">Atualizando nossos contêineres</h2>
+<p>Em algum momento, você pode estar se perguntando: Como faço para atualizar meus
+contêineres do Zabbix? Felizmente, as atualizações de contêineres são um
+processo simples que pode ser realizado manualmente ou por meio de automação,
+dependendo da sua estratégia de implantação.</p>
+<p>Ao longo deste livro, usamos a tag de imagem <code>7.0-centos-latest</code>, que sempre
+extrai a imagem mais atualizada do Zabbix 7.0 baseada no CentOS disponível no
+momento. Essa abordagem garante que você esteja executando as últimas correções
+e melhorias sem especificar uma versão exata.</p>
+<p>Como alternativa, você pode optar por tags específicas de versão, como
+<code>centos-7.0.13</code>, que permitem manter um controle rigoroso sobre a versão
+implantada. Isso pode ser útil em ambientes em que a consistência e a
+reprodutibilidade são essenciais.</p>
+<p>Nas seções a seguir, exploraremos as duas abordagens: usar a tag <code>latest</code> para
+atualizações automatizadas e especificar versões fixas para ambientes
+controlados.</p>
 <hr />
-<h3 id="upgrading-manually">Upgrading manually</h3>
-<p>If you're running your Zabbix container using a <strong>floating tag</strong> such as
-<code>:latest</code> or <code>:trunk-centos</code>, upgrading is a simple and efficient process. These
-tags always point to the most recent image available in the repository.</p>
+<h3 id="atualizacao-manual">Atualização manual</h3>
+<p>Se você estiver executando seu contêiner Zabbix usando uma <strong>tag flutuante</strong> ,
+como <code>:latest</code> ou <code>:trunk-centos</code>, a atualização é um processo simples e
+eficiente. Essas tags sempre apontam para a imagem mais recente disponível no
+repositório.</p>
 <details class="info" open="open">
-<summary>To upgrade:</summary>
+<summary>Para atualizar:</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Pull the latest image using Podman.</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>podman<span class="w"> </span>pull<span class="w"> </span>zabbix/zabbix-proxy-sqlite3:7.0-centos-latest
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1"># Restart the systemd service associated with the container.</span>
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>systemctl<span class="w"> </span>--user<span class="w"> </span>restart<span class="w"> </span>zabbix-proxy-sqlite.service
 </span></code></pre></div>
 </details>
-<p>Thanks to our Quadlet integration, systemd will handle the rest automatically:
-The currently running container will be stopped. A new container instance will
-be started using the freshly pulled image. All configuration options defined in
-the associated <code>.container</code> file will be reapplied. This approach allows for
-quick updates with minimal effort, while still preserving consistent
-configuration management through systemd.</p>
+<p>Graças à nossa integração com o Quadlet, o systemd cuidará do resto
+automaticamente: O contêiner em execução no momento será interrompido. Uma nova
+instância de contêiner será iniciada usando a imagem recém-obtida. Todas as
+opções de configuração definidas no arquivo <code>.container</code> associado serão
+reaplicadas. Essa abordagem permite atualizações rápidas com o mínimo de esforço
+e, ao mesmo tempo, preserva o gerenciamento consistente da configuração por meio
+do systemd.</p>
 <hr />
-<h3 id="upgrading-when-using-a-fixed-image-tag">Upgrading When Using a Fixed Image Tag</h3>
-<p>If your container is configured to use a <strong>fixed image tag</strong> (e.g.,
-<code>7.0.13-centos</code>) rather than a floating tag like <code>:latest</code> or <code>:trunk</code>, the
-upgrade process involves one additional step: <strong>manually updating the tag in
-your <code>.container</code> file</strong>.</p>
-<p>For example, if you're running a user-level Quadlet container and your
-configuration file is located at
+<h3 id="atualizacao-ao-usar-uma-tag-de-imagem-fixa">Atualização ao usar uma tag de imagem fixa</h3>
+<p>Se o seu contêiner estiver configurado para usar uma tag de imagem fixa <strong><em>*
+(por exemplo, <code>7.0.13-centos</code>) em vez de uma tag flutuante como <code>:latest</code> ou
+<code>:trunk</code>, o processo de atualização envolve uma etapa adicional: </em>*atualizar
+manualmente a tag no arquivo <code>.container</code></strong>.</p>
+<p>Por exemplo, se você estiver executando um contêiner Quadlet em nível de usuário
+e seu arquivo de configuração estiver localizado em
 <code>~/.config/containers/systemd/zabbix-proxy-sqlite.container</code>:</p>
-<details class="example" open="open">
-<summary>Manually updating the tag</summary>
+<details class="exemplo" open="open">
+<summary>Atualizando manualmente a tag</summary>
 <p>You'll need to edit this file 
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>vi<span class="w"> </span>~/.config/containers/systemd/zabbix-proxy-sqlite.container
 </span></code></pre></div></p>
@@ -2371,16 +2377,17 @@ the updated image. Since you're using a fixed tag, this upgrade process gives yo
 full control over when and how new versions are introduced.</p>
 </details>
 <hr />
-<h3 id="upgrading-automatically">Upgrading automatically</h3>
-<p>When using floating tags like <code>:latest</code> or <code>:trunk-centos</code> for your Zabbix
-container images, Podman Quadlet supports automated upgrades by combining them
-with the <code>AutoUpdate=registry</code> directive in your <code>.container</code> file.</p>
-<p>This setup ensures your container is automatically refreshed whenever a new
-image is available in the remote registry without requiring manual intervention.</p>
+<h3 id="atualizando-automaticamente">Atualizando automaticamente</h3>
+<p>Ao usar tags flutuantes como <code>:latest</code> ou <code>:trunk-centos</code> para suas imagens de
+contêiner do Zabbix, o Podman Quadlet suporta atualizações automatizadas
+combinando-as com a diretiva <code>AutoUpdate=registry</code> no seu arquivo <code>.container</code>.</p>
+<p>Essa configuração garante que o seu contêiner seja atualizado automaticamente
+sempre que uma nova imagem estiver disponível no registro remoto, sem a
+necessidade de intervenção manual.</p>
 <hr />
-<h4 id="example-configuration">Example Configuration</h4>
-<details class="example" open="open">
-<summary>.container file</summary>
+<h4 id="exemplo-de-configuracao">Exemplo de configuração</h4>
+<details class="exemplo" open="open">
+<summary>.arquivo de contêiner</summary>
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">[Container]</span>
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="na">Image</span><span class="o">=</span><span class="s">docker.io/zabbix/zabbix-proxy-sqlite3:trunk-centos</span>
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="na">AutoUpdate</span><span class="o">=</span><span class="s">registry</span>
@@ -2390,90 +2397,91 @@ image is available in the remote registry without requiring manual intervention.
 tells Podman to periodically check the container registry for updates to this tag.</p>
 </details>
 <hr />
-<h4 id="how-the-auto-update-process-works">How the Auto-Update Process Works</h4>
-<p>Once configured, the following steps are handled automatically:</p>
+<h4 id="como-funciona-o-processo-de-atualizacao-automatica">Como funciona o processo de atualização automática</h4>
+<p>Uma vez configurado, as etapas a seguir são tratadas automaticamente:</p>
 <ol>
 <li>
-<p><strong>Image Check</strong> The systemd service <code>podman-auto-update</code> is triggered by a
-   timer (usually daily). It compares the current image digest with the remote
-   image's digest for the same tag.</p>
+<p><strong>Verificação de imagem</strong> O serviço systemd <code>podman-auto-update</code> é acionado
+   por um cronômetro (geralmente diário). Ele compara o resumo da imagem atual
+   com o resumo da imagem remota para a mesma tag.</p>
 </li>
 <li>
-<p><strong>Image Update</strong> If a new version is detected:</p>
+<p><strong>Atualização de imagem</strong> Se uma nova versão for detectada:</p>
 </li>
 </ol>
 <ul>
-<li>The updated image is pulled from the registry.</li>
-<li>The currently running container is stopped and removed.</li>
-<li>A new container is created from the updated image.</li>
+<li>A imagem atualizada é extraída do registro.</li>
+<li>O contêiner em execução no momento é interrompido e removido.</li>
+<li>Um novo contêiner é criado a partir da imagem atualizada.</li>
 </ul>
 <ol start="3">
-<li><strong>Configuration Reuse</strong> The new container is launched using the exact same
-   configuration defined in your <code>.container</code> file, including environment
-   variables, volume mounts, ports, and networking.</li>
+<li><strong>Reutilização de configuração</strong> O novo contêiner é iniciado usando
+   exatamente a mesma configuração definida no arquivo <code>.container</code>, incluindo
+   variáveis de ambiente, montagens de volume, portas e rede.</li>
 </ol>
-<p>This approach provides a clean, repeatable way to keep your Zabbix proxy (or
-other components) current without direct user intervention.</p>
+<p>Essa abordagem fornece uma maneira limpa e repetível de manter o proxy do Zabbix
+(ou outros componentes) atualizado sem a intervenção direta do usuário.</p>
 <hr />
-<h4 id="enabling-the-auto-update-timer">Enabling the Auto-Update Timer</h4>
-<p>To ensure that updates are applied regularly, you must enable the Podman
-auto-update timer.</p>
+<h4 id="ativacao-do-cronometro-de-atualizacao-automatica">Ativação do cronômetro de atualização automática</h4>
+<p>Para garantir que as atualizações sejam aplicadas regularmente, você deve ativar
+o temporizador de atualização automática do Podman.</p>
 <div class="admonition info">
-<p class="admonition-title">For System-Wide Services</p>
+<p class="admonition-title">Para serviços em todo o sistema</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>podman-auto-update.timer
 </span></code></pre></div>
 </div>
 <div class="admonition info">
-<p class="admonition-title">For User-Level Services</p>
+<p class="admonition-title">Para serviços de nível de usuário</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>systemctl<span class="w"> </span>--user<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>podman-auto-update.timer
 </span></code></pre></div>
 </div>
-<p>This activates a systemd timer that periodically invokes
+<p>Isso ativa um cronômetro do systemd que invoca periodicamente
 <code>podman-auto-update.service</code>.</p>
 <hr />
-<h3 id="when-to-use-this-approach">When to Use This Approach</h3>
-<p><code>AutoUpdate=registry</code> is particularly useful in the following scenarios:</p>
+<h3 id="quando-usar-essa-abordagem">Quando usar essa abordagem</h3>
+<p><code>AutoUpdate=registry</code> é particularmente útil nos seguintes cenários:</p>
 <ul>
-<li><strong>Development or staging environments</strong>, where running the latest version is
-  beneficial.</li>
-<li><strong>Non-critical Zabbix components</strong>, such as test proxies or lab deployments.</li>
-<li><strong>When you prefer a hands-off update strategy</strong>, and image stability is
-  trusted.</li>
+<li><strong>Ambientes de desenvolvimento ou preparação</strong>, nos quais a execução da versão
+  mais recente é benéfica.</li>
+<li><strong>Componentes não críticos do Zabbix</strong>, como proxies de teste ou implantações
+  de laboratório.</li>
+<li><strong>Quando você prefere uma estratégia de atualização sem intervenção</strong>, e a
+  estabilidade da imagem é confiável.</li>
 </ul>
-<details class="warning" open="open">
-<summary>Warning</summary>
+<details class="aviso" open="open">
+<summary>Aviso</summary>
 <p>This setup is not recommended for production environments without a proper rollback
 plan. Floating tags like <code>:latest</code> or <code>:trunk-centos</code> can introduce breaking
 changes unexpectedly. For production use, fixed version tags (e.g. <code>7.0.13-centos</code>)
 are generally recommended since they offer greater stability and control.</p>
 </details>
 <hr />
-<h2 id="conclusion">Conclusion</h2>
-<p>In this chapter, we deployed a Zabbix active proxy using Podman and SystemD
-Quadlets. We configured SELinux, enabled user lingering, and created both
-<code>.container</code> and <code>.env</code> files to define proxy behavior. Using Podman in rootless
-mode ensures improved security and system integration. SystemD management makes
-the container easy to control and monitor. This setup offers a lightweight,
-flexible, and secure approach to deploying Zabbix proxies. It is ideal for
-modern environments, especially when using containers or virtualisation. With
-the proxy running, you're ready to extend Zabbix monitoring to remote locations
-efficiently.</p>
+<h2 id="conclusao">Conclusão</h2>
+<p>Neste capítulo, implantamos um proxy ativo Zabbix usando Podman e SystemD
+Quadlets. Configuramos o SELinux, ativamos a permanência do usuário e criamos os
+arquivos <code>.container</code> e <code>.env</code> para definir o comportamento do proxy. O uso do
+Podman no modo sem raiz garante maior segurança e integração do sistema. O
+gerenciamento do SystemD torna o contêiner fácil de controlar e monitorar. Essa
+configuração oferece uma abordagem leve, flexível e segura para a implantação de
+proxies Zabbix. É ideal para ambientes modernos, especialmente quando se usa
+contêineres ou virtualização. Com o proxy em execução, você está pronto para
+estender o monitoramento do Zabbix a locais remotos com eficiência.</p>
 <hr />
-<h2 id="questions">Questions</h2>
+<h2 id="perguntas">Perguntas</h2>
 <ul>
-<li>What are the main advantages of using Podman over Docker for running
-  containers on Red Hat-based systems?</li>
-<li>Why is the <code>loginctl enable-linger</code> command important when using SystemD with
-  rootless Podman containers?</li>
-<li>What is the purpose of the <code>.env</code> file in the context of a Quadlet-managed
-  container?</li>
-<li>How do SELinux policies affect Podman container execution, and how can you
-  configure them correctly?</li>
-<li>How can you verify that your Zabbix proxy container started successfully?</li>
-<li>What is the difference between an active and passive Zabbix proxy?</li>
+<li>Quais são as principais vantagens de usar o Podman em vez do Docker para
+  executar contêineres em sistemas baseados no Red Hat?</li>
+<li>Por que o comando <code>loginctl enable-linger</code> é importante ao usar o SystemD com
+  contêineres Podman sem raiz?</li>
+<li>Qual é a finalidade do arquivo <code>.env</code> no contexto de um contêiner gerenciado
+  pelo Quadlet?</li>
+<li>Como as políticas do SELinux afetam a execução do contêiner do Podman e como
+  você pode configurá-las corretamente?</li>
+<li>Como verificar se o contêiner do proxy Zabbix foi iniciado com sucesso?</li>
+<li>Qual é a diferença entre um proxy Zabbix ativo e passivo?</li>
 </ul>
 <hr />
-<h2 id="useful-urls">Useful URLs</h2>
+<h2 id="urls-uteis">URLs úteis</h2>
 <ul>
 <li><a href="https://hub.docker.com/r/zabbix/zabbix-proxy-sqlite3">https://hub.docker.com/r/zabbix/zabbix-proxy-sqlite3</a></li>
 <li><a href="https://podman.io/">https://podman.io/</a></li>

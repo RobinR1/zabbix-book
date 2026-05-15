@@ -1185,6 +1185,100 @@ using built-in steps like regex, JSONPath, JavaScript, and value mapping.
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Detailed examples of most important preprocessing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#regular-expression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Regular expression
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jsonpath-and-additional-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JSONPath and additional steps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#snmp-walk-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SNMP walk value
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#snmp-walk-to-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SNMP walk to JSON
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-multiplier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom multiplier
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#simple-change-and-change-per-second" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Simple Change and Change per second
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javascript" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Javascript
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discard-unchanged-discard-unchanged-with-heartbeat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discard unchanged / Discard unchanged with heartbeat
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2258,6 +2352,100 @@ using built-in steps like regex, JSONPath, JavaScript, and value mapping.
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Detailed examples of most important preprocessing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#regular-expression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Regular expression
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jsonpath-and-additional-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JSONPath and additional steps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#snmp-walk-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SNMP walk value
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#snmp-walk-to-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SNMP walk to JSON
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-multiplier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom multiplier
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#simple-change-and-change-per-second" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Simple Change and Change per second
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javascript" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Javascript
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discard-unchanged-discard-unchanged-with-heartbeat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discard unchanged / Discard unchanged with heartbeat
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2516,8 +2704,8 @@ Parse and extract data from Prometheus metrics using the following methods:
 <p>When working with Zabbix, you will find that depending on your environment, some 
 preprocessing steps are used more than others. Some of the most used ones are 
 important to properly understand their functioning. </p>
-<p><strong>Regular expression</strong>
-Regular expressions are a whole subject on its own, there are many books on the 
+<h3 id="regular-expression">Regular expression</h3>
+<p>Regular expressions are a whole subject on its own, there are many books on the 
 topic on its own. We won't going over the details here, for that we recommend 
 going to https://regex101.com. On this website you can read extensive documentation 
 about regular expressions, as well as test your existing ones. </p>
@@ -2537,8 +2725,8 @@ we could configure our preprocessing like this.</p>
 <strong>Numeric (unsigned)</strong> item type of information. The basic functionality of the 
 regular expression preprocessing step as you can see is to extract values from 
 larger data.</p>
-<p><strong>JSONPath and additional steps</strong>
-Within Zabbix monitoring, JSON data structures are used quite a lot. We can find
+<h3 id="jsonpath-and-additional-steps">JSONPath and additional steps</h3>
+<p>Within Zabbix monitoring, JSON data structures are used quite a lot. We can find
 it in Low Level Discovery, export files and it is often the data format sent back 
 by API's. As such, being able to process JSON datasets is important and that is 
 where <em>JSONPath</em> comes in. Let's say we have a basic JSON dataset we collected 
@@ -2601,13 +2789,13 @@ values whenever possible, as it allows us to use more of Zabbix's functionality 
 also saves us some space in our database.</p>
 </div>
 <hr />
-<p><strong>SNMP walk value</strong> </p>
+<h3 id="snmp-walk-value">SNMP walk value</h3>
 <p>TODO</p>
 <hr />
-<p><strong>SNMP walk to JSON</strong></p>
+<h3 id="snmp-walk-to-json">SNMP walk to JSON</h3>
 <p>TODO</p>
 <hr />
-<p><strong>Custom multiplier</strong> </p>
+<h3 id="custom-multiplier">Custom multiplier</h3>
 <p>The <em>customer multiplier</em> is simple, but important. In Zabbix you might often find 
 that you receive a value, that you would want to store slightly differently. 
 Specifically, this preprocessing step is often used to convert numbers to their 
@@ -2632,7 +2820,7 @@ Mega, Giga, Tera, etc. when displayed in graphs, latest data, etc.</p>
 with <code>Units</code> on the item later. This results in a more dynamic setup.</p>
 </div>
 <hr />
-<p><strong>Simple Change and Change per second</strong></p>
+<h3 id="simple-change-and-change-per-second">Simple Change and Change per second</h3>
 <p>We quickly mentioned the <strong>Simple Change</strong> before, which calculates the difference 
 between <em>Last</em> and <em>Previous</em> value. <strong>Change per second</strong> goes a step further however
 by introducing a time based calculation to the formula. </p>
@@ -2667,71 +2855,188 @@ last_2 &amp; = &amp; 6 \quad (t_2 = 1763282100) \\
 \end{array}
 \]</div>
 </div>
-<p>We can see the calculation is the same in principle, we subtract <code>Last #1</code> and <code>Last #2</code>. We also takes the Unixtime stamp of when <code>Last #1</code> and <code>Last #2</code> were collected, subtracting those. Subtracting those time values gives us the time passed between <code>Last #1</code> and <code>Last #2</code>. Then the last step is to divide the values, giving us an estimate of how much values were received per second. Of course, the shorter our update interval is, the closer the estimate. But it gives us an accurate average over time.</p>
-<p>This kind of calculation works with what we call <code>Counters</code>, values that always increase on our monitoring targets. For example, network interfaces Bits received/sent are often times counters. These work by calculating how much data has passed over the interface in total, often since the last reboot. Often times, a useless metric to us unless we convert it with <code>Change per second</code> when it gives us a nice <code>Bits/s</code>. This allows us to monitor network traffic over time, instead of just a total. </p>
-<p><strong>Javascript</strong>
-With  many APIs out there being used to make monitoring data available to us, responses are getting more complex. It might happen that you get a response that isn't perfect for us to store in Zabbix. One of my favourite examples is dates and times. Sometimes developers might decide to gives us back a string value with the dates, for example:</p>
+<p>We can see the calculation is the same in principle, for <span class="arithmatex">\(\Delta last\)</span> we 
+subtract <span class="arithmatex">\(last_1\)</span> and <span class="arithmatex">\(last_2\)</span>.
+We also takes the Unix timestamp <span class="arithmatex">\(t_1\)</span> and <span class="arithmatex">\(t_2\)</span> of when <span class="arithmatex">\(last_1\)</span> and <span class="arithmatex">\(last_2\)</span> 
+were collected, subtracting those gives us <span class="arithmatex">\(\Delta t\)</span>, the time passed between 
+the two values. 
+Then the last step is to divide the values, giving us an estimate of how much 
+values were received per second. Of course, the shorter our update interval is,
+the closer the estimate. But it gives us an accurate average over time.</p>
+<p>This kind of calculation works with what we call <em>Counters</em>, values that always 
+increase on our monitoring targets. For example, network interfaces 
+"Bits received/sent"-values are often times counters. These work by calculating 
+how much data has passed over the interface in total, often since the last reboot.
+Often times, a useless metric to us unless we convert it with <code>Change per second</code>
+when it gives us a nice <code>Bits/s</code>. This allows us to monitor network traffic over
+time, instead of just a total. </p>
+<hr />
+<h3 id="javascript">Javascript</h3>
+<p>With  many APIs out there being used to make monitoring data available to us, 
+responses are getting more complex. It might happen that you get a response that 
+isn't perfect to store in Zabbix. One of our favourite examples are dates 
+and times. Sometimes developers might decide to gives us back a string value 
+with the dates, for example:</p>
 <ul>
 <li><strong>Aug 21 1991</strong></li>
 <li><strong>Aug 24 1991</strong></li>
 <li><strong>May 8 1945</strong></li>
 </ul>
-<p>Using Javascript, we could convert these dates into a nice <code>Unixtime</code> stamp. Unixtime is something Zabbix understands as a Unit and can be used in trigger functions. </p>
-<div class="admonition info">
+<p>Using Javascript, we could convert these dates into a nice <em>Unixtime</em> stamp. 
+Unixtime is something Zabbix understands as a <em>Unit</em> and can be used in trigger 
+functions. </p>
+<div class="admonition example">
 <p class="admonition-title">Example Javascript</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>// Expecting: &quot;Feb 20 2040&quot;
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    var months = {
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>        Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5,
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>        Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    };
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// Expecting: &quot;Feb 20 2040&quot;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">months</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">        </span><span class="nx">Jan</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">Feb</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">Mar</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">Apr</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">May</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="nx">Jun</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">        </span><span class="nx">Jul</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">Aug</span><span class="o">:</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="nx">Sep</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="nx">Oct</span><span class="o">:</span><span class="w"> </span><span class="mf">9</span><span class="p">,</span><span class="w"> </span><span class="nx">Nov</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="nx">Dec</span><span class="o">:</span><span class="w"> </span><span class="mf">11</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="p">};</span>
 </span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    if (typeof value !== &#39;string&#39;) {
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>        return value;
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    }
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">&#39;string&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">value</span><span class="p">;</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    // Split on whitespace
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    var parts = value.trim().split(/\s+/);
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    if (parts.length !== 3) {
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>        return value; // or throw, depending on how strict you want to be
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>    }
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="c1">// Split on whitespace</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">parts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="p">.</span><span class="nx">trim</span><span class="p">().</span><span class="nx">split</span><span class="p">(</span><span class="sr">/\s+/</span><span class="p">);</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">parts</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="mf">3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">value</span><span class="p">;</span><span class="w"> </span><span class="c1">// or throw, depending on how strict you want to be</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>    var monStr = parts[0];
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>    var day = parseInt(parts[1], 10);
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>    var year = parseInt(parts[2], 10);
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">monStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">parts</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">day</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">parts</span><span class="p">[</span><span class="mf">1</span><span class="p">],</span><span class="w"> </span><span class="mf">10</span><span class="p">);</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">parts</span><span class="p">[</span><span class="mf">2</span><span class="p">],</span><span class="w"> </span><span class="mf">10</span><span class="p">);</span>
 </span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>
-</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>    var month = months[monStr];
-</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>    if (month === undefined || isNaN(day) || isNaN(year)) {
-</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>        return value;
-</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>    }
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">month</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">months</span><span class="p">[</span><span class="nx">monStr</span><span class="p">];</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">month</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">undefined</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">isNaN</span><span class="p">(</span><span class="nx">day</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">isNaN</span><span class="p">(</span><span class="nx">year</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">value</span><span class="p">;</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>
-</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>    // Use UTC midnight of that date, convert ms → seconds
-</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>    var ts = Date.UTC(year, month, day) / 1000;
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">    </span><span class="c1">// Use UTC midnight of that date, convert ms → seconds</span>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">ts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">UTC</span><span class="p">(</span><span class="nx">year</span><span class="p">,</span><span class="w"> </span><span class="nx">month</span><span class="p">,</span><span class="w"> </span><span class="nx">day</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1000</span><span class="p">;</span>
 </span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>
-</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>    return ts;
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">ts</span><span class="p">;</span>
 </span></code></pre></div>
 </div>
-<p>Keep in mind, Zabbix will already put this Javascript code in a function for preprocessing as <code>function (value) { }</code>. When testing this code, we can see it executed for us now, converting out weird date format into a nice Unixtime.</p>
+<p>Keep in mind, Zabbix will already put this Javascript code in a function for 
+preprocessing as <code>function (value) { }</code>. When testing this code, we can see it 
+executed for us now, converting out weird date format into a nice Unixtime.</p>
 <p><img alt="preprocessing/ch04.41-preprocessing-javascript.png" src="ch04.41-preprocessing-javascript.png" />
 <em>4.41 Preprocessing Javascript</em></p>
-<p><strong>Discard unchanged with heartbeat</strong> 
-Shortly, I'd also like to discuss the <code>Discard unchanged with heartbeat</code> preprocessing in more detail. Let's say we set up our preprocessing step <code>Discard unchanged with heartbeat</code> with a heartbeat value of <code>5m</code>. We might see the following happen.</p>
-<p>| Value | Timestamp | Stored value? |
-| :---- | :-------- |
-|   0   |    Now    | No
-|   0   |   1m ago  | Yes
-|   1   |   2m ago  | Yes
-|   1   |   3m ago  | No
-|   1   |   4m ago  | No
-|   1   |   5m ago  | No
-|   1   |   6m ago  | No
-|   1   |   7m ago  | No
-|   1   |   8m ago  | Yes
-|   0   |   9m ago  | Yes</p>
-<p>We can see that we only store the value if it changes from <code>0</code> to <code>1</code> or from <code>1</code> to <code>0</code> in this case. However, at the <code>2m ago</code> timestamp we can see an exception. This specific value had passed the 5 minute heartbeat interval, meaning we store this value even though it had not changed yet. This can be used to make sure we still save a value from time to time, which can be useful for data integrity or crafting your trigger expressions later on.</p>
+<hr />
+<h3 id="discard-unchanged-discard-unchanged-with-heartbeat">Discard unchanged / Discard unchanged with heartbeat</h3>
+<p>Then, lastly, let's have a more detailed look at the <strong>Discard unchanged</strong> and 
+<strong>Discard unchanged with heartbeat</strong> preprocessing steps. These are used to 
+reduce the amount of data we store in our Zabbix database, by only storing values
+if they have changed. This is especially useful for items that receive a lot of data,
+but we only care about changes in the value. For example, a temperature sensor that
+only changes value when the temperature changes. If we would store every value, 
+we would have a lot of redundant data in our database, taking up unnecessary space.</p>
+<p>Zabbix provides us with two options to discard unchanged values. The first one is simply
+<strong>Discard unchanged</strong>, which will discard any value that is the same as the last 
+stored value.
+When a value is discarded, it is not stored in the database, and it is not 
+available for trigger expressions, graphs, etc. It is as if the value was never
+received at all.</p>
+<p>Secondly, we have <strong>Discard unchanged with heartbeat</strong>, which will also discard 
+unchanged values, but it will still store the value if a certain amount of time has
+passed since the last stored value. This is useful to ensure that we still have
+some data points in our database, even if the value doesn't change for a long time.</p>
+<p>Let's say we set up our preprocessing step <strong>Discard unchanged with heartbeat</strong> 
+with a heartbeat value of <code>5m</code>. We might see the following happen:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Value</th>
+<th style="text-align: left;">Timestamp</th>
+<th style="text-align: left;">Stored value?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">Now</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1m ago</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2m ago</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3m ago</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">4m ago</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">5m ago</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">6m ago</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">7m ago</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">8m ago</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">9m ago</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+</tbody>
+</table>
+<p>We can see that we only store the value if it changes from <code>0</code> to <code>1</code> or from 
+<code>1</code> to <code>0</code> in this case. However, at the <code>2m ago</code> timestamp we can see an 
+exception. This specific value had passed the 5 minute heartbeat interval, 
+meaning we store this value even though it had not changed yet. This can be 
+used to make sure we still save a value from time to time, which can be useful 
+for data integrity or crafting your trigger expressions later on.</p>
+<hr />
 <h2 id="conclusion">Conclusion</h2>
-<p>As we can see preprocessing can be used to turns raw received data into structured, meaningful monitoring data. Once you the various different types of preprocessing your Zabbix environment becomes cleaner and more powerful. It's useful to familiarise yourself with the various options in preprocessing, although we do not need to know all of them in detail. Different situations call for different types of preprocessing, so it's good to at least know of the existence of most of them. The Zabbix documentation also includes more details, as well as various examples.</p>
+<p>As we can see preprocessing can be used to turns raw received data into 
+structured, meaningful monitoring data. Once you the various different types of
+preprocessing your Zabbix environment becomes cleaner and more powerful. It's 
+useful to familiarise yourself with the various options in preprocessing, although
+we do not need to know all of them in detail. Different situations call for different
+types of preprocessing, so it's good to at least know of the existence of most of
+them. The Zabbix documentation also includes more details, as well as various examples.</p>
+<hr />
 <h2 id="questions">Questions</h2>
+<ul>
+<li>What is preprocessing in Zabbix and why is it important?</li>
+<li>How can you use regular expressions in preprocessing to extract data?</li>
+<li>Why is it often a good idea to convert string values into numeric values 
+    using preprocessing?</li>
+<li>What is the difference between the <em>Simple Change</em> and <em>Change per second</em> 
+    preprocessing steps, and when would you use each of them?</li>
+<li>Can you use the <code>nodata()</code> function in trigger expressions with items that 
+    have the Discard unchanged preprocessing step enabled? Why or why not?</li>
+</ul>
+<hr />
 <h2 id="useful-urls">Useful URLs</h2>
+<ul>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/config/items/preprocessing">https://www.zabbix.com/documentation/current/en/manual/config/items/preprocessing</a></li>
+</ul>
 
 
 

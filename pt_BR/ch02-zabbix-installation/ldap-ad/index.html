@@ -668,7 +668,7 @@ making user authentication more secure and easier to maintain.
   <span class="md-ellipsis">
     
   
-    Getting started with the Zabbix installation
+    Primeiros passos com a instalação do Zabbix
   
 
     
@@ -724,7 +724,7 @@ making user authentication more secure and easier to maintain.
   <span class="md-ellipsis">
     
   
-    Host Groups
+    Grupos de hospedagem
   
 
     
@@ -780,7 +780,7 @@ making user authentication more secure and easier to maintain.
   <span class="md-ellipsis">
     
   
-    User Roles
+    Funções de usuário
   
 
     
@@ -950,10 +950,10 @@ making user authentication more secure and easier to maintain.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#users-authentication-mode" class="md-nav__link">
+  <a href="#modo-de-autenticacao-de-usuarios" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Users authentication mode
+        Modo de autenticação de usuários
       
     </span>
   </a>
@@ -961,22 +961,22 @@ making user authentication more secure and easier to maintain.
 </li>
       
         <li class="md-nav__item">
-  <a href="#configure-ldap" class="md-nav__link">
+  <a href="#configurar-ldap" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Configure LDAP
+        Configurar LDAP
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Configure LDAP">
+    <nav class="md-nav" aria-label="Configurar LDAP">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#set-up-local-demo-ldap-server" class="md-nav__link">
+  <a href="#configurar-o-servidor-ldap-de-demonstracao-local" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Set up local demo LDAP server
+        Configurar o servidor LDAP de demonstração local
       
     </span>
   </a>
@@ -1050,10 +1050,10 @@ making user authentication more secure and easier to maintain.
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#conclusao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conclusion
+        Conclusão
       
     </span>
   </a>
@@ -1061,10 +1061,10 @@ making user authentication more secure and easier to maintain.
 </li>
       
         <li class="md-nav__item">
-  <a href="#questions" class="md-nav__link">
+  <a href="#perguntas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Questions
+        Perguntas
       
     </span>
   </a>
@@ -1072,10 +1072,10 @@ making user authentication more secure and easier to maintain.
 </li>
       
         <li class="md-nav__item">
-  <a href="#useful-urls" class="md-nav__link">
+  <a href="#urls-uteis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Useful URLs
+        URLs úteis
       
     </span>
   </a>
@@ -1133,7 +1133,7 @@ making user authentication more secure and easier to maintain.
   <span class="md-ellipsis">
     
   
-    Multi factor authentication
+    Autenticação multifatorial
   
 
     
@@ -2002,10 +2002,10 @@ making user authentication more secure and easier to maintain.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#users-authentication-mode" class="md-nav__link">
+  <a href="#modo-de-autenticacao-de-usuarios" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Users authentication mode
+        Modo de autenticação de usuários
       
     </span>
   </a>
@@ -2013,22 +2013,22 @@ making user authentication more secure and easier to maintain.
 </li>
       
         <li class="md-nav__item">
-  <a href="#configure-ldap" class="md-nav__link">
+  <a href="#configurar-ldap" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Configure LDAP
+        Configurar LDAP
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Configure LDAP">
+    <nav class="md-nav" aria-label="Configurar LDAP">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#set-up-local-demo-ldap-server" class="md-nav__link">
+  <a href="#configurar-o-servidor-ldap-de-demonstracao-local" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Set up local demo LDAP server
+        Configurar o servidor LDAP de demonstração local
       
     </span>
   </a>
@@ -2102,10 +2102,10 @@ making user authentication more secure and easier to maintain.
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#conclusao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conclusion
+        Conclusão
       
     </span>
   </a>
@@ -2113,10 +2113,10 @@ making user authentication more secure and easier to maintain.
 </li>
       
         <li class="md-nav__item">
-  <a href="#questions" class="md-nav__link">
+  <a href="#perguntas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Questions
+        Perguntas
       
     </span>
   </a>
@@ -2124,10 +2124,10 @@ making user authentication more secure and easier to maintain.
 </li>
       
         <li class="md-nav__item">
-  <a href="#useful-urls" class="md-nav__link">
+  <a href="#urls-uteis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Useful URLs
+        URLs úteis
       
     </span>
   </a>
@@ -2253,47 +2253,51 @@ making user authentication more secure and easier to maintain.
 
 
 <h1 id="ldap-ad">LDAP / AD</h1>
-<p>As any modern system Zabbix can perform users authentication using Lightweight
-Directory Access Protocol (LDAP). In theory LDAP is very well defined open
-protocol that should be vendor independent but its relative complexity plays a
-role in every LDAP server implementation. Zabbix is known to work well with
-Microsoft Active Directory and OpenLDAP server.</p>
-<p>LDAP authentication can be configured in two modes:</p>
+<p>Como qualquer sistema moderno, o Zabbix pode realizar a autenticação de usuários
+usando o Lightweight Directory Access Protocol (LDAP). Em teoria, o LDAP é um
+protocolo aberto muito bem definido que deve ser independente do fornecedor, mas
+sua complexidade relativa desempenha um papel importante em cada implementação
+de servidor LDAP. O Zabbix é conhecido por trabalhar bem com o Microsoft Active
+Directory e o servidor OpenLDAP.</p>
+<p>A autenticação LDAP pode ser configurada em dois modos:</p>
 <ul>
-<li>Users authentication</li>
-<li>Users authentication with users provisioning</li>
+<li>Autenticação de usuários</li>
+<li>Autenticação de usuários com provisionamento de usuários</li>
 </ul>
-<h2 id="users-authentication-mode">Users authentication mode</h2>
-<p>The process of the authenticating users follows this diagram.</p>
-<p><img align="center" alt="LDAP users authentication" src="../../../ch02-zabbix-installation/external-auth/ch02.3-ldap-auth-diagram.png" /></p>
-<p><em>2.3 LDAP users authentication</em></p>
-<p>As shown on the diagram a user that tries to log in must be pre-created in
-Zabbix to be able to log in using LDAP. The database user records do not have
-any fields "saying" that the user will be authenticated via LDAP, it's just
-users' passwords stored in the database are ignored, instead, Zabbix goes to a
-LDAP server to verify whether:</p>
+<h2 id="modo-de-autenticacao-de-usuarios">Modo de autenticação de usuários</h2>
+<p>O processo de autenticação de usuários segue este diagrama.</p>
+<p><img align="center" alt="Autenticação de usuários LDAP" src="../../../ch02-zabbix-installation/external-auth/ch02.3-ldap-auth-diagram.png" /></p>
+<p><em>2.3 Autenticação de usuários LDAP</em></p>
+<p>Conforme mostrado no diagrama, um usuário que tenta fazer login deve ser
+pré-criado no Zabbix para poder fazer login usando o LDAP. Os registros de
+usuário do banco de dados não têm nenhum campo "dizendo" que o usuário será
+autenticado via LDAP, apenas as senhas dos usuários armazenadas no banco de
+dados são ignoradas; em vez disso, o Zabbix vai até um servidor LDAP para
+verificar se o usuário está autenticado:</p>
 <ul>
-<li>user with a given username exists</li>
-<li>user provided the correct password</li>
+<li>existe um usuário com um determinado nome de usuário</li>
+<li>o usuário forneceu a senha correta</li>
 </ul>
-<p>no other attributes configured for the user on the LDAP server side are taken
-into account.</p>
-<p>So when Zabbix is used by many users and groups, user management becomes not a
-very trivial task as new people join different teams (or leave). This problem is
-addressed by "users provisioning" and we'll cover this topic a bit later. For
-now let's take a look at how to configure LDAP authentication.</p>
-<h2 id="configure-ldap">Configure LDAP</h2>
-<p>In this section, we will be using a custom demo LDAP server with pre-loaded
-data. You can set this demo environment up to check out the Zabbix LDAP
-authentication possibilities. Or you can skip the setup of the demo environment
-if you just want to connect your Zabbix instance to your existing LDAP or AD
-server.</p>
-<h3 id="set-up-local-demo-ldap-server">Set up local demo LDAP server</h3>
-<p>We believe that it is better to learn this topic by example so we'll be using
-our own LDAP server that you can spin up in a container for demo purposes. First
-we will need to ensure that we have a container engine installed.</p>
+<p>nenhum outro atributo configurado para o usuário no lado do servidor LDAP é
+levado em consideração.</p>
+<p>Portanto, quando o Zabbix é usado por muitos usuários e grupos, o gerenciamento
+de usuários se torna uma tarefa não muito trivial à medida que novas pessoas
+entram em equipes diferentes (ou saem). Esse problema é resolvido pelo
+"provisionamento de usuários" e abordaremos esse tópico um pouco mais tarde. Por
+enquanto, vamos dar uma olhada em como configurar a autenticação LDAP.</p>
+<h2 id="configurar-ldap">Configurar LDAP</h2>
+<p>Nesta seção, usaremos um servidor LDAP de demonstração personalizado com dados
+pré-carregados. Você pode configurar esse ambiente de demonstração para
+verificar as possibilidades de autenticação LDAP do Zabbix. Ou você pode pular a
+configuração do ambiente de demonstração se quiser apenas conectar sua instância
+do Zabbix ao seu servidor LDAP ou AD existente.</p>
+<h3 id="configurar-o-servidor-ldap-de-demonstracao-local">Configurar o servidor LDAP de demonstração local</h3>
+<p>Acreditamos que é melhor aprender esse tópico por meio de exemplos, portanto,
+usaremos nosso próprio servidor LDAP, que pode ser ativado em um contêiner para
+fins de demonstração. Primeiro, precisamos garantir que temos um mecanismo de
+contêiner instalado.</p>
 <div class="admonition info">
-<p class="admonition-title">Install Podman container engine</p>
+<p class="admonition-title">Instalar o mecanismo de contêiner do Podman</p>
 </div>
 <p>Red Hat
   <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dnf<span class="w"> </span>install<span class="w"> </span>podman
@@ -2525,7 +2529,7 @@ into <em>Zabbix users</em> user group:</p>
 <p><img align="center" alt="Test user3" src="../../../ch02-zabbix-installation/external-auth/ch02.15-ldap-jit-test-user3.png" /></p>
 <p><em>2.15 Test user3</em></p>
 <hr />
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusao">Conclusão</h2>
 <p>Integrating Zabbix with LDAP—or specifically, Active Directory elevates your
 system's authentication capabilities by leveraging existing organizational
 credentials. It allows users to log in using familiar domain credentials, while
@@ -2549,7 +2553,7 @@ approach to centralizing identity management in Zabbix. With flexible
 provisioning and synchronization, organizations can reduce administrative load
 while reinforcing consistency across their access control and authentication
 strategy.</p>
-<h2 id="questions">Questions</h2>
+<h2 id="perguntas">Perguntas</h2>
 <ul>
 <li>
 <p>What are the main benefits of integrating Zabbix authentication with LDAP or
@@ -2584,7 +2588,7 @@ strategy.</p>
   JIT was not enabled?</p>
 </li>
 </ul>
-<h2 id="useful-urls">Useful URLs</h2>
+<h2 id="urls-uteis">URLs úteis</h2>
 <ul>
 <li><a href="https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/users/authentication/ldap">https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/users/authentication/ldap</a></li>
 </ul>

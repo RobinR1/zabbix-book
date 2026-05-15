@@ -39,7 +39,7 @@
     
     
       
-        <title>Multi factor authentication - Zabbix Book</title>
+        <title>Autenticação multifatorial - Zabbix Book</title>
       
     
     
@@ -79,14 +79,14 @@
     
     
 
-    <meta property="og:title" content="Multi factor authentication">
+    <meta property="og:title" content="Autenticação multifatorial">
     <meta property="og:description" content="A free, community driven online resource to master Zabbix: built to give back, sustain the community, and help you become truly empowered with monitoring.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thezabbixbook.com/pt_BR/ch02-zabbix-installation/mfa/">
     <meta property="og:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Multi factor authentication">
+    <meta name="twitter:title" content="Autenticação multifatorial">
     <meta name="twitter:description" content="A free, community driven online resource to master Zabbix: built to give back, sustain the community, and help you become truly empowered with monitoring.">
     <meta name="twitter:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
     <meta property="og:image:width" content="1200">
@@ -111,7 +111,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#multi-factor-authentication" class="md-skip">
+        <a href="#autenticacao-multifatorial" class="md-skip">
           Pular para conteúdo
         </a>
       
@@ -169,7 +169,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Multi factor authentication
+              Autenticação multifatorial
             
           </span>
         </div>
@@ -664,7 +664,7 @@
   <span class="md-ellipsis">
     
   
-    Getting started with the Zabbix installation
+    Primeiros passos com a instalação do Zabbix
   
 
     
@@ -720,7 +720,7 @@
   <span class="md-ellipsis">
     
   
-    Host Groups
+    Grupos de hospedagem
   
 
     
@@ -776,7 +776,7 @@
   <span class="md-ellipsis">
     
   
-    User Roles
+    Funções de usuário
   
 
     
@@ -958,7 +958,7 @@
   <span class="md-ellipsis">
     
   
-    Multi factor authentication
+    Autenticação multifatorial
   
 
     
@@ -976,7 +976,7 @@
   <span class="md-ellipsis">
     
   
-    Multi factor authentication
+    Autenticação multifatorial
   
 
     
@@ -1002,10 +1002,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#time-based-one-time-password" class="md-nav__link">
+  <a href="#senha-de-uso-unico-baseada-em-tempo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Time-based one-time password
+        Senha de uso único baseada em tempo
       
     </span>
   </a>
@@ -1024,10 +1024,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#conclusao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conclusion
+        Conclusão
       
     </span>
   </a>
@@ -1035,10 +1035,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#questions" class="md-nav__link">
+  <a href="#perguntas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Questions
+        Perguntas
       
     </span>
   </a>
@@ -1046,10 +1046,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#useful-urls" class="md-nav__link">
+  <a href="#urls-uteis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Useful URLs
+        URLs úteis
       
     </span>
   </a>
@@ -1920,10 +1920,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#time-based-one-time-password" class="md-nav__link">
+  <a href="#senha-de-uso-unico-baseada-em-tempo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Time-based one-time password
+        Senha de uso único baseada em tempo
       
     </span>
   </a>
@@ -1942,10 +1942,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#conclusao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conclusion
+        Conclusão
       
     </span>
   </a>
@@ -1953,10 +1953,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#questions" class="md-nav__link">
+  <a href="#perguntas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Questions
+        Perguntas
       
     </span>
   </a>
@@ -1964,10 +1964,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#useful-urls" class="md-nav__link">
+  <a href="#urls-uteis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Useful URLs
+        URLs úteis
       
     </span>
   </a>
@@ -2092,64 +2092,66 @@
   
 
 
-<h1 id="multi-factor-authentication">Multi factor authentication</h1>
-<p>We all know that before you can start configuring Zabbix via WebUI you have to
-sign in. Zabbix has several options to provide better security for user
-passwords by configuring password policy:</p>
+<h1 id="autenticacao-multifatorial">Autenticação multifatorial</h1>
+<p>Todos nós sabemos que, antes de começar a configurar o Zabbix via WebUI, é
+necessário fazer o login. O Zabbix tem várias opções para fornecer melhor
+segurança para as senhas dos usuários, configurando a política de senha:</p>
 <ul>
-<li>Requirement for Minimum password length</li>
-<li>Requirements for password to contain an uppercase and a lowercase Latin
-  letter, a digit, a special character</li>
-<li>Requirement to avoid easy-to-guess passwords</li>
+<li>Requisito para o tamanho mínimo da senha</li>
+<li>Requisitos para que a senha contenha uma letra latina maiúscula e uma
+  minúscula, um dígito e um caractere especial</li>
+<li>Requisito para evitar senhas fáceis de adivinhar</li>
 </ul>
-<p>To secure sign in process even more you can configure multi factor
-authentication (MFA). MFA protects Zabbix by using a second source of validation
-before granting access to its WebUI after a user enters his/her password
-correctly. Zabbix offers to types of MFA - Time-based one-time password (TOTP)
-and Duo MFA provider.</p>
+<p>Para proteger ainda mais o processo de login, você pode configurar a
+autenticação multifator (MFA). A MFA protege o Zabbix usando uma segunda fonte
+de validação antes de conceder acesso à sua WebUI depois que um usuário digita
+sua senha corretamente. O Zabbix oferece dois tipos de MFA - Time-based one-time
+password (TOTP) e Duo MFA provider.</p>
 <hr />
-<h2 id="time-based-one-time-password">Time-based one-time password</h2>
-<p>In the menu select <code>Users</code> section and then <code>Authentication</code></p>
+<h2 id="senha-de-uso-unico-baseada-em-tempo">Senha de uso único baseada em tempo</h2>
+<p>No menu, selecione <code>Users</code> section e, em seguida, <code>Authentication</code></p>
 <p><img alt="MFA Settings initial" src="../../../ch02-zabbix-installation/external-auth/ch02.20-mfa_settings_initial.png" width="90%" /></p>
-<p><em>2.20 Initial MFA settings</em></p>
-<p>Now in <code>MFA settings</code> tab select the <code>Enable multi-factor authentication</code>
-check-box, then select <code>TOTP</code> in Type drop-down list.</p>
+<p><em>2.20 Configurações iniciais do MFA</em></p>
+<p>Agora, na guia <code>MFA settings</code>, marque a caixa de seleção <code>Enable multi-factor
+authentication</code> e, em seguida, selecione <code>TOTP</code> na lista suspensa Type.</p>
 <p><img alt="MFA Settings TOTP" src="../../../ch02-zabbix-installation/external-auth/ch02.21-mfa_settings_TOTP_new.png" width="90%" /></p>
-<p><em>2.21 New MFA method</em></p>
-<p>In <code>Hash function</code> drop-down list you can choose SHA-1, SHA-256 or SHA-512, the
-higher number is the better security.</p>
-<p>In <code>Code lentgh</code> you can select how many digits will be generated for you by
-Authenticator application on your phone.</p>
-<p>Click <code>Add</code> and then <code>Update</code>. Now you have TOTP MFA configured and it is the
-default method of MFA.</p>
-<p><img alt="MFA Settings TOTP configured" src="../../../ch02-zabbix-installation/external-auth/ch02.22-mfa_settings_TOTP_configured.png" />{
+<p><em>2.21 Novo método MFA</em></p>
+<p>Na lista suspensa <code>Hash function</code>, você pode escolher SHA-1, SHA-256 ou SHA-512;
+quanto maior o número, maior a segurança.</p>
+<p>Em <code>Code lentgh</code>, você pode selecionar quantos dígitos serão gerados para você
+pelo aplicativo Authenticator no seu telefone.</p>
+<p>Clique em <code>Add</code> e depois em <code>Update</code>. Agora você tem o TOTP MFA configurado e
+ele é o método padrão de MFA.</p>
+<p><img alt="Configurações de MFA TOTP
+configuradas" src="../../../ch02-zabbix-installation/external-auth/ch02.22-mfa_settings_TOTP_configured.png" width="90%" /></p>
+<p><em>2.22 Novo método MFA adicionado</em></p>
+<p>Agora você precisa informar ao Zabbix para qual grupo de usuários (ou grupos)
+usar a MFA. Vamos criar um grupo de usuários que exigiria a MFA.</p>
+<p>No menu, selecione a seção <code>Users</code> e, em seguida, <code>User groups</code>, depois clique
+no botão <code>Create user group</code></p>
+<p><img alt="Lista MFA de grupos de usuários" src="../../../ch02-zabbix-installation/external-auth/ch02.23-mfa_create_user_groups.png" />{
 width=90% }</p>
-<p><em>2.22 New MFA method added</em></p>
-<p>Now you need to tell Zabbix for which User group (or groups) to use MFA. Let's
-create a User group that would require MFA.</p>
-<p>In the menu select <code>Users</code> section and then <code>User groups</code>, then click <code>Create
-user group</code> button</p>
-<p><img alt="MFA list of user groups" src="../../../ch02-zabbix-installation/external-auth/ch02.23-mfa_create_user_groups.png" width="90%" /></p>
-<p><em>2.23 Create user group</em></p>
-<p>In <code>Group name</code> put "test". Note that <code>Multi-factor authentication</code> field is
-"Default", as currently we have only one MFA method configured it does not
-matter whether we select "Default" or "TOTP1" that we created above. You also
-can disable MFA for all users belonging to this User group. Click <code>Add</code> button
-to create "test" User group.</p>
-<p><img alt="MFA new user group" src="../../../ch02-zabbix-installation/external-auth/ch02.24-mfa_new_user_group.png" width="90%" /></p>
-<p><em>2.24 New user group configuration</em></p>
-<details class="note" open="open">
-<summary>Note</summary>
+<p><em>2.23 Criar grupo de usuários</em></p>
+<p>Em <code>Group name</code>, coloque "test". Observe que o campo <code>Multi-factor
+authentication</code> é "Default" (Padrão), pois como atualmente temos apenas um
+método MFA configurado, não importa se selecionamos "Default" (Padrão) ou
+"TOTP1" que criamos acima. Você também pode desativar a MFA para todos os
+usuários pertencentes a esse grupo de usuários. Clique no botão <code>Add</code> para criar
+o grupo de usuários "test".</p>
+<p><img alt="MFA novo grupo de usuários" src="../../../ch02-zabbix-installation/external-auth/ch02.24-mfa_new_user_group.png" width="90%" /></p>
+<p><em>2.24 Nova configuração de grupo de usuários</em></p>
+<details class="nota" open="open">
+<summary>Nota</summary>
 <p>MFA method is defined on per User group basis, i.e. MFA method configured for
 a User group will be applied to all users belonging to this group.</p>
 </details>
-<p>Let's add a user to this user group. In the menu select <code>Users</code> section and then
-<code>Users</code>, then click <code>Create user</code> button</p>
-<p><img alt="MFA create user" src="../../../ch02-zabbix-installation/external-auth/ch02.25-mfa_create_user.png" width="90%" /></p>
-<p><em>2.25 Create user</em></p>
-<p>Fill in <code>Username</code>, <code>Password</code> and <code>Password (once again)</code> fields. Make sure you
-select <code>test</code> user group in <code>Groups</code> field.</p>
-<p><img alt="MFA new user" src="../../../ch02-zabbix-installation/external-auth/ch02.26-mfa_new_user.png" width="90%" /></p>
+<p>Vamos adicionar um usuário a esse grupo de usuários. No menu, selecione a seção
+<code>Users</code> e, em seguida, <code>Users</code>, depois clique no botão <code>Create user</code></p>
+<p><img alt="MFA criar usuário" src="../../../ch02-zabbix-installation/external-auth/ch02.25-mfa_create_user.png" width="90%" /></p>
+<p><em>2.25 Criar usuário</em></p>
+<p>Preencha os campos <code>Nome de usuário</code>, <code>Senha</code> e <code>Senha (mais uma vez)</code>.
+Certifique-se de selecionar o grupo de usuários <code>test</code> no campo <code>Groups</code>.</p>
+<p><img alt="MFA novo usuário" src="../../../ch02-zabbix-installation/external-auth/ch02.26-mfa_new_user.png" width="90%" /></p>
 <p><em>2.26 New user configuration</em></p>
 <p>Then switch to <code>Permissions</code> tab and select any role.</p>
 <p><img alt="MFA new user permissions" src="../../../ch02-zabbix-installation/external-auth/ch02.27-mfa_new_user_permissions.png" width="90%" /></p>
@@ -2286,7 +2288,7 @@ push notification will be sent to your device and all you need is tap on
 user, or deactivate just click on it and experiment.</p>
 <p><img alt="MFA DUO " src="../../../ch02-zabbix-installation/external-auth/ch02.56-mfa_duo_users.png" width="98%" /></p>
 <p><em>2.56 New user registered in DUO</em></p>
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusao">Conclusão</h2>
 <p>Implementing Multi-Factor Authentication (MFA) in Zabbix is a powerful way to
 significantly advance your system’s security beyond the standard password
 policies. This chapter outlined how Zabbix supports two robust MFA mechanisms:</p>
@@ -2311,7 +2313,7 @@ user groups thus tailoring the security posture to organizational needs.</p>
 access but also fits within a broader strategy of robust authentication. Whether
 through TOTP or Duo, adding MFA demonstrates a commitment to safeguarding access
 to your Zabbix environment and fortifying your monitoring infrastructure.n</p>
-<h2 id="questions">Questions</h2>
+<h2 id="perguntas">Perguntas</h2>
 <ul>
 <li>
 <p>Why is relying on a password alone not sufficient to secure access to a Zabbix
@@ -2345,7 +2347,7 @@ to your Zabbix environment and fortifying your monitoring infrastructure.n</p>
   other complementary security measures should be considered?</p>
 </li>
 </ul>
-<h2 id="useful-urls">Useful URLs</h2>
+<h2 id="urls-uteis">URLs úteis</h2>
 <p><a href="https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/users/authentication/mfa">https://www.zabbix.com/documentation/current/en/manual/web_interface/frontend_sections/users/authentication/mfa</a>
 <a href="https://duo.com/docs/sso-zabbix">https://duo.com/docs/sso-zabbix</a></p>
 

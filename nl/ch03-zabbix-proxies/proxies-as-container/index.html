@@ -880,10 +880,10 @@ environments.
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#add-the-proxy-to-the-zabbix-frontend" class="md-nav__link">
+  <a href="#de-proxy-toevoegen-aan-het-zabbix-frontend" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Add the proxy to the zabbix frontend
+        De proxy toevoegen aan het zabbix frontend
       
     </span>
   </a>
@@ -1901,10 +1901,10 @@ environments.
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#add-the-proxy-to-the-zabbix-frontend" class="md-nav__link">
+  <a href="#de-proxy-toevoegen-aan-het-zabbix-frontend" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Add the proxy to the zabbix frontend
+        De proxy toevoegen aan het zabbix frontend
       
     </span>
   </a>
@@ -2161,25 +2161,25 @@ environments.
 
 
 <h1 id="proxies-draaien-als-containers">Proxies draaien als containers</h1>
-<p>As discussed in the previous section, Zabbix proxies offer a lightweight and
-efficient solution for distributed monitoring. Leveraging SQLite as their
-backend database, they are inherently flexible and portable, making them
-well-suited for deployment in containerized environments. This chapter provides
-a step-by-step guide on deploying a Zabbix proxy within a container, outlining
-configuration options and best practices for optimal performance and
-maintainability.</p>
+<p>Zoals besproken in de vorige sectie, bieden Zabbix proxies een lichtgewicht en
+efficiënte oplossing voor gedistribueerde monitoring. Door gebruik te maken van
+SQLite als hun backend database, zijn ze van nature flexibel en draagbaar,
+waardoor ze zeer geschikt zijn voor implementatie in container omgevingen. Dit
+hoofdstuk biedt een stap-voor-stap handleiding voor het implementeren van een
+Zabbix proxy in een container, met configuratie-opties en best practices voor
+optimale prestaties en onderhoudbaarheid.</p>
 <hr />
 <h2 id="containers-instellen">Containers instellen</h2>
-<p>For this setup, you will need a virtual machine (VM) with Podman installed to
-deploy the Zabbix proxy container. This container will then be configured to
-communicate with your Zabbix server.</p>
+<p>Voor deze setup heb je een virtuele machine (VM) nodig met Podman geïnstalleerd
+om de Zabbix proxy container te implementeren. Deze container wordt dan
+geconfigureerd om te communiceren met je Zabbix server.</p>
 <p>Raadpleeg het hoofdstuk <a href="../../ch00-getting-started/preparation/#preparing-the-system-for-running-containers-using-podman"><em>Het systeem voorbereiden voor
 Zabbix</em></a>
 voor instructies over het voorbereiden van je systeem voor het draaien van
 containers met Podman.</p>
 <hr />
-<h3 id="add-the-proxy-to-the-zabbix-frontend">Add the proxy to the zabbix frontend</h3>
-<p><img alt="Add the proxy" src="../../../ch03-zabbix-proxies/proxy-containers/ch03-container-proxy-new.png" /></p>
+<h3 id="de-proxy-toevoegen-aan-het-zabbix-frontend">De proxy toevoegen aan het zabbix frontend</h3>
+<p><a href="../../../ch03-zabbix-proxies/proxy-containers/ch03-container-proxy-new.png">Voeg de proxy toe</a></p>
 <p><em>3.9 Add proxy to frontend</em></p>
 <p>To keep the configuration straightforward, we will deploy an active Zabbix
 proxy. In this case, only two parameters need to be configured: the proxy's

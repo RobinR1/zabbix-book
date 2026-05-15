@@ -2452,16 +2452,15 @@ database.</p>
 <p>Red Hat HTTPD
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>cp<span class="w"> </span>-R<span class="w"> </span>/etc/httpd/<span class="w"> </span>/opt/zabbix-backup/
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>cp<span class="w"> </span>-R<span class="w"> </span>/var/www/<span class="w"> </span>/opt/zabbix-backup/
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>cp<span class="w"> </span>/etc/httpd/conf.d/zabbix.conf<span class="w">  </span>/opt/zabbix-backup/<span class="w">    </span><span class="sb">```</span>
-</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>
-</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>Ubuntu<span class="w"> </span>Apache2
-</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="sb">```</span>bash
-</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>cp<span class="w"> </span>-R<span class="w"> </span>/etc/apache2/<span class="w"> </span>/opt/zabbix-backup/
-</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>cp<span class="w"> </span>-R<span class="w"> </span>/var/www/<span class="w"> </span>/opt/zabbix-backup/
-</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>cp<span class="w"> </span>/etc/httpd/conf.d/zabbix.conf<span class="w">  </span>/opt/zabbix-backup/
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>cp<span class="w"> </span>/etc/httpd/conf.d/zabbix.conf<span class="w">  </span>/opt/zabbix-backup/
+</span></code></pre></div></p>
+<p>Ubuntu Apache2
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>cp<span class="w"> </span>-R<span class="w"> </span>/etc/apache2/<span class="w"> </span>/opt/zabbix-backup/
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>cp<span class="w"> </span>-R<span class="w"> </span>/var/www/<span class="w"> </span>/opt/zabbix-backup/
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>cp<span class="w"> </span>/etc/httpd/conf.d/zabbix.conf<span class="w">  </span>/opt/zabbix-backup/
 </span></code></pre></div></p>
 <p>NGINX
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>cp<span class="w"> </span>-R<span class="w"> </span>/etc/nginx/<span class="w"> </span>/opt/zabbix-backup/
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>cp<span class="w"> </span>-R<span class="w"> </span>/etc/nginx/<span class="w"> </span>/opt/zabbix-backup/
 </span></code></pre></div></p>
 </div>
 <p>That should cover all the important files here, but they are only written to a separate folder on the same Linux server now. To create a truly resilient backup, we should write these files somewhere else. There are various solutions here as well.</p>

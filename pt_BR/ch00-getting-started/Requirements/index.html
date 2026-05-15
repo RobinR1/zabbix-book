@@ -646,10 +646,10 @@ specs, firewall ports, and time sync needed for a smooth installation.
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#update-the-system" class="md-nav__link">
+  <a href="#atualizar-o-sistema" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Update the System
+        Atualizar o sistema
       
     </span>
   </a>
@@ -1797,10 +1797,10 @@ specs, firewall ports, and time sync needed for a smooth installation.
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#update-the-system" class="md-nav__link">
+  <a href="#atualizar-o-sistema" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Update the System
+        Atualizar o sistema
       
     </span>
   </a>
@@ -2058,8 +2058,8 @@ simplificar, anote os detalhes do servidor:</p>
 </tr>
 </tbody>
 </table>
-<details class="tip" open="open">
-<summary>Tip</summary>
+<details class="dica" open="open">
+<summary>Dica</summary>
 <p>Zabbix package names often use dashes (<code>-</code>) in their names, such as <code>zabbix-get</code>
 or <code>zabbix-sender</code>, but the binaries themselves may use underscores (<code>_</code>),
 like <code>zabbix_sender</code> or <code>zabbix_server</code>. This naming discrepancy can sometimes
@@ -2067,8 +2067,8 @@ be confusing, particularly if you are using packages from non-official Zabbix
 repositories.</p>
 <p>Always check if a binary uses a dash or an underscore when troubleshooting.</p>
 </details>
-<details class="warning" open="open">
-<summary>Warning</summary>
+<details class="aviso" open="open">
+<summary>Aviso</summary>
 <p>Starting from Zabbix 7.2, only MySQL (including its forks) and PostgreSQL are
 supported as back-end databases. Earlier versions of Zabbix also included support
 for Oracle Database; however, this support was discontinued with Zabbix 7.0 LTS,
@@ -2076,43 +2076,47 @@ making it the last LTS version to officially support Oracle DB.</p>
 </details>
 <hr />
 <h2 id="configuracao-basica-do-sistema-operacional">Configuração básica do sistema operacional</h2>
-<p>Operating systems, so many choices, each with its own advantages and loyal user
-base. While Zabbix can be installed on a wide range of platforms, documenting
-the process for every available OS would be impractical. To keep this book
-focused and efficient, we have chosen to cover only the most widely used
-options: Ubuntu, Red Hat and Suse based distributions.</p>
-<p>Since not everyone has access to a Red Hat Enterprise Linux (RHEL) or a SUSE
-Linux Enterprise Server (SLES) subscription even though a developer account
-provides limited access we have opted for Rocky Linux respectively openSUSE Leap
-as a readily available alternative. For this book, we will be using Rocky Linux
-9.x, openSUSE Leap 16 and Ubuntu LTS 24.04.x.</p>
+<p>Sistemas operacionais, tantas opções, cada uma com suas próprias vantagens e
+base de usuários fiéis. Embora o Zabbix possa ser instalado em uma ampla gama de
+plataformas, documentar o processo para cada sistema operacional disponível
+seria impraticável. Para manter este livro focado e eficiente, optamos por
+abordar apenas as opções mais usadas: As distribuições baseadas no Ubuntu e no
+Red Hat.</p>
+<p>Como nem todo mundo tem acesso a uma assinatura do Red Hat Enterprise Linux
+(RHEL) ou do SUSE Linux Enterprise Server (SLES), mesmo que uma conta de
+desenvolvedor forneça acesso limitado, optamos pelo Rocky Linux ou pelo openSUSE
+Leap como uma alternativa prontamente disponível. Para este livro, usaremos o
+Rocky Linux 9.x, o openSUSE Leap 16 e o Ubuntu LTS 24.04.x.</p>
 <ul>
 <li><a href="https://rockylinux.org/">https://rockylinux.org/</a></li>
 <li><a href="https://opensuse.org/">https://opensuse.org/</a></li>
 <li><a href="https://ubuntu.com/">https://ubuntu.com/</a></li>
 </ul>
-<details class="note" open="open">
-<summary>Note</summary>
+<details class="nota" open="open">
+<summary>Nota</summary>
 <p>OS installation steps are outside the scope of this book, but a default or even a
 minimal installation of your preferred OS should be sufficient. Please refrain from
 installing graphical user interfaces (GUIs) or desktop environments, as they are
 unnecessary for server setups and consume valuable resources.</p>
 </details>
-<p>Once you have your preferred OS installed, there are a few essential
-configurations to perform before proceeding with the Zabbix installation.
-Perform the following steps on <strong>all</strong> the servers that will host Zabbix
-components (i.e., Zabbix server, database server, and web server).</p>
+<p>Depois de instalar o sistema operacional de sua preferência, há algumas
+configurações essenciais a serem realizadas antes de prosseguir com a instalação
+do Zabbix. Execute as etapas a seguir em <strong>todos</strong> os servidores que hospedarão
+os componentes do Zabbix (ou seja, servidor Zabbix, servidor de banco de dados e
+servidor da Web).</p>
 <hr />
-<h3 id="update-the-system">Update the System</h3>
-<p>Before installing the Zabbix components, or any new software, it's a best
-practice to ensure your operating system is up-to-date with the latest patches
-and security fixes. This will help maintain system stability and compatibility
-with the software you're about to install. Even if your OS installation is
-recent, it's still advisable to run an update to ensure you have the latest
-packages.</p>
-<p>To update your system, run the following command based on your OS:</p>
+<h3 id="atualizar-o-sistema">Atualizar o sistema</h3>
+<p>Antes de instalar os componentes do Zabbix ou qualquer novo software, é uma
+prática recomendada garantir que seu sistema operacional esteja atualizado com
+os patches e as correções de segurança mais recentes. Isso ajudará a manter a
+estabilidade e a compatibilidade do sistema com o software que você está prestes
+a instalar. Mesmo que a instalação do sistema operacional seja recente, ainda é
+recomendável executar uma atualização para garantir que você tenha os pacotes
+mais recentes.</p>
+<p>Para atualizar seu sistema, execute o seguinte comando de acordo com seu sistema
+operacional:</p>
 <div class="admonition info">
-<p class="admonition-title">Update your system</p>
+<p class="admonition-title">Atualize seu sistema</p>
 <p>Red Hat
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dnf<span class="w"> </span>update
 </span></code></pre></div></p>
@@ -2125,47 +2129,49 @@ packages.</p>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade
 </span></code></pre></div></p>
 </div>
-<details class="note" open="open">
-<summary>What is apt, dnf or zypper</summary>
-<ul>
-<li>DNF (Dandified YUM) is a package manager used in recent Red Hat-based systems (invoked as <code>dnf</code>).</li>
-<li>ZYpp (Zen / YaST Packages Patches Patterns Products) is the package manager 
-used on SUSE-based systems (invoked as <code>zypper</code>) and </li>
-<li>APT (Advanced Package Tool) is the package manager used on Debian/Ubuntu-based systems (invoked as <code>apt</code>). </li>
-</ul>
-<p>If you're using another distribution, replace <code>dnf</code>/<code>zypper</code>/<code>apt</code> with your appropriate 
-package manager, such as <code>yum</code>, <code>pacman</code>, <code>emerge</code>, <code>apk</code> or ... .</p>
-<p>Do note that package names may also vary from distribution to distribution.</p>
-</details>
-<details class="tip" open="open">
-<summary>Tip</summary>
+<p>???+ nota "O que é apt, dnf ou zypper"?</p>
+<div class="language-text highlight"><pre><span></span><code>- DNF (Dandified YUM) is a package manager used in recent Red Hat-based systems (invoked as `dnf`).
+- ZYpp (Zen / YaST Packages Patches Patterns Products) is the package manager 
+used on SUSE-based systems (invoked as `zypper`) and 
+- APT (Advanced Package Tool) is the package manager used on Debian/Ubuntu-based systems (invoked as `apt`).
+
+If you&#39;re using another distribution, replace `dnf`/`zypper`/`apt` with your appropriate 
+package manager, such as `yum`, `pacman`, `emerge`, `apk` or ... .
+
+Do note that package names may also vary from distribution to distribution.
+</code></pre></div>
+<details class="dica" open="open">
+<summary>Dica</summary>
 <p>Regularly updating your system is crucial for security and performance.
 Consider setting up automatic updates or scheduling regular maintenance windows
 to keep your systems current.</p>
 </details>
 <hr />
 <h3 id="sudo">Sudo</h3>
-<p>By default the Zabbix processes like the Zabbix server and agent run under their
-own unprivileged user accounts (e.g., <code>zabbix</code>). However, there are scenarios
-where elevated privileges are required, such as executing custom scripts or
-commands that need root access. Also throughout this book, we will perform
-certain administrative tasks that require <code>sudo</code> on the system.</p>
-<p>Usually, <code>sudo</code> is already present on most systems, but when you performed a
-minimal installation of your OS, it might be missing. Therefore we need to
-ensure it's installed.</p>
-<p>This will also allow the Zabbix user to execute specific configured commands
-with elevated privileges without needing to switch to the root user entirely.</p>
+<p>Por padrão, os processos do Zabbix, como o servidor e o agente Zabbix, são
+executados em suas próprias contas de usuário sem privilégios (por exemplo,
+<code>zabbix</code>). No entanto, há cenários em que são necessários privilégios elevados,
+como a execução de scripts personalizados ou comandos que precisam de acesso
+root. Além disso, ao longo deste livro, executaremos determinadas tarefas
+administrativas que exigem <code>sudo</code> no sistema.</p>
+<p>Normalmente, o <code>sudo</code> já está presente na maioria dos sistemas, mas quando você
+executou uma instalação mínima do seu sistema operacional, ele pode estar
+ausente. Portanto, precisamos garantir que ele esteja instalado.</p>
+<p>Isso também permitirá que o usuário do Zabbix execute comandos específicos
+configurados com privilégios elevados sem a necessidade de mudar totalmente para
+o usuário root.</p>
 <div class="admonition info">
-<p class="admonition-title">What is sudo</p>
+<p class="admonition-title">O que é sudo</p>
 <p><code>sudo</code> (short for "superuser do") is a command-line utility that allows
 permitted users to execute commands with the security privileges of another
 user, typically the superuser (root). It is commonly used in Unix-like
 operating systems to perform administrative tasks without needing to log in
 as the root user.</p>
 </div>
-<p>To install <code>sudo</code>, run the following command based on your OS:</p>
+<p>Para instalar o <code>sudo</code>, execute o seguinte comando de acordo com seu sistema
+operacional:</p>
 <div class="admonition info">
-<p class="admonition-title">Install sudo</p>
+<p class="admonition-title">Instalar sudo</p>
 <p>Red Hat
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dnf<span class="w"> </span>install<span class="w"> </span>sudo
 </span></code></pre></div></p>
@@ -2176,15 +2182,15 @@ as the root user.</p>
 <p>On Ubuntu, <code>sudo</code> is normally installed by default. Root access is managed
 through <code>sudo</code> for the initial user created during installation.</p>
 </div>
-<p>If <code>sudo</code> is already installed, these commands will inform you that the latest
-version is already present and no further action is needed. If not, the package
-manager will proceed to install it.</p>
+<p>Se o <code>sudo</code> já estiver instalado, esses comandos informarão que a versão mais
+recente já está presente e que nenhuma ação adicional é necessária. Caso
+contrário, o gerenciador de pacotes continuará a instalá-la.</p>
 <hr />
 <h3 id="firewall">Firewall</h3>
-<p>Next, we need to ensure that the firewall is installed and configured. A
-firewall is a crucial security component that helps protect your server from
-unauthorized access and potential threats by controlling incoming and outgoing
-network traffic based on predetermined security rules.</p>
+<p>Em seguida, precisamos garantir que o firewall esteja instalado e configurado. O
+firewall é um componente de segurança essencial que ajuda a proteger o servidor
+contra acesso não autorizado e possíveis ameaças, controlando o tráfego de
+entrada e saída da rede com base em regras de segurança predeterminadas.</p>
 <p>Para instalar e ativar o firewall, execute o seguinte comando:</p>
 <div class="admonition info">
 <p class="admonition-title">Instalar e ativar o firewall</p>
@@ -2201,85 +2207,82 @@ SUSE
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>ufw<span class="w"> </span><span class="nb">enable</span>
 </span></code></pre></div></p>
 </div>
-<details class="note" open="open">
-<summary>What is firewalld / ufw</summary>
+<details class="nota" open="open">
+<summary>O que é firewalld / ufw</summary>
 <p>Firewalld is the replacement for iptables in RHEL- and SUSE-based systems and allows
 changes to take effect immediately without needing to restart the service.
 If your distribution does not use <a href="https://www.firewalld.org">Firewalld</a>,
 refer to your OS documentation for the appropriate firewall configuration steps.
 Ubuntu makes use of UFW which is merely a frontend for iptables.</p>
 </details>
-<p>During the Zabbix installation in the next chapters, we will need to open
-specific ports in the firewall to allow communication between Zabbix components.</p>
-<p>Alternatively to just opening ports, as we will do in the next chapters, you can
-also choose to define dedicated firewall zones for specific use cases. This
-approach enhances security by isolating services and restricting access based on
-trust levels. For example...</p>
-<div class="admonition example">
-<p class="admonition-title">Create a firewalld zone for database access</p>
+<p>Durante a instalação do Zabbix nos próximos capítulos, precisaremos abrir portas
+específicas no firewall para permitir a comunicação entre os componentes do
+Zabbix.</p>
+<p>Em vez de apenas abrir portas, como faremos nos próximos capítulos, você também
+pode optar por definir zonas de firewall dedicadas para casos de uso
+específicos. Essa abordagem aumenta a segurança ao isolar serviços e restringir
+o acesso com base em níveis de confiança. Por exemplo...</p>
+<div class="admonition exemplo">
+<p class="admonition-title">Criar uma zona firewalld para acesso ao banco de dados</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>firewall-cmd<span class="w"> </span>--new-zone<span class="o">=</span>db_zone<span class="w"> </span>--permanent
 </span></code></pre></div>
 </div>
 <p>Você pode confirmar a criação da zona executando o seguinte comando:</p>
-<div class="admonition example">
-<p class="admonition-title">Verify the zone creation</p>
+<div class="admonition exemplo">
+<p class="admonition-title">Verificar a criação da zona</p>
 <div class="language-shell-session highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="gp">localhost:~ # </span>firewall-cmd<span class="w"> </span>--get-zones
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="go">block dmz drop external home internal nm-shared db_zone public trusted work</span>
 </span></code></pre></div>
 </div>
-<p>Using zones in firewalld to configure firewall rules provides several advantages
-in terms of security, flexibility, and ease of management. Here’s why zones are
-beneficial:</p>
+<p>O uso de zonas no firewalld para configurar regras de firewall oferece várias
+vantagens em termos de segurança, flexibilidade e facilidade de gerenciamento.
+Veja a seguir por que as zonas são vantajosas:</p>
 <ul>
 <li><strong>Controle de acesso granular :</strong></li>
 </ul>
-<dl>
-<dd>Firewalld zones allow different levels of trust for different network
-interfaces and IP ranges. You can define which systems are allowed to connect to
-PostgreSQL based on their trust level.</dd>
-</dl>
+<p>As zonas firewalld permitem diferentes níveis de confiança para diferentes
+interfaces de rede e intervalos de IP. Você pode definir quais sistemas têm
+permissão para se conectar ao PostgreSQL com base em seu nível de confiança.</p>
 <ul>
 <li><strong>Gerenciamento simplificado de regras:</strong></li>
 </ul>
-<dl>
-<dd>Instead of manually defining complex iptables rules, zones provide an
-organized way to group and manage firewall rules based on usage scenarios.</dd>
-</dl>
+<p>Em vez de definir manualmente regras complexas do iptables, as zonas oferecem
+uma maneira organizada de agrupar e gerenciar regras de firewall com base em
+cenários de uso.</p>
 <ul>
 <li><strong>Segurança aprimorada:</strong></li>
 </ul>
 <dl>
-<dd>By restricting application access to a specific zone, you prevent unauthorized
-connections from other interfaces or networks.</dd>
+<dd>Ao restringir o acesso de aplicativos a uma zona específica, você evita
+conexões não autorizadas de outras interfaces ou redes.</dd>
 </dl>
 <ul>
 <li><strong>Configuração dinâmica:</strong></li>
 </ul>
-<dl>
-<dd>Firewalld supports runtime and permanent rule configurations, allowing changes
-without disrupting existing connections.</dd>
-</dl>
+<p>O firewalld suporta configurações de regras permanentes e em tempo de execução,
+permitindo alterações sem interromper as conexões existentes.</p>
 <ul>
 <li><strong>Suporte a várias interfaces:</strong></li>
 </ul>
 <dl>
-<dd>If the server has multiple network interfaces, zones allow different security
-policies for each interface.</dd>
+<dd>Se o servidor tiver várias interfaces de rede, as zonas permitirão políticas
+de segurança diferentes para cada interface.</dd>
 </dl>
-<p>Bringing everything together to add a zone for, in this example, PostgreSQL it
-would look like this:</p>
-<div class="admonition example">
-<p class="admonition-title">Firewalld with zone config for PostgreSQL database access</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>firewall-cmd<span class="w"> </span>--new-zone<span class="o">=</span>db_zone<span class="w"> </span>--permanent
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>firewall-cmd<span class="w"> </span>--zone<span class="o">=</span>db_zone<span class="w"> </span>--add-service<span class="o">=</span>postgresql<span class="w"> </span>--permanent
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>firewall-cmd<span class="w"> </span>--zone<span class="o">=</span>db_zone<span class="w"> </span>--add-source<span class="o">=</span>xxx.xxx.xxx.xxx/32<span class="w"> </span>--permanent
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>firewall-cmd<span class="w"> </span>--reload
-</span></code></pre></div>
-</div>
+<p>Juntando tudo para adicionar uma zona para, neste exemplo, o PostgreSQL, ficaria
+assim:</p>
+<p>!!! exemplo "Firewalld com configuração de zona para acesso ao banco de dados
+PostgreSQL"</p>
+<div class="language-text highlight"><pre><span></span><code>```bash
+firewall-cmd --new-zone=db_zone --permanent
+firewall-cmd --zone=db_zone --add-service=postgresql --permanent
+firewall-cmd --zone=db_zone --add-source=xxx.xxx.xxx.xxx/32 --permanent
+firewall-cmd --reload
+```
+</code></pre></div>
 <p>Onde o <code>IP de origem</code> é o único endereço permitido para estabelecer uma conexão
 com o banco de dados.</p>
-<p>If you wish to use zones when using firewalld, ensure to adapt the instructions
-in the following chapters accordingly.</p>
+<p>Se você quiser usar zonas ao usar o firewalld, adapte as instruções dos
+capítulos a seguir de acordo.</p>
 <hr />
 <h3 id="servidor-de-tempo">Servidor de tempo</h3>
 <p>Outra etapa crucial é a configuração do servidor de horário e a sincronização do
@@ -2320,8 +2323,8 @@ more accurate time synchronization. If your OS does not support
 <p>Depois que o Chrony estiver instalado, a próxima etapa é garantir que o fuso
 horário correto esteja definido. Você pode ver a configuração do horário atual
 usando o comando <code>timedatectl</code>:</p>
-<div class="admonition example">
-<p class="admonition-title">Check the time config</p>
+<div class="admonition exemplo">
+<p class="admonition-title">Verifique a configuração da hora</p>
 <div class="language-shell-session highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="gp">localhost:~ # </span>timedatectl
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="go">               Local time: Thu 2023-11-16 15:09:14 UTC</span>
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="go">           Universal time: Thu 2023-11-16 15:09:14 UTC</span>
@@ -2374,8 +2377,8 @@ comando <code>timedatectl</code>:</p>
 </span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="go">          RTC in local TZ: no</span>
 </span></code></pre></div>
 </div>
-<details class="note" open="open">
-<summary>Note</summary>
+<details class="nota" open="open">
+<summary>Nota</summary>
 <p>Some administrators prefer installing all servers in the UTC time zone to
 ensure that server logs across global deployments are synchronized.
 Zabbix supports user-based time zone settings, which allows the server to
@@ -2475,7 +2478,7 @@ locais estejam em uso:</p>
 </div>
 <p>Exemplo de saída esperada com servidores locais:</p>
 <div class="admonition example">
-<p class="admonition-title">Example output</p>
+<p class="admonition-title">Exemplo de saída</p>
 <div class="language-shell-session highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="go">chronyc&gt; sources</span>
 </span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="go">MS Name/IP address         Stratum Poll Reach LastRx Last sample</span>
 </span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="go">===============================================================================</span>

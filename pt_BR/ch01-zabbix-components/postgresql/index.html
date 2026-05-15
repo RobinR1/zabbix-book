@@ -46,7 +46,7 @@ firewall rules if necessary.
     
     
       
-        <title>Installing a PostgreSQL database - Zabbix Book</title>
+        <title>Instalação de um banco de dados PostgreSQL - Zabbix Book</title>
       
     
     
@@ -86,14 +86,14 @@ firewall rules if necessary.
     
     
 
-    <meta property="og:title" content="Installing a PostgreSQL database">
+    <meta property="og:title" content="Instalação de um banco de dados PostgreSQL">
     <meta property="og:description" content="This section from The Zabbix Book titled &#34;Installing a PostgreSQL database&#34; guides you through installing PostgreSQL as an alternative database backend for Zabbix. It covers installation methods using OS vendor-provided packages or official PostgreSQL repositories, with specific commands for Red Hat, SUSE, and Ubuntu systems. The section also includes steps to start and secure the PostgreSQL server, create the Zabbix database and users, and configure firewall rules if necessary.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thezabbixbook.com/pt_BR/ch01-zabbix-components/postgresql/">
     <meta property="og:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Installing a PostgreSQL database">
+    <meta name="twitter:title" content="Instalação de um banco de dados PostgreSQL">
     <meta name="twitter:description" content="This section from The Zabbix Book titled &#34;Installing a PostgreSQL database&#34; guides you through installing PostgreSQL as an alternative database backend for Zabbix. It covers installation methods using OS vendor-provided packages or official PostgreSQL repositories, with specific commands for Red Hat, SUSE, and Ubuntu systems. The section also includes steps to start and secure the PostgreSQL server, create the Zabbix database and users, and configure firewall rules if necessary.">
     <meta name="twitter:image" content="https://www.thezabbixbook.com/assets/social-card.jpg">
     <meta property="og:image:width" content="1200">
@@ -118,7 +118,7 @@ firewall rules if necessary.
     <div data-md-component="skip">
       
         
-        <a href="#installing-a-postgresql-database" class="md-skip">
+        <a href="#instalacao-de-um-banco-de-dados-postgresql" class="md-skip">
           Pular para conteúdo
         </a>
       
@@ -176,7 +176,7 @@ firewall rules if necessary.
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Installing a PostgreSQL database
+              Instalação de um banco de dados PostgreSQL
             
           </span>
         </div>
@@ -637,7 +637,7 @@ firewall rules if necessary.
   <span class="md-ellipsis">
     
   
-    Zabbix architecture
+    Arquitetura do Zabbix
   
 
     
@@ -724,7 +724,7 @@ firewall rules if necessary.
   <span class="md-ellipsis">
     
   
-    Database choices
+    Opções de banco de dados
   
 
     
@@ -752,7 +752,7 @@ firewall rules if necessary.
   <span class="md-ellipsis">
     
   
-    Installing a MariaDB Database
+    Instalação de um banco de dados MariaDB
   
 
     
@@ -789,7 +789,7 @@ firewall rules if necessary.
   <span class="md-ellipsis">
     
   
-    Installing a PostgreSQL database
+    Instalação de um banco de dados PostgreSQL
   
 
     
@@ -807,7 +807,7 @@ firewall rules if necessary.
   <span class="md-ellipsis">
     
   
-    Installing a PostgreSQL database
+    Instalação de um banco de dados PostgreSQL
   
 
     
@@ -833,10 +833,10 @@ firewall rules if necessary.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installing-postgresql-server-and-client-from-os-vendor-provided-packages" class="md-nav__link">
+  <a href="#instalacao-do-servidor-e-cliente-postgresql-a-partir-de-pacotes-fornecidos-pelo-fornecedor-do-sistema-operacional" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installing PostgreSQL Server and Client from OS Vendor-Provided Packages
+        Instalação do servidor e cliente PostgreSQL a partir de pacotes fornecidos pelo fornecedor do sistema operacional
       
     </span>
   </a>
@@ -844,22 +844,22 @@ firewall rules if necessary.
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-postgresql-from-official-postgresql-repositories" class="md-nav__link">
+  <a href="#instalando-o-postgresql-a-partir-dos-repositorios-oficiais-do-postgresql" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installing PostgreSQL from Official PostgreSQL Repositories
+        Instalando o PostgreSQL a partir dos repositórios oficiais do PostgreSQL
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Installing PostgreSQL from Official PostgreSQL Repositories">
+    <nav class="md-nav" aria-label="Instalando o PostgreSQL a partir dos repositórios oficiais do PostgreSQL">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#adding-the-postgresql-repository" class="md-nav__link">
+  <a href="#adicao-do-repositorio-postgresql" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Adding the PostgreSQL Repository
+        Adição do repositório PostgreSQL
       
     </span>
   </a>
@@ -867,10 +867,10 @@ firewall rules if necessary.
 </li>
         
           <li class="md-nav__item">
-  <a href="#installing-the-postgresql-server-and-client" class="md-nav__link">
+  <a href="#instalando-o-servidor-e-o-cliente-postgresql" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installing the PostgreSQL Server and Client
+        Instalando o servidor e o cliente PostgreSQL
       
     </span>
   </a>
@@ -883,10 +883,10 @@ firewall rules if necessary.
 </li>
       
         <li class="md-nav__item">
-  <a href="#starting-the-postgresql-database" class="md-nav__link">
+  <a href="#iniciando-o-banco-de-dados-postgresql" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Starting the PostgreSQL Database
+        Iniciando o banco de dados PostgreSQL
       
     </span>
   </a>
@@ -894,10 +894,10 @@ firewall rules if necessary.
 </li>
       
         <li class="md-nav__item">
-  <a href="#securing-the-postgresql-database" class="md-nav__link">
+  <a href="#protegendo-o-banco-de-dados-postgresql" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Securing the PostgreSQL database
+        Protegendo o banco de dados PostgreSQL
       
     </span>
   </a>
@@ -905,10 +905,10 @@ firewall rules if necessary.
 </li>
       
         <li class="md-nav__item">
-  <a href="#creating-the-zabbix-database-instance" class="md-nav__link">
+  <a href="#criacao-da-instancia-do-banco-de-dados-zabbix" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Creating the Zabbix database instance
+        Criação da instância do banco de dados Zabbix
       
     </span>
   </a>
@@ -916,10 +916,10 @@ firewall rules if necessary.
 </li>
       
         <li class="md-nav__item">
-  <a href="#populate-the-zabbix-database" class="md-nav__link">
+  <a href="#preencher-o-banco-de-dados-do-zabbix" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Populate the Zabbix database
+        Preencher o banco de dados do Zabbix
       
     </span>
   </a>
@@ -927,10 +927,10 @@ firewall rules if necessary.
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#conclusao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conclusion
+        Conclusão
       
     </span>
   </a>
@@ -938,10 +938,10 @@ firewall rules if necessary.
 </li>
       
         <li class="md-nav__item">
-  <a href="#questions" class="md-nav__link">
+  <a href="#perguntas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Questions
+        Perguntas
       
     </span>
   </a>
@@ -949,10 +949,10 @@ firewall rules if necessary.
 </li>
       
         <li class="md-nav__item">
-  <a href="#useful-urls" class="md-nav__link">
+  <a href="#urls-uteis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Useful URLs
+        URLs úteis
       
     </span>
   </a>
@@ -990,7 +990,7 @@ firewall rules if necessary.
   <span class="md-ellipsis">
     
   
-    Installing the Zabbix server
+    Instalando o Zabbix Server
   
 
     
@@ -1018,7 +1018,7 @@ firewall rules if necessary.
   <span class="md-ellipsis">
     
   
-    Installing the frontend
+    Instalando o front-end
   
 
     
@@ -1969,10 +1969,10 @@ firewall rules if necessary.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installing-postgresql-server-and-client-from-os-vendor-provided-packages" class="md-nav__link">
+  <a href="#instalacao-do-servidor-e-cliente-postgresql-a-partir-de-pacotes-fornecidos-pelo-fornecedor-do-sistema-operacional" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installing PostgreSQL Server and Client from OS Vendor-Provided Packages
+        Instalação do servidor e cliente PostgreSQL a partir de pacotes fornecidos pelo fornecedor do sistema operacional
       
     </span>
   </a>
@@ -1980,22 +1980,22 @@ firewall rules if necessary.
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-postgresql-from-official-postgresql-repositories" class="md-nav__link">
+  <a href="#instalando-o-postgresql-a-partir-dos-repositorios-oficiais-do-postgresql" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installing PostgreSQL from Official PostgreSQL Repositories
+        Instalando o PostgreSQL a partir dos repositórios oficiais do PostgreSQL
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Installing PostgreSQL from Official PostgreSQL Repositories">
+    <nav class="md-nav" aria-label="Instalando o PostgreSQL a partir dos repositórios oficiais do PostgreSQL">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#adding-the-postgresql-repository" class="md-nav__link">
+  <a href="#adicao-do-repositorio-postgresql" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Adding the PostgreSQL Repository
+        Adição do repositório PostgreSQL
       
     </span>
   </a>
@@ -2003,10 +2003,10 @@ firewall rules if necessary.
 </li>
         
           <li class="md-nav__item">
-  <a href="#installing-the-postgresql-server-and-client" class="md-nav__link">
+  <a href="#instalando-o-servidor-e-o-cliente-postgresql" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installing the PostgreSQL Server and Client
+        Instalando o servidor e o cliente PostgreSQL
       
     </span>
   </a>
@@ -2019,10 +2019,10 @@ firewall rules if necessary.
 </li>
       
         <li class="md-nav__item">
-  <a href="#starting-the-postgresql-database" class="md-nav__link">
+  <a href="#iniciando-o-banco-de-dados-postgresql" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Starting the PostgreSQL Database
+        Iniciando o banco de dados PostgreSQL
       
     </span>
   </a>
@@ -2030,10 +2030,10 @@ firewall rules if necessary.
 </li>
       
         <li class="md-nav__item">
-  <a href="#securing-the-postgresql-database" class="md-nav__link">
+  <a href="#protegendo-o-banco-de-dados-postgresql" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Securing the PostgreSQL database
+        Protegendo o banco de dados PostgreSQL
       
     </span>
   </a>
@@ -2041,10 +2041,10 @@ firewall rules if necessary.
 </li>
       
         <li class="md-nav__item">
-  <a href="#creating-the-zabbix-database-instance" class="md-nav__link">
+  <a href="#criacao-da-instancia-do-banco-de-dados-zabbix" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Creating the Zabbix database instance
+        Criação da instância do banco de dados Zabbix
       
     </span>
   </a>
@@ -2052,10 +2052,10 @@ firewall rules if necessary.
 </li>
       
         <li class="md-nav__item">
-  <a href="#populate-the-zabbix-database" class="md-nav__link">
+  <a href="#preencher-o-banco-de-dados-do-zabbix" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Populate the Zabbix database
+        Preencher o banco de dados do Zabbix
       
     </span>
   </a>
@@ -2063,10 +2063,10 @@ firewall rules if necessary.
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#conclusao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conclusion
+        Conclusão
       
     </span>
   </a>
@@ -2074,10 +2074,10 @@ firewall rules if necessary.
 </li>
       
         <li class="md-nav__item">
-  <a href="#questions" class="md-nav__link">
+  <a href="#perguntas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Questions
+        Perguntas
       
     </span>
   </a>
@@ -2085,10 +2085,10 @@ firewall rules if necessary.
 </li>
       
         <li class="md-nav__item">
-  <a href="#useful-urls" class="md-nav__link">
+  <a href="#urls-uteis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Useful URLs
+        URLs úteis
       
     </span>
   </a>
@@ -2213,33 +2213,33 @@ firewall rules if necessary.
   
 
 
-<h1 id="installing-a-postgresql-database">Installing a PostgreSQL database</h1>
-<p>Alternatively to MariaDB/MySQL, you can choose to use PostgreSQL as the database
-backend for Zabbix. Similar to MariaDB, PostgreSQL can be installed using either
-the OS vendor-provided packages or the official PostgreSQL repositories.</p>
-<p>If you already have installed MariaDB in the previous section, you can skip this
-section.</p>
-<p>As of writing PostgreSQL 13-18 are supported by Zabbix. Check the Zabbix
-documentation for an up-to-date list of supported versions for your Zabbix
-version. Usually it's a good idea to go with the latest version that is
-supported by Zabbix.</p>
-<details class="tip" open="open">
-<summary>TimescaleDB extension</summary>
-<p>Zabbix also supports the extension TimescaleDB but due to its advanced nature, 
-we won't cover it in this chapter. Refer to <a href="../../ch13-advanced-security/partitioning-postgresql-database/"><em>Partitioning PostgreSQL with TimescaleDB</em></a>
-for detailed instructions on that topic. </p>
-<p>Do note that if you want to use TimescaleDB RPM packages provided
+<h1 id="instalacao-de-um-banco-de-dados-postgresql">Instalação de um banco de dados PostgreSQL</h1>
+<p>Como alternativa ao MariaDB/MySQL, você pode optar por usar o PostgreSQL como
+backend de banco de dados para o Zabbix. Assim como o MariaDB, o PostgreSQL pode
+ser instalado usando os pacotes fornecidos pelo fornecedor do sistema
+operacional ou os repositórios oficiais do PostgreSQL.</p>
+<p>Se você já instalou o MariaDB na seção anterior, pode pular esta seção.</p>
+<p>Até o momento, o PostgreSQL 13-18 é suportado pelo Zabbix. Verifique a
+documentação do Zabbix para obter uma lista atualizada das versões suportadas
+para sua versão do Zabbix. Normalmente, é uma boa ideia usar a versão mais
+recente que é suportada pelo Zabbix.</p>
+<p>Dica "Extensão do TimescaleDB"</p>
+<div class="language-text highlight"><pre><span></span><code>Zabbix also supports the extension TimescaleDB but due to its advanced nature, 
+we won&#39;t cover it in this chapter. Refer to [_Partitioning PostgreSQL with TimescaleDB_](../ch13-advanced-security/partitioning-postgresql-database.md)
+for detailed instructions on that topic.
+
+Do note that if you want to use TimescaleDB RPM packages provided
 by Timescale, you will need to install PostgreSQL from the official
 PostgreSQL repositories instead of the OS vendor-provided packages.
 If you choose to install PostgreSQL from the OS vendor-provided packages,
-you will need to compile and install the TimescaleDB extension from source.</p>
-</details>
+you will need to compile and install the TimescaleDB extension from source.
+</code></pre></div>
 <hr />
-<h2 id="installing-postgresql-server-and-client-from-os-vendor-provided-packages">Installing PostgreSQL Server and Client from OS Vendor-Provided Packages</h2>
-<p>To install the distribution default PostgreSQL server, execute the following
-commands:</p>
+<h2 id="instalacao-do-servidor-e-cliente-postgresql-a-partir-de-pacotes-fornecidos-pelo-fornecedor-do-sistema-operacional">Instalação do servidor e cliente PostgreSQL a partir de pacotes fornecidos pelo fornecedor do sistema operacional</h2>
+<p>Para instalar o servidor PostgreSQL padrão da distribuição, execute os seguintes
+comandos:</p>
 <div class="admonition info">
-<p class="admonition-title">Install the Postgres server</p>
+<p class="admonition-title">Instalar o servidor Postgres</p>
 <p>Red Hat
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dnf<span class="w"> </span>install<span class="w"> </span>postgresql-server<span class="w"> </span>postgresql-client<span class="w"> </span>postgresql-contrib
 </span></code></pre></div></p>
@@ -2250,10 +2250,11 @@ commands:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>postgresql<span class="w"> </span>postgresql-client<span class="w"> </span>postgresql-contrib
 </span></code></pre></div></p>
 </div>
-<p>This command will download and install both the server and client packages,
-enabling you to set up, configure, and interact with your PostgreSQL database.</p>
-<div class="admonition warning">
-<p class="admonition-title">Database initialization required on Red Hat</p>
+<p>Esse comando fará o download e instalará os pacotes do servidor e do cliente,
+permitindo que você defina, configure e interaja com o banco de dados
+PostgreSQL.</p>
+<div class="admonition aviso">
+<p class="admonition-title">A inicialização do banco de dados é necessária no Red Hat</p>
 <p>Due to policies for Red Hat family distributions, the PostgreSQL service
 does not initialize an empty database required for PostgreSQL to function.
 So for Red Hat we need to initialize an empty database before continuing:</p>
@@ -2263,21 +2264,21 @@ So for Red Hat we need to initialize an empty database before continuing:</p>
 <p>On SUSE and Ubuntu the OS provided SystemD service will automatically initialize
 an empty database on first startup.</p>
 </div>
-<p>Once the installation is complete, you can proceed to the <a href="#starting-the-postgresql-database"><em>Starting the
-PostgreSQL Database</em></a> section.</p>
+<p>Quando a instalação estiver concluída, prossiga para a seção <a href="#starting-the-postgresql-database"><em>Starting the
+PostgreSQL Database</em></a>.</p>
 <hr />
-<h2 id="installing-postgresql-from-official-postgresql-repositories">Installing PostgreSQL from Official PostgreSQL Repositories</h2>
-<p>If you prefer to install PostgreSQL from the official PostgreSQL repositories
-instead of the OS vendor-provided packages, the first step is to add the
-PostgreSQL repository to your system.</p>
+<h2 id="instalando-o-postgresql-a-partir-dos-repositorios-oficiais-do-postgresql">Instalando o PostgreSQL a partir dos repositórios oficiais do PostgreSQL</h2>
+<p>Se você preferir instalar o PostgreSQL a partir dos repositórios oficiais do
+PostgreSQL em vez dos pacotes fornecidos pelo fornecedor do sistema operacional,
+a primeira etapa é adicionar o repositório do PostgreSQL ao seu sistema.</p>
 <hr />
-<h3 id="adding-the-postgresql-repository">Adding the PostgreSQL Repository</h3>
-<p>Set up the PostgreSQL repository with the following commands:</p>
-<p>Check
+<h3 id="adicao-do-repositorio-postgresql">Adição do repositório PostgreSQL</h3>
+<p>Configure o repositório PostgreSQL com os seguintes comandos:</p>
+<p>Consulte
 <a href="https://www.postgresql.org/download/linux/">https://www.postgresql.org/download/linux/</a>
-for more information.</p>
+para obter mais informações.</p>
 <div class="admonition info">
-<p class="admonition-title">Add PostgreSQL repo</p>
+<p class="admonition-title">Adicionar repositório PostgreSQL</p>
 <p>Red Hat
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Install the repository RPM:</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>dnf<span class="w"> </span>install<span class="w"> </span>https://download.postgresql.org/pub/repos/yum/reporpms/EL-9-x86_64/pgdg-redhat-repo-latest.noarch.rpm
@@ -2337,12 +2338,12 @@ you will also need the "Desktop Applications Module":</p>
 </span></code></pre></div></p>
 </div>
 <hr />
-<h3 id="installing-the-postgresql-server-and-client">Installing the PostgreSQL Server and Client</h3>
-<p>With the PostgreSQL repositories configured, you are now ready to install the
-PostgreSQL server and client packages. This will provide the necessary
-components to run and manage your database.</p>
+<h3 id="instalando-o-servidor-e-o-cliente-postgresql">Instalando o servidor e o cliente PostgreSQL</h3>
+<p>Com os repositórios do PostgreSQL configurados, agora você está pronto para
+instalar o servidor PostgreSQL e os pacotes do cliente. Isso fornecerá os
+componentes necessários para executar e gerenciar seu banco de dados.</p>
 <div class="admonition info">
-<p class="admonition-title">Install PostgreSQL from official repositories</p>
+<p class="admonition-title">Instale o PostgreSQL a partir dos repositórios oficiais</p>
 <p>Red Hat
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Install Postgres server:</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>dnf<span class="w"> </span>install<span class="w"> </span>postgresql17<span class="w"> </span>postgresql17-server<span class="w"> </span>postgresql17-contrib
@@ -2354,24 +2355,25 @@ components to run and manage your database.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>postgresql-17<span class="w"> </span>postgresql-client-17
 </span></code></pre></div></p>
 </div>
-<p>This command will download and install both the server and client packages,
-enabling you to set up, configure, and interact with your PostgreSQL database.</p>
-<p>Next, before we can start the PostgreSQL server we need to initialize a new
-empty database:</p>
+<p>Esse comando fará o download e instalará os pacotes do servidor e do cliente,
+permitindo que você defina, configure e interaja com o banco de dados
+PostgreSQL.</p>
+<p>Em seguida, antes de iniciarmos o servidor PostgreSQL, precisamos inicializar um
+novo banco de dados vazio:</p>
 <div class="admonition info">
-<p class="admonition-title">Initialize empty PostgreSQL database</p>
+<p class="admonition-title">Inicializar banco de dados PostgreSQL vazio</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo /usr/pgsql-17/bin/postgresql-17-setup initdb
 </span></code></pre></div>
 </div>
-<p>Once the installation is complete, you can proceed to the <a href="#starting-the-postgresql-database">Starting the
-PostgreSQL Database</a> section.</p>
+<p>Quando a instalação estiver concluída, prossiga para a seção <a href="#starting-the-postgresql-database">Iniciando o banco
+de dados PostgreSQL</a>.</p>
 <hr />
-<h2 id="starting-the-postgresql-database">Starting the PostgreSQL Database</h2>
-<p>Now that PostgreSQL is installed, we need to enable the service to start
-automatically upon boot as well as start it immediately. Use the following
-command to accomplish this:</p>
+<h2 id="iniciando-o-banco-de-dados-postgresql">Iniciando o banco de dados PostgreSQL</h2>
+<p>Agora que o PostgreSQL está instalado, precisamos habilitar o serviço para
+iniciar automaticamente na inicialização, bem como iniciá-lo imediatamente. Use
+o seguinte comando para fazer isso:</p>
 <div class="admonition info">
-<p class="admonition-title">Enable and start PostgreSQL service</p>
+<p class="admonition-title">Habilitar e iniciar o serviço PostgreSQL</p>
 <p>for OS-provided packages
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>postgresql<span class="w"> </span>--now
 </span></code></pre></div></p>
@@ -2379,25 +2381,25 @@ command to accomplish this:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>postgresql-17<span class="w"> </span>--now
 </span></code></pre></div></p>
 </div>
-<p>This command will both enable and start the PostgreSQL service. With the service
-now up and running, you can verify that the installation was successful by
-checking the version of PostgreSQL using the following command:</p>
+<p>Esse comando habilitará e iniciará o serviço do PostgreSQL. Com o serviço
+instalado e em execução, você pode verificar se a instalação foi bem-sucedida
+verificando a versão do PostgreSQL usando o seguinte comando:</p>
 <div class="admonition info">
-<p class="admonition-title">Check PostgreSQL version</p>
+<p class="admonition-title">Verificar versão do PostgreSQL</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>psql<span class="w"> </span>-V
 </span></code></pre></div>
 </div>
-<p>The expected output should resemble this:</p>
-<details class="example" open="open">
-<summary>PostgreSQL version example</summary>
+<p>A saída esperada deve ser similar a esta:</p>
+<details class="exemplo" open="open">
+<summary>Exemplo de versão do PostgreSQL</summary>
 <div class="language-shell-session highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="gp">localhost:~ $ </span>psql<span class="w"> </span>-V
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="go">psql (PostgreSQL) 17.7</span>
 </span></code></pre></div>
 </details>
-<p>To ensure that the PostgreSQL service is running properly, you can check its
-status with the following command:</p>
+<p>Para garantir que o serviço PostgreSQL esteja sendo executado corretamente, você
+pode verificar seu status com o seguinte comando:</p>
 <div class="admonition info">
-<p class="admonition-title">Get PostgreSQL status</p>
+<p class="admonition-title">Obter status do PostgreSQL</p>
 <p>for OS-provided packages
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>postgresql
 </span></code></pre></div></p>
@@ -2405,10 +2407,10 @@ status with the following command:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>postgresql-17
 </span></code></pre></div></p>
 </div>
-<p>You should see an output similar to this, indicating that the PostgreSQL service
-is active and running:</p>
-<details class="example" open="open">
-<summary>PostgreSQL service status example</summary>
+<p>Você deverá ver um resultado semelhante a este, indicando que o serviço
+PostgreSQL está ativo e em execução:</p>
+<details class="exemplo" open="open">
+<summary>Exemplo de status do serviço PostgreSQL</summary>
 <div class="language-shell-session highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="gp">localhost:~ $ </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>postgresql-17
 </span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="go">● postgresql-17.service - PostgreSQL 17 database server</span>
 </span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="go">    Loaded: loaded (/usr/lib/systemd/system/postgresql-17.service; enabled; preset: disabled)</span>
@@ -2434,24 +2436,25 @@ is active and running:</p>
 </span><span id="__span-19-23"><a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a><span class="go">Dec 29 17:24:07 localhost.localdomain systemd[1]: Started PostgreSQL 17 database server.</span>
 </span></code></pre></div>
 </details>
-<p>This confirms that your PostgreSQL server is up and running, ready for further
-configuration.</p>
+<p>Isso confirma que seu servidor PostgreSQL está funcionando e pronto para outras
+configurações.</p>
 <hr />
-<h2 id="securing-the-postgresql-database">Securing the PostgreSQL database</h2>
-<p>PostgreSQL handles access permissions differently from MySQL and MariaDB.
-PostgreSQL relies on a file called <code>pg_hba.conf</code> to manage who can access the
-database, from where, and what encryption method is allowed for authentication.</p>
-<details class="note" open="open">
-<summary>About pg_hba.conf</summary>
+<h2 id="protegendo-o-banco-de-dados-postgresql">Protegendo o banco de dados PostgreSQL</h2>
+<p>O PostgreSQL lida com as permissões de acesso de forma diferente do MySQL e do
+MariaDB. O PostgreSQL se baseia em um arquivo chamado <code>pg_hba.conf</code> para
+gerenciar quem pode acessar o banco de dados, de onde e qual método de
+criptografia é permitido para autenticação.</p>
+<details class="nota" open="open">
+<summary>Sobre o pg_hba.conf</summary>
 <p>Client authentication in PostgreSQL is configured through the <code>pg_hba.conf</code>
 file, where "HBA" stands for Host-Based Authentication. This file specifies
 which users can access the database, from which hosts, and how they are authenticated.
 For further details, you can refer to the official PostgreSQL documentation."
 <a href="https://www.postgresql.org/docs/current/auth-pg-hba-conf.html">https://www.postgresql.org/docs/current/auth-pg-hba-conf.html</a></p>
 </details>
-<p>Add the following lines, the order here is important.</p>
+<p>Adicione as seguintes linhas, a ordem aqui é importante.</p>
 <div class="admonition info">
-<p class="admonition-title">Edit the pg_hba file</p>
+<p class="admonition-title">Editar o arquivo pg_hba</p>
 <p>Red Hat / SUSE
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># for OS-provided packages</span>
 </span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>vi<span class="w"> </span>/var/lib/pgsql/data/pg_hba.conf
@@ -2467,17 +2470,17 @@ For further details, you can refer to the official PostgreSQL documentation."
 </span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>sudo<span class="w"> </span>vi<span class="w"> </span>/etc/postgresql/17/main/pg_hba.conf
 </span></code></pre></div></p>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Location of pg_hba file</p>
+<div class="admonition aviso">
+<p class="admonition-title">Localização do arquivo pg_hba</p>
 <p>If you don't find the <code>pg_hba.conf</code> and <code>postgres.conf</code> files in the above 
 mentioned location you can ask PostgreSQL itself for the location using
 this command (provided that PostgreSQL is currently running):</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-t<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;show hba_file&#39;</span><span class="p">;</span>
 </span></code></pre></div>
 </div>
-<p>The resulting pg_hba file should look like :</p>
-<div class="admonition example">
-<p class="admonition-title">Pg_hba example</p>
+<p>O arquivo pg_hba resultante deve ser semelhante a :</p>
+<div class="admonition exemplo">
+<p class="admonition-title">Exemplo de Pg_hba</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a># &quot;local&quot; is for Unix domain socket connections only
 </span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>local    zabbix     zabbix-srv                                 scram-sha-256
 </span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>local    all        all                                        peer
@@ -2491,20 +2494,21 @@ this command (provided that PostgreSQL is currently running):</p>
 </span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>host    all             all             ::1/128                 ident
 </span></code></pre></div>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Ensure to keep the order of the entries</p>
+<div class="admonition aviso">
+<p class="admonition-title">Certifique-se de manter a ordem das entradas</p>
 <p>The order of the entries in the <code>pg_hba.conf</code> file is crucial, as PostgreSQL
 processes these rules sequentially. Ensure that the specific rules for the
 <code>zabbix-srv</code> and <code>zabbix-web</code> users are placed before any broader rules like
 the default <code>all</code> user rules that could potentially override them.</p>
 </div>
-<p>After we changed the <code>pg_hba.conf</code> file don't forget to restart postgres
-otherwise the settings will not be applied. But before we restart, let us also
-edit the file <code>postgresql.conf</code> and allow our database to listen on our network
-interface for incoming connections from the Zabbix server. PostgreSQL will by
-default only allow connections from a unix socket.</p>
+<p>Depois de alterarmos o arquivo <code>pg_hba.conf</code>, não se esqueça de reiniciar o
+Postgres, caso contrário as configurações não serão aplicadas. Mas antes de
+reiniciarmos, vamos também editar o arquivo <code>postgresql.conf</code> e permitir que
+nosso banco de dados escute em nossa interface de rede as conexões de entrada do
+servidor Zabbix. Por padrão, o PostgreSQL só permite conexões de um soquete
+unix.</p>
 <div class="admonition info">
-<p class="admonition-title">Edit postgresql.conf file</p>
+<p class="admonition-title">Editar arquivo postgresql.conf</p>
 <p>Red Hat / SUSE
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># for OS-provided packages</span>
 </span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>vi<span class="w"> </span>/var/lib/pgsql/data/postgresql.conf
@@ -2520,40 +2524,42 @@ default only allow connections from a unix socket.</p>
 </span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>sudo<span class="w"> </span>vi<span class="w"> </span>/etc/postgresql/17/main/postgresql.conf
 </span></code></pre></div></p>
 </div>
-<p>Locate the following line:</p>
+<p>Localize a seguinte linha:</p>
 <div class="admonition info">
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1">#listen_addresses = &#39;localhost&#39;</span>
 </span></code></pre></div>
 </div>
-<p>and replace it with:</p>
+<p>e substituí-la por:</p>
 <div class="admonition info">
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="na">listen_addresses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;*&#39;</span>
 </span></code></pre></div>
 </div>
-<details class="note" open="open">
-<summary>Note</summary>
+<details class="nota" open="open">
+<summary>Nota</summary>
 <p>This will enable PostgreSQL to accept connections from any network interface,
 not just the local machine. In production it's probably a good idea to limit
 who can connect to the DB.</p>
 </details>
-<p>After making this change, restart the PostgreSQL service to apply the new
-settings:</p>
-<div class="admonition info">
-<p class="admonition-title">Restart the DB server</p>
-<p>for OS-provided packages
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>postgresql
-</span></code></pre></div></p>
-<p>for official packages
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>postgresql-17
-</span></code></pre></div></p>
-</div>
-<details class="tip" open="open">
-<summary>Tip</summary>
+<p>Depois de fazer essa alteração, reinicie o serviço PostgreSQL para aplicar as
+novas configurações:</p>
+<p>!!! info "restart the DB server" (reinicie o servidor de banco de dados)</p>
+<div class="language-text highlight"><pre><span></span><code>for OS-provided packages
+``` bash
+sudo systemctl restart postgresql
+```
+
+for official packages
+```bash
+sudo systemctl restart postgresql-17
+```
+</code></pre></div>
+<details class="dica" open="open">
+<summary>Dica</summary>
 <p>If the service fails to restart, review the <code>pg_hba.conf</code> file for any syntax errors,
 as incorrect entries here may prevent PostgreSQL from starting.</p>
 </details>
 <hr />
-<h2 id="creating-the-zabbix-database-instance">Creating the Zabbix database instance</h2>
+<h2 id="criacao-da-instancia-do-banco-de-dados-zabbix">Criação da instância do banco de dados Zabbix</h2>
 <p>With the necessary packages installed, you are now ready to create the Zabbix
 database and users for both the server and frontend.</p>
 <p>The PostgreSQL packages automatically create a default <code>postgres</code> linux-user
@@ -2626,8 +2632,8 @@ feature is especially valuable in environments where several users or
 applications need to interact with the same database server concurrently. Each
 user or application can have its own schema, preventing accidental interference
 with each other's data.</p>
-<details class="note" open="open">
-<summary>Note</summary>
+<details class="nota" open="open">
+<summary>Nota</summary>
 <p>PostgreSQL comes with a default schema, typically called <code>public</code>, but in
 general, it's a best practice to create custom schemas to better organize and separate
 database objects, especially in complex or multi-user environments.</p>
@@ -2651,8 +2657,8 @@ default for the current session:</p>
 <div class="language-psql highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">search_path</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s s-Name">&quot;zabbix_server&quot;</span><span class="p">;</span>
 </span></code></pre></div>
 </div>
-<details class="tip" open="open">
-<summary>Tip</summary>
+<details class="dica" open="open">
+<summary>Dica</summary>
 <p>If you prefer not to set the search path manually each time you log in as the
 <code>zabbix-srv</code> user, you can configure PostgreSQL to automatically use the desired
 search path. Run the following SQL command to set the default search path for
@@ -2691,15 +2697,15 @@ while maintaining security by limiting permissions to essential operations.</p>
 <div class="language-psql highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\q</span>
 </span></code></pre></div>
 </div>
-<p>At this point, your Zabbix database is ready, but before it can actually be used
-by Zabbix, we still need to populate the database with the necessary tables and
-initial data, but that will be covered in the next section when we install the
-Zabbix server.</p>
+<p>Neste ponto, seu banco de dados do Zabbix está pronto, mas antes que ele possa
+realmente ser usado pelo Zabbix, ainda precisamos preencher o banco de dados com
+as tabelas necessárias e os dados iniciais, mas isso será abordado na próxima
+seção, quando instalarmos o servidor Zabbix.</p>
 <p>If you intent to install Zabbix server on a different machine than the one
 hosting the database you will need to open the host firewall to allow incoming
 connections to the database server. By default, PostgreSQL listens on port 5432.</p>
 <div class="admonition info">
-<p class="admonition-title">Add firewall rules</p>
+<p class="admonition-title">Adicionar regras de firewall</p>
 <p>Red Hat / SUSE
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>firewall-cmd<span class="w"> </span>--add-service<span class="o">=</span>postgresql<span class="w"> </span>--permanent
 </span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>firewall-cmd<span class="w"> </span>--reload
@@ -2709,15 +2715,15 @@ connections to the database server. By default, PostgreSQL listens on port 5432.
 </span></code></pre></div></p>
 </div>
 <hr />
-<h2 id="populate-the-zabbix-database">Populate the Zabbix database</h2>
+<h2 id="preencher-o-banco-de-dados-do-zabbix">Preencher o banco de dados do Zabbix</h2>
 <p>During the installation of the database software earlier, we created the
 necessary users, database and schema for Zabbix, however, Zabbix expects certain
 tables, schemas, images, and other elements to be present in the database. To
 set up the database correctly, we need to populate it with the required schema.</p>
-<p>First we need to install the Zabbix SQL scripts that contain the required import
-scripts for the database.</p>
+<p>Primeiro, precisamos instalar os scripts SQL do Zabbix que contêm os scripts de
+importação necessários para o banco de dados.</p>
 <div class="admonition info">
-<p class="admonition-title">Install SQL scripts</p>
+<p class="admonition-title">Instalar scripts SQL</p>
 <p>Red Hat
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>dnf<span class="w"> </span>install<span class="w"> </span>zabbix-sql-scripts
 </span></code></pre></div></p>
@@ -2739,8 +2745,8 @@ by running the following command:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>sudo<span class="w"> </span>gzip<span class="w"> </span>-d<span class="w"> </span>/usr/share/zabbix/sql-scripts/postgresql/server.sql.gz
 </span></code></pre></div></p>
 </div>
-<details class="note" open="open">
-<summary>Note</summary>
+<details class="nota" open="open">
+<summary>Nota</summary>
 <p>Zabbix seems to like to change the locations of the script to populate the
 DB every version or even in between versions. If you encounter an error take a
 look at the Zabbix documentation, there is a good chance that some location was
@@ -2768,8 +2774,8 @@ ensure you set it manually in the current session before proceeding:
 <div class="language-psql highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\i</span><span class="w"> </span><span class="ss">/usr/share/zabbix/sql-scripts/postgresql/server.sql</span>
 </span></code></pre></div>
 </div>
-<details class="warning" open="open">
-<summary>Warning</summary>
+<details class="aviso" open="open">
+<summary>Aviso</summary>
 <p>Depending on your hardware or VM performance, this process can take anywhere
 from a few seconds to several minutes. Please be patient and avoid cancelling
 the operation.</p>
@@ -2821,8 +2827,8 @@ grant the following permissions:</p>
 </span><span id="__span-53-8"><a id="__codelineno-53-8" name="__codelineno-53-8" href="#__codelineno-53-8"></a><span class="go">               |                   | &quot;zabbix-web&quot;=U/&quot;zabbix-srv&quot;            |</span>
 </span></code></pre></div>
 </div>
-<details class="note" open="open">
-<summary>Note</summary>
+<details class="nota" open="open">
+<summary>Nota</summary>
 <p>If you encounter the following error during the SQL import:
 <code>vbnet psql:/usr/share/zabbix/sql-scripts/postgresql/server.sql:7: ERROR: no
     schema has been selected to create in</code> It indicates that the <code>search_path</code> setting
@@ -2900,24 +2906,24 @@ schema. Ensure that <code>zabbix-srv</code> has the required privileges.</p>
 adjust any permissions, you can do so using the GRANT commands as needed.</p>
 <p>This concludes our installation of the PostgreSQL database.</p>
 <hr />
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusao">Conclusão</h2>
 <p>With the installation and configuration of PostgreSQL as the database backend
 for Zabbix complete, you now have a powerful and efficient database system ready
 for your monitoring needs. We've covered the installation of PostgreSQL from
 both vendor-provided packages and official repositories, securing the database,
 creating the necessary Zabbix database and users, and populating the database
 with the required schema and initial data.</p>
-<p>Your Zabbix environment is now ready for the next stages of setup and
-configuration.</p>
+<p>Seu ambiente Zabbix agora está pronto para os próximos estágios de instalação e
+configuração.</p>
 <hr />
-<h2 id="questions">Questions</h2>
+<h2 id="perguntas">Perguntas</h2>
 <ol>
 <li>What version of PostgreSQL should I install for compatibility and stability?</li>
-<li>What port does my DB use ?</li>
-<li>Which database users did I create and why?</li>
+<li>Qual é a porta usada pelo meu banco de dados?</li>
+<li>Quais usuários do banco de dados eu criei e por quê?</li>
 </ol>
 <hr />
-<h2 id="useful-urls">Useful URLs</h2>
+<h2 id="urls-uteis">URLs úteis</h2>
 <ul>
 <li><a href="ttps://yum.postgresql.org">https://yum.postgresql.org</a></li>
 <li><a href="https://zypp.postgresql.org/howtozypp/">https://zypp.postgresql.org/howtozypp/</a></li>
