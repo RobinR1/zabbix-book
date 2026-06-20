@@ -2183,18 +2183,18 @@ zabbix:x:476:476:Zabbix Monitoring System:/var/lib/zabbix:/sbin/nologin
 </code></pre></div>
 <p>Verifique se o diretório existe com as permissões corretas e o contexto do
 SELinux:</p>
-<details class="example" open="open">
-<summary>Check existence of zabbix home-directory</summary>
+<details class="exemplo" open="open">
+<summary>Verificar a existência do diretório inicial do zabbix</summary>
 <div class="language-shell-session highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="go">localhost:~&gt;ls -laZ /var/lib/zabbix</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="go">total 0</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="go">drwxr-xr-x. 1 zabbix zabbix unconfined_u:object_r:zabbix_var_lib_t:s0   0 Jan 10 20:01 .</span>
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="go">drwxr-xr-x. 1 root   root   system_u:object_r:var_lib_t:s0            364 Jan 10 20:05 ..</span>
 </span></code></pre></div>
 </details>
-<p>If the directory does not exist, is not owned by user <code>zabbix</code> or is missing the
-SELinux label <code>zabbix_var_lib_t</code>, then you will need to correct this:</p>
+<p>Se o diretório não existir, não for de propriedade do usuário <code>zabbix</code> ou não
+tiver o rótulo SELinux <code>zabbix_var_lib_t</code>, será necessário corrigir isso:</p>
 <div class="admonition info">
-<p class="admonition-title">Create zabbix home-dir</p>
+<p class="admonition-title">Criar diretório inicial do zabbix</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Create the directory</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>mkdir<span class="w"> </span>/var/lib/zabbix
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="c1"># Make user/group zabbix owner </span>
@@ -2208,8 +2208,8 @@ SELinux label <code>zabbix_var_lib_t</code>, then you will need to correct this:
 <p>See <a href="../../ch13-advanced-security/selinux-zabbix/"><em>Advanced security: SELinux</em></a>
 chapter for more details about SELinux and Zabbix.</p>
 </details>
-<details class="note" open="open">
-<summary>MariaDB/MySQL or PostgreSQL as database for Zabbix proxy</summary>
+<details class="nota" open="open">
+<summary>MariaDB/MySQL ou PostgreSQL como banco de dados para o proxy Zabbix</summary>
 <p>If you chose to use MariaDB/MySQL or PostgreSQL, please refer to <a href="../../ch01-zabbix-components/zabbix-server/"><em>Installing the Zabbix server</em></a> for the required database
 settings you will need to set in the <code>/etc/zabbix/zabbix_proxy.d/database.conf</code>-file.</p>
 </details>
@@ -2218,36 +2218,40 @@ settings you will need to set in the <code>/etc/zabbix/zabbix_proxy.d/database.c
 <p>A list of all configuration options can be found in the Zabbix documentation.
 <a href="https://www.zabbix.com/documentation/current/en/manual/appendix/config/zabbix_proxy">https://www.zabbix.com/documentation/current/en/manual/appendix/config/zabbix_proxy</a></p>
 </details>
-<p>A notable configuration parameter that was added in <code>7.0</code> is <code>ProxyBufferMode</code>
-which determines how collected monitoring data is stored by the proxy before it
-is forwarded to the Zabbix server.</p>
-<p>Possible buffer modes:</p>
+<p>Um parâmetro de configuração importante que foi adicionado em <code>7.0</code> é
+<code>ProxyBufferMode</code>, que determina como os dados de monitoramento coletados são
+armazenados pelo proxy antes de serem encaminhados ao servidor Zabbix.</p>
+<p>Possíveis modos de buffer:</p>
 <dl>
-<dt><code>disk</code> - Disk buffer (default for existing installations prior to Zabbix 7.0)</dt>
+<dt><code>disk</code> - Buffer de disco (padrão para instalações existentes anteriores ao</dt>
+<dt>Zabbix 7.0)</dt>
 <dd>
-<p>All data is written to the Zabbix Proxy database immediately before it is sent
-to the Zabbix server. In case of a proxy or system crash, all data is retained
-and will be sent to the Zabbix server as soon as the proxy is started again.</p>
+<p>Todos os dados são gravados no banco de dados do Zabbix Proxy imediatamente
+antes de serem enviados para o servidor Zabbix. Em caso de falha do proxy ou do
+sistema, todos os dados são mantidos e serão enviados ao servidor Zabbix assim
+que o proxy for iniciado novamente.</p>
 <p>This is slower due to database I/O but is highly reliable.</p>
 </dd>
-<dt><code>memory</code> - Memory buffer</dt>
+<dt><code>memory</code> - Buffer de memória</dt>
 <dd>
-<p>Data is stored in RAM and is not written to disk. This makes sure the data is
-sent to the Zabbix server as quickly as possible as there is no I/O wait time
-for the database involved. Downside is that when the proxy or the system crashes
-when the proxy still has data in the buffer, not yet received by the server,
-that data will be lost. Also when the RAM buffer overflows
-(<code>ProxyMemoryBufferSize</code>), possibly due to a sudden burst of incoming items or
-the Zabbix server being unavailable for some time, older data will be removed
-from the buffer before it is sent to the Zabbix server.</p>
+<p>Os dados são armazenados na RAM e não são gravados no disco. Isso garante que
+os dados sejam enviados ao servidor Zabbix o mais rápido possível, pois não há
+tempo de espera de E/S para o banco de dados envolvido. A desvantagem é que,
+quando o proxy ou o sistema trava e o proxy ainda tem dados no buffer, ainda não
+recebidos pelo servidor, esses dados serão perdidos. Além disso, quando o buffer
+da RAM transbordar (<code>ProxyMemoryBufferSize</code>), possivelmente devido a uma
+explosão repentina de itens recebidos ou ao fato de o servidor Zabbix estar
+indisponível por algum tempo, os dados mais antigos serão removidos do buffer
+antes de serem enviados ao servidor Zabbix.</p>
 </dd>
-<dt><code>hybrid</code> - Hybrid buffer (default for new installations since Zabbix 7.0)</dt>
+<dt><code>hybrid</code> - buffer híbrido (padrão para novas instalações desde o Zabbix 7.0)</dt>
 <dd>
-<p>Data is primarily stored in RAM but is automatically written to the database
-when the memory buffer is full, the data is too old or when the proxy is
-stopped. This makes sure that data is preserved in case the Zabbix server is
-unreachable for a longer period or when there are bursts of many incoming items
-and hereby balances speed and reliability.</p>
+<p>Os dados são armazenados principalmente na RAM, mas são gravados
+automaticamente no banco de dados quando o buffer de memória está cheio, quando
+os dados são muito antigos ou quando o proxy é interrompido. Isso garante que os
+dados sejam preservados no caso de o servidor Zabbix ficar inacessível por um
+longo período ou quando houver uma explosão de muitos itens recebidos,
+equilibrando assim a velocidade e a confiabilidade.</p>
 </dd>
 </dl>
 <details class="aviso" open="open">
@@ -2258,19 +2262,19 @@ when we upgrade this remains the default behavior after upgrading to Zabbix
 7.x or higher. It's now recommended for performance reasons to use the new
 setting <code>hybrid</code> and to define the <code>ProxyMemoryBufferSize</code>.</p>
 </details>
-<p>Once you have made all the changes you need in the config file besides the ones
-we have covered, we only need to enable the service and start our proxy. Of
-course don't forget to open the firewall port <code>10051</code> on your <em>Zabbix server</em>
-side for the active proxy.</p>
+<p>Depois de fazer todas as alterações necessárias no arquivo de configuração, além
+das que abordamos, só precisamos ativar o serviço e iniciar nosso proxy.
+Obviamente, não se esqueça de abrir a porta do firewall <code>10051</code> no lado do
+servidor <em>Zabbix</em> para o proxy ativo.</p>
 <div class="admonition info">
-<p class="admonition-title">Enable and start the proxy service</p>
+<p class="admonition-title">Habilitar e iniciar o serviço de proxy</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>zabbix-proxy<span class="w"> </span>--now
 </span></code></pre></div>
 </div>
-<p>If all goes well we can check the log file from our proxy and we will see that
-Zabbix has created the database by itself.</p>
-<details class="example" open="open">
-<summary>View Zabbix proxy logs</summary>
+<p>Se tudo correr bem, podemos verificar o arquivo de registro do nosso proxy e
+veremos que o Zabbix criou o banco de dados sozinho.</p>
+<details class="exemplo" open="open">
+<summary>Exibir registros de proxy do Zabbix</summary>
 <div class="language-shell-session highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="go">localhost:~&gt; sudo tail -f /var/log/zabbix/zabbix_proxy.log`</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="go">11134:20250519:152232.419 Starting Zabbix Proxy (active) [Zabbix proxy]. Zabbix 7.4.0beta2 (revision 7cd11a01d42).</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="go">11134:20250519:152232.419 **** Enabled features ****</span>
@@ -2290,82 +2294,87 @@ Zabbix has created the database by itself.</p>
 </span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="go">11134:20250519:152232.478 required mandatory version: 07030032</span>
 </span></code></pre></div>
 </details>
-<p>In case of the <em>active</em> proxy, we are now ready. Going back to our frontend we
-should be able to see that our proxy is now online. Zabbix will also show the
-version of our proxy and the last seen age.</p>
-<p><img alt="ProxyA ready" src="../../../ch03-zabbix-proxies/active-passive-proxies/ch03-active-proxy-installed.png" /></p>
-<p><em>3.6 Active proxy configured</em></p>
-<p>For the <em>passive</em> proxy however, you will notice in the frontend that nothing
-seems to be working at all even when we have configured everything correctly on
-our proxy.</p>
-<p><img alt="Passive Proxy not working" src="../../../ch03-zabbix-proxies/active-passive-proxies/ch03-passive-not-working.png" /></p>
-<p><em>3.7 Proxy not working</em></p>
-<p>The explanation is rather easy as we run a <em>passive</em> proxy, the <em>Zabbix server</em>
-needs to poll our proxy. But we did not yet configure our Server to do that
-currently. So next step is to add the needed proxy pollers in our server
-configuration.</p>
-<p>Edit or create a new configuration file in <code>/etc/zabbix/zabbix_server.d/</code> on the
-<em>Zabbix Server</em> machine to add the required <code>StartProxyPollers</code> setting.</p>
+<p>No caso do proxy <em>ativo</em>, agora estamos prontos. Voltando ao frontend, poderemos
+ver que nosso proxy está on-line. O Zabbix também mostrará a versão do nosso
+proxy e a última idade vista.</p>
+<p><img alt="ProxyA pronto" src="../../../ch03-zabbix-proxies/active-passive-proxies/ch03-active-proxy-installed.png" /></p>
+<p><em>3.6 Proxy ativo configurado</em></p>
+<p>No caso do proxy <em>passivo</em>, no entanto, você notará no frontend que nada parece
+estar funcionando, mesmo quando configuramos tudo corretamente em nosso proxy.</p>
+<p><img alt="O proxy passivo não está funcionando" src="../../../ch03-zabbix-proxies/active-passive-proxies/ch03-passive-not-working.png" /></p>
+<p><em>3.7 O proxy não está funcionando</em></p>
+<p>A explicação é bastante simples, pois executamos um proxy <em>passivo</em> e o servidor
+<em>Zabbix</em> precisa pesquisar nosso proxy. Mas ainda não configuramos nosso
+servidor para fazer isso no momento. Portanto, a próxima etapa é adicionar os
+pollers de proxy necessários na configuração do nosso servidor.</p>
+<p>Edite ou crie um novo arquivo de configuração em <code>/etc/zabbix/zabbix_server.d/</code>
+na máquina <em>Zabbix Server</em> para adicionar a configuração necessária
+<code>StartProxyPollers</code>.</p>
 <div class="admonition info">
 <p class="admonition-title">/etc/zabbix/zabbix_server.d/pollers.conf</p>
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="na">StartProxyPollers</span><span class="o">=</span><span class="s">1</span>
 </span></code></pre></div>
 </div>
-<p>And restart the <em>Zabbix Server</em> process.</p>
+<p>E reinicie o processo <em>Zabbix Server</em>.</p>
 <div class="admonition info">
-<p class="admonition-title">Restart Zabbix Server</p>
+<p class="admonition-title">Reinicie o servidor Zabbix</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>zabbix-server
 </span></code></pre></div>
 </div>
-<p>Now going back to the frontend, we will see that our <em>passive proxy</em> becomes
-available. If it's not green give it a few seconds or check all steps again and
-verify your log files.</p>
-<p><img alt="Passive Proxy working" src="../../../ch03-zabbix-proxies/active-passive-proxies/ch03-passive-working.png" /></p>
-<p><em>3.8 Proxy working</em></p>
-<p>You are now ready.</p>
-<p>For your monitored hosts, this proxy will behave like the Zabbix server. Hence,
-all hosts you want to be monitored by the proxy will now have to be configured
-to have their <code>Server</code> and/or <code>ServerActive</code> configuration values set to the
-IP/hostname of this proxy instead of the <em>Zabbix server</em>.</p>
+<p>Agora, voltando ao frontend, veremos que o nosso <em>proxy passivo</em> está
+disponível. Se ele não estiver verde, aguarde alguns segundos ou verifique todas
+as etapas novamente e verifique seus arquivos de registro.</p>
+<p><img alt="Proxy passivo funcionando" src="../../../ch03-zabbix-proxies/active-passive-proxies/ch03-passive-working.png" /></p>
+<p><em>3.8 Funcionamento do proxy</em></p>
+<p>Agora você está pronto.</p>
+<p>Para seus hosts monitorados, esse proxy se comportará como o servidor Zabbix.
+Portanto, todos os hosts que você deseja que sejam monitorados pelo proxy terão
+de ser configurados para que os valores de configuração <code>Server</code> e/ou
+<code>ServerActive</code> sejam definidos como o IP/nome do host desse proxy em vez do
+<em>Zabbix Server</em>.</p>
 <hr />
 <h2 id="conclusao">Conclusão</h2>
-<p>This chapter has demonstrated the indispensable role of Zabbix proxies in
-building robust, scalable, and distributed monitoring infrastructures. We've
-explored the fundamental distinction between <em>active</em> and <em>passive</em> proxy modes,
-highlighting how each serves different deployment scenarios and network
-topologies. Understanding their individual strengths, from simplified firewall
-configurations with <em>active proxies</em> to the server-initiated control of <em>passive
-proxies</em>, is crucial for optimal system design.</p>
-<p>We delved into the comprehensive settings that govern proxy behavior,
-emphasizing how proper configuration of parameters like proxy polling intervals
-and data buffers, directly impacts performance and data accuracy. The evolution
-of data storage mechanisms within the proxy, from purely memory-based approaches
-to the flexible options of disk and hybrid storage, empowers administrators to
-finely tune resource utilization and data persistence based on their specific
-needs and the volume of monitored data.</p>
-<p>Finally, we examined the critical advancements in configuration synchronization,
-particularly the significant improvements introduced with Zabbix 7.0. The shift
-towards more efficient and streamlined config sync processes, moving beyond the
-limitations of earlier versions, underscores Zabbix's continuous commitment to
-enhancing operational efficiency and simplifying large-scale deployments.</p>
-<p>In essence, Zabbix proxies are far more than simple data forwarders; they are
-intelligent intermediaries that offload significant processing from the central
-Zabbix server, reduce network traffic, and enhance the resilience of your
-monitoring solution. By carefully selecting the appropriate proxy type,
-meticulously configuring its settings, and leveraging the latest features in
-data storage and configuration management, you can unlock the full potential of
-Zabbix to monitor even the most complex and geographically dispersed
-environments with unparalleled efficiency and reliability. The knowledge gained
-in this chapter will be instrumental in designing and maintaining a Zabbix
-infrastructure that is not only robust today but also adaptable to future
-monitoring challenges.</p>
+<p>Este capítulo demonstrou o papel indispensável dos proxies do Zabbix na criação
+de infraestruturas de monitoramento robustas, dimensionáveis e distribuídas.
+Exploramos a distinção fundamental entre os modos de proxy <em>active</em> e <em>passive</em>,
+destacando como cada um deles atende a diferentes cenários de implementação e
+topologias de rede. Compreender seus pontos fortes individuais, desde
+configurações simplificadas de firewall com <em>proxies ativos</em> até o controle
+iniciado pelo servidor de <em>proxies passivos</em> , é essencial para o projeto ideal
+do sistema.</p>
+<p>Nós nos aprofundamos nas configurações abrangentes que regem o comportamento do
+proxy, enfatizando como a configuração adequada de parâmetros, como intervalos
+de sondagem do proxy e buffers de dados, afeta diretamente o desempenho e a
+precisão dos dados. A evolução dos mecanismos de armazenamento de dados no
+proxy, desde abordagens puramente baseadas em memória até as opções flexíveis de
+armazenamento em disco e híbrido, permite que os administradores ajustem com
+precisão a utilização de recursos e a persistência de dados com base em suas
+necessidades específicas e no volume de dados monitorados.</p>
+<p>Por fim, examinamos os avanços críticos na sincronização de configurações,
+particularmente as melhorias significativas introduzidas com o Zabbix 7.0. A
+mudança em direção a processos de sincronização de configuração mais eficientes
+e simplificados, indo além das limitações das versões anteriores, ressalta o
+compromisso contínuo da Zabbix em aumentar a eficiência operacional e
+simplificar as implementações em larga escala.</p>
+<p>Em essência, os proxies do Zabbix são muito mais do que simples encaminhadores
+de dados; eles são intermediários inteligentes que descarregam um processamento
+significativo do servidor central do Zabbix, reduzem o tráfego de rede e
+aumentam a resiliência de sua solução de monitoramento. Selecionando
+cuidadosamente o tipo de proxy apropriado, configurando meticulosamente suas
+definições e aproveitando os recursos mais recentes de armazenamento de dados e
+gerenciamento de configuração, você pode liberar todo o potencial do Zabbix para
+monitorar até mesmo os ambientes mais complexos e geograficamente dispersos com
+eficiência e confiabilidade incomparáveis. O conhecimento adquirido neste
+capítulo será fundamental para projetar e manter uma infraestrutura do Zabbix
+que não seja apenas robusta hoje, mas também adaptável a futuros desafios de
+monitoramento.</p>
 <hr />
 <h2 id="perguntas">Perguntas</h2>
 <ul>
-<li>What is the fundamental difference between an active proxy and a passive proxy
-  in terms of who initiates the connection?</li>
-<li>How does a network firewall configuration differ for active vs passive proxies
-  when separated from the server by a network firewall?</li>
+<li>Qual é a diferença fundamental entre um proxy ativo e um proxy passivo em
+  termos de quem inicia a conexão?</li>
+<li>Qual é a diferença entre a configuração de um firewall de rede para proxies
+  ativos e passivos quando separados do servidor por um firewall de rede?</li>
 </ul>
 <hr />
 <h2 id="urls-uteis">URLs úteis</h2>

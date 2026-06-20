@@ -2503,7 +2503,7 @@ that the frontend correctly handles SAML authentication requests.</p>
 </span></code></pre></div>
 <hr />
 <h2 id="microsoft-entra-id-azure-ad">Microsoft Entra ID (Azure AD)</h2>
-<p>Integrating Microsoft Entra ID as a SAML Identity Provider for Zabbix follows the same core principles as other IdPs, but with Microsoft’s own structure and terminology layered on top. To get it to work, we will have to do some clicking around in the Microsoft Azure UI.</p>
+<p>Integrating Microsoft Entra ID as a SAML Identity Provider for Zabbix follows the same core principles as other IdPs, but with Microsoft's own structure and terminology layered on top. To get it to work, we will have to do some clicking around in the Microsoft Azure UI.</p>
 <h3 id="configure-entra-id">Configure Entra ID</h3>
 <p>First, navigate to the the Microsoft Entra admin center. You can type the name in the search bar and it should come right up.</p>
 <p><img align="center" alt="Microsoft Entra ID" src="../external-auth/ch02.x-ms-entra-id-app.png" /></p>
@@ -2567,7 +2567,7 @@ https://your_zabbix_server/zabbix/index_sso.php?acs</p>
 <details class="note" open="open">
 <summary>Note</summary>
 <p>With SAML and JIT provisioning enabled, Zabbix will automatically create users on their first successful login. This means you do not need to pre-create users manually.</p>
-<p>If you want more control over user lifecycle management beyond first login, that’s where SCIM comes in. SCIM allows your Identity Provider (like Entra ID) to continuously synchronize users with Zabbix.</p>
+<p>If you want more control over user lifecycle management beyond first login, that's where SCIM comes in. SCIM allows your Identity Provider (like Entra ID) to continuously synchronize users with Zabbix.</p>
 <p>The key difference:</p>
 <ul>
 <li><strong>JIT provisioning</strong>: creates users and checks permissions only when the user logs in</li>

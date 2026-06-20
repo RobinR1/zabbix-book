@@ -2871,8 +2871,8 @@ engine.</p>
 it works.</p>
 <p>Create a new host in <code>Data collection</code> -&gt; <code>Hosts</code>.</p>
 <ul>
-<li><strong>Host name:</strong> javascript</li>
-<li><strong>Host groups:</strong> JS Servers</li>
+<li><strong>Host name:</strong> <code>javascript</code></li>
+<li><strong>Host groups:</strong> <code>JS Servers</code></li>
 </ul>
 <p>Actually name and group are not important at all in this case :) When done
 create an item on the host.</p>
@@ -2891,7 +2891,7 @@ using the REST API.</p>
 <tbody>
 <tr>
 <td style="text-align: left;">Name</td>
-<td style="text-align: left;">Query Github Repository</td>
+<td style="text-align: left;"><code>Query Github Repository</code></td>
 </tr>
 <tr>
 <td style="text-align: left;">Type</td>
@@ -2899,7 +2899,7 @@ using the REST API.</p>
 </tr>
 <tr>
 <td style="text-align: left;">Key</td>
-<td style="text-align: left;">github.repo.stars</td>
+<td style="text-align: left;"><code>github.repo.stars</code></td>
 </tr>
 <tr>
 <td style="text-align: left;">Type of information</td>
@@ -2907,15 +2907,15 @@ using the REST API.</p>
 </tr>
 <tr>
 <td style="text-align: left;">Unit</td>
-<td style="text-align: left;">Stars</td>
+<td style="text-align: left;"><code>Stars</code></td>
 </tr>
 <tr>
 <td style="text-align: left;">Update interval</td>
-<td style="text-align: left;">1h</td>
+<td style="text-align: left;"><code>1h</code></td>
 </tr>
 <tr>
 <td style="text-align: left;">Timeout</td>
-<td style="text-align: left;">5s</td>
+<td style="text-align: left;"><code>5s</code></td>
 </tr>
 <tr>
 <td style="text-align: left;">Parameters</td>
@@ -2936,6 +2936,8 @@ using the REST API.</p>
 Add a personal access token for higher limits.</p>
 </blockquote>
 <p>Add the following code in the script box of the item.</p>
+<div class="admonition example">
+<p class="admonition-title">GitHub Stars Script</p>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// Parameters (item → Parameters):</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1">//   owner = zabbix</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1">//   repo  = zabbix</span>
@@ -2979,11 +2981,16 @@ Add a personal access token for higher limits.</p>
 </span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>
 </span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="k">return</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">stargazers_count</span><span class="p">;</span>
 </span></code></pre></div>
+</div>
 <p><img alt="Script/ch04.40-script-example1.png" src="../Script/ch04.40-script-example1.png" /></p>
 <h3 id="example-trigger">Example trigger</h3>
+<p>Create a trigger to alert if the repository has no stars:</p>
+<div class="admonition example">
+<p class="admonition-title">GitHub Stars Trigger expression</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>last(/javascript/github.repo.stars)=0
 </span></code></pre></div>
-<p>In this case we get an alert if the script returns 0</p>
+</div>
+<p>In this case we get an alert if the script returns 0.</p>
 <hr />
 <h2 id="example-2-public-weather">Example 2 - Public weather</h2>
 <p>In this script we call Open-Meteo and ask for for information like temperature,
@@ -2999,7 +3006,7 @@ windspeed, direction based on our longitude / latitude.</p>
 <tbody>
 <tr>
 <td style="text-align: left;">Name</td>
-<td style="text-align: left;">Query Weather Open Meteo</td>
+<td style="text-align: left;"><code>Query Weather Open Meteo</code></td>
 </tr>
 <tr>
 <td style="text-align: left;">Type</td>
@@ -3007,7 +3014,7 @@ windspeed, direction based on our longitude / latitude.</p>
 </tr>
 <tr>
 <td style="text-align: left;">Key</td>
-<td style="text-align: left;">weather.openmeteo.json</td>
+<td style="text-align: left;"><code>weather.openmeteo.json</code></td>
 </tr>
 <tr>
 <td style="text-align: left;">Type of information</td>
@@ -3015,7 +3022,7 @@ windspeed, direction based on our longitude / latitude.</p>
 </tr>
 <tr>
 <td style="text-align: left;">Update interval</td>
-<td style="text-align: left;">1h</td>
+<td style="text-align: left;"><code>1h</code></td>
 </tr>
 <tr>
 <td style="text-align: left;">Parameters</td>
@@ -3032,7 +3039,9 @@ windspeed, direction based on our longitude / latitude.</p>
 </tbody>
 </table>
 <p>Add the following code in the script box.</p>
-<p><div class="language-js highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// Parameters (item → Parameters):</span>
+<div class="admonition example">
+<p class="admonition-title">Open-Meteo Weather Script</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// Parameters (item → Parameters):</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1">//   latitude = 50.85</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1">//   temperaature_unit  = 4.7</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1">//   windspeed_unit = kmh / ms / mph / kn</span>
@@ -3060,7 +3069,8 @@ windspeed, direction based on our longitude / latitude.</p>
 </span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>
 </span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="k">return</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="nx">ok</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span><span class="nx">status</span><span class="o">:</span><span class="s2">&quot;OK&quot;</span><span class="p">,</span><span class="nx">temperature</span><span class="o">:</span><span class="nx">cw</span><span class="p">.</span><span class="nx">temperature</span><span class="p">,</span><span class="nx">windspeed</span><span class="o">:</span><span class="nx">cw</span><span class="p">.</span><span class="nx">windspeed</span><span class="p">,</span><span class="nx">winddirection</span><span class="o">:</span><span class="nx">cw</span><span class="p">.</span><span class="nx">winddirection</span><span class="p">,</span><span class="nx">is_day</span><span class="o">:</span><span class="nx">cw</span><span class="p">.</span><span class="nx">is_day</span><span class="p">,</span><span class="nx">time</span><span class="o">:</span><span class="nx">cw</span><span class="p">.</span><span class="nx">time</span><span class="o">||</span><span class="s2">&quot;&quot;</span><span class="p">});</span>
 </span></code></pre></div>
-<img alt="Script/ch04.42-script-example2.png" src="../Script/ch04.42-script-example2.png" /></p>
+</div>
+<p><img alt="Script/ch04.42-script-example2.png" src="../Script/ch04.42-script-example2.png" /></p>
 <p>Next create a few dependent items that use this script as master item.</p>
 <table>
 <thead>
@@ -3072,11 +3082,11 @@ windspeed, direction based on our longitude / latitude.</p>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Name:</strong></td>
-<td style="text-align: left;">Temperature</td>
+<td style="text-align: left;"><code>Temperature</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Key:</strong></td>
-<td style="text-align: left;">weather.temp</td>
+<td style="text-align: left;"><code>weather.temp</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Type of information:</strong></td>
@@ -3084,7 +3094,7 @@ windspeed, direction based on our longitude / latitude.</p>
 </tr>
 <tr>
 <td style="text-align: left;">Preprocessing</td>
-<td style="text-align: left;">JSONPath: -&gt; $.temperature</td>
+<td style="text-align: left;">JSONPath: -&gt; <code>$.temperature</code></td>
 </tr>
 </tbody>
 </table>
@@ -3098,11 +3108,11 @@ windspeed, direction based on our longitude / latitude.</p>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Name:</strong></td>
-<td style="text-align: left;">Windspeed</td>
+<td style="text-align: left;"><code>Windspeed</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Key:</strong></td>
-<td style="text-align: left;">weather.windspeed</td>
+<td style="text-align: left;"><code>weather.windspeed</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Type of information:</strong></td>
@@ -3110,7 +3120,7 @@ windspeed, direction based on our longitude / latitude.</p>
 </tr>
 <tr>
 <td style="text-align: left;">Preprocessing</td>
-<td style="text-align: left;">JSONPath: -&gt; $.windspeed</td>
+<td style="text-align: left;">JSONPath: -&gt; <code>$.windspeed</code></td>
 </tr>
 </tbody>
 </table>
@@ -3124,11 +3134,11 @@ windspeed, direction based on our longitude / latitude.</p>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Name:</strong></td>
-<td style="text-align: left;">Wind direction</td>
+<td style="text-align: left;"><code>Wind direction</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Key:</strong></td>
-<td style="text-align: left;">weather.winddir</td>
+<td style="text-align: left;"><code>weather.winddir</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Type of information:</strong></td>
@@ -3136,7 +3146,7 @@ windspeed, direction based on our longitude / latitude.</p>
 </tr>
 <tr>
 <td style="text-align: left;">Preprocessing</td>
-<td style="text-align: left;">JSONPath: -&gt; $.winddirection</td>
+<td style="text-align: left;">JSONPath: -&gt; <code>$.winddirection</code></td>
 </tr>
 </tbody>
 </table>
@@ -3150,11 +3160,11 @@ windspeed, direction based on our longitude / latitude.</p>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Name:</strong></td>
-<td style="text-align: left;">Is day</td>
+<td style="text-align: left;"><code>Is day</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Key:</strong></td>
-<td style="text-align: left;">weather.is_day</td>
+<td style="text-align: left;"><code>weather.is_day</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Type of information:</strong></td>
@@ -3162,7 +3172,7 @@ windspeed, direction based on our longitude / latitude.</p>
 </tr>
 <tr>
 <td style="text-align: left;">Preprocessing</td>
-<td style="text-align: left;">JSONPath: -&gt; $.is_day</td>
+<td style="text-align: left;">JSONPath: -&gt; <code>$.is_day</code></td>
 </tr>
 </tbody>
 </table>
@@ -3194,14 +3204,17 @@ Script items shine when you need full control.</p>
 <h2 id="expert-techniques-for-script-items">Expert techniques for Script items</h2>
 <h3 id="1-debugging-things">1. Debugging things</h3>
 <p>During development, use the internal logging API to trace script behavior:</p>
+<div class="admonition note">
+<p class="admonition-title">Debugging with Zabbix.log</p>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nx">Zabbix</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Debug: response body = &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">body</span><span class="p">);</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nx">Zabbix</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Info: token received successfully&quot;</span><span class="p">);</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nx">Zabbix</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Warning: unexpected API reply&quot;</span><span class="p">);</span>
 </span></code></pre></div>
+</div>
 <details class="tip" open="open">
 <summary>Tip</summary>
 <ul>
-<li>Log level <code>4</code> = debug, visible only if the server log level ≥4.</li>
+<li>Log level <code>4</code> = debug, visible only if the server log level ≥ 4.</li>
 <li>Log level <code>3</code> = informational.</li>
 <li>The log lines are written to the Zabbix server or proxy log, not the frontend.</li>
 </ul>
@@ -3235,6 +3248,8 @@ export the template. Store secrets in a vault instead of the DB.</p>
 <h3 id="3-error-handling-and-fallback-logic">3. Error handling and fallback logic</h3>
 <p>Production scripts should degrade gracefully.
 You can catch and handle network failures, retry, or return a fallback value:</p>
+<details class="example" open="open">
+<summary>Error handling in Script items</summary>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpRequest</span><span class="p">();</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
@@ -3251,9 +3266,10 @@ You can catch and handle network failures, retry, or return a fallback value:</p
 Logs the error at severity level 2 (Warning) into the Zabbix server log.
 It returns a numeric 0 instead of throwing errors, so the item remains
 supported.</p>
+</details>
 <h3 id="4-caching-between-executions">4. Caching between executions</h3>
 <p>Script items don't keep memory between runs, but you can reuse data efficiently
-by combining one master Script or trapper item that stores the full JSON response
+by combining one master <em>Script</em> or <em>Trapper</em> item that stores the full JSON response
 with several dependent items that extract individual fields. This isn't true caching
 inside JavaScript. It's data reuse via Zabbix history, avoiding repeated API calls.</p>
 <h3 id="5-parallelization-and-performance-considerations">5. Parallelization and performance considerations</h3>
@@ -3261,15 +3277,16 @@ inside JavaScript. It's data reuse via Zabbix history, avoiding repeated API cal
 If you have dozens of Script items that do API calls, consider:</p>
 <ul>
 <li>Running them on a <strong>proxy</strong> close to the data source (reduces latency).</li>
-<li>Adjusting <code>StartPollers</code> and <code>Timeout</code> in <code>zabbix_server.conf</code>.</li>
+<li>Adjusting <code>StartPollers</code> and <code>Timeout</code> in the Zabbix server configuration.</li>
 <li>Avoiding heavy JSON parsing or unnecessary loops.</li>
 <li>Using asynchronous APIs only when truly needed. Duktape executes synchronously.</li>
 </ul>
 <p>A single bad Script item can block a poller for its entire timeout period, so always
 test and tune.</p>
 <h3 id="6-returning-structured-data">6. Returning structured data</h3>
-<p>Script items can return <strong>JSON strings</strong> which can then be used in <strong>dependent items</strong>.
-Example: returning a JSON object containing multiple metrics.</p>
+<p>Script items can return <strong>JSON strings</strong> which can then be used in <strong>dependent items</strong>.</p>
+<details class="example" open="open">
+<summary>Returning a JSON object containing multiple metrics</summary>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">return</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nx">cpu_usage</span><span class="o">:</span><span class="w"> </span><span class="mf">25</span><span class="p">,</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="nx">mem_usage</span><span class="o">:</span><span class="w"> </span><span class="mf">67</span><span class="p">,</span>
@@ -3281,12 +3298,14 @@ Example: returning a JSON object containing multiple metrics.</p>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="err">$.mem_usage</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="err">$.disk_</span><span class="kc">free</span>
 </span></code></pre></div>
+</details>
 <p>This allows one Script item to feed many dependent metrics. A professional optimization
 pattern.</p>
 <h3 id="7-combining-script-items-with-preprocessing-javascript">7. Combining script items with preprocessing JavaScript</h3>
 <p>Advanced users often pair a Script item that performs heavy retrieval with preprocessing
 JavaScript that performs lightweight normalization.</p>
-<p>Example:</p>
+<details class="example" open="open">
+<summary>Heavy lifting in Script, light processing in preprocessing</summary>
 <ul>
 <li>Script item fetches a full JSON payload from an API.</li>
 <li>Dependent item extracts a numeric value using preprocessing JavaScript:</li>
@@ -3294,6 +3313,7 @@ JavaScript that performs lightweight normalization.</p>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">return</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">cpu</span><span class="p">;</span>
 </span></code></pre></div>
+</details>
 <p>This separates responsibilities and makes troubleshooting easier.</p>
 <h3 id="8-controlling-execution-context">8. Controlling execution context</h3>
 <p>Script items always run <strong>on the poller process</strong> of either the Zabbix server or
@@ -3339,15 +3359,18 @@ built-in variables into the script’s environment the most important one is
 <p><code>value</code> is a JSON string that contains all item parameters you defined under
 Parameters → Name / Value.</p>
 <p>Inside the script, you must parse it first:</p>
-<p><code>var p = JSON.parse(value);</code></p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+</span></code></pre></div>
 <p>You can then access the parameters by name:</p>
-<p><code>var host = p.host;</code>
-<code>var port = p.port;</code></p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">host</span><span class="p">;</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">port</span><span class="p">;</span>
+</span></code></pre></div>
 <p>If you try to reference a <code>parameters</code> object (as seen in some very old examples),
 you will get : <code>ReferenceError: identifier 'parameters' undefined</code> because the
 Duktape runtime does not inject such a variable anymore. All parameters are
 passed inside the value JSON string.</p>
 </details>
+<hr />
 <h2 id="conclusion">Conclusion</h2>
 <p>Script items make Zabbix remarkably flexible — they let you collect data from any
 API or service with just a few lines of JavaScript.
@@ -3360,6 +3383,7 @@ high-frequency polling is needed, move it closer to the data source with proxies
 or external collectors.</p>
 <p>With those principles in mind, Script items become your gateway between Zabbix
 and the modern API world — simple, powerful, and entirely scriptable.</p>
+<hr />
 <h2 id="questions">Questions</h2>
 <ul>
 <li>What makes Script items different from external checks or user parameters in Zabbix?</li>
@@ -3370,6 +3394,7 @@ and the modern API world — simple, powerful, and entirely scriptable.</p>
   same endpoint?</li>
 <li>Why are global macros usually not a good choice for secrets in exported templates?</li>
 </ul>
+<hr />
 <h2 id="useful-urls">Useful URLs</h2>
 <ul>
 <li><a href="https://www.zabbix.com/documentation/current/en/manual/config/items/preprocessing/javascript/javascript_objects">https://www.zabbix.com/documentation/current/en/manual/config/items/preprocessing/javascript/javascript_objects</a></li>

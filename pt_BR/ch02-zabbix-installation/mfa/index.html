@@ -1013,10 +1013,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#duo-mfa-provider" class="md-nav__link">
+  <a href="#provedor-duo-mfa" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Duo MFA provider
+        Provedor Duo MFA
       
     </span>
   </a>
@@ -1931,10 +1931,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#duo-mfa-provider" class="md-nav__link">
+  <a href="#provedor-duo-mfa" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Duo MFA provider
+        Provedor Duo MFA
       
     </span>
   </a>
@@ -2152,199 +2152,217 @@ a User group will be applied to all users belonging to this group.</p>
 <p>Preencha os campos <code>Nome de usuário</code>, <code>Senha</code> e <code>Senha (mais uma vez)</code>.
 Certifique-se de selecionar o grupo de usuários <code>test</code> no campo <code>Groups</code>.</p>
 <p><img alt="MFA novo usuário" src="../../../ch02-zabbix-installation/external-auth/ch02.26-mfa_new_user.png" width="90%" /></p>
-<p><em>2.26 New user configuration</em></p>
-<p>Then switch to <code>Permissions</code> tab and select any role.</p>
-<p><img alt="MFA new user permissions" src="../../../ch02-zabbix-installation/external-auth/ch02.27-mfa_new_user_permissions.png" width="90%" /></p>
-<p><em>2.27 New user permissions</em></p>
-<p>Click <code>Add</code> button to add the user.</p>
-<p>Now we can test how TOTP MFA works. Sign out and then try to sign in as a test
-user you just created. You will be presented with a QR code. That means that the
-user <code>test</code> has not been enrolled in TOTP MFA yet.</p>
-<p><img alt="MFA TOTP QR code" src="../../../ch02-zabbix-installation/external-auth/ch02.28-mfa_totp_qr_code.png" width="30%" /></p>
-<p><em>2.28 TOTP QR code</em></p>
-<p>On your phone you need to install either "Microsoft authenticator" or "Google
-authenticator" application. The procedure of adding new QR code is quite
-similar, here is how it looks in "Google authenticator". Tap <code>Add a code</code> and
-then <code>Scan a QR code</code>. You'll be immediately presented with a 6 digit code
-(remember we selected 6 in <code>Code length</code> when we configured TOTP MFA?)</p>
+<p><em>2.26 Nova configuração de usuário</em></p>
+<p>Em seguida, acesse a guia <code>Permissions</code> e selecione qualquer função.</p>
+<p><img alt="Permissões de novo usuário MFA" src="../../../ch02-zabbix-installation/external-auth/ch02.27-mfa_new_user_permissions.png" />{
+width=90% }</p>
+<p><em>2.27 Novas permissões de usuário</em></p>
+<p>Clique no botão <code>Add</code> para adicionar o usuário.</p>
+<p>Agora podemos testar como o TOTP MFA funciona. Saia e tente entrar como um
+usuário de teste que você acabou de criar. Será apresentado a você um código QR.
+Isso significa que o usuário <code>test</code> ainda não foi registrado no TOTP MFA.</p>
+<p><img alt="Código QR do MFA TOTP" src="../../../ch02-zabbix-installation/external-auth/ch02.28-mfa_totp_qr_code.png" width="30%" /></p>
+<p><em>2.28 Código QR TOTP</em></p>
+<p>Em seu telefone, é necessário instalar o aplicativo "Microsoft authenticator" ou
+"Google authenticator". O procedimento para adicionar um novo código QR é
+bastante semelhante; veja como fica no "Google authenticator". Toque em <code>Add a
+code</code> e, em seguida, em <code>Scan a QR code</code>. Você verá imediatamente um código de 6
+dígitos (lembra-se de que selecionamos 6 em <code>Comprimento do código</code> quando
+configuramos o TOTP MFA?)</p>
 <p><img alt="MFA TOTP auth app1" src="../../../ch02-zabbix-installation/external-auth/ch02.29-mfa_totp_auth_app1.png" width="32%" /></p>
-<p><em>2.29 Authenticator app, step 1</em></p>
+<p><em>2.29 Aplicativo Authenticator, etapa 1</em></p>
 <p><img alt="MFA TOTP auth app2" src="../../../ch02-zabbix-installation/external-auth/ch02.30-mfa_totp_auth_app2.png" width="32%" /></p>
-<p><em>2.30 Authenticator app, step 2</em></p>
+<p><em>2.30 Aplicativo Authenticator, etapa 2</em></p>
 <p><img alt="MFA TOTP auth app3" src="../../../ch02-zabbix-installation/external-auth/ch02.31-mfa_totp_auth_app3.png" width="32%" /></p>
-<p><em>2.31 Authenticator app, step 3</em></p>
-<p>Enter this code into <code>Verification code</code> field of your login screen and click
-<code>Sign in</code>, if you did everything right you are logged in into Zabbix at this
-point. At this point the user "test" is considered enrolled into TOTP MFA and
-Zabbix stores a special code used for further authentications in its database.
-The next time user "test" tries to login into Zabbix there will be only a field
-to enter verification code</p>
-<p><img alt="MFA TOTP second login" src="../../../ch02-zabbix-installation/external-auth/ch02.32-mfa_totp_second_login.png" width="32%" /></p>
-<p><em>2.32 Verification code request</em></p>
-<details class="warning" open="open">
-<summary>Warning</summary>
+<p><em>2.31 Aplicativo Authenticator, etapa 3</em></p>
+<p>Digite este código no campo <code>Verification code</code> da sua tela de login e clique em
+<code>Sign in</code>, se você fez tudo certo, você está logado no Zabbix neste momento.
+Nesse momento, o usuário "teste" é considerado inscrito no TOTP MFA e o Zabbix
+armazena em seu banco de dados um código especial utilizado para outras
+autenticações. Na próxima vez que o usuário "teste" tentar fazer o login no
+Zabbix, haverá apenas um campo para inserir o código de verificação</p>
+<p><img alt="MFA TOTP segundo login" src="../../../ch02-zabbix-installation/external-auth/ch02.32-mfa_totp_second_login.png" width="32%" /></p>
+<p><em>2.32 Solicitação de código de verificação</em></p>
+<details class="aviso" open="open">
+<summary>Aviso</summary>
 <p>For TOTP MFA to work your Zabbix server must have correct time. Sometimes
 it's not the case especially if you are working with containers so pay attention
 to this.</p>
 </details>
-<p>If a user changes (or loses) his/her phone, then Zabbix administrator should
-reset his/her enrolment. To do that in the menu select <code>Users</code> then mark a
-check-box to the left of "test" user and click "Reset TOTP secret" button.</p>
-<p><img alt="MFA TOTP reset password" src="../../../ch02-zabbix-installation/external-auth/ch02.33-mfa_totp_reset_password.png" width="99%" /></p>
-<p><em>2.33 Reset TOTP secret</em></p>
-<p>After you reset TOTP secret the "test" user will have to undergo enrolment
-procedure again.</p>
+<p>Se um usuário mudar (ou perder) seu telefone, então o administrador do Zabbix
+deve redefinir sua inscrição. Para isso, no menu, selecione <code>Users</code> e marque a
+caixa de seleção à esquerda do usuário "teste" e clique no botão "Reset TOTP
+secret".</p>
+<p><img alt="MFA TOTP resetar a senha" src="../../../ch02-zabbix-installation/external-auth/ch02.33-mfa_totp_reset_password.png" width="99%" /></p>
+<p><em>2.33 Redefinir o segredo TOTP</em></p>
+<p>Depois de redefinir o segredo TOTP, o usuário de "teste" terá de passar
+novamente pelo procedimento de registro.</p>
 <hr />
-<h2 id="duo-mfa-provider">Duo MFA provider</h2>
-<p>Duo is a very famous security platform that provides a lot of security related
-features/products. To read more please visit <a href="https://duo.com/">Duo</a>. Here we'll
-talk about Duo only in regards to Zabbix MFA.</p>
-<details class="warning" open="open">
-<summary>Warning</summary>
+<h2 id="provedor-duo-mfa">Provedor Duo MFA</h2>
+<p>A Duo é uma plataforma de segurança muito famosa que oferece muitos
+recursos/produtos relacionados à segurança. Para saber mais, visite
+<a href="https://duo.com/">Duo</a>. Aqui falaremos sobre a Duo apenas com relação ao Zabbix
+MFA.</p>
+<details class="aviso" open="open">
+<summary>Aviso</summary>
 <p>For Duo MFA to work your Zabbix WebUI must be configured to work with HTTPS
 (valid certificate is not required, self-signed certificate will work).</p>
 </details>
-<p>First of all you need to create an account with Duo (it's free to manage up to
-10 users) then login into Duo, you are an admin here. In the menu on the left
-select <code>Applications</code> and click <code>Protect an Application</code> button.</p>
-<p><img alt="MFA DUO applications" src="../../../ch02-zabbix-installation/external-auth/ch02.34-mfa_duo_applications.png" width="99%" /></p>
-<p><em>2.34 DUO Applications menu</em></p>
-<p>Then you will see WebSDK in applications list, click on it</p>
-<p><img alt="MFA DUO applications list" src="../../../ch02-zabbix-installation/external-auth/ch02.35-mfa_duo_applications_list.png" width="99%" /></p>
-<p><em>2.35 DUO Applications list</em></p>
-<p>Here you'll see all the data needed for Zabbix.</p>
+<p>Em primeiro lugar, você precisa criar uma conta no Duo (é gratuito para
+gerenciar até 10 usuários) e, em seguida, fazer login no Duo, pois você é um
+administrador aqui. No menu à esquerda, selecione <code>Applications (Aplicativos)</code> e
+clique no botão <code>Protect an Application (Proteger um aplicativo)</code>.</p>
+<p><img alt="Aplicativos MFA DUO" src="../../../ch02-zabbix-installation/external-auth/ch02.34-mfa_duo_applications.png" width="99%" /></p>
+<p><em>2.34 Menu Aplicativos DUO</em></p>
+<p>Em seguida, você verá o WebSDK na lista de aplicativos, clique nele</p>
+<p><img alt="Lista de aplicativos MFA DUO" src="../../../ch02-zabbix-installation/external-auth/ch02.35-mfa_duo_applications_list.png" />{
+width=99% }</p>
+<p><em>2.35 Lista de aplicativos DUO</em></p>
+<p>Aqui você verá todos os dados necessários para o Zabbix.</p>
 <p><img alt="MFA DUO " src="../../../ch02-zabbix-installation/external-auth/ch02.36-mfa_duo_data.png" width="99%" /></p>
-<p><em>2.36 DUO WebSDK application settings</em></p>
-<p>Now let's go to Zabbix. First we need to configure Duo MFA method. In the menu
-select <code>Users</code> and click <code>Authentication</code>. Then on <code>MFA settings</code> tab click
-<code>Add</code> in <code>Methods</code> section.</p>
+<p><em>2.36 Configurações do aplicativo DUO WebSDK</em></p>
+<p>Agora vamos para o Zabbix. Primeiro, precisamos configurar o método Duo MFA. No
+menu, selecione <code>Users</code> e clique em <code>Authentication</code>. Em seguida, na guia <code>MFA
+settings</code>, clique em <code>Add</code> na seção <code>Methods</code>.</p>
 <p><img alt="MFA DUO " src="../../../ch02-zabbix-installation/external-auth/ch02.37-mfa_duo_add_method.png" width="99%" /></p>
-<p><em>2.37 Add MFA method</em></p>
-<p>Fill in all the fields with data from Duo Dashboard -&gt; Applications -&gt; Web SDK
-page (see screenshot above) and click <code>Add</code>, then click <code>Update</code> to update
-Authentication settings.</p>
+<p><em>2.37 Adicionar método MFA</em></p>
+<p>Preencha todos os campos com os dados da página Duo Dashboard -&gt; Applications -&gt;
+Web SDK (veja a captura de tela acima) e clique em <code>Add</code> e, em seguida, clique
+em <code>Update</code> para atualizar as configurações de autenticação.</p>
 <p><img alt="MFA DUO " src="../../../ch02-zabbix-installation/external-auth/ch02.38-mfa_duo_method_data.png" width="99%" /></p>
-<p><em>2.38 DUO method settings</em></p>
-<p>After the MFA method is configured let's switch the "Test" group to use Duo MFA.
-In the menu select <code>Users</code> and click <code>User groups</code>, then click "test" group. In
-the field <code>Multi-factor authentication</code> select "DUO1" and click <code>Update</code>.</p>
+<p><em>2.38 Configurações do método DUO</em></p>
+<p>Depois que o método MFA for configurado, vamos mudar o grupo "Test" para usar o
+Duo MFA. No menu, selecione <code>Users</code> e clique em <code>User groups</code> e, em seguida,
+clique em "test" group. No campo <code>Multi-factor authentication (Autenticação
+multifator)</code>, selecione "DUO1" e clique em <code>Update (Atualizar)</code>.</p>
 <p><img alt="MFA DUO " src="../../../ch02-zabbix-installation/external-auth/ch02.39-mfa_duo_user_group.png" width="99%" /></p>
-<p><em>2.39 DUO MFA authentication method for user group</em></p>
-<p>Everything is ready. Let's test it. Sign out of Zabbix and sign back in with
-"test" user. You should see a welcome screen from Duo. Click several <code>Next</code>
-buttons.</p>
+<p><em>2.39 Método de autenticação DUO MFA para grupo de usuários</em></p>
+<p>Tudo está pronto. Vamos testá-lo. Saia do Zabbix e entre novamente com o usuário
+"teste". Você deverá ver uma tela de boas-vindas do Duo. Clique em vários botões
+<code>Next</code>.</p>
 <p><img alt="MFA DUO " src="../../../ch02-zabbix-installation/external-auth/ch02.40-mfa_duo_welcome.png" width="32%" /></p>
-<p><em>2.40 Enrolling into DUO, step1</em></p>
+<p><em>2.40 Registro no DUO, etapa 1</em></p>
 <p><img alt="MFA DUO " src="../../../ch02-zabbix-installation/external-auth/ch02.41-mfa_duo_welcome1.png" width="32%" /></p>
-<p><em>2.41 Enrolling into DUO, step2</em></p>
+<p><em>2.41 Registro no DUO, etapa 2</em></p>
 <p><img alt="MFA DUO " src="../../../ch02-zabbix-installation/external-auth/ch02.42-mfa_duo_welcome2.png" width="32%" /></p>
-<p><em>2.42 Enrolling into DUO, step3</em></p>
-<p>Then you need to select the method of authentication.</p>
+<p><em>2.42 Registro no DUO, etapa 3</em></p>
+<p>Em seguida, você precisa selecionar o método de autenticação.</p>
 <p><img alt="MFA DUO " src="../../../ch02-zabbix-installation/external-auth/ch02.43-mfa_duo_auth_method.png" width="50%" /></p>
-<p><em>2.43 Enrolling into DUO, step4</em></p>
-<p>It is up to you what to select you can experiment with all these methods. Let's
-select "Duo Mobile" (you need to install "Duo mobile" application on your
-device). Click <code>I have a tablet</code> (it's just easier to activate your device this
-way) and confirm that you installed "Duo mobile" on your phone. At this point
-you should see a QR code that you need to scan in "Duo mobile" application.</p>
+<p><em>2.43 Registro no DUO, etapa 4</em></p>
+<p>Cabe a você decidir o que selecionar. Você pode experimentar todos esses
+métodos. Vamos selecionar "Duo Mobile" (você precisa instalar o aplicativo "Duo
+mobile" no seu dispositivo). Clique em <code>I have a tablet</code> (é mais fácil ativar
+seu dispositivo dessa forma) e confirme que você instalou o "Duo mobile" em seu
+telefone. Nesse momento, você verá um código QR que deverá ser escaneado no
+aplicativo "Duo mobile".</p>
 <p><img alt="MFA DUO " src="../../../ch02-zabbix-installation/external-auth/ch02.44-mfa_duo_duo_app.png" width="32%" /></p>
-<p><em>2.44 Enrolling into DUO, step5</em></p>
+<p><em>2.44 Registro no DUO, etapa 5</em></p>
 <p><img alt="MFA DUO " src="../../../ch02-zabbix-installation/external-auth/ch02.45-mfa_duo_confirm_app_installed.png" width="32%" /></p>
-<p><em>2.45 Enrolling into DUO, step6</em></p>
+<p><em>2.45 Registro no DUO, etapa 6</em></p>
 <p><img alt="MFA DUO " src="../../../ch02-zabbix-installation/external-auth/ch02.46-mfa_duo_scan_qr.png" width="32%" /></p>
-<p><em>2.46 Enrolling into DUO, step7</em></p>
-<p>Open "Duo mobile" on your phone. If you did not have this application previously
-installed (thus no accounts enrolled) you will see couple of welcome screens.</p>
+<p><em>2.46 Registro no DUO, etapa 7</em></p>
+<p>Abra o "Duo mobile" em seu telefone. Se você não tiver esse aplicativo instalado
+anteriormente (portanto, nenhuma conta registrada), verá algumas telas de
+boas-vindas.</p>
 <p><img alt="MFA DUO " src="../../../ch02-zabbix-installation/external-auth/ch02.47-mfa_duo_phone_welcome.png" width="48%" /></p>
-<p><em>2.47 Configure DUO app, step 1</em></p>
+<p><em>2.47 Configurar o aplicativo DUO, etapa 1</em></p>
 <p><img alt="MFA DUO " src="../../../ch02-zabbix-installation/external-auth/ch02.48-mfa_duo_phone_add_account.png" width="48%" /></p>
-<p><em>2.48 Configure DUO app, step 2</em></p>
-<p>Tap on "Use a QR code" and then scan the code presented by Duo in your Zabbix
-login screen. After you do that you will see that the account is enrolled to
-your Duo MFA. Enter account name and tap "Done" and you will see the account in
-the list of all accounts enrolled into Duo MFA on this device. In Zabbix WebUI
-you will also see a confirmation, click "Continue".</p>
+<p><em>2.48 Configurar o aplicativo DUO, etapa 2</em></p>
+<p>Toque em "Use a QR code" e, em seguida, escaneie o código apresentado pelo Duo
+na tela de login do Zabbix. Depois de fazer isso, você verá que a conta está
+inscrita no Duo MFA. Digite o nome da conta e toque em "Done" (Concluído) e você
+verá a conta na lista de todas as contas registradas no Duo MFA neste
+dispositivo. Na Zabbix WebUI, você também verá uma confirmação, clique em
+"Continue" (Continuar).</p>
 <p><img alt="MFA DUO " src="../../../ch02-zabbix-installation/external-auth/ch02.49-mfa_duo_phone_account_added.png" width="32%" /></p>
-<p><em>2.49 Configure DUO app, step 3</em></p>
+<p><em>2.49 Configurar o aplicativo DUO, etapa 3</em></p>
 <p><img alt="MFA DUO " src="../../../ch02-zabbix-installation/external-auth/ch02.50-mfa_duo_phone_accounts.png" width="32%" /></p>
-<p><em>2.50 Configure DUO app, step 4</em></p>
+<p><em>2.50 Configurar o aplicativo DUO, etapa 4</em></p>
 <p><img alt="MFA DUO " src="../../../ch02-zabbix-installation/external-auth/ch02.51-mfa_duo_enrollement_confirmation.png" width="32%" /></p>
-<p><em>2.51 Enrolment confirmation</em></p>
-<p>Duo will ask you now whether you want to add another method of authentication,
-click <code>Skip for now</code> and you'll see a confirmation that set up completed. Click
-<code>Login with Duo</code> and a notification will be pushed to your device.</p>
+<p><em>2.51 Confirmação de registro</em></p>
+<p>O Duo perguntará agora se você deseja adicionar outro método de autenticação,
+clique em <code>Skip for now</code> e você verá uma confirmação de que a configuração foi
+concluída. Clique em <code>Login with Duo</code> e uma notificação será enviada para seu
+dispositivo.</p>
 <p><img alt="MFA DUO " src="../../../ch02-zabbix-installation/external-auth/ch02.52-mfa_duo_another_method.png" width="32%" /></p>
-<p><em>2.52 Add another way to login</em></p>
+<p><em>2.52 Adicionar outra maneira de fazer login</em></p>
 <p><img alt="MFA DUO " src="../../../ch02-zabbix-installation/external-auth/ch02.53-mfa_duo_setup_completed.png" width="32%" /></p>
-<p><em>2.53 MFA DUO set up completed</em></p>
+<p><em>2,53 Configuração do MFA DUO concluída</em></p>
 <p><img alt="MFA DUO " src="../../../ch02-zabbix-installation/external-auth/ch02.54-mfa_duo_push_sent.png" width="32%" /></p>
-<p><em>2.54 DUO push notification sent</em></p>
-<p>Now just tap on "Approve" on your device and you will be logged in into Zabbix.</p>
+<p><em>2.54 Notificação push DUO enviada</em></p>
+<p>Agora basta tocar em "Approve" (Aprovar) no seu dispositivo e você estará
+conectado ao Zabbix.</p>
 <p><img alt="MFA DUO " src="../../../ch02-zabbix-installation/external-auth/ch02.55-mfa_duo_phone_push_notification.png" width="50%" /></p>
-<p><em>2.55 DUO push notification on the phone</em></p>
-<p>Duo MFA enrolment complete. If you sign out and sign in back then immediately a
-push notification will be sent to your device and all you need is tap on
-"Approve". Also you will see the user "test" in Duo where you can delete the
-user, or deactivate just click on it and experiment.</p>
+<p><em>2.55 Notificação push DUO no telefone</em></p>
+<p>Registro do Duo MFA concluído. Se você sair e entrar novamente, imediatamente
+uma notificação push será enviada ao seu dispositivo e tudo o que você precisa
+fazer é tocar em "Approve" (Aprovar). Além disso, você verá o usuário "test" no
+Duo, onde poderá excluir o usuário ou desativá-lo, basta clicar nele e
+experimentar.</p>
 <p><img alt="MFA DUO " src="../../../ch02-zabbix-installation/external-auth/ch02.56-mfa_duo_users.png" width="98%" /></p>
-<p><em>2.56 New user registered in DUO</em></p>
+<p><em>2.56 Novo usuário registrado no DUO</em></p>
 <h2 id="conclusao">Conclusão</h2>
-<p>Implementing Multi-Factor Authentication (MFA) in Zabbix is a powerful way to
-significantly advance your system’s security beyond the standard password
-policies. This chapter outlined how Zabbix supports two robust MFA mechanisms:</p>
+<p>A implementação da autenticação multifator (MFA) no Zabbix é uma maneira
+poderosa de aumentar significativamente a segurança do seu sistema além das
+políticas de senha padrão. Este capítulo descreveu como o Zabbix suporta dois
+mecanismos robustos de MFA:</p>
 <ul>
 <li>
-<p>Time Based One-Time Password (TOTP): Offers user-friendly, secure login via an
-  authenticator app (like Google or Microsoft Authenticator). It's easy to
-  configure and effective just ensure that your Zabbix server maintains accurate
-  time settings to avoid authentication issues.</p>
+<p>Senha única baseada em tempo (TOTP): Oferece login seguro e fácil de usar por
+  meio de um aplicativo autenticador (como o Google ou o Microsoft
+  Authenticator). É fácil de configurar e eficaz, mas certifique-se de que seu
+  servidor Zabbix mantenha configurações de horário precisas para evitar
+  problemas de autenticação.</p>
 </li>
 <li>
-<p>Duo MFA: Integrates a more advanced, enterprise grade solution that provides
-  features like push notifications and customizable authentication methods. Duo
-  offers flexible and strong security, albeit requiring a bit more setup
-  (including HTTPS on the Zabbix WebUI).</p>
+<p>Duo MFA: integra uma solução mais avançada, de nível empresarial, que oferece
+  recursos como notificações push e métodos de autenticação personalizáveis. O
+  Duo oferece segurança flexível e forte, embora exija um pouco mais de
+  configuração (incluindo HTTPS na WebUI do Zabbix).</p>
 </li>
 </ul>
-<p>Both MFA options elevate the login process by introducing an additional layer of
-validation. Administrators can apply MFA selectively by assigning it to specific
-user groups thus tailoring the security posture to organizational needs.</p>
-<p>Ultimately, enabling MFA not only enhances protection against unauthorized
-access but also fits within a broader strategy of robust authentication. Whether
-through TOTP or Duo, adding MFA demonstrates a commitment to safeguarding access
-to your Zabbix environment and fortifying your monitoring infrastructure.n</p>
+<p>Ambas as opções de MFA elevam o processo de login, introduzindo uma camada
+adicional de validação. Os administradores podem aplicar a MFA de forma
+seletiva, atribuindo-a a grupos de usuários específicos, adaptando assim a
+postura de segurança às necessidades organizacionais.</p>
+<p>Em última análise, a ativação da MFA não apenas melhora a proteção contra o
+acesso não autorizado, mas também se encaixa em uma estratégia mais ampla de
+autenticação robusta. Seja por meio do TOTP ou do Duo, adicionar a MFA demonstra
+o compromisso de proteger o acesso ao seu ambiente Zabbix e fortalecer sua
+infraestrutura de monitoramento.</p>
 <h2 id="perguntas">Perguntas</h2>
 <ul>
 <li>
-<p>Why is relying on a password alone not sufficient to secure access to a Zabbix
-  instance? (Think about common attack methods like password reuse, brute force,
-  or phishing.)</p>
+<p>Por que confiar apenas em uma senha não é suficiente para proteger o acesso a
+  uma instância do Zabbix? (Pense em métodos de ataque comuns, como reutilização
+  de senha, força bruta ou phishing).</p>
 </li>
 <li>
-<p>What are the key differences between TOTP-based MFA and Duo MFA in terms of
-  setup, security, and user experience?</p>
+<p>Quais são as principais diferenças entre a MFA baseada em TOTP e a Duo MFA em
+  termos de configuração, segurança e experiência do usuário?</p>
 </li>
 <li>
-<p>How does accurate system time affect the reliability of TOTP authentication,
-  and what could go wrong if time synchronization is not maintained?</p>
+<p>Como a precisão da hora do sistema afeta a confiabilidade da autenticação TOTP
+  e o que pode dar errado se a sincronização da hora não for mantida?</p>
 </li>
 <li>
-<p>If you were tasked with enabling MFA for a production Zabbix system, which
-  method (TOTP or Duo) would you choose, and why? (Consider factors such as
-  environment size, user skill level, regulatory requirements, and available
-  resources.)</p>
+<p>Se você tivesse a tarefa de habilitar a MFA para um sistema Zabbix de
+  produção, qual método (TOTP ou Duo) você escolheria e por quê? (Considere
+  fatores como tamanho do ambiente, nível de habilidade do usuário, requisitos
+  regulamentares e recursos disponíveis).</p>
 </li>
 <li>
-<p>What are some potential challenges when rolling out MFA in an organization,
-  and how could an administrator mitigate user resistance or technical issues?</p>
+<p>Quais são alguns dos possíveis desafios ao implementar a MFA em uma
+  organização e como um administrador pode atenuar a resistência do usuário ou
+  os problemas técnicos?</p>
 </li>
 <li>
-<p>Why might it be useful to enable MFA only for certain user groups in Zabbix
-  rather than enforcing it globally?</p>
+<p>Por que pode ser útil habilitar a MFA apenas para determinados grupos de
+  usuários no Zabbix em vez de aplicá-la globalmente?</p>
 </li>
 <li>
-<p>How does adding MFA to Zabbix align with a broader security strategy, and what
-  other complementary security measures should be considered?</p>
+<p>Por que pode ser útil habilitar a MFA apenas para determinados grupos de
+  usuários no Zabbix em vez de aplicá-la globalmente?</p>
 </li>
 </ul>
 <h2 id="urls-uteis">URLs úteis</h2>

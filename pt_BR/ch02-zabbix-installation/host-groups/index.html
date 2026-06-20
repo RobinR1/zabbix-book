@@ -849,10 +849,10 @@ environments by structuring hosts for better visibility and control.
 </li>
       
         <li class="md-nav__item">
-  <a href="#applying-permissions-and-tag-filters-to-nested-groups" class="md-nav__link">
+  <a href="#aplicacao-de-permissoes-e-filtros-de-tags-a-grupos-aninhados" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Applying Permissions and Tag Filters to Nested Groups
+        Aplicação de permissões e filtros de tags a grupos aninhados
       
     </span>
   </a>
@@ -860,10 +860,10 @@ environments by structuring hosts for better visibility and control.
 </li>
       
         <li class="md-nav__item">
-  <a href="#best-practices" class="md-nav__link">
+  <a href="#melhores-praticas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Best Practices
+        Melhores práticas
       
     </span>
   </a>
@@ -1946,10 +1946,10 @@ environments by structuring hosts for better visibility and control.
 </li>
       
         <li class="md-nav__item">
-  <a href="#applying-permissions-and-tag-filters-to-nested-groups" class="md-nav__link">
+  <a href="#aplicacao-de-permissoes-e-filtros-de-tags-a-grupos-aninhados" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Applying Permissions and Tag Filters to Nested Groups
+        Aplicação de permissões e filtros de tags a grupos aninhados
       
     </span>
   </a>
@@ -1957,10 +1957,10 @@ environments by structuring hosts for better visibility and control.
 </li>
       
         <li class="md-nav__item">
-  <a href="#best-practices" class="md-nav__link">
+  <a href="#melhores-praticas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Best Practices
+        Melhores práticas
       
     </span>
   </a>
@@ -2182,49 +2182,55 @@ menos que você os crie explicitamente.</p>
 <li><code>/</code> is reserved for nesting and cannot be used in regular group names.</li>
 </ul>
 </details>
-<h2 id="applying-permissions-and-tag-filters-to-nested-groups">Applying Permissions and Tag Filters to Nested Groups</h2>
-<p>Once you've created nested groups, the <strong>Host group overview</strong> screen provides
-an option to apply permissions and tag filters to all subgroups:</p>
+<h2 id="aplicacao-de-permissoes-e-filtros-de-tags-a-grupos-aninhados">Aplicação de permissões e filtros de tags a grupos aninhados</h2>
+<p>Depois de criar grupos aninhados, a tela <strong>Host group overview</strong> oferece uma
+opção para aplicar permissões e filtros de tags a todos os subgrupos:</p>
 <ol>
-<li>Click on a parent group (e.g., <code>Europe</code>).</li>
-<li>A box appears: <strong>Apply permissions and tag filters to all subgroups</strong>.</li>
-<li>Enabling this will cascade any rights assigned to the parent group down to
-   its subgroups.</li>
+<li>Clique em um grupo pai (por exemplo, <code>Europe</code>).</li>
+<li>Uma caixa é exibida: <strong>Aplicar permissões e filtros de tags a todos os
+   subgrupos</strong>.</li>
+<li>Ao ativar essa opção, os direitos atribuídos ao grupo principal serão
+   transferidos em cascata para seus subgrupos.</li>
 </ol>
-<p><img alt="Apply subgroup permissions" src="../../../ch02-zabbix-installation/host-groups/ch02-sub-groups.png" /></p>
-<p><em>2.21 subgroup permissions</em></p>
-<p>This is especially useful for user groups. For example:</p>
+<p><img alt="Aplicar permissões de subgrupo" src="../../../ch02-zabbix-installation/host-groups/ch02-sub-groups.png" /></p>
+<p><em>2.21 permissões de subgrupo</em></p>
+<p>Isso é especialmente útil para grupos de usuários. Por exemplo:</p>
 <ul>
-<li>If <strong>Brian</strong> is in a user group with access to <code>Europe/Belgium</code>, enabling this
-  option allows Brian to see all hosts in subgroups like <code>Europe/Belgium/Gent</code>
-  or <code>Europe/Belgium/Brussels</code>, including their tags and data.</li>
+<li>Se <strong>Brian</strong> estiver em um grupo de usuários com acesso a <code>Europe/Belgium</code>,
+  ativar essa opção permitirá que Brian veja todos os hosts em subgrupos como
+  <code>Europe/Belgium/Gent</code> ou <code>Europe/Belgium/Brussels</code>, incluindo suas tags e
+  dados.</li>
 </ul>
-<h2 id="best-practices">Best Practices</h2>
+<h2 id="melhores-praticas">Melhores práticas</h2>
 <ul>
-<li>Use a consistent naming convention: <code>Location/Function</code>, <code>Team/Environment</code>,
-  etc.</li>
-<li>Assign hosts to <strong>multiple groups</strong> if they logically belong in more than one.</li>
-<li>Avoid overly deep nesting keep it readable and manageable.</li>
-<li>Regularly review group usage and clean up unused or outdated groups.</li>
+<li>Use uma convenção de nomenclatura consistente: <code>Local/Função</code>,
+  <code>Equipe/Ambiente</code>, etc.</li>
+<li>Atribua hosts a <strong>vários grupos</strong> se eles pertencerem logicamente a mais de
+  um.</li>
+<li>Evite aninhamento excessivamente profundo, mantenha-o legível e gerenciável.</li>
+<li>Revise regularmente o uso de grupos e limpe os grupos não utilizados ou
+  desatualizados.</li>
 </ul>
-<details class="tip" open="open">
-<summary>Tip</summary>
+<details class="dica" open="open">
+<summary>Dica</summary>
 <p>You can even try adding <strong>emojis</strong> to group names for a fun visual touch! 🎉
 For example: <code>🌍 Europe/🇧🇪 Belgium</code> or <code>📦 Containers/Docker</code>.</p>
 </details>
 <h2 id="conclusao">Conclusão</h2>
-<p>Host groups are a key organizational tool in Zabbix. With the introduction of
-<strong>template groups</strong>, clearer group separation, and support for <strong>nested
-structures</strong>, modern versions of Zabbix offer great flexibility for tailoring
-your monitoring setup to your organization's structure and workflows.</p>
+<p>Os grupos de hosts são uma ferramenta organizacional fundamental no Zabbix. Com
+a introdução dos <strong>grupos de modelos ** , a separação mais clara de grupos e o
+suporte a </strong>estruturas aninhadas ** , as versões modernas do Zabbix oferecem
+grande flexibilidade para adaptar sua configuração de monitoramento à estrutura
+e aos fluxos de trabalho de sua organização.</p>
 <h2 id="perguntas">Perguntas</h2>
 <ul>
-<li>What are host groups used for in Zabbix?</li>
-<li>Can you assign a host to more than one group?</li>
-<li>How are nested groups created in Zabbix?</li>
-<li>What happens when you apply permissions to subgroups?</li>
-<li>Why are slashes (/) special in host group names?</li>
-<li>Can a parent group exist only logically (i.e., not created in Zabbix)?</li>
+<li>Para que são usados os grupos de hosts no Zabbix?</li>
+<li>É possível atribuir um host a mais de um grupo?</li>
+<li>Como os grupos aninhados são criados no Zabbix?</li>
+<li>O que acontece quando você aplica permissões a subgrupos?</li>
+<li>Por que as barras (/) são especiais em nomes de grupos de hosts?</li>
+<li>Um grupo pai pode existir apenas logicamente (ou seja, não pode ser criado no
+  Zabbix)?</li>
 </ul>
 <h2 id="urls-uteis">URLs úteis</h2>
 <ul>

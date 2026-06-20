@@ -2270,14 +2270,14 @@ the queue and other information.</p>
 <h3 id="configuracao-do-zabbix-server-2">Configuração do Zabbix Server 2</h3>
 <p>Repita as etapas de configuração para o segundo servidor Zabbix. Ajuste o
 <code>HANodeName</code> e o <code>NodeAddress</code> conforme necessário para esse servidor.</p>
-<details class="example" open="open">
-<summary>Zabbix server 2 HA configuration high-availability.conf</summary>
+<details class="exemplo" open="open">
+<summary>Configuração do Zabbix Server 2 HA high-availability.conf</summary>
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="na">HANodeName</span><span class="o">=</span><span class="s">zabbix2</span><span class="w">  </span><span class="c1"># or choose a name you prefer</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="na">NodeAddress</span><span class="o">=</span><span class="s">&lt;Zabbix server 2 ip&gt;:10051</span>
 </span></code></pre></div>
 </details>
-<p>You can add more servers by repeating the same steps, ensuring each server has a
-unique <code>HANodeName</code> and the correct <code>NodeAddress</code> set.</p>
+<p>Você pode adicionar mais servidores repetindo as mesmas etapas, assegurando que
+cada servidor tenha um único <code>HANodeName</code> e o conjunto correto <code>NodeAddress</code>.</p>
 <hr />
 <h3 id="iniciando-o-zabbix-server">Iniciando o Zabbix Server</h3>
 <p>Depois de configurar os dois servidores, ative e inicie o serviço zabbix-server
@@ -2300,20 +2300,21 @@ HA.</p>
 </div>
 <p>Nos logs do sistema, observe as seguintes entradas, indicando a inicialização do
 gerenciador de alta disponibilidade (HA):</p>
-<details class="example" open="open">
-<summary>HA log messages on active node</summary>
+<details class="exemplo" open="open">
+<summary>Mensagens de registro de HA no nó ativo</summary>
 <div class="language-shell-session highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="go">localhost:~&gt; sudo grep HA /var/log/zabbix/zabbix_server.log</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="go">22597:20240309:155230.353 starting HA manager</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="go">22597:20240309:155230.362 HA manager started in active mode</span>
 </span></code></pre></div>
 </details>
-<p>These log messages confirm that the HA manager process has started and has
-assumed the active role. This means that the Zabbix instance is now the primary
-node in the HA cluster, handling all monitoring operations. If a failover event
-occurs, another standby node will take over based on the configured HA strategy.</p>
-<p>Running the same command on the second server (and any additional nodes):</p>
-<details class="example" open="open">
-<summary>HA log messages on standby node</summary>
+<p>Essas mensagens de registro confirmam que o processo do gerenciador de HA foi
+iniciado e assumiu a função ativa. Isso significa que a instância do Zabbix é
+agora o nó primário no cluster de HA, lidando com todas as operações de
+monitoramento. Se ocorrer um evento de failover, outro nó de espera assumirá o
+controle com base na estratégia de HA configurada.</p>
+<p>Executar o mesmo comando no segundo servidor (e em quaisquer nós adicionais):</p>
+<details class="exemplo" open="open">
+<summary>Mensagens de registro de HA no nó em espera</summary>
 <div class="language-shell-session highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="go">localhost:~&gt; sudo grep HA /var/log/zabbix/zabbix_server.log</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="go">22304:20240309:155331.163 starting HA manager</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="go">22304:20240309:155331.174 HA manager started in standby mode</span>
@@ -2533,11 +2534,12 @@ automaticamente na inicialização e comece a gerenciar o VIP:</p>
 </div>
 <hr />
 <h3 id="verificar-o-funcionamento-correto">Verificar o funcionamento correto</h3>
-<p>To verify that the setup is functioning correctly, access your Zabbix server
-using the Virtual IP (VIP). Navigate to Reports → System Information in the
-menu. At the bottom of the page, you should see a list of servers, with at least
-one marked as active. The number of servers displayed will depend on the total
-configured in your HA setup.</p>
+<p>Para verificar se a configuração está funcionando corretamente, acesse o
+servidor Zabbix usando o IP virtual (VIP). Navegue até Reports → System
+Information (Relatórios → Informações do sistema) no menu. Na parte inferior da
+página, você deverá ver uma lista de servidores, com pelo menos um marcado como
+ativo. O número de servidores exibidos dependerá do total configurado em sua
+configuração de HA.</p>
 <p><img alt="1º frontend ativo" src="../../../ch01-zabbix-components/ha-setup/ch01-HA-check1.png" /></p>
 <p><em>1.2 verificar HA</em></p>
 <p>Desligue ou reinicie o servidor de front-end ativo e observe que o <code>Zabbix

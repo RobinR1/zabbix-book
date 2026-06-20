@@ -10119,7 +10119,7 @@ that the frontend correctly handles SAML authentication requests.</p>
 </span></code></pre></div>
 <hr />
 <h2 id="ch02-zabbix-installation-saml-microsoft-entra-id-azure-ad">Microsoft Entra ID (Azure AD)</h2>
-<p>Integrating Microsoft Entra ID as a SAML Identity Provider for Zabbix follows the same core principles as other IdPs, but with Microsoft’s own structure and terminology layered on top. To get it to work, we will have to do some clicking around in the Microsoft Azure UI.</p>
+<p>Integrating Microsoft Entra ID as a SAML Identity Provider for Zabbix follows the same core principles as other IdPs, but with Microsoft's own structure and terminology layered on top. To get it to work, we will have to do some clicking around in the Microsoft Azure UI.</p>
 <h3 id="ch02-zabbix-installation-saml-configure-entra-id">Configure Entra ID</h3>
 <p>First, navigate to the the Microsoft Entra admin center. You can type the name in the search bar and it should come right up.</p>
 <p><img align="center" alt="Microsoft Entra ID" src="../ch02-zabbix-installation/external-auth/ch02.x-ms-entra-id-app.png" /></p>
@@ -10183,7 +10183,7 @@ https://your_zabbix_server/zabbix/index_sso.php?acs</p>
 <details class="note" open="open">
 <summary>Note</summary>
 <p>With SAML and JIT provisioning enabled, Zabbix will automatically create users on their first successful login. This means you do not need to pre-create users manually.</p>
-<p>If you want more control over user lifecycle management beyond first login, that’s where SCIM comes in. SCIM allows your Identity Provider (like Entra ID) to continuously synchronize users with Zabbix.</p>
+<p>If you want more control over user lifecycle management beyond first login, that's where SCIM comes in. SCIM allows your Identity Provider (like Entra ID) to continuously synchronize users with Zabbix.</p>
 <p>The key difference:</p>
 <ul>
 <li><strong>JIT provisioning</strong>: creates users and checks permissions only when the user logs in</li>
@@ -12612,7 +12612,7 @@ result.</p>
 <p><strong>Zabbix agent (active)</strong>: Reverses the connection direction. The agent connects to
 the server or proxy, retrieves a list of items it should collect, and sends the
 results back on a schedule. This mode is preferred as active agents have a small
-internal cache and as they offload some work form the Zabbis server (they push
+internal cache and as they offload some work form the Zabbix server (they push
 the data to the server), and it is required for log file
 monitoring.</p>
 </li>
@@ -17340,8 +17340,8 @@ engine.</p>
 it works.</p>
 <p>Create a new host in <code>Data collection</code> -&gt; <code>Hosts</code>.</p>
 <ul>
-<li><strong>Host name:</strong> javascript</li>
-<li><strong>Host groups:</strong> JS Servers</li>
+<li><strong>Host name:</strong> <code>javascript</code></li>
+<li><strong>Host groups:</strong> <code>JS Servers</code></li>
 </ul>
 <p>Actually name and group are not important at all in this case :) When done
 create an item on the host.</p>
@@ -17360,7 +17360,7 @@ using the REST API.</p>
 <tbody>
 <tr>
 <td style="text-align: left;">Name</td>
-<td style="text-align: left;">Query Github Repository</td>
+<td style="text-align: left;"><code>Query Github Repository</code></td>
 </tr>
 <tr>
 <td style="text-align: left;">Type</td>
@@ -17368,7 +17368,7 @@ using the REST API.</p>
 </tr>
 <tr>
 <td style="text-align: left;">Key</td>
-<td style="text-align: left;">github.repo.stars</td>
+<td style="text-align: left;"><code>github.repo.stars</code></td>
 </tr>
 <tr>
 <td style="text-align: left;">Type of information</td>
@@ -17376,15 +17376,15 @@ using the REST API.</p>
 </tr>
 <tr>
 <td style="text-align: left;">Unit</td>
-<td style="text-align: left;">Stars</td>
+<td style="text-align: left;"><code>Stars</code></td>
 </tr>
 <tr>
 <td style="text-align: left;">Update interval</td>
-<td style="text-align: left;">1h</td>
+<td style="text-align: left;"><code>1h</code></td>
 </tr>
 <tr>
 <td style="text-align: left;">Timeout</td>
-<td style="text-align: left;">5s</td>
+<td style="text-align: left;"><code>5s</code></td>
 </tr>
 <tr>
 <td style="text-align: left;">Parameters</td>
@@ -17405,6 +17405,8 @@ using the REST API.</p>
 Add a personal access token for higher limits.</p>
 </blockquote>
 <p>Add the following code in the script box of the item.</p>
+<div class="admonition example">
+<p class="admonition-title">GitHub Stars Script</p>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#ch04-zabbix-collecting-data-script-__codelineno-0-1"></a><span class="c1">// Parameters (item → Parameters):</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#ch04-zabbix-collecting-data-script-__codelineno-0-2"></a><span class="c1">//   owner = zabbix</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#ch04-zabbix-collecting-data-script-__codelineno-0-3"></a><span class="c1">//   repo  = zabbix</span>
@@ -17448,11 +17450,16 @@ Add a personal access token for higher limits.</p>
 </span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#ch04-zabbix-collecting-data-script-__codelineno-0-41"></a>
 </span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#ch04-zabbix-collecting-data-script-__codelineno-0-42"></a><span class="k">return</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">stargazers_count</span><span class="p">;</span>
 </span></code></pre></div>
+</div>
 <p><img alt="Script/ch04.40-script-example1.png" src="../ch04-zabbix-collecting-data/Script/ch04.40-script-example1.png" /></p>
 <h3 id="ch04-zabbix-collecting-data-script-example-trigger">Example trigger</h3>
+<p>Create a trigger to alert if the repository has no stars:</p>
+<div class="admonition example">
+<p class="admonition-title">GitHub Stars Trigger expression</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#ch04-zabbix-collecting-data-script-__codelineno-1-1"></a>last(/javascript/github.repo.stars)=0
 </span></code></pre></div>
-<p>In this case we get an alert if the script returns 0</p>
+</div>
+<p>In this case we get an alert if the script returns 0.</p>
 <hr />
 <h2 id="ch04-zabbix-collecting-data-script-example-2-public-weather">Example 2 - Public weather</h2>
 <p>In this script we call Open-Meteo and ask for for information like temperature,
@@ -17468,7 +17475,7 @@ windspeed, direction based on our longitude / latitude.</p>
 <tbody>
 <tr>
 <td style="text-align: left;">Name</td>
-<td style="text-align: left;">Query Weather Open Meteo</td>
+<td style="text-align: left;"><code>Query Weather Open Meteo</code></td>
 </tr>
 <tr>
 <td style="text-align: left;">Type</td>
@@ -17476,7 +17483,7 @@ windspeed, direction based on our longitude / latitude.</p>
 </tr>
 <tr>
 <td style="text-align: left;">Key</td>
-<td style="text-align: left;">weather.openmeteo.json</td>
+<td style="text-align: left;"><code>weather.openmeteo.json</code></td>
 </tr>
 <tr>
 <td style="text-align: left;">Type of information</td>
@@ -17484,7 +17491,7 @@ windspeed, direction based on our longitude / latitude.</p>
 </tr>
 <tr>
 <td style="text-align: left;">Update interval</td>
-<td style="text-align: left;">1h</td>
+<td style="text-align: left;"><code>1h</code></td>
 </tr>
 <tr>
 <td style="text-align: left;">Parameters</td>
@@ -17501,7 +17508,9 @@ windspeed, direction based on our longitude / latitude.</p>
 </tbody>
 </table>
 <p>Add the following code in the script box.</p>
-<p><div class="language-js highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#ch04-zabbix-collecting-data-script-__codelineno-2-1"></a><span class="c1">// Parameters (item → Parameters):</span>
+<div class="admonition example">
+<p class="admonition-title">Open-Meteo Weather Script</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#ch04-zabbix-collecting-data-script-__codelineno-2-1"></a><span class="c1">// Parameters (item → Parameters):</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#ch04-zabbix-collecting-data-script-__codelineno-2-2"></a><span class="c1">//   latitude = 50.85</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#ch04-zabbix-collecting-data-script-__codelineno-2-3"></a><span class="c1">//   temperaature_unit  = 4.7</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#ch04-zabbix-collecting-data-script-__codelineno-2-4"></a><span class="c1">//   windspeed_unit = kmh / ms / mph / kn</span>
@@ -17529,7 +17538,8 @@ windspeed, direction based on our longitude / latitude.</p>
 </span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#ch04-zabbix-collecting-data-script-__codelineno-2-26"></a>
 </span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#ch04-zabbix-collecting-data-script-__codelineno-2-27"></a><span class="k">return</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="nx">ok</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span><span class="nx">status</span><span class="o">:</span><span class="s2">&quot;OK&quot;</span><span class="p">,</span><span class="nx">temperature</span><span class="o">:</span><span class="nx">cw</span><span class="p">.</span><span class="nx">temperature</span><span class="p">,</span><span class="nx">windspeed</span><span class="o">:</span><span class="nx">cw</span><span class="p">.</span><span class="nx">windspeed</span><span class="p">,</span><span class="nx">winddirection</span><span class="o">:</span><span class="nx">cw</span><span class="p">.</span><span class="nx">winddirection</span><span class="p">,</span><span class="nx">is_day</span><span class="o">:</span><span class="nx">cw</span><span class="p">.</span><span class="nx">is_day</span><span class="p">,</span><span class="nx">time</span><span class="o">:</span><span class="nx">cw</span><span class="p">.</span><span class="nx">time</span><span class="o">||</span><span class="s2">&quot;&quot;</span><span class="p">});</span>
 </span></code></pre></div>
-<img alt="Script/ch04.42-script-example2.png" src="../ch04-zabbix-collecting-data/Script/ch04.42-script-example2.png" /></p>
+</div>
+<p><img alt="Script/ch04.42-script-example2.png" src="../ch04-zabbix-collecting-data/Script/ch04.42-script-example2.png" /></p>
 <p>Next create a few dependent items that use this script as master item.</p>
 <table>
 <thead>
@@ -17541,11 +17551,11 @@ windspeed, direction based on our longitude / latitude.</p>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Name:</strong></td>
-<td style="text-align: left;">Temperature</td>
+<td style="text-align: left;"><code>Temperature</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Key:</strong></td>
-<td style="text-align: left;">weather.temp</td>
+<td style="text-align: left;"><code>weather.temp</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Type of information:</strong></td>
@@ -17553,7 +17563,7 @@ windspeed, direction based on our longitude / latitude.</p>
 </tr>
 <tr>
 <td style="text-align: left;">Preprocessing</td>
-<td style="text-align: left;">JSONPath: -&gt; $.temperature</td>
+<td style="text-align: left;">JSONPath: -&gt; <code>$.temperature</code></td>
 </tr>
 </tbody>
 </table>
@@ -17567,11 +17577,11 @@ windspeed, direction based on our longitude / latitude.</p>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Name:</strong></td>
-<td style="text-align: left;">Windspeed</td>
+<td style="text-align: left;"><code>Windspeed</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Key:</strong></td>
-<td style="text-align: left;">weather.windspeed</td>
+<td style="text-align: left;"><code>weather.windspeed</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Type of information:</strong></td>
@@ -17579,7 +17589,7 @@ windspeed, direction based on our longitude / latitude.</p>
 </tr>
 <tr>
 <td style="text-align: left;">Preprocessing</td>
-<td style="text-align: left;">JSONPath: -&gt; $.windspeed</td>
+<td style="text-align: left;">JSONPath: -&gt; <code>$.windspeed</code></td>
 </tr>
 </tbody>
 </table>
@@ -17593,11 +17603,11 @@ windspeed, direction based on our longitude / latitude.</p>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Name:</strong></td>
-<td style="text-align: left;">Wind direction</td>
+<td style="text-align: left;"><code>Wind direction</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Key:</strong></td>
-<td style="text-align: left;">weather.winddir</td>
+<td style="text-align: left;"><code>weather.winddir</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Type of information:</strong></td>
@@ -17605,7 +17615,7 @@ windspeed, direction based on our longitude / latitude.</p>
 </tr>
 <tr>
 <td style="text-align: left;">Preprocessing</td>
-<td style="text-align: left;">JSONPath: -&gt; $.winddirection</td>
+<td style="text-align: left;">JSONPath: -&gt; <code>$.winddirection</code></td>
 </tr>
 </tbody>
 </table>
@@ -17619,11 +17629,11 @@ windspeed, direction based on our longitude / latitude.</p>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Name:</strong></td>
-<td style="text-align: left;">Is day</td>
+<td style="text-align: left;"><code>Is day</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Key:</strong></td>
-<td style="text-align: left;">weather.is_day</td>
+<td style="text-align: left;"><code>weather.is_day</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Type of information:</strong></td>
@@ -17631,7 +17641,7 @@ windspeed, direction based on our longitude / latitude.</p>
 </tr>
 <tr>
 <td style="text-align: left;">Preprocessing</td>
-<td style="text-align: left;">JSONPath: -&gt; $.is_day</td>
+<td style="text-align: left;">JSONPath: -&gt; <code>$.is_day</code></td>
 </tr>
 </tbody>
 </table>
@@ -17663,14 +17673,17 @@ Script items shine when you need full control.</p>
 <h2 id="ch04-zabbix-collecting-data-script-expert-techniques-for-script-items">Expert techniques for Script items</h2>
 <h3 id="ch04-zabbix-collecting-data-script-1-debugging-things">1. Debugging things</h3>
 <p>During development, use the internal logging API to trace script behavior:</p>
+<div class="admonition note">
+<p class="admonition-title">Debugging with Zabbix.log</p>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#ch04-zabbix-collecting-data-script-__codelineno-3-1"></a><span class="nx">Zabbix</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Debug: response body = &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">body</span><span class="p">);</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#ch04-zabbix-collecting-data-script-__codelineno-3-2"></a><span class="nx">Zabbix</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Info: token received successfully&quot;</span><span class="p">);</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#ch04-zabbix-collecting-data-script-__codelineno-3-3"></a><span class="nx">Zabbix</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Warning: unexpected API reply&quot;</span><span class="p">);</span>
 </span></code></pre></div>
+</div>
 <details class="tip" open="open">
 <summary>Tip</summary>
 <ul>
-<li>Log level <code>4</code> = debug, visible only if the server log level ≥4.</li>
+<li>Log level <code>4</code> = debug, visible only if the server log level ≥ 4.</li>
 <li>Log level <code>3</code> = informational.</li>
 <li>The log lines are written to the Zabbix server or proxy log, not the frontend.</li>
 </ul>
@@ -17704,6 +17717,8 @@ export the template. Store secrets in a vault instead of the DB.</p>
 <h3 id="ch04-zabbix-collecting-data-script-3-error-handling-and-fallback-logic">3. Error handling and fallback logic</h3>
 <p>Production scripts should degrade gracefully.
 You can catch and handle network failures, retry, or return a fallback value:</p>
+<details class="example" open="open">
+<summary>Error handling in Script items</summary>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#ch04-zabbix-collecting-data-script-__codelineno-4-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpRequest</span><span class="p">();</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#ch04-zabbix-collecting-data-script-__codelineno-4-2"></a><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#ch04-zabbix-collecting-data-script-__codelineno-4-3"></a><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
@@ -17720,9 +17735,10 @@ You can catch and handle network failures, retry, or return a fallback value:</p
 Logs the error at severity level 2 (Warning) into the Zabbix server log.
 It returns a numeric 0 instead of throwing errors, so the item remains
 supported.</p>
+</details>
 <h3 id="ch04-zabbix-collecting-data-script-4-caching-between-executions">4. Caching between executions</h3>
 <p>Script items don't keep memory between runs, but you can reuse data efficiently
-by combining one master Script or trapper item that stores the full JSON response
+by combining one master <em>Script</em> or <em>Trapper</em> item that stores the full JSON response
 with several dependent items that extract individual fields. This isn't true caching
 inside JavaScript. It's data reuse via Zabbix history, avoiding repeated API calls.</p>
 <h3 id="ch04-zabbix-collecting-data-script-5-parallelization-and-performance-considerations">5. Parallelization and performance considerations</h3>
@@ -17730,15 +17746,16 @@ inside JavaScript. It's data reuse via Zabbix history, avoiding repeated API cal
 If you have dozens of Script items that do API calls, consider:</p>
 <ul>
 <li>Running them on a <strong>proxy</strong> close to the data source (reduces latency).</li>
-<li>Adjusting <code>StartPollers</code> and <code>Timeout</code> in <code>zabbix_server.conf</code>.</li>
+<li>Adjusting <code>StartPollers</code> and <code>Timeout</code> in the Zabbix server configuration.</li>
 <li>Avoiding heavy JSON parsing or unnecessary loops.</li>
 <li>Using asynchronous APIs only when truly needed. Duktape executes synchronously.</li>
 </ul>
 <p>A single bad Script item can block a poller for its entire timeout period, so always
 test and tune.</p>
 <h3 id="ch04-zabbix-collecting-data-script-6-returning-structured-data">6. Returning structured data</h3>
-<p>Script items can return <strong>JSON strings</strong> which can then be used in <strong>dependent items</strong>.
-Example: returning a JSON object containing multiple metrics.</p>
+<p>Script items can return <strong>JSON strings</strong> which can then be used in <strong>dependent items</strong>.</p>
+<details class="example" open="open">
+<summary>Returning a JSON object containing multiple metrics</summary>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#ch04-zabbix-collecting-data-script-__codelineno-5-1"></a><span class="k">return</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#ch04-zabbix-collecting-data-script-__codelineno-5-2"></a><span class="w">  </span><span class="nx">cpu_usage</span><span class="o">:</span><span class="w"> </span><span class="mf">25</span><span class="p">,</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#ch04-zabbix-collecting-data-script-__codelineno-5-3"></a><span class="w">  </span><span class="nx">mem_usage</span><span class="o">:</span><span class="w"> </span><span class="mf">67</span><span class="p">,</span>
@@ -17750,12 +17767,14 @@ Example: returning a JSON object containing multiple metrics.</p>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#ch04-zabbix-collecting-data-script-__codelineno-6-2"></a><span class="err">$.mem_usage</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#ch04-zabbix-collecting-data-script-__codelineno-6-3"></a><span class="err">$.disk_</span><span class="kc">free</span>
 </span></code></pre></div>
+</details>
 <p>This allows one Script item to feed many dependent metrics. A professional optimization
 pattern.</p>
 <h3 id="ch04-zabbix-collecting-data-script-7-combining-script-items-with-preprocessing-javascript">7. Combining script items with preprocessing JavaScript</h3>
 <p>Advanced users often pair a Script item that performs heavy retrieval with preprocessing
 JavaScript that performs lightweight normalization.</p>
-<p>Example:</p>
+<details class="example" open="open">
+<summary>Heavy lifting in Script, light processing in preprocessing</summary>
 <ul>
 <li>Script item fetches a full JSON payload from an API.</li>
 <li>Dependent item extracts a numeric value using preprocessing JavaScript:</li>
@@ -17763,6 +17782,7 @@ JavaScript that performs lightweight normalization.</p>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#ch04-zabbix-collecting-data-script-__codelineno-7-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#ch04-zabbix-collecting-data-script-__codelineno-7-2"></a><span class="k">return</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">cpu</span><span class="p">;</span>
 </span></code></pre></div>
+</details>
 <p>This separates responsibilities and makes troubleshooting easier.</p>
 <h3 id="ch04-zabbix-collecting-data-script-8-controlling-execution-context">8. Controlling execution context</h3>
 <p>Script items always run <strong>on the poller process</strong> of either the Zabbix server or
@@ -17808,15 +17828,18 @@ built-in variables into the script’s environment the most important one is
 <p><code>value</code> is a JSON string that contains all item parameters you defined under
 Parameters → Name / Value.</p>
 <p>Inside the script, you must parse it first:</p>
-<p><code>var p = JSON.parse(value);</code></p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#ch04-zabbix-collecting-data-script-__codelineno-8-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+</span></code></pre></div>
 <p>You can then access the parameters by name:</p>
-<p><code>var host = p.host;</code>
-<code>var port = p.port;</code></p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#ch04-zabbix-collecting-data-script-__codelineno-9-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">host</span><span class="p">;</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#ch04-zabbix-collecting-data-script-__codelineno-9-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">port</span><span class="p">;</span>
+</span></code></pre></div>
 <p>If you try to reference a <code>parameters</code> object (as seen in some very old examples),
 you will get : <code>ReferenceError: identifier 'parameters' undefined</code> because the
 Duktape runtime does not inject such a variable anymore. All parameters are
 passed inside the value JSON string.</p>
 </details>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-script-conclusion">Conclusion</h2>
 <p>Script items make Zabbix remarkably flexible — they let you collect data from any
 API or service with just a few lines of JavaScript.
@@ -17829,6 +17852,7 @@ high-frequency polling is needed, move it closer to the data source with proxies
 or external collectors.</p>
 <p>With those principles in mind, Script items become your gateway between Zabbix
 and the modern API world — simple, powerful, and entirely scriptable.</p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-script-questions">Questions</h2>
 <ul>
 <li>What makes Script items different from external checks or user parameters in Zabbix?</li>
@@ -17839,6 +17863,7 @@ and the modern API world — simple, powerful, and entirely scriptable.</p>
   same endpoint?</li>
 <li>Why are global macros usually not a good choice for secrets in exported templates?</li>
 </ul>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-script-useful-urls">Useful URLs</h2>
 <ul>
 <li><a href="https://www.zabbix.com/documentation/current/en/manual/config/items/preprocessing/javascript/javascript_objects">https://www.zabbix.com/documentation/current/en/manual/config/items/preprocessing/javascript/javascript_objects</a></li>
@@ -17846,11 +17871,11 @@ and the modern API world — simple, powerful, and entirely scriptable.</p>
 </ul></section><section class="print-page" id="ch04-zabbix-collecting-data-jmx" heading-number="9.15"><nav class='md-tags'><span class='md-tag'>advanced</span></nav><h1 id="monitoring-java-applications-with-jmx">Monitoring Java Applications with JMX</h1>
 <p>One of the neat features that Zabbix offers out of the box is the ability to monitor
 Java applications. To make this happen, Zabbix uses something called the
-<code>Java Gateway</code>, which communicates with Java applications via the
-<code>Java Management Extensions</code> JMX, for short.</p>
-<p><code>JMX</code> is a built-in Java technology designed specifically for monitoring and managing
-Java applications and the <code>Java Virtual Machine</code> (JVM). It works through components
-called <code>MBeans</code> (Managed Beans), which act like data sensors and control points.
+<strong>Java Gateway</strong>, which communicates with Java applications via the
+<strong>Java Management Extensions</strong> JMX, for short.</p>
+<p><strong>JMX</strong> is a built-in Java technology designed specifically for monitoring and managing
+Java applications and the <strong>Java Virtual Machine</strong> (JVM). It works through components
+called <strong>MBeans</strong> (Managed Beans), which act like data sensors and control points.
 These MBeans can expose useful information like memory usage, thread counts, and
 even allow runtime configuration changes, all while the application is running.</p>
 <p>One of the strengths of JMX is its flexibility. It supports both local and remote
@@ -17858,29 +17883,33 @@ access, so whether your Java app is on the same machine or halfway across the
 network, Zabbix can still keep an eye on it. Combined with the Java Gateway, this
 makes JMX a powerful and scalable option for monitoring Java-based environments
 with minimal setup. Also JMX was an extension but is part of JAVA SE since java 5.</p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-jmx-key-concepts-in-jmx-monitoring">Key Concepts in JMX Monitoring</h2>
 <p>Before diving into JMX monitoring with Zabbix, it helps to get familiar with a
 few core building blocks that make it all work:</p>
-<p><strong>Managed Beans (MBeans):</strong>
-These are the heart of JMX. MBeans are Java objects that expose useful bits of
-data (called attributes) and operations (as regular methods) from your application.
-Think of them as little control panels inside your Java app, you can read metrics,
-tweak settings, or trigger actions through them.</p>
-<p><strong>JMX Agent:</strong>
-This is the engine behind the scenes. Running inside the Java Virtual Machine (JVM),
-the JMX agent connects everything together. It's what lets management tools
-(like Zabbix) interact with the MBeans.</p>
-<p><strong>MBean Server:</strong>
-A key part of the JMX agent, the MBean server is like a central registry where
-MBeans are registered and managed. It keeps everything organized and accessible.</p>
-<p><strong>Connectors:</strong>
-Want to monitor your Java app remotely? That's where connectors come in. They
-let external tools connect to the JMX agent over a network. So you're not limited
-to local monitoring.</p>
-<p><strong>Adaptors:</strong>
-Sometimes you need JMX data to speak a different language. Adaptors convert JMX
-info into formats that non-Java tools can understand, like HTTP or SNMP, making
-integration easier with broader monitoring ecosystems.</p>
+<dl>
+<dt><strong>Managed Beans (MBeans):</strong></dt>
+<dd>These are the heart of JMX. MBeans are Java objects that expose useful bits of
+  data (called attributes) and operations (as regular methods) from your application.
+  Think of them as little control panels inside your Java app, you can read metrics,
+  tweak settings, or trigger actions through them.</dd>
+<dt><strong>JMX Agent:</strong></dt>
+<dd>This is the engine behind the scenes. Running inside the Java Virtual Machine (JVM),
+  the JMX agent connects everything together. It's what lets management tools
+  (like Zabbix) interact with the MBeans.</dd>
+<dt><strong>MBean Server:</strong></dt>
+<dd>A key part of the JMX agent, the MBean server is like a central registry where
+  MBeans are registered and managed. It keeps everything organized and accessible.</dd>
+<dt><strong>Connectors:</strong></dt>
+<dd>Want to monitor your Java app remotely? That's where connectors come in. They
+  let external tools connect to the JMX agent over a network. So you're not limited
+  to local monitoring.</dd>
+<dt><strong>Adaptors:</strong></dt>
+<dd>Sometimes you need JMX data to speak a different language. Adaptors convert JMX
+  info into formats that non-Java tools can understand, like HTTP or SNMP, making
+  integration easier with broader monitoring ecosystems.</dd>
+</dl>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-jmx-jmx-core-architecture">JMX Core Architecture</h2>
 <p>To understand how Zabbix collects data from Java applications, it helps to know
 the basic structure of JMX itself. JMX is built on a three-layer architecture that
@@ -17905,7 +17934,7 @@ external tools can reach them.</p>
   Zabbix uses an RMI connector via the Java Gateway.</p>
 </li>
 </ul>
-<pre  class="mermaid"><code>flowchart LR
+<h2 id="ch04-zabbix-collecting-data-jmx-flowchart-lr-aapplication-bmbeans-b-cmbeanserver-c-dconnector-rmi-jmxmp-d-ezabbix-java-gateway-e-fzabbix-server-db-f-gfrontend-classdef-app-fillfef3c7stroke111stroke-width1pxcolor111-classdef-mbean-filldbeafestroke111stroke-width1pxcolor111-classdef-gateway-fillfde68astroke111stroke-width1pxcolor111-classdef-zabbix-fillbbf7d0stroke111stroke-width1pxcolor111-class-a-app-class-bc-mbean-class-de-gateway-class-fg-zabbix"><pre  class="mermaid"><code>flowchart LR
     A[Application] --> B[MBeans]
     B --> C[MBeanServer]
     C --> D[Connector RMI - JMXMP]
@@ -17923,7 +17952,7 @@ external tools can reach them.</p>
     class D,E gateway;
     class F,G zabbix;
 
-</code></pre>
+</code></pre></h2>
 <h2 id="ch04-zabbix-collecting-data-jmx-where-does-the-zabbix-java-gateway-fit-in-this-picture">Where Does the Zabbix Java Gateway Fit in this picture?</h2>
 <p>The Zabbix Java Gateway is an external component in the Zabbix ecosystem specifically
 designed to handle JMX monitoring. While it's not part of the JMX framework itself,
@@ -17966,32 +17995,39 @@ The client that initiates those connections.</p>
     JGW --> Connector
 
 </code></pre>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-jmx-setup-tomcat-to-monitor-with-zabbix">Setup Tomcat to monitor with Zabbix.</h2>
 <p>To ensure accurate testing of JMX monitoring with Zabbix, a dedicated host is essential.
 Although configuration on the Zabbix server is possible, a separate machine provides a
 more realistic representation of a production environment. For our setup, we'll
-use a new virtual machine running either Rocky Linux or Ubuntu. This machine will
+use a new virtual machine running either Rocky Linux, openSUSE or Ubuntu. This machine will
 serve as our JMX-enabled target, and we'll install and configure Tomcat on it for
-this purpose.</p>
+this purpose.
+First, prepare the new VM as outlined in the <a href="#ch00-getting-started-preparation">Preparing the system for Zabbix section</a>,
+then continue with the following steps to set up Tomcat and enable JMX monitoring.</p>
 <details class="info" open="open">
 <summary>Setup Tomcat</summary>
 <p>Red hat
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#ch04-zabbix-collecting-data-jmx-__codelineno-0-1"></a>dnf install tomcat
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#ch04-zabbix-collecting-data-jmx-__codelineno-0-2"></a>vi /etc/sysconfig/tomcat
-</span></code></pre></div>
-Ubuntu
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#ch04-zabbix-collecting-data-jmx-__codelineno-1-1"></a>apt install tomcat10
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#ch04-zabbix-collecting-data-jmx-__codelineno-1-2"></a>vi /etc/default/tomcat10
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#ch04-zabbix-collecting-data-jmx-__codelineno-0-1"></a>dnf<span class="w"> </span>install<span class="w"> </span>tomcat
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#ch04-zabbix-collecting-data-jmx-__codelineno-0-2"></a>vi<span class="w"> </span>/etc/sysconfig/tomcat
+</span></code></pre></div></p>
+<p>SUSE
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#ch04-zabbix-collecting-data-jmx-__codelineno-1-1"></a>zypper<span class="w"> </span>install<span class="w"> </span>tomcat
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#ch04-zabbix-collecting-data-jmx-__codelineno-1-2"></a>vi<span class="w"> </span>/etc/sysconfig/tomcat
+</span></code></pre></div></p>
+<p>Ubuntu
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#ch04-zabbix-collecting-data-jmx-__codelineno-2-1"></a>apt<span class="w"> </span>install<span class="w"> </span>tomcat10
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#ch04-zabbix-collecting-data-jmx-__codelineno-2-2"></a>vi<span class="w"> </span>/etc/default/tomcat10
 </span></code></pre></div>
 Add the following config: in Ubuntu remove the original JAVA_OPTS line or
 place a # in front</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#ch04-zabbix-collecting-data-jmx-__codelineno-2-1"></a><span class="l l-Scalar l-Scalar-Plain">JAVA_OPTS=&quot;\</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#ch04-zabbix-collecting-data-jmx-__codelineno-2-2"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">-Dcom.sun.management.jmxremote=true \</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#ch04-zabbix-collecting-data-jmx-__codelineno-2-3"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">-Dcom.sun.management.jmxremote.port=8686 \</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#ch04-zabbix-collecting-data-jmx-__codelineno-2-4"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">-Dcom.sun.management.jmxremote.rmi.port=8686 \</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#ch04-zabbix-collecting-data-jmx-__codelineno-2-5"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">-Dcom.sun.management.jmxremote.authenticate=false \</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#ch04-zabbix-collecting-data-jmx-__codelineno-2-6"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">-Dcom.sun.management.jmxremote.ssl=false \</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#ch04-zabbix-collecting-data-jmx-__codelineno-2-7"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">-Djava.rmi.server.hostname=&lt;local ip or hostname&gt;&quot;</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#ch04-zabbix-collecting-data-jmx-__codelineno-3-1"></a><span class="na">JAVA_OPTS</span><span class="o">=</span><span class="s">&quot;</span><span class="err">\</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#ch04-zabbix-collecting-data-jmx-__codelineno-3-2"></a><span class="w">  </span><span class="na">-Dcom.sun.management.jmxremote</span><span class="o">=</span><span class="s">true </span>\
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#ch04-zabbix-collecting-data-jmx-__codelineno-3-3"></a><span class="w">  </span><span class="s">-Dcom.sun.management.jmxremote.port=8686 </span>\
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#ch04-zabbix-collecting-data-jmx-__codelineno-3-4"></a><span class="w">  </span><span class="s">-Dcom.sun.management.jmxremote.rmi.port=8686 </span>\
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#ch04-zabbix-collecting-data-jmx-__codelineno-3-5"></a><span class="w">  </span><span class="s">-Dcom.sun.management.jmxremote.authenticate=false </span>\
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#ch04-zabbix-collecting-data-jmx-__codelineno-3-6"></a><span class="w">  </span><span class="s">-Dcom.sun.management.jmxremote.ssl=false </span>\
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#ch04-zabbix-collecting-data-jmx-__codelineno-3-7"></a><span class="w">  </span><span class="s">-Djava.rmi.server.hostname=&lt;local ip or hostname&gt;&quot;</span>
 </span></code></pre></div>
 </details>
 <h3 id="ch04-zabbix-collecting-data-jmx-explanation-of-each-line">Explanation of Each Line</h3>
@@ -18049,31 +18085,34 @@ Apache Tomcat.</p>
 </ul>
 <details class="note" open="open">
 <summary>Note</summary>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#ch04-zabbix-collecting-data-jmx-__codelineno-3-1"></a>There<span class="w"> </span>isn<span class="s1">&#39;t a single, universally &quot;standard&quot; port for JMX that is accepted</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#ch04-zabbix-collecting-data-jmx-__codelineno-3-2"></a><span class="s1">across all applications and vendors. The JMX specification itself does not</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#ch04-zabbix-collecting-data-jmx-__codelineno-3-3"></a><span class="s1">define a default port, leaving it to the implementer to choose one.</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#ch04-zabbix-collecting-data-jmx-__codelineno-3-4"></a>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#ch04-zabbix-collecting-data-jmx-__codelineno-3-5"></a><span class="s1">However, certain ports have become common or de facto standards within the Java</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#ch04-zabbix-collecting-data-jmx-__codelineno-3-6"></a><span class="s1">ecosystem. The most frequently seen ports for JMX are in the high-number range,</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#ch04-zabbix-collecting-data-jmx-__codelineno-3-7"></a><span class="s1">typically:</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#ch04-zabbix-collecting-data-jmx-__codelineno-3-8"></a>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#ch04-zabbix-collecting-data-jmx-__codelineno-3-9"></a><span class="s1">- 1099: This port is a historic default for the RMI Registry, which JMX often</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#ch04-zabbix-collecting-data-jmx-__codelineno-3-10"></a><span class="s1">  uses for communication. While it&#39;</span>s<span class="w"> </span>not<span class="w"> </span>strictly<span class="w"> </span>a<span class="w"> </span>JMX<span class="w"> </span>port,<span class="w"> </span>it<span class="s1">&#39;s often</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#ch04-zabbix-collecting-data-jmx-__codelineno-3-11"></a><span class="s1">  associated with older JMX configurations.</span>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#ch04-zabbix-collecting-data-jmx-__codelineno-3-12"></a>
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#ch04-zabbix-collecting-data-jmx-__codelineno-3-13"></a><span class="s1">- 8686: This port is a well-accepted and formally registered port for JMX with</span>
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#ch04-zabbix-collecting-data-jmx-__codelineno-3-14"></a><span class="s1">  the Internet Assigned Numbers Authority (IANA). The IANA service name for port</span>
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#ch04-zabbix-collecting-data-jmx-__codelineno-3-15"></a><span class="s1">  8686 is sun-as-jmxrmi. This makes it a great choice because it&#39;</span>s<span class="w"> </span>officially
-</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#ch04-zabbix-collecting-data-jmx-__codelineno-3-16"></a><span class="w">  </span>recognized<span class="w"> </span>and<span class="w"> </span>less<span class="w"> </span>likely<span class="w"> </span>to<span class="w"> </span>conflict<span class="w"> </span>with<span class="w"> </span>other<span class="w"> </span>common<span class="w"> </span>services.
-</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#ch04-zabbix-collecting-data-jmx-__codelineno-3-17"></a>
-</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#ch04-zabbix-collecting-data-jmx-__codelineno-3-18"></a>Why<span class="w"> </span>Port<span class="w"> </span><span class="m">8686</span><span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>Good<span class="w"> </span>Choice?
-</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#ch04-zabbix-collecting-data-jmx-__codelineno-3-19"></a>Port<span class="w"> </span><span class="m">8686</span><span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>User<span class="w"> </span>Port<span class="w"> </span><span class="o">(</span><span class="m">1024</span>-49151<span class="o">)</span>,<span class="w"> </span>which<span class="w"> </span>means<span class="w"> </span>it<span class="s1">&#39;s available for registered</span>
-</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#ch04-zabbix-collecting-data-jmx-__codelineno-3-20"></a><span class="s1">services but isn&#39;</span>t<span class="w"> </span>a<span class="w"> </span><span class="s2">&quot;well known&quot;</span><span class="w"> </span>port<span class="w"> </span>that<span class="w"> </span>requires<span class="w"> </span>a<span class="w"> </span>special<span class="w"> </span>permission<span class="w"> </span>level
-</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#ch04-zabbix-collecting-data-jmx-__codelineno-3-21"></a>to<span class="w"> </span>use.<span class="w"> </span>It<span class="err">&#39;</span>s<span class="w"> </span>IANA<span class="w"> </span>registration<span class="w"> </span>as<span class="w"> </span>sun-as-jmxrmi<span class="w"> </span>makes<span class="w"> </span>it<span class="w"> </span>a<span class="w"> </span>safe<span class="w"> </span>and<span class="w"> </span>logical
-</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#ch04-zabbix-collecting-data-jmx-__codelineno-3-22"></a>choice<span class="w"> </span><span class="k">for</span><span class="w"> </span>JMX<span class="w"> </span>monitoring,<span class="w"> </span>especially<span class="w"> </span>when<span class="w"> </span>you<span class="w"> </span>need<span class="w"> </span>to<span class="w"> </span>standardize<span class="w"> </span>port<span class="w"> </span>assignments
-</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#ch04-zabbix-collecting-data-jmx-__codelineno-3-23"></a>across<span class="w"> </span>a<span class="w"> </span>large<span class="w"> </span>infrastructure.
-</span></code></pre></div>
+<p>There isn't a single, universally "standard" port for JMX that is accepted
+across all applications and vendors. The JMX specification itself does not
+define a default port, leaving it to the implementer to choose one.</p>
+<p>However, certain ports have become common or de facto standards within the Java
+ecosystem. The most frequently seen ports for JMX are in the high-number range,
+typically:</p>
+<ul>
+<li>
+<p><code>1099</code>: This port is a historic default for the RMI Registry, which JMX often
+  uses for communication. While it's not strictly a JMX port, it's often
+  associated with older JMX configurations.</p>
+</li>
+<li>
+<p><code>8686</code>: This port is a well-accepted and formally registered port for JMX with
+  the Internet Assigned Numbers Authority (IANA). The IANA service name for port
+  <code>8686</code> is <code>sun-as-jmxrmi</code>. This makes it a great choice because it's officially
+  recognized and less likely to conflict with other common services.</p>
+</li>
+</ul>
+<p>Why Port <code>8686</code> is a Good Choice?
+Port <code>8686</code> is a User Port (1024-49151), which means it's available for registered
+services but isn't a "well known" port that requires a special permission level
+to use. It's IANA registration as <code>sun-as-jmxrmi</code> makes it a safe and logical
+choice for JMX monitoring, especially when you need to standardize port assignments
+across a large infrastructure.
+```</p>
 </details>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-jmx-setup-zabbix-to-monitor-jmx">Setup Zabbix to monitor JMX</h2>
 <p>Now that we've set up a JMX-enabled application, we need to configure Zabbix to
 monitor it. Since Zabbix can't connect directly to JMX endpoints, we need an
@@ -18089,43 +18128,53 @@ the connection chain.</p>
 <summary>Install the JAVA Gateway</summary>
 <p>Red Hat
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#ch04-zabbix-collecting-data-jmx-__codelineno-4-1"></a>dnf install zabbix-java-gateway
-</span></code></pre></div>
-Ubuntu
-<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#ch04-zabbix-collecting-data-jmx-__codelineno-5-1"></a>apt install zabbix-java-gateway
+</span></code></pre></div></p>
+<p>SUSE
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#ch04-zabbix-collecting-data-jmx-__codelineno-5-1"></a>zypper install zabbix-java-gateway
+</span></code></pre></div></p>
+<p>Ubuntu
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#ch04-zabbix-collecting-data-jmx-__codelineno-6-1"></a>apt install zabbix-java-gateway
 </span></code></pre></div></p>
 </details>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-jmx-configuring-zabbix-and-the-java-gateway">Configuring Zabbix and the JAVA Gateway</h2>
-<p>After installing the gateway, you'll find its configuration file at <code>/etc/zabbix/zabbix_java_gateway.conf</code>.
-The default <code>LISTEN_IP</code> is set to 0.0.0.0, which means it listens on all network
-interfaces, though you can change this. The gateway listens on port 10052, a non
+<p>After installing the gateway, you'll find its configuration file at 
+<code>/etc/zabbix/zabbix_java_gateway.conf</code>. 
+On SUSE, the file is located at <code>/usr/etc/zabbix/java_gateway.conf</code> but is not
+intended to be modified directly and will be overwritten on next package upgrade.
+Instead create a new <code>.conf</code> file in <code>/etc/zabbix/zabbix_java_gateway.d/</code> adding any
+overrides to the default <code>zabbix_java_gateway.conf</code>.</p>
+<p>The default <code>LISTEN_IP</code> is set to <code>0.0.0.0</code>, which means it listens on all network
+interfaces, though you can change this. The gateway listens on port <code>10052</code>, a non
 IANA registered port, which can also be adjusted using the <code>LISTEN_PORT</code> option
 if needed.</p>
-<p>The first setting we'll change is <code>START_POLLERS</code>. We need to uncomment this line
+<p>The first setting we'll change is <code>START_POLLERS</code>. We need to uncomment or add this line
 and set a value, for example, <code>START_POLLERS=5</code> to define the number of concurrent
-connections. The TIMEOUT option controls network operation timeouts, while
+connections. The <code>TIMEOUT</code> option controls network operation timeouts, while
 <code>PROPERTIES_FILE</code> allows you to define or override additional key-value properties,
 such as a keystore password, without exposing them in a command line.</p>
-<p>For your Zabbix server, you'll need to update the configuration file at <code>/etc/zabbix/zabbix_server.conf</code>.</p>
-<p>You'll need to modify three key options:</p>
+<p>For your Zabbix server, add an additional config file <code>zabbix_java_gateway.conf</code>
+to <code>/etc/zabbix/zabbix_server.d/</code></p>
+<p>You'll need to add three key options:</p>
 <ul>
 <li>
-<p><strong>JavaGateway:</strong> Uncomment this line and set its value to the IP address of
+<p><code>JavaGateway</code>: set its value to the IP address of
   the host running your Java gateway. This will likely be your Zabbix
   server itself, but it can be on a separate VM or proxy.</p>
 </li>
 <li>
-<p><strong>JavaGatewayPort:</strong> This option should remain at the default <code>10052</code> unless
+<p><code>JavaGatewayPort</code>: This option should remain at the default <code>10052</code> unless
   you've changed the port in your gateway's configuration.</p>
 </li>
 <li>
-<p><strong>StartJavaPollers:</strong> Uncomment and set this option to define the number of
+<p><code>StartJavaPollers</code>:** Set this option to define the number of
   concurrent Java pollers the server will use. A good starting
   point is to match the number you set on the gateway, for
-  example, 5.</p>
+  example, <code>5</code>.</p>
 </li>
 </ul>
-<p>After making the changes to <code>/etc/zabbix/zabbix_server.conf</code> and <code>/etc/zabbix/zabbix_java_gateway.conf</code>,
-you need to restart the following services:</p>
+<p>After making the changes to both the Zabbix Server and the Zabbix java gateway
+configuration files, you need to restart the following services:</p>
 <ul>
 <li>Zabbix Java Gateway</li>
 <li>Zabbix Server</li>
@@ -18135,30 +18184,30 @@ to communicate with the Java Gateway and begin polling for JMX data. Also don't
 forget to enable the <code>Zabbix Java Gateway</code> service.</p>
 <details class="info" open="open">
 <summary>Restart the services</summary>
-<p>RedHat and Ubuntu
-<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#ch04-zabbix-collecting-data-jmx-__codelineno-6-1"></a>systemctl enable zabbix-java-gateway --now
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#ch04-zabbix-collecting-data-jmx-__codelineno-6-2"></a>systemclt restart zabbix-server
-</span></code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#ch04-zabbix-collecting-data-jmx-__codelineno-7-1"></a>systemctl enable zabbix-java-gateway --now
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#ch04-zabbix-collecting-data-jmx-__codelineno-7-2"></a>systemclt restart zabbix-server
+</span></code></pre></div>
 </details>
 <p>On the application side don't forget to open the firewall so that our
 <code>zabbix-java-gateway</code> can connect to our application.</p>
 <div class="admonition info">
 <p class="admonition-title">Allow JMX</p>
-<p>Red Hat
-<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#ch04-zabbix-collecting-data-jmx-__codelineno-7-1"></a>firewall-cmd --add-port=8686/tcp --permanent
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#ch04-zabbix-collecting-data-jmx-__codelineno-7-2"></a>firewall-cmd --reload
+<p>Red Hat / SUSE
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#ch04-zabbix-collecting-data-jmx-__codelineno-8-1"></a>firewall-cmd --add-port=8686/tcp --permanent
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#ch04-zabbix-collecting-data-jmx-__codelineno-8-2"></a>firewall-cmd --reload
 </span></code></pre></div></p>
 <p>Ubuntu
-<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#ch04-zabbix-collecting-data-jmx-__codelineno-8-1"></a>sudo ufw allow 8686/tcp
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#ch04-zabbix-collecting-data-jmx-__codelineno-9-1"></a>sudo ufw allow 8686/tcp
 </span></code></pre></div></p>
 </div>
 <details class="warning" open="open">
 <summary>Warning</summary>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#ch04-zabbix-collecting-data-jmx-__codelineno-9-1"></a>Don&#39;t forget to place SeLinux in permissive mode before you start else the
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#ch04-zabbix-collecting-data-jmx-__codelineno-9-2"></a>JAVA gateway will not work. You should fix SeLinux permissions once the setup
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#ch04-zabbix-collecting-data-jmx-__codelineno-9-3"></a>is working.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#ch04-zabbix-collecting-data-jmx-__codelineno-10-1"></a>Don&#39;t forget to place SELinux in permissive mode before you start else the
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#ch04-zabbix-collecting-data-jmx-__codelineno-10-2"></a>JAVA gateway will not work. You should fix SELinux permissions once the setup
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#ch04-zabbix-collecting-data-jmx-__codelineno-10-3"></a>is working.
 </span></code></pre></div>
 </details>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-jmx-monitoring-jmx-items">Monitoring JMX items</h2>
 <p>After having setup everything, we can now connect to our Java application's JMX port to
 verify everything is working.</p>
@@ -18177,46 +18226,47 @@ from.</p>
 go to <code>Data collection</code> - <code>Hosts</code> and click on <code>Create host</code> in the upper right
 corner. Use the following settings to create our host:</p>
 <ul>
-<li>Hostname : Tomcat</li>
-<li>Host groups: JMX</li>
-<li>Interfaces: JMX<ul>
-<li>IP address: IP of your Tomcat server</li>
-<li>Port : 8686 or the port you specified in your Tomcat configuration.</li>
+<li><strong>Hostname</strong>: <code>Tomcat</code></li>
+<li><strong>Host groups</strong>: <code>JMX</code></li>
+<li><strong>Interfaces</strong>: JMX<ul>
+<li><strong>IP address</strong>: IP of your Tomcat server</li>
+<li><strong>Port</strong>: <code>8686</code> or the port you specified in your Tomcat configuration.</li>
 </ul>
 </li>
 </ul>
 <p>Press the <code>Add</code> button when ready.</p>
 <details class="note" open="open">
 <summary>Note</summary>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#ch04-zabbix-collecting-data-jmx-__codelineno-10-1"></a>It seems weird that we not specify the JavaGateway here but it&#39;s actually
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#ch04-zabbix-collecting-data-jmx-__codelineno-10-2"></a>normal. Zabbix knows from its configuration file where the gateway is. So we
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#ch04-zabbix-collecting-data-jmx-__codelineno-10-3"></a>need to specify the IP and the PORT of the JAVA application here that we would
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#ch04-zabbix-collecting-data-jmx-__codelineno-10-4"></a>like to monitor.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#ch04-zabbix-collecting-data-jmx-__codelineno-11-1"></a>It seems weird that we not specify the `JavaGateway` here but it&#39;s actually
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#ch04-zabbix-collecting-data-jmx-__codelineno-11-2"></a>normal. Zabbix knows from its configuration file where the gateway is. So we
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#ch04-zabbix-collecting-data-jmx-__codelineno-11-3"></a>need to specify the IP and the PORT of the JAVA application here that we would
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#ch04-zabbix-collecting-data-jmx-__codelineno-11-4"></a>like to monitor.
 </span></code></pre></div>
 </details>
+<hr />
 <h3 id="ch04-zabbix-collecting-data-jmx-create-our-first-item">Create our first item</h3>
 <p>On our host Tomcat create a new item and add the following information.</p>
 <ul>
-<li><em>Name:</em> requestCount</li>
-<li><em>Type:</em> JMX Agent</li>
-<li><em>Key:</em> jmx["Catalina:type=GlobalRequestProcessor,name=\"http-nio-8080\"", "requestCount"]</li>
-<li><em>Type of information:</em> Numeric(unsigned)</li>
-<li><em>Host interface:</em> The JMX interface we just created on our host.</li>
+<li><strong>Name</strong>: <code>requestCount</code></li>
+<li><strong>Type</strong>: JMX Agent</li>
+<li><strong>Key</strong>: <code>jmx["Catalina:type=GlobalRequestProcessor,name=\"http-nio-8080\"", "requestCount"]</code></li>
+<li><strong>Type of information</strong>: Numeric(unsigned)</li>
+<li><strong>Host interface</strong>: The JMX interface we just created on our host.</li>
 </ul>
 <p><img alt="JMX Item" src="../ch04-zabbix-collecting-data/JMX/ch04.38-jmx-requestCount-item.png" /></p>
 <p><em>ch04.38 JMX item</em></p>
 <details class="info" open="open">
 <summary>Verifying and Saving the Item</summary>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#ch04-zabbix-collecting-data-jmx-__codelineno-11-1"></a>Before saving the configured item, use the Test button. Clicking Get value
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#ch04-zabbix-collecting-data-jmx-__codelineno-11-2"></a>or Get value and test should populate the value field with data, confirming
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#ch04-zabbix-collecting-data-jmx-__codelineno-11-3"></a>that the item is functional. Once the test is successful, you can save the
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#ch04-zabbix-collecting-data-jmx-__codelineno-11-4"></a>item.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#ch04-zabbix-collecting-data-jmx-__codelineno-12-1"></a>Before saving the configured item, use the **Test** button. Clicking **Get value**
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#ch04-zabbix-collecting-data-jmx-__codelineno-12-2"></a>or **Get value and test** should populate the value field with data, confirming
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#ch04-zabbix-collecting-data-jmx-__codelineno-12-3"></a>that the item is functional. Once the test is successful, you can save the
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#ch04-zabbix-collecting-data-jmx-__codelineno-12-4"></a>item.
 </span></code></pre></div>
 </details>
 <p>To understand how we constructed the item key, let's look at the process in JConsole.</p>
 <ol>
 <li>
-<p>Navigate to the MBeans tab and expand Catalina &gt; GlobalRequestProcessor &gt; http-nio-8080.</p>
+<p>Navigate to the MBeans tab and expand Catalina → GlobalRequestProcessor → http-nio-8080.</p>
 </li>
 <li>
 <p>The ObjectNAme field on the right displays the MBean's fully qualified name:
@@ -18224,14 +18274,14 @@ corner. Use the following settings to create our host:</p>
    for our Zabbix item key.</p>
 </li>
 </ol>
-<p>The primary challenge with this specific key is that it contains double quotes (")
+<p>The primary challenge with this specific key is that it contains double quotes (<code>"</code>)
 within the <code>name</code> attribute. Zabbix requires the entire JMX key to be enclosed
 in double quotes, which would conflict with the existing quotes. To resolve this,
-we must <strong>escape</strong> the inner double quotes with a backslash ().</p>
+we must <strong>escape</strong> the inner double quotes with a backslash (<code>\</code>).</p>
 <p>This results in the following structure for the Zabbix item key:
 <code>jmx["Catalina:type=GlobalRequestProcessor,name=\"http-nio-8080\""]</code>.</p>
 <p>This key is still incomplete. To specify the metric to be monitored, you must
-append an attribute name, such as maxTime, requestCount, or bytesReceived, at
+append an attribute name, such as <code>maxTime</code>, <code>requestCount</code>, or <code>bytesReceived</code>, at
 the end of the key, separated by a comma.
 <code>jmx["Catalina:type=GlobalRequestProcessor,name=\"http-nio-8080\"","requestCount"]</code></p>
 <p><img alt="requestCount item" src="../ch04-zabbix-collecting-data/JMX/ch04.39-jconsole-requestCount.png" /></p>
@@ -18248,32 +18298,32 @@ attribute name within the <code>CompositeData</code> structure. For example, to 
 heap memory usage, the Zabbix item key would be: <code>jmx["java.lang:type=Memory","HeapMemoryUsage.max"]</code>.</p>
 <p><img alt="" src="../ch04-zabbix-collecting-data/JMX/ch04.40-jconsole-HeapMemory.Max.png" /></p>
 <p>_04.40 HeapMemoryUsage</p>
+<hr />
 <h4 id="ch04-zabbix-collecting-data-jmx-viewing-tabular-data">Viewing Tabular Data</h4>
 <p>To view the detailed breakdown of the <code>HeapMemoryUsage</code> attribute, double click on
 its value in the attribute value column. This action displays the composite data
 in a tabular format, making it easier to see individual metrics like <code>init</code>, <code>used</code>,
 <code>committed</code>, and <code>max</code>.</p>
+<hr />
 <h4 id="ch04-zabbix-collecting-data-jmx-zabbix-jmx-item-keys">Zabbix JMX Item Keys</h4>
 <p>Zabbix offers three primary item keys for JMX monitoring:</p>
-<ul>
-<li>
-<p><strong>jmx[]:</strong> This is the standard key used for monitoring a specific JMX attribute.
-  It's the most common key for creating simple, direct checks.</p>
-</li>
-<li>
-<p><strong>jmx.get[]:</strong> This key is used to retrieve a full object from an MBean. It is
+<dl>
+<dt><code>jmx[]</code></dt>
+<dd>This is the standard key used for monitoring a specific JMX attribute.
+  It's the most common key for creating simple, direct checks.</dd>
+<dt><code>jmx.get[]</code></dt>
+<dd>This key is used to retrieve a full object from an MBean. It is
   often paired with Low Level Discovery (LLD) rules and preprocessing steps to
   extract specific values from the returned data, allowing for more flexible data
-  collection.</p>
-</li>
-<li>
-<p><strong>jmx.discovery[]:</strong> This key is specifically designed for use with Low Level
+  collection.</dd>
+<dt><code>jmx.discovery[]</code></dt>
+<dd>This key is specifically designed for use with Low Level
   Discovery. It helps Zabbix automatically discover multiple JMX MBeans or attributes
   on a monitored host, which is essential for scaling JMX monitoring across a large
-  number of components.</p>
-</li>
-</ul>
-<h3 id="ch04-zabbix-collecting-data-jmx-making-use-of-jmxget">Making use of jmx.get[]</h3>
+  number of components.</dd>
+</dl>
+<hr />
+<h3 id="ch04-zabbix-collecting-data-jmx-making-use-of-jmxget">Making use of <code>jmx.get[]</code></h3>
 <p>The <code>jmx.get[]</code> item key returns a JSON array containing a list of MBean objects or
 their attributes. Unlike <code>jmx.discovery[]</code>, it does not automatically define LLD
 macros. Instead, it is particularly useful when you need to retrieve a structured
@@ -18286,32 +18336,36 @@ agent, which is more efficient.</p>
 <p>For instance, the key <code>jmx.get[attributes,"*:type=GarbageCollector,name=PS MarkSweep"]</code>
 would return a comprehensive payload with all attributes of the specified garbage
 collector.</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#ch04-zabbix-collecting-data-jmx-__codelineno-12-1"></a><span class="p">[</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#ch04-zabbix-collecting-data-jmx-__codelineno-12-2"></a><span class="w">  </span><span class="p">{</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#ch04-zabbix-collecting-data-jmx-__codelineno-12-3"></a><span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CollectionCount&quot;</span><span class="p">,</span>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#ch04-zabbix-collecting-data-jmx-__codelineno-12-4"></a><span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;java.lang:type=GarbageCollector,name=PS MarkSweep,CollectionCount&quot;</span><span class="p">,</span>
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#ch04-zabbix-collecting-data-jmx-__codelineno-12-5"></a><span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;java.lang.Long&quot;</span><span class="p">,</span>
-</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#ch04-zabbix-collecting-data-jmx-__codelineno-12-6"></a><span class="w">    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
-</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#ch04-zabbix-collecting-data-jmx-__codelineno-12-7"></a><span class="w">    </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;java.lang:type=GarbageCollector,name=PS MarkSweep&quot;</span>
-</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#ch04-zabbix-collecting-data-jmx-__codelineno-12-8"></a><span class="w">  </span><span class="p">},</span>
-</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#ch04-zabbix-collecting-data-jmx-__codelineno-12-9"></a><span class="w">  </span><span class="err">...</span>
-</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#ch04-zabbix-collecting-data-jmx-__codelineno-12-10"></a><span class="w">  </span><span class="err">...</span>
-</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#ch04-zabbix-collecting-data-jmx-__codelineno-12-11"></a><span class="w">  </span><span class="err">...</span>
-</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#ch04-zabbix-collecting-data-jmx-__codelineno-12-12"></a><span class="w">  </span><span class="err">...</span>
-</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#ch04-zabbix-collecting-data-jmx-__codelineno-12-13"></a><span class="w">  </span><span class="p">{</span>
-</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#ch04-zabbix-collecting-data-jmx-__codelineno-12-14"></a><span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ObjectName&quot;</span><span class="p">,</span>
-</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#ch04-zabbix-collecting-data-jmx-__codelineno-12-15"></a><span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;java.lang:type=GarbageCollector,name=PS MarkSweep,ObjectName&quot;</span><span class="p">,</span>
-</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#ch04-zabbix-collecting-data-jmx-__codelineno-12-16"></a><span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;javax.management.ObjectName&quot;</span><span class="p">,</span>
-</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#ch04-zabbix-collecting-data-jmx-__codelineno-12-17"></a><span class="w">    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;java.lang:type=GarbageCollector,name=PS MarkSweep&quot;</span><span class="p">,</span>
-</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#ch04-zabbix-collecting-data-jmx-__codelineno-12-18"></a><span class="w">    </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;java.lang:type=GarbageCollector,name=PS MarkSweep&quot;</span>
-</span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19" href="#ch04-zabbix-collecting-data-jmx-__codelineno-12-19"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20" href="#ch04-zabbix-collecting-data-jmx-__codelineno-12-20"></a><span class="p">]</span>
+<details class="example" open="open">
+<summary>Example JSON Output from <code>jmx.get[]</code></summary>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#ch04-zabbix-collecting-data-jmx-__codelineno-13-1"></a><span class="p">[</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#ch04-zabbix-collecting-data-jmx-__codelineno-13-2"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#ch04-zabbix-collecting-data-jmx-__codelineno-13-3"></a><span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CollectionCount&quot;</span><span class="p">,</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#ch04-zabbix-collecting-data-jmx-__codelineno-13-4"></a><span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;java.lang:type=GarbageCollector,name=PS MarkSweep,CollectionCount&quot;</span><span class="p">,</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#ch04-zabbix-collecting-data-jmx-__codelineno-13-5"></a><span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;java.lang.Long&quot;</span><span class="p">,</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#ch04-zabbix-collecting-data-jmx-__codelineno-13-6"></a><span class="w">    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#ch04-zabbix-collecting-data-jmx-__codelineno-13-7"></a><span class="w">    </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;java.lang:type=GarbageCollector,name=PS MarkSweep&quot;</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#ch04-zabbix-collecting-data-jmx-__codelineno-13-8"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#ch04-zabbix-collecting-data-jmx-__codelineno-13-9"></a><span class="w">  </span><span class="err">...</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#ch04-zabbix-collecting-data-jmx-__codelineno-13-10"></a><span class="w">  </span><span class="err">...</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#ch04-zabbix-collecting-data-jmx-__codelineno-13-11"></a><span class="w">  </span><span class="err">...</span>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#ch04-zabbix-collecting-data-jmx-__codelineno-13-12"></a><span class="w">  </span><span class="err">...</span>
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#ch04-zabbix-collecting-data-jmx-__codelineno-13-13"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#ch04-zabbix-collecting-data-jmx-__codelineno-13-14"></a><span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ObjectName&quot;</span><span class="p">,</span>
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#ch04-zabbix-collecting-data-jmx-__codelineno-13-15"></a><span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;java.lang:type=GarbageCollector,name=PS MarkSweep,ObjectName&quot;</span><span class="p">,</span>
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#ch04-zabbix-collecting-data-jmx-__codelineno-13-16"></a><span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;javax.management.ObjectName&quot;</span><span class="p">,</span>
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#ch04-zabbix-collecting-data-jmx-__codelineno-13-17"></a><span class="w">    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;java.lang:type=GarbageCollector,name=PS MarkSweep&quot;</span><span class="p">,</span>
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18" href="#ch04-zabbix-collecting-data-jmx-__codelineno-13-18"></a><span class="w">    </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;java.lang:type=GarbageCollector,name=PS MarkSweep&quot;</span>
+</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19" href="#ch04-zabbix-collecting-data-jmx-__codelineno-13-19"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-13-20"><a id="__codelineno-13-20" name="__codelineno-13-20" href="#ch04-zabbix-collecting-data-jmx-__codelineno-13-20"></a><span class="p">]</span>
 </span></code></pre></div>
+</details>
 <p>This JSON output can then be used as the master item for multiple dependent items,
 each with a preprocessing step to extract a specific value (e.g., <code>CollectionCount</code>
 or <code>CollectionTime</code>) using a JSONPath expression. This technique is a powerful
 way to reduce the load on both the JMX agent and the Zabbix server by making a
 single call to collect multiple metrics.</p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-jmx-performance-considerations-for-jmx-monitoring">Performance Considerations for JMX Monitoring</h2>
 <p>JMX monitoring is powerful but comes with higher overhead compared to traditional
 Zabbix agent checks. To ensure your monitoring remains efficient and doesn't impact
@@ -18322,10 +18376,10 @@ in mind.</p>
 <li>The Zabbix server sends a request for a JMX item.</li>
 <li>The Java Gateway connects to the target JVM and retrieves the data.</li>
 <li>Only when the response comes back does the Zabbix server proceed with that item's
-  check.
-This means that if JMX queries are slow (due to network, JVM GC pauses, or overloaded
-gateways), your monitoring queue can back up.</li>
+  check.</li>
 </ul>
+<p>This means that if JMX queries are slow (due to network, JVM GC pauses, or overloaded
+gateways), your monitoring queue can back up.</p>
 <p>To optimize performance:</p>
 <ul>
 <li>The Java Gateway bundles multiple requests for the same host and processes them
@@ -18346,13 +18400,13 @@ gateways), your monitoring queue can back up.</li>
 <p>Two important parameters in zabbix_server.conf and zabbix_java_gateway.conf directly
 affect JMX performance:</p>
 <ul>
-<li>StartJavaPollers (on Zabbix Server)<ul>
+<li><code>StartJavaPollers</code> (on Zabbix Server)<ul>
 <li>Defines how many parallel JMX pollers the server can use.</li>
 <li>Too few pollers → JMX checks queue up and fall behind.</li>
 <li>Too many pollers → high load on Java Gateway and JVMs.</li>
 </ul>
 </li>
-<li>StartPollers (general pollers)
+<li><code>StartPollers</code> (general pollers)
   Balance with Java pollers so your server can handle both JMX and regular agent
   checks without bottlenecks.</li>
 <li>
@@ -18367,6 +18421,7 @@ affect JMX performance:</p>
 <li>Too many JMX items not only stress the JVM but also flood your Zabbix database
   with unnecessary history data.</li>
 </ul>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-jmx-monitoring-jmx-through-jolokia">Monitoring JMX through Jolokia</h2>
 <p>While Zabbix can natively collect JMX data using the Zabbix Java Gateway, an
 alternative worth considering is Jolokia — a lightweight JMX-to-HTTP bridge.</p>
@@ -18384,15 +18439,17 @@ The result is often lower overhead, easier network configuration, and greater fl
 <li>Secure, it supports HTTPS, authentication, and access control policies out of
   the box.</li>
 </ul>
-<p>Example:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#ch04-zabbix-collecting-data-jmx-__codelineno-13-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>http://localhost:8778/jolokia/read/java.lang:type<span class="o">=</span>Memory,java.lang:type<span class="o">=</span>Threading
+<details class="example" open="open">
+<summary>Example Jolokia Request</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#ch04-zabbix-collecting-data-jmx-__codelineno-14-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>http://localhost:8778/jolokia/read/java.lang:type<span class="o">=</span>Memory,java.lang:type<span class="o">=</span>Threading
 </span></code></pre></div>
 <p>In Zabbix:</p>
 <p>Create an HTTP Agent master item pointing to the Jolokia endpoint.
 Add dependent items to extract individual values, e.g.:</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#ch04-zabbix-collecting-data-jmx-__codelineno-14-1"></a><span class="err">$.value</span><span class="p">[</span><span class="err">&#39;java.la</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span><span class="kc">t</span><span class="err">ype=Memory&#39;</span><span class="p">][</span><span class="err">&#39;HeapMemoryUsage&#39;</span><span class="p">][</span><span class="err">&#39;used&#39;</span><span class="p">]</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#ch04-zabbix-collecting-data-jmx-__codelineno-14-2"></a><span class="err">$.value</span><span class="p">[</span><span class="err">&#39;java.la</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span><span class="kc">t</span><span class="err">ype=Threadi</span><span class="kc">n</span><span class="err">g&#39;</span><span class="p">][</span><span class="err">&#39;ThreadCou</span><span class="kc">nt</span><span class="err">&#39;</span><span class="p">]</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#ch04-zabbix-collecting-data-jmx-__codelineno-15-1"></a><span class="err">$.value</span><span class="p">[</span><span class="err">&#39;java.la</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span><span class="kc">t</span><span class="err">ype=Memory&#39;</span><span class="p">][</span><span class="err">&#39;HeapMemoryUsage&#39;</span><span class="p">][</span><span class="err">&#39;used&#39;</span><span class="p">]</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#ch04-zabbix-collecting-data-jmx-__codelineno-15-2"></a><span class="err">$.value</span><span class="p">[</span><span class="err">&#39;java.la</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span><span class="kc">t</span><span class="err">ype=Threadi</span><span class="kc">n</span><span class="err">g&#39;</span><span class="p">][</span><span class="err">&#39;ThreadCou</span><span class="kc">nt</span><span class="err">&#39;</span><span class="p">]</span>
 </span></code></pre></div>
+</details>
 <p>This approach allows you to collect dozens of metrics with a single network request.</p>
 <details class="note" open="open">
 <summary>When to use it ?</summary>
@@ -18401,11 +18458,13 @@ many JVMs without maintaining a central Java Gateway. Stick with the Zabbix
 Java Gateway if you rely on built-in templates or want a fully integrated,
 out of the box JMX experience.</p>
 </details>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-jmx-conclusion">Conclusion</h2>
 <p>Zabbix handles JMX monitoring synchronously, but optimizes performance with request
 bundling and connection reuse. By tuning pollers, using reasonable update intervals,
 and selecting only the most valuable metrics, you can scale JMX monitoring without
 overloading your monitoring system or your Java applications.</p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-jmx-questions">Questions</h2>
 <ul>
 <li>Explain how the Zabbix Java Gateway fits into the overall JMX architecture.
@@ -18418,6 +18477,7 @@ overloading your monitoring system or your Java applications.</p>
   What could go wrong if you leave flags like authenticate=false and ssl=false in
   a live environment?</li>
 </ul>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-jmx-useful-urls">Useful URLs</h2>
 <ul>
 <li><a href="https://www.youtube.com/watch?v=aKGYa6Y9r60&amp;t=87s">https://www.youtube.com/watch?v=aKGYa6Y9r60&amp;t=87s</a></li>
@@ -27466,7 +27526,7 @@ We'll cover network discovery for identifying devices across your infrastructure
 and active agent autoregistration for automatically adding hosts as they come
 online. You'll learn how to use these mechanisms to eliminate manual configuration,
 dynamically detect new systems, and ensure your monitoring environment stays up
-to date as your infrastructure evolves. By the end, you’ll have the skills to implement
+to date as your infrastructure evolves. By the end, you'll have the skills to implement
 scalable, automated discovery workflows that simplify management and make your
 Zabbix deployment more efficient and responsive to change.</p></section><section class="print-page" id="ch10-zabbix-discovery-network-host-discovery" heading-number="15.2"><h1 id="ch10-zabbix-discovery-network-host-discovery-automating-adding-hosts-with-network-discovery">Automating adding hosts with network discovery</h1>
 <p>In this chapter, we'll explore the powerful automation features in Zabbix called
@@ -27484,32 +27544,694 @@ efficient monitoring system.</p>
 <h2 id="ch10-zabbix-discovery-network-host-discovery-conclusion">Conclusion</h2>
 <h2 id="ch10-zabbix-discovery-network-host-discovery-questions">Questions</h2>
 <h2 id="ch10-zabbix-discovery-network-host-discovery-useful-urls">Useful URLs</h2></section><section class="print-page" id="ch10-zabbix-discovery-active-agent-autoregistration" heading-number="15.3"><h1 id="ch10-zabbix-discovery-active-agent-autoregistration-automating-adding-hosts-with-active-agent-autoregistration">Automating adding hosts with active agent autoregistration</h1>
-<p>In this chapter, we'll explore the powerful automation features in Zabbix called
-<strong>active agent autoregistration</strong>. This tools are essential
-for scaling your monitoring efforts by minimizing manual configuration and
-ensuring new devices and services are seamlessly integrated into your Zabbix
-environment.</p>
-<p>We'll dive into <strong>active agent autoregistration</strong>, which simplifies the
-management of Zabbix agents, especially in large or rapidly changing environments.
-We'll cover how to set up autoregistration rules that allow agents to register
-themselves with the Zabbix server, reducing administrative overhead and ensuring
-all relevant data is captured efficiently.</p>
-<p>By the end of this chapter, you'll have a thorough understanding of how to leverage
-active agent autoregistration to create a more automated, scalable, and
-efficient monitoring system.</p>
+<p>In this chapter, we'll explore the powerful automation features in Zabbix called <strong>active agent autoregistration</strong>. This tools are essential for scaling your monitoring efforts by minimizing manual configuration and ensuring new devices and services are seamlessly integrated into your Zabbix environment.</p>
+<p>We'll dive into <strong>active agent autoregistration</strong>, which simplifies the management of Zabbix agents, especially in large or rapidly changing environments.
+We'll cover how to set up autoregistration rules that allow agents to register themselves with the Zabbix server, reducing administrative overhead and ensuring all relevant data is captured efficiently.</p>
+<p>By the end of this chapter, you'll have a thorough understanding of how to leverage active agent autoregistration to create a more automated, scalable, and efficient monitoring system.</p>
+<h2 id="ch10-zabbix-discovery-active-agent-autoregistration-understanding-active-agent-autoregistration">Understanding active agent autoregistration</h2>
+<p>Before we start configuring anything, it is important to understand what autoregistration actually does.</p>
+<p>Normally, when we want to monitor a new server with a Zabbix agent, we must first:</p>
+<ol>
+<li>Create a host in Zabbix</li>
+<li>Configure host interfaces</li>
+<li>Assign templates</li>
+<li>Place the host into the correct host groups</li>
+</ol>
+<p>Only after those steps have been completed, the host can start sending monitoring data.</p>
+<p>With active agent autoregistration, the workflow is reversed.</p>
+<p>Instead of creating the host first, we deploy the Zabbix agent and configure it to connect to the Zabbix server. The agent then contacts the server and introduces itself as a new monitoring target.</p>
+<p>The Zabbix server receives this registration request and evaluates it against configured autoregistration actions. If the registration matches the action conditions, Zabbix can automatically create and configure the host.</p>
+<p>The result is a highly scalable onboarding process that requires little or no manual work.</p>
+<h2 id="ch10-zabbix-discovery-active-agent-autoregistration-active-versus-passive-agents">Active versus passive agents</h2>
+<p>Autoregistration only works with active checks. For passive agents we have another feature in Zabbix called network discovery, discussed in another part of this book. </p>
+<p>The reason we can only use this feature with active agents is because the agent must initiate communication towards the Zabbix server or proxy.
+A passive agent waits for the server or proxy to contact it, while an active agent establishes the connection itself.</p>
+<p>Let's open the Zabbix agent configuration file.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#ch10-zabbix-discovery-active-agent-autoregistration-__codelineno-0-1"></a>sudo<span class="w"> </span>vim<span class="w"> </span>/etc/zabbix/zabbix_agent2.conf
+</span></code></pre></div>
+<p>For active checks, the following configuration parameters are especially important. </p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#ch10-zabbix-discovery-active-agent-autoregistration-__codelineno-1-1"></a><span class="na">ServerActive</span><span class="o">=</span><span class="s">192.168.1.10</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#ch10-zabbix-discovery-active-agent-autoregistration-__codelineno-1-2"></a><span class="na">Hostname</span><span class="o">=</span><span class="s">linux-web-01</span>
+</span></code></pre></div>
+<p>With those settings, we can already start doing active agent autoregistration. However we can include an additional parameter to make things more useful.</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#ch10-zabbix-discovery-active-agent-autoregistration-__codelineno-2-1"></a><span class="na">HostMetadata</span><span class="o">=</span><span class="s">linux</span>
+</span></code></pre></div>
+<p>The key parameter here is <code>HostMetadata</code>. It functions as a text string sent during registration and can be used by autoregistration actions to determine how a host should be configured.</p>
+<p>For example:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#ch10-zabbix-discovery-active-agent-autoregistration-__codelineno-3-1"></a><span class="na">HostMetadata</span><span class="o">=</span><span class="s">linux</span>
+</span></code></pre></div>
+<p>Or:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#ch10-zabbix-discovery-active-agent-autoregistration-__codelineno-4-1"></a><span class="na">HostMetadata</span><span class="o">=</span><span class="s">windows</span>
+</span></code></pre></div>
+<p>Or even:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#ch10-zabbix-discovery-active-agent-autoregistration-__codelineno-5-1"></a><span class="na">HostMetadata</span><span class="o">=</span><span class="s">windows/production/mssql</span>
+</span></code></pre></div>
+<p>This allows us to create different autoregistration actions for different types of systems. Additionally if you combine this type of configuration with automatic installation of the Zabbix agent through Ansible, PDQ Deploy or other tools we get a very versatile hands-off environment.</p>
+<p>After setting up your agent configuration, do not forget to restart the agent for the changes to take effect.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#ch10-zabbix-discovery-active-agent-autoregistration-__codelineno-6-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>zabbix-agent2
+</span></code></pre></div>
+<h2 id="ch10-zabbix-discovery-active-agent-autoregistration-creating-an-autoregistration-action">Creating an autoregistration action</h2>
+<p>Let's configure our first autoregistration action. Navigate to <code>Alerts</code> | <code>Actions</code> | <code>Autoregistration actions</code></p>
+<p>Click on <code>Create action</code> and give the action a name. For example <code>Linux servers autoregistration</code>.</p>
+<p>Now create a condition. Let's use the <code>HostMetadata</code> item we configured in our Zabbix agent configuration file earlier. Let's set the <code>Condition</code> as <code>Host metadata</code> with the operator <code>contains</code> and the value <code>Linux</code>.</p>
+<p>This means the action will only execute when a registering agent sends metadata containing the word <code>linux</code>.</p>
+<p>With the condition set, we can now configure what needs to happen upon matching the conditions. We do this using the <code>Operations</code>.</p>
+<p>When a host registers successfully, we can automatically perform actions such as:</p>
+<ul>
+<li>Add host to a host group</li>
+<li>Link templates</li>
+<li>Add host tags</li>
+</ul>
+<p>Since every host needs at least one host group, Zabbix will automatically add the <code>Discovered hosts</code> host group. However, that is usually not enough for a structured Zabbix environment. As such we will add the host to a host group called <code>Servers/Linux</code></p>
+<p>This keeps our environment organized from the moment the host appears.</p>
+<p>We can also automatically assign templates, which is where the <code>HostMetadata</code> really starts to shine. For example we can now attach the <code>Linux by Zabbix agent active</code> template to the host, automatically once the host registers itself. This will make sure any new hosts we install the agent on will automatically start monitoring, by collecting metrics from the linked template and even creating problems. No manual template assignment is required, but we can still add more manually later.</p>
+<p>Our Action conditions should now look something like below.</p>
+<p>![Zabbix Agent autoregistration action conditions]](autoregistration/ch10.x-autoregistration-action-conditions.png){ align=center }</p>
+<p><em>10.x Zabbix Agent autoregistration action conditions</em></p>
+<p>The operations should contain the following.</p>
+<p><img align="center" alt="Zabbix Agent autoregistration action operations" src="../ch10-zabbix-discovery/active-agent-autoregistration/autoregistration/ch10.x-autoregistration-action-operations.png" /></p>
+<p>_10.x Zabbix Agent autoregistration action operations</p>
+<p>One of my favourite tricks here is to let a tool like Ansible set the <code>HostMetadata</code> field with software like <code>NGINX</code> automatically. Then we can add additional Actions with rules to add those templates as well. These can be done in separate actions, as an incoming host registering itself will create an autoregistration event. In Zabbix, any event coming in will always be matches against all action conditions and execute the operations for all matches.</p>
+<p><img align="center" alt="Zabbix Agent autoregistration action list" src="../ch10-zabbix-discovery/active-agent-autoregistration/autoregistration/ch10.x-autoregistration-action-list.png" /></p>
+<p>_10.x Zabbix Agent autoregistration action list</p>
+<h2 id="ch10-zabbix-discovery-active-agent-autoregistration-using-hostmetadataitem">Using HostMetadataItem</h2>
+<p>Instead of using hardcoding metadata, the Zabbix agent can also generate it dynamically.</p>
+<p>For example, in the configuration file of the Zabbix agent we could add the following parameter.</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#ch10-zabbix-discovery-active-agent-autoregistration-__codelineno-7-1"></a><span class="na">HostMetadataItem</span><span class="o">=</span><span class="s">system.uname</span>
+</span></code></pre></div>
+<p>The agent will execute the item with the key <code>system.uname</code> and use its value as metadata.</p>
+<p>This can be useful when building automated deployment systems where you want hosts to classify themselves automatically.</p>
+<h2 id="ch10-zabbix-discovery-active-agent-autoregistration-using-global-psk-authentication">Using global PSK authentication</h2>
+<p>In many environments, allowing any agent to register itself based solely on host metadata may not be considered secure enough. To provide an additional layer of
+protection, Zabbix supports TLS encryption with Pre-Shared Keys (PSK) for autoregistering agents.</p>
+<p>As such, it is recommended to configure all newly deployed agents with the same global PSK. This ensures that only systems that possess the correct key can successfully communicate with the Zabbix server or proxy.</p>
+<p>On the agent, configure the PSK settings.</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#ch10-zabbix-discovery-active-agent-autoregistration-__codelineno-8-1"></a><span class="na">TLSConnect</span><span class="o">=</span><span class="s">psk</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#ch10-zabbix-discovery-active-agent-autoregistration-__codelineno-8-2"></a><span class="na">TLSAccept</span><span class="o">=</span><span class="s">psk</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#ch10-zabbix-discovery-active-agent-autoregistration-__codelineno-8-3"></a><span class="na">TLSPSKIdentity</span><span class="o">=</span><span class="s">agent-psk-default</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#ch10-zabbix-discovery-active-agent-autoregistration-__codelineno-8-4"></a><span class="na">TLSPSKFile</span><span class="o">=</span><span class="s">/etc/zabbix/agent.psk</span>
+</span></code></pre></div>
+<p>Then, make sure the PSK file is configured and ready to use.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#ch10-zabbix-discovery-active-agent-autoregistration-__codelineno-9-1"></a>openssl<span class="w"> </span>rand<span class="w"> </span>-hex<span class="w"> </span><span class="m">32</span><span class="w"> </span>&gt;<span class="w"> </span>/etc/zabbix/agent.psk
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#ch10-zabbix-discovery-active-agent-autoregistration-__codelineno-9-2"></a>chmod<span class="w"> </span><span class="m">400</span><span class="w"> </span>/etc/zabbix/agent.psk
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#ch10-zabbix-discovery-active-agent-autoregistration-__codelineno-9-3"></a>chown<span class="w"> </span>zabbix:zabbix<span class="w"> </span>/etc/zabbix/agent.psk
+</span></code></pre></div>
+<p>When configuring the autoregistration action, you can define the PSK identity and PSK value that should be assigned to newly registered hosts. Any agent that
+attempts to register without the correct PSK will be rejected before the autoregistration process is evaluated.</p>
+<p>This approach is especially useful in automated deployment environments where servers are provisioned from templates or configuration management systems such as Ansible, PDQ Deploy or other tools.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Using a single global PSK simplifies deployment and onboarding, but it also
+means every autoregistering host shares the same secret. In higher-security
+environments, consider automatically rotating to unique host-specific PSKs
+after registration.</p>
+</div>
+<h2 id="ch10-zabbix-discovery-active-agent-autoregistration-security-considerations">Security considerations</h2>
+<p>Autoregistration is extremely convenient, but it should be configured carefully.</p>
+<p>Remember that any system capable of reaching your Zabbix server or proxy could potentially attempt registration.</p>
+<p>A few good practices include:</p>
+<ul>
+<li>Use meaningful metadata conditions.</li>
+<li>Only allow trusted networks to reach your agents and proxies.</li>
+<li>Use PSK encryption between agents and server/proxy.</li>
+<li>Avoid creating overly broad autoregistration actions.</li>
+<li>Regularly review newly registered hosts.</li>
+</ul>
+<p>Automation should reduce the administrative load, without impacting security.</p>
 <h2 id="ch10-zabbix-discovery-active-agent-autoregistration-conclusion">Conclusion</h2>
+<p>Active agent autoregistration is one of the most useful automation features in Zabbix. Instead of manually creating hosts and assigning configuration, agents can register themselves to the monitoring environment and receive everything they need automatically.</p>
+<p>By combining active checks, host metadata, PSK authentication, and autoregistration actions, you can build a highly scalable agent deployment process that works equally well for a handful of servers or thousands of systems across multiple locations.</p>
+<p>When designed properly, autoregistration ensures that newly deployed systems are monitored immediately, consistently, securely, and with minimal administrative load.</p>
 <h2 id="ch10-zabbix-discovery-active-agent-autoregistration-questions">Questions</h2>
-<h2 id="ch10-zabbix-discovery-active-agent-autoregistration-useful-urls">Useful URLs</h2></section></section>
+<h2 id="ch10-zabbix-discovery-active-agent-autoregistration-useful-urls">Useful URLs</h2>
+<ul>
+<li>https://www.zabbix.com/documentation/current/en/manual/discovery/auto_registration</li>
+</ul></section></section>
                     <section class='print-page md-section' id='section-16' heading-number='16'>
                         <h1>Chapter 11 : Visualisation<a class='headerlink' href='#section-16' title='Permanent link'></a>
                         </h1>
                     <section class="print-page" id="ch11-zabbix-visualisation-graphs" heading-number="16.1"><h1 id="ch11-zabbix-visualisation-graphs-using-the-built-in-graphs">Using the built-in Graphs</h1>
 <h2 id="ch11-zabbix-visualisation-graphs-conclusion">Conclusion</h2>
 <h2 id="ch11-zabbix-visualisation-graphs-questions">Questions</h2>
-<h2 id="ch11-zabbix-visualisation-graphs-useful-urls">Useful URLs</h2></section><section class="print-page" id="ch11-zabbix-visualisation-dashboards" heading-number="16.2"><h1 id="ch11-zabbix-visualisation-dashboards-setting-up-dashboards">Setting up Dashboards</h1>
+<h2 id="ch11-zabbix-visualisation-graphs-useful-urls">Useful URLs</h2></section><section class="print-page" id="ch11-zabbix-visualisation-dashboards" heading-number="16.2"><nav class='md-tags'><span class='md-tag'>beginner</span></nav><h1 id="setting-up-dashboards">Setting up Dashboards</h1>
+<p>Dashboards are the central visualization layer in Zabbix. They bring together
+widgets self-contained panels that each display a specific type of data, onto a
+single, configurable canvas that updates in real time. Whether you are building
+an operations center screen showing the health of your entire infrastructure, or
+a focused view for a single application team, dashboards give you the flexibility
+to present exactly the data that matters.</p>
+<p>This chapter covers everything you need to create, configure, and manage dashboards
+in Zabbix 8.0: from the basic mechanics of the dashboard editor, through each available
+widget type, to sharing dashboards with other users and embedding them in template
+definitions.</p>
+<hr />
+<h2 id="ch11-zabbix-visualisation-dashboards-understanding-dashboard-types">Understanding Dashboard Types</h2>
+<p>Zabbix 8.0 has two distinct categories of dashboards, and understanding the difference
+up front will save confusion later.</p>
+<p><strong>Global dashboards</strong> are created and managed under <em>Dashboards</em> in the main menu.
+They exist independently of any particular host and can show data from any
+combination of hosts, host groups, or items you choose. This is the most common
+type. This is the one you reach when you click <em>Dashboards</em> in the left-hand navigation.</p>
+<p><strong>Template dashboards</strong> are defined inside a template and are automatically instantiated
+for every host that links to that template. When you view a host's dashboards (via
+<em>Monitoring → Hosts → Dashboards</em>), what you see are the rendered instances of those
+template dashboards, with all widget item references resolved against that specific
+host. Template dashboards are discussed in a dedicated section at the end of this
+chapter.</p>
+<hr />
+<h2 id="ch11-zabbix-visualisation-dashboards-the-dashboard-list">The Dashboard List</h2>
+<p>Navigate to <em>Dashboards</em> in the left hand menu. The page shows a list of all dashboards
+you have access to. Each row shows the dashboard name, the owner, and whether
+it is shared.</p>
+<p>From this list you can:</p>
+<ul>
+<li>Click a dashboard name to open it in view mode.</li>
+<li>Use the <em>Create dashboard</em> button in the top-right corner to start a new
+one or click import to import an existing one. ( If you have the correct permissions)</li>
+<li>Click the row's action menu (the three-line icon) to share, edit, clone, delete,
+or change sharing settings. (Again only if you have those permissions)</li>
+<li>Since Zabbix 8.0 there is also the option to Export.</li>
+</ul>
+<p>Zabbix ships with a default dashboard called <em>Global view</em> that gives a good starting
+point. You can edit it or leave it as is and create additional dashboards for specific
+purposes.</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.1_action_menu.png" src="../ch11-zabbix-visualisation/dashboards/ch11.1_action_menu.png" /></p>
+<p><em>11.1 Actions menu</em></p>
+<hr />
+<h2 id="ch11-zabbix-visualisation-dashboards-creating-your-first-dashboard">Creating Your First Dashboard</h2>
+<p>Click <em>Create dashboard</em>. A dialog appears asking for:</p>
+<ul>
+<li><strong>Name</strong>: the title shown in the page header and the dashboard list.</li>
+<li><strong>Owner</strong>: the Zabbix user who owns the dashboard. Only the owner (and administrators)
+can edit it by default.</li>
+<li><strong>Display period</strong>: how long the dashboard auto-cycles pages before returning
+to the first. This is relevant only if you add multiple pages.</li>
+<li><strong>Start slideshow automatically</strong>: When selected Zabbix will automatically start
+the slideshow if you have multiple pages.</li>
+</ul>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.2_create_dashboards.png" src="../ch11-zabbix-visualisation/dashboards/ch11.2_create_dashboards.png" /></p>
+<p><em>11.2 Create Dashboard</em></p>
+<p>Click <em>Apply</em> to create the dashboard and enter edit mode.</p>
+<hr />
+<h2 id="ch11-zabbix-visualisation-dashboards-dashboard-edit-mode">Dashboard Edit Mode</h2>
+<p>Edit mode is where all layout and widget work happens. The interface changes in
+several important ways when you enter it:</p>
+<p>A toolbar appears at the top of the page with these controls:</p>
+<ul>
+<li><strong>Add widget</strong>: opens the widget picker.</li>
+<li><strong>Add page</strong>: appends another page (tab) to the dashboard.</li>
+<li><strong>Paste widget</strong>: available after you have copied a widget.</li>
+<li><strong>Cancel</strong> / <strong>Save changes</strong>: discard or commit your edits.</li>
+</ul>
+<p>The canvas itself becomes a grid. Widgets snap to this grid when you place or resize
+them. You can drag a widget by its header to reposition it, and drag the resize handle
+(bottom corner of each widget) to change its dimensions.</p>
+<p>To exit edit mode without saving, click <em>Cancel</em>. To commit all changes, click
+<em>Save changes</em>.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Changes are not saved automatically. If you close the browser tab while in
+edit mode, unsaved work is lost.</p>
+</div>
+<hr />
+<h2 id="ch11-zabbix-visualisation-dashboards-adding-and-configuring-widgets">Adding and Configuring Widgets</h2>
+<p>Click <em>Add widget</em> to open the widget picker. It lists all available widget types.
+Select one and a configuration dialog opens.</p>
+<p>Every widget shares a set of common fields at the top of the dialog:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Type</strong></td>
+<td>The widget type. Changing this resets the type specific fields.</td>
+</tr>
+<tr>
+<td><strong>Name</strong></td>
+<td>An optional label displayed in the widget header. If left blank, the default title for that widget type is used.</td>
+</tr>
+<tr>
+<td><strong>Refresh interval</strong></td>
+<td>How often the widget polls for new data. Options range from <em>No refresh</em> to <em>15 minutes</em>. The default varies by widget type.</td>
+</tr>
+</tbody>
+</table>
+<p>Below these shared fields, each widget type exposes its own specific configuration
+options. These are described widget by widget in the next section.</p>
+<p>Once you have configured a widget, click <em>Add</em> (for new widgets) or <em>Apply</em> (for
+edits). The widget appears on the canvas at a default size. You can then reposition
+and resize it.</p>
+<p>To edit an existing widget, click the pencil icon in its top-right corner while
+in edit mode. To delete it, click the X icon.</p>
+<hr />
+<h2 id="ch11-zabbix-visualisation-dashboards-widget-reference">Widget Reference</h2>
+<p>Zabbix 8.0 ships with many widget types. This section describes each one, what it
+is best used for, and its key configuration options.</p>
+<h3 id="ch11-zabbix-visualisation-dashboards-action-log">Action log</h3>
+<p>Displays a log of actions (alert notifications, remote commands) that Zabbix has
+executed. Useful for an audit style view of what your alerting system has been doing.</p>
+<p><strong>Key options:</strong> filter by time period, media type, status, and recipient.</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.3_action_log.png" src="../ch11-zabbix-visualisation/dashboards/ch11.3_action_log.png" /></p>
+<p><em>11.3 Action Log widget</em></p>
+<hr />
+<h3 id="ch11-zabbix-visualisation-dashboards-clock">Clock</h3>
+<p>Shows the current date and time, either as a digital or an analog clock face. You
+can configure it to show the time in any timezone rather than the browser's local
+time. Useful for teams operating across time zones to know the server time.</p>
+<p>Key options: <em>Clock type</em> (digital / analog), <em>Time type</em> (local / server /
+specified timezone).</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.4_clock.png" src="../ch11-zabbix-visualisation/dashboards/ch11.4_clock.png" /></p>
+<p><em>11.4 Clock widget</em></p>
+<hr />
+<h3 id="ch11-zabbix-visualisation-dashboards-discovery-status">Discovery status</h3>
+<p>Displays a summary of the last network discovery run: how many devices were found
+and in what state. Useful on infrastructure overview dashboards.</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.5_discovery.png" src="../ch11-zabbix-visualisation/dashboards/ch11.5_discovery.png" /></p>
+<p><em>11.5 Discovery status</em></p>
+<hr />
+<h3 id="ch11-zabbix-visualisation-dashboards-favourite-graphs">Favourite graphs</h3>
+<p>Shows a list of manually bookmarked graphs (custom graphs that a user has marked
+as favourites). This widget is personal, it reflects the graphs favourited by the
+user currently viewing the dashboard.</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.6_fav_graph.png" src="../ch11-zabbix-visualisation/dashboards/ch11.6_fav_graph.png" /></p>
+<p><em>11.6 Favourite Graphs</em></p>
+<hr />
+<h3 id="ch11-zabbix-visualisation-dashboards-favourite-maps">Favourite maps</h3>
+<p>The network map equivalent of Favourite graphs. Shows the user's bookmarked network
+maps.</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.7_fav_maps.png" src="../ch11-zabbix-visualisation/dashboards/ch11.7_fav_maps.png" /></p>
+<p><em>11.7 Favourite Maps</em></p>
+<hr />
+<h3 id="ch11-zabbix-visualisation-dashboards-gauge">Gauge</h3>
+<p>Renders a single item's current value as a gauge (180º or 270º). Effective for
+KPI-style displays where you want an instant visual indication of whether a value
+is in a healthy range.</p>
+<p><strong>Key options:</strong> item to display, minimum and maximum values for the scale, threshold
+zones with configurable colours, needle/arc display style.</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.8_gauge.png" src="../ch11-zabbix-visualisation/dashboards/ch11.8_gauge.png" /></p>
+<p><em>11.8 Gauge</em></p>
+<hr />
+<h3 id="ch11-zabbix-visualisation-dashboards-geomap">Geomap</h3>
+<p>Places hosts on a geographic map based on their inventory latitude/longitude fields.
+Hosts are shown as coloured markers that reflect their current problem severity.
+Click a marker to drill down to the host.</p>
+<p><strong>Key options:</strong> host groups to include, the initial map center and zoom level.</p>
+<blockquote>
+<p><strong>Prerequisite:</strong> Host inventory must be populated with latitude and longitude
+  values for the Geomap to place hosts correctly.</p>
+</blockquote>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.9_geomaps.png" src="../ch11-zabbix-visualisation/dashboards/ch11.9_geomaps.png" /></p>
+<p><em>11.9 Geomap</em></p>
+<hr />
+<h3 id="ch11-zabbix-visualisation-dashboards-graph">Graph</h3>
+<p>The primary graph widget for Zabbix 8.0. Renders a time-series SVG graph and is
+the recommended widget for displaying metric data over time. It supports multiple
+data sets, color customization, and is fully interactive in view mode (you can
+zoom and pan the time range).</p>
+<p><strong>Key options:</strong></p>
+<ul>
+<li><strong>Data set</strong>: add one or more data sets, each selecting hosts/items via a pattern
+or direct selection. Each data set gets its own color, draw type (line, points,
+staircase and bars), and y-axis assignment.</li>
+<li><strong>Display</strong>: toggle whether to show the working time overlay, simple triggers,
+  hostnames and percentiles.</li>
+<li><strong>Time period</strong>: either follow the dashboard's global time selector or set a
+fixed period.</li>
+<li><strong>Axes</strong>:  configure left/right y-axis ranges, labels, and units.</li>
+<li><strong>Legend</strong>: control visibility and placement of the legend.</li>
+<li><strong>Problems</strong>: Show problems and Severity of selected hosts</li>
+<li><strong>Override host</strong>: allows the widget to be driven by a dynamic host selection
+from a <em>Host navigator</em> widget on the same dashboard page (see below).</li>
+</ul>
+<p>This widget is preferred over the legacy <em>Graph (classic)</em> for all new dashboards.
+It is built on the newer SVG rendering engine introduced in Zabbix 6.0 and offers
+far more display options.</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.10_graph.png" src="../ch11-zabbix-visualisation/dashboards/ch11.10_graph.png" /></p>
+<p><em>11.10 Graph</em></p>
+<hr />
+<h3 id="ch11-zabbix-visualisation-dashboards-graph-classic">Graph (classic)</h3>
+<p>Renders a previously defined custom graph (created under <em>Data collection → Hosts/Templates
+→ Graphs</em>) or a simple graph for a single item. It uses the older PNG-based rendering
+engine.</p>
+<p>Use this widget when you need to display a named custom graph that you have already
+defined elsewhere and do not want to reconfigure in the widget itself. For new
+visualization work, prefer the <em>Graph</em> widget.</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.11_classic_graph.png" src="../ch11-zabbix-visualisation/dashboards/ch11.11_classic_graph.png" /></p>
+<p><em>11.11 Classic Graph</em></p>
+<p>--</p>
+<h3 id="ch11-zabbix-visualisation-dashboards-graph-prototype">Graph prototype</h3>
+<p>Displays graphs that were created by Low-Level Discovery (LLD) graph prototypes.
+As new entities are discovered (interfaces, disks, etc.), their automatically
+generated graphs appear in this widget.</p>
+<p><strong>Key options:</strong> select the LLD items or the graph prototype whose results you want
+to display.</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.12_graph_prototype.png" src="../ch11-zabbix-visualisation/dashboards/ch11.12_graph_prototype.png" /></p>
+<p><em>11.12 Graph prototype</em></p>
+<hr />
+<h3 id="ch11-zabbix-visualisation-dashboards-honeycomb">Honeycomb</h3>
+<p>Displays a set of items as a grid of coloured hexagonal cells. Each cell represents
+one host/item combination, and its color reflects the item's current value relative
+to configured thresholds. Good for a dense, at-a-glance health view over many similar
+entities.</p>
+<p><strong>Key options:</strong> hosts/items to include, threshold definitions that control cell
+colouring.</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.13_honeycomb.png" src="../ch11-zabbix-visualisation/dashboards/ch11.13_honeycomb.png" /></p>
+<p><em>11.13 Honeycomb</em></p>
+<hr />
+<h3 id="ch11-zabbix-visualisation-dashboards-host-availability">Host availability</h3>
+<p>Shows a summary bar chart of how many hosts in selected host groups are <em>available</em>,
+<em>not available</em>, <em>unknown</em>, or <em>disabled</em> per interface type (Zabbix agent, SNMP,
+JMX, IPMI).</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.14_host_availability.png" src="../ch11-zabbix-visualisation/dashboards/ch11.14_host_availability.png" /></p>
+<p><em>11.14 Host availability</em></p>
+<hr />
+<h3 id="ch11-zabbix-visualisation-dashboards-host-card">Host card</h3>
+<p>Displays a compact summary card for a single host: its name, availability indicators,
+tags, and current problem count per severity. Useful as a focused panel for a
+host specific dashboard page.</p>
+<p><strong>Key options:</strong> the host to display, which details to include.</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.15_host_card.png" src="../ch11-zabbix-visualisation/dashboards/ch11.15_host_card.png" /></p>
+<p><em>11.15_host card</em></p>
+<hr />
+<h3 id="ch11-zabbix-visualisation-dashboards-host-navigator">Host navigator</h3>
+<p>A dynamic host selector widget. It renders a filterable, searchable list of hosts
+(filtered by host groups,host patterns, tags, or severity). When a user selects
+a host from the list, other widgets on the same dashboard page that have
+<em>Override host</em> enabled will update to show data for that selected host.</p>
+<p>This widget is powerful for building a single dashboard that can be used to inspect
+any host by selection, without needing a separate dashboard per host.</p>
+<p><strong>Key options:</strong> host groups, tags, and problem severity filters to limit which
+hosts appear in the list.</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.16_host_navigator.png" src="../ch11-zabbix-visualisation/dashboards/ch11.16_host_navigator.png" /></p>
+<p><em>11.16 Host Navigator</em></p>
+<hr />
+<h3 id="ch11-zabbix-visualisation-dashboards-item-card">Item card</h3>
+<p>Similar to <em>Host card</em>, but focused on a single item rather than a whole host.
+Displays the item's current value, units, and a small sparkline trend.</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.17_item_card.png" src="../ch11-zabbix-visualisation/dashboards/ch11.17_item_card.png" /></p>
+<p>_ch11.17 Item Card__</p>
+<hr />
+<h3 id="ch11-zabbix-visualisation-dashboards-item-history">Item history</h3>
+<p>Displays a table of recent values for one or more items, essentially a compact
+view of the <em>Latest data</em> history for selected items. Useful for keeping an eye
+on discrete event-like metrics (log entries, state changes).</p>
+<p><strong>Key options:</strong> items to display, number of rows to show, sort order.</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.18_item_history.png" src="../ch11-zabbix-visualisation/dashboards/ch11.18_item_history.png" /></p>
+<p><em>ch11.18 Item History</em></p>
+<hr />
+<h3 id="ch11-zabbix-visualisation-dashboards-item-navigator">Item navigator</h3>
+<p>The item-level equivalent of <em>Host navigator</em>. Renders a searchable list of items
+and allows other widgets on the page to be driven by the user's selection.</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.19_item_navigator.png" src="../ch11-zabbix-visualisation/dashboards/ch11.19_item_navigator.png" /></p>
+<p><em>ch11.19 Item Navigator</em></p>
+<hr />
+<h3 id="ch11-zabbix-visualisation-dashboards-item-value">Item value</h3>
+<p>Displays the current (most recent) value of a single item as large text. Optionally
+shows a sparkline below the value, and supports threshold based colouring so the
+widget background or text changes color when the value crosses a threshold.</p>
+<p>This is one of the most versatile widgets for building executive or NOC dashboards
+,a single value, big and clear, with immediate color feedback.</p>
+<p><strong>Key options:</strong> item to display, units override, decimal places, threshold zones,
+sparkline on/off.</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.20_item_value.png" src="../ch11-zabbix-visualisation/dashboards/ch11.20_item_value.png" /></p>
+<p><em>ch11.20 Item Value</em></p>
+<hr />
+<h3 id="ch11-zabbix-visualisation-dashboards-map">Map</h3>
+<p>Embeds a Zabbix network map into the dashboard. The map displays hosts, links,
+and connection states, and updates in real time as problem states change.</p>
+<p><strong>Key options:</strong> which map to display, whether to fit it to the widget size automatically.</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.21_map.png" src="../ch11-zabbix-visualisation/dashboards/ch11.21_map.png" /></p>
+<p><em>ch11.21 Map</em></p>
+<hr />
+<h3 id="ch11-zabbix-visualisation-dashboards-map-navigation-tree">Map navigation tree</h3>
+<p>Displays a hierarchical tree of network maps, allowing users to navigate between
+maps by clicking items in the tree. This pairs with the <em>Map</em> widget: selecting
+a map in the tree updates the map displayed in the <em>Map</em> widget on the same page.</p>
+<p><strong>Key options:</strong> the tree definition (you build the hierarchy of maps manually).</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.22_map_navigation.png" src="../ch11-zabbix-visualisation/dashboards/ch11.22_map_navigation.png" /></p>
+<p><em>ch11.22 Map Navigation</em></p>
+<hr />
+<h3 id="ch11-zabbix-visualisation-dashboards-pie-chart">Pie chart</h3>
+<p>Renders item values as slices of a pie or donut chart. Useful for showing proportional
+distribution (disk usage breakdown, traffic by interface, etc.).</p>
+<p><strong>Key options:</strong> data sets (host/item pairs that become slices), colours, whether
+to show as pie or donut, legend.</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.23_pie.png" src="../ch11-zabbix-visualisation/dashboards/ch11.23_pie.png" /></p>
+<p><em>ch11.23 Pie</em></p>
+<hr />
+<h3 id="ch11-zabbix-visualisation-dashboards-problem-hosts">Problem hosts</h3>
+<p>Shows a summary table of hosts that currently have active problems, grouped or
+filtered by host group. Each row shows a host name and a count of problems per
+severity level, color-coded.</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.24_problem_hosts.png" src="../ch11-zabbix-visualisation/dashboards/ch11.24_problem_hosts.png" /></p>
+<p><em>ch11.24 Problem Hosts</em></p>
+<hr />
+<h3 id="ch11-zabbix-visualisation-dashboards-problems">Problems</h3>
+<p>Displays a live list of current active problems, similar to the <em>Monitoring → Problems</em>
+page but embedded as a widget. You can apply the same filters available on that page:
+host group, host, severity, tags, and so on.</p>
+<p><strong>Key options:</strong> filters for host group, host, severity, tags; whether to show problem
+age; number of rows to display.</p>
+<p>This is one of the most commonly placed widgets on any operational dashboard.</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.25_problems.png" src="../ch11-zabbix-visualisation/dashboards/ch11.25_problems.png" /></p>
+<p><em>ch11.25 Problems</em></p>
+<hr />
+<h3 id="ch11-zabbix-visualisation-dashboards-problems-by-severity">Problems by severity</h3>
+<p>Shows a single summary bar (or count cells) broken down by severity level (Disaster,
+High, Average, Warning, Information, Not classified). Gives an immediate count of
+active problems at each level across a selected scope.</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.26_problems_by_severity.png" src="../ch11-zabbix-visualisation/dashboards/ch11.26_problems_by_severity.png" /></p>
+<p><em>ch11.26 Problems By Severity</em></p>
+<hr />
+<h3 id="ch11-zabbix-visualisation-dashboards-scatter-plot">Scatter plot</h3>
+<p>Plots two item values against each other as dots on an X/Y plane. Useful for correlation
+analysis between two metrics.</p>
+<p><strong>Key options:</strong> X-axis item, Y-axis item, point size and color, axis labels.</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.27_scatter_plot.png" src="../ch11-zabbix-visualisation/dashboards/ch11.27_scatter_plot.png" /></p>
+<p><em>ch11.27 Scatter Plot</em></p>
+<hr />
+<h3 id="ch11-zabbix-visualisation-dashboards-sla-report">SLA report</h3>
+<p>Displays SLA compliance data for services defined in Zabbix's Service monitoring
+module. Shows SLI values and OK/problem time breakdowns for a selected SLA and
+time period.</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.28_sla_reports.png" src="../ch11-zabbix-visualisation/dashboards/ch11.28_sla_reports.png" /></p>
+<p><em>ch11.28 Sla Reports</em></p>
+<hr />
+<h3 id="ch11-zabbix-visualisation-dashboards-system-information">System information</h3>
+<p>Shows key Zabbix server status figures: number of hosts, items, triggers, users
+logged in, required server performance, etc. Typically placed on an internal
+administration dashboard.</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.29_system_information.png" src="../ch11-zabbix-visualisation/dashboards/ch11.29_system_information.png" /></p>
+<p><em>ch11.29 System Information</em></p>
+<hr />
+<h3 id="ch11-zabbix-visualisation-dashboards-top-hosts">Top hosts</h3>
+<p>Displays a table of hosts ranked by the value of a specified item. For example,
+you can rank all hosts by their CPU utilization or by free disk space to quickly
+find the outliers.</p>
+<p><strong>Key options:</strong> items to rank by, host group filter, number of rows, sort order.</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.30_top_hosts.png" src="../ch11-zabbix-visualisation/dashboards/ch11.30_top_hosts.png" /></p>
+<p><em>ch11.30 Top Hosts</em></p>
+<h3 id="ch11-zabbix-visualisation-dashboards-top-items">Top items</h3>
+<p>Similar to <em>Top hosts</em> but item-centric: lists all item values matching a pattern
+across hosts, ranked by value.</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.31_top_items.png" src="../ch11-zabbix-visualisation/dashboards/ch11.31_top_items.png" /></p>
+<p><em>ch11.31 Top Items</em></p>
+<h3 id="ch11-zabbix-visualisation-dashboards-top-triggers">Top triggers</h3>
+<p>Lists the triggers that have fired most frequently in the selected time period,
+ranked by event count. Useful for identifying noisy or chronic problem sources.</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.32_top_triggers.png" src="../ch11-zabbix-visualisation/dashboards/ch11.32_top_triggers.png" /></p>
+<p><em>ch11.32 Top Triggers</em></p>
+<h3 id="ch11-zabbix-visualisation-dashboards-trigger-overview">Trigger overview</h3>
+<p>Displays a matrix grid: hosts on one axis, trigger names on the other, with each
+cell coloured by the trigger's current state. Good for a dense cross-host trigger
+health view.</p>
+<p><strong>Key options:</strong> host groups, trigger name filter, whether to show triggers in
+OK state.</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.33_trigger_overview.png" src="../ch11-zabbix-visualisation/dashboards/ch11.33_trigger_overview.png" /></p>
+<p><em>ch11.33 Trigger Overview</em></p>
+<h3 id="ch11-zabbix-visualisation-dashboards-url">URL</h3>
+<p>Embeds an external URL in an iframe inside the widget. Useful for embedding external
+dashboards, documentation pages, or any web content alongside your Zabbix data.</p>
+<blockquote>
+<p><strong>Security note:</strong> The target URL must be accessible from the user's browser and
+  must not set <code>X-Frame-Options: DENY</code> or an equivalent CSP header, otherwise
+  the browser will refuse to render it.</p>
+</blockquote>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.34_url.png" src="../ch11-zabbix-visualisation/dashboards/ch11.34_url.png" /></p>
+<p><em>ch11.34 url</em></p>
+<h3 id="ch11-zabbix-visualisation-dashboards-web-monitoring">Web monitoring</h3>
+<p>Displays the results of Zabbix web scenario checks: which scenarios are OK, failed,
+or unknown, along with availability percentages and average response times.</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.35_web_monitoring.png" src="../ch11-zabbix-visualisation/dashboards/ch11.35_web_monitoring.png" /></p>
+<p><em>ch11.35 Web Monitoring</em></p>
+<hr />
+<h2 id="ch11-zabbix-visualisation-dashboards-multi-page-dashboards">Multi-Page Dashboards</h2>
+<p>A single dashboard can contain multiple pages (tabs). Each page has its own independent
+canvas and its own set of widgets. Pages share the same dashboard name and settings,
+but their widget layouts are entirely separate.</p>
+<p>To add a page in edit mode, click <em>Add page</em>. A new tab appears. You can rename
+a page by clicking on the 3 dots next to it's label. Reorder pages by dragging their tabs.</p>
+<p>When a dashboard has multiple pages, a <em>Display period</em> setting controls how long
+each page is shown before automatically cycling to the next, useful for NOC screens
+that rotate between views. You can set this per dashboard when creating or editing
+the dashboard properties, and also override it per page in the page settings.</p>
+<p>To delete a page, click on the 3 dots in its tab and choose <em>Delete page</em>. Note: a dashboard
+must always have at least one page.</p>
+<p><img alt="dashboards/../ch11-zabbix-visualisation/dashboards/ch11.36_add_page.png" src="../ch11-zabbix-visualisation/dashboards/ch11.36_add_page.png" /></p>
+<p><em>ch11.36 Add Page</em></p>
+<hr />
+<h2 id="ch11-zabbix-visualisation-dashboards-the-dashboard-time-selector">The Dashboard Time Selector</h2>
+<p>Most data-displaying widgets (Graph, Problems, Top hosts, etc.) respect the dashboard's
+global time selector. This is a time range control in the top-right corner of the
+dashboard page that lets you shift all widgets' data view to a different period
+simultaneously.</p>
+<p>You can set a relative period (e.g., <em>Last 1 hour</em>, <em>Last 7 days</em>) or an absolute
+range with specific start and end timestamps. Changes to the time selector apply
+instantly to all widgets that use it.</p>
+<p>Individual widgets can override this — in a <em>Graph</em> widget's configuration, for
+example, you can choose <em>Custom</em> for the time period and set a fixed range that
+will not be affected by the global selector. This is useful when you want one
+panel to always show the last 24 hours while the rest of the dashboard follows
+a manually adjusted range.</p>
+<hr />
+<h2 id="ch11-zabbix-visualisation-dashboards-sharing-dashboards">Sharing Dashboards</h2>
+<p>By default a dashboard is visible only to its owner. To make it accessible to
+other users, open the dashboard, click the actions menu (3 horizontal lines) for
+the dashboard, and select <em>Sharing</em>.</p>
+<p>The sharing dialog offers two models:</p>
+<p><strong>Private</strong>: the default. Only the owner can see and edit the dashboard. You can
+explicitly grant individual users or user groups either view-only or edit access
+by adding them to the permissions list.</p>
+<p><strong>Public</strong>: the dashboard becomes visible to all Zabbix users who have access
+to the <em>Dashboards</em> section. Public dashboards can still be edited only by
+the owner (and administrators), unless you explicitly grant edit permission
+to others.</p>
+<p><em>To configure:</em> set the type to <em>Public</em> or add users/user groups with <em>Read</em> or
+<em>Read-write</em> permission as needed, then click <em>Update</em>.</p>
+<hr />
+<h2 id="ch11-zabbix-visualisation-dashboards-exporting-and-importing-dashboards">Exporting and Importing Dashboards</h2>
+<p>Dashboards can be exported as YAML files since Zabbix 8 and imported on the same
+or a different Zabbix instance of the same version. This is useful for distributing
+dashboard templates, backing up configurations, or sharing dashboards with the
+community.</p>
+<p><strong>To export:</strong> in the dashboard, select the actions menu (3 horizontal lines),
+then click the <em>Export</em> button and choose the format you like. Or go to the
+dashboard list select all the dashboards you like and click on th export button.
+Zabbix downloads a <code>.yaml, xml or json</code> file containing the full dashboard definition
+including all widget configurations.</p>
+<p><strong>To import:</strong> click the <em>Import</em> button in the top right of the dashboard list,
+select your YAML file, and choose which elements to import. If a dashboard with
+the same name already exists you will be prompted to overwrite it or create a
+new one.</p>
+<hr />
+<h2 id="ch11-zabbix-visualisation-dashboards-template-dashboards">Template Dashboards</h2>
+<p>Template dashboards live inside a template definition rather than in the global
+dashboard list. They exist so that when you link a template to a host, that host
+automatically gets its own dashboard with pre-configured widgets already pointed
+at the right items for that host.</p>
+<h3 id="ch11-zabbix-visualisation-dashboards-creating-a-template-dashboard">Creating a template dashboard</h3>
+<p>Navigate to <em>Data collection → Templates</em>, open a template, and click the <em>Dashboards</em>
+tab. Click <em>Create dashboard</em>.</p>
+<p>The dashboard editor looks identical to the global dashboard editor, with one
+important difference: widgets that reference items use template-level item references
+rather than absolute host/item IDs. This means the widgets are automatically resolved
+to the correct host-specific items when a host links to the template.</p>
+<p>For example, a <em>Graph</em> widget on a template dashboard would reference the template
+item <code>system.cpu.util</code> and when you view the dashboard for <em>Host A</em>, it shows
+<code>system.cpu.util</code> collected from Host A, not from the template itself.</p>
+<h3 id="ch11-zabbix-visualisation-dashboards-viewing-template-dashboards-for-a-host">Viewing template dashboards for a host</h3>
+<p>Go to <em>Monitoring → Hosts</em>, find your host in the list, click the <em>Dashboards</em>
+item in the host's row action menu (or use the <em>Dashboards</em> link in the host's
+detail view). This opens a view of all template dashboards that have been
+instantiated for this host, one tab per dashboard.</p>
+<p>You cannot edit template dashboards from here. To change the definition, go back
+to the template.</p>
+<hr />
+<h2 id="ch11-zabbix-visualisation-dashboards-building-a-practical-example-linux-server-overview-dashboard">Building a Practical Example: Linux Server Overview Dashboard</h2>
+<p>To put it all together, here is a step by step walkthrough of building a useful
+dashboard for monitoring a Linux server. This assumes you have a host monitored
+with the standard <em>Linux by Zabbix agent</em> template, so items like <code>system.cpu.util</code>,
+<code>vm.memory.size[available]</code>, and filesystem usage data are already being collected.</p>
+<p><strong>Step 1 — Create the dashboard</strong></p>
+<p>Go to <em>Dashboards → Create dashboard</em>. Name it <em>Linux Server Overview</em>, set yourself
+as owner, click <em>Apply</em>.</p>
+<p><strong>Step 2 — Add a Problems widget</strong></p>
+<p>Click <em>Add widget</em>, select <em>Problems</em>. Set <em>Host groups</em> to the group containing
+your Linux servers. Set <em>Severity</em> to show from Warning and above. Set rows to
+10. Click <em>Add</em>. Resize it to span the top of the dashboard, roughly 24 columns
+wide and 4 rows tall.</p>
+<p><strong>Step 3 — Add an Item value widget for CPU</strong></p>
+<p>Click <em>Add widget</em>, select <em>Item value</em>. In <em>Item</em>, search for and select
+<code>system.cpu.util</code> on your host. Set the units to <code>%</code>. Enable the sparkline. Add a
+threshold: 0–75 = green, 75–90 = orange, 90–100 = red. Name it <em>CPU Utilization</em>.
+Click <em>Add</em>. Place it below the Problems widget on the left.</p>
+<p><strong>Step 4 — Add an Item value widget for Memory</strong></p>
+<p>Repeat the above for <code>vm.memory.size[pavailable]</code> (percent available memory).
+Invert the threshold logic: 0–10 = red, 10–25 = orange, 25–100 = green. Name it
+<em>Free Memory</em>. Place it next to the CPU widget.</p>
+<p><strong>Step 5 — Add a Graph widget for CPU over time</strong></p>
+<p>Click <em>Add widget</em>, select <em>Graph</em>. Click <em>Add data set</em>, search for <code>system.cpu.util</code>
+on your host. Accept the defaults. Set the <em>Time period</em> to <em>Dashboard</em> (so it
+follows the global selector). Name it <em>CPU History</em>. Resize it to be wide and
+place it in the middle row.</p>
+<p><strong>Step 6 — Add a Graph widget for network traffic</strong></p>
+<p>Add another <em>Graph</em> widget. Add two data sets: one for <code>net.if.in[eth0]</code> and one
+for <code>net.if.out[eth0]</code>. Give them different colours. Name it <em>Network Traffic</em>.
+Place it next to the CPU history graph.</p>
+<p>The name eth0 can be different on your system.</p>
+<p><strong>Step 7 — Save</strong></p>
+<p>Click <em>Save changes</em>. Your dashboard is now live. Use the time selector in the
+top right to zoom out to <em>Last 24 hours</em> and verify all widgets populate correctly.</p>
+<hr />
+<h2 id="ch11-zabbix-visualisation-dashboards-tips-and-best-practices">Tips and Best Practices</h2>
+<p><strong>Design for your audience.</strong> An operations center screen viewed from a distance
+needs large text and bold color cues (Item value, Gauge, Problems by severity).
+A deep-dive analysis dashboard for an engineer can be denser and graph-heavy.</p>
+<p><strong>Use the Host navigator for flexible dashboards.</strong> Rather than creating a separate
+dashboard per host, a single dashboard with a <em>Host navigator</em> + Graph/Item value
+widgets set to <em>Override host</em> lets one dashboard serve your entire fleet.</p>
+<p><strong>Keep page count manageable.</strong> Auto-cycling works well for NOC displays, but for
+interactive use more than 3–4 pages makes navigation clumsy. Consider splitting
+logically distinct views into separate dashboards instead.</p>
+<p><strong>Avoid the <em>URL</em> widget for sensitive data.</strong> Since the URL is loaded in the viewer's
+browser, ensure that anything embedded does not expose data that the Zabbix
+permissions model would otherwise restrict.</p>
+<p><strong>Export dashboards you have invested time in.</strong> A YAML export is an effective
+backup and makes it easy to share your work with other Zabbix administrators
+or contribute it back to the community.</p>
+<p><strong>Use template dashboards for consistency.</strong> If you monitor many instances of
+the same technology (Linux hosts, Apache servers, PostgreSQL databases), define
+the dashboard once in the template and get it automatically for every host.</p>
 <h2 id="ch11-zabbix-visualisation-dashboards-conclusion">Conclusion</h2>
+<p>Dashboards are one of the most powerful ways to present monitoring data in Zabbix.
+By combining widgets, graphs, maps, status indicators, and business focused metrics,
+you can transform raw monitoring information into clear and actionable insights.</p>
+<p>In this chapter, you learned how to create and customize dashboards, organize
+information for different audiences, and use visualization techniques to highlight
+the most important aspects of your infrastructure. Well designed dashboards help
+operators detect issues faster, enable administrators to monitor system health
+efficiently, and provide management with a high-level overview of service availability
+and performance.</p>
+<p>Remember that the best dashboard is not necessarily the one with the most widgets,
+but the one that presents the right information to the right people at the right
+time. By carefully designing your dashboards, you can significantly improve visibility,
+reduce response times, and make better operational decisions based on your monitoring
+data.</p>
 <h2 id="ch11-zabbix-visualisation-dashboards-questions">Questions</h2>
-<h2 id="ch11-zabbix-visualisation-dashboards-useful-urls">Useful URLs</h2></section><section class="print-page" id="ch11-zabbix-visualisation-maps" heading-number="16.3"><h1 id="ch11-zabbix-visualisation-maps-creating-maps-for-better-overviews">Creating Maps for better overviews</h1>
+<ul>
+<li>What is the purpose of a dashboard in Zabbix?</li>
+<li>What factors should you consider when designing an effective dashboard?</li>
+<li>How can dashboard permissions affect what users are able to see?</li>
+</ul>
+<h2 id="ch11-zabbix-visualisation-dashboards-useful-urls">Useful URLs</h2>
+<ul>
+<li><a href="https://www.zabbix.com/documentation/devel/en/manual/web_interface/frontend_sections/dashboards/widgets_overview">https://www.zabbix.com/documentation/devel/en/manual/web_interface/frontend_sections/dashboards/widgets_overview</a></li>
+<li><a href="https://www.zabbix.com/documentation/devel/en/manual/web_interface/frontend_sections/dashboards">https://www.zabbix.com/documentation/devel/en/manual/web_interface/frontend_sections/dashboards</a></li>
+</ul></section><section class="print-page" id="ch11-zabbix-visualisation-maps" heading-number="16.3"><h1 id="ch11-zabbix-visualisation-maps-creating-maps-for-better-overviews">Creating Maps for better overviews</h1>
 <h2 id="ch11-zabbix-visualisation-maps-conclusion">Conclusion</h2>
 <h2 id="ch11-zabbix-visualisation-maps-questions">Questions</h2>
 <h2 id="ch11-zabbix-visualisation-maps-useful-urls">Useful URLs</h2></section><section class="print-page" id="ch11-zabbix-visualisation-built-in-reports" heading-number="16.4"><h1 id="ch11-zabbix-visualisation-built-in-reports-using-the-zabbix-built-in-reports">Using the Zabbix built in reports</h1>
@@ -29688,7 +30410,7 @@ indefinitely as long as Zabbix is running and the token has no explicit maximum 
 default max_lease_ttl, commonly 32 days, does not cap periodic tokens unless explicit_max_ttl
 is configured.</p>
 <ul>
-<li>If you only set period=720h → you’re fine, no 32-day limit</li>
+<li>If you only set period=720h → you're fine, no 32-day limit</li>
 <li>If explicit_max_ttl is set → the token will expire when that explicit maximum TTL is reached.</li>
 </ul>
 </div>
@@ -31693,7 +32415,7 @@ several other internal workers that play important roles:</p>
 <ul>
 <li><strong>History syncers</strong>: Write collected values to the database</li>
 <li><strong>Trend syncers</strong>: Aggregate historical data into trends</li>
-<li><strong>Escalators</strong>: Mmanage multi-step alert escalations</li>
+<li><strong>Escalators</strong>: Manage multi-step alert escalations</li>
 <li><strong>Configuration syncers</strong>: Distribute configuration changes across the system</li>
 <li><strong>Availability managers</strong>: Track host and service availability</li>
 </ul>

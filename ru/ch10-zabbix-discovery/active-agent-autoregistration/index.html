@@ -1270,6 +1270,72 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#understanding-active-agent-autoregistration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understanding active agent autoregistration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#active-versus-passive-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Active versus passive agents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-an-autoregistration-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating an autoregistration action
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-hostmetadataitem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using HostMetadataItem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-global-psk-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using global PSK authentication
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security considerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#conclusion" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1666,6 +1732,72 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#understanding-active-agent-autoregistration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understanding active agent autoregistration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#active-versus-passive-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Active versus passive agents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-an-autoregistration-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating an autoregistration action
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-hostmetadataitem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using HostMetadataItem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-global-psk-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using global PSK authentication
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security considerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#conclusion" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1790,22 +1922,129 @@
 
 
 <h1 id="automating-adding-hosts-with-active-agent-autoregistration">Automating adding hosts with active agent autoregistration</h1>
-<p>In this chapter, we'll explore the powerful automation features in Zabbix called
-<strong>active agent autoregistration</strong>. This tools are essential
-for scaling your monitoring efforts by minimizing manual configuration and
-ensuring new devices and services are seamlessly integrated into your Zabbix
-environment.</p>
-<p>We'll dive into <strong>active agent autoregistration</strong>, which simplifies the
-management of Zabbix agents, especially in large or rapidly changing environments.
-We'll cover how to set up autoregistration rules that allow agents to register
-themselves with the Zabbix server, reducing administrative overhead and ensuring
-all relevant data is captured efficiently.</p>
-<p>By the end of this chapter, you'll have a thorough understanding of how to leverage
-active agent autoregistration to create a more automated, scalable, and
-efficient monitoring system.</p>
+<p>In this chapter, we'll explore the powerful automation features in Zabbix called <strong>active agent autoregistration</strong>. This tools are essential for scaling your monitoring efforts by minimizing manual configuration and ensuring new devices and services are seamlessly integrated into your Zabbix environment.</p>
+<p>We'll dive into <strong>active agent autoregistration</strong>, which simplifies the management of Zabbix agents, especially in large or rapidly changing environments.
+We'll cover how to set up autoregistration rules that allow agents to register themselves with the Zabbix server, reducing administrative overhead and ensuring all relevant data is captured efficiently.</p>
+<p>By the end of this chapter, you'll have a thorough understanding of how to leverage active agent autoregistration to create a more automated, scalable, and efficient monitoring system.</p>
+<h2 id="understanding-active-agent-autoregistration">Understanding active agent autoregistration</h2>
+<p>Before we start configuring anything, it is important to understand what autoregistration actually does.</p>
+<p>Normally, when we want to monitor a new server with a Zabbix agent, we must first:</p>
+<ol>
+<li>Create a host in Zabbix</li>
+<li>Configure host interfaces</li>
+<li>Assign templates</li>
+<li>Place the host into the correct host groups</li>
+</ol>
+<p>Only after those steps have been completed, the host can start sending monitoring data.</p>
+<p>With active agent autoregistration, the workflow is reversed.</p>
+<p>Instead of creating the host first, we deploy the Zabbix agent and configure it to connect to the Zabbix server. The agent then contacts the server and introduces itself as a new monitoring target.</p>
+<p>The Zabbix server receives this registration request and evaluates it against configured autoregistration actions. If the registration matches the action conditions, Zabbix can automatically create and configure the host.</p>
+<p>The result is a highly scalable onboarding process that requires little or no manual work.</p>
+<h2 id="active-versus-passive-agents">Active versus passive agents</h2>
+<p>Autoregistration only works with active checks. For passive agents we have another feature in Zabbix called network discovery, discussed in another part of this book. </p>
+<p>The reason we can only use this feature with active agents is because the agent must initiate communication towards the Zabbix server or proxy.
+A passive agent waits for the server or proxy to contact it, while an active agent establishes the connection itself.</p>
+<p>Let's open the Zabbix agent configuration file.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>vim<span class="w"> </span>/etc/zabbix/zabbix_agent2.conf
+</span></code></pre></div>
+<p>For active checks, the following configuration parameters are especially important. </p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="na">ServerActive</span><span class="o">=</span><span class="s">192.168.1.10</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="na">Hostname</span><span class="o">=</span><span class="s">linux-web-01</span>
+</span></code></pre></div>
+<p>With those settings, we can already start doing active agent autoregistration. However we can include an additional parameter to make things more useful.</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="na">HostMetadata</span><span class="o">=</span><span class="s">linux</span>
+</span></code></pre></div>
+<p>The key parameter here is <code>HostMetadata</code>. It functions as a text string sent during registration and can be used by autoregistration actions to determine how a host should be configured.</p>
+<p>For example:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="na">HostMetadata</span><span class="o">=</span><span class="s">linux</span>
+</span></code></pre></div>
+<p>Or:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="na">HostMetadata</span><span class="o">=</span><span class="s">windows</span>
+</span></code></pre></div>
+<p>Or even:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="na">HostMetadata</span><span class="o">=</span><span class="s">windows/production/mssql</span>
+</span></code></pre></div>
+<p>This allows us to create different autoregistration actions for different types of systems. Additionally if you combine this type of configuration with automatic installation of the Zabbix agent through Ansible, PDQ Deploy or other tools we get a very versatile hands-off environment.</p>
+<p>After setting up your agent configuration, do not forget to restart the agent for the changes to take effect.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>zabbix-agent2
+</span></code></pre></div>
+<h2 id="creating-an-autoregistration-action">Creating an autoregistration action</h2>
+<p>Let's configure our first autoregistration action. Navigate to <code>Alerts</code> | <code>Actions</code> | <code>Autoregistration actions</code></p>
+<p>Click on <code>Create action</code> and give the action a name. For example <code>Linux servers autoregistration</code>.</p>
+<p>Now create a condition. Let's use the <code>HostMetadata</code> item we configured in our Zabbix agent configuration file earlier. Let's set the <code>Condition</code> as <code>Host metadata</code> with the operator <code>contains</code> and the value <code>Linux</code>.</p>
+<p>This means the action will only execute when a registering agent sends metadata containing the word <code>linux</code>.</p>
+<p>With the condition set, we can now configure what needs to happen upon matching the conditions. We do this using the <code>Operations</code>.</p>
+<p>When a host registers successfully, we can automatically perform actions such as:</p>
+<ul>
+<li>Add host to a host group</li>
+<li>Link templates</li>
+<li>Add host tags</li>
+</ul>
+<p>Since every host needs at least one host group, Zabbix will automatically add the <code>Discovered hosts</code> host group. However, that is usually not enough for a structured Zabbix environment. As such we will add the host to a host group called <code>Servers/Linux</code></p>
+<p>This keeps our environment organized from the moment the host appears.</p>
+<p>We can also automatically assign templates, which is where the <code>HostMetadata</code> really starts to shine. For example we can now attach the <code>Linux by Zabbix agent active</code> template to the host, automatically once the host registers itself. This will make sure any new hosts we install the agent on will automatically start monitoring, by collecting metrics from the linked template and even creating problems. No manual template assignment is required, but we can still add more manually later.</p>
+<p>Our Action conditions should now look something like below.</p>
+<p>![Zabbix Agent autoregistration action conditions]](autoregistration/ch10.x-autoregistration-action-conditions.png){ align=center }</p>
+<p><em>10.x Zabbix Agent autoregistration action conditions</em></p>
+<p>The operations should contain the following.</p>
+<p><img align="center" alt="Zabbix Agent autoregistration action operations" src="autoregistration/ch10.x-autoregistration-action-operations.png" /></p>
+<p>_10.x Zabbix Agent autoregistration action operations</p>
+<p>One of my favourite tricks here is to let a tool like Ansible set the <code>HostMetadata</code> field with software like <code>NGINX</code> automatically. Then we can add additional Actions with rules to add those templates as well. These can be done in separate actions, as an incoming host registering itself will create an autoregistration event. In Zabbix, any event coming in will always be matches against all action conditions and execute the operations for all matches.</p>
+<p><img align="center" alt="Zabbix Agent autoregistration action list" src="autoregistration/ch10.x-autoregistration-action-list.png" /></p>
+<p>_10.x Zabbix Agent autoregistration action list</p>
+<h2 id="using-hostmetadataitem">Using HostMetadataItem</h2>
+<p>Instead of using hardcoding metadata, the Zabbix agent can also generate it dynamically.</p>
+<p>For example, in the configuration file of the Zabbix agent we could add the following parameter.</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="na">HostMetadataItem</span><span class="o">=</span><span class="s">system.uname</span>
+</span></code></pre></div>
+<p>The agent will execute the item with the key <code>system.uname</code> and use its value as metadata.</p>
+<p>This can be useful when building automated deployment systems where you want hosts to classify themselves automatically.</p>
+<h2 id="using-global-psk-authentication">Using global PSK authentication</h2>
+<p>In many environments, allowing any agent to register itself based solely on host metadata may not be considered secure enough. To provide an additional layer of
+protection, Zabbix supports TLS encryption with Pre-Shared Keys (PSK) for autoregistering agents.</p>
+<p>As such, it is recommended to configure all newly deployed agents with the same global PSK. This ensures that only systems that possess the correct key can successfully communicate with the Zabbix server or proxy.</p>
+<p>On the agent, configure the PSK settings.</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="na">TLSConnect</span><span class="o">=</span><span class="s">psk</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="na">TLSAccept</span><span class="o">=</span><span class="s">psk</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="na">TLSPSKIdentity</span><span class="o">=</span><span class="s">agent-psk-default</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="na">TLSPSKFile</span><span class="o">=</span><span class="s">/etc/zabbix/agent.psk</span>
+</span></code></pre></div>
+<p>Then, make sure the PSK file is configured and ready to use.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>openssl<span class="w"> </span>rand<span class="w"> </span>-hex<span class="w"> </span><span class="m">32</span><span class="w"> </span>&gt;<span class="w"> </span>/etc/zabbix/agent.psk
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>chmod<span class="w"> </span><span class="m">400</span><span class="w"> </span>/etc/zabbix/agent.psk
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>chown<span class="w"> </span>zabbix:zabbix<span class="w"> </span>/etc/zabbix/agent.psk
+</span></code></pre></div>
+<p>When configuring the autoregistration action, you can define the PSK identity and PSK value that should be assigned to newly registered hosts. Any agent that
+attempts to register without the correct PSK will be rejected before the autoregistration process is evaluated.</p>
+<p>This approach is especially useful in automated deployment environments where servers are provisioned from templates or configuration management systems such as Ansible, PDQ Deploy or other tools.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Using a single global PSK simplifies deployment and onboarding, but it also
+means every autoregistering host shares the same secret. In higher-security
+environments, consider automatically rotating to unique host-specific PSKs
+after registration.</p>
+</div>
+<h2 id="security-considerations">Security considerations</h2>
+<p>Autoregistration is extremely convenient, but it should be configured carefully.</p>
+<p>Remember that any system capable of reaching your Zabbix server or proxy could potentially attempt registration.</p>
+<p>A few good practices include:</p>
+<ul>
+<li>Use meaningful metadata conditions.</li>
+<li>Only allow trusted networks to reach your agents and proxies.</li>
+<li>Use PSK encryption between agents and server/proxy.</li>
+<li>Avoid creating overly broad autoregistration actions.</li>
+<li>Regularly review newly registered hosts.</li>
+</ul>
+<p>Automation should reduce the administrative load, without impacting security.</p>
 <h2 id="conclusion">Conclusion</h2>
+<p>Active agent autoregistration is one of the most useful automation features in Zabbix. Instead of manually creating hosts and assigning configuration, agents can register themselves to the monitoring environment and receive everything they need automatically.</p>
+<p>By combining active checks, host metadata, PSK authentication, and autoregistration actions, you can build a highly scalable agent deployment process that works equally well for a handful of servers or thousands of systems across multiple locations.</p>
+<p>When designed properly, autoregistration ensures that newly deployed systems are monitored immediately, consistently, securely, and with minimal administrative load.</p>
 <h2 id="questions">Questions</h2>
 <h2 id="useful-urls">Useful URLs</h2>
+<ul>
+<li>https://www.zabbix.com/documentation/current/en/manual/discovery/auto_registration</li>
+</ul>
 
 
 

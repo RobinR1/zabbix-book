@@ -546,6 +546,15 @@ from JVMs to track memory, threads, and application health easily
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#flowchart-lr-aapplication-bmbeans-b-cmbeanserver-c-dconnector-rmi-jmxmp-d-ezabbix-java-gateway-e-fzabbix-server-db-f-gfrontend-classdef-app-fillfef3c7stroke111stroke-width1pxcolor111-classdef-mbean-filldbeafestroke111stroke-width1pxcolor111-classdef-gateway-fillfde68astroke111stroke-width1pxcolor111-classdef-zabbix-fillbbf7d0stroke111stroke-width1pxcolor111-class-a-app-class-bc-mbean-class-de-gateway-class-fg-zabbix">
+<span class="md-ellipsis">
+      
+        flowchart LR A[Application] --&gt; B[MBeans] B --&gt; C[MBeanServer] C --&gt; D[Connector RMI - JMXMP] D --&gt; E[Zabbix Java Gateway] E --&gt; F[Zabbix Server / DB] F --&gt; G[Frontend] classDef app fill:#fef3c7,stroke:#111,stroke-width:1px,color:#111; classDef mbean fill:#dbeafe,stroke:#111,stroke-width:1px,color:#111; classDef gateway fill:#fde68a,stroke:#111,stroke-width:1px,color:#111; classDef zabbix fill:#bbf7d0,stroke:#111,stroke-width:1px,color:#111; class A app; class B,C mbean; class D,E gateway; class F,G zabbix;
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#where-does-the-zabbix-java-gateway-fit-in-this-picture">
 <span class="md-ellipsis">
       
@@ -970,6 +979,15 @@ from JVMs to track memory, threads, and application health easily
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#flowchart-lr-aapplication-bmbeans-b-cmbeanserver-c-dconnector-rmi-jmxmp-d-ezabbix-java-gateway-e-fzabbix-server-db-f-gfrontend-classdef-app-fillfef3c7stroke111stroke-width1pxcolor111-classdef-mbean-filldbeafestroke111stroke-width1pxcolor111-classdef-gateway-fillfde68astroke111stroke-width1pxcolor111-classdef-zabbix-fillbbf7d0stroke111stroke-width1pxcolor111-class-a-app-class-bc-mbean-class-de-gateway-class-fg-zabbix">
+<span class="md-ellipsis">
+      
+        flowchart LR A[Application] --&gt; B[MBeans] B --&gt; C[MBeanServer] C --&gt; D[Connector RMI - JMXMP] D --&gt; E[Zabbix Java Gateway] E --&gt; F[Zabbix Server / DB] F --&gt; G[Frontend] classDef app fill:#fef3c7,stroke:#111,stroke-width:1px,color:#111; classDef mbean fill:#dbeafe,stroke:#111,stroke-width:1px,color:#111; classDef gateway fill:#fde68a,stroke:#111,stroke-width:1px,color:#111; classDef zabbix fill:#bbf7d0,stroke:#111,stroke-width:1px,color:#111; class A app; class B,C mbean; class D,E gateway; class F,G zabbix;
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#where-does-the-zabbix-java-gateway-fit-in-this-picture">
 <span class="md-ellipsis">
       
@@ -1155,11 +1173,11 @@ from JVMs to track memory, threads, and application health easily
 <h1 id="monitoring-java-applications-with-jmx">Monitoring Java Applications with JMX</h1>
 <p>One of the neat features that Zabbix offers out of the box is the ability to monitor
 Java applications. To make this happen, Zabbix uses something called the
-<code>Java Gateway</code>, which communicates with Java applications via the
-<code>Java Management Extensions</code> JMX, for short.</p>
-<p><code>JMX</code> is a built-in Java technology designed specifically for monitoring and managing
-Java applications and the <code>Java Virtual Machine</code> (JVM). It works through components
-called <code>MBeans</code> (Managed Beans), which act like data sensors and control points.
+<strong>Java Gateway</strong>, which communicates with Java applications via the
+<strong>Java Management Extensions</strong> JMX, for short.</p>
+<p><strong>JMX</strong> is a built-in Java technology designed specifically for monitoring and managing
+Java applications and the <strong>Java Virtual Machine</strong> (JVM). It works through components
+called <strong>MBeans</strong> (Managed Beans), which act like data sensors and control points.
 These MBeans can expose useful information like memory usage, thread counts, and
 even allow runtime configuration changes, all while the application is running.</p>
 <p>One of the strengths of JMX is its flexibility. It supports both local and remote
@@ -1167,29 +1185,33 @@ access, so whether your Java app is on the same machine or halfway across the
 network, Zabbix can still keep an eye on it. Combined with the Java Gateway, this
 makes JMX a powerful and scalable option for monitoring Java-based environments
 with minimal setup. Also JMX was an extension but is part of JAVA SE since java 5.</p>
+<hr/>
 <h2 id="key-concepts-in-jmx-monitoring">Key Concepts in JMX Monitoring</h2>
 <p>Before diving into JMX monitoring with Zabbix, it helps to get familiar with a
 few core building blocks that make it all work:</p>
-<p><strong>Managed Beans (MBeans):</strong>
-These are the heart of JMX. MBeans are Java objects that expose useful bits of
-data (called attributes) and operations (as regular methods) from your application.
-Think of them as little control panels inside your Java app, you can read metrics,
-tweak settings, or trigger actions through them.</p>
-<p><strong>JMX Agent:</strong>
-This is the engine behind the scenes. Running inside the Java Virtual Machine (JVM),
-the JMX agent connects everything together. It's what lets management tools
-(like Zabbix) interact with the MBeans.</p>
-<p><strong>MBean Server:</strong>
-A key part of the JMX agent, the MBean server is like a central registry where
-MBeans are registered and managed. It keeps everything organized and accessible.</p>
-<p><strong>Connectors:</strong>
-Want to monitor your Java app remotely? That's where connectors come in. They
-let external tools connect to the JMX agent over a network. So you're not limited
-to local monitoring.</p>
-<p><strong>Adaptors:</strong>
-Sometimes you need JMX data to speak a different language. Adaptors convert JMX
-info into formats that non-Java tools can understand, like HTTP or SNMP, making
-integration easier with broader monitoring ecosystems.</p>
+<dl>
+<dt><strong>Managed Beans (MBeans):</strong></dt>
+<dd>These are the heart of JMX. MBeans are Java objects that expose useful bits of
+  data (called attributes) and operations (as regular methods) from your application.
+  Think of them as little control panels inside your Java app, you can read metrics,
+  tweak settings, or trigger actions through them.</dd>
+<dt><strong>JMX Agent:</strong></dt>
+<dd>This is the engine behind the scenes. Running inside the Java Virtual Machine (JVM),
+  the JMX agent connects everything together. It's what lets management tools
+  (like Zabbix) interact with the MBeans.</dd>
+<dt><strong>MBean Server:</strong></dt>
+<dd>A key part of the JMX agent, the MBean server is like a central registry where
+  MBeans are registered and managed. It keeps everything organized and accessible.</dd>
+<dt><strong>Connectors:</strong></dt>
+<dd>Want to monitor your Java app remotely? That's where connectors come in. They
+  let external tools connect to the JMX agent over a network. So you're not limited
+  to local monitoring.</dd>
+<dt><strong>Adaptors:</strong></dt>
+<dd>Sometimes you need JMX data to speak a different language. Adaptors convert JMX
+  info into formats that non-Java tools can understand, like HTTP or SNMP, making
+  integration easier with broader monitoring ecosystems.</dd>
+</dl>
+<hr/>
 <h2 id="jmx-core-architecture">JMX Core Architecture</h2>
 <p>To understand how Zabbix collects data from Java applications, it helps to know
 the basic structure of JMX itself. JMX is built on a three-layer architecture that
@@ -1214,7 +1236,7 @@ external tools can reach them.</p>
   Zabbix uses an RMI connector via the Java Gateway.</p>
 </li>
 </ul>
-<pre class="mermaid"><code>flowchart LR
+<h2 id="flowchart-lr-aapplication-bmbeans-b-cmbeanserver-c-dconnector-rmi-jmxmp-d-ezabbix-java-gateway-e-fzabbix-server-db-f-gfrontend-classdef-app-fillfef3c7stroke111stroke-width1pxcolor111-classdef-mbean-filldbeafestroke111stroke-width1pxcolor111-classdef-gateway-fillfde68astroke111stroke-width1pxcolor111-classdef-zabbix-fillbbf7d0stroke111stroke-width1pxcolor111-class-a-app-class-bc-mbean-class-de-gateway-class-fg-zabbix"><pre class="mermaid"><code>flowchart LR
     A[Application] --&gt; B[MBeans]
     B --&gt; C[MBeanServer]
     C --&gt; D[Connector RMI - JMXMP]
@@ -1232,7 +1254,7 @@ external tools can reach them.</p>
     class D,E gateway;
     class F,G zabbix;
 
-</code></pre>
+</code></pre></h2>
 <h2 id="where-does-the-zabbix-java-gateway-fit-in-this-picture">Where Does the Zabbix Java Gateway Fit in this picture?</h2>
 <p>The Zabbix Java Gateway is an external component in the Zabbix ecosystem specifically
 designed to handle JMX monitoring. While it's not part of the JMX framework itself,
@@ -1275,32 +1297,39 @@ The client that initiates those connections.</p>
     JGW --&gt; Connector
 
 </code></pre>
+<hr/>
 <h2 id="setup-tomcat-to-monitor-with-zabbix">Setup Tomcat to monitor with Zabbix.</h2>
 <p>To ensure accurate testing of JMX monitoring with Zabbix, a dedicated host is essential.
 Although configuration on the Zabbix server is possible, a separate machine provides a
 more realistic representation of a production environment. For our setup, we'll
-use a new virtual machine running either Rocky Linux or Ubuntu. This machine will
+use a new virtual machine running either Rocky Linux, openSUSE or Ubuntu. This machine will
 serve as our JMX-enabled target, and we'll install and configure Tomcat on it for
-this purpose.</p>
+this purpose.
+First, prepare the new VM as outlined in the <a href="../../ch00-getting-started/preparation/">Preparing the system for Zabbix section</a>,
+then continue with the following steps to set up Tomcat and enable JMX monitoring.</p>
 <details class="info" open="open">
 <summary>Setup Tomcat</summary>
 <p>Red hat
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>dnf install tomcat
-</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>vi /etc/sysconfig/tomcat
-</span></code></pre></div>
-Ubuntu
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>apt install tomcat10
-</span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>vi /etc/default/tomcat10
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>dnf<span class="w"> </span>install<span class="w"> </span>tomcat
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>vi<span class="w"> </span>/etc/sysconfig/tomcat
+</span></code></pre></div></p>
+<p>SUSE
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>zypper<span class="w"> </span>install<span class="w"> </span>tomcat
+</span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>vi<span class="w"> </span>/etc/sysconfig/tomcat
+</span></code></pre></div></p>
+<p>Ubuntu
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>apt<span class="w"> </span>install<span class="w"> </span>tomcat10
+</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a>vi<span class="w"> </span>/etc/default/tomcat10
 </span></code></pre></div>
 Add the following config: in Ubuntu remove the original JAVA_OPTS line or
 place a # in front</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="l l-Scalar l-Scalar-Plain">JAVA_OPTS="\</span>
-</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">-Dcom.sun.management.jmxremote=true \</span>
-</span><span id="__span-2-3"><a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">-Dcom.sun.management.jmxremote.port=8686 \</span>
-</span><span id="__span-2-4"><a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">-Dcom.sun.management.jmxremote.rmi.port=8686 \</span>
-</span><span id="__span-2-5"><a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">-Dcom.sun.management.jmxremote.authenticate=false \</span>
-</span><span id="__span-2-6"><a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">-Dcom.sun.management.jmxremote.ssl=false \</span>
-</span><span id="__span-2-7"><a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">-Djava.rmi.server.hostname=&lt;local ip or hostname&gt;"</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="na">JAVA_OPTS</span><span class="o">=</span><span class="s">"</span><span class="err">\</span>
+</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">  </span><span class="na">-Dcom.sun.management.jmxremote</span><span class="o">=</span><span class="s">true </span>\
+</span><span id="__span-3-3"><a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">  </span><span class="s">-Dcom.sun.management.jmxremote.port=8686 </span>\
+</span><span id="__span-3-4"><a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">  </span><span class="s">-Dcom.sun.management.jmxremote.rmi.port=8686 </span>\
+</span><span id="__span-3-5"><a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">  </span><span class="s">-Dcom.sun.management.jmxremote.authenticate=false </span>\
+</span><span id="__span-3-6"><a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">  </span><span class="s">-Dcom.sun.management.jmxremote.ssl=false </span>\
+</span><span id="__span-3-7"><a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="w">  </span><span class="s">-Djava.rmi.server.hostname=&lt;local ip or hostname&gt;"</span>
 </span></code></pre></div>
 </details>
 <h3 id="explanation-of-each-line">Explanation of Each Line</h3>
@@ -1358,31 +1387,34 @@ Apache Tomcat.</p>
 </ul>
 <details class="note" open="open">
 <summary>Note</summary>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>There<span class="w"> </span>isn<span class="s1">'t a single, universally "standard" port for JMX that is accepted</span>
-</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="s1">across all applications and vendors. The JMX specification itself does not</span>
-</span><span id="__span-3-3"><a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="s1">define a default port, leaving it to the implementer to choose one.</span>
-</span><span id="__span-3-4"><a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>
-</span><span id="__span-3-5"><a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="s1">However, certain ports have become common or de facto standards within the Java</span>
-</span><span id="__span-3-6"><a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="s1">ecosystem. The most frequently seen ports for JMX are in the high-number range,</span>
-</span><span id="__span-3-7"><a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="s1">typically:</span>
-</span><span id="__span-3-8"><a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a>
-</span><span id="__span-3-9"><a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="s1">- 1099: This port is a historic default for the RMI Registry, which JMX often</span>
-</span><span id="__span-3-10"><a href="#__codelineno-3-10" id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="s1">  uses for communication. While it'</span>s<span class="w"> </span>not<span class="w"> </span>strictly<span class="w"> </span>a<span class="w"> </span>JMX<span class="w"> </span>port,<span class="w"> </span>it<span class="s1">'s often</span>
-</span><span id="__span-3-11"><a href="#__codelineno-3-11" id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="s1">  associated with older JMX configurations.</span>
-</span><span id="__span-3-12"><a href="#__codelineno-3-12" id="__codelineno-3-12" name="__codelineno-3-12"></a>
-</span><span id="__span-3-13"><a href="#__codelineno-3-13" id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="s1">- 8686: This port is a well-accepted and formally registered port for JMX with</span>
-</span><span id="__span-3-14"><a href="#__codelineno-3-14" id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="s1">  the Internet Assigned Numbers Authority (IANA). The IANA service name for port</span>
-</span><span id="__span-3-15"><a href="#__codelineno-3-15" id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="s1">  8686 is sun-as-jmxrmi. This makes it a great choice because it'</span>s<span class="w"> </span>officially
-</span><span id="__span-3-16"><a href="#__codelineno-3-16" id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="w">  </span>recognized<span class="w"> </span>and<span class="w"> </span>less<span class="w"> </span>likely<span class="w"> </span>to<span class="w"> </span>conflict<span class="w"> </span>with<span class="w"> </span>other<span class="w"> </span>common<span class="w"> </span>services.
-</span><span id="__span-3-17"><a href="#__codelineno-3-17" id="__codelineno-3-17" name="__codelineno-3-17"></a>
-</span><span id="__span-3-18"><a href="#__codelineno-3-18" id="__codelineno-3-18" name="__codelineno-3-18"></a>Why<span class="w"> </span>Port<span class="w"> </span><span class="m">8686</span><span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>Good<span class="w"> </span>Choice?
-</span><span id="__span-3-19"><a href="#__codelineno-3-19" id="__codelineno-3-19" name="__codelineno-3-19"></a>Port<span class="w"> </span><span class="m">8686</span><span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>User<span class="w"> </span>Port<span class="w"> </span><span class="o">(</span><span class="m">1024</span>-49151<span class="o">)</span>,<span class="w"> </span>which<span class="w"> </span>means<span class="w"> </span>it<span class="s1">'s available for registered</span>
-</span><span id="__span-3-20"><a href="#__codelineno-3-20" id="__codelineno-3-20" name="__codelineno-3-20"></a><span class="s1">services but isn'</span>t<span class="w"> </span>a<span class="w"> </span><span class="s2">"well known"</span><span class="w"> </span>port<span class="w"> </span>that<span class="w"> </span>requires<span class="w"> </span>a<span class="w"> </span>special<span class="w"> </span>permission<span class="w"> </span>level
-</span><span id="__span-3-21"><a href="#__codelineno-3-21" id="__codelineno-3-21" name="__codelineno-3-21"></a>to<span class="w"> </span>use.<span class="w"> </span>It<span class="err">'</span>s<span class="w"> </span>IANA<span class="w"> </span>registration<span class="w"> </span>as<span class="w"> </span>sun-as-jmxrmi<span class="w"> </span>makes<span class="w"> </span>it<span class="w"> </span>a<span class="w"> </span>safe<span class="w"> </span>and<span class="w"> </span>logical
-</span><span id="__span-3-22"><a href="#__codelineno-3-22" id="__codelineno-3-22" name="__codelineno-3-22"></a>choice<span class="w"> </span><span class="k">for</span><span class="w"> </span>JMX<span class="w"> </span>monitoring,<span class="w"> </span>especially<span class="w"> </span>when<span class="w"> </span>you<span class="w"> </span>need<span class="w"> </span>to<span class="w"> </span>standardize<span class="w"> </span>port<span class="w"> </span>assignments
-</span><span id="__span-3-23"><a href="#__codelineno-3-23" id="__codelineno-3-23" name="__codelineno-3-23"></a>across<span class="w"> </span>a<span class="w"> </span>large<span class="w"> </span>infrastructure.
-</span></code></pre></div>
+<p>There isn't a single, universally "standard" port for JMX that is accepted
+across all applications and vendors. The JMX specification itself does not
+define a default port, leaving it to the implementer to choose one.</p>
+<p>However, certain ports have become common or de facto standards within the Java
+ecosystem. The most frequently seen ports for JMX are in the high-number range,
+typically:</p>
+<ul>
+<li>
+<p><code>1099</code>: This port is a historic default for the RMI Registry, which JMX often
+  uses for communication. While it's not strictly a JMX port, it's often
+  associated with older JMX configurations.</p>
+</li>
+<li>
+<p><code>8686</code>: This port is a well-accepted and formally registered port for JMX with
+  the Internet Assigned Numbers Authority (IANA). The IANA service name for port
+  <code>8686</code> is <code>sun-as-jmxrmi</code>. This makes it a great choice because it's officially
+  recognized and less likely to conflict with other common services.</p>
+</li>
+</ul>
+<p>Why Port <code>8686</code> is a Good Choice?
+Port <code>8686</code> is a User Port (1024-49151), which means it's available for registered
+services but isn't a "well known" port that requires a special permission level
+to use. It's IANA registration as <code>sun-as-jmxrmi</code> makes it a safe and logical
+choice for JMX monitoring, especially when you need to standardize port assignments
+across a large infrastructure.
+```</p>
 </details>
+<hr/>
 <h2 id="setup-zabbix-to-monitor-jmx">Setup Zabbix to monitor JMX</h2>
 <p>Now that we've set up a JMX-enabled application, we need to configure Zabbix to
 monitor it. Since Zabbix can't connect directly to JMX endpoints, we need an
@@ -1398,43 +1430,53 @@ the connection chain.</p>
 <summary>Install the JAVA Gateway</summary>
 <p>Red Hat
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>dnf install zabbix-java-gateway
-</span></code></pre></div>
-Ubuntu
-<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>apt install zabbix-java-gateway
+</span></code></pre></div></p>
+<p>SUSE
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>zypper install zabbix-java-gateway
+</span></code></pre></div></p>
+<p>Ubuntu
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>apt install zabbix-java-gateway
 </span></code></pre></div></p>
 </details>
+<hr/>
 <h2 id="configuring-zabbix-and-the-java-gateway">Configuring Zabbix and the JAVA Gateway</h2>
-<p>After installing the gateway, you'll find its configuration file at <code>/etc/zabbix/zabbix_java_gateway.conf</code>.
-The default <code>LISTEN_IP</code> is set to 0.0.0.0, which means it listens on all network
-interfaces, though you can change this. The gateway listens on port 10052, a non
+<p>After installing the gateway, you'll find its configuration file at 
+<code>/etc/zabbix/zabbix_java_gateway.conf</code>. 
+On SUSE, the file is located at <code>/usr/etc/zabbix/java_gateway.conf</code> but is not
+intended to be modified directly and will be overwritten on next package upgrade.
+Instead create a new <code>.conf</code> file in <code>/etc/zabbix/zabbix_java_gateway.d/</code> adding any
+overrides to the default <code>zabbix_java_gateway.conf</code>.</p>
+<p>The default <code>LISTEN_IP</code> is set to <code>0.0.0.0</code>, which means it listens on all network
+interfaces, though you can change this. The gateway listens on port <code>10052</code>, a non
 IANA registered port, which can also be adjusted using the <code>LISTEN_PORT</code> option
 if needed.</p>
-<p>The first setting we'll change is <code>START_POLLERS</code>. We need to uncomment this line
+<p>The first setting we'll change is <code>START_POLLERS</code>. We need to uncomment or add this line
 and set a value, for example, <code>START_POLLERS=5</code> to define the number of concurrent
-connections. The TIMEOUT option controls network operation timeouts, while
+connections. The <code>TIMEOUT</code> option controls network operation timeouts, while
 <code>PROPERTIES_FILE</code> allows you to define or override additional key-value properties,
 such as a keystore password, without exposing them in a command line.</p>
-<p>For your Zabbix server, you'll need to update the configuration file at <code>/etc/zabbix/zabbix_server.conf</code>.</p>
-<p>You'll need to modify three key options:</p>
+<p>For your Zabbix server, add an additional config file <code>zabbix_java_gateway.conf</code>
+to <code>/etc/zabbix/zabbix_server.d/</code></p>
+<p>You'll need to add three key options:</p>
 <ul>
 <li>
-<p><strong>JavaGateway:</strong> Uncomment this line and set its value to the IP address of
+<p><code>JavaGateway</code>: set its value to the IP address of
   the host running your Java gateway. This will likely be your Zabbix
   server itself, but it can be on a separate VM or proxy.</p>
 </li>
 <li>
-<p><strong>JavaGatewayPort:</strong> This option should remain at the default <code>10052</code> unless
+<p><code>JavaGatewayPort</code>: This option should remain at the default <code>10052</code> unless
   you've changed the port in your gateway's configuration.</p>
 </li>
 <li>
-<p><strong>StartJavaPollers:</strong> Uncomment and set this option to define the number of
+<p><code>StartJavaPollers</code>:** Set this option to define the number of
   concurrent Java pollers the server will use. A good starting
   point is to match the number you set on the gateway, for
-  example, 5.</p>
+  example, <code>5</code>.</p>
 </li>
 </ul>
-<p>After making the changes to <code>/etc/zabbix/zabbix_server.conf</code> and <code>/etc/zabbix/zabbix_java_gateway.conf</code>,
-you need to restart the following services:</p>
+<p>After making the changes to both the Zabbix Server and the Zabbix java gateway
+configuration files, you need to restart the following services:</p>
 <ul>
 <li>Zabbix Java Gateway</li>
 <li>Zabbix Server</li>
@@ -1444,30 +1486,30 @@ to communicate with the Java Gateway and begin polling for JMX data. Also don't
 forget to enable the <code>Zabbix Java Gateway</code> service.</p>
 <details class="info" open="open">
 <summary>Restart the services</summary>
-<p>RedHat and Ubuntu
-<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>systemctl enable zabbix-java-gateway --now
-</span><span id="__span-6-2"><a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a>systemclt restart zabbix-server
-</span></code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>systemctl enable zabbix-java-gateway --now
+</span><span id="__span-7-2"><a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a>systemclt restart zabbix-server
+</span></code></pre></div>
 </details>
 <p>On the application side don't forget to open the firewall so that our
 <code>zabbix-java-gateway</code> can connect to our application.</p>
 <div class="admonition info">
 <p class="admonition-title">Allow JMX</p>
-<p>Red Hat
-<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>firewall-cmd --add-port=8686/tcp --permanent
-</span><span id="__span-7-2"><a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a>firewall-cmd --reload
+<p>Red Hat / SUSE
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>firewall-cmd --add-port=8686/tcp --permanent
+</span><span id="__span-8-2"><a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a>firewall-cmd --reload
 </span></code></pre></div></p>
 <p>Ubuntu
-<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>sudo ufw allow 8686/tcp
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>sudo ufw allow 8686/tcp
 </span></code></pre></div></p>
 </div>
 <details class="warning" open="open">
 <summary>Warning</summary>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>Don't forget to place SeLinux in permissive mode before you start else the
-</span><span id="__span-9-2"><a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a>JAVA gateway will not work. You should fix SeLinux permissions once the setup
-</span><span id="__span-9-3"><a href="#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a>is working.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>Don't forget to place SELinux in permissive mode before you start else the
+</span><span id="__span-10-2"><a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a>JAVA gateway will not work. You should fix SELinux permissions once the setup
+</span><span id="__span-10-3"><a href="#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a>is working.
 </span></code></pre></div>
 </details>
+<hr/>
 <h2 id="monitoring-jmx-items">Monitoring JMX items</h2>
 <p>After having setup everything, we can now connect to our Java application's JMX port to
 verify everything is working.</p>
@@ -1486,46 +1528,47 @@ from.</p>
 go to <code>Data collection</code> - <code>Hosts</code> and click on <code>Create host</code> in the upper right
 corner. Use the following settings to create our host:</p>
 <ul>
-<li>Hostname : Tomcat</li>
-<li>Host groups: JMX</li>
-<li>Interfaces: JMX<ul>
-<li>IP address: IP of your Tomcat server</li>
-<li>Port : 8686 or the port you specified in your Tomcat configuration.</li>
+<li><strong>Hostname</strong>: <code>Tomcat</code></li>
+<li><strong>Host groups</strong>: <code>JMX</code></li>
+<li><strong>Interfaces</strong>: JMX<ul>
+<li><strong>IP address</strong>: IP of your Tomcat server</li>
+<li><strong>Port</strong>: <code>8686</code> or the port you specified in your Tomcat configuration.</li>
 </ul>
 </li>
 </ul>
 <p>Press the <code>Add</code> button when ready.</p>
 <details class="note" open="open">
 <summary>Note</summary>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>It seems weird that we not specify the JavaGateway here but it's actually
-</span><span id="__span-10-2"><a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a>normal. Zabbix knows from its configuration file where the gateway is. So we
-</span><span id="__span-10-3"><a href="#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a>need to specify the IP and the PORT of the JAVA application here that we would
-</span><span id="__span-10-4"><a href="#__codelineno-10-4" id="__codelineno-10-4" name="__codelineno-10-4"></a>like to monitor.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a>It seems weird that we not specify the `JavaGateway` here but it's actually
+</span><span id="__span-11-2"><a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a>normal. Zabbix knows from its configuration file where the gateway is. So we
+</span><span id="__span-11-3"><a href="#__codelineno-11-3" id="__codelineno-11-3" name="__codelineno-11-3"></a>need to specify the IP and the PORT of the JAVA application here that we would
+</span><span id="__span-11-4"><a href="#__codelineno-11-4" id="__codelineno-11-4" name="__codelineno-11-4"></a>like to monitor.
 </span></code></pre></div>
 </details>
+<hr/>
 <h3 id="create-our-first-item">Create our first item</h3>
 <p>On our host Tomcat create a new item and add the following information.</p>
 <ul>
-<li><em>Name:</em> requestCount</li>
-<li><em>Type:</em> JMX Agent</li>
-<li><em>Key:</em> jmx["Catalina:type=GlobalRequestProcessor,name=\"http-nio-8080\"", "requestCount"]</li>
-<li><em>Type of information:</em> Numeric(unsigned)</li>
-<li><em>Host interface:</em> The JMX interface we just created on our host.</li>
+<li><strong>Name</strong>: <code>requestCount</code></li>
+<li><strong>Type</strong>: JMX Agent</li>
+<li><strong>Key</strong>: <code>jmx["Catalina:type=GlobalRequestProcessor,name=\"http-nio-8080\"", "requestCount"]</code></li>
+<li><strong>Type of information</strong>: Numeric(unsigned)</li>
+<li><strong>Host interface</strong>: The JMX interface we just created on our host.</li>
 </ul>
 <p><img alt="JMX Item" src="../../../ch04-zabbix-collecting-data/JMX/ch04.38-jmx-requestCount-item.png"/></p>
 <p><em>ch04.38 JMX item</em></p>
 <details class="info" open="open">
 <summary>Verifying and Saving the Item</summary>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a>Before saving the configured item, use the Test button. Clicking Get value
-</span><span id="__span-11-2"><a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a>or Get value and test should populate the value field with data, confirming
-</span><span id="__span-11-3"><a href="#__codelineno-11-3" id="__codelineno-11-3" name="__codelineno-11-3"></a>that the item is functional. Once the test is successful, you can save the
-</span><span id="__span-11-4"><a href="#__codelineno-11-4" id="__codelineno-11-4" name="__codelineno-11-4"></a>item.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a>Before saving the configured item, use the **Test** button. Clicking **Get value**
+</span><span id="__span-12-2"><a href="#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a>or **Get value and test** should populate the value field with data, confirming
+</span><span id="__span-12-3"><a href="#__codelineno-12-3" id="__codelineno-12-3" name="__codelineno-12-3"></a>that the item is functional. Once the test is successful, you can save the
+</span><span id="__span-12-4"><a href="#__codelineno-12-4" id="__codelineno-12-4" name="__codelineno-12-4"></a>item.
 </span></code></pre></div>
 </details>
 <p>To understand how we constructed the item key, let's look at the process in JConsole.</p>
 <ol>
 <li>
-<p>Navigate to the MBeans tab and expand Catalina &gt; GlobalRequestProcessor &gt; http-nio-8080.</p>
+<p>Navigate to the MBeans tab and expand Catalina → GlobalRequestProcessor → http-nio-8080.</p>
 </li>
 <li>
 <p>The ObjectNAme field on the right displays the MBean's fully qualified name:
@@ -1533,14 +1576,14 @@ corner. Use the following settings to create our host:</p>
    for our Zabbix item key.</p>
 </li>
 </ol>
-<p>The primary challenge with this specific key is that it contains double quotes (")
+<p>The primary challenge with this specific key is that it contains double quotes (<code>"</code>)
 within the <code>name</code> attribute. Zabbix requires the entire JMX key to be enclosed
 in double quotes, which would conflict with the existing quotes. To resolve this,
-we must <strong>escape</strong> the inner double quotes with a backslash ().</p>
+we must <strong>escape</strong> the inner double quotes with a backslash (<code>\</code>).</p>
 <p>This results in the following structure for the Zabbix item key:
 <code>jmx["Catalina:type=GlobalRequestProcessor,name=\"http-nio-8080\""]</code>.</p>
 <p>This key is still incomplete. To specify the metric to be monitored, you must
-append an attribute name, such as maxTime, requestCount, or bytesReceived, at
+append an attribute name, such as <code>maxTime</code>, <code>requestCount</code>, or <code>bytesReceived</code>, at
 the end of the key, separated by a comma.
 <code>jmx["Catalina:type=GlobalRequestProcessor,name=\"http-nio-8080\"","requestCount"]</code></p>
 <p><img alt="requestCount item" src="../../../ch04-zabbix-collecting-data/JMX/ch04.39-jconsole-requestCount.png"/></p>
@@ -1557,32 +1600,32 @@ attribute name within the <code>CompositeData</code> structure. For example, to 
 heap memory usage, the Zabbix item key would be: <code>jmx["java.lang:type=Memory","HeapMemoryUsage.max"]</code>.</p>
 <p><img alt="" src="../../../ch04-zabbix-collecting-data/JMX/ch04.40-jconsole-HeapMemory.Max.png"/></p>
 <p>_04.40 HeapMemoryUsage</p>
+<hr/>
 <h4 id="viewing-tabular-data">Viewing Tabular Data</h4>
 <p>To view the detailed breakdown of the <code>HeapMemoryUsage</code> attribute, double click on
 its value in the attribute value column. This action displays the composite data
 in a tabular format, making it easier to see individual metrics like <code>init</code>, <code>used</code>,
 <code>committed</code>, and <code>max</code>.</p>
+<hr/>
 <h4 id="zabbix-jmx-item-keys">Zabbix JMX Item Keys</h4>
 <p>Zabbix offers three primary item keys for JMX monitoring:</p>
-<ul>
-<li>
-<p><strong>jmx[]:</strong> This is the standard key used for monitoring a specific JMX attribute.
-  It's the most common key for creating simple, direct checks.</p>
-</li>
-<li>
-<p><strong>jmx.get[]:</strong> This key is used to retrieve a full object from an MBean. It is
+<dl>
+<dt><code>jmx[]</code></dt>
+<dd>This is the standard key used for monitoring a specific JMX attribute.
+  It's the most common key for creating simple, direct checks.</dd>
+<dt><code>jmx.get[]</code></dt>
+<dd>This key is used to retrieve a full object from an MBean. It is
   often paired with Low Level Discovery (LLD) rules and preprocessing steps to
   extract specific values from the returned data, allowing for more flexible data
-  collection.</p>
-</li>
-<li>
-<p><strong>jmx.discovery[]:</strong> This key is specifically designed for use with Low Level
+  collection.</dd>
+<dt><code>jmx.discovery[]</code></dt>
+<dd>This key is specifically designed for use with Low Level
   Discovery. It helps Zabbix automatically discover multiple JMX MBeans or attributes
   on a monitored host, which is essential for scaling JMX monitoring across a large
-  number of components.</p>
-</li>
-</ul>
-<h3 id="making-use-of-jmxget">Making use of jmx.get[]</h3>
+  number of components.</dd>
+</dl>
+<hr/>
+<h3 id="making-use-of-jmxget">Making use of <code>jmx.get[]</code></h3>
 <p>The <code>jmx.get[]</code> item key returns a JSON array containing a list of MBean objects or
 their attributes. Unlike <code>jmx.discovery[]</code>, it does not automatically define LLD
 macros. Instead, it is particularly useful when you need to retrieve a structured
@@ -1595,32 +1638,36 @@ agent, which is more efficient.</p>
 <p>For instance, the key <code>jmx.get[attributes,"*:type=GarbageCollector,name=PS MarkSweep"]</code>
 would return a comprehensive payload with all attributes of the specified garbage
 collector.</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-12-1"><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="p">[</span>
-</span><span id="__span-12-2"><a href="#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="w">  </span><span class="p">{</span>
-</span><span id="__span-12-3"><a href="#__codelineno-12-3" id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CollectionCount"</span><span class="p">,</span>
-</span><span id="__span-12-4"><a href="#__codelineno-12-4" id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="w">    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"java.lang:type=GarbageCollector,name=PS MarkSweep,CollectionCount"</span><span class="p">,</span>
-</span><span id="__span-12-5"><a href="#__codelineno-12-5" id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"java.lang.Long"</span><span class="p">,</span>
-</span><span id="__span-12-6"><a href="#__codelineno-12-6" id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="w">    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
-</span><span id="__span-12-7"><a href="#__codelineno-12-7" id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="w">    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"java.lang:type=GarbageCollector,name=PS MarkSweep"</span>
-</span><span id="__span-12-8"><a href="#__codelineno-12-8" id="__codelineno-12-8" name="__codelineno-12-8"></a><span class="w">  </span><span class="p">},</span>
-</span><span id="__span-12-9"><a href="#__codelineno-12-9" id="__codelineno-12-9" name="__codelineno-12-9"></a><span class="w">  </span><span class="err">...</span>
-</span><span id="__span-12-10"><a href="#__codelineno-12-10" id="__codelineno-12-10" name="__codelineno-12-10"></a><span class="w">  </span><span class="err">...</span>
-</span><span id="__span-12-11"><a href="#__codelineno-12-11" id="__codelineno-12-11" name="__codelineno-12-11"></a><span class="w">  </span><span class="err">...</span>
-</span><span id="__span-12-12"><a href="#__codelineno-12-12" id="__codelineno-12-12" name="__codelineno-12-12"></a><span class="w">  </span><span class="err">...</span>
-</span><span id="__span-12-13"><a href="#__codelineno-12-13" id="__codelineno-12-13" name="__codelineno-12-13"></a><span class="w">  </span><span class="p">{</span>
-</span><span id="__span-12-14"><a href="#__codelineno-12-14" id="__codelineno-12-14" name="__codelineno-12-14"></a><span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ObjectName"</span><span class="p">,</span>
-</span><span id="__span-12-15"><a href="#__codelineno-12-15" id="__codelineno-12-15" name="__codelineno-12-15"></a><span class="w">    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"java.lang:type=GarbageCollector,name=PS MarkSweep,ObjectName"</span><span class="p">,</span>
-</span><span id="__span-12-16"><a href="#__codelineno-12-16" id="__codelineno-12-16" name="__codelineno-12-16"></a><span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"javax.management.ObjectName"</span><span class="p">,</span>
-</span><span id="__span-12-17"><a href="#__codelineno-12-17" id="__codelineno-12-17" name="__codelineno-12-17"></a><span class="w">    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"java.lang:type=GarbageCollector,name=PS MarkSweep"</span><span class="p">,</span>
-</span><span id="__span-12-18"><a href="#__codelineno-12-18" id="__codelineno-12-18" name="__codelineno-12-18"></a><span class="w">    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"java.lang:type=GarbageCollector,name=PS MarkSweep"</span>
-</span><span id="__span-12-19"><a href="#__codelineno-12-19" id="__codelineno-12-19" name="__codelineno-12-19"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-12-20"><a href="#__codelineno-12-20" id="__codelineno-12-20" name="__codelineno-12-20"></a><span class="p">]</span>
+<details class="example" open="open">
+<summary>Example JSON Output from <code>jmx.get[]</code></summary>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-13-1"><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="p">[</span>
+</span><span id="__span-13-2"><a href="#__codelineno-13-2" id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-13-3"><a href="#__codelineno-13-3" id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CollectionCount"</span><span class="p">,</span>
+</span><span id="__span-13-4"><a href="#__codelineno-13-4" id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="w">    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"java.lang:type=GarbageCollector,name=PS MarkSweep,CollectionCount"</span><span class="p">,</span>
+</span><span id="__span-13-5"><a href="#__codelineno-13-5" id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"java.lang.Long"</span><span class="p">,</span>
+</span><span id="__span-13-6"><a href="#__codelineno-13-6" id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="w">    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+</span><span id="__span-13-7"><a href="#__codelineno-13-7" id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="w">    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"java.lang:type=GarbageCollector,name=PS MarkSweep"</span>
+</span><span id="__span-13-8"><a href="#__codelineno-13-8" id="__codelineno-13-8" name="__codelineno-13-8"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-13-9"><a href="#__codelineno-13-9" id="__codelineno-13-9" name="__codelineno-13-9"></a><span class="w">  </span><span class="err">...</span>
+</span><span id="__span-13-10"><a href="#__codelineno-13-10" id="__codelineno-13-10" name="__codelineno-13-10"></a><span class="w">  </span><span class="err">...</span>
+</span><span id="__span-13-11"><a href="#__codelineno-13-11" id="__codelineno-13-11" name="__codelineno-13-11"></a><span class="w">  </span><span class="err">...</span>
+</span><span id="__span-13-12"><a href="#__codelineno-13-12" id="__codelineno-13-12" name="__codelineno-13-12"></a><span class="w">  </span><span class="err">...</span>
+</span><span id="__span-13-13"><a href="#__codelineno-13-13" id="__codelineno-13-13" name="__codelineno-13-13"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-13-14"><a href="#__codelineno-13-14" id="__codelineno-13-14" name="__codelineno-13-14"></a><span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ObjectName"</span><span class="p">,</span>
+</span><span id="__span-13-15"><a href="#__codelineno-13-15" id="__codelineno-13-15" name="__codelineno-13-15"></a><span class="w">    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"java.lang:type=GarbageCollector,name=PS MarkSweep,ObjectName"</span><span class="p">,</span>
+</span><span id="__span-13-16"><a href="#__codelineno-13-16" id="__codelineno-13-16" name="__codelineno-13-16"></a><span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"javax.management.ObjectName"</span><span class="p">,</span>
+</span><span id="__span-13-17"><a href="#__codelineno-13-17" id="__codelineno-13-17" name="__codelineno-13-17"></a><span class="w">    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"java.lang:type=GarbageCollector,name=PS MarkSweep"</span><span class="p">,</span>
+</span><span id="__span-13-18"><a href="#__codelineno-13-18" id="__codelineno-13-18" name="__codelineno-13-18"></a><span class="w">    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"java.lang:type=GarbageCollector,name=PS MarkSweep"</span>
+</span><span id="__span-13-19"><a href="#__codelineno-13-19" id="__codelineno-13-19" name="__codelineno-13-19"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-13-20"><a href="#__codelineno-13-20" id="__codelineno-13-20" name="__codelineno-13-20"></a><span class="p">]</span>
 </span></code></pre></div>
+</details>
 <p>This JSON output can then be used as the master item for multiple dependent items,
 each with a preprocessing step to extract a specific value (e.g., <code>CollectionCount</code>
 or <code>CollectionTime</code>) using a JSONPath expression. This technique is a powerful
 way to reduce the load on both the JMX agent and the Zabbix server by making a
 single call to collect multiple metrics.</p>
+<hr/>
 <h2 id="performance-considerations-for-jmx-monitoring">Performance Considerations for JMX Monitoring</h2>
 <p>JMX monitoring is powerful but comes with higher overhead compared to traditional
 Zabbix agent checks. To ensure your monitoring remains efficient and doesn't impact
@@ -1631,10 +1678,10 @@ in mind.</p>
 <li>The Zabbix server sends a request for a JMX item.</li>
 <li>The Java Gateway connects to the target JVM and retrieves the data.</li>
 <li>Only when the response comes back does the Zabbix server proceed with that item's
-  check.
-This means that if JMX queries are slow (due to network, JVM GC pauses, or overloaded
-gateways), your monitoring queue can back up.</li>
+  check.</li>
 </ul>
+<p>This means that if JMX queries are slow (due to network, JVM GC pauses, or overloaded
+gateways), your monitoring queue can back up.</p>
 <p>To optimize performance:</p>
 <ul>
 <li>The Java Gateway bundles multiple requests for the same host and processes them
@@ -1655,13 +1702,13 @@ gateways), your monitoring queue can back up.</li>
 <p>Two important parameters in zabbix_server.conf and zabbix_java_gateway.conf directly
 affect JMX performance:</p>
 <ul>
-<li>StartJavaPollers (on Zabbix Server)<ul>
+<li><code>StartJavaPollers</code> (on Zabbix Server)<ul>
 <li>Defines how many parallel JMX pollers the server can use.</li>
 <li>Too few pollers → JMX checks queue up and fall behind.</li>
 <li>Too many pollers → high load on Java Gateway and JVMs.</li>
 </ul>
 </li>
-<li>StartPollers (general pollers)
+<li><code>StartPollers</code> (general pollers)
   Balance with Java pollers so your server can handle both JMX and regular agent
   checks without bottlenecks.</li>
 <li>
@@ -1676,6 +1723,7 @@ affect JMX performance:</p>
 <li>Too many JMX items not only stress the JVM but also flood your Zabbix database
   with unnecessary history data.</li>
 </ul>
+<hr/>
 <h2 id="monitoring-jmx-through-jolokia">Monitoring JMX through Jolokia</h2>
 <p>While Zabbix can natively collect JMX data using the Zabbix Java Gateway, an
 alternative worth considering is Jolokia — a lightweight JMX-to-HTTP bridge.</p>
@@ -1693,15 +1741,17 @@ The result is often lower overhead, easier network configuration, and greater fl
 <li>Secure, it supports HTTPS, authentication, and access control policies out of
   the box.</li>
 </ul>
-<p>Example:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>http://localhost:8778/jolokia/read/java.lang:type<span class="o">=</span>Memory,java.lang:type<span class="o">=</span>Threading
+<details class="example" open="open">
+<summary>Example Jolokia Request</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>http://localhost:8778/jolokia/read/java.lang:type<span class="o">=</span>Memory,java.lang:type<span class="o">=</span>Threading
 </span></code></pre></div>
 <p>In Zabbix:</p>
 <p>Create an HTTP Agent master item pointing to the Jolokia endpoint.
 Add dependent items to extract individual values, e.g.:</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-14-1"><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="err">$.value</span><span class="p">[</span><span class="err">'java.la</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span><span class="kc">t</span><span class="err">ype=Memory'</span><span class="p">][</span><span class="err">'HeapMemoryUsage'</span><span class="p">][</span><span class="err">'used'</span><span class="p">]</span>
-</span><span id="__span-14-2"><a href="#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="err">$.value</span><span class="p">[</span><span class="err">'java.la</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span><span class="kc">t</span><span class="err">ype=Threadi</span><span class="kc">n</span><span class="err">g'</span><span class="p">][</span><span class="err">'ThreadCou</span><span class="kc">nt</span><span class="err">'</span><span class="p">]</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-15-1"><a href="#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="err">$.value</span><span class="p">[</span><span class="err">'java.la</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span><span class="kc">t</span><span class="err">ype=Memory'</span><span class="p">][</span><span class="err">'HeapMemoryUsage'</span><span class="p">][</span><span class="err">'used'</span><span class="p">]</span>
+</span><span id="__span-15-2"><a href="#__codelineno-15-2" id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="err">$.value</span><span class="p">[</span><span class="err">'java.la</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span><span class="kc">t</span><span class="err">ype=Threadi</span><span class="kc">n</span><span class="err">g'</span><span class="p">][</span><span class="err">'ThreadCou</span><span class="kc">nt</span><span class="err">'</span><span class="p">]</span>
 </span></code></pre></div>
+</details>
 <p>This approach allows you to collect dozens of metrics with a single network request.</p>
 <details class="note" open="open">
 <summary>When to use it ?</summary>
@@ -1710,11 +1760,13 @@ many JVMs without maintaining a central Java Gateway. Stick with the Zabbix
 Java Gateway if you rely on built-in templates or want a fully integrated,
 out of the box JMX experience.</p>
 </details>
+<hr/>
 <h2 id="conclusion">Conclusion</h2>
 <p>Zabbix handles JMX monitoring synchronously, but optimizes performance with request
 bundling and connection reuse. By tuning pollers, using reasonable update intervals,
 and selecting only the most valuable metrics, you can scale JMX monitoring without
 overloading your monitoring system or your Java applications.</p>
+<hr/>
 <h2 id="questions">Questions</h2>
 <ul>
 <li>Explain how the Zabbix Java Gateway fits into the overall JMX architecture.
@@ -1727,6 +1779,7 @@ overloading your monitoring system or your Java applications.</p>
   What could go wrong if you leave flags like authenticate=false and ssl=false in
   a live environment?</li>
 </ul>
+<hr/>
 <h2 id="useful-urls">Useful URLs</h2>
 <ul>
 <li><a href="https://www.youtube.com/watch?v=aKGYa6Y9r60&amp;t=87s">https://www.youtube.com/watch?v=aKGYa6Y9r60&amp;t=87s</a></li>

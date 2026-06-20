@@ -2560,41 +2560,41 @@ as incorrect entries here may prevent PostgreSQL from starting.</p>
 </details>
 <hr />
 <h2 id="criacao-da-instancia-do-banco-de-dados-zabbix">Criação da instância do banco de dados Zabbix</h2>
-<p>With the necessary packages installed, you are now ready to create the Zabbix
-database and users for both the server and frontend.</p>
-<p>The PostgreSQL packages automatically create a default <code>postgres</code> linux-user
-during installation which has administrative privileges on the PostgreSQL
-instance. To administer the database, you will need to execute commands as the
-<code>postgres</code> user.</p>
-<p>First, create the Zabbix server database user (also referred to as a "role" in
-PostgreSQL):</p>
+<p>Com os pacotes necessários instalados, agora você está pronto para criar o banco
+de dados e os usuários do Zabbix para o servidor e o frontend.</p>
+<p>Os pacotes do PostgreSQL criam automaticamente um usuário Linux padrão
+<code>postgres</code> durante a instalação, que tem privilégios administrativos na
+instância do PostgreSQL. Para administrar o banco de dados, você precisará
+executar comandos como o usuário <code>postgres</code>.</p>
+<p>Primeiro, crie o usuário do banco de dados do servidor Zabbix (também chamado de
+"função" no PostgreSQL):</p>
 <div class="admonition info">
-<p class="admonition-title">Create server users</p>
+<p class="admonition-title">criar usuários do servidor</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>createuser<span class="w"> </span>--pwprompt<span class="w"> </span>zabbix-srv
 </span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>Enter<span class="w"> </span>password<span class="w"> </span><span class="k">for</span><span class="w"> </span>new<span class="w"> </span>role:<span class="w"> </span>&lt;server-password&gt;
 </span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>Enter<span class="w"> </span>it<span class="w"> </span>again:<span class="w"> </span>&lt;server-password&gt;
 </span></code></pre></div>
 </div>
-<p>Next, create the Zabbix frontend user, which will be used to connect to the
-database:</p>
+<p>Em seguida, crie o usuário front-end do Zabbix, que será usado para se conectar
+ao banco de dados:</p>
 <div class="admonition info">
-<p class="admonition-title">Create front-end user</p>
+<p class="admonition-title">Criar usuário de front-end</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>createuser<span class="w"> </span>--pwprompt<span class="w"> </span>zabbix-web
 </span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>Enter<span class="w"> </span>password<span class="w"> </span><span class="k">for</span><span class="w"> </span>new<span class="w"> </span>role:<span class="w"> </span>&lt;frontend-password&gt;
 </span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>Enter<span class="w"> </span>it<span class="w"> </span>again:<span class="w"> </span>&lt;frontend-password&gt;
 </span></code></pre></div>
 </div>
-<p>Now with the users created, the next step is to create the Zabbix database.
-Execute the following command to create the database <code>zabbix</code> with the owner set
-to <code>zabbix-srv</code> and the character encoding set to <code>Unicode</code> as required by
-Zabbix:</p>
+<p>Agora, com os usuários criados, a próxima etapa é criar o banco de dados do
+Zabbix. Execute o seguinte comando para criar o banco de dados <code>zabbix</code> com o
+proprietário definido como <code>zabbix-srv</code> e a codificação de caracteres definida
+como <code>Unicode</code>, conforme exigido pelo Zabbix:</p>
 <div class="admonition info">
-<p class="admonition-title">Create DB</p>
+<p class="admonition-title">Criar banco de dados</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>createdb<span class="w"> </span>-E<span class="w"> </span>Unicode<span class="w"> </span>-T<span class="w"> </span>template0<span class="w"> </span>-O<span class="w"> </span>zabbix-srv<span class="w"> </span>zabbix
 </span></code></pre></div>
 </div>
-<details class="note" open="open">
-<summary>What is this 'template0'?</summary>
+<details class="nota" open="open">
+<summary>O que é esse 'template0'?</summary>
 <p>In PostgreSQL, <code>template0</code> is a default database template that serves as a pristine
 copy of the database system. When creating a new database using <code>template0</code>,
 it ensures that the new database starts with a clean slate, without any
@@ -2602,16 +2602,16 @@ pre-existing objects or configurations that might be present in other templates.
 This is particularly useful when you want to create a database with specific
 settings or extensions without inheriting any unwanted elements from other templates.</p>
 </details>
-<p>Once the database is created, you should verify the connection and ensure that
-the correct user session is active. To do this, log into the zabbix database
-using the <code>zabbix-srv</code> user:</p>
+<p>Depois que o banco de dados for criado, verifique a conexão e certifique-se de
+que a sessão correta do usuário esteja ativa. Para fazer isso, faça login no
+banco de dados zabbix usando o usuário <code>zabbix-srv</code>:</p>
 <div class="admonition info">
-<p class="admonition-title">Login as user zabbix-srv</p>
+<p class="admonition-title">Faça login como usuário zabbix-srv</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>psql<span class="w"> </span>-d<span class="w"> </span>zabbix<span class="w"> </span>-U<span class="w"> </span>zabbix-srv
 </span></code></pre></div>
 </div>
-<p>After logging in, run the following SQL query to confirm that both the
-<code>session_user</code> and <code>current_user</code> are set to <code>zabbix-srv</code>:</p>
+<p>Depois de fazer login, execute a seguinte consulta SQL para confirmar que tanto
+o <code>session_user</code> quanto o <code>current_user</code> estão definidos como <code>zabbix-srv</code>:</p>
 <div class="admonition info">
 <div class="language-psql highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">session_user</span><span class="p">,</span><span class="w"> </span><span class="k">current_user</span><span class="p">;</span>
 </span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="go"> session_user | current_user</span>
@@ -2620,18 +2620,19 @@ using the <code>zabbix-srv</code> user:</p>
 </span><span id="__span-34-5"><a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a><span class="go">(1 row)</span>
 </span></code></pre></div>
 </div>
-<p>If the output matches, you are successfully connected to the database with the
-correct user.</p>
-<p>PostgreSQL differs significantly from MySQL or MariaDB in several aspects, and
-one of the key features that sets it apart is its use of schemas. Unlike MySQL,
-where databases are more standalone, PostgreSQL's schema system provides a
-structured, multi-user environment within a single database.</p>
-<p>Schemas act as logical containers within a database, enabling multiple users or
-applications to access and manage data independently without conflicts. This
-feature is especially valuable in environments where several users or
-applications need to interact with the same database server concurrently. Each
-user or application can have its own schema, preventing accidental interference
-with each other's data.</p>
+<p>Se a saída corresponder, você se conectou com sucesso ao banco de dados com o
+usuário correto.</p>
+<p>O PostgreSQL de fato difere significativamente do MySQL ou do MariaDB em vários
+aspectos, e um dos principais recursos que o diferencia é o uso de esquemas. Ao
+contrário do MySQL, em que os bancos de dados são mais independentes, o sistema
+de esquema do PostgreSQL fornece um ambiente estruturado e multiusuário em um
+único banco de dados.</p>
+<p>Os esquemas funcionam como contêineres lógicos dentro de um banco de dados,
+permitindo que vários usuários ou aplicativos acessem e gerenciem dados de forma
+independente, sem conflitos. Esse recurso é especialmente valioso em ambientes
+em que vários usuários ou aplicativos precisam interagir com o mesmo banco de
+dados simultaneamente. Cada usuário ou aplicativo pode ter seu próprio esquema,
+evitando interferências acidentais nos dados dos outros.</p>
 <details class="nota" open="open">
 <summary>Nota</summary>
 <p>PostgreSQL comes with a default schema, typically called <code>public</code>, but in
@@ -2641,19 +2642,20 @@ database objects, especially in complex or multi-user environments.</p>
 this URI, <a href="https://hevodata.com/learn/postgresql-schema/#schema">https://hevodata.com/learn/postgresql-schema/#schema</a>
 which explains the benefits and use cases for schemas in PostgreSQL.</p>
 </details>
-<p>To finalize the initial database setup for Zabbix, we need to configure schema
-permissions for both the <code>zabbix-srv</code> and <code>zabbix-web</code> users.</p>
-<p>First, we create a custom schema named <code>zabbix_server</code> and assign ownership to
-the <code>zabbix-srv</code> user:</p>
+<p>Para finalizar a configuração inicial do banco de dados do Zabbix, precisamos
+configurar as permissões do esquema para os usuários <code>zabbix-srv</code> e
+<code>zabbix-web</code>.</p>
+<p>Primeiro, criamos um esquema personalizado chamado <code>zabbix_server</code> e atribuímos
+a propriedade ao usuário <code>zabbix-srv</code>:</p>
+<p>!!! info "create the db schema" (criar o esquema do banco de dados)</p>
+<div class="language-text highlight"><pre><span></span><code>```psql
+zabbix=&gt; CREATE SCHEMA zabbix_server AUTHORIZATION &quot;zabbix-srv&quot;;
+```
+</code></pre></div>
+<p>Em seguida, definimos o <code>caminho de pesquisa</code> para <code>zabbix_server</code> schema para
+que seja o padrão da sessão atual:</p>
 <div class="admonition info">
-<p class="admonition-title">Create the db schema</p>
-<div class="language-psql highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="k">CREATE</span><span class="w"> </span><span class="k">SCHEMA</span><span class="w"> </span><span class="n">zabbix_server</span><span class="w"> </span><span class="k">AUTHORIZATION</span><span class="w"> </span><span class="s s-Name">&quot;zabbix-srv&quot;</span><span class="p">;</span>
-</span></code></pre></div>
-</div>
-<p>Next, we set the <code>search path</code> to <code>zabbix_server</code> schema so that it's the
-default for the current session:</p>
-<div class="admonition info">
-<p class="admonition-title">Set search path</p>
+<p class="admonition-title">Definir caminho de pesquisa</p>
 <div class="language-psql highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">search_path</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s s-Name">&quot;zabbix_server&quot;</span><span class="p">;</span>
 </span></code></pre></div>
 </div>
@@ -2668,9 +2670,10 @@ the <code>zabbix-srv</code> role:</p>
 <p>This command ensures that every time the <code>zabbix-srv</code> user connects to the
 database, the <code>search_path</code> is automatically set to <code>zabbix_server</code>.</p>
 </details>
-<p>To confirm the schema setup, you can list the existing schemas:</p>
-<div class="admonition example">
-<p class="admonition-title">Verify schema access</p>
+<p>Para confirmar a configuração do esquema, você pode listar os esquemas
+existentes:</p>
+<div class="admonition exemplo">
+<p class="admonition-title">Verificar acesso ao esquema</p>
 <div class="language-psql highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\dn</span>
 </span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="go">          List of schemas</span>
 </span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="go">     Name      |       Owner</span>
@@ -2680,20 +2683,21 @@ database, the <code>search_path</code> is automatically set to <code>zabbix_serv
 </span><span id="__span-38-7"><a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a><span class="go">(2 rows)</span>
 </span></code></pre></div>
 </div>
-<p>At this point, the <code>zabbix-srv</code> user has full access to the schema, but the
-<code>zabbix-web</code> user still needs appropriate permissions to connect and interact
-with the database. First, we grant <code>USAGE</code> privileges on the schema to allow
-<code>zabbix-web</code> to connect:</p>
+<p>Neste ponto, o usuário <code>zabbix-srv</code> tem acesso total ao esquema, mas o usuário
+<code>zabbix-web</code> ainda precisa de permissões apropriadas para se conectar e
+interagir com o banco de dados. Primeiro, concedemos a <code>USAGE</code> privilégios no
+esquema para permitir que <code>zabbix-web</code> se conecte:</p>
 <div class="admonition info">
-<p class="admonition-title">Grant access to schema for user zabbix-web</p>
+<p class="admonition-title">Conceder acesso ao esquema para o usuário zabbix-web</p>
 <div class="language-psql highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="n">USAGE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">SCHEMA</span><span class="w"> </span><span class="n">zabbix_server</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s s-Name">&quot;zabbix-web&quot;</span><span class="p">;</span>
 </span></code></pre></div>
 </div>
-<p>Now, the <code>zabbix-web</code> user has appropriate access to interact with the schema
-while maintaining security by limiting permissions to essential operations.</p>
-<p>If you are ready you can exit the database and return to your linux shell.</p>
+<p>Agora, o usuário <code>zabbix-web</code> tem acesso adequado para interagir com o esquema,
+mantendo a segurança ao limitar as permissões às operações essenciais.</p>
+<p>Se estiver pronto, você poderá sair do banco de dados e retornar ao shell do
+Linux.</p>
 <div class="admonition info">
-<p class="admonition-title">Exit the database shell</p>
+<p class="admonition-title">Sair do shell do banco de dados</p>
 <div class="language-psql highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\q</span>
 </span></code></pre></div>
 </div>
@@ -2701,9 +2705,10 @@ while maintaining security by limiting permissions to essential operations.</p>
 realmente ser usado pelo Zabbix, ainda precisamos preencher o banco de dados com
 as tabelas necessárias e os dados iniciais, mas isso será abordado na próxima
 seção, quando instalarmos o servidor Zabbix.</p>
-<p>If you intent to install Zabbix server on a different machine than the one
-hosting the database you will need to open the host firewall to allow incoming
-connections to the database server. By default, PostgreSQL listens on port 5432.</p>
+<p>Se você pretende instalar o Zabbix Server em uma máquina diferente da que
+hospeda o banco de dados, será necessário abrir o firewall do host para permitir
+conexões de entrada com o servidor de banco de dados. Por padrão, o PostgreSQL
+escuta na porta 5432.</p>
 <div class="admonition info">
 <p class="admonition-title">Adicionar regras de firewall</p>
 <p>Red Hat / SUSE
@@ -2716,10 +2721,11 @@ connections to the database server. By default, PostgreSQL listens on port 5432.
 </div>
 <hr />
 <h2 id="preencher-o-banco-de-dados-do-zabbix">Preencher o banco de dados do Zabbix</h2>
-<p>During the installation of the database software earlier, we created the
-necessary users, database and schema for Zabbix, however, Zabbix expects certain
-tables, schemas, images, and other elements to be present in the database. To
-set up the database correctly, we need to populate it with the required schema.</p>
+<p>Durante a instalação do software de banco de dados anteriormente, criamos os
+usuários, o banco de dados e o esquema necessários para o Zabbix. No entanto, o
+Zabbix espera que determinadas tabelas, esquemas, imagens e outros elementos
+estejam presentes no banco de dados. Para configurar o banco de dados
+corretamente, precisamos preenchê-lo com o esquema necessário.</p>
 <p>Primeiro, precisamos instalar os scripts SQL do Zabbix que contêm os scripts de
 importação necessários para o banco de dados.</p>
 <div class="admonition info">
@@ -2734,10 +2740,10 @@ importação necessários para o banco de dados.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>zabbix-sql-scripts
 </span></code></pre></div></p>
 </div>
-<p>Next you need to prepare the database schema: unzip the necessary schema files
-by running the following command:</p>
+<p>Em seguida, você precisa preparar o esquema do banco de dados: descompacte os
+arquivos de esquema necessários executando o seguinte comando:</p>
 <div class="admonition info">
-<p class="admonition-title">Unzip the DB patch</p>
+<p class="admonition-title">Descompacte o patch do DB</p>
 <p>Red Hat / SUSE
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>gzip<span class="w"> </span>-d<span class="w"> </span>/usr/share/zabbix/sql-scripts/postgresql/server.sql.gz
 </span></code></pre></div></p>
@@ -2752,15 +2758,16 @@ DB every version or even in between versions. If you encounter an error take a
 look at the Zabbix documentation, there is a good chance that some location was
 changed.</p>
 </details>
-<p>This will extract the database schema required for the Zabbix server.</p>
-<p>Now we will execute the SQL file to populate the database. Open a <code>psql</code> shell:</p>
+<p>Isso extrairá o esquema do banco de dados necessário para o servidor Zabbix.</p>
+<p>Agora, executaremos o arquivo SQL para preencher o banco de dados. Abra um shell
+<code>psql</code>:</p>
 <div class="admonition info">
-<p class="admonition-title">Open psql shell</p>
+<p class="admonition-title">Abrir o shell psql</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>psql<span class="w"> </span>-d<span class="w"> </span>zabbix<span class="w"> </span>-U<span class="w"> </span>zabbix-srv
 </span></code></pre></div>
 </div>
-<details class="warning" open="open">
-<summary>Ensure correct search_path is set</summary>
+<details class="aviso" open="open">
+<summary>Certifique-se de que o search_path correto esteja definido</summary>
 <p>Make sure you performed previous steps as outlined in <a href="./#creating-the-zabbix-database-instance">Creating the Zabbix database instance with PostgreSQL</a>
 carefully so that you have set the correct <code>search_path</code>.</p>
 <p>If you did not set the default <code>search_path</code> for the <code>zabbix-srv</code> user,
@@ -2768,9 +2775,10 @@ ensure you set it manually in the current session before proceeding:
 <div class="language-psql highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">search_path</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s s-Name">&quot;zabbix_server&quot;</span><span class="p">;</span>
 </span></code></pre></div></p>
 </details>
-<p>Upload the DB schema to the database using the following commands:</p>
+<p>Faça o upload do esquema do banco de dados para o banco de dados usando os
+seguintes comandos:</p>
 <div class="admonition info">
-<p class="admonition-title">Upload the DB schema to db zabbix</p>
+<p class="admonition-title">carregar o esquema do banco de dados para o banco de dados zabbix</p>
 <div class="language-psql highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\i</span><span class="w"> </span><span class="ss">/usr/share/zabbix/sql-scripts/postgresql/server.sql</span>
 </span></code></pre></div>
 </div>
@@ -2780,9 +2788,10 @@ ensure you set it manually in the current session before proceeding:
 from a few seconds to several minutes. Please be patient and avoid cancelling
 the operation.</p>
 </details>
-<p>Monitor the progress as the script runs. You will see output similar to:</p>
-<div class="admonition example">
-<p class="admonition-title">Output example</p>
+<p>Monitore o progresso à medida que o script é executado. Você verá uma saída
+semelhante a:</p>
+<div class="admonition exemplo">
+<p class="admonition-title">Exemplo de saída</p>
 <div class="language-psql highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\i</span><span class="w"> </span><span class="ss">/usr/share/zabbix/sql-scripts/postgresql/server.sql</span>
 </span><span id="__span-51-2"><a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a><span class="go">CREATE TABLE</span>
 </span><span id="__span-51-3"><a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a><span class="go">CREATE INDEX</span>
@@ -2797,26 +2806,26 @@ the operation.</p>
 </span><span id="__span-51-12"><a id="__codelineno-51-12" name="__codelineno-51-12" href="#__codelineno-51-12"></a><span class="go">COMMIT</span>
 </span></code></pre></div>
 </div>
-<p>Once the script completes and you return to the <code>zabbix=&gt;</code> prompt, the database
-should be successfully populated with all the required tables, schemas, images,
-and other elements needed for Zabbix.</p>
-<p>However, <code>zabbix-web</code> still cannot perform any operations on the tables or
-sequences. To allow basic data interaction without giving too many privileges,
-grant the following permissions:</p>
+<p>Quando o script for concluído e você retornar ao prompt <code>zabbix=#</code>, o banco de
+dados deverá ser preenchido com sucesso com todas as tabelas, esquemas, imagens
+e outros elementos necessários para o Zabbix.</p>
+<p>Entretanto, <code>zabbix-web</code> ainda não pode executar nenhuma operação nas tabelas ou
+sequências. Para permitir a interação básica dos dados sem conceder muitos
+privilégios, conceda as seguintes permissões:</p>
 <ul>
-<li>For tables: SELECT, INSERT, UPDATE, and DELETE.</li>
-<li>For sequences: SELECT and UPDATE.</li>
+<li>Para tabelas: SELECT, INSERT, UPDATE e DELETE.</li>
+<li>Para sequências: SELECT e UPDATE.</li>
 </ul>
 <div class="admonition info">
-<p class="admonition-title">Grant rights on the schema to user zabbix-web</p>
+<p class="admonition-title">Conceder direitos sobre o esquema ao usuário zabbix-web</p>
 <div class="language-psql highlight"><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="p">,</span><span class="w"> </span><span class="k">INSERT</span><span class="p">,</span><span class="w"> </span><span class="k">UPDATE</span><span class="p">,</span><span class="w"> </span><span class="k">DELETE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">TABLES</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="k">SCHEMA</span><span class="w"> </span><span class="n">zabbix_server</span>
 </span><span id="__span-52-2"><a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a><span class="k">TO</span><span class="w"> </span><span class="s s-Name">&quot;zabbix-web&quot;</span><span class="p">;</span>
 </span><span id="__span-52-3"><a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="p">,</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">SEQUENCES</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="k">SCHEMA</span><span class="w"> </span><span class="n">zabbix_server</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s s-Name">&quot;zabbix-web&quot;</span><span class="p">;</span>
 </span></code></pre></div>
 </div>
-<p>Verify if the rights are correct on the schema :</p>
-<div class="admonition example">
-<p class="admonition-title">Example schema rights</p>
+<p>Verifique se os direitos estão corretos no esquema:</p>
+<div class="admonition exemplo">
+<p class="admonition-title">Exemplo de direitos de esquema</p>
 <div class="language-psql highlight"><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\dn+</span>
 </span><span id="__span-53-2"><a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a><span class="go">                                           List of schemas</span>
 </span><span id="__span-53-3"><a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a><span class="go">     Name      |       Owner       |           Access privileges            |      Description</span>
@@ -2837,22 +2846,22 @@ the schema where the tables and other objects should be created. By correctly
 setting the search path, you ensure that the SQL script will create tables
 and other objects in the intended schema.</p>
 </details>
-<p>To ensure that the Zabbix tables were created successfully and have the correct
-permissions, you can verify the table list and their ownership using the <code>psql</code>
-command:</p>
+<p>Para garantir que as tabelas do Zabbix foram criadas com êxito e têm as
+permissões corretas, você pode verificar a lista de tabelas e sua propriedade
+usando o comando <code>psql</code>:</p>
 <ul>
-<li>List the Tables: Use the following command to list all tables in the
-  <code>zabbix_server</code> schema:</li>
+<li>Listar as tabelas: Use o seguinte comando para listar todas as tabelas no
+  esquema <code>zabbix_server</code>:</li>
 </ul>
 <div class="admonition info">
-<p class="admonition-title">List tables</p>
+<p class="admonition-title">Listar tabelas</p>
 <div class="language-psql highlight"><pre><span></span><code><span id="__span-54-1"><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="gp">zabbix=#</span><span class="w"> </span><span class="kp">\dt</span>
 </span></code></pre></div>
 </div>
-<p>You should see a list of tables with their schema, name, type, and owner. For
-example:</p>
-<details class="example" open="open">
-<summary>List table with relations</summary>
+<p>Você verá uma lista de tabelas com seu esquema, nome, tipo e proprietário. Por
+exemplo:</p>
+<details class="exemplo" open="open">
+<summary>Tabela de listas com relações</summary>
 <div class="language-psql highlight"><pre><span></span><code><span id="__span-55-1"><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\dt</span>
 </span><span id="__span-55-2"><a id="__codelineno-55-2" name="__codelineno-55-2" href="#__codelineno-55-2"></a><span class="go">                        List of relations</span>
 </span><span id="__span-55-3"><a id="__codelineno-55-3" name="__codelineno-55-3" href="#__codelineno-55-3"></a><span class="go">    Schema     |            Name            | Type  |   Owner</span>
@@ -2875,17 +2884,17 @@ example:</p>
 </span></code></pre></div>
 </details>
 <ul>
-<li>Verify Permissions: Confirm that the zabbix-srv user owns the tables and has
-  the necessary permissions. You can check permissions for specific tables using
-  the \dp command:</li>
+<li>Verificar permissões: Confirme se o usuário zabbix-srv é o proprietário das
+  tabelas e se tem as permissões necessárias. Você pode verificar as permissões
+  de tabelas específicas usando o comando \dp:</li>
 </ul>
 <div class="admonition info">
-<p class="admonition-title">Verify table permissions</p>
+<p class="admonition-title">Verificar permissões de tabela</p>
 <div class="language-psql highlight"><pre><span></span><code><span id="__span-56-1"><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\dp</span><span class="w"> </span><span class="ss">zabbix_server.*</span>
 </span></code></pre></div>
 </div>
 <details class="example" open="open">
-<summary>Example output</summary>
+<summary>Exemplo de saída</summary>
 <div class="language-psql highlight"><pre><span></span><code><span id="__span-57-1"><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="gp">zabbix=&gt;</span><span class="w"> </span><span class="kp">\dp</span><span class="w"> </span><span class="ss">zabbix_server.*</span>
 </span><span id="__span-57-2"><a id="__codelineno-57-2" name="__codelineno-57-2" href="#__codelineno-57-2"></a><span class="go">                                                     Access privileges</span>
 </span><span id="__span-57-3"><a id="__codelineno-57-3" name="__codelineno-57-3" href="#__codelineno-57-3"></a><span class="go">    Schema     |            Name            |   Type   |         Access privileges          | Column privileges | Policies</span>
@@ -2899,26 +2908,30 @@ example:</p>
 </span><span id="__span-57-11"><a id="__codelineno-57-11" name="__codelineno-57-11" href="#__codelineno-57-11"></a><span class="go"> zabbix_server | auditlog                   | table    | &quot;zabbix-srv&quot;=arwdDxtm/&quot;zabbix-srv&quot;+|                   |</span>
 </span></code></pre></div>
 </details>
-<p>This will display the access privileges for all tables in the <code>zabbix_server</code>
-schema. Ensure that <code>zabbix-srv</code> has the required privileges.</p>
-<p>If everything looks correct, your tables are properly created and the
-<code>zabbix-srv</code> user has the appropriate ownership and permissions. If you need to
-adjust any permissions, you can do so using the GRANT commands as needed.</p>
-<p>This concludes our installation of the PostgreSQL database.</p>
+<p>Isso exibirá os privilégios de acesso de todas as tabelas no esquema
+<code>zabbix_server</code>. Certifique-se de que <code>zabbix-srv</code> tenha os privilégios
+necessários.</p>
+<p>Se tudo estiver correto, suas tabelas foram criadas corretamente e o usuário
+<code>zabbix-srv</code> tem a propriedade e as permissões adequadas. Se precisar ajustar
+alguma permissão, você poderá fazê-lo usando os comandos GRANT, conforme
+necessário.</p>
+<p>Isso conclui nossa instalação do banco de dados PostgreSQL.</p>
 <hr />
 <h2 id="conclusao">Conclusão</h2>
-<p>With the installation and configuration of PostgreSQL as the database backend
-for Zabbix complete, you now have a powerful and efficient database system ready
-for your monitoring needs. We've covered the installation of PostgreSQL from
-both vendor-provided packages and official repositories, securing the database,
-creating the necessary Zabbix database and users, and populating the database
-with the required schema and initial data.</p>
+<p>Com a instalação e a configuração do PostgreSQL como backend do banco de dados
+para o Zabbix concluídas, agora você tem um sistema de banco de dados poderoso e
+eficiente pronto para suas necessidades de monitoramento. Cobrimos a instalação
+do PostgreSQL a partir dos pacotes fornecidos pelo fornecedor e dos repositórios
+oficiais, protegendo o banco de dados, criando o banco de dados e os usuários
+necessários do Zabbix e preenchendo o banco de dados com o esquema necessário e
+os dados iniciais.</p>
 <p>Seu ambiente Zabbix agora está pronto para os próximos estágios de instalação e
 configuração.</p>
 <hr />
 <h2 id="perguntas">Perguntas</h2>
 <ol>
-<li>What version of PostgreSQL should I install for compatibility and stability?</li>
+<li>Qual versão do PostgreSQL devo instalar para garantir a compatibilidade e a
+   estabilidade?</li>
 <li>Qual é a porta usada pelo meu banco de dados?</li>
 <li>Quais usuários do banco de dados eu criei e por quê?</li>
 </ol>

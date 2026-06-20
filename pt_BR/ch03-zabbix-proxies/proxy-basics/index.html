@@ -851,10 +851,10 @@ scalability and efficiency.
 </li>
       
         <li class="md-nav__item">
-  <a href="#proxy-throttling" class="md-nav__link">
+  <a href="#limitacao-de-proxy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Proxy throttling
+        Limitação de proxy
       
     </span>
   </a>
@@ -862,15 +862,15 @@ scalability and efficiency.
 </li>
       
         <li class="md-nav__item">
-  <a href="#active-versus-passive-proxy" class="md-nav__link">
+  <a href="#proxy-ativo-versus-passivo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Active versus Passive proxy
+        Proxy ativo versus passivo
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Active versus Passive proxy">
+    <nav class="md-nav" aria-label="Proxy ativo versus passivo">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -901,10 +901,10 @@ scalability and efficiency.
 </li>
       
         <li class="md-nav__item">
-  <a href="#proxy-runtime-control-options" class="md-nav__link">
+  <a href="#opcoes-de-controle-de-tempo-de-execucao-de-proxy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Proxy runtime control options
+        Opções de controle de tempo de execução de proxy
       
     </span>
   </a>
@@ -912,10 +912,10 @@ scalability and efficiency.
 </li>
       
         <li class="md-nav__item">
-  <a href="#proxy-firewall" class="md-nav__link">
+  <a href="#firewall-de-proxy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Proxy firewall
+        Firewall de proxy
       
     </span>
   </a>
@@ -1867,10 +1867,10 @@ scalability and efficiency.
 </li>
       
         <li class="md-nav__item">
-  <a href="#proxy-throttling" class="md-nav__link">
+  <a href="#limitacao-de-proxy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Proxy throttling
+        Limitação de proxy
       
     </span>
   </a>
@@ -1878,15 +1878,15 @@ scalability and efficiency.
 </li>
       
         <li class="md-nav__item">
-  <a href="#active-versus-passive-proxy" class="md-nav__link">
+  <a href="#proxy-ativo-versus-passivo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Active versus Passive proxy
+        Proxy ativo versus passivo
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Active versus Passive proxy">
+    <nav class="md-nav" aria-label="Proxy ativo versus passivo">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1917,10 +1917,10 @@ scalability and efficiency.
 </li>
       
         <li class="md-nav__item">
-  <a href="#proxy-runtime-control-options" class="md-nav__link">
+  <a href="#opcoes-de-controle-de-tempo-de-execucao-de-proxy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Proxy runtime control options
+        Opções de controle de tempo de execução de proxy
       
     </span>
   </a>
@@ -1928,10 +1928,10 @@ scalability and efficiency.
 </li>
       
         <li class="md-nav__item">
-  <a href="#proxy-firewall" class="md-nav__link">
+  <a href="#firewall-de-proxy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Proxy firewall
+        Firewall de proxy
       
     </span>
   </a>
@@ -2039,9 +2039,9 @@ scalability and efficiency.
 
 
 <h1 id="proxy-basics">Proxy basics</h1>
-<p>In this chapter we will explain what a proxy is, why you may need or consider
-it, what the basic requirements are and what the difference is between <em>Active
-proxies</em> and <em>Passive proxies</em>.</p>
+<p>Neste capítulo, explicaremos o que é um proxy, por que você pode precisar dele
+ou considerá-lo, quais são os requisitos básicos e qual é a diferença entre
+<em>Proxies ativos</em> e <em>Proxies passivos</em>.</p>
 <hr />
 <h2 id="o-que-e-um-zabbix-proxy">O que é um Zabbix Proxy</h2>
 <p>Um proxy Zabbix é, na verdade, um tipo de processo leve do servidor Zabbix que
@@ -2101,158 +2101,159 @@ proxy, em vez de uma substituição completa de toda a configuração, como nas
 versões anteriores. Essa abordagem incremental permite a propagação quase em
 tempo real das alterações de configuração e, ao mesmo tempo, minimiza o consumo
 de recursos.</p>
-<details class="note configuration settings vs configuration updates" open="open">
-<summary>Note</summary>
-<p>When working with a Zabbix proxy, it’s important to distinguish between two 
-types of "configuration":</p>
-<ul>
-<li><strong>Proxy Configuration Settings</strong></li>
-</ul>
-<dl>
-<dd>These are the local settings defined in the proxy’s configuration file. 
-They control how the proxy operates.</dd>
-</dl>
-<ul>
-<li><strong>Configuration Updates from the Zabbix Server</strong></li>
-</ul>
-<dl>
-<dd>
-<p>These are dynamic updates pushed by the Zabbix server to the proxy.
-They include:</p>
-<ul>
-<li>New or modified monitoring items, triggers, or templates assigned to the proxy.</li>
-<li>Changes to host configurations or data collection rules. </li>
-</ul>
-</dd>
-</dl>
-</details>
+<p>???+ nota: Configurações de configuração versus atualizações de configuração</p>
+<div class="language-text highlight"><pre><span></span><code>When working with a Zabbix proxy, it’s important to distinguish between two 
+types of &quot;configuration&quot;:
+
+- **Proxy Configuration Settings**
+
+:   These are the local settings defined in the proxy’s configuration file. 
+    They control how the proxy operates.
+
+- **Configuration Updates from the Zabbix Server**
+
+:   These are dynamic updates pushed by the Zabbix server to the proxy.
+    They include:
+
+    - New or modified monitoring items, triggers, or templates assigned to the proxy.
+    - Changes to host configurations or data collection rules.
+</code></pre></div>
 <hr />
-<h2 id="proxy-throttling">Proxy throttling</h2>
-<p>Imagine that you need to restart your Zabbix server and that all proxies start
-to push the data they have gathered during the downtime of the Zabbix server.</p>
-<p>This would create a huge amount of data being sent at once to the Zabbix server
-and possibly bring it to its knees in no time. Since version 6, Zabbix has added
-protection for this kind of situations. When the Zabbix server history cache is
-full the history cache write access is being throttled: Zabbix server will stop
-accepting data from proxies when history cache usage reaches 80%. Instead those
-proxies will be put on a throttling list. This will continue until the cache
-usage falls down to 60%. Now the server will start accepting data from the
-proxies one by one, defined by the throttling list. This means the first proxy
-that attempted to upload data during the throttling period will be served first
-and until it's done the server will not accept data from other proxies.</p>
-<p>This table gives you an overview of how and when throttling works in Zabbix.</p>
+<h2 id="limitacao-de-proxy">Limitação de proxy</h2>
+<p>Imagine que você precise reiniciar seu servidor Zabbix e que todos os proxies
+comecem a enviar os dados que coletaram durante o tempo de inatividade do
+servidor Zabbix.</p>
+<p>Isso criaria uma enorme quantidade de dados sendo enviados ao mesmo tempo para o
+servidor Zabbix e possivelmente o deixaria de joelhos em pouco tempo. Desde a
+versão 6, o Zabbix adicionou uma proteção para esse tipo de situação. Quando o
+cache de histórico do Zabbix Server estiver cheio, o acesso de gravação do cache
+de histórico será limitado: o Zabbix Server deixará de aceitar dados de proxies
+quando o uso do cache de histórico atingir 80%. Em vez disso, esses proxies
+serão colocados em uma lista de limitação. Isso continuará até que o uso do
+cache caia para 60%. Agora o servidor começará a aceitar dados dos proxies um a
+um, definidos pela lista de limitação. Isso significa que o primeiro proxy que
+tentou fazer upload de dados durante o período de limitação será atendido
+primeiro e, até que isso seja feito, o servidor não aceitará dados de outros
+proxies.</p>
+<p>Esta tabela lhe dá uma visão geral de como e quando o throttling funciona no
+Zabbix.</p>
 <table>
 <thead>
 <tr>
-<th>History write cache usage</th>
-<th>Zabbix server mode</th>
-<th>Zabbix server action</th>
+<th>Uso do cache de gravação do histórico</th>
+<th>Modo de servidor Zabbix</th>
+<th>Ação do servidor Zabbix</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Reaches 80%</td>
-<td>Wait</td>
-<td>Stops accepting proxy data, but maintains a throttling list (prioritized list of proxies to be contacted later).</td>
+<td>Alcança 80%</td>
+<td>Esperar</td>
+<td>Deixa de aceitar dados de proxy, mas mantém uma lista de limitação (lista priorizada de proxies a serem contatados posteriormente).</td>
 </tr>
 <tr>
-<td>Drops to 60%</td>
-<td>Throttled</td>
-<td>Starts processing throttling list, but still not accepting proxy data.</td>
+<td>Cai para 60%</td>
+<td>Limitado</td>
+<td>Começa a processar a lista de limitação, mas ainda não aceita dados de proxy.</td>
 </tr>
 <tr>
-<td>Drops to 20%</td>
+<td>Cai para 20%</td>
 <td>Normal</td>
-<td>Drops the throttling list and starts accepting proxy data normally.</td>
+<td>Elimina a lista de limitação e começa a aceitar dados de proxy normalmente.</td>
 </tr>
 </tbody>
 </table>
-<p>This may cause delays in detection of problems, as you will have to wait for all
-relevant data to be received and processed by the Zabbix server; but you won't
-lose any historical data.</p>
+<p>Isso pode causar atrasos na detecção de problemas, pois você terá que esperar
+que todos os dados relevantes sejam recebidos e processados pelo servidor
+Zabbix, mas você não perderá nenhum dado histórico.</p>
 <hr />
-<h2 id="active-versus-passive-proxy">Active versus Passive proxy</h2>
-<p>Zabbix proxies have been available since Zabbix 1.6. At that time they where
-available only as what we know today as <strong>Active proxies</strong>. <em>Active</em> means that
-the proxy will initiate the connection by itself to the Zabbix Server. In
-version 1.8.3 <em>passive</em> proxies where introduced. This allows the server to
-connect to the proxy instead of the other way around.</p>
-<p>As mentioned before Zabbix agents can be both active <em>and</em> passive however
-proxies cannot be both so we have to choose the way of the communication when we
-configure a proxy.</p>
-<details class="note" open="open">
-<summary>Active/Passive agent on Active/Passive proxy ?</summary>
-<p>Remember that choosing the proxy mode <em>active</em> or <em>passive</em> has no impact on 
-how Zabbix agents can communicate with this proxy. It's perfectly fine to have
-an <em>active proxy</em> and a <em>passive agent</em> working together.</p>
-</details>
+<h2 id="proxy-ativo-versus-passivo">Proxy ativo versus passivo</h2>
+<p>Os proxies do Zabbix estão disponíveis desde o Zabbix 1.6. Naquela época, eles
+estavam disponíveis apenas como o que conhecemos hoje como <strong>Active proxies</strong>.
+<em>Active</em> significa que o proxy iniciará a conexão por si só com o Zabbix Server.
+Na versão 1.8.3, foram introduzidos os proxies <em>passivos</em>. Isso permite que o
+servidor se conecte ao proxy, e não o contrário.</p>
+<p>Conforme mencionado anteriormente, os agentes do Zabbix podem ser ativos <em>e
+passivos</em>. No entanto, os proxies não podem ser ambos, portanto, temos que
+escolher a forma de comunicação quando configuramos um proxy.</p>
+<p>???+ nota "Agente ativo/passivo no proxy ativo/passivo?</p>
+<div class="language-text highlight"><pre><span></span><code>Remember that choosing the proxy mode _active_ or _passive_ has no impact on 
+how Zabbix agents can communicate with this proxy. It&#39;s perfectly fine to have
+an _active proxy_ and a _passive agent_ working together.
+</code></pre></div>
 <hr />
 <h3 id="proxy-ativo">Proxy ativo</h3>
-<p>In <em>active</em> mode, the proxy takes full control of its operational settings. This
-includes managing when it checks for new configuration updates and when it sends
-collected data to the server.</p>
-<p>It’s important to note that the key settings for an <em>active proxy</em> are defined
-exclusively in the <em>Zabbix proxy</em> configuration. Any adjustments to these
-parameters should be made directly within the proxy configuration files.</p>
-<p>These are the proxy configuration settings you will need to set in <em>active</em>
-mode:</p>
+<p>No modo <em>active</em>, o proxy assume o controle total de suas configurações
+operacionais. Isso inclui gerenciar quando ele verifica se há novas atualizações
+de configuração e quando envia os dados coletados para o servidor.</p>
+<p>É importante observar que as principais configurações de um <em>proxy ativo</em> são
+definidas exclusivamente na configuração do <em>proxy Zabbix</em> . Qualquer ajuste
+nesses parâmetros deve ser feito diretamente nos arquivos de configuração do
+proxy.</p>
+<p>Essas são as definições de configuração de proxy que você precisará definir no
+modo <em>active</em>:</p>
 <ul>
-<li><code>ProxyMode</code>: <code>0</code> - Sets the proxy in 'Active' mode</li>
-<li><code>Server</code>: IP or DNS of the Zabbix server</li>
-<li><code>Hostname</code>: Proxy name - this needs to be exactly the same as configured in
-  the frontend.</li>
-<li><code>ProxyOfflineBuffer</code>: How long we like to keep data in the DB (in hours) if we
-  can't reach the <em>Zabbix server</em>.</li>
-<li><code>ProxyLocalBuffer</code>: How long we like to keep data in the DB (in hours) even
-  when it is already sent to the <em>Zabbix server</em>.</li>
-<li><code>ProxyConfigFrequency</code>: Replaces <code>ConfigFrequency</code> in earlier versions and
-  defines how often we request configuration updates (every 10 seconds) from the
-  <em>Zabbix server</em>.</li>
-<li><code>DataSenderFrequency</code>: How often data is sent to <em>Zabbix server</em> (every
-  second).</li>
+<li><code>ProxyMode</code>: <code>0</code> - Define o proxy no modo 'Ativo'</li>
+<li><code>Servidor</code>: IP ou DNS do servidor Zabbix</li>
+<li><code>Hostname</code>: Nome do proxy - precisa ser exatamente o mesmo que o configurado
+  no frontend.</li>
+<li><code>ProxyOfflineBuffer</code>: Por quanto tempo gostaríamos de manter os dados no banco
+  de dados (em horas) se não conseguirmos acessar o servidor <em>Zabbix</em>.</li>
+<li><code>ProxyLocalBuffer</code>: Por quanto tempo gostaríamos de manter os dados no banco
+  de dados (em horas), mesmo quando já tiverem sido enviados para o servidor
+  <em>Zabbix</em>.</li>
+<li><code>ProxyConfigFrequency</code>: Substitui o <code>ConfigFrequency</code> em versões anteriores e
+  define a frequência com que solicitamos atualizações de configuração (a cada
+  10 segundos) do <em>Zabbix Server</em>.</li>
+<li><code>DataSenderFrequency</code>: Com que frequência os dados são enviados para o
+  servidor <em>Zabbix</em> (a cada segundo).</li>
 </ul>
-<p>When configuring resources for an <em>Active proxy</em>, it’s important to account for
-its connection behavior with the <em>Zabbix server</em>. During operation, the proxy
-can utilize up to two trapper processes on the server:</p>
+<p>Ao configurar recursos para um <em>proxy ativo</em> , é importante levar em conta seu
+comportamento de conexão com o <em>servidor Zabbix</em> . Durante a operação, o proxy
+pode utilizar até dois processos trapper no servidor:</p>
 <ul>
-<li>One trapper is dedicated to sending collected data to the server.</li>
-<li>The other trapper is reserved for retrieving configuration updates.</li>
+<li>Um trapper é dedicado a enviar os dados coletados para o servidor.</li>
+<li>O outro trapper é reservado para recuperar atualizações de configuração.</li>
 </ul>
-<details class="tip" open="open">
-<summary>Tip</summary>
+<details class="dica" open="open">
+<summary>Dica</summary>
 <p>To ensure smooth communication, it is considered best practice to allocate two 
 trapper processes per <em>Active proxy</em> on the <em>Zabbix server</em>. This configuration 
 optimizes performance and prevents potential bottlenecks.</p>
 </details>
-<p><img alt="Active proxy communication" src="../../../ch03-zabbix-proxies/active-passive-proxies/ch03-active-communication.png" /></p>
-<p><em>3.1 Active proxy communication</em></p>
+<p><img alt="Comunicação proxy ativa" src="../../../ch03-zabbix-proxies/active-passive-proxies/ch03-active-communication.png" /></p>
+<p><em>3.1 Comunicação de proxy ativo</em></p>
 <hr />
 <h3 id="proxy-passivo">Proxy passivo</h3>
-<p>In contrast to an <em>active proxy</em>, a proxy in <em>passive</em> mode will have its
-operational settings controlled by the <em>Zabbix server</em>.</p>
-<p>Hence, configuring <em>passive</em> proxies requires changes in in both the <em>Zabbix
-server</em> and the <em>Zabbix proxy</em> configuration files as it is now the server that
-controls when and how proxy data is requested by making use of pollers.</p>
-<p>The most important setting we can find back in the <em>proxy</em> configuration file
-are:</p>
+<p>Ao contrário de um <em>proxy ativo</em> , um <em>proxy no modo passivo</em> terá suas
+configurações operacionais controladas pelo <em>servidor Zabbix</em> .</p>
+<p>Portanto, a configuração dos proxies <em>passivos</em> requer alterações nos arquivos
+de configuração do servidor <em>Zabbix</em> e do proxy <em>Zabbix</em>, pois agora é o
+servidor que controla quando e como os dados do proxy são solicitados por meio
+do uso de pollers.</p>
+<p>As configurações mais importantes que podemos encontrar no arquivo de
+configuração do <em>proxy</em> são:</p>
 <ul>
-<li><code>ProxyMode</code>: <code>1</code> - Sets the proxy in 'Passive' mode</li>
-<li><code>Server:</code> IP or DNS of the <em>Zabbix server</em></li>
-<li><code>ProxyOfflineBuffer</code>: How long we like to keep data in the DB (in hours) if we
-  can't reach the <em>Zabbix server</em>.</li>
-<li><code>ProxyLocalBuffer</code>: How long we like to keep data in the DB (in hours) even
-  when it is already sent to the <em>Zabbix server</em>.</li>
+<li><code>ProxyMode</code>: <code>1</code> - Define o proxy no modo 'Passivo'.</li>
+<li><code>Servidor:</code> IP ou DNS do servidor <em>Zabbix</em></li>
+<li><code>ProxyOfflineBuffer</code>: Por quanto tempo gostaríamos de manter os dados no banco
+  de dados (em horas) se não conseguirmos acessar o servidor <em>Zabbix</em>.</li>
+<li><code>ProxyLocalBuffer</code>: Por quanto tempo gostaríamos de manter os dados no banco
+  de dados (em horas), mesmo quando já tiverem sido enviados para o servidor
+  <em>Zabbix</em>.</li>
 </ul>
-<p>And finally the config settings we need to change on our <em>Zabbix server</em>:</p>
+<p>E, finalmente, as definições de configuração que precisamos alterar em nosso
+servidor <em>Zabbix</em>:</p>
 <ul>
-<li><code>StartProxyPollers</code>: The number of pollers to contact proxies.</li>
-<li><code>ProxyConfigFrequency</code>: Replaces <code>ConfigFrequency</code> and defines how often
-  <em>Zabbix server</em> will sent configuration changes to all proxies.</li>
-<li><code>ProxyDataFrequency</code>: How often <em>Zabbix server</em> will request monitored data
-  from our proxies.</li>
+<li><code>StartProxyPollers</code>: O número de pollers para contatar proxies.</li>
+<li><code>ProxyConfigFrequency</code>: Substitui o <code>ConfigFrequency</code> e define a frequência
+  com que o <em>Zabbix Server</em> enviará alterações de configuração para todos os
+  proxies.</li>
+<li><code>ProxyDataFrequency</code>: Com que frequência o servidor <em>Zabbix</em> solicitará dados
+  monitorados de nossos proxies.</li>
 </ul>
-<details class="tip" open="open">
-<summary>Tip</summary>
+<details class="dica" open="open">
+<summary>Dica</summary>
 <p>It is not required for <code>StartProxyPollers</code> to be equal to the number of 
 passive proxies you have as one poller can poll multiple proxies. The 
 recommended value however depends on your environment and workload. If you
@@ -2265,73 +2266,75 @@ the value of the <code>zabbix[proxy_history]</code> item on the proxies which re
 the number of values the proxy has received that are yet to be sent to the 
 <em>Zabbix server</em>. </p>
 </details>
-<p><img alt="Passive proxy communication" src="../../../ch03-zabbix-proxies/active-passive-proxies/ch03-passive-communication.png" /></p>
-<p><em>3.2 Passive proxy communication</em></p>
+<p><img alt="Comunicação proxy passiva" src="../../../ch03-zabbix-proxies/active-passive-proxies/ch03-passive-communication.png" /></p>
+<p><em>3.2 Comunicação proxy passiva</em></p>
 <hr />
-<h2 id="proxy-runtime-control-options">Proxy runtime control options</h2>
-<p>Just like the <em>Zabbix server</em> our proxy supports runtime control options always
-check latest options with the <code>--help</code> option. But here is a short overview of
-options available to use.</p>
+<h2 id="opcoes-de-controle-de-tempo-de-execucao-de-proxy">Opções de controle de tempo de execução de proxy</h2>
+<p>Assim como o servidor <em>Zabbix</em>, nosso proxy oferece suporte a opções de controle
+de tempo de execução. Sempre verifique as opções mais recentes com a opção
+<code>--help</code>. Mas aqui está uma breve visão geral das opções disponíveis para uso.</p>
 <dl>
 <dt><code>zabbix_proxy --runtime-control housekeeper_execute</code></dt>
 <dd>
-<p>Triggers the immediate execution of the Zabbix housekeeper process on the
-proxy. The housekeeper is responsible for cleaning up outdated data (e.g., old
-history, trends, or events) according to the configured retention periods in
-Zabbix. This command forces the housekeeper to run now, instead of waiting for
-its scheduled interval.</p>
+<p>Aciona a execução imediata do processo housekeeper do Zabbix no proxy. O
+housekeeper é responsável pela limpeza de dados desatualizados (por exemplo,
+histórico antigo, tendências ou eventos) de acordo com os períodos de retenção
+configurados no Zabbix. Esse comando força o housekeeper a ser executado agora,
+em vez de aguardar o intervalo programado.</p>
 </dd>
 <dt><code>zabbix_proxy --runtime-control log_level_increase=target</code></dt>
 <dd>
-<p>Increases the log verbosity level for a specific target process (e.g., by type
-like <code>configuration syncer</code>, <code>housekeeper</code>, <code>icmp pinger</code>, by type and number
-like <code>poller,3</code> or by PID). This is useful for debugging or troubleshooting, as
-it provides more detailed log output for the specified target. For a full list
-of available targets, check the <a href="https://www.zabbix.com/documentation/current/en/manpages/zabbix_proxy">man-page of
+<p>Aumenta o nível de verbosidade do registro para um processo-alvo específico
+(por exemplo, por tipo, como <code>configuration syncer</code>, <code>housekeeper</code>, <code>icmp
+pinger</code>, por tipo e número, como <code>poller,3</code> ou por PID). Isso é útil para
+depuração ou solução de problemas, pois fornece uma saída de registro mais
+detalhada para o alvo especificado. Para obter uma lista completa dos alvos
+disponíveis, consulte a <a href="https://www.zabbix.com/documentation/current/en/manpages/zabbix_proxy">man-page of
 <code>zabbix_proxy</code></a>.
-<em>Example</em>: <code>log_level_increase="http poller"</code> would make http poller-related
-logs more verbose.</p>
+<em>Exemplo</em>: <code>log_level_increase="http poller"</code> tornaria os registros relacionados
+ao http poller mais detalhados.</p>
 </dd>
 <dt><code>zabbix_proxy --runtime-control log_level_decrease=target</code></dt>
 <dd>
-<p>Decreases the log verbosity level for a specific target, reducing the amount
-of log output generated. This is helpful to lower noise in logs after debugging
-or to optimize performance by reducing I/O overhead. <em>Example</em>:
-<code>log_level_decrease=trapper,2</code> would reduce the verbosity of trapper-related
-logs of the second trapper process.</p>
+<p>Diminui o nível de verbosidade do registro para um destino específico,
+reduzindo a quantidade de saída de registro gerada. Isso é útil para diminuir o
+ruído nos registros após a depuração ou para otimizar o desempenho reduzindo a
+sobrecarga de E/S. <em>Exemplo</em>: <code>log_level_decrease=trapper,2</code> reduziria a
+verbosidade dos registros relacionados ao trapper do segundo processo do
+trapper.</p>
 </dd>
 <dt><code>zabbix_proxy --runtime-control snmp_cache_reload</code></dt>
 <dd>
-<p>Forces the proxy to reload its SNMP cache. This is useful if you've made
-changes to SNMP configurations (e.g., updated community strings, OIDs, or device
-IPs) and want the proxy to immediately pick up the new settings without
-restarting the entire service.</p>
+<p>Força o proxy a recarregar seu cache de SNMP. Isso é útil se você tiver feito
+alterações nas configurações de SNMP (por exemplo, cadeias de caracteres de
+comunidade, OIDs ou IPs de dispositivos atualizados) e quiser que o proxy
+obtenha imediatamente as novas configurações sem reiniciar todo o serviço.</p>
 </dd>
 <dt><code>zabbix_proxy --runtime-control diaginfo=section</code></dt>
 <dd>
-<p>Generates diagnostic information for a specific section of the proxy’s
-operation. This is typically used for troubleshooting or performance analysis.
-The section parameter can target areas like history cache, preprocessing or
-locks. <em>Example</em>: <code>diaginfo=preprocessing</code> would provide detailed statistics
-about the preprocessing manager.</p>
+<p>Gera informações de diagnóstico para uma seção específica da operação do
+proxy. Normalmente, isso é usado para solução de problemas ou análise de
+desempenho. O parâmetro section pode visar áreas como cache de histórico,
+pré-processamento ou bloqueios. <em>Exemplo</em>: <code>diaginfo=preprocessing</code> forneceria
+estatísticas detalhadas sobre o gerenciador de pré-processamento.</p>
 </dd>
 </dl>
 <hr />
-<h2 id="proxy-firewall">Proxy firewall</h2>
-<p>Our proxies work like small <em>Zabbix servers</em> so when it comes to the ports to
-connect to agents, SNMP, ... nothing changes, all ports need to be configured
-the same as you would on a <em>Zabbix server</em>.</p>
-<p>When it comes to port for the proxy it depends on our proxy being <code>active</code> or
-<code>passive</code>.</p>
+<h2 id="firewall-de-proxy">Firewall de proxy</h2>
+<p>Nossos proxies funcionam como pequenos servidores <em>Zabbix</em>, portanto, quando se
+trata de portas para conexão com agentes, SNMP, ... nada muda, todas as portas
+precisam ser configuradas da mesma forma que em um servidor <em>Zabbix</em>.</p>
+<p>Quando se trata da porta para o proxy, isso depende do fato de nosso proxy ser
+<code>ativo</code> ou <code>passivo</code>.</p>
 <ul>
-<li><strong>Active Proxy:</strong> Zabbix server needs to have port <code>10051/tcp</code> open so proxy
-  can connect.</li>
-<li><strong>Passive Proxy:</strong> Needs to have port <code>10051/tcp</code> open on the proxy so that
-  the <code>server</code> can connect to the proxy.</li>
+<li><strong>Proxy ativo:</strong> O servidor Zabbix precisa ter a porta <code>10051/tcp</code> aberta para
+  que o proxy possa se conectar.</li>
+<li><strong>Proxy passivo:</strong> Precisa ter a porta <code>10051/tcp</code> aberta no proxy para que o
+  <code>servidor</code> possa se conectar ao proxy.</li>
 </ul>
-<p>Do note that for an active <em>Zabbix Agent</em> or <em>Zabbix Sender</em> to communicate with
-your proxy, whether it is an active or a passive one, this will require port
-<code>10051/tcp</code> to be open on your proxy server:</p>
+<p>Observe que, para que um agente <em>Zabbix ativo</em> ou um <em>remetente Zabbix</em> se
+comunique com seu proxy, seja ele ativo ou passivo, será necessário que a porta
+<code>10051/tcp</code> esteja aberta em seu servidor proxy:</p>
 <div class="admonition info">
 <p class="admonition-title">Abra o firewall para o zabbix-trapper</p>
 <p>Red Hat / SUSE
