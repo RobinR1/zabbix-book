@@ -2244,7 +2244,7 @@ the protocol at your own risk.</p>
 <p>Let's start with the most used method, SSH. Since this is a secure encrypted 
 connection, it is often used to get data from devices that do not expose 
 it via other protocols. However, our favourite use case for SSH monitoring is to 
-get data from devices that do have SNMP or an API, but only expose certain data 
+get data from devices that do not have SNMP or an API, but only expose certain data 
 through the CLI. This gives you another option in gathering information you need 
 that the vendor might not have properly exposed.</p>
 <p>In our Zabbix frontend, let's navigate to <strong>Monitoring</strong> → <strong>Hosts</strong> and create 
@@ -2263,8 +2263,8 @@ customize how it works.</p>
 <ul>
 <li><code>&lt;unique short description&gt;</code>: Is used to make this item unique, as we cannot 
   have duplicate keys on Zabbix hosts.</li>
-<li><code>&lt;ip&gt;</code>: Can we used to specify the target IP Address for SSH to connect to. 
-  Can be used if no host interface is specified</li>
+<li><code>&lt;ip&gt;</code>: Can be used to specify the target IP Address for SSH to connect to. 
+  If this parameter is skipped, the default host interface is used.</li>
 <li><code>&lt;port&gt;</code>: Can be used to specify a different SSH port, the default is port 22.</li>
 <li><code>&lt;encoding&gt;</code>: How to decode the remote output, is it UTF-8 or ANSI for example.</li>
 <li><code>&lt;ssh options&gt;</code>: In case you have more SSH settings you want to use, these can
@@ -2285,7 +2285,7 @@ you are also able to select <strong>Public key</strong> as an option here. Going
 - <strong>Public key file</strong>: The path to the Public key we will use to login.
 - <strong>Private key file</strong>: The path to the Private key we will use to login.
 - <strong>Key passphrase</strong>: The password to decrypt the Private key.</p>
-<p>Keep in mind, when using SSH key authentication it is important to update you
+<p>Keep in mind, when using SSH key authentication it is important to update your
 Zabbix server and/or Zabbix proxy configuration file. You can set the 
 <code>SSHKeyLocation=</code> parameter to for example <code>SSHKeyLocation=/var/lib/zabbix/.ssh/</code>
 which will be the path where the public and private keys for SSH checks 
@@ -2306,7 +2306,7 @@ LAB environment to write examples for this book. But YOU SHOULD set a strong
 password, especially in production. This is also the reason we use username 
 <code>ssh-monitoring</code> as we will create a separate limited user account for SSH 
 monitoring. DO NOT use <code>root</code> or the device <code>admin</code> account unless the device
-does not has the ability to create a separate restricted user account!</p>
+does not have the ability to create a separate restricted user account!</p>
 </details>
 <p>Last but not least, let's add the command to execute in the <strong>Executed script</strong> field.</p>
 <div class="admonition example">
@@ -2362,7 +2362,7 @@ field already filled out just like the SSH check:
 - <code>&lt;unique short description&gt;</code>: Is used to make this item unique, as we cannot 
   have duplicate keys on Zabbix hosts.
 - <code>&lt;ip&gt;</code>: Can we used to specify the target IP Address for Telnet to connect to.
-  Can be used if no host interface is specified
+  If this parameter is skipped, the default host interface is used.
 - <code>&lt;port&gt;</code>: Can be used to specify a different Telnet port, the default is port
   <code>23</code>.
 - <code>&lt;encoding&gt;</code>: How to decode the remote output, is it UTF-8 or ANSI for example.</p>
@@ -2396,6 +2396,7 @@ worth more than security here?</p>
 <em>4.xx Zabbix CLI Monitoring Telnet item tag</em></p>
 <p>Then, if you had a Telnet user set up. You can go to <strong>Monitoring</strong> →
 <strong>Latest data</strong> to check if the value is coming in.</p>
+<hr />
 <h2 id="conclusion">Conclusion</h2>
 <p>SSH and Telnet monitoring provide you with a great fallback when traditional
 protocols like SNMP or API's simply aren't available. It might also be the case 
@@ -2408,11 +2409,13 @@ as it grants us the correct security for modern environments. Telnet should only
 be used when absolutely all other options are exhausted. In any case, the 
 workflow remains the same in both cases: log in, run a command, preprocess the 
 output, and then use it just like any other metric you have collected.</p>
+<hr />
 <h2 id="questions">Questions</h2>
 <ul>
 <li>What is the main difference between SSH and Telnet monitoring?</li>
 <li>What is the main security risk of using Telnet monitoring?</li>
 </ul>
+<hr />
 <h2 id="useful-urls">Useful URLs</h2>
 <ul>
 <li><a href="https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/ssh_checks">https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/ssh_checks</a></li>

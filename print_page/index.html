@@ -16904,7 +16904,7 @@ nothing limits or tells you that your dataset must be large. It can also be
 small, but the smaller - the less sense the dependent items would make. When
 having something large to be collected, you have to collect that data only once
 and have the splitting being done by preprocessing.</p>
-<p>Another use case when you might benefit from dependent items is when data
+<p>Another use case where you might benefit from dependent items is when data
 collection has "high cost", in terms of time retrieving it or when network
 traffic matters. For example, some remote resource which you want to collect has
 slow network or you want to save each and every byte sent over the network, but
@@ -16921,34 +16921,35 @@ efficiency.</p>
 <li>dependent item</li>
 <li>preprocessing</li>
 </ul>
-<p><strong>Master item</strong> is just a regular Zabbix item. It can be any type of data collection
+<p><strong>Master item</strong> is actually just a regular Zabbix item. It can have any type of data collection
 behind it - say it can be "Zabbix agent", "Zabbix trapper", "HTTP agent" item
 or anything else.</p>
-<p><strong>Dependent item</strong> is an item which relies on master item for its value. It does not
-have its own data collection method, it just gets its value from the master item. The
+<p><strong>Dependent item</strong> is an item which relies on a <em>master item</em> for its value. It does not
+have its own data collection method, it just copies its value from the <em>master item</em>. The
 power of dependent item is in its <strong>preprocessing</strong>. It is the preprocessing which
-extracts the needed part of data from master item and transforms it into a separate
-metric making the dependent item a separate monitoring entity. </p>
-<p>Once a new value is collected for the master item, all of its dependent items
-are also updated. It has to be specified in dependent item's configuration,
-which item is the master item for it. One master item can have unlimited number
-of dependent items.</p>
+extracts the needed part of data from the <em>master item</em> data and transforms it into a separate
+metric making the <em>dependent item</em> a separate monitoring entity. </p>
+<p>Once a new value is collected for the <em>master item</em>, all of its <em>dependent items</em>
+are also updated. It is specified in the dependent item's configuration which 
+Zabbix item will be the <em>master item</em> for it. One master item can have an 
+unlimited number of dependent items.</p>
 <details class="info" open="open">
 <summary>Info</summary>
 <p>Since dependent items get updated on master item's value update, they do not
 have their own update interval.</p>
 </details>
-<p>To be able to extract just the needed part of data from the master item, you
-will for sure want to apply some preprocessing. Preprocessing loves structured
-data. You should in all cases seek for structured data as your master item's
-content (e.g. json, csv, etc). This way, you will be able to extract needed
-data easier. When dealing with preprocessing, apply the most suitable method
-for particular data source format (e.g. use JSONPath for json) and understand
-your limits (e.g. regex is Perl flavor and JavaScript is Duktape underneath).</p>
+<p>As a <em>dependent item</em> actually clones the full value of its <em>master item</em>, you
+are able to extract just the needed part of data using preprocessing.
+Preprocessing loves structured data, so you should in all cases seek for 
+structured data as your <em>master item</em>'s content (e.g. json, csv, etc). This way, 
+you will be able to extract needed data easier. When dealing with preprocessing,
+apply the most suitable method for the particular data source format (e.g. use 
+JSONPath for json) and understand your limits (e.g. regex is Perl flavor and 
+JavaScript is Duktape underneath).</p>
 <details class="tip" open="open">
 <summary>Transform master item data into structured format</summary>
-<p>If your master item data is not structured, you can always apply some
-preprocessing on the master item to transform it into a structured format. 
+<p>If your <em>master item</em> data is not structured, you can always apply some
+preprocessing on the <em>master item</em> to transform it into a structured format. 
 With the ability to use Javascript in preprocessing, you can do pretty much
 any type of transformation you want right in Zabbix itself, without a need to
 involve any external scripts.</p>
@@ -16976,11 +16977,11 @@ of structured data.</p>
 <p>This script is added to cron and is being run once a minute. It is kind of
 obvious what this script does - it outputs a random number and has a prefix of
 one of the three letters: "a", "b" or "c":</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#ch04-zabbix-collecting-data-dependent-__codelineno-1-1"></a>binary@linux:~$<span class="w"> </span>cat<span class="w"> </span>/tmp/master.txt
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#ch04-zabbix-collecting-data-dependent-__codelineno-1-2"></a>a:<span class="w"> </span><span class="m">54</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#ch04-zabbix-collecting-data-dependent-__codelineno-1-3"></a>b:<span class="w"> </span><span class="m">98</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#ch04-zabbix-collecting-data-dependent-__codelineno-1-4"></a>c:<span class="w"> </span><span class="m">21</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#ch04-zabbix-collecting-data-dependent-__codelineno-1-5"></a>binary@linux:~$
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#ch04-zabbix-collecting-data-dependent-__codelineno-1-1"></a><span class="gp">binary@linux:~$ </span>cat<span class="w"> </span>/tmp/master.txt
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#ch04-zabbix-collecting-data-dependent-__codelineno-1-2"></a><span class="go">a: 54</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#ch04-zabbix-collecting-data-dependent-__codelineno-1-3"></a><span class="go">b: 98</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#ch04-zabbix-collecting-data-dependent-__codelineno-1-4"></a><span class="go">c: 21</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#ch04-zabbix-collecting-data-dependent-__codelineno-1-5"></a><span class="gp">binary@linux:~$</span>
 </span></code></pre></div>
 </details>
 <p>Now this data file becomes our "master item". It will be collected by Zabbix
@@ -16988,31 +16989,34 @@ native item <code>vfs.file.contents</code>, like:</p>
 <p><img alt="Dependent items - first master item" src="../ch04-zabbix-collecting-data/dependent/ch04.xx-dependent-items-hello-world-master.png" /></p>
 <details class="info" open="open">
 <summary>Info</summary>
-<p>Master item on its own has a little purpose of being stored, especially when
+<p><em>Master item</em> on its own has a little purpose of being stored, especially when
 it is huge. Its only purpose could be debugging, thus once operating 
 normally, it should not be stored by setting <strong>History</strong> to <strong>Do not store</strong>
-in the master item's definition and that will not affect dependent items in any way</p>
+in the <em>master item</em>'s definition. This will prevent Zabbix from storing the
+<em>master item</em>'s history into the database and that will not affect dependent
+items in any way.</p>
 </details>
 <p>And then we can set our dependent items:</p>
 <p><img alt="Dependent items - first dependent item" src="../ch04-zabbix-collecting-data/dependent/ch04.xx-dependent-items-hello-world-dependent.png" /></p>
-<p>This dependent item will have the following preprocessing - it will extract
-number from line starting with "a":</p>
+<p>This dependent item will have the following preprocessing - it will extract the 
+number from the line starting with "a":</p>
 <p><img alt="Dependent items - first dependent item preprocessing" src="../ch04-zabbix-collecting-data/dependent/ch04.xx-dependent-items-hello-world-dependent-preprocessing.png" /></p>
 <p>We will then clone the first item in same fashion and get a full set of items:</p>
 <p><img alt="Dependent items - first dependent items all" src="../ch04-zabbix-collecting-data/dependent/ch04.xx-dependent-items-hello-world-all.png" /></p>
-<p>Now data is being collected once and we have 3 separate numeric items, which we
+<p>Now data is being collected only once but we now have 3 separate numeric items, which we
 can use depending on our needs - draw some graphs, have some triggers on top, etc.</p>
 <p><img alt="Dependent items - first dependent items results" src="../ch04-zabbix-collecting-data/dependent/ch04.xx-dependent-items-hello-world-result.png" /></p>
 <hr />
-<h2 id="ch04-zabbix-collecting-data-dependent-dependent-items-from-json">Dependent items from json</h2>
+<h2 id="ch04-zabbix-collecting-data-dependent-dependent-items-from-json">Dependent items from JSON</h2>
 <p>Previous example had a "Regular expression" as the preprocessing step. In real
-life, you might often face json as your master item, so preprocessing would be
+life, you might often face JSON structured data as your master item, so preprocessing would be
 different. Of course, regexp is a universal thing so it is also suitable to
-extract something from json, but there is a dedicated preprocessing type
+extract something from JSON data, but there is a dedicated preprocessing type
 exactly for this purpose - <code>JSONPath</code>.</p>
-<p>So first let's modify our example script to produce json:</p>
+<p>So first let's modify our example script to produce JSON structured data instead
+of plain text:</p>
 <details class="example" open="open">
-<summary>Hello World script - json</summary>
+<summary>Hello World script - JSON</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#ch04-zabbix-collecting-data-dependent-__codelineno-2-1"></a><span class="ch">#!/bin/bash</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#ch04-zabbix-collecting-data-dependent-__codelineno-2-2"></a>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#ch04-zabbix-collecting-data-dependent-__codelineno-2-3"></a><span class="nv">json</span><span class="o">=</span><span class="s2">&quot;{&quot;</span>
@@ -17029,31 +17033,38 @@ exactly for this purpose - <code>JSONPath</code>.</p>
 </span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#ch04-zabbix-collecting-data-dependent-__codelineno-2-14"></a><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
 </span></code></pre></div>
 <p>will produce something like:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#ch04-zabbix-collecting-data-dependent-__codelineno-3-1"></a>binary@linux:~$<span class="w"> </span>cat<span class="w"> </span>/tmp/master.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.&#39;</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#ch04-zabbix-collecting-data-dependent-__codelineno-3-2"></a><span class="o">{</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#ch04-zabbix-collecting-data-dependent-__codelineno-3-3"></a><span class="w">  </span><span class="s2">&quot;a&quot;</span>:<span class="w"> </span><span class="s2">&quot;94&quot;</span>,
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#ch04-zabbix-collecting-data-dependent-__codelineno-3-4"></a><span class="w">  </span><span class="s2">&quot;b&quot;</span>:<span class="w"> </span><span class="s2">&quot;41&quot;</span>,
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#ch04-zabbix-collecting-data-dependent-__codelineno-3-5"></a><span class="w">  </span><span class="s2">&quot;c&quot;</span>:<span class="w"> </span><span class="s2">&quot;78&quot;</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#ch04-zabbix-collecting-data-dependent-__codelineno-3-6"></a><span class="o">}</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#ch04-zabbix-collecting-data-dependent-__codelineno-3-7"></a>binary@linux:~$
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#ch04-zabbix-collecting-data-dependent-__codelineno-3-1"></a><span class="gp">binary@linux:~$ </span>cat<span class="w"> </span>/tmp/master.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.&#39;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#ch04-zabbix-collecting-data-dependent-__codelineno-3-2"></a><span class="go">{</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#ch04-zabbix-collecting-data-dependent-__codelineno-3-3"></a><span class="go">  &quot;a&quot;: &quot;94&quot;,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#ch04-zabbix-collecting-data-dependent-__codelineno-3-4"></a><span class="go">  &quot;b&quot;: &quot;41&quot;,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#ch04-zabbix-collecting-data-dependent-__codelineno-3-5"></a><span class="go">  &quot;c&quot;: &quot;78&quot;</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#ch04-zabbix-collecting-data-dependent-__codelineno-3-6"></a><span class="go">}</span>
 </span></code></pre></div>
 </details>
-<p>Now we can have similar approach of one single master item and bunch of
+<p>Now we can have a similar approach of one single master item and bunch of
 dependent items nearby. Just this time, we would have <code>JSONPath</code> as
 preprocessing step for dependent items.</p>
 <p><img alt="Dependent items - first dependent item - json" src="../ch04-zabbix-collecting-data/dependent/ch04.xx-dependent-items-hello-world-dependent-preprocessing-json.png" /></p>
 <p>Easy and smooth!</p>
 <hr />
 <h2 id="ch04-zabbix-collecting-data-dependent-dependent-items-and-lld">Dependent items and LLD</h2>
-<p>Now imagine our example script produces not <code>{a..c}</code> but a full alphabet,
+<p>Now imagine that our example script produces not <code>{a..c}</code>, but a full alphabet
 <code>{a..z}</code>. We could clone dependent items one by one, but that would also
-include editing the preprocessing step regexp each time as well. If you are
-familiar with Low-Level Discovery (LLD), you most likely see where this goes. 
-We will apply LLD here and combine it with dependent items!</p>
+include editing the preprocessing step regexp each time as well. If you are already
+familiar with Low-Level Discovery (LLD), you most likely already see where this 
+is going; We will apply LLD here and combine it with dependent items!</p>
+<div class="admonition tip">
+<p class="admonition-title">Low-Level Discovery (LLD)</p>
+<p>If you are not yet familiar with LLD, you can read more about it in the upcoming
+<a href="#ch08-zabbix-lld-chapter">LLD chapter</a>. But for now you only need to know that 
+LLD can be used to create all of the dependent items for you, based on the data 
+collected by the <em>master item</em> and an <em>item prototype</em> which acts as a template
+for the dependent items that will be created.</p>
+</div>
 <p>For LLD, we will use <code>log_discovery.sh</code>, which makes it possible to perform LLD
-from log files (thus, also, from any other text files). Source for this script
-can be found in the "Useful URLs" section. It will have item prototypes of
-"Dependent item" type and will rely on master item in same template, just
+from log files (thus, also, from any other text files). The source for this script
+can be found in the "Useful URLs" section. It will have item prototypes of type
+"<strong>Dependent item</strong>" and will rely on a <em>master item</em> in the same template, just
 outside of discovery.</p>
 <p><img alt="Dependent items - LLD" src="../ch04-zabbix-collecting-data/dependent/ch04.xx-dependent-items-hello-world-lld.png" /></p>
 <p>And then item prototypes would look like:</p>
@@ -17111,7 +17122,7 @@ the protocol at your own risk.</p>
 <p>Let's start with the most used method, SSH. Since this is a secure encrypted 
 connection, it is often used to get data from devices that do not expose 
 it via other protocols. However, our favourite use case for SSH monitoring is to 
-get data from devices that do have SNMP or an API, but only expose certain data 
+get data from devices that do not have SNMP or an API, but only expose certain data 
 through the CLI. This gives you another option in gathering information you need 
 that the vendor might not have properly exposed.</p>
 <p>In our Zabbix frontend, let's navigate to <strong>Monitoring</strong> → <strong>Hosts</strong> and create 
@@ -17130,8 +17141,8 @@ customize how it works.</p>
 <ul>
 <li><code>&lt;unique short description&gt;</code>: Is used to make this item unique, as we cannot 
   have duplicate keys on Zabbix hosts.</li>
-<li><code>&lt;ip&gt;</code>: Can we used to specify the target IP Address for SSH to connect to. 
-  Can be used if no host interface is specified</li>
+<li><code>&lt;ip&gt;</code>: Can be used to specify the target IP Address for SSH to connect to. 
+  If this parameter is skipped, the default host interface is used.</li>
 <li><code>&lt;port&gt;</code>: Can be used to specify a different SSH port, the default is port 22.</li>
 <li><code>&lt;encoding&gt;</code>: How to decode the remote output, is it UTF-8 or ANSI for example.</li>
 <li><code>&lt;ssh options&gt;</code>: In case you have more SSH settings you want to use, these can
@@ -17152,7 +17163,7 @@ you are also able to select <strong>Public key</strong> as an option here. Going
 - <strong>Public key file</strong>: The path to the Public key we will use to login.
 - <strong>Private key file</strong>: The path to the Private key we will use to login.
 - <strong>Key passphrase</strong>: The password to decrypt the Private key.</p>
-<p>Keep in mind, when using SSH key authentication it is important to update you
+<p>Keep in mind, when using SSH key authentication it is important to update your
 Zabbix server and/or Zabbix proxy configuration file. You can set the 
 <code>SSHKeyLocation=</code> parameter to for example <code>SSHKeyLocation=/var/lib/zabbix/.ssh/</code>
 which will be the path where the public and private keys for SSH checks 
@@ -17173,7 +17184,7 @@ LAB environment to write examples for this book. But YOU SHOULD set a strong
 password, especially in production. This is also the reason we use username 
 <code>ssh-monitoring</code> as we will create a separate limited user account for SSH 
 monitoring. DO NOT use <code>root</code> or the device <code>admin</code> account unless the device
-does not has the ability to create a separate restricted user account!</p>
+does not have the ability to create a separate restricted user account!</p>
 </details>
 <p>Last but not least, let's add the command to execute in the <strong>Executed script</strong> field.</p>
 <div class="admonition example">
@@ -17229,7 +17240,7 @@ field already filled out just like the SSH check:
 - <code>&lt;unique short description&gt;</code>: Is used to make this item unique, as we cannot 
   have duplicate keys on Zabbix hosts.
 - <code>&lt;ip&gt;</code>: Can we used to specify the target IP Address for Telnet to connect to.
-  Can be used if no host interface is specified
+  If this parameter is skipped, the default host interface is used.
 - <code>&lt;port&gt;</code>: Can be used to specify a different Telnet port, the default is port
   <code>23</code>.
 - <code>&lt;encoding&gt;</code>: How to decode the remote output, is it UTF-8 or ANSI for example.</p>
@@ -17263,6 +17274,7 @@ worth more than security here?</p>
 <em>4.xx Zabbix CLI Monitoring Telnet item tag</em></p>
 <p>Then, if you had a Telnet user set up. You can go to <strong>Monitoring</strong> →
 <strong>Latest data</strong> to check if the value is coming in.</p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-ssh-telnet-conclusion">Conclusion</h2>
 <p>SSH and Telnet monitoring provide you with a great fallback when traditional
 protocols like SNMP or API's simply aren't available. It might also be the case 
@@ -17275,11 +17287,13 @@ as it grants us the correct security for modern environments. Telnet should only
 be used when absolutely all other options are exhausted. In any case, the 
 workflow remains the same in both cases: log in, run a command, preprocess the 
 output, and then use it just like any other metric you have collected.</p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-ssh-telnet-questions">Questions</h2>
 <ul>
 <li>What is the main difference between SSH and Telnet monitoring?</li>
 <li>What is the main security risk of using Telnet monitoring?</li>
 </ul>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-ssh-telnet-useful-urls">Useful URLs</h2>
 <ul>
 <li><a href="https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/ssh_checks">https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/ssh_checks</a></li>
@@ -18646,7 +18660,7 @@ for years to come.</p>
 accessed from a system administrator’s point of view. The most common tool for
 interacting with IPMI is <code>ipmitool</code>, a command-line utility that communicates directly
 with the BMC.</p>
-<p>ipmitool does not talk to the operating system. Instead, it connects straight to
+<p><code>ipmitool</code> does not talk to the operating system. Instead, it connects straight to
 the BMC using IPMI over LAN, authenticates using the configured credentials, and
 requests sensor data or management actions. In many ways, Zabbix's native IPMI
 monitoring behaves very similarly, it simply automates and schedules the same
@@ -18656,14 +18670,19 @@ credentials, and available sensors before attempting to monitor a system with Za
 <hr />
 <h4 id="ch04-zabbix-collecting-data-ipmi-installing-ipmitool">Installing ipmitool</h4>
 <p>The <code>ipmitool</code> package is widely available and easy to install on all major Linux
-distributions.</p>
-<p>On Red Hat Enterprise Linux, Rocky Linux, AlmaLinux, and other RHEL-based systems,
-the package can be installed using:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-0-1"></a>dnf install -y ipmitool
-</span></code></pre></div>
-<p>On Debian and Ubuntu systems, installation is done with:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-1-1"></a>apt install -y ipmitool
-</span></code></pre></div>
+distributions:</p>
+<div class="admonition info">
+<p class="admonition-title">Installing ipmitool</p>
+<p>Red Hat
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-0-1"></a>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>ipmitool
+</span></code></pre></div></p>
+<p>SUSE
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-1-1"></a>zypper<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>ipmitool
+</span></code></pre></div></p>
+<p>Ubuntu
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-2-1"></a>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>ipmitool
+</span></code></pre></div></p>
+</div>
 <p>Once installed, no additional services are required. The tool is invoked directly
 from the command line and communicates with the BMC over the network.</p>
 <hr />
@@ -18671,8 +18690,11 @@ from the command line and communicates with the BMC over the network.</p>
 <p>The most common starting point is to list available sensors. This provides immediate
 insight into what the BMC exposes and what Zabbix will be able to monitor.</p>
 <p>A typical command looks like this:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-2-1"></a>ipmitool -I lanplus -H &lt;BMC_IP&gt; -U &lt;USER&gt; sensor list
+<details class="example" open="open">
+<summary>Listing IPMI Sensors</summary>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-3-1"></a>ipmitool -I lanplus -H &lt;BMC_IP&gt; -U &lt;USER&gt; sensor list
 </span></code></pre></div>
+</details>
 <p>This command returns a list of sensors along with their current values and status.
 While the exact output varies by vendor, readers will usually see entries for
 temperatures, fans, voltages, and power supplies.</p>
@@ -18777,7 +18799,7 @@ speed. Instead, they return discrete values, where individual bits represent dif
 states or conditions. Common examples include power supply status, chassis intrusion,
 or predictive hardware failures.</p>
 <p>In these cases, Zabbix can evaluate specific bits using the bitwise AND trigger
-function, band().</p>
+function, <code>band()</code>.</p>
 <p><strong>Example: Predictive Power Supply Failure</strong></p>
 <p>Assume an IPMI sensor returns a value where the eighth bit indicates a predictive
 failure condition. To check whether this bit is set, Zabbix applies a bitmask using
@@ -18787,8 +18809,9 @@ the band() function.</p>
 <li>Bit 8 corresponds to the value 128</li>
 <li>The trigger expression checks whether this bit is set</li>
 </ul>
-<p>Example trigger expression:</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-3-1"></a>band<span class="o">(</span>last<span class="o">(</span>/host/Power_Unit_Stat<span class="o">)</span>,128<span class="o">)=</span><span class="m">128</span>
+<details class="example" open="open">
+<summary>Example trigger expression</summary>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-4-1"></a>band<span class="o">(</span>last<span class="o">(</span>/host/Power_Unit_Stat<span class="o">)</span>,128<span class="o">)=</span><span class="m">128</span>
 </span></code></pre></div>
 This expression:</p>
 <ul>
@@ -18796,6 +18819,7 @@ This expression:</p>
 <li>Applies a bitmask of 128</li>
 <li>Triggers only if the predictive failure bit is set</li>
 </ul>
+</details>
 <p>This approach allows precise monitoring of hardware fault conditions that are
 otherwise hidden inside composite IPMI values.</p>
 <p><strong>Notes on Bitmask-Based Monitoring:</strong></p>
@@ -18811,7 +18835,7 @@ Redfish-based monitoring, where health states are typically exposed as explicit
 fields such as Status.Health.</p>
 <hr />
 <h3 id="ch04-zabbix-collecting-data-ipmi-how-zabbix-uses-ipmi-internally">How Zabbix Uses IPMI Internally</h3>
-<p>Zabbix does not invoke ipmitool or external commands when monitoring IPMI. Instead,
+<p>Zabbix does not invoke <code>ipmitool</code> or external commands when monitoring IPMI. Instead,
 it integrates directly with the OpenIPMI library, a widely used, open-source implementation
 of the IPMI specification.</p>
 <p>OpenIPMI handles the low-level details of IPMI communication, including protocol
@@ -18819,7 +18843,7 @@ handling, authentication, and sensor access. Zabbix uses this library to communi
 with the BMC in a structured and efficient way, without relying on shell commands
 or external processes.</p>
 <p>From the user’s perspective, this distinction is mostly invisible. Whether IPMI
-data is retrieved manually with ipmitool or automatically by Zabbix, the underlying
+data is retrieved manually with <code>ipmitool</code> or automatically by Zabbix, the underlying
 interaction with the BMC follows the same IPMI standards and exposes the same sensors.</p>
 <hr />
 <h4 id="ch04-zabbix-collecting-data-ipmi-configuring-ipmi-pollers">Configuring IPMI Pollers</h4>
@@ -18827,13 +18851,13 @@ interaction with the BMC follows the same IPMI standards and exposes the same se
 number like 3 or 5. In environments with
 only a few monitored servers, this is usually sufficient. However, in larger environments,
 this configuration may quickly become a bottleneck.</p>
-<p>The number of IPMI pollers is controlled by the following configuration parameter:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-4-1"></a>StartIPMIPollers
-</span></code></pre></div>
+<p>The number of IPMI pollers is controlled by the Zabbix server or proxy configuration
+parameter <code>StartIPMIPollers</code>.</p>
 <p>If IPMI checks begin to queue or time out, increasing this value is often necessary.
 As with other Zabbix poller types, changes require a restart of the Zabbix server
 or proxy to take effect.</p>
-<p>Because IPMI pollers rely on network communication with management controllers, their performance is influenced not only by Zabbix itself, but also by:</p>
+<p>Because IPMI pollers rely on network communication with management controllers,
+their performance is influenced not only by Zabbix itself, but also by:</p>
 <ul>
 <li>BMC responsiveness</li>
 <li>Network latency to the management network</li>
@@ -18841,7 +18865,9 @@ or proxy to take effect.</p>
 </ul>
 <hr />
 <h4 id="ch04-zabbix-collecting-data-ipmi-relationship-between-ipmitool-and-zabbix">Relationship Between ipmitool and Zabbix</h4>
-<p>Although Zabbix does not use ipmitool internally, the two tools are closely related conceptually. Both rely on standard IPMI mechanisms and expose the same underlying sensor data.</p>
+<p>Although Zabbix does not use <code>ipmitool</code> internally, the two tools are closely
+related conceptually. Both rely on standard IPMI mechanisms and expose the same
+underlying sensor data.</p>
 <p>For this reason, ipmitool remains the preferred tool for:</p>
 <ul>
 <li>Validating IPMI connectivity</li>
@@ -18849,10 +18875,12 @@ or proxy to take effect.</p>
 <li>Verifying sensor names and behavior</li>
 <li>Troubleshooting authentication and firmware issues</li>
 </ul>
-<p>If a sensor cannot be queried successfully with ipmitool, it will almost certainly fail in Zabbix as well.</p>
+<p>If a sensor cannot be queried successfully with ipmitool, it will almost 
+certainly fail in Zabbix as well.</p>
 <hr />
 <h4 id="ch04-zabbix-collecting-data-ipmi-configuring-an-ipmi-item-in-zabbix">Configuring an IPMI Item in Zabbix</h4>
-<p>Configuring an IPMI item in Zabbix is conceptually simple, but attention to detail is crucial.</p>
+<p>Configuring an IPMI item in Zabbix is conceptually simple, but attention to 
+detail is crucial.</p>
 <p>An IPMI item requires:</p>
 <ul>
 <li>Item type set to IPMI agent</li>
@@ -18860,8 +18888,11 @@ or proxy to take effect.</p>
 <li>An update interval appropriate for hardware metrics</li>
 </ul>
 <p>For example, to monitor a CPU temperature sensor, the item key might look like:</p>
+<details class="example" open="open">
+<summary>IPMI item key for CPU temperature</summary>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-5-1"></a>ipmi.get[CPU Temp]
 </span></code></pre></div>
+</details>
 <p>If the sensor name does not match exactly, including case and spacing, the item
 will fail. For this reason, copying sensor names directly from ipmitool output
 is strongly recommended.</p>
@@ -18888,7 +18919,7 @@ management network while leaving the operating system untouched.</p>
 <p>From experience, IPMI monitoring works best when treated as infrastructure monitoring,
 not application monitoring. Polling intervals should be reasonable, sensor counts
 kept under control, and templates carefully validated per vendor.</p>
-<p>Using ipmitool during setup and troubleshooting remains invaluable. If a sensor
+<p>Using <code>ipmitool</code> during setup and troubleshooting remains invaluable. If a sensor
 cannot be queried manually, Zabbix will not be able to retrieve it either.</p>
 <p>When these practices are followed, IPMI provides stable and useful visibility into
 hardware health, even if it shows its age in other areas.</p>
@@ -18941,65 +18972,45 @@ system if you prefer.</p>
 <p>For the examples in this book, we use a fork of the official DMTF Redfish Mockup
 Server. The simulator runs in a container and provides a predictable, vendor neutral
 Redfish API that is ideal for testing and monitoring examples.</p>
-<p>The following sections show how to run the simulator on Rocky Linux using Podman
-and on Ubuntu 24.04 using Docker.</p>
-<p>In both cases, the result is the same: a Redfish service listening locally on
-port 8000.</p>
+<p>In the following section, we will show how to run the simulator using Podman 
+resulting in a Redfish service listening on port 8000. You can also run the
+simulator using Docker, by replacing <code>podman</code> with <code>docker</code> in the commands below.</p>
+<p>Refer to the <a href="#ch00-getting-started-preparation-preparing-the-system-for-running-containers-using-podman"><em>Preparing the system for Zabbix</em></a> 
+chapter for instructions on preparing your system for running containers using Podman.</p>
 <hr />
-<h4 id="ch04-zabbix-collecting-data-ipmi-rocky-linux-podman">Rocky Linux (Podman)</h4>
-<p>Rocky Linux uses Podman as its default container engine. Podman is daemonless,
-integrates well with system security, and can run Docker-compatible images without
-modification.</p>
-<p><strong>Install Podman</strong></p>
-<p>Podman is available in the default Rocky repositories:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-6-1"></a>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>podman
-</span></code></pre></div>
-<p>No additional services need to be enabled.</p>
+<p><strong>Clone and build the Redfish Mockup Server</strong></p>
 <p>Clone the Redfish Mockup Server Repository.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-7-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/penmasters/Redfish-Mockup-Server.git
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-7-2"></a><span class="nb">cd</span><span class="w"> </span>Redfish-Mockup-Server
+<div class="admonition info">
+<p class="admonition-title">Cloning the Redfish Mockup Server Repository</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-6-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/penmasters/Redfish-Mockup-Server.git
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-6-2"></a><span class="nb">cd</span><span class="w"> </span>Redfish-Mockup-Server
 </span></code></pre></div>
-<p>This repository is a fork of the upstream DMTF project and is used here for documentation and monitoring examples.</p>
+</div>
+<p>This repository is a fork of the upstream DMTF project and is used here for 
+documentation and monitoring examples.</p>
 <p>Build the Container Image (optional but recommended)
 Building the image locally ensures reproducible behavior:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-8-1"></a>podman<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>redfish-mockup-server<span class="w"> </span>.
+<div class="admonition info">
+<p class="admonition-title">Building the Container Image</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-7-1"></a>podman<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>redfish-mockup-server<span class="w"> </span>.
 </span></code></pre></div>
+</div>
 <p><strong>Run the Redfish Mockup Server</strong></p>
 <p>Start the container and expose port 8000:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-9-1"></a>podman<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-p<span class="w"> </span><span class="m">8000</span>:8000<span class="w"> </span>redfish-mockup-server
+<div class="admonition info">
+<p class="admonition-title">Running the Redfish Mockup Server</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-8-1"></a>podman<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-p<span class="w"> </span><span class="m">8000</span>:8000<span class="w"> </span>redfish-mockup-server
 </span></code></pre></div>
-<p>Once running, the Redfish service root is available at:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-10-1"></a>http://127.0.0.1:8000/redfish/v1
-</span></code></pre></div>
-<h4 id="ch04-zabbix-collecting-data-ipmi-ubuntu-2404-docker">Ubuntu 24.04 (Docker)</h4>
-<p>On Ubuntu, Docker remains the most widely used container runtime and is familiar to many administrators.</p>
-<p><strong>Install Docker from the Ubuntu repositories:</strong></p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-11-1"></a>apt update
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-11-2"></a>apt install -y docker.io
-</span></code></pre></div>
-<p>Enable and start the Docker service:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-12-1"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>docker
-</span></code></pre></div>
-<p>(Optional) To avoid running Docker as root, add your user to the docker group and re-login.</p>
-<p><strong>Clone the Redfish Mockup Server Repository</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-13-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/penmasters/Redfish-Mockup-Server.git
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-13-2"></a><span class="nb">cd</span><span class="w"> </span>Redfish-Mockup-Server
-</span></code></pre></div>
-<p><strong>Build the Container Image</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-14-1"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>redfish-mockup-server<span class="w"> </span>.
-</span></code></pre></div>
-<p><strong>Run the Redfish Mockup Server</strong></p>
-<p>Start the container:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-15-1"></a>docker run --rm -p 8000:8000 redfish-mockup-server
-</span></code></pre></div>
-<p>The Redfish API is now available at:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-16-1"></a>http://127.0.0.1:8000/redfish/v1
-</span></code></pre></div>
+</div>
+<p>Once running, the Redfish service root is available at:
+http://127.0.0.1:8000/redfish/v1</p>
 <p><strong>Verifying the Installation</strong></p>
-<p>On both Rocky Linux and Ubuntu, you can verify that the simulator is running by
-querying the Redfish service root:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-17-1"></a>curl<span class="w"> </span>http://127.0.0.1:8000/redfish/v1
+<p>You can verify that the simulator is running by querying the Redfish service root:</p>
+<div class="admonition info">
+<p class="admonition-title">Querying the Redfish Service Root</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-9-1"></a>curl<span class="w"> </span>http://127.0.0.1:8000/redfish/v1
 </span></code></pre></div>
+</div>
 <p>A JSON response confirms that the mock server is working correctly.</p>
 <p>At this point, the simulator can be used for:</p>
 <ul>
@@ -19008,23 +19019,26 @@ querying the Redfish service root:</p>
 <li>Configuring Zabbix HTTP agent items</li>
 <li>Building preprocessing and LLD examples</li>
 </ul>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-18-1"></a><span class="err">curl</span><span class="w"> </span><span class="err">h</span><span class="kc">tt</span><span class="err">p</span><span class="p">:</span><span class="c1">//127.0.0.1:8000/redfish/v1</span>
-</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-18-2"></a><span class="p">{</span>
-</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-18-3"></a><span class="w">    </span><span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/redfish/v1/&quot;</span><span class="p">,</span>
-</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-18-4"></a><span class="w">    </span><span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#ServiceRoot.v1_16_1.ServiceRoot&quot;</span><span class="p">,</span>
-</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-18-5"></a><span class="w">    </span><span class="nt">&quot;AccountService&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-18-6"></a><span class="w">        </span><span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/redfish/v1/AccountService&quot;</span>
-</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-18-7"></a><span class="w">    </span><span class="p">},</span>
-</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-18-8"></a><span class="w">    </span><span class="nt">&quot;CertificateService&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-18-9"></a><span class="w">        </span><span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/redfish/v1/CertificateService&quot;</span>
-</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-18-10"></a><span class="err">...</span>
-</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-18-11"></a><span class="err">...</span>
-</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-18-12"></a><span class="w">    </span><span class="p">},</span>
-</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-18-13"></a><span class="w">    </span><span class="nt">&quot;UUID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;92384634-2938-2342-8820-489239905423&quot;</span><span class="p">,</span>
-</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-18-14"></a><span class="w">    </span><span class="nt">&quot;UpdateService&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-18-15"><a id="__codelineno-18-15" name="__codelineno-18-15" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-18-15"></a><span class="w">        </span><span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/redfish/v1/UpdateService&quot;</span>
-</span><span id="__span-18-16"><a id="__codelineno-18-16" name="__codelineno-18-16" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-18-16"></a><span class="w">    </span><span class="p">}</span>
+<div class="admonition example">
+<p class="admonition-title">Example JSON response from the Redfish Service Root</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-10-1"></a><span class="err">curl</span><span class="w"> </span><span class="err">h</span><span class="kc">tt</span><span class="err">p</span><span class="p">:</span><span class="c1">//127.0.0.1:8000/redfish/v1</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-10-2"></a><span class="p">{</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-10-3"></a><span class="w">    </span><span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/redfish/v1/&quot;</span><span class="p">,</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-10-4"></a><span class="w">    </span><span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#ServiceRoot.v1_16_1.ServiceRoot&quot;</span><span class="p">,</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-10-5"></a><span class="w">    </span><span class="nt">&quot;AccountService&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-10-6"></a><span class="w">        </span><span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/redfish/v1/AccountService&quot;</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-10-7"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-10-8"></a><span class="w">    </span><span class="nt">&quot;CertificateService&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-10-9"></a><span class="w">        </span><span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/redfish/v1/CertificateService&quot;</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-10-10"></a><span class="err">...</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-10-11"></a><span class="err">...</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-10-12"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-10-13"></a><span class="w">    </span><span class="nt">&quot;UUID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;92384634-2938-2342-8820-489239905423&quot;</span><span class="p">,</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-10-14"></a><span class="w">    </span><span class="nt">&quot;UpdateService&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-10-15"></a><span class="w">        </span><span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/redfish/v1/UpdateService&quot;</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-10-16"></a><span class="w">    </span><span class="p">}</span>
 </span></code></pre></div>
+</div>
 <hr />
 <h2 id="ch04-zabbix-collecting-data-ipmi-monitoring-redfish-with-zabbix">Monitoring Redfish with Zabbix</h2>
 <p>With the Redfish Mockup Server running, we can now move from exploration to actual
@@ -19035,25 +19049,21 @@ for further processing.</p>
 for any special protocols or poller types.</p>
 <p><strong>Choosing the First Endpoint</strong></p>
 <p>Every Redfish service exposes a well-defined entry point called the Service Root,
-located at:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-19-1"></a>/redfish/v1
-</span></code></pre></div>
+located at: `/redfish/v1</p>
 <p>This endpoint is ideal for a first test because it:</p>
 <ul>
 <li>Is always present</li>
 <li>Returns a small, predictable JSON document</li>
 <li>Confirms basic connectivity and parsing</li>
 </ul>
-<p>In the mock environment, the full URL is:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-20-1"></a>http://127.0.0.1:8000/redfish/v1
-</span></code></pre></div>
+<p>In the mock environment, the full URL is: http://127.0.0.1:8000/redfish/v1</p>
 <p><strong>Creating a Test Host in Zabbix</strong></p>
 <p>Start by creating a dedicated host for the Redfish simulator.</p>
-<p>In the Zabbix frontend, go to <code>Data collection</code> → <code>Hosts</code></p>
+<p>In the Zabbix frontend, go to <strong>Data collection</strong> → <strong>Hosts</strong></p>
 <ol>
 <li>Click Create host</li>
 <li>Set:<ul>
-<li><strong>Host name:</strong> Redfish Mockup Server</li>
+<li><strong>Host name:</strong> <code>Redfish Mockup Server</code></li>
 <li><strong>Interface:</strong> none required (HTTP agent does not use host interfaces)</li>
 </ul>
 </li>
@@ -19064,13 +19074,13 @@ located at:</p>
 <p><img alt="ipmi/../ch04-zabbix-collecting-data/ipmi/ch04.50_create_redfish_host.png" src="../ch04-zabbix-collecting-data/ipmi/ch04.50_create_redfish_host.png" /></p>
 <p><em>4.50 create Redfish host</em></p>
 <p>This host will represent the Redfish endpoint rather than a traditional server.
-Next we can create an HTTP item on our host.</p>
+Next we can create a HTTP item on our host.</p>
 <p><strong>Creating the HTTP Agent Item</strong></p>
 <p>Next, create the actual monitoring item.</p>
 <ul>
 <li>Open the newly created host</li>
-<li>Go to the Items tab</li>
-<li>Click Create item</li>
+<li>Go to the <strong>Items</strong> tab</li>
+<li>Click <strong>Create item</strong></li>
 </ul>
 <p>Configure the item as follows:</p>
 <table>
@@ -19084,7 +19094,7 @@ Next we can create an HTTP item on our host.</p>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Name:</strong></td>
-<td style="text-align: left;">Redfish service root</td>
+<td style="text-align: left;"><code>Redfish service root</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -19094,12 +19104,12 @@ Next we can create an HTTP item on our host.</p>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Key:</strong></td>
-<td style="text-align: left;">redfish.service.root</td>
+<td style="text-align: left;"><code>redfish.service.root</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>URL:</strong></td>
-<td style="text-align: left;">http://127.0.0.1:8000/redfish/v1</td>
+<td style="text-align: left;"><code>http://127.0.0.1:8000/redfish/v1</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -19109,7 +19119,7 @@ Next we can create an HTTP item on our host.</p>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Update interval</strong></td>
-<td style="text-align: left;">1m</td>
+<td style="text-align: left;"><code>1m</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -19126,12 +19136,12 @@ Next we can create an HTTP item on our host.</p>
 step, we will extract individual values.</p>
 </details>
 <p>After a short wait, the item should start collecting data. This can be verified
-under <code>Monitoring</code> → <code>Lastest data</code></p>
+under <strong>Monitoring</strong> → <strong>Latest data</strong></p>
 <p>If this works we can move over to the next step and create an item.</p>
 <hr />
 <h3 id="ch04-zabbix-collecting-data-ipmi-extracting-a-value-with-json-preprocessing">Extracting a Value with JSON Preprocessing</h3>
-<p>Let's create a dependent item by pressing on the '...' before our item <code>Redfish
-service root</code> and select <code>create dependent item</code>.</p>
+<p>Let's create a dependent item by pressing on the '<strong>...</strong>' before our item <code>Redfish
+service root</code> and select <strong>create dependent item</strong>.</p>
 <p>Now we can create our dependent item so that we can extract a single value from
 the master item using preprocessing.</p>
 <table>
@@ -19145,7 +19155,7 @@ the master item using preprocessing.</p>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Name:</strong></td>
-<td style="text-align: left;">Redfish Version</td>
+<td style="text-align: left;"><code>Redfish Version</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -19155,12 +19165,12 @@ the master item using preprocessing.</p>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Key</strong></td>
-<td style="text-align: left;">redfish.version</td>
+<td style="text-align: left;"><code>redfish.version</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Master item</strong></td>
-<td style="text-align: left;">Redfish service root</td>
+<td style="text-align: left;"><code>Redfish service root</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -19180,12 +19190,12 @@ the master item using preprocessing.</p>
 </tr>
 <tr>
 <td style="text-align: left;">- JSONPath</td>
-<td style="text-align: left;">$.RedfishVersion</td>
+<td style="text-align: left;"><code>$.RedfishVersion</code></td>
 <td style="text-align: left;">Add as preprocessing step</td>
 </tr>
 </tbody>
 </table>
-<p>Press <code>Add</code> to save the item.</p>
+<p>Press <strong>Add</strong> to save the item.</p>
 <p><img alt="ipmi/../ch04-zabbix-collecting-data/ipmi/ch04.51_create_dependent_item.png" src="../ch04-zabbix-collecting-data/ipmi/ch04.51_create_dependent_item.png" /></p>
 <p><em>4.51 Dependent item</em></p>
 <p>Let's go to our latest data page and have a look at our newly created item.</p>
@@ -19196,14 +19206,13 @@ the master item using preprocessing.</p>
 <details class="note" open="open">
 <summary>Note</summary>
 <p>If you have no idea how LLD (Low Level Discovery works it's best to skip
-this for now and cover the LLD chapter first.)</p>
+this for now and cover the <a href="#ch08-zabbix-lld-chapter">LLD chapter first</a>.)</p>
 </details>
 <p>Redfish exposes many resources as collections containing a Members array. This
 structure is ideal for Zabbix Low-Level Discovery (LLD) because it allows
 discovery rules to be implemented using JSONPath.</p>
-<p>In this example, we will discover chassis resources from the Redfish endpoint:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-21-1"></a>/redfish/v1/Chassis
-</span></code></pre></div>
+<p>In this example, we will discover chassis resources from the Redfish endpoint:
+<code>/redfish/v1/Chassis</code></p>
 <hr />
 <h4 id="ch04-zabbix-collecting-data-ipmi-create-the-master-http-agent-item">Create the Master HTTP Agent Item</h4>
 <p>First, create a master item that retrieves the chassis collection.</p>
@@ -19218,12 +19227,12 @@ discovery rules to be implemented using JSONPath.</p>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Host</strong></td>
-<td style="text-align: left;">Redfish Mockup Server</td>
+<td style="text-align: left;"><code>Redfish Mockup Server</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Name:</strong></td>
-<td style="text-align: left;">Redfish Chassis collection (raw)</td>
+<td style="text-align: left;"><code>Redfish Chassis collection (raw)</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -19233,7 +19242,7 @@ discovery rules to be implemented using JSONPath.</p>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Key</strong></td>
-<td style="text-align: left;">redfish.chassis.collection.raw</td>
+<td style="text-align: left;"><code>redfish.chassis.collection.raw</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -19243,12 +19252,12 @@ discovery rules to be implemented using JSONPath.</p>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Update interval</strong></td>
-<td style="text-align: left;">5m</td>
+<td style="text-align: left;"><code>5m</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>URL</strong></td>
-<td style="text-align: left;">http://127.0.0.1:8000/redfish/v1/Chassis</td>
+<td style="text-align: left;"><code>http://127.0.0.1:8000/redfish/v1/Chassis</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -19258,17 +19267,20 @@ discovery rules to be implemented using JSONPath.</p>
 </tr>
 </tbody>
 </table>
-<p>Save the item and confirm in Latest data that it returns JSON similar to:</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-22-1"></a><span class="p">{</span>
-</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-22-2"></a><span class="w">  </span><span class="nt">&quot;Members&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-22-3"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/redfish/v1/Chassis/1U&quot;</span><span class="w"> </span><span class="p">}</span>
-</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-22-4"></a><span class="w">  </span><span class="p">]</span>
-</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-22-5"></a><span class="p">}</span>
+<p>Save the item and confirm in <strong>Latest data</strong> that it returns JSON similar to:</p>
+<details class="example" open="open">
+<summary>Redfish JSON response</summary>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-11-1"></a><span class="p">{</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-11-2"></a><span class="w">  </span><span class="nt">&quot;Members&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-11-3"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/redfish/v1/Chassis/1U&quot;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-11-4"></a><span class="w">  </span><span class="p">]</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-11-5"></a><span class="p">}</span>
 </span></code></pre></div>
+</details>
 <hr />
 <h4 id="ch04-zabbix-collecting-data-ipmi-create-the-lld-rule">Create the LLD Rule</h4>
-<p>Next we can now create a discovery rule based on the master item we just made.
-Press the <code>...</code> in front of the item and select <code>Create dependent discovery rule</code>.</p>
+<p>Next we can now create a discovery rule based on the <em>master item</em> we just made.
+Press the '<strong>...</strong>' in front of the item and select <strong>Create dependent discovery rule</strong>.</p>
 <table>
 <thead>
 <tr>
@@ -19280,7 +19292,7 @@ Press the <code>...</code> in front of the item and select <code>Create dependen
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Name:</strong></td>
-<td style="text-align: left;">Discovery Redfish chassis</td>
+<td style="text-align: left;"><code>Discovery Redfish chassis</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -19290,31 +19302,34 @@ Press the <code>...</code> in front of the item and select <code>Create dependen
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Key</strong></td>
-<td style="text-align: left;">redfish.chassis.discovery</td>
+<td style="text-align: left;"><code>redfish.chassis.discovery</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Master item</strong></td>
-<td style="text-align: left;">Redfish Chassis collection (raw)</td>
+<td style="text-align: left;"><code>Redfish Chassis collection (raw)</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Preprocessing</strong></td>
 <td style="text-align: left;">JSONPath</td>
-<td style="text-align: left;">$.Members[*]</td>
+<td style="text-align: left;"><code>$.Members[*]</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>LLD macros</strong></td>
-<td style="text-align: left;">{#CHASSIS_URI}</td>
-<td style="text-align: left;">$['@odata.id']</td>
+<td style="text-align: left;"><code>{#CHASSIS_URI}</code></td>
+<td style="text-align: left;"><code>$['@odata.id']</code></td>
 </tr>
 </tbody>
 </table>
 <p><img alt="ipmi/../ch04-zabbix-collecting-data/ipmi/ch04.53_discovery_rule.png" src="../ch04-zabbix-collecting-data/ipmi/ch04.53_discovery_rule.png" /></p>
 <p><em>4.53 LLD Discovery rule</em></p>
 <p>The JSONPath will output each member object individually, for example:</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-23-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/redfish/v1/Chassis/1U&quot;</span><span class="w"> </span><span class="p">}</span>
+<details class="example" open="open">
+<summary>Redfish JSONPath output</summary>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-12-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/redfish/v1/Chassis/1U&quot;</span><span class="w"> </span><span class="p">}</span>
 </span></code></pre></div>
+</details>
 <p>This is exactly what Zabbix expects for JSONPath-based LLD.</p>
 <p>The LLD macros section define how values are extracted from each discovered object:</p>
 <ul>
@@ -19322,11 +19337,15 @@ Press the <code>...</code> in front of the item and select <code>Create dependen
 <li>The macro path is evaluated per discovered object</li>
 </ul>
 <p>After this step, Zabbix will discover:</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-24-1"></a><span class="p">{</span><span class="err">#CHASSIS_URI</span><span class="p">}</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">/red</span><span class="kc">f</span><span class="err">ish/v</span><span class="mi">1</span><span class="err">/Chassis/</span><span class="mi">1</span><span class="err">U</span>
+<details class="example" open="open">
+<summary>Zabbix LLD discovery</summary>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-13-1"></a><span class="p">{</span><span class="err">#CHASSIS_URI</span><span class="p">}</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">/red</span><span class="kc">f</span><span class="err">ish/v</span><span class="mi">1</span><span class="err">/Chassis/</span><span class="mi">1</span><span class="err">U</span>
 </span></code></pre></div>
+</details>
 <hr />
 <h4 id="ch04-zabbix-collecting-data-ipmi-create-an-item-prototype-raw-chassis-data">Create an Item Prototype (Raw Chassis Data)</h4>
-<p>Now that we have our discovery rule it's time to create an item prototype that queries each discovered chassis.</p>
+<p>Now that we have our discovery rule it's time to create an item prototype that 
+queries each discovered chassis.</p>
 <table>
 <thead>
 <tr>
@@ -19338,7 +19357,7 @@ Press the <code>...</code> in front of the item and select <code>Create dependen
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Name:</strong></td>
-<td style="text-align: left;">Redfish chassis {#CHASSIS_URI} (raw)</td>
+<td style="text-align: left;"><code>Redfish chassis {#CHASSIS_URI} (raw)</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -19348,12 +19367,12 @@ Press the <code>...</code> in front of the item and select <code>Create dependen
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Key:</strong></td>
-<td style="text-align: left;">redfish.chassis.raw[{#CHASSIS_URI}]</td>
+<td style="text-align: left;"><code>redfish.chassis.raw[{#CHASSIS_URI}]</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>URL:</strong></td>
-<td style="text-align: left;">http://127.0.0.1:8000{#CHASSIS_URI}</td>
+<td style="text-align: left;"><code>http://127.0.0.1:8000{#CHASSIS_URI}</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -19363,7 +19382,7 @@ Press the <code>...</code> in front of the item and select <code>Create dependen
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Update interval</strong></td>
-<td style="text-align: left;">5m</td>
+<td style="text-align: left;"><code>5m</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -19381,11 +19400,14 @@ Press the <code>...</code> in front of the item and select <code>Create dependen
 <p>Our next step is to extract the health and the status with dependent items
 prototypes.</p>
 <p>The chassis resource already contains a standard Status object:</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-25-1"></a><span class="nt">&quot;Status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-25-2"></a><span class="w">  </span><span class="nt">&quot;Health&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OK&quot;</span><span class="p">,</span>
-</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-25-3"></a><span class="w">  </span><span class="nt">&quot;State&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enabled&quot;</span>
-</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-25-4"></a><span class="p">}</span>
+<details class="example" open="open">
+<summary>Redfish chassis status object</summary>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-14-1"></a><span class="nt">&quot;Status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-14-2"></a><span class="w">  </span><span class="nt">&quot;Health&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OK&quot;</span><span class="p">,</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-14-3"></a><span class="w">  </span><span class="nt">&quot;State&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enabled&quot;</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#ch04-zabbix-collecting-data-ipmi-__codelineno-14-4"></a><span class="p">}</span>
 </span></code></pre></div>
+</details>
 <p>We can extract this cleanly using a dependent item.</p>
 <table>
 <thead>
@@ -19398,7 +19420,7 @@ prototypes.</p>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Name:</strong></td>
-<td style="text-align: left;">Chassis health</td>
+<td style="text-align: left;"><code>Chassis health</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -19408,12 +19430,12 @@ prototypes.</p>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Key</strong></td>
-<td style="text-align: left;">redfish.chassis.health[{#CHASSIS_URI}]</td>
+<td style="text-align: left;"><code>redfish.chassis.health[{#CHASSIS_URI}]</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Master item</strong></td>
-<td style="text-align: left;">Redfish chassis {#CHASSIS_URI} (raw)</td>
+<td style="text-align: left;"><code>Redfish chassis {#CHASSIS_URI} (raw)</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -19424,7 +19446,7 @@ prototypes.</p>
 <tr>
 <td style="text-align: left;"><strong>Preprocessing</strong></td>
 <td style="text-align: left;">JSONPath</td>
-<td style="text-align: left;">$.Status.Health</td>
+<td style="text-align: left;"><code>$.Status.Health</code></td>
 </tr>
 </tbody>
 </table>
@@ -19434,7 +19456,7 @@ prototypes.</p>
 this JSONPath <code>$.Status.State</code> for it.</p>
 <hr />
 <h4 id="ch04-zabbix-collecting-data-ipmi-create-a-trigger-prototype">Create a Trigger Prototype</h4>
-<p>And as a final step we can create a simple <code>Trigger prototype</code> to make the discovery useful.</p>
+<p>And as a final step we can create a simple <strong>Trigger prototype</strong> to make the discovery useful.</p>
 <table>
 <thead>
 <tr>
@@ -19446,12 +19468,12 @@ this JSONPath <code>$.Status.State</code> for it.</p>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Name:</strong></td>
-<td style="text-align: left;">Chassis health is not OK</td>
+<td style="text-align: left;"><code>Chassis health is not OK</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Expression</strong></td>
-<td style="text-align: left;">last(/Redfish Mockup Server/redfish.chassis.health[{#CHASSIS_URI}])&lt;&gt;"OK"</td>
+<td style="text-align: left;"><code>last(/Redfish Mockup Server/redfish.chassis.health[{#CHASSIS_URI}])&lt;&gt;"OK"</code></td>
 <td style="text-align: left;">Adapt trigger names if needed</td>
 </tr>
 </tbody>
@@ -19552,6 +19574,7 @@ integrates cleanly with automation workflows, and is significantly easier to
 reason about and troubleshoot.</p>
 <p>For many organizations, the most realistic approach is coexistence: IPMI for
 legacy systems, Redfish for new deployments.</p>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-ipmi-questions">Questions</h2>
 <ul>
 <li>What problem do IPMI and Redfish both aim to solve, and how do their approaches
@@ -19561,6 +19584,7 @@ legacy systems, Redfish for new deployments.</p>
 <li>What role does JSONPath play in making Redfish monitoring scalable?</li>
 <li>When designing a new monitoring template, why is vendor neutrality important?</li>
 </ul>
+<hr />
 <h2 id="ch04-zabbix-collecting-data-ipmi-useful-urls">Useful URLs</h2>
 <ul>
 <li><a href="https://www.zabbix.com/documentation/current/en/manual/discovery/low_level_discovery/examples/ipmi_sensors#overview">https://www.zabbix.com/documentation/current/en/manual/discovery/low_level_discovery/examples/ipmi_sensors#overview</a></li>

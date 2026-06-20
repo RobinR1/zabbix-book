@@ -780,28 +780,6 @@ and fan status directly from servers using built-in IPMI sensors.
       
     </span>
 </a>
-<nav aria-label="DMTF Mockup Server" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#rocky-linux-podman">
-<span class="md-ellipsis">
-      
-        Rocky Linux (Podman)
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ubuntu-2404-docker">
-<span class="md-ellipsis">
-      
-        Ubuntu 24.04 (Docker)
-      
-    </span>
-</a>
-</li>
-</ul>
-</nav>
 </li>
 </ul>
 </nav>
@@ -1401,28 +1379,6 @@ and fan status directly from servers using built-in IPMI sensors.
       
     </span>
 </a>
-<nav aria-label="DMTF Mockup Server" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#rocky-linux-podman">
-<span class="md-ellipsis">
-      
-        Rocky Linux (Podman)
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ubuntu-2404-docker">
-<span class="md-ellipsis">
-      
-        Ubuntu 24.04 (Docker)
-      
-    </span>
-</a>
-</li>
-</ul>
-</nav>
 </li>
 </ul>
 </nav>
@@ -1732,7 +1688,7 @@ for years to come.</p>
 accessed from a system administrator’s point of view. The most common tool for
 interacting with IPMI is <code>ipmitool</code>, a command-line utility that communicates directly
 with the BMC.</p>
-<p>ipmitool does not talk to the operating system. Instead, it connects straight to
+<p><code>ipmitool</code> does not talk to the operating system. Instead, it connects straight to
 the BMC using IPMI over LAN, authenticates using the configured credentials, and
 requests sensor data or management actions. In many ways, Zabbix's native IPMI
 monitoring behaves very similarly, it simply automates and schedules the same
@@ -1742,14 +1698,19 @@ credentials, and available sensors before attempting to monitor a system with Za
 <hr/>
 <h4 id="installing-ipmitool">Installing ipmitool</h4>
 <p>The <code>ipmitool</code> package is widely available and easy to install on all major Linux
-distributions.</p>
-<p>On Red Hat Enterprise Linux, Rocky Linux, AlmaLinux, and other RHEL-based systems,
-the package can be installed using:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>dnf install -y ipmitool
-</span></code></pre></div>
-<p>On Debian and Ubuntu systems, installation is done with:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>apt install -y ipmitool
-</span></code></pre></div>
+distributions:</p>
+<div class="admonition info">
+<p class="admonition-title">Installing ipmitool</p>
+<p>Red Hat
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>ipmitool
+</span></code></pre></div></p>
+<p>SUSE
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>zypper<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>ipmitool
+</span></code></pre></div></p>
+<p>Ubuntu
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>ipmitool
+</span></code></pre></div></p>
+</div>
 <p>Once installed, no additional services are required. The tool is invoked directly
 from the command line and communicates with the BMC over the network.</p>
 <hr/>
@@ -1757,8 +1718,11 @@ from the command line and communicates with the BMC over the network.</p>
 <p>The most common starting point is to list available sensors. This provides immediate
 insight into what the BMC exposes and what Zabbix will be able to monitor.</p>
 <p>A typical command looks like this:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>ipmitool -I lanplus -H &lt;BMC_IP&gt; -U &lt;USER&gt; sensor list
+<details class="example" open="open">
+<summary>Listing IPMI Sensors</summary>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>ipmitool -I lanplus -H &lt;BMC_IP&gt; -U &lt;USER&gt; sensor list
 </span></code></pre></div>
+</details>
 <p>This command returns a list of sensors along with their current values and status.
 While the exact output varies by vendor, readers will usually see entries for
 temperatures, fans, voltages, and power supplies.</p>
@@ -1863,7 +1827,7 @@ speed. Instead, they return discrete values, where individual bits represent dif
 states or conditions. Common examples include power supply status, chassis intrusion,
 or predictive hardware failures.</p>
 <p>In these cases, Zabbix can evaluate specific bits using the bitwise AND trigger
-function, band().</p>
+function, <code>band()</code>.</p>
 <p><strong>Example: Predictive Power Supply Failure</strong></p>
 <p>Assume an IPMI sensor returns a value where the eighth bit indicates a predictive
 failure condition. To check whether this bit is set, Zabbix applies a bitmask using
@@ -1873,8 +1837,9 @@ the band() function.</p>
 <li>Bit 8 corresponds to the value 128</li>
 <li>The trigger expression checks whether this bit is set</li>
 </ul>
-<p>Example trigger expression:</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>band<span class="o">(</span>last<span class="o">(</span>/host/Power_Unit_Stat<span class="o">)</span>,128<span class="o">)=</span><span class="m">128</span>
+<details class="example" open="open">
+<summary>Example trigger expression</summary>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>band<span class="o">(</span>last<span class="o">(</span>/host/Power_Unit_Stat<span class="o">)</span>,128<span class="o">)=</span><span class="m">128</span>
 </span></code></pre></div>
 This expression:</p>
 <ul>
@@ -1882,6 +1847,7 @@ This expression:</p>
 <li>Applies a bitmask of 128</li>
 <li>Triggers only if the predictive failure bit is set</li>
 </ul>
+</details>
 <p>This approach allows precise monitoring of hardware fault conditions that are
 otherwise hidden inside composite IPMI values.</p>
 <p><strong>Notes on Bitmask-Based Monitoring:</strong></p>
@@ -1897,7 +1863,7 @@ Redfish-based monitoring, where health states are typically exposed as explicit
 fields such as Status.Health.</p>
 <hr/>
 <h3 id="how-zabbix-uses-ipmi-internally">How Zabbix Uses IPMI Internally</h3>
-<p>Zabbix does not invoke ipmitool or external commands when monitoring IPMI. Instead,
+<p>Zabbix does not invoke <code>ipmitool</code> or external commands when monitoring IPMI. Instead,
 it integrates directly with the OpenIPMI library, a widely used, open-source implementation
 of the IPMI specification.</p>
 <p>OpenIPMI handles the low-level details of IPMI communication, including protocol
@@ -1905,7 +1871,7 @@ handling, authentication, and sensor access. Zabbix uses this library to communi
 with the BMC in a structured and efficient way, without relying on shell commands
 or external processes.</p>
 <p>From the user’s perspective, this distinction is mostly invisible. Whether IPMI
-data is retrieved manually with ipmitool or automatically by Zabbix, the underlying
+data is retrieved manually with <code>ipmitool</code> or automatically by Zabbix, the underlying
 interaction with the BMC follows the same IPMI standards and exposes the same sensors.</p>
 <hr/>
 <h4 id="configuring-ipmi-pollers">Configuring IPMI Pollers</h4>
@@ -1913,13 +1879,13 @@ interaction with the BMC follows the same IPMI standards and exposes the same se
 number like 3 or 5. In environments with
 only a few monitored servers, this is usually sufficient. However, in larger environments,
 this configuration may quickly become a bottleneck.</p>
-<p>The number of IPMI pollers is controlled by the following configuration parameter:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>StartIPMIPollers
-</span></code></pre></div>
+<p>The number of IPMI pollers is controlled by the Zabbix server or proxy configuration
+parameter <code>StartIPMIPollers</code>.</p>
 <p>If IPMI checks begin to queue or time out, increasing this value is often necessary.
 As with other Zabbix poller types, changes require a restart of the Zabbix server
 or proxy to take effect.</p>
-<p>Because IPMI pollers rely on network communication with management controllers, their performance is influenced not only by Zabbix itself, but also by:</p>
+<p>Because IPMI pollers rely on network communication with management controllers,
+their performance is influenced not only by Zabbix itself, but also by:</p>
 <ul>
 <li>BMC responsiveness</li>
 <li>Network latency to the management network</li>
@@ -1927,7 +1893,9 @@ or proxy to take effect.</p>
 </ul>
 <hr/>
 <h4 id="relationship-between-ipmitool-and-zabbix">Relationship Between ipmitool and Zabbix</h4>
-<p>Although Zabbix does not use ipmitool internally, the two tools are closely related conceptually. Both rely on standard IPMI mechanisms and expose the same underlying sensor data.</p>
+<p>Although Zabbix does not use <code>ipmitool</code> internally, the two tools are closely
+related conceptually. Both rely on standard IPMI mechanisms and expose the same
+underlying sensor data.</p>
 <p>For this reason, ipmitool remains the preferred tool for:</p>
 <ul>
 <li>Validating IPMI connectivity</li>
@@ -1935,10 +1903,12 @@ or proxy to take effect.</p>
 <li>Verifying sensor names and behavior</li>
 <li>Troubleshooting authentication and firmware issues</li>
 </ul>
-<p>If a sensor cannot be queried successfully with ipmitool, it will almost certainly fail in Zabbix as well.</p>
+<p>If a sensor cannot be queried successfully with ipmitool, it will almost 
+certainly fail in Zabbix as well.</p>
 <hr/>
 <h4 id="configuring-an-ipmi-item-in-zabbix">Configuring an IPMI Item in Zabbix</h4>
-<p>Configuring an IPMI item in Zabbix is conceptually simple, but attention to detail is crucial.</p>
+<p>Configuring an IPMI item in Zabbix is conceptually simple, but attention to 
+detail is crucial.</p>
 <p>An IPMI item requires:</p>
 <ul>
 <li>Item type set to IPMI agent</li>
@@ -1946,8 +1916,11 @@ or proxy to take effect.</p>
 <li>An update interval appropriate for hardware metrics</li>
 </ul>
 <p>For example, to monitor a CPU temperature sensor, the item key might look like:</p>
+<details class="example" open="open">
+<summary>IPMI item key for CPU temperature</summary>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>ipmi.get[CPU Temp]
 </span></code></pre></div>
+</details>
 <p>If the sensor name does not match exactly, including case and spacing, the item
 will fail. For this reason, copying sensor names directly from ipmitool output
 is strongly recommended.</p>
@@ -1974,7 +1947,7 @@ management network while leaving the operating system untouched.</p>
 <p>From experience, IPMI monitoring works best when treated as infrastructure monitoring,
 not application monitoring. Polling intervals should be reasonable, sensor counts
 kept under control, and templates carefully validated per vendor.</p>
-<p>Using ipmitool during setup and troubleshooting remains invaluable. If a sensor
+<p>Using <code>ipmitool</code> during setup and troubleshooting remains invaluable. If a sensor
 cannot be queried manually, Zabbix will not be able to retrieve it either.</p>
 <p>When these practices are followed, IPMI provides stable and useful visibility into
 hardware health, even if it shows its age in other areas.</p>
@@ -2027,65 +2000,45 @@ system if you prefer.</p>
 <p>For the examples in this book, we use a fork of the official DMTF Redfish Mockup
 Server. The simulator runs in a container and provides a predictable, vendor neutral
 Redfish API that is ideal for testing and monitoring examples.</p>
-<p>The following sections show how to run the simulator on Rocky Linux using Podman
-and on Ubuntu 24.04 using Docker.</p>
-<p>In both cases, the result is the same: a Redfish service listening locally on
-port 8000.</p>
+<p>In the following section, we will show how to run the simulator using Podman 
+resulting in a Redfish service listening on port 8000. You can also run the
+simulator using Docker, by replacing <code>podman</code> with <code>docker</code> in the commands below.</p>
+<p>Refer to the <a href="../../ch00-getting-started/preparation/#preparing-the-system-for-running-containers-using-podman"><em>Preparing the system for Zabbix</em></a> 
+chapter for instructions on preparing your system for running containers using Podman.</p>
 <hr/>
-<h4 id="rocky-linux-podman">Rocky Linux (Podman)</h4>
-<p>Rocky Linux uses Podman as its default container engine. Podman is daemonless,
-integrates well with system security, and can run Docker-compatible images without
-modification.</p>
-<p><strong>Install Podman</strong></p>
-<p>Podman is available in the default Rocky repositories:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>podman
-</span></code></pre></div>
-<p>No additional services need to be enabled.</p>
+<p><strong>Clone and build the Redfish Mockup Server</strong></p>
 <p>Clone the Redfish Mockup Server Repository.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/penmasters/Redfish-Mockup-Server.git
-</span><span id="__span-7-2"><a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="nb">cd</span><span class="w"> </span>Redfish-Mockup-Server
+<div class="admonition info">
+<p class="admonition-title">Cloning the Redfish Mockup Server Repository</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/penmasters/Redfish-Mockup-Server.git
+</span><span id="__span-6-2"><a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="nb">cd</span><span class="w"> </span>Redfish-Mockup-Server
 </span></code></pre></div>
-<p>This repository is a fork of the upstream DMTF project and is used here for documentation and monitoring examples.</p>
+</div>
+<p>This repository is a fork of the upstream DMTF project and is used here for 
+documentation and monitoring examples.</p>
 <p>Build the Container Image (optional but recommended)
 Building the image locally ensures reproducible behavior:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>podman<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>redfish-mockup-server<span class="w"> </span>.
+<div class="admonition info">
+<p class="admonition-title">Building the Container Image</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>podman<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>redfish-mockup-server<span class="w"> </span>.
 </span></code></pre></div>
+</div>
 <p><strong>Run the Redfish Mockup Server</strong></p>
 <p>Start the container and expose port 8000:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>podman<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-p<span class="w"> </span><span class="m">8000</span>:8000<span class="w"> </span>redfish-mockup-server
+<div class="admonition info">
+<p class="admonition-title">Running the Redfish Mockup Server</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>podman<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-p<span class="w"> </span><span class="m">8000</span>:8000<span class="w"> </span>redfish-mockup-server
 </span></code></pre></div>
-<p>Once running, the Redfish service root is available at:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>http://127.0.0.1:8000/redfish/v1
-</span></code></pre></div>
-<h4 id="ubuntu-2404-docker">Ubuntu 24.04 (Docker)</h4>
-<p>On Ubuntu, Docker remains the most widely used container runtime and is familiar to many administrators.</p>
-<p><strong>Install Docker from the Ubuntu repositories:</strong></p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a>apt update
-</span><span id="__span-11-2"><a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a>apt install -y docker.io
-</span></code></pre></div>
-<p>Enable and start the Docker service:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>docker
-</span></code></pre></div>
-<p>(Optional) To avoid running Docker as root, add your user to the docker group and re-login.</p>
-<p><strong>Clone the Redfish Mockup Server Repository</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/penmasters/Redfish-Mockup-Server.git
-</span><span id="__span-13-2"><a href="#__codelineno-13-2" id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="nb">cd</span><span class="w"> </span>Redfish-Mockup-Server
-</span></code></pre></div>
-<p><strong>Build the Container Image</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>redfish-mockup-server<span class="w"> </span>.
-</span></code></pre></div>
-<p><strong>Run the Redfish Mockup Server</strong></p>
-<p>Start the container:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a href="#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a>docker run --rm -p 8000:8000 redfish-mockup-server
-</span></code></pre></div>
-<p>The Redfish API is now available at:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a href="#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a>http://127.0.0.1:8000/redfish/v1
-</span></code></pre></div>
+</div>
+<p>Once running, the Redfish service root is available at:
+http://127.0.0.1:8000/redfish/v1</p>
 <p><strong>Verifying the Installation</strong></p>
-<p>On both Rocky Linux and Ubuntu, you can verify that the simulator is running by
-querying the Redfish service root:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a href="#__codelineno-17-1" id="__codelineno-17-1" name="__codelineno-17-1"></a>curl<span class="w"> </span>http://127.0.0.1:8000/redfish/v1
+<p>You can verify that the simulator is running by querying the Redfish service root:</p>
+<div class="admonition info">
+<p class="admonition-title">Querying the Redfish Service Root</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>curl<span class="w"> </span>http://127.0.0.1:8000/redfish/v1
 </span></code></pre></div>
+</div>
 <p>A JSON response confirms that the mock server is working correctly.</p>
 <p>At this point, the simulator can be used for:</p>
 <ul>
@@ -2094,23 +2047,26 @@ querying the Redfish service root:</p>
 <li>Configuring Zabbix HTTP agent items</li>
 <li>Building preprocessing and LLD examples</li>
 </ul>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-18-1"><a href="#__codelineno-18-1" id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="err">curl</span><span class="w"> </span><span class="err">h</span><span class="kc">tt</span><span class="err">p</span><span class="p">:</span><span class="c1">//127.0.0.1:8000/redfish/v1</span>
-</span><span id="__span-18-2"><a href="#__codelineno-18-2" id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="p">{</span>
-</span><span id="__span-18-3"><a href="#__codelineno-18-3" id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="w">    </span><span class="nt">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/"</span><span class="p">,</span>
-</span><span id="__span-18-4"><a href="#__codelineno-18-4" id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="w">    </span><span class="nt">"@odata.type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#ServiceRoot.v1_16_1.ServiceRoot"</span><span class="p">,</span>
-</span><span id="__span-18-5"><a href="#__codelineno-18-5" id="__codelineno-18-5" name="__codelineno-18-5"></a><span class="w">    </span><span class="nt">"AccountService"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-18-6"><a href="#__codelineno-18-6" id="__codelineno-18-6" name="__codelineno-18-6"></a><span class="w">        </span><span class="nt">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/AccountService"</span>
-</span><span id="__span-18-7"><a href="#__codelineno-18-7" id="__codelineno-18-7" name="__codelineno-18-7"></a><span class="w">    </span><span class="p">},</span>
-</span><span id="__span-18-8"><a href="#__codelineno-18-8" id="__codelineno-18-8" name="__codelineno-18-8"></a><span class="w">    </span><span class="nt">"CertificateService"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-18-9"><a href="#__codelineno-18-9" id="__codelineno-18-9" name="__codelineno-18-9"></a><span class="w">        </span><span class="nt">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/CertificateService"</span>
-</span><span id="__span-18-10"><a href="#__codelineno-18-10" id="__codelineno-18-10" name="__codelineno-18-10"></a><span class="err">...</span>
-</span><span id="__span-18-11"><a href="#__codelineno-18-11" id="__codelineno-18-11" name="__codelineno-18-11"></a><span class="err">...</span>
-</span><span id="__span-18-12"><a href="#__codelineno-18-12" id="__codelineno-18-12" name="__codelineno-18-12"></a><span class="w">    </span><span class="p">},</span>
-</span><span id="__span-18-13"><a href="#__codelineno-18-13" id="__codelineno-18-13" name="__codelineno-18-13"></a><span class="w">    </span><span class="nt">"UUID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92384634-2938-2342-8820-489239905423"</span><span class="p">,</span>
-</span><span id="__span-18-14"><a href="#__codelineno-18-14" id="__codelineno-18-14" name="__codelineno-18-14"></a><span class="w">    </span><span class="nt">"UpdateService"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-18-15"><a href="#__codelineno-18-15" id="__codelineno-18-15" name="__codelineno-18-15"></a><span class="w">        </span><span class="nt">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/UpdateService"</span>
-</span><span id="__span-18-16"><a href="#__codelineno-18-16" id="__codelineno-18-16" name="__codelineno-18-16"></a><span class="w">    </span><span class="p">}</span>
+<div class="admonition example">
+<p class="admonition-title">Example JSON response from the Redfish Service Root</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-10-1"><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="err">curl</span><span class="w"> </span><span class="err">h</span><span class="kc">tt</span><span class="err">p</span><span class="p">:</span><span class="c1">//127.0.0.1:8000/redfish/v1</span>
+</span><span id="__span-10-2"><a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="p">{</span>
+</span><span id="__span-10-3"><a href="#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="w">    </span><span class="nt">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/"</span><span class="p">,</span>
+</span><span id="__span-10-4"><a href="#__codelineno-10-4" id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="w">    </span><span class="nt">"@odata.type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#ServiceRoot.v1_16_1.ServiceRoot"</span><span class="p">,</span>
+</span><span id="__span-10-5"><a href="#__codelineno-10-5" id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="w">    </span><span class="nt">"AccountService"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-6"><a href="#__codelineno-10-6" id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="w">        </span><span class="nt">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/AccountService"</span>
+</span><span id="__span-10-7"><a href="#__codelineno-10-7" id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-10-8"><a href="#__codelineno-10-8" id="__codelineno-10-8" name="__codelineno-10-8"></a><span class="w">    </span><span class="nt">"CertificateService"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-9"><a href="#__codelineno-10-9" id="__codelineno-10-9" name="__codelineno-10-9"></a><span class="w">        </span><span class="nt">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/CertificateService"</span>
+</span><span id="__span-10-10"><a href="#__codelineno-10-10" id="__codelineno-10-10" name="__codelineno-10-10"></a><span class="err">...</span>
+</span><span id="__span-10-11"><a href="#__codelineno-10-11" id="__codelineno-10-11" name="__codelineno-10-11"></a><span class="err">...</span>
+</span><span id="__span-10-12"><a href="#__codelineno-10-12" id="__codelineno-10-12" name="__codelineno-10-12"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-10-13"><a href="#__codelineno-10-13" id="__codelineno-10-13" name="__codelineno-10-13"></a><span class="w">    </span><span class="nt">"UUID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92384634-2938-2342-8820-489239905423"</span><span class="p">,</span>
+</span><span id="__span-10-14"><a href="#__codelineno-10-14" id="__codelineno-10-14" name="__codelineno-10-14"></a><span class="w">    </span><span class="nt">"UpdateService"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-15"><a href="#__codelineno-10-15" id="__codelineno-10-15" name="__codelineno-10-15"></a><span class="w">        </span><span class="nt">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/UpdateService"</span>
+</span><span id="__span-10-16"><a href="#__codelineno-10-16" id="__codelineno-10-16" name="__codelineno-10-16"></a><span class="w">    </span><span class="p">}</span>
 </span></code></pre></div>
+</div>
 <hr/>
 <h2 id="monitoring-redfish-with-zabbix">Monitoring Redfish with Zabbix</h2>
 <p>With the Redfish Mockup Server running, we can now move from exploration to actual
@@ -2121,25 +2077,21 @@ for further processing.</p>
 for any special protocols or poller types.</p>
 <p><strong>Choosing the First Endpoint</strong></p>
 <p>Every Redfish service exposes a well-defined entry point called the Service Root,
-located at:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a href="#__codelineno-19-1" id="__codelineno-19-1" name="__codelineno-19-1"></a>/redfish/v1
-</span></code></pre></div>
+located at: `/redfish/v1</p>
 <p>This endpoint is ideal for a first test because it:</p>
 <ul>
 <li>Is always present</li>
 <li>Returns a small, predictable JSON document</li>
 <li>Confirms basic connectivity and parsing</li>
 </ul>
-<p>In the mock environment, the full URL is:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-20-1"><a href="#__codelineno-20-1" id="__codelineno-20-1" name="__codelineno-20-1"></a>http://127.0.0.1:8000/redfish/v1
-</span></code></pre></div>
+<p>In the mock environment, the full URL is: http://127.0.0.1:8000/redfish/v1</p>
 <p><strong>Creating a Test Host in Zabbix</strong></p>
 <p>Start by creating a dedicated host for the Redfish simulator.</p>
-<p>In the Zabbix frontend, go to <code>Data collection</code> → <code>Hosts</code></p>
+<p>In the Zabbix frontend, go to <strong>Data collection</strong> → <strong>Hosts</strong></p>
 <ol>
 <li>Click Create host</li>
 <li>Set:<ul>
-<li><strong>Host name:</strong> Redfish Mockup Server</li>
+<li><strong>Host name:</strong> <code>Redfish Mockup Server</code></li>
 <li><strong>Interface:</strong> none required (HTTP agent does not use host interfaces)</li>
 </ul>
 </li>
@@ -2150,13 +2102,13 @@ located at:</p>
 <p><img alt="ipmi/ch04.50_create_redfish_host.png" src="../../../ch04-zabbix-collecting-data/ipmi/ch04.50_create_redfish_host.png"/></p>
 <p><em>4.50 create Redfish host</em></p>
 <p>This host will represent the Redfish endpoint rather than a traditional server.
-Next we can create an HTTP item on our host.</p>
+Next we can create a HTTP item on our host.</p>
 <p><strong>Creating the HTTP Agent Item</strong></p>
 <p>Next, create the actual monitoring item.</p>
 <ul>
 <li>Open the newly created host</li>
-<li>Go to the Items tab</li>
-<li>Click Create item</li>
+<li>Go to the <strong>Items</strong> tab</li>
+<li>Click <strong>Create item</strong></li>
 </ul>
 <p>Configure the item as follows:</p>
 <table>
@@ -2170,7 +2122,7 @@ Next we can create an HTTP item on our host.</p>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Name:</strong></td>
-<td style="text-align: left;">Redfish service root</td>
+<td style="text-align: left;"><code>Redfish service root</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -2180,12 +2132,12 @@ Next we can create an HTTP item on our host.</p>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Key:</strong></td>
-<td style="text-align: left;">redfish.service.root</td>
+<td style="text-align: left;"><code>redfish.service.root</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>URL:</strong></td>
-<td style="text-align: left;">http://127.0.0.1:8000/redfish/v1</td>
+<td style="text-align: left;"><code>http://127.0.0.1:8000/redfish/v1</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -2195,7 +2147,7 @@ Next we can create an HTTP item on our host.</p>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Update interval</strong></td>
-<td style="text-align: left;">1m</td>
+<td style="text-align: left;"><code>1m</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -2212,12 +2164,12 @@ Next we can create an HTTP item on our host.</p>
 step, we will extract individual values.</p>
 </details>
 <p>After a short wait, the item should start collecting data. This can be verified
-under <code>Monitoring</code> → <code>Lastest data</code></p>
+under <strong>Monitoring</strong> → <strong>Latest data</strong></p>
 <p>If this works we can move over to the next step and create an item.</p>
 <hr/>
 <h3 id="extracting-a-value-with-json-preprocessing">Extracting a Value with JSON Preprocessing</h3>
-<p>Let's create a dependent item by pressing on the '...' before our item <code>Redfish
-service root</code> and select <code>create dependent item</code>.</p>
+<p>Let's create a dependent item by pressing on the '<strong>...</strong>' before our item <code>Redfish
+service root</code> and select <strong>create dependent item</strong>.</p>
 <p>Now we can create our dependent item so that we can extract a single value from
 the master item using preprocessing.</p>
 <table>
@@ -2231,7 +2183,7 @@ the master item using preprocessing.</p>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Name:</strong></td>
-<td style="text-align: left;">Redfish Version</td>
+<td style="text-align: left;"><code>Redfish Version</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -2241,12 +2193,12 @@ the master item using preprocessing.</p>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Key</strong></td>
-<td style="text-align: left;">redfish.version</td>
+<td style="text-align: left;"><code>redfish.version</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Master item</strong></td>
-<td style="text-align: left;">Redfish service root</td>
+<td style="text-align: left;"><code>Redfish service root</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -2266,12 +2218,12 @@ the master item using preprocessing.</p>
 </tr>
 <tr>
 <td style="text-align: left;">- JSONPath</td>
-<td style="text-align: left;">$.RedfishVersion</td>
+<td style="text-align: left;"><code>$.RedfishVersion</code></td>
 <td style="text-align: left;">Add as preprocessing step</td>
 </tr>
 </tbody>
 </table>
-<p>Press <code>Add</code> to save the item.</p>
+<p>Press <strong>Add</strong> to save the item.</p>
 <p><img alt="ipmi/ch04.51_create_dependent_item.png" src="../../../ch04-zabbix-collecting-data/ipmi/ch04.51_create_dependent_item.png"/></p>
 <p><em>4.51 Dependent item</em></p>
 <p>Let's go to our latest data page and have a look at our newly created item.</p>
@@ -2282,14 +2234,13 @@ the master item using preprocessing.</p>
 <details class="note" open="open">
 <summary>Note</summary>
 <p>If you have no idea how LLD (Low Level Discovery works it's best to skip
-this for now and cover the LLD chapter first.)</p>
+this for now and cover the <a href="../../ch08-zabbix-lld/chapter/">LLD chapter first</a>.)</p>
 </details>
 <p>Redfish exposes many resources as collections containing a Members array. This
 structure is ideal for Zabbix Low-Level Discovery (LLD) because it allows
 discovery rules to be implemented using JSONPath.</p>
-<p>In this example, we will discover chassis resources from the Redfish endpoint:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a href="#__codelineno-21-1" id="__codelineno-21-1" name="__codelineno-21-1"></a>/redfish/v1/Chassis
-</span></code></pre></div>
+<p>In this example, we will discover chassis resources from the Redfish endpoint:
+<code>/redfish/v1/Chassis</code></p>
 <hr/>
 <h4 id="create-the-master-http-agent-item">Create the Master HTTP Agent Item</h4>
 <p>First, create a master item that retrieves the chassis collection.</p>
@@ -2304,12 +2255,12 @@ discovery rules to be implemented using JSONPath.</p>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Host</strong></td>
-<td style="text-align: left;">Redfish Mockup Server</td>
+<td style="text-align: left;"><code>Redfish Mockup Server</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Name:</strong></td>
-<td style="text-align: left;">Redfish Chassis collection (raw)</td>
+<td style="text-align: left;"><code>Redfish Chassis collection (raw)</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -2319,7 +2270,7 @@ discovery rules to be implemented using JSONPath.</p>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Key</strong></td>
-<td style="text-align: left;">redfish.chassis.collection.raw</td>
+<td style="text-align: left;"><code>redfish.chassis.collection.raw</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -2329,12 +2280,12 @@ discovery rules to be implemented using JSONPath.</p>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Update interval</strong></td>
-<td style="text-align: left;">5m</td>
+<td style="text-align: left;"><code>5m</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>URL</strong></td>
-<td style="text-align: left;">http://127.0.0.1:8000/redfish/v1/Chassis</td>
+<td style="text-align: left;"><code>http://127.0.0.1:8000/redfish/v1/Chassis</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -2344,17 +2295,20 @@ discovery rules to be implemented using JSONPath.</p>
 </tr>
 </tbody>
 </table>
-<p>Save the item and confirm in Latest data that it returns JSON similar to:</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-22-1"><a href="#__codelineno-22-1" id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="p">{</span>
-</span><span id="__span-22-2"><a href="#__codelineno-22-2" id="__codelineno-22-2" name="__codelineno-22-2"></a><span class="w">  </span><span class="nt">"Members"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-22-3"><a href="#__codelineno-22-3" id="__codelineno-22-3" name="__codelineno-22-3"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/Chassis/1U"</span><span class="w"> </span><span class="p">}</span>
-</span><span id="__span-22-4"><a href="#__codelineno-22-4" id="__codelineno-22-4" name="__codelineno-22-4"></a><span class="w">  </span><span class="p">]</span>
-</span><span id="__span-22-5"><a href="#__codelineno-22-5" id="__codelineno-22-5" name="__codelineno-22-5"></a><span class="p">}</span>
+<p>Save the item and confirm in <strong>Latest data</strong> that it returns JSON similar to:</p>
+<details class="example" open="open">
+<summary>Redfish JSON response</summary>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-11-1"><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="p">{</span>
+</span><span id="__span-11-2"><a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="w">  </span><span class="nt">"Members"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-11-3"><a href="#__codelineno-11-3" id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/Chassis/1U"</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-11-4"><a href="#__codelineno-11-4" id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="w">  </span><span class="p">]</span>
+</span><span id="__span-11-5"><a href="#__codelineno-11-5" id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="p">}</span>
 </span></code></pre></div>
+</details>
 <hr/>
 <h4 id="create-the-lld-rule">Create the LLD Rule</h4>
-<p>Next we can now create a discovery rule based on the master item we just made.
-Press the <code>...</code> in front of the item and select <code>Create dependent discovery rule</code>.</p>
+<p>Next we can now create a discovery rule based on the <em>master item</em> we just made.
+Press the '<strong>...</strong>' in front of the item and select <strong>Create dependent discovery rule</strong>.</p>
 <table>
 <thead>
 <tr>
@@ -2366,7 +2320,7 @@ Press the <code>...</code> in front of the item and select <code>Create dependen
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Name:</strong></td>
-<td style="text-align: left;">Discovery Redfish chassis</td>
+<td style="text-align: left;"><code>Discovery Redfish chassis</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -2376,31 +2330,34 @@ Press the <code>...</code> in front of the item and select <code>Create dependen
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Key</strong></td>
-<td style="text-align: left;">redfish.chassis.discovery</td>
+<td style="text-align: left;"><code>redfish.chassis.discovery</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Master item</strong></td>
-<td style="text-align: left;">Redfish Chassis collection (raw)</td>
+<td style="text-align: left;"><code>Redfish Chassis collection (raw)</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Preprocessing</strong></td>
 <td style="text-align: left;">JSONPath</td>
-<td style="text-align: left;">$.Members[*]</td>
+<td style="text-align: left;"><code>$.Members[*]</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>LLD macros</strong></td>
-<td style="text-align: left;">{#CHASSIS_URI}</td>
-<td style="text-align: left;">$['@odata.id']</td>
+<td style="text-align: left;"><code>{#CHASSIS_URI}</code></td>
+<td style="text-align: left;"><code>$['@odata.id']</code></td>
 </tr>
 </tbody>
 </table>
 <p><img alt="ipmi/ch04.53_discovery_rule.png" src="../../../ch04-zabbix-collecting-data/ipmi/ch04.53_discovery_rule.png"/></p>
 <p><em>4.53 LLD Discovery rule</em></p>
 <p>The JSONPath will output each member object individually, for example:</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-23-1"><a href="#__codelineno-23-1" id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/Chassis/1U"</span><span class="w"> </span><span class="p">}</span>
+<details class="example" open="open">
+<summary>Redfish JSONPath output</summary>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-12-1"><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">"@odata.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/redfish/v1/Chassis/1U"</span><span class="w"> </span><span class="p">}</span>
 </span></code></pre></div>
+</details>
 <p>This is exactly what Zabbix expects for JSONPath-based LLD.</p>
 <p>The LLD macros section define how values are extracted from each discovered object:</p>
 <ul>
@@ -2408,11 +2365,15 @@ Press the <code>...</code> in front of the item and select <code>Create dependen
 <li>The macro path is evaluated per discovered object</li>
 </ul>
 <p>After this step, Zabbix will discover:</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-24-1"><a href="#__codelineno-24-1" id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="p">{</span><span class="err">#CHASSIS_URI</span><span class="p">}</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">/red</span><span class="kc">f</span><span class="err">ish/v</span><span class="mi">1</span><span class="err">/Chassis/</span><span class="mi">1</span><span class="err">U</span>
+<details class="example" open="open">
+<summary>Zabbix LLD discovery</summary>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-13-1"><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="p">{</span><span class="err">#CHASSIS_URI</span><span class="p">}</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">/red</span><span class="kc">f</span><span class="err">ish/v</span><span class="mi">1</span><span class="err">/Chassis/</span><span class="mi">1</span><span class="err">U</span>
 </span></code></pre></div>
+</details>
 <hr/>
 <h4 id="create-an-item-prototype-raw-chassis-data">Create an Item Prototype (Raw Chassis Data)</h4>
-<p>Now that we have our discovery rule it's time to create an item prototype that queries each discovered chassis.</p>
+<p>Now that we have our discovery rule it's time to create an item prototype that 
+queries each discovered chassis.</p>
 <table>
 <thead>
 <tr>
@@ -2424,7 +2385,7 @@ Press the <code>...</code> in front of the item and select <code>Create dependen
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Name:</strong></td>
-<td style="text-align: left;">Redfish chassis {#CHASSIS_URI} (raw)</td>
+<td style="text-align: left;"><code>Redfish chassis {#CHASSIS_URI} (raw)</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -2434,12 +2395,12 @@ Press the <code>...</code> in front of the item and select <code>Create dependen
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Key:</strong></td>
-<td style="text-align: left;">redfish.chassis.raw[{#CHASSIS_URI}]</td>
+<td style="text-align: left;"><code>redfish.chassis.raw[{#CHASSIS_URI}]</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>URL:</strong></td>
-<td style="text-align: left;">http://127.0.0.1:8000{#CHASSIS_URI}</td>
+<td style="text-align: left;"><code>http://127.0.0.1:8000{#CHASSIS_URI}</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -2449,7 +2410,7 @@ Press the <code>...</code> in front of the item and select <code>Create dependen
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Update interval</strong></td>
-<td style="text-align: left;">5m</td>
+<td style="text-align: left;"><code>5m</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -2467,11 +2428,14 @@ Press the <code>...</code> in front of the item and select <code>Create dependen
 <p>Our next step is to extract the health and the status with dependent items
 prototypes.</p>
 <p>The chassis resource already contains a standard Status object:</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-25-1"><a href="#__codelineno-25-1" id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="nt">"Status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-25-2"><a href="#__codelineno-25-2" id="__codelineno-25-2" name="__codelineno-25-2"></a><span class="w">  </span><span class="nt">"Health"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span>
-</span><span id="__span-25-3"><a href="#__codelineno-25-3" id="__codelineno-25-3" name="__codelineno-25-3"></a><span class="w">  </span><span class="nt">"State"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enabled"</span>
-</span><span id="__span-25-4"><a href="#__codelineno-25-4" id="__codelineno-25-4" name="__codelineno-25-4"></a><span class="p">}</span>
+<details class="example" open="open">
+<summary>Redfish chassis status object</summary>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-14-1"><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="nt">"Status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-2"><a href="#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="w">  </span><span class="nt">"Health"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span>
+</span><span id="__span-14-3"><a href="#__codelineno-14-3" id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="w">  </span><span class="nt">"State"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enabled"</span>
+</span><span id="__span-14-4"><a href="#__codelineno-14-4" id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="p">}</span>
 </span></code></pre></div>
+</details>
 <p>We can extract this cleanly using a dependent item.</p>
 <table>
 <thead>
@@ -2484,7 +2448,7 @@ prototypes.</p>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Name:</strong></td>
-<td style="text-align: left;">Chassis health</td>
+<td style="text-align: left;"><code>Chassis health</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -2494,12 +2458,12 @@ prototypes.</p>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Key</strong></td>
-<td style="text-align: left;">redfish.chassis.health[{#CHASSIS_URI}]</td>
+<td style="text-align: left;"><code>redfish.chassis.health[{#CHASSIS_URI}]</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Master item</strong></td>
-<td style="text-align: left;">Redfish chassis {#CHASSIS_URI} (raw)</td>
+<td style="text-align: left;"><code>Redfish chassis {#CHASSIS_URI} (raw)</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
@@ -2510,7 +2474,7 @@ prototypes.</p>
 <tr>
 <td style="text-align: left;"><strong>Preprocessing</strong></td>
 <td style="text-align: left;">JSONPath</td>
-<td style="text-align: left;">$.Status.Health</td>
+<td style="text-align: left;"><code>$.Status.Health</code></td>
 </tr>
 </tbody>
 </table>
@@ -2520,7 +2484,7 @@ prototypes.</p>
 this JSONPath <code>$.Status.State</code> for it.</p>
 <hr/>
 <h4 id="create-a-trigger-prototype">Create a Trigger Prototype</h4>
-<p>And as a final step we can create a simple <code>Trigger prototype</code> to make the discovery useful.</p>
+<p>And as a final step we can create a simple <strong>Trigger prototype</strong> to make the discovery useful.</p>
 <table>
 <thead>
 <tr>
@@ -2532,12 +2496,12 @@ this JSONPath <code>$.Status.State</code> for it.</p>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Name:</strong></td>
-<td style="text-align: left;">Chassis health is not OK</td>
+<td style="text-align: left;"><code>Chassis health is not OK</code></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Expression</strong></td>
-<td style="text-align: left;">last(/Redfish Mockup Server/redfish.chassis.health[{#CHASSIS_URI}])&lt;&gt;"OK"</td>
+<td style="text-align: left;"><code>last(/Redfish Mockup Server/redfish.chassis.health[{#CHASSIS_URI}])&lt;&gt;"OK"</code></td>
 <td style="text-align: left;">Adapt trigger names if needed</td>
 </tr>
 </tbody>
@@ -2638,6 +2602,7 @@ integrates cleanly with automation workflows, and is significantly easier to
 reason about and troubleshoot.</p>
 <p>For many organizations, the most realistic approach is coexistence: IPMI for
 legacy systems, Redfish for new deployments.</p>
+<hr/>
 <h2 id="questions">Questions</h2>
 <ul>
 <li>What problem do IPMI and Redfish both aim to solve, and how do their approaches
@@ -2647,6 +2612,7 @@ legacy systems, Redfish for new deployments.</p>
 <li>What role does JSONPath play in making Redfish monitoring scalable?</li>
 <li>When designing a new monitoring template, why is vendor neutrality important?</li>
 </ul>
+<hr/>
 <h2 id="useful-urls">Useful URLs</h2>
 <ul>
 <li><a href="https://www.zabbix.com/documentation/current/en/manual/discovery/low_level_discovery/examples/ipmi_sensors#overview">https://www.zabbix.com/documentation/current/en/manual/discovery/low_level_discovery/examples/ipmi_sensors#overview</a></li>
