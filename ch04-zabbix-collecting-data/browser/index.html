@@ -3817,10 +3817,14 @@ This requires strict security measures.</p>
 <dl>
 <dt><code>status</code></dt>
 <dd>
-<p>High-level outcome of the synthetic scenario:
-- <code>ok</code> – the script completed the full user journey as intended.
-- <code>error</code> – something failed (element not found, timeout, navigation error, etc.).</p>
+<p>High-level outcome of the synthetic scenario:</p>
 </dd>
+</dl>
+<ul>
+<li><code>ok</code> – the script completed the full user journey as intended.</li>
+<li><code>error</code> – something failed (element not found, timeout, navigation error, etc.).</li>
+</ul>
+<dl>
 <dt><code>headline</code></dt>
 <dd>
 <p>The text content of the <code>&lt;h1&gt;</code> element on the final page after clicking GET ZABBIX.
@@ -3843,13 +3847,15 @@ This requires strict security measures.</p>
 </dd>
 <dt><code>result</code></dt>
 <dd>
-<p>This is the <code>BrowserResult</code> object returned by Zabbix (<code>browser.getResult()</code>), which wraps:
-- Timing and performance data
-- Duration of the scenario
-- Any internal error information
-- Marks set by <code>browser.collectPerfEntries(...)</code></p>
+<p>This is the <code>BrowserResult</code> object returned by Zabbix (<code>browser.getResult()</code>), which wraps:</p>
 </dd>
 </dl>
+<ul>
+<li>Timing and performance data</li>
+<li>Duration of the scenario</li>
+<li>Any internal error information</li>
+<li>Marks set by <code>browser.collectPerfEntries(...)</code></li>
+</ul>
 <p><strong>Inside result</strong></p>
 <dl>
 <dt><code>duration</code></dt>
@@ -3859,33 +3865,43 @@ This requires strict security measures.</p>
 </dd>
 <dt><code>performance_data.summary.navigation</code></dt>
 <dd>
-<p>Aggregated navigation metrics for the page load (in seconds), for example:
-- <code>response_time</code> – backend response time (server + network).
-- <code>dom_content_loading_time</code> – time until the DOM is ready (DOMContentLoaded).
-- <code>load_finished</code> – time until the load event fires (page fully loaded).
-- <code>encoded_size</code> / <code>total_size</code> – size of transferred and decoded content.
-- <code>redirect_count</code> – number of redirects for the navigation.</p>
+<p>Aggregated navigation metrics for the page load (in seconds), for example:</p>
 </dd>
 </dl>
+<ul>
+<li><code>response_time</code> – backend response time (server + network).</li>
+<li><code>dom_content_loading_time</code> – time until the DOM is ready (DOMContentLoaded).</li>
+<li><code>load_finished</code> – time until the load event fires (page fully loaded).</li>
+<li><code>encoded_size</code> / <code>total_size</code> – size of transferred and decoded content.</li>
+<li><code>redirect_count</code> – number of redirects for the navigation.</li>
+</ul>
 <p>You can think of this section as “the synthetic page-speed metrics from the browser’s point of view”.</p>
 <dl>
 <dt><code>performance_data.summary.resource</code></dt>
 <dd>
-<p>Aggregated metrics for all resources (images, CSS, JS, fonts, etc.):
-- <code>count</code> – number of resources loaded.
-- <code>resource_fetch_time</code> – time spent fetching resources.
-- <code>response_time</code> – cumulative response time for resources.</p>
+<p>Aggregated metrics for all resources (images, CSS, JS, fonts, etc.):</p>
 </dd>
+</dl>
+<ul>
+<li><code>count</code> – number of resources loaded.</li>
+<li><code>resource_fetch_time</code> – time spent fetching resources.</li>
+<li><code>response_time</code> – cumulative response time for resources.</li>
+</ul>
+<dl>
 <dt><code>performance_data.details[]</code></dt>
 <dd>
 <p>An array with one entry per <code>collectPerfEntries("mark")</code> call in your script:
-  Each element has:
-    - <code>mark</code> – the label you passed (e.g. "open_home", "after_click").
-    - <code>navigation</code> – detailed timings for that navigation.
-    - <code>resource</code> – resource stats for that step.
-    - <code>user</code> – optional PerformanceEntry marks set by the website itself (e.g. third-party SDKs, analytics, etc.).
-  This enables per-step decomposition of your user journey: open homepage vs. landing page after click, etc.</p>
+  Each element has:</p>
 </dd>
+</dl>
+<ul>
+<li><code>mark</code> – the label you passed (e.g. "open_home", "after_click").</li>
+<li><code>navigation</code> – detailed timings for that navigation.</li>
+<li><code>resource</code> – resource stats for that step.</li>
+<li><code>user</code> – optional PerformanceEntry marks set by the website itself (e.g. third-party SDKs, analytics, etc.).</li>
+</ul>
+<p>This enables per-step decomposition of your user journey: open homepage vs. landing page after click, etc.</p>
+<dl>
 <dt><code>marks[]</code></dt>
 <dd>
 <p>A list of all marks with their indices. Mostly useful if you need to correlate external tools with Zabbix data.</p>
