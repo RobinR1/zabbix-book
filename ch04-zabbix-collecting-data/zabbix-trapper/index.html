@@ -1409,6 +1409,56 @@ for scripts, custom apps, or async systems sending real-time metrics.
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="You can &#34;travel in time&#34; with zabbix_sender">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#00-seconds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        00 seconds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#past-incidents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Past incidents
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#have-some-fun" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Have some fun
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sending-multiple-values-at-once" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sending multiple values at once
+      
+    </span>
+  </a>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2269,6 +2319,56 @@ for scripts, custom apps, or async systems sending real-time metrics.
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="You can &#34;travel in time&#34; with zabbix_sender">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#00-seconds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        00 seconds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#past-incidents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Past incidents
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#have-some-fun" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Have some fun
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sending-multiple-values-at-once" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sending multiple values at once
+      
+    </span>
+  </a>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2418,21 +2518,29 @@ for scripts, custom apps, or async systems sending real-time metrics.
 <h1 id="zabbix-trapper">Zabbix trapper</h1>
 <p>So you already know what is the difference between <code>Active</code> and <code>Passive</code>
 Zabbix agent item types. However, there is a third, special item type which
-also starts with "Zabbix". And that is "Zabbix trapper".</p>
+also starts with "Zabbix". And that is "<strong>Zabbix trapper</strong>".</p>
 <p>Most likely not by coincidence it is named so, since by its nature it reminds
-the "SNMP trap". Data in both cases is not expected to arrive in predefined
+us of the "SNMP trap". Data in both cases is not expected to arrive in predefined
 frequency, but rather "when needed" or "when something happens".</p>
 <p>Zabbix trapper items are extremely useful when you have:</p>
 <ul>
 <li>places where Zabbix agent can't be installed</li>
-<li>"heavy", long running scripts, which produce some valuable monitoring data</li>
+<li>scripts which are not running on the same host as Zabbix agent, but you still
+  want to monitor some of their metrics (e.g. some web service or database)</li>
+<li>scripts which are running on the same host as Zabbix agent, but you don't want
+  to run them in the context of Zabbix agent (e.g. some script is running as
+  a different user and you don't want to give Zabbix agent access to it, or
+  the script is running for longer than the Zabbix agent timeout, etc.)</li>
+<li>scripts that collect data for a multiple of Zabbix hosts at once, and you
+  want to send the data to the different hosts on the Zabbix server in one go.</li>
 <li>scripts that otherwise do some other things, but at some points you want to
-send some data to be monitored (i.e. monitoring is just a part of the script
-logic, not the main intent). For example, you send the duration of how long
-your script was running</li>
+  send some data to be monitored (i.e. monitoring is just a part of the script
+  logic, not the main intent). For example, you send the duration of how long
+  your script was running</li>
 <li>temporary or ad-hoc metrics (e.g. some historical data which was not
-monitored at the time of occurrence to be analysed)</li>
+  monitored at the time of occurrence to be analysed)</li>
 </ul>
+<hr />
 <h2 id="how-to-send-data">How to send data?</h2>
 <p>There are two ways to send values to Zabbix trapper item:</p>
 <ul>
@@ -2441,48 +2549,61 @@ monitored at the time of occurrence to be analysed)</li>
 </ul>
 <details class="info" open="open">
 <summary>Info</summary>
-<p>Zabbix trapper item receives data over same TCP port as Zabbix agent items
-(10051) if <code>zabbix_sender</code> is used</p>
+<p>Zabbix trapper item receives data over the same TCP port as Zabbix agent items
+(10051) when <code>zabbix_sender</code> is used.</p>
 </details>
 <p>In both cases, item configuration from Zabbix GUI perspective doesn't differ.
-Once configuring Zabbix trapper items, main thing is to have unique meaningful
+Once configuring Zabbix trapper items, main thing is to have a unique meaningful
 item key (it must be unique on host level) and type of information of your
 choice. Type of information possibilities are same to classic Zabbix agent
 items.</p>
+<hr />
 <h2 id="hello-world">Hello World</h2>
 <p>In this example, we will simply send a string "Hello!" to Zabbix trapper item.</p>
-<p>First we will create Zabbix trapper item on Zabbix server. Navigate to template
-or host and hit "Create item":</p>
+<p>First we will create a Zabbix trapper item on the Zabbix server. Create a new
+template for this purpose, and add a new <strong>Zabbix trapper</strong> item to it:</p>
+<ul>
+<li>Name: <code>Hello World</code></li>
+<li>Type: <strong>Zabbix trapper</strong></li>
+<li>Key: <code>hello.world</code></li>
+<li>Type of information: <strong>Text</strong></li>
+</ul>
 <p><img alt="Zabbix trapper - first item" src="ch04.xx-trapper-hello-world.png" /></p>
-<p>Then we can go to CLI and employ <code>zabbix_sender</code> to pass agreed value to our
-newly created Zabbix trapper item. You have to take item key from previous step,
-we will use it here as <code>-k</code>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>binary@linux:~$<span class="w"> </span>zabbix_sender<span class="w"> </span>-z<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;Zabbix server&quot;</span><span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;hello.world&quot;</span><span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;Hello!&quot;</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Response<span class="w"> </span>from<span class="w"> </span><span class="s2">&quot;127.0.0.1:10051&quot;</span>:<span class="w"> </span><span class="s2">&quot;processed: 1; failed: 0; total: 1; seconds spent: 0.000047&quot;</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>sent:<span class="w"> </span><span class="m">1</span><span class="p">;</span><span class="w"> </span>skipped:<span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span>total:<span class="w"> </span><span class="m">1</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>binary@linux:~$
+<p>Attach this template to your Zabbix server host and apply changes.</p>
+<p>Now, open up a shell on your Zabbix server and employ <code>zabbix_sender</code> to pass 
+the agreed value to our newly created <strong>Zabbix trapper</strong> item. You have to address
+the item key from the previous step using the <code>-k</code> option:</p>
+<details class="example" open="open">
+<summary>Zabbix trapper - sending data with zabbix_sender</summary>
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="go">~$ zabbix_sender -z 127.0.0.1 -s &quot;Zabbix server&quot; -k &quot;hello.world&quot; -o &quot;Hello!&quot;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="go">Response from &quot;127.0.0.1:10051&quot;: &quot;processed: 1; failed: 0; total: 1; seconds spent: 0.000047&quot;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="go">sent: 1; skipped: 0; total: 1</span>
 </span></code></pre></div>
+</details>
 <p>And that is about it! Our trapper item is updated.</p>
 <p><img alt="Zabbix trapper - first item result" src="ch04.xx-trapper-hello-world-result.png" /></p>
 <details class="info" open="open">
 <summary>Info</summary>
-<p>Parameters used here are the following:</p>
-<p><code>-z</code> - Zabbix server</p>
-<p><code>-s</code> - host, where your trapper item resides</p>
-<p><code>-k</code> - item key, same as you created in GUI</p>
-<p><code>-o</code> - value itself</p>
-<p>For more options, check <code>man zabbix_sender</code> or online documentation</p>
+<p>Parameters used here are:</p>
+<ul>
+<li><code>-z</code> - Zabbix server or proxy hostname or IP address</li>
+<li><code>-s</code> - host as defined on the Zabbix server, where your trapper item resides</li>
+<li><code>-k</code> - item key of the trapper item, same as you created in GUI</li>
+<li><code>-o</code> - the value you want to send to the trapper item itself</li>
+</ul>
+<p>For more options, check <code>man zabbix_sender</code> or the online documentation</p>
 </details>
+<hr />
 <h2 id="you-can-travel-in-time-with-zabbix_sender">You can "travel in time" with <code>zabbix_sender</code></h2>
-<p>Typically you don't care about timestamps - when exactly the data was collected.
-This is actually applicable to both Zabbix agent and Zabbix trapper items. You
-simply set the checking frequency (in Zabbix agent item case) or control it on
-your own (in Zabbix trapper item case). But in both cases you leave it for
-Zabbix - data is collected at desired pace and that is mainly all that you care.</p>
-<p>But what if you want to restrict / control the timestamps as well, not only
-the data itself that is being collected?</p>
-<p><code>zabbix_sender</code> offers one sometimes overlooked feature. It allows you to do
-exactly what's described above - it allows you to "travel in time" with your
+<p>Typically you don't need to care about timestamps as Zabbix will automatically
+assign the timestamp of when the value was received. This is applicable
+to both Zabbix agent and Zabbix trapper items. You simply set the checking 
+frequency (in case of a Zabbix agent item) or control it on your own (in case of
+a Zabbix trapper item). </p>
+<p>However in some cases you might want to have more control over the timestamps as
+well.</p>
+<p><code>zabbix_sender</code> offers one sometimes overlooked feature: It allows you to do
+exactly what this section title describes - it allows you to "travel in time" with your
 items. For this, we need to employ a combination of <code>zabbix_sender</code> options:</p>
 <ul>
 <li><code>-T, --with-timestamps</code></li>
@@ -2491,142 +2612,213 @@ items. For this, we need to employ a combination of <code>zabbix_sender</code> o
 <details class="info" open="open">
 <summary>Info</summary>
 <p>Here is even one more overlooked feature of this approach - you actually
-don't even need files necessarily. Providing <code>-</code> for <code>-i</code> means reading
+don't even need files necessarily. Providing <code>-</code> as value for <code>-i</code> means reading
 from standard input</p>
 </details>
-<p><em>00 seconds</em></p>
+<p>Next we will show you a couple of examples when this feature might be useful.</p>
+<h3 id="00-seconds">00 seconds</h3>
 <p>One of the examples when you might want to employ this feature is to force data
 to be stored precisely at 00 seconds of the minute. Imagine you run a script
 each minute and it might run for duration anything between 10 and 50 seconds.
 This script in the end produces time in seconds, how long did it run - and you
 send this duration to Zabbix via <code>zabbix_sender</code>:</p>
+<details class="example" open="open">
+<summary>Zabbix trapper - sending data with zabbix_sender without timestamps</summary>
+<p>For example, take this script that will log the duration of its execution
+to a <strong>Zabbix trapper</strong> item called <code>undefined.time</code>:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="ch">#!/bin/bash</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nv">start_ts</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%s<span class="k">)</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>sleep<span class="w"> </span><span class="k">$((</span><span class="nv">RANDOM</span><span class="o">%</span><span class="m">40</span><span class="o">+</span><span class="m">10</span><span class="k">))</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">start_ts</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%s<span class="k">)</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>sleep<span class="w"> </span><span class="k">$((</span><span class="nv">RANDOM</span><span class="o">%</span><span class="m">40</span><span class="o">+</span><span class="m">10</span><span class="k">))</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nv">end_ts</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%s<span class="k">)</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nv">duration</span><span class="o">=</span><span class="k">$((</span><span class="nv">end_ts</span><span class="o">-</span><span class="nv">start_ts</span><span class="k">))</span>
 </span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nv">end_ts</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%s<span class="k">)</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>zabbix_sender<span class="w"> </span>-z<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;Zabbix server&quot;</span><span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;undefined.time&quot;</span><span class="w"> </span>-o<span class="w"> </span><span class="si">${</span><span class="nv">duration</span><span class="si">}</span><span class="w"> </span><span class="p">&amp;</span>&gt;/dev/null
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="nv">duration</span><span class="o">=</span><span class="k">$((</span><span class="nv">end_ts</span><span class="o">-</span><span class="nv">start_ts</span><span class="k">))</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>zabbix_sender<span class="w"> </span>-z<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;Zabbix server&quot;</span><span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;undefined.time&quot;</span><span class="w"> </span>-o<span class="w"> </span><span class="si">${</span><span class="nv">duration</span><span class="si">}</span><span class="w"> </span><span class="p">&amp;</span>&gt;/dev/null
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
 </span></code></pre></div>
+</details>
 <p><img alt="Zabbix trapper - not aligned time" src="ch04.xx-trapper-not-aligned-time.png" /></p>
-<p>Problem here is that since script runs with chaotic durations, results will be
-displayed on time axis in unequal intervals between collected values:</p>
+<p>Problem here is that since the script runs with chaotic durations, results will be
+displayed on the time axis of graphs in unequal intervals between collected values:</p>
 <p><img alt="Zabbix trapper - not aligned time graph" src="ch04.xx-trapper-not-aligned-time-graph.png" /></p>
 <p>That is visually unappealing and we can easily fix it by forcing Zabbix to
 store results not when the value was sent to Zabbix server, but at the 00
 seconds of the minute the script was started:</p>
+<details class="example" open="open">
+<summary>Zabbix trapper - sending data with zabbix_sender with timestamps</summary>
+<p>We adapt the previous script to use <code>-T</code> and <code>-i</code> options of <code>zabbix_sender</code>
+to include timestamps in the sent data. We will also use <code>-</code> as value for <code>-i</code> to read
+from standard input instead of a file: </p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="ch">#!/bin/bash</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nv">start_ts</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%s<span class="k">)</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nv">item_value_ts</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>-d<span class="w"> </span><span class="k">$(</span>date<span class="w"> </span>+%H:%M<span class="k">)</span><span class="w"> </span>+%s<span class="k">)</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>sleep<span class="w"> </span><span class="k">$((</span><span class="nv">RANDOM</span><span class="o">%</span><span class="m">40</span><span class="o">+</span><span class="m">10</span><span class="k">))</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nv">start_ts</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%s<span class="k">)</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nv">item_value_ts</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>-d<span class="w"> </span><span class="k">$(</span>date<span class="w"> </span>+%H:%M<span class="k">)</span><span class="w"> </span>+%s<span class="k">)</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>sleep<span class="w"> </span><span class="k">$((</span><span class="nv">RANDOM</span><span class="o">%</span><span class="m">40</span><span class="o">+</span><span class="m">10</span><span class="k">))</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nv">end_ts</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%s<span class="k">)</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nv">duration</span><span class="o">=</span><span class="k">$((</span><span class="nv">end_ts</span><span class="o">-</span><span class="nv">start_ts</span><span class="k">))</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="nv">sender_input</span><span class="o">=</span><span class="s2">&quot;\&quot;Zabbix server\&quot; undefined.time.00 </span><span class="si">${</span><span class="nv">item_value_ts</span><span class="si">}</span><span class="s2"> </span><span class="si">${</span><span class="nv">duration</span><span class="si">}</span><span class="s2">&quot;</span>
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="nv">end_ts</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%s<span class="k">)</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>zabbix_sender<span class="w"> </span>-z<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>-T<span class="w"> </span>-i<span class="w"> </span>-<span class="w"> </span><span class="p">&amp;</span>&gt;/dev/null<span class="w"> </span><span class="o">&lt;&lt;&lt;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">sender_input</span><span class="si">}</span><span class="s2">&quot;</span>
 </span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="nv">duration</span><span class="o">=</span><span class="k">$((</span><span class="nv">end_ts</span><span class="o">-</span><span class="nv">start_ts</span><span class="k">))</span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="nv">sender_input</span><span class="o">=</span><span class="s2">&quot;\&quot;Zabbix server\&quot; undefined.time.00 </span><span class="si">${</span><span class="nv">item_value_ts</span><span class="si">}</span><span class="s2"> </span><span class="si">${</span><span class="nv">duration</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>zabbix_sender<span class="w"> </span>-z<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>-T<span class="w"> </span>-i<span class="w"> </span>-<span class="w"> </span><span class="p">&amp;</span>&gt;/dev/null<span class="w"> </span><span class="o">&lt;&lt;&lt;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">sender_input</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
-</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
 </span></code></pre></div>
+</details>
 <p>Now the values are collected exactly at the 00 second of each minute:</p>
 <p><img alt="Zabbix trapper - not aligned time" src="ch04.xx-trapper-aligned-time.png" /></p>
 <p>And our graph becomes smooth:</p>
 <p><img alt="Zabbix trapper - aligned time graph" src="ch04.xx-trapper-aligned-time-graph.png" /></p>
 <p>The bigger the possible gaps between the values, the more such approach makes
 sense.</p>
-<p><em>Past incidents</em></p>
-<p>Say you had some incident which had no or had poor monitoring. Say you regret it
+<h3 id="past-incidents">Past incidents</h3>
+<p>Imagine you had some incident which had no or had poor monitoring. Say you regret it
 and find some valuable data which you would like to visualize. With Zabbix
 trapper items and combination of <code>-T</code> and <code>-i</code> options it is absolutely
 possible. Just form sets of data from your data sources (e.g. logs) and feed
 them into Zabbix by creating some temporary trapper items. You will then have a
 view of what has happened, even if you didn't monitor it in real time.</p>
 <p><img alt="Zabbix trapper - past incident" src="ch04.xx-trapper-past-incident.png" /></p>
-<p><em>Have some fun</em></p>
+<h3 id="have-some-fun">Have some fun</h3>
 <p>Similar to above, but in more creative fashion, you can visualize some ASCII art
 in Zabbix by creating sets of data aligned so in time and value amplitude, that
 it would form some image. That is a fun way to entertain your colleagues or
 just sharpen your skills in scripting!</p>
 <p><img alt="Zabbix trapper - fun" src="ch04.xx-trapper-fun.png" /></p>
+<hr />
+<h2 id="sending-multiple-values-at-once">Sending multiple values at once</h2>
+<p>We have already seen how to send a single value to a Zabbix trapper item and for
+sending timestamped values we have seen how to send a value using the <code>-i</code> option 
+of <code>zabbix_sender</code>.
+This <code>-i</code> option can also accept a filename as an argument. This file can contain
+multiple lines, each line containing a value to be sent to a Zabbix trapper item. 
+Each line must be in the following format:</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>For non-timestamped values, the format is a white-space separated list of 
+three values:</p>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>&lt;host&gt; &lt;item_key&gt; &lt;value&gt;
+</span></code></pre></div>
+where each value can be non-quoted or quoted using a double-quote character <code>"</code>.
+Values that contain spaces must be quoted.
+Double-quotes and backslashes inside quoted values must be escaped with a 
+backslash <code>\</code>. Escaping is not supported in non-quoted values.
+Multiline values are supported in a quoted value by using line-feed
+escape sequences <code>\n</code>. Line-feed escape sequences are trimmed from the end
+of the value.</p>
+<p>for example:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>&quot;Zabbix server&quot; hello.world Hello!
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>&quot;Zabbix server&quot; multiline.value &quot;This is a multiline\nvalue with a \&quot;quoted\&quot; word and a backslash \\&quot;
+</span></code></pre></div>
+<p>For timestamped values, when the <code>-T</code> option is used, the format is:</p>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>&lt;host&gt; &lt;item_key&gt; &lt;unix-timestamp&gt; &lt;value&gt;
+</span></code></pre></div>
+for example:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>&quot;Zabbix server&quot; hello.world 1783454383 Hello!
+</span></code></pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Don't mix timestamped and non-timestamped values in the same file</p>
+<p>You can't use non-timestamped and timestamped values in the same file. Either
+all values in the file should be non-timestamped or all should be timestamped
+and in that case the <code>-T</code> option must be used when calling <code>zabbix_sender</code>.
+If you want to send both types of values, you will need to use separate files
+and separate calls to <code>zabbix_sender</code>.</p>
+</div>
+<p>And as you can see from the above formats, you have to include the host name as 
+defined in Zabbix on each line. This makes it possible to send values for multiple
+hosts in one go.</p>
+<p>This can be extremely useful for example when you have a script that queries 
+a backup system and collects the status of backups for multiple hosts. You can then
+send all backups statuses to their respective Zabbix hosts instead of collecting
+them in a separate backup system 'host'.</p>
+<p>Of course, you can also use the <code>-</code> value for the <code>-i</code> option to read from standard
+input instead of a file as we did earlier in the timestamped values section. This 
+way you can pipe the output of your script directly to <code>zabbix_sender</code> without 
+creating a temporary file.</p>
+<hr />
 <h2 id="using-zabbix-api-to-send-data">Using Zabbix API to send data</h2>
-<p>Instead of using <code>zabbix_sender</code>, you can also send data via Zabbix API, by
-using <code>history.push</code> method.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="ch">#!/bin/bash</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nv">zbx_url</span><span class="o">=</span>http://127.0.0.1/zabbix/api_jsonrpc.php
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nv">zbx_header</span><span class="o">=</span><span class="s2">&quot;Content-Type: application/json; charset=UTF-8&quot;</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nv">zbx_auth_token</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span><span class="k">$(</span>dirname<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">0</span><span class="si">}</span><span class="s2">&quot;</span><span class="k">)</span>/token.conf<span class="k">)</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="nv">params</span><span class="o">=</span><span class="s2">&quot;[{\&quot;itemid\&quot;: </span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">, \&quot;value\&quot;: \&quot;</span><span class="si">${</span><span class="nv">2</span><span class="si">}</span><span class="s2">\&quot;}]&quot;</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="nv">payload</span><span class="o">=</span><span class="s2">&quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;method\&quot;:\&quot;history.push\&quot;,\&quot;id\&quot;:1,\&quot;params\&quot;:</span><span class="si">${</span><span class="nv">params</span><span class="si">}</span><span class="s2">}&quot;</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>curl<span class="w"> </span>-s<span class="w"> </span>--max-time<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">        </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">        </span>--data<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">payload</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">        </span>-H<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">zbx_header</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">        </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="si">${</span><span class="nv">zbx_auth_token</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">        </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">zbx_url</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>
-</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
+<p>Instead of using <code>zabbix_sender</code>, you can also send data using the <code>history.push</code>
+Zabbix API method.</p>
+<details class="example" open="open">
+<summary>Zabbix trapper - sending data with Zabbix API</summary>
+<p>Here is a simple script that will send a value to a Zabbix trapper item using
+the Zabbix API. It assumes you have already obtained an API token and stored
+it in a file called <code>token.conf</code> in the same directory as the script. Refer
+to the <a href="../../ch12-zabbix-api/chapter/">Zabbix API</a> chapter for more details
+on how to obtain an API token.:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nv">zbx_url</span><span class="o">=</span>http://127.0.0.1/zabbix/api_jsonrpc.php
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nv">zbx_header</span><span class="o">=</span><span class="s2">&quot;Content-Type: application/json; charset=UTF-8&quot;</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nv">zbx_auth_token</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span><span class="k">$(</span>dirname<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">0</span><span class="si">}</span><span class="s2">&quot;</span><span class="k">)</span>/token.conf<span class="k">)</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="nv">params</span><span class="o">=</span><span class="s2">&quot;[{\&quot;itemid\&quot;: </span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">, \&quot;value\&quot;: \&quot;</span><span class="si">${</span><span class="nv">2</span><span class="si">}</span><span class="s2">\&quot;}]&quot;</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="nv">payload</span><span class="o">=</span><span class="s2">&quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;method\&quot;:\&quot;history.push\&quot;,\&quot;id\&quot;:1,\&quot;params\&quot;:</span><span class="si">${</span><span class="nv">params</span><span class="si">}</span><span class="s2">}&quot;</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>curl<span class="w"> </span>-s<span class="w"> </span>--max-time<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">        </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">        </span>--data<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">payload</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">        </span>-H<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">zbx_header</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">        </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="si">${</span><span class="nv">zbx_auth_token</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">        </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">zbx_url</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
 </span></code></pre></div>
-<p>So now by running this with specific Zabbix trapper item id and intended value,
+</details>
+<p>So now by running this with the specific Zabbix trapper item key and intended value,
 you will update this item:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>binary@linux:~$<span class="w"> </span>./history_push.sh<span class="w"> </span><span class="m">69272</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.&#39;</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="o">{</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="s2">&quot;jsonrpc&quot;</span>:<span class="w"> </span><span class="s2">&quot;2.0&quot;</span>,
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="s2">&quot;result&quot;</span>:<span class="w"> </span><span class="o">{</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="s2">&quot;response&quot;</span>:<span class="w"> </span><span class="s2">&quot;success&quot;</span>,
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="s2">&quot;data&quot;</span>:<span class="w"> </span><span class="o">[</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">      </span><span class="o">{</span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">        </span><span class="s2">&quot;itemid&quot;</span>:<span class="w"> </span><span class="m">69272</span>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">      </span><span class="o">}</span>
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="o">]</span>
-</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">  </span><span class="o">}</span>,
-</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">  </span><span class="s2">&quot;id&quot;</span>:<span class="w"> </span><span class="m">1</span>
-</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="o">}</span>
-</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>binary@linux:~$<span class="w"> </span>./history_push.sh<span class="w"> </span><span class="m">69272</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.&#39;</span>
-</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="o">{</span>
-</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">  </span><span class="s2">&quot;jsonrpc&quot;</span>:<span class="w"> </span><span class="s2">&quot;2.0&quot;</span>,
-</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">  </span><span class="s2">&quot;result&quot;</span>:<span class="w"> </span><span class="o">{</span>
-</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">    </span><span class="s2">&quot;response&quot;</span>:<span class="w"> </span><span class="s2">&quot;success&quot;</span>,
-</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="s2">&quot;data&quot;</span>:<span class="w"> </span><span class="o">[</span>
-</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">      </span><span class="o">{</span>
-</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">        </span><span class="s2">&quot;itemid&quot;</span>:<span class="w"> </span><span class="m">69272</span>
-</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">      </span><span class="o">}</span>
-</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">    </span><span class="o">]</span>
-</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">  </span><span class="o">}</span>,
-</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">  </span><span class="s2">&quot;id&quot;</span>:<span class="w"> </span><span class="m">1</span>
-</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="o">}</span>
-</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>binary@linux:~$
+<details class="example" open="open">
+<summary>Zabbix trapper - sending data with Zabbix API - example usage</summary>
+<div class="language-shell-session highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="go">~$ ./history_push.sh 69272 0 | jq &#39;.&#39;</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="go">{</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="go">  &quot;jsonrpc&quot;: &quot;2.0&quot;,</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="go">  &quot;result&quot;: {</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="go">    &quot;response&quot;: &quot;success&quot;,</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="go">    &quot;data&quot;: [</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="go">      {</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="go">        &quot;itemid&quot;: 69272</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="go">      }</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="go">    ]</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="go">  },</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="go">  &quot;id&quot;: 1</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="go">}</span>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="go">~$ ./history_push.sh 69272 1 | jq &#39;.&#39;</span>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="go">{</span>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="go">  &quot;jsonrpc&quot;: &quot;2.0&quot;,</span>
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="go">  &quot;result&quot;: {</span>
+</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="go">    &quot;response&quot;: &quot;success&quot;,</span>
+</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="go">    &quot;data&quot;: [</span>
+</span><span id="__span-8-20"><a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a><span class="go">      {</span>
+</span><span id="__span-8-21"><a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="go">        &quot;itemid&quot;: 69272</span>
+</span><span id="__span-8-22"><a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a><span class="go">      }</span>
+</span><span id="__span-8-23"><a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a><span class="go">    ]</span>
+</span><span id="__span-8-24"><a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a><span class="go">  },</span>
+</span><span id="__span-8-25"><a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a><span class="go">  &quot;id&quot;: 1</span>
+</span><span id="__span-8-26"><a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a><span class="go">}</span>
 </span></code></pre></div>
+</details>
+<p>You will see the result in the Zabbix GUI <strong>Latest data</strong> section for the host 
+where the Zabbix trapper item resides:</p>
 <p><img alt="Zabbix trapper - API item result" src="ch04.xx-trapper-api-item-result.png" /></p>
+<hr />
 <h2 id="conclusion">Conclusion</h2>
 <p>If you work with Zabbix long enough, you will start having this feeling of
 when to use "Zabbix trapper" items over classic "Zabbix agent" items. In some
 particular cases they are extremely useful (or even the only option to go with).</p>
-<p>In this section you have learned how to create simple Zabbix trapper item, as
-well as some more advanced approaches.</p>
-<p>Using Zabbix trapper is heavily related to more programmatic approach towards
+<p>In this section you have learned when Zabbix trappers are most useful, as well
+as how to create Zabbix trapper items and send data to them, both using <code>zabbix_sender</code>
+and the Zabbix API. We've seen how to customize the item value timestamps recorded
+by Zabbix, as well as some advanced usages.</p>
+<p>Using Zabbix trapper is heavily related to more programmatic approaches towards
 updating item values, so if you are into programming and enjoy monitoring -
 you should definitely try it out.</p>
+<hr />
 <h2 id="questions">Questions</h2>
 <ul>
 <li>Do you need Zabbix agent if you want to use <code>zabbix_sender</code>?</li>
 <li>Does Zabbix trapper item have checking interval?</li>
 <li>Can you send text for Zabbix trapper items, or is it only for numerical data?</li>
 </ul>
+<hr />
 <h2 id="useful-urls">Useful URLs</h2>
 <ul>
 <li><a href="https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/trapper">https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/trapper</a></li>

@@ -1911,11 +1911,11 @@ detail is crucial.</p>
 <li>A key that references the exact sensor name</li>
 <li>An update interval appropriate for hardware metrics</li>
 </ul>
-<p>For example, to monitor a CPU temperature sensor, the item key might look like:</p>
 <details class="example" open="open">
 <summary>IPMI item key for CPU temperature</summary>
+<p>For example, to monitor a CPU temperature sensor, the item key might look like:
 <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>ipmi.get[CPU Temp]
-</span></code></pre></div>
+</span></code></pre></div></p>
 </details>
 <p>If the sensor name does not match exactly, including case and spacing, the item
 will fail. For this reason, copying sensor names directly from ipmitool output
@@ -1975,7 +1975,7 @@ far more consistent than IPMI in practice.</p>
 <p>The big win for authors and operators is that Redfish revolves around standard
 resource types. You'll see the same patterns repeatedly across vendors:</p>
 <ul>
-<li><strong>ServiceRoot:</strong> /redfish/v1 (entry point)</li>
+<li><strong>ServiceRoot:</strong> <code>/redfish/v1</code> (entry point)</li>
 <li><strong>Systems:</strong> server/compute view (CPU, memory, boot, power state)</li>
 <li><strong>Chassis:</strong> physical enclosure view</li>
 <li><strong>Managers:</strong> the management controller (think BMC/iDRAC/iLO)</li>
@@ -2073,7 +2073,7 @@ for further processing.</p>
 for any special protocols or poller types.</p>
 <p><strong>Choosing the First Endpoint</strong></p>
 <p>Every Redfish service exposes a well-defined entry point called the Service Root,
-located at: `/redfish/v1</p>
+located at: <code>/redfish/v1</code></p>
 <p>This endpoint is ideal for a first test because it:</p>
 <ul>
 <li>Is always present</li>
@@ -2157,17 +2157,17 @@ Next we can create a HTTP item on our host.</p>
 <details class="note" open="open">
 <summary>Note</summary>
 <p>At this stage, we are deliberately storing the entire response. In the next
-step, we will extract individual values.</p>
+step, we will extract individual values using <a href="../dependent/">Dependent items</a>.</p>
 </details>
 <p>After a short wait, the item should start collecting data. This can be verified
 under <strong>Monitoring</strong> → <strong>Latest data</strong></p>
 <p>If this works we can move over to the next step and create an item.</p>
 <hr/>
 <h3 id="extracting-a-value-with-json-preprocessing">Extracting a Value with JSON Preprocessing</h3>
-<p>Let's create a dependent item by pressing on the '<strong>...</strong>' before our item <code>Redfish
-service root</code> and select <strong>create dependent item</strong>.</p>
-<p>Now we can create our dependent item so that we can extract a single value from
-the master item using preprocessing.</p>
+<p>Let's create a <em>dependent item</em> by pressing on the '<strong>...</strong>' before our item <code>Redfish
+service root</code> and select <strong>Create dependent item</strong>.</p>
+<p>Now we can create our <em>dependent item</em> so that we can extract a single value from
+the <em>master item</em> using preprocessing.</p>
 <table>
 <thead>
 <tr>
