@@ -1796,15 +1796,38 @@ checks to measure load times, content accuracy, and user experience.
 </li>
       
         <li class="md-nav__item">
-  <a href="#practical-example-monitor-httpswwwzabbixcom" class="md-nav__link">
+  <a href="#practical-example" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Practical example : Monitor https://www.zabbix.com
+        Practical example
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Practical example : Monitor https://www.zabbix.com">
+    <nav class="md-nav" aria-label="Practical example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Script">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1816,14 +1839,13 @@ checks to measure load times, content accuracy, and user experience.
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="What the Script Returns">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#lets-go-over-what-everything-does-in-the-script" class="md-nav__link">
+  <a href="#lets-go-over-the-script" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Let's go over what everything does in the script
+        Let's go over the script
       
     </span>
   </a>
@@ -2973,15 +2995,38 @@ checks to measure load times, content accuracy, and user experience.
 </li>
       
         <li class="md-nav__item">
-  <a href="#practical-example-monitor-httpswwwzabbixcom" class="md-nav__link">
+  <a href="#practical-example" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Practical example : Monitor https://www.zabbix.com
+        Practical example
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Practical example : Monitor https://www.zabbix.com">
+    <nav class="md-nav" aria-label="Practical example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Script">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2993,14 +3038,13 @@ checks to measure load times, content accuracy, and user experience.
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="What the Script Returns">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#lets-go-over-what-everything-does-in-the-script" class="md-nav__link">
+  <a href="#lets-go-over-the-script" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Let's go over what everything does in the script
+        Let's go over the script
       
     </span>
   </a>
@@ -3292,8 +3336,8 @@ These must be correctly configured on the Zabbix Server or Proxy responsible for
 executing the synthetic checks.</p>
 <hr />
 <h3 id="server-configuration-parameters">Server Configuration Parameters</h3>
-<p>Two parameters in the Zabbix server configuration files (/etc/zabbix/zabbix_server.conf.d/*.conf)
-or zabbix_proxy.conf.d) are essential: <code>WebDriverURL</code> and <code>StartBrowserPollers</code>.</p>
+<p>Two parameters in the Zabbix server configuration files (<code>/etc/zabbix/zabbix_server.conf.d/*.conf</code>)
+or <code>zabbix_proxy.conf.d</code>) are essential: <code>WebDriverURL</code> and <code>StartBrowserPollers</code>.</p>
 <p><strong>WebDriverURL (Mandatory)</strong>
 This parameter must specify the web testing endpoint configured before (our container).
 This is a mandatory parameter, as the default value is empty. Without a valid URL,
@@ -3317,7 +3361,7 @@ N<sub>Pollers</sub> in Zabbix must be balanced with the actual parallel executio
 capacity of the WebDriver host.</p>
 <p>After modifying the configuration files, the service must be restarted:</p>
 <div class="admonition info">
-<p class="admonition-title">Info</p>
+<p class="admonition-title">Restarting Zabbix Server or Proxy</p>
 <p><div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>systemctl<span class="w"> </span>restart<span class="w"> </span>zabbix-server
 </span></code></pre></div>
 or</p>
@@ -3347,7 +3391,7 @@ of regular, critical infrastructure checks.</p>
 <tr>
 <td style="text-align: left;"><code>WebDriverURL</code></td>
 <td style="text-align: left;">URL/IP of the WebDriver Endpoint (e.g., Selenium Server)</td>
-<td style="text-align: left;">Mandatory to set. Format: http://<IP>:<Port>.</td>
+<td style="text-align: left;">Mandatory to set. Format: <code>http://&lt;IP&gt;:&lt;Port&gt;</code>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>StartBrowserPollers</code></td>
@@ -3593,27 +3637,27 @@ and the external WebDriver logs should be investigated jointly.</p>
 <tbody>
 <tr>
 <td style="text-align: left;">Failed to get JSON of the requested website</td>
-<td style="text-align: left;">Zabbix cannot reach the WebDriverURL or the WebDriver is not responding correctly.</td>
-<td style="text-align: left;">Zabbix Server log (zabbix_server.log); nc/curl to the WebDriver port 4444.</td>
+<td style="text-align: left;">Zabbix cannot reach the <code>WebDriverURL</code> or the WebDriver is not responding correctly.</td>
+<td style="text-align: left;">Zabbix Server log (<code>zabbix_server.log</code>); <code>nc</code>/<code>curl</code> to the WebDriver port 4444.</td>
 <td style="text-align: left;">Check network connectivity, firewall rules, and the Selenium Server status.</td>
 </tr>
 <tr>
 <td style="text-align: left;">Zabbix Queue backlog for Browser Items</td>
-<td style="text-align: left;">Too few StartBrowserPollers set, or the WebDriver host is overloaded.</td>
-<td style="text-align: left;">Zabbix Monitoring → Queue Overview; OS metrics on the WebDriver host (CPU/RAM).</td>
-<td style="text-align: left;">Increase StartBrowserPollers or scale the WebDriver infrastructure (e.g., via Proxies).</td>
+<td style="text-align: left;">Too few <code>StartBrowserPollers</code> set, or the WebDriver host is overloaded.</td>
+<td style="text-align: left;"><strong>Zabbix Monitoring</strong> → <strong>Queue Overview</strong>; OS metrics on the WebDriver host (CPU/RAM).</td>
+<td style="text-align: left;">Increase <code>StartBrowserPollers</code> or scale the WebDriver infrastructure (e.g., via Proxies).</td>
 </tr>
 <tr>
 <td style="text-align: left;">WebdriverError or unexplained crashes</td>
 <td style="text-align: left;">Problems with the Chrome engine in the container, often due to insufficient shared memory.</td>
 <td style="text-align: left;">Selenium Container logs; use VNC (port 7900) for visual debugging.</td>
-<td style="text-align: left;">Confirm that the --shm-size="2g" parameter was used when starting the Docker container.</td>
+<td style="text-align: left;">Confirm that the <code>--shm-size="2g"</code> parameter was used when starting the Docker container.</td>
 </tr>
 <tr>
 <td style="text-align: left;">Timeouts on complex scripts</td>
 <td style="text-align: left;">Implicit wait times are too short for dynamic content; Zabbix Timeout is too low.</td>
-<td style="text-align: left;">Increase the Timeout at the item level; adjust setElementWaitTimeout in the JS.</td>
-<td style="text-align: left;">Use try...catch to isolate the exact error position and generate a Base64 screenshot.</td>
+<td style="text-align: left;">Increase the <strong>Timeout</strong> at the item level; adjust <code>setElementWaitTimeout</code> in the JS.</td>
+<td style="text-align: left;">Use <code>try</code>...<code>catch</code> to isolate the exact error position and generate a Base64 screenshot.</td>
 </tr>
 </tbody>
 </table>
@@ -3631,8 +3675,9 @@ This requires strict security measures.</p>
   in the browser or WebDriver step is exploited.   </li>
 </ul>
 <hr />
-<h2 id="practical-example-monitor-httpswwwzabbixcom">Practical example : Monitor https://www.zabbix.com</h2>
-<p>Scenario</p>
+<h2 id="practical-example">Practical example</h2>
+<p>In this example we will monitor the website https://www.zabbix.com</p>
+<h3 id="scenario">Scenario:</h3>
 <ul>
 <li>Navigate to https://www.zabbix.com/</li>
 <li>Click the "GET ZABBIX" link</li>
@@ -3641,6 +3686,7 @@ This requires strict security measures.</p>
 <li>Collect performance timing</li>
 <li>Return all results as JSON</li>
 </ul>
+<h3 id="script">Script</h3>
 <div class="language-JavaScript highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">// Chrome settings (headless, sandbox, viewport)</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">opts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Browser</span><span class="p">.</span><span class="nx">chromeOptions</span><span class="p">({</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nx">args</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
@@ -3705,7 +3751,7 @@ This requires strict security measures.</p>
 </span><span id="__span-7-62"><a id="__codelineno-7-62" name="__codelineno-7-62" href="#__codelineno-7-62"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">out</span><span class="p">);</span>
 </span><span id="__span-7-63"><a id="__codelineno-7-63" name="__codelineno-7-63" href="#__codelineno-7-63"></a><span class="p">}</span>
 </span></code></pre></div>
-<h3 id="what-the-script-returns">What the Script Returns</h3>
+<h4 id="what-the-script-returns">What the Script Returns</h4>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">{</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span><span class="p">,</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="s2">&quot;headline&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Zabbix Cloud&quot;</span><span class="p">,</span>
@@ -3766,73 +3812,71 @@ This requires strict security measures.</p>
 </span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">  </span><span class="p">}</span>
 </span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="p">}</span>
 </span></code></pre></div>
-<h4 id="lets-go-over-what-everything-does-in-the-script">Let's go over what everything does in the script</h4>
+<h4 id="lets-go-over-the-script">Let's go over the script</h4>
 <p><strong>Top-level fields (script-defined)</strong></p>
 <ul>
-<li>status
+<li><code>status</code>
   High-level outcome of the synthetic scenario:<ul>
-<li>"ok" – the script completed the full user journey as intended.</li>
-<li>"error" – something failed (element not found, timeout, navigation error, etc.).</li>
+<li><code>ok</code> – the script completed the full user journey as intended.</li>
+<li><code>error</code> – something failed (element not found, timeout, navigation error, etc.).</li>
 </ul>
 </li>
-<li>headline
+<li><code>headline</code>
   The text content of the <code>&lt;h1&gt;</code> element on the final page after clicking GET ZABBIX.
   This is a functional assertion: “Did we end up on the expected page with the expected headline?”</li>
-<li>final_url
+<li><code>final_url</code>
   The final URL seen by the browser after all redirects and navigation.
-  This allows you to verify whether the button still leads to /zabbix_cloud or was changed/redirected elsewhere.</li>
-<li>error (optional)
-  A human-readable explanation if something went wrong (for example: “cannot find 'GET ZABBIX' link”).
-  This is added by the script using err.toString() for quick diagnosis from the Zabbix frontend.</li>
-<li>screenshot (optional, on error)
+  This allows you to verify whether the button still leads to <code>/zabbix_cloud</code> or was changed/redirected elsewhere.</li>
+<li><code>error</code> (optional)
+  A human-readable explanation if something went wrong (for example: <code>cannot find 'GET ZABBIX' link</code>).
+  This is added by the script using <code>err.toString()</code> for quick diagnosis from the Zabbix frontend.</li>
+<li><code>screenshot</code> (optional, on error)
   A Base64-encoded PNG image captured at the time of failure.
   This allows the operator to see what the user would have seen at the moment of the error (login form, cookie banner, error page, etc.). It’s stored as a Binary dependent item.</li>
-<li>result
-  This is the BrowserResult object returned by Zabbix (browser.getResult()), which wraps:<ul>
+<li><code>result</code>
+  This is the <code>BrowserResult</code> object returned by Zabbix (<code>browser.getResult()</code>), which wraps:<ul>
 <li>Timing and performance data</li>
 <li>Duration of the scenario</li>
 <li>Any internal error information</li>
-<li>Marks set by browser.collectPerfEntries(...)</li>
+<li>Marks set by <code>browser.collectPerfEntries(...)</code></li>
 </ul>
 </li>
 </ul>
 <p><strong>Inside result</strong></p>
 <ul>
-<li>duration
+<li><code>duration</code>
   Total execution time of the Browser scenario in seconds, from start of the script to completion.
   This is useful as a high-level synthetic transaction time.</li>
-<li>performance_data.summary.navigation<ul>
-<li>Aggregated navigation metrics for the page load (in seconds), for example:</li>
-<li>response_time – backend response time (server + network).</li>
-<li>dom_content_loading_time – time until the DOM is ready (DOMContentLoaded).</li>
-<li>load_finished – time until the load event fires (page fully loaded).</li>
-<li>encoded_size / total_size – size of transferred and decoded content.</li>
-<li>redirect_count – number of redirects for the navigation.
-You can think of this section as “the synthetic page-speed metrics from the browser’s point of view”.</li>
+<li><code>performance_data.summary.navigation</code>
+  Aggregated navigation metrics for the page load (in seconds), for example:<ul>
+<li><code>response_time</code> – backend response time (server + network).</li>
+<li><code>dom_content_loading_time</code> – time until the DOM is ready (DOMContentLoaded).</li>
+<li><code>load_finished</code> – time until the load event fires (page fully loaded).</li>
+<li><code>encoded_size</code> / <code>total_size</code> – size of transferred and decoded content.</li>
+<li><code>redirect_count</code> – number of redirects for the navigation.
+  You can think of this section as “the synthetic page-speed metrics from the browser’s point of view”.</li>
 </ul>
 </li>
-<li>performance_data.summary.resource<ul>
-<li>Aggregated metrics for all resources (images, CSS, JS, fonts, etc.):</li>
-<li>count – number of resources loaded.</li>
-<li>resource_fetch_time – time spent fetching resources.</li>
-<li>response_time – cumulative response time for resources.</li>
+<li><code>performance_data.summary.resource</code>
+  Aggregated metrics for all resources (images, CSS, JS, fonts, etc.):<ul>
+<li><code>count</code> – number of resources loaded.</li>
+<li><code>resource_fetch_time</code> – time spent fetching resources.</li>
+<li><code>response_time</code> – cumulative response time for resources.</li>
 </ul>
 </li>
-<li>performance_data.details[]
-An array with one entry per collectPerfEntries("mark") call in your script:<ul>
-<li>Each element has:<ul>
-<li>mark – the label you passed (e.g. "open_home", "after_click").</li>
-<li>navigation – detailed timings for that navigation.</li>
-<li>resource – resource stats for that step.</li>
-<li>user – optional PerformanceEntry marks set by the website itself (e.g. third-party SDKs, analytics, etc.).</li>
+<li><code>performance_data.details[]</code>
+  An array with one entry per <code>collectPerfEntries("mark")</code> call in your script:
+  Each element has:<ul>
+<li><code>mark</code> – the label you passed (e.g. "open_home", "after_click").</li>
+<li><code>navigation</code> – detailed timings for that navigation.</li>
+<li><code>resource</code> – resource stats for that step.</li>
+<li><code>user</code> – optional PerformanceEntry marks set by the website itself (e.g. third-party SDKs, analytics, etc.).
+  This enables per-step decomposition of your user journey: open homepage vs. landing page after click, etc.</li>
 </ul>
 </li>
+<li><code>marks[]</code>
+  A list of all marks with their indices. Mostly useful if you need to correlate external tools with Zabbix data.</li>
 </ul>
-</li>
-</ul>
-<p>This enables per-step decomposition of your user journey: open homepage vs. landing page after click, etc.
-- marks[]
-A list of all marks with their indices. Mostly useful if you need to correlate external tools with Zabbix data.</p>
 <h3 id="dependent-items-screenshot-useful-metrics">Dependent items – screenshot + useful metrics</h3>
 <table>
 <thead>
@@ -3852,7 +3896,7 @@ A list of all marks with their indices. Mostly useful if you need to correlate e
 <td style="text-align: left;">your Browser item</td>
 <td style="text-align: left;">Binary</td>
 <td style="text-align: left;">JSONPath</td>
-<td style="text-align: left;">$.screenshot</td>
+<td style="text-align: left;"><code>$.screenshot</code></td>
 </tr>
 <tr>
 <td style="text-align: left;">GET ZABBIX – headline</td>
@@ -3860,7 +3904,7 @@ A list of all marks with their indices. Mostly useful if you need to correlate e
 <td style="text-align: left;">your Browser item</td>
 <td style="text-align: left;">Binary</td>
 <td style="text-align: left;">JSONPath</td>
-<td style="text-align: left;">$.headline</td>
+<td style="text-align: left;"><code>$.headline</code></td>
 </tr>
 </tbody>
 </table>
@@ -3870,11 +3914,11 @@ your item.</p>
 <em>CH03 Discard Value</em></p>
 <p><strong>A few other JSONPath regexes that you can use:</strong></p>
 <ul>
-<li>$.result.performance_data.details[0].navigation.duration</li>
-<li>$.result.performance_data.details[1].navigation.duration</li>
-<li>$.result.performance_data.summary.navigation.load_finished</li>
-<li>$.result.duration</li>
-<li>$.final_url
+<li><code>$.result.performance_data.details[0].navigation.duration</code></li>
+<li><code>$.result.performance_data.details[1].navigation.duration</code></li>
+<li><code>$.result.performance_data.summary.navigation.load_finished</code></li>
+<li><code>$.result.duration</code></li>
+<li><code>$.final_url</code>
 ...</li>
 </ul>
 <hr />
