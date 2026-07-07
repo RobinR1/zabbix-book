@@ -3819,69 +3819,83 @@ This requires strict security measures.</p>
 </span></code></pre></div>
 <h4 id="lets-go-over-the-script">Let's go over the script</h4>
 <p><strong>Top-level fields (script-defined)</strong></p>
-<ul>
-<li><code>status</code>
-  High-level outcome of the synthetic scenario:<ul>
-<li><code>ok</code> – the script completed the full user journey as intended.</li>
-<li><code>error</code> – something failed (element not found, timeout, navigation error, etc.).</li>
-</ul>
-</li>
-<li><code>headline</code>
-  The text content of the <code>&lt;h1&gt;</code> element on the final page after clicking GET ZABBIX.
-  This is a functional assertion: “Did we end up on the expected page with the expected headline?”</li>
-<li><code>final_url</code>
-  The final URL seen by the browser after all redirects and navigation.
-  This allows you to verify whether the button still leads to <code>/zabbix_cloud</code> or was changed/redirected elsewhere.</li>
-<li><code>error</code> (optional)
-  A human-readable explanation if something went wrong (for example: <code>cannot find 'GET ZABBIX' link</code>).
-  This is added by the script using <code>err.toString()</code> for quick diagnosis from the Zabbix frontend.</li>
-<li><code>screenshot</code> (optional, on error)
-  A Base64-encoded PNG image captured at the time of failure.
-  This allows the operator to see what the user would have seen at the moment of the error (login form, cookie banner, error page, etc.). It’s stored as a Binary dependent item.</li>
-<li><code>result</code>
-  This is the <code>BrowserResult</code> object returned by Zabbix (<code>browser.getResult()</code>), which wraps:<ul>
-<li>Timing and performance data</li>
-<li>Duration of the scenario</li>
-<li>Any internal error information</li>
-<li>Marks set by <code>browser.collectPerfEntries(...)</code></li>
-</ul>
-</li>
-</ul>
+<dl>
+<dt><code>status</code></dt>
+<dd>
+<p>High-level outcome of the synthetic scenario:
+- <code>ok</code> – the script completed the full user journey as intended.
+- <code>error</code> – something failed (element not found, timeout, navigation error, etc.).</p>
+</dd>
+<dt><code>headline</code></dt>
+<dd>
+<p>The text content of the <code>&lt;h1&gt;</code> element on the final page after clicking GET ZABBIX.
+  This is a functional assertion: “Did we end up on the expected page with the expected headline?”</p>
+</dd>
+<dt><code>final_url</code></dt>
+<dd>
+<p>The final URL seen by the browser after all redirects and navigation.
+  This allows you to verify whether the button still leads to <code>/zabbix_cloud</code> or was changed/redirected elsewhere.</p>
+</dd>
+<dt><code>error</code> (optional)</dt>
+<dd>
+<p>A human-readable explanation if something went wrong (for example: <code>cannot find 'GET ZABBIX' link</code>).
+  This is added by the script using <code>err.toString()</code> for quick diagnosis from the Zabbix frontend.</p>
+</dd>
+<dt><code>screenshot</code> (optional, on error)</dt>
+<dd>
+<p>A Base64-encoded PNG image captured at the time of failure.
+  This allows the operator to see what the user would have seen at the moment of the error (login form, cookie banner, error page, etc.). It’s stored as a Binary dependent item.</p>
+</dd>
+<dt><code>result</code></dt>
+<dd>
+<p>This is the <code>BrowserResult</code> object returned by Zabbix (<code>browser.getResult()</code>), which wraps:
+- Timing and performance data
+- Duration of the scenario
+- Any internal error information
+- Marks set by <code>browser.collectPerfEntries(...)</code></p>
+</dd>
+</dl>
 <p><strong>Inside result</strong></p>
-<ul>
-<li><code>duration</code>
-  Total execution time of the Browser scenario in seconds, from start of the script to completion.
-  This is useful as a high-level synthetic transaction time.</li>
-<li><code>performance_data.summary.navigation</code>
-  Aggregated navigation metrics for the page load (in seconds), for example:<ul>
-<li><code>response_time</code> – backend response time (server + network).</li>
-<li><code>dom_content_loading_time</code> – time until the DOM is ready (DOMContentLoaded).</li>
-<li><code>load_finished</code> – time until the load event fires (page fully loaded).</li>
-<li><code>encoded_size</code> / <code>total_size</code> – size of transferred and decoded content.</li>
-<li><code>redirect_count</code> – number of redirects for the navigation.
-  You can think of this section as “the synthetic page-speed metrics from the browser’s point of view”.</li>
-</ul>
-</li>
-<li><code>performance_data.summary.resource</code>
-  Aggregated metrics for all resources (images, CSS, JS, fonts, etc.):<ul>
-<li><code>count</code> – number of resources loaded.</li>
-<li><code>resource_fetch_time</code> – time spent fetching resources.</li>
-<li><code>response_time</code> – cumulative response time for resources.</li>
-</ul>
-</li>
-<li><code>performance_data.details[]</code>
-  An array with one entry per <code>collectPerfEntries("mark")</code> call in your script:
-  Each element has:<ul>
-<li><code>mark</code> – the label you passed (e.g. "open_home", "after_click").</li>
-<li><code>navigation</code> – detailed timings for that navigation.</li>
-<li><code>resource</code> – resource stats for that step.</li>
-<li><code>user</code> – optional PerformanceEntry marks set by the website itself (e.g. third-party SDKs, analytics, etc.).
-  This enables per-step decomposition of your user journey: open homepage vs. landing page after click, etc.</li>
-</ul>
-</li>
-<li><code>marks[]</code>
-  A list of all marks with their indices. Mostly useful if you need to correlate external tools with Zabbix data.</li>
-</ul>
+<dl>
+<dt><code>duration</code></dt>
+<dd>
+<p>Total execution time of the Browser scenario in seconds, from start of the script to completion.
+  This is useful as a high-level synthetic transaction time.</p>
+</dd>
+<dt><code>performance_data.summary.navigation</code></dt>
+<dd>
+<p>Aggregated navigation metrics for the page load (in seconds), for example:
+- <code>response_time</code> – backend response time (server + network).
+- <code>dom_content_loading_time</code> – time until the DOM is ready (DOMContentLoaded).
+- <code>load_finished</code> – time until the load event fires (page fully loaded).
+- <code>encoded_size</code> / <code>total_size</code> – size of transferred and decoded content.
+- <code>redirect_count</code> – number of redirects for the navigation.</p>
+</dd>
+</dl>
+<p>You can think of this section as “the synthetic page-speed metrics from the browser’s point of view”.</p>
+<dl>
+<dt><code>performance_data.summary.resource</code></dt>
+<dd>
+<p>Aggregated metrics for all resources (images, CSS, JS, fonts, etc.):
+- <code>count</code> – number of resources loaded.
+- <code>resource_fetch_time</code> – time spent fetching resources.
+- <code>response_time</code> – cumulative response time for resources.</p>
+</dd>
+<dt><code>performance_data.details[]</code></dt>
+<dd>
+<p>An array with one entry per <code>collectPerfEntries("mark")</code> call in your script:
+  Each element has:
+    - <code>mark</code> – the label you passed (e.g. "open_home", "after_click").
+    - <code>navigation</code> – detailed timings for that navigation.
+    - <code>resource</code> – resource stats for that step.
+    - <code>user</code> – optional PerformanceEntry marks set by the website itself (e.g. third-party SDKs, analytics, etc.).
+  This enables per-step decomposition of your user journey: open homepage vs. landing page after click, etc.</p>
+</dd>
+<dt><code>marks[]</code></dt>
+<dd>
+<p>A list of all marks with their indices. Mostly useful if you need to correlate external tools with Zabbix data.</p>
+</dd>
+</dl>
 <h3 id="dependent-items-screenshot-useful-metrics">Dependent items – screenshot + useful metrics</h3>
 <table>
 <thead>
