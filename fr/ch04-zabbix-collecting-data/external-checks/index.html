@@ -2488,32 +2488,40 @@ arbitrary shell script or binary on its behalf. Whatever that script
 prints to standard output becomes the item value. No agent is required
 on the monitored host, the script runs entirely on the Zabbix server
 or proxy machine.</p>
+<hr />
 <h2 id="how-it-works">How It Works</h2>
-<p>When the item is due for collection, Zabbix looks up the ExternalScripts
-directory (configured in zabbix_server.conf or zabbix_proxy.conf) and
+<p>When the item is due for collection, Zabbix looks up the <code>ExternalScripts</code>
+directory (configured in Zabbix server or proxy config files) and
 forks a new process to execute the named script. The script runs under
 the same OS user as the Zabbix server or proxy process, so file
 permissions and environment variables must be set up accordingly.
 The item key follows this syntax:</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="na">script[&lt;parameter1&gt;,&lt;parameter2&gt;,...]</span>
 </span></code></pre></div>
+</div>
 <p>If no parameters are needed, either of the following forms is
 acceptable:</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="na">script</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="na">script[]</span>
 </span></code></pre></div>
+</div>
 <p>Parameters are passed to the script as individual quoted command line
-arguments. Zabbix macros such as {HOST.CONN} or {HOST.NAME} can be used
-inside parameter values, they are resolved before the script is
+arguments. Zabbix macros such as <code>{HOST.CONN}</code> or <code>{HOST.NAME}</code> can be used
+inside parameter values, those are resolved before the script is
 called. This means you can write a single generic script and rely on
 macros to supply the host-specific details at runtime.</p>
-<details class="note" open="open">
-<summary>Note</summary>
+<div class="admonition warning">
+<p class="admonition-title">When using Zabbix proxies</p>
 <p>When a host is monitored through a Zabbix proxy, the
 external check script is executed by the proxy, not by the central
 server. Make sure your scripts are deployed on every machine that needs
 to run them.</p>
-</details>
+</div>
+<hr />
 <h2 id="return-value-and-error-handling">Return Value and Error Handling</h2>
 <p>The item value is formed from whatever the script writes to standard
 output (stdout), combined with any message written to standard error
@@ -2536,11 +2544,12 @@ performance. Use external checks for things that genuinely cannot be done
 another way, and keep collection intervals as long as your monitoring
 requirements allow.
 </code></pre></div>
+<hr />
 <h2 id="practical-example-counting-logged-in-users">Practical example : Counting Logged-In Users</h2>
 <p>To show you an easy example, let's build something you can try right now on the
 machine where Zabbix is installed. The script will count how many users are
 currently logged into the local system, using the who command, which is part of the
-standard coreutils package present on every installation.</p>
+standard coreutils package present on every distribution.</p>
 <p>You will create the item on the Zabbix server host itself the one
 that already appears in your host list as "Zabbix server". The script
 runs locally on that same machine, so there is nothing to connect to and
@@ -2549,24 +2558,33 @@ no credentials to manage.</p>
 <p>Create the file 'check_logged_users.sh' in the ExternalScripts directory.
 On most systems this is <strong>/usr/lib/zabbix/externalscripts/</strong> you can check your
 zabbix_server.conf if unsure:</p>
+<details class="example" open="open">
+<summary>Example</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="ch">#!/bin/bash</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># Returns the number of users currently logged into the system.</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># No arguments needed.</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>who<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
 </span></code></pre></div>
+</details>
 <p>That is the entire script, four lines including the comments. The who
-command lists one line per active login session; wc -l counts those
+command lists one line per active login session; <code>wc -l</code> counts those
 lines. </p>
 <p>Make the script executable:</p>
+<details class="example" open="open">
+<summary>Example</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>chmod<span class="w"> </span>+x<span class="w"> </span>/usr/lib/zabbix/externalscripts/check_logged_users.sh
 </span></code></pre></div>
+</details>
 <p>You can verify it works straight away by running it manually as the
 zabbix user:</p>
+<details class="example" open="open">
+<summary>Example</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span>-u<span class="w"> </span>zabbix<span class="w"> </span>/usr/lib/zabbix/externalscripts/check_logged_users.sh
 </span></code></pre></div>
+</details>
 <h3 id="create-the-item-in-zabbix">Create the Item in Zabbix</h3>
 <p>Now that we have our script we need to create an item in Zabbix as our final
-step. In the Zabbix web interface, go to <code>Data collection → Hosts</code>, open the
+step. In the Zabbix web interface, go to <strong>Data collection</strong> → <strong>Hosts</strong>, open the
 Zabbix server host, and add a new item with these settings:</p>
 <table>
 <thead>
@@ -2603,11 +2621,11 @@ Zabbix server host, and add a new item with these settings:</p>
 </tbody>
 </table>
 <h3 id="check-the-result">Check the Result</h3>
-<p>Save the item and navigate to <code>Monitoring → Latest data</code>. Within a minute
-you should see a value like 2 ( depending on your system ) appear next to your
+<p>Save the item and navigate to <strong>Monitoring</strong> → <strong>Latest data</strong>. Within a minute
+you should see a value like <code>2</code> (depending on your system) appear next to your
 new item, reflecting the number of active sessions on the Zabbix server at that
 moment. Open a second terminal to SSH in, wait for the next collection cycle,
-and watch the number go up to 3 ( or 1 higher then previous number ). Close it,
+and watch the number go up to <code>3</code> (or 1 higher then previous number). Close it,
 and it comes back down. From here you could add a trigger to alert when the count
 exceeds an expected threshold, useful for detecting unexpected logins on a
 production server.</p>
@@ -2621,13 +2639,20 @@ dependency.</p>
 possible. If your script needs a PhD thesis to maintain, it probably
 deserves to be a proper Zabbix plugin instead.</p>
 </div>
+<hr />
 <h2 id="conclusion">Conclusion</h2>
 <p>External checks give you an escape hatch from the boundaries of built-in Zabbix
-item types. You write a script, drop it in the ExternalScripts directory,
+item types. You write a script, drop it in the <code>ExternalScripts</code> directory,
 and reference it with a standard item key. Zabbix handles scheduling, macro
 substitution, and value storage, you only have to worry about what the script
 does. Used sensibly and sparingly, external checks are one of the most powerful
 extensibility mechanisms Zabbix offers.</p>
+<p>The example we built here is very basic, but it demonstrates the principle.
+When the output of the command is complex, you can ofcourse parse it using
+preprocessing steps, or even return JSON and use the <code>JSONPath</code> preprocessor to 
+extract the values you need. The sky is the limit, as long as you keep your scripts
+simple, fast, and reliable.</p>
+<hr />
 <h2 id="questions">Questions</h2>
 <ul>
 <li>
@@ -2648,6 +2673,7 @@ extensibility mechanisms Zabbix offers.</p>
   What would happen if the item type were set to Text instead?</p>
 </li>
 </ul>
+<hr />
 <h2 id="useful-urls">Useful URLs</h2>
 <ul>
 <li><a href="https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/external">https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/external</a></li>
