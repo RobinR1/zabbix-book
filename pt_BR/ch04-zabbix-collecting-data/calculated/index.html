@@ -1557,22 +1557,22 @@ metrics to generate new insights without extra load or checks.
 </li>
       
         <li class="md-nav__item">
-  <a href="#aggregated-items" class="md-nav__link">
+  <a href="#data-aggregation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Aggregated items
+        Data Aggregation
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Aggregated items">
+    <nav class="md-nav" aria-label="Data Aggregation">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#configuration-of-aggregated-items" class="md-nav__link">
+  <a href="#usage-of-aggregate-functions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Configuration of Aggregated Items
+        Usage of aggregate functions
       
     </span>
   </a>
@@ -1580,15 +1580,15 @@ metrics to generate new insights without extra load or checks.
 </li>
         
           <li class="md-nav__item">
-  <a href="#practical-examples-of-aggregated-items" class="md-nav__link">
+  <a href="#practical-examples-of-aggregate-formulas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Practical Examples of Aggregated Items
+        Practical Examples of aggregate formulas
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Practical Examples of Aggregated Items">
+    <nav class="md-nav" aria-label="Practical Examples of aggregate formulas">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1614,10 +1614,10 @@ metrics to generate new insights without extra load or checks.
 </li>
         
           <li class="md-nav__item">
-  <a href="#example-3-counting-conditional-items-with-foreach" class="md-nav__link">
+  <a href="#example-3-counting-conditional-items" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example 3: Counting Conditional Items with foreach
+        Example 3: Counting Conditional Items
       
     </span>
   </a>
@@ -2300,6 +2300,8 @@ metrics to generate new insights without extra load or checks.
       
         
       
+        
+      
     
     
     
@@ -2323,6 +2325,60 @@ metrics to generate new insights without extra load or checks.
     
   
     Chapter 15 : Real world examples
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../ch16-windows/chapter/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 16 : Windows monitoring
   
 
     
@@ -2484,22 +2540,22 @@ metrics to generate new insights without extra load or checks.
 </li>
       
         <li class="md-nav__item">
-  <a href="#aggregated-items" class="md-nav__link">
+  <a href="#data-aggregation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Aggregated items
+        Data Aggregation
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Aggregated items">
+    <nav class="md-nav" aria-label="Data Aggregation">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#configuration-of-aggregated-items" class="md-nav__link">
+  <a href="#usage-of-aggregate-functions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Configuration of Aggregated Items
+        Usage of aggregate functions
       
     </span>
   </a>
@@ -2507,15 +2563,15 @@ metrics to generate new insights without extra load or checks.
 </li>
         
           <li class="md-nav__item">
-  <a href="#practical-examples-of-aggregated-items" class="md-nav__link">
+  <a href="#practical-examples-of-aggregate-formulas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Practical Examples of Aggregated Items
+        Practical Examples of aggregate formulas
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Practical Examples of Aggregated Items">
+    <nav class="md-nav" aria-label="Practical Examples of aggregate formulas">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2541,10 +2597,10 @@ metrics to generate new insights without extra load or checks.
 </li>
         
           <li class="md-nav__item">
-  <a href="#example-3-counting-conditional-items-with-foreach" class="md-nav__link">
+  <a href="#example-3-counting-conditional-items" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example 3: Counting Conditional Items with foreach
+        Example 3: Counting Conditional Items
       
     </span>
   </a>
@@ -2742,16 +2798,19 @@ types:</p>
 workflows. This led to confusion, especially when building larger monitoring
 models or template driven designs.</p>
 <p>Starting with Zabbix 7.0, these functions were unified into a single item type:
-Calculated with a single expression syntax. All former aggregation logic per host,
+<strong>Calculated</strong>, with a single expression syntax. All former aggregation logic per host,
 per group, or cross group is now accessed directly through functions such as:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>avg<span class="o">()</span>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>avg<span class="o">()</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sum<span class="o">()</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>percentile<span class="o">()</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>grpavg<span class="o">()</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>grpsum<span class="o">()</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>groupcount<span class="o">()</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>etc.
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>avg_foreach<span class="o">()</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>sum_foreach<span class="o">()</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>count_foreach<span class="o">()</span>
 </span></code></pre></div>
+etc...</p>
+</div>
 <p>This unification dramatically simplifies the platform:</p>
 <ul>
 <li>One place to create derived values</li>
@@ -2759,14 +2818,14 @@ per group, or cross group is now accessed directly through functions such as:</p
 <li>One template model for all calculations</li>
 <li>More powerful LLD integration</li>
 </ul>
-<p>Zabbix 8.0 continues this streamlined approach, making calculated items a
+<p>Zabbix 8.0 continues this streamlined approach, making <strong>calculated items</strong> a
 cornerstone for building analytics, SLA metrics, and higher-level abstractions.</p>
 <hr />
 <h2 id="what-are-calculated-items">What Are Calculated Items?</h2>
-<p>A calculated item is a an item whose value is produced entirely by the Zabbix
+<p>A <strong>calculated item</strong> is a an item whose value is produced entirely by the Zabbix
 server. Instead of collecting external data, it uses:</p>
 <ul>
-<li>Other item values (last(), avg(), max(), etc.)</li>
+<li>Other item values (<code>last()</code>, <code>avg()</code>, <code>max()</code>, etc.)</li>
 <li>Arithmetic operations</li>
 <li>Built-in functions</li>
 <li>Data aggregation across hosts or host groups</li>
@@ -2790,7 +2849,7 @@ like any other metric.</p>
 </ul>
 <hr />
 <h2 id="where-calculated-items-fit-in-the-zabbix-data-model">Where Calculated Items Fit in the Zabbix Data Model</h2>
-<p>Calculated items are part of the broader set of Zabbix item types. They behave like:</p>
+<p><strong>Calculated items</strong> are part of the broader set of Zabbix item types. They behave like:</p>
 <ul>
 <li>Dependent items (no host communication)</li>
 <li>Preprocessed items (transformation of raw data)</li>
@@ -2806,14 +2865,14 @@ interval does. This means calculated items must be configured carefully to ensur
 </ul>
 <hr />
 <h2 id="how-to-create-a-calculated-item">How to create a Calculated Item</h2>
-<p>To create a calculated item:</p>
+<p>To create a <strong>calculated item</strong>:</p>
 <ol>
-<li>Open Data collection → Hosts → <your host> → Items</li>
-<li>Click Create item</li>
-<li>Set Type: Calculated</li>
+<li>Open <strong>Data collection</strong> → <strong>Hosts</strong> → <your host> → <strong>Items</strong></li>
+<li>Click <strong>Create item</strong></li>
+<li>Set Type: <strong>Calculated</strong></li>
 <li>Define:<ul>
 <li>Name</li>
-<li>Type: Calculated</li>
+<li>Type: <strong>Calculated</strong></li>
 <li>Key (unique identifier)</li>
 <li>Value type (Numeric, float, etc.)</li>
 <li>Formula</li>
@@ -2826,34 +2885,43 @@ interval does. This means calculated items must be configured carefully to ensur
 </ol>
 <p><img alt="calculated/ch04.60-calculated-item.png" src="../../../ch04-zabbix-collecting-data/calculated/ch04.60-calculated-item.png" /></p>
 <p><em>calculated-item</em></p>
-<p><strong>Example Formula :</strong></p>
+<details class="example" open="open">
+<summary>Example Formula</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>last<span class="o">(</span>/host/net.if.in<span class="o">[</span>eth0<span class="o">])</span><span class="w"> </span>+<span class="w"> </span>last<span class="o">(</span>/host/net.if.out<span class="o">[</span>eth0<span class="o">])</span>
 </span></code></pre></div>
 <p>Using this in our formula would calculate the total traffic by combining traffic
 in with traffic out. This will only work if we have 2 exact items like this on
 our host.</p>
-<p>Another more useful example as the item net.if.total exists for the example
+</details>
+<p>Another more useful example as the item <code>net.if.total</code> exists for the example
 above could be the calculation of the interface utilization.</p>
+<details class="example" open="open">
+<summary>Interface Utilization Formula</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="o">(</span><span class="w"> </span>last<span class="o">(</span>/host/net.if.total<span class="o">[</span>eth0<span class="o">])</span><span class="w"> </span>*<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="o">)</span><span class="w"> </span>/<span class="w"> </span>last<span class="o">(</span>/host/net.if.speed<span class="o">[</span>eth0<span class="o">])</span>
 </span></code></pre></div>
 <p>Again on our host we would need the item <code>net.if.total[eth0]</code> and
 <code>net.if.speed[eth0]</code> for this to work.</p>
+</details>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Zabbix does not have an Built-in item net.if.speed but we can usually read
+<p>Zabbix does not have an Built-in item <code>net.if.speed</code> but we can usually read
 the speed from network devices like switches. In Linux you could use as
-alternative method <code id="IFNAME">vfs.file.contents["/sys/class/net/{#IFNAME}/speed"]
-where you replace</code>` with the correct interface name.</p>
+alternative method <code>vfs.file.contents["/sys/class/net/{#IFNAME}/speed"]</code>
+where you replace <code>{#IFNAME}</code> with the correct interface name.</p>
 </div>
+<hr />
 <h2 id="some-good-practices-for-calculated-items">Some good practices for Calculated items</h2>
 <ol>
-<li><strong>Align Update Intervals:</strong> If your source item updates every 60 seconds, avoid recalculating every 5 seconds.</li>
-<li><strong>Always Validate Item Existence:</strong> If one referenced item is missing, the calculated item returns unsupported.</li>
+<li><strong>Align Update Intervals:</strong> If your source item updates every 60 seconds, 
+   avoid recalculating every 5 seconds.</li>
+<li><strong>Always Validate Item Existence:</strong> If one referenced item is missing, 
+   the calculated item returns unsupported.</li>
 <li><strong>Use Templates, Not Hosts:</strong> Especially important when building:<ul>
 <li>CPU utilization ratios</li>
 <li>Disk usage summaries</li>
 <li>Network traffic rollups
-   By using templates, calculated items become reusable and consistent across infrastructure.</li>
+   By using templates, calculated items become reusable and consistent across 
+   infrastructure.</li>
 </ul>
 </li>
 <li><strong>Use Value Type Carefully:</strong><ul>
@@ -2870,11 +2938,12 @@ where you replace</code>` with the correct interface name.</p>
 </ul>
 </li>
 </ol>
+<hr />
 <h2 id="practical-example">Practical Example</h2>
 <h3 id="analysing-network-latency-with-percentiles">Analysing Network Latency with Percentiles</h3>
 <p><strong>The Crucial Role of Percentile Analysis in Network Quality</strong>
-When assessing network latency, specifically using metrics like ICMP Ping response
-time, relying solely on the average (mean) can be profoundly misleading a pitfall
+When assessing network latency, specifically using metrics like <em>ICMP Ping response
+time</em>, relying solely on the average (mean) can be profoundly misleading a pitfall
 analogous to analysing website performance without considering real world user
 experience.</p>
 <p><strong>Suppose :</strong></p>
@@ -2900,7 +2969,7 @@ network issues that averages conceal.</p>
 <p>Therefore, for a robust and accurate indication of the operational network quality
 experienced by the majority of users, percentile analysis is indispensable.</p>
 <p><strong>Required Item: ICMP Response Time</strong></p>
-<p>Zabbix provides a built-in Simple Check for ICMP response time (fping-based).
+<p>Zabbix provides a built-in Simple Check for ICMP response time (<code>fping</code>-based).
 For this exercise make sure the item is already on the system available as we
 need it for our calculated item.</p>
 <table>
@@ -2913,7 +2982,7 @@ need it for our calculated item.</p>
 <tbody>
 <tr>
 <td>Name</td>
-<td>Icmpping</td>
+<td><code>Icmpping</code></td>
 </tr>
 <tr>
 <td>Type</td>
@@ -2921,15 +2990,15 @@ need it for our calculated item.</p>
 </tr>
 <tr>
 <td>Key</td>
-<td>icmppingsec[&lt;target-IP&gt;]</td>
+<td><code>icmppingsec[&lt;target-IP&gt;]</code></td>
 </tr>
 <tr>
 <td>Units</td>
-<td>s</td>
+<td><code>s</code></td>
 </tr>
 <tr>
 <td>Update interval</td>
-<td>typically 1–10 seconds</td>
+<td>typically <code>1</code>–<code>10</code> seconds</td>
 </tr>
 </tbody>
 </table>
@@ -2949,7 +3018,7 @@ of collected data.</p>
 <tbody>
 <tr>
 <td>Name</td>
-<td>Network Latency P99 (15m)</td>
+<td><code>Network Latency P99 (15m)</code></td>
 </tr>
 <tr>
 <td>Type</td>
@@ -2957,7 +3026,7 @@ of collected data.</p>
 </tr>
 <tr>
 <td>Key</td>
-<td>icmppingsec.p99 (example key)</td>
+<td><code>icmppingsec.p99</code> (example key)</td>
 </tr>
 <tr>
 <td>Value type</td>
@@ -2965,21 +3034,27 @@ of collected data.</p>
 </tr>
 <tr>
 <td>Units</td>
-<td>s</td>
+<td><code>s</code></td>
 </tr>
 <tr>
 <td>Update interval</td>
-<td>30–60 seconds</td>
+<td><code>30</code>–<code>60</code> seconds</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Formula:</strong></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>percentile<span class="o">(</span>/&lt;HOST&gt;/icmppingsec<span class="o">[</span>&lt;target-IP&gt;<span class="o">]</span>,15m,99<span class="o">)</span>
 </span></code></pre></div>
+</div>
 <p>With the monitoring item now collecting data, our immediate next step is to define
 a trigger. This trigger will allow Zabbix to notify us instantly if the defined
 threshold for network quality degradation is breached.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>last(/&lt;HOST\&gt;/icmppingsec.p99)&gt;0.150
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+</div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>last<span class="o">(</span>/&lt;HOST&gt;/icmppingsec.p99<span class="o">)</span><span class="w"> </span>&gt;<span class="w"> </span><span class="m">0</span>.150
 </span></code></pre></div>
 <p>This will alert us if the P99 ping latency goes above 150 ms.</p>
 <h4 id="what-this-trigger-detects">What This Trigger Detects</h4>
@@ -2995,10 +3070,11 @@ This trigger detects:</p>
 </ul>
 <p>It measures quality, not availability.
 Average latency might look fine, but P99 tells you:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>“1%<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>packets<span class="w"> </span>are<span class="w"> </span>delayed<span class="w"> </span>more<span class="w"> </span>than<span class="w"> </span><span class="m">150</span><span class="w"> </span>ms<span class="w"> </span>—<span class="w"> </span>users<span class="w"> </span>notice<span class="w"> </span>this.”
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>or
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>This<span class="w"> </span>trigger<span class="w"> </span>fires<span class="w"> </span><span class="k">if</span><span class="w"> </span>the<span class="w"> </span>worst<span class="w"> </span>latency<span class="w"> </span><span class="o">(</span>top<span class="w"> </span><span class="m">1</span>%<span class="o">)</span><span class="w"> </span>over<span class="w"> </span>the<span class="w"> </span>last<span class="w"> </span><span class="m">15</span><span class="w"> </span>minutes<span class="w"> </span>is<span class="w"> </span>higher<span class="w"> </span>than<span class="w"> </span><span class="m">150</span><span class="w"> </span>ms.
-</span></code></pre></div>
+<blockquote>
+<p>1% of the packets are delayed more than 150 ms — users notice this.
+or
+This trigger fires if the worst latency (top 1%) over the last 15 minutes is higher than 150 ms.</p>
+</blockquote>
 <p>This is far more meaningful for:</p>
 <ul>
 <li>Internet links</li>
@@ -3008,98 +3084,108 @@ Average latency might look fine, but P99 tells you:</p>
 <li>SD-WAN</li>
 <li>VoIP/Video systems</li>
 </ul>
-<p>If we now go to latest data page we can take a look at our item and click on the
-graph button at the end of the screen.</p>
+<p>If we now go to <strong>Latest data</strong> page we can take a look at our item and click on the
+graph button at the right end of the screen.</p>
 <p><img alt="calculated/ch04.61-calculated-p99.png" src="../../../ch04-zabbix-collecting-data/calculated/ch04.61-calculated-p99.png" /></p>
 <p><em>p99 graph</em></p>
 <p>We now have a nice overview of the quality of our network thanks to our
-calculated item. Now that we have seen how to create calculated items lets have
-a look at aggregated items.</p>
-<h2 id="aggregated-items">Aggregated items</h2>
-<p>Now that we've seen how Calculated Items allow us to perform mathematical operations
+<strong>calculated item</strong>. Now that we have seen how to create <strong>calculated items</strong> lets have
+a look at <strong>aggregated items</strong>.</p>
+<hr />
+<h2 id="data-aggregation">Data Aggregation</h2>
+<p>Now that we've seen how <strong>Calculated Items</strong> allow us to perform mathematical operations
 on data from a single host (like determining the P99 latency on one server), the
 next logical step is to consider the wider picture: network-wide or service wide
 performance.</p>
-<p>This is where <strong>Aggregated Items</strong> come into play.</p>
-<p><strong>What are Aggregated Items?</strong>
-Simply put, an Aggregated Item gathers and processes data from multiple hosts,
-host groups, or even other items across your entire monitored environment.</p>
+<p>This is where <em>aggregate functions</em> come into play.</p>
+<p><strong>What are aggregate functions?</strong>
+Simply put, an aggregate function is a function that operates on a set of values,
+items from multiple hosts, or even across host groups, and returns a single value.</p>
 <p>Think of it as the tool you use to calculate the health of an entire service for
 instance, the average web server CPU load across your farm, or the total available
 disk space for all hosts in your "Database Servers" group.</p>
-<p>Aggregated Items enable the collection of crucial metrics that are inherently
+<p><em>Aggregate functions</em> enable the collection of crucial metrics that are inherently
 distributed. They perform functions like:</p>
 <ul>
-<li><strong>Average (avg):</strong> The mean value across a set of items.</li>
-<li><strong>Sum (sum):</strong> The total combined value (e.g., total incoming traffic).</li>
-<li><strong>Minimum (min) / Maximum (max):</strong> The worst or best value recorded across the group.</li>
-<li><strong>Count (count):</strong> The number of items that match a specific criteria (e.g., how many servers are currently unavailable).</li>
+<li><strong>Average (<code>avg</code>):</strong> The mean value across a set of items.</li>
+<li><strong>Sum (<code>sum</code>):</strong> The total combined value (e.g., total incoming traffic).</li>
+<li><strong>Minimum (<code>min</code>) / Maximum (<code>max</code>):</strong> The worst or best value recorded across 
+  the group.</li>
+<li><strong>Count (<code>count</code>):</strong> The number of items that match a specific criteria (e.g.,
+  how many servers are currently unavailable).</li>
 </ul>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Item Type</th>
-<th style="text-align: left;">Scope of Data</th>
-<th style="text-align: left;">Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">Calculated</td>
-<td style="text-align: left;">Single Host (or Item)</td>
-<td style="text-align: left;">Mathematical transformation (e.g., P99, Rate of Change).</td>
-</tr>
-<tr>
-<td style="text-align: left;">Aggregated</td>
-<td style="text-align: left;">Multiple Hosts/Groups</td>
-<td style="text-align: left;">Statistical combination (e.g., Average, Sum, Max).</td>
-</tr>
-</tbody>
-</table>
-<p>In short, while Calculated Items help you interpret the metric for one specific
-device, Aggregated Items help you determine the collective status of a group of
-devices or an entire service.</p>
-<h3 id="configuration-of-aggregated-items">Configuration of Aggregated Items</h3>
-<p>Aggregated Items use a special <strong>item key</strong> that differs significantly from standard
-data collection methods. Instead of defining a specific check (like <code>icmpping</code>),
-you define a calculation that operates over a set of other items.</p>
-<p>The general format for an Aggregated Item key is:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>&lt;aggregation_function&gt;[&lt;target_selector&gt;,&lt;item_key&gt;,&lt;time_shift&gt;]
+<h3 id="usage-of-aggregate-functions">Usage of aggregate functions</h3>
+<p>Aggregate functions use a slightly different syntax in a <strong>calculated item</strong> formula
+by adding a <em>foreach</em> function as the sole parameter to select the items to aggregate.</p>
+<div class="admonition info">
+<p class="admonition-title">Aggregate functions syntax</p>
+<p>The general format for an aggregate function is:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>&lt;aggregate_function&gt;(&lt;function&gt;_foreach(&lt;item filter&gt;,&lt;timeperiod&gt;))
 </span></code></pre></div>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Component</th>
-<th style="text-align: left;">Description</th>
-<th style="text-align: left;">Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>Aggregation Function</strong></td>
-<td style="text-align: left;">The statistical operation to perform (e.g., <code>avg</code>, <code>sum</code>, <code>max</code>, <code>min</code>, <code>count</code>, <code>foreach</code>).</td>
-<td style="text-align: left;"><code>avg</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Target Selector</strong></td>
-<td style="text-align: left;">Defines the scope of the aggregation: the hosts or groups to include.</td>
-<td style="text-align: left;"><code>group:"Web Servers"</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Item Key</strong></td>
-<td style="text-align: left;">Specifies the exact item to aggregate across the targets.</td>
-<td style="text-align: left;"><code>system.cpu.load[all,avg1]</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Time Shift (Optional)</strong></td>
-<td style="text-align: left;">A time window to shift the data collection back (for comparison).</td>
-<td style="text-align: left;"><code>1h</code> (1 hour ago)</td>
-</tr>
-</tbody>
-</table>
+<p>However you can also list the required items explicitly in case you want to 
+aggregate only a fixed set of items. In that case the syntax looks like this:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>&lt;aggregate_function&gt;(&lt;function&gt;(/&lt;host&gt;/&lt;key&gt;,&lt;parameter&gt;),&lt;function&gt;(/&lt;host2&gt;/&lt;key2&gt;,&lt;parameter&gt;),...)
+</span></code></pre></div>
+<p>The foreach functions however are more flexible and will automatically include
+any new items that match the criteria in the future. So make sure to limit
+the use of a fixed list of items to cases where you know the exact items you 
+want to aggregate and you know they will not change in the future.</p>
+</div>
+<dl>
+<dt><code>aggregate_function</code></dt>
+<dd>
+<p>The statistical operation to perform (e.g., <code>avg</code>, <code>sum</code>, <code>max</code>, <code>min</code>, <code>count</code>).
+For a full list of supported aggregate functions, see the Zabbix documentation.</p>
+</dd>
+<dt><code>function_foreach</code></dt>
+<dd>
+<p>Defines what item values to include in the aggregation (e.g., <code>last_foreach</code>,
+<code>avg_foreach</code>, <code>count_foreach</code>, <code>exists_foreach</code>). This function iterates over
+a set of items defined in the <code>item filter</code> and applies the specified aggregate 
+function to their values.
+For example, <code>last_foreach</code> retrieves the most recent value of each item in the
+set, while <code>avg_foreach</code> returns the average value of each item during the
+the specified <code>timeperiod</code>.</p>
+</dd>
+<dt><code>item filter</code></dt>
+<dd>
+<p>Filters the items to include in the aggregation and generaly has following 
+syntax:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>/&lt;host&gt;/&lt;key&gt;[&lt;parameters&gt;]?[&lt;conditions&gt;]
+</span></code></pre></div>
+Meaning that you can specify a specific <code>key</code> on a specific<code>host</code> or <code>*</code> to
+select all hosts. 
+The selected <code>key</code> may or may not have <code>parameters</code>, make sure
+to use the exact item key. For example: <code>system.cpu.load[all,avg1]</code> or 
+<code>vfs.fs.size[/,free]</code>. 
+The <code>conditions</code> then allow you to further filter the
+items based on their host <code>group</code> or item <code>tag</code> or a combination of both
+using logical operators <code>and</code>, <code>or</code> and <code>not</code>.</p>
+<p>An example of an item filter that selects all items with the key: 
+<code>system.cpu.load[all,avg1]</code> from all hosts in the "Web Servers" group would
+ look like this:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>/*/system.cpu.load[all,avg1]?[group=&quot;Web Servers&quot;]
+</span></code></pre></div>
+</dd>
+<dt><code>timeperiod</code></dt>
+<dd>
+<p>The time window to use for the <code>function</code>_foreach. For example, a <code>timeperiod</code>
+of <code>5m</code> in the <code>avg_foreach</code> function would return the 5 minute average of
+each item in the set defined by the <code>item filter</code>. This parameter is optional
+for the <code>last_foreach</code> function and is not supported in <code>exists_foreach</code>.</p>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">More parameters</p>
+<p>Some <code>function</code>_foreach functions support additional parameters. For example,
+<code>count_foreach</code> requires a comparison operator and a threshold value to count.
+Please refer to the Zabbix documentation for the specific syntax and parameters
+required for each <code>function</code>_foreach.</p>
+</div>
 <hr />
-<h3 id="practical-examples-of-aggregated-items">Practical Examples of Aggregated Items</h3>
-<p>Here are several common scenarios demonstrating how to define these powerful global metrics:</p>
+<h3 id="practical-examples-of-aggregate-formulas">Practical Examples of aggregate formulas</h3>
+<p>Here are several common scenarios demonstrating how to define these powerful 
+global metrics:</p>
 <h4 id="example-1-total-free-space-across-a-group">Example 1: Total Free Space Across a Group</h4>
 <p><strong>Goal:</strong> Monitor the collective available disk space for all hosts in the
 "Database Cluster" group to prevent a system-wide outage.</p>
@@ -3113,9 +3199,9 @@ you define a calculation that operates over a set of other items.</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>Key</strong></td>
-<td style="text-align: left;"><code>sum[group:"Database Cluster",vfs.fs.size[/,,free]]</code></td>
-<td style="text-align: left;">This key <strong>SUMS</strong> the free space (<code>vfs.fs.size[/,,free]</code>) from every host in the group.</td>
+<td style="text-align: left;"><strong>Formula</strong></td>
+<td style="text-align: left;"><code>sum(last_foreach(/*/vfs.fs.size[/,,free]?[group="Database Cluster"]))</code></td>
+<td style="text-align: left;">This formula <strong>SUMS</strong> the free space (<code>vfs.fs.size[/,,free]</code>) from every host in the group.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Units</strong></td>
@@ -3137,16 +3223,13 @@ service, which is running across the "Production Web" group.</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>Key</strong></td>
-<td style="text-align: left;"><code>avg[group:"Production Web",system.cpu.load[all,avg1]]</code></td>
+<td style="text-align: left;"><strong>Formula</strong></td>
+<td style="text-align: left;"><code>avg(last_foreach(/*/system.cpu.load[all,avg1]?[group="Production Web"]))</code></td>
 <td style="text-align: left;">This calculates the <strong>AVERAGE</strong> 1-minute CPU load across all servers in the group.</td>
 </tr>
 </tbody>
 </table>
-<h4 id="example-3-counting-conditional-items-with-foreach">Example 3: Counting Conditional Items with <code>foreach</code></h4>
-<p>The <strong><code>foreach</code></strong> function is a highly flexible tool that allows you to calculate
-statistics based on a <strong>condition</strong> within the target set. Instead of aggregating
-every item, you can aggregate only those that meet certain criteria.</p>
+<h4 id="example-3-counting-conditional-items">Example 3: Counting Conditional Items</h4>
 <p><strong>Goal:</strong> Count how many Linux hosts in the "All Servers" group currently have a
 high CPU load (load average &gt; 4).</p>
 <table>
@@ -3159,9 +3242,9 @@ high CPU load (load average &gt; 4).</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>Key</strong></td>
-<td style="text-align: left;"><code>count[group:"All Servers",system.cpu.load[all,avg1],last,0,gt,4]</code></td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>Formula</strong></td>
+<td style="text-align: left;"><code>count(last_foreach(/*/system.cpu.load[all,avg1]?[group="All Servers"]), gt, 4)</code></td>
+<td style="text-align: left;">This <strong>COUNTS</strong> the number of items with a last value &gt; 4 across all servers in the group.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Type of Information</strong></td>
@@ -3175,21 +3258,15 @@ high CPU load (load average &gt; 4).</p>
 </tr>
 </tbody>
 </table>
-<p>In the example above, the <code>count</code> function is performed on the results of the
-<code>foreach</code> mechanism (implied by the filters):</p>
-<ul>
-<li>It checks every host in <code>group:"All Servers"</code> for the item <code>system.cpu.load[all,avg1]</code>.</li>
-<li>The final filters (<code>gt,4</code>) ensure the function only counts hosts where the
-<strong>latest</strong> (<code>last</code>) value is <strong>greater than</strong> (<code>gt</code>) <strong>4</strong>. This gives you a clear
-count of servers currently under heavy load.</li>
-</ul>
+<p>In the example above, the <code>count</code> function takes two additional parameters: 
+the comparison operator (<code>gt</code> for "greater than") and the threshold value (<code>4</code>).</p>
 <hr />
 <h3 id="other-aggregate-functions">Other Aggregate Functions</h3>
 <p>Zabbix supports a wide array of aggregate functions beyond the basics shown here,
 including statistics like standard deviation (<code>stddevpop</code>) and more specialized
 counting and filtering.</p>
 <p>For a complete list of all supported aggregate functions, including detailed syntax
-and examples for <code>foreach</code>, consult the official Zabbix documentation.</p>
+and examples for the foreach functions, consult the official Zabbix documentation.</p>
 <h4 id="troubleshooting-calculated-items">Troubleshooting Calculated Items</h4>
 <ol>
 <li>How to best troubleshoot unsupported calculated items.</li>
@@ -3231,32 +3308,28 @@ beyond simply collecting raw data and focused on the true value of a robust syst
 - <strong>Calculated Items:</strong> These tools allow us to apply complex mathematical logic,
   transformations, and filters to data collected from a single host, turning raw
   response times into actionable quality scores.
-- <strong>Aggregated Items:</strong> We extended our view beyond the individual host by configuring
-  Aggregated Items. Using functions like avg, sum, and the powerful conditional
-  logic of foreach, we learned how to unify metrics from entire host groups or
+- <strong>Aggregate formulas:</strong> We extended our view beyond the individual host by using
+  aggregate functions. Using functions like <code>avg</code>, <code>sum</code>, and the powerful conditional
+  logic of foreach functions, we learned how to unify metrics from entire host groups or
   services to derive crucial metrics like service-wide free space or the total
   count of unhealthy hosts.</p>
-<p>By mastering these two item types, you gain the ability to define metrics that
+<p>By mastering <strong>Calculated items</strong>, you gain the ability to define metrics that
 directly correlate with your business objectives not just the underlying machine
 statistics. You can now build alerts and dashboards that clearly expose the health
 of your entire infrastructure or service stack, replacing vague metrics with
 concrete, measurable KPIs.</p>
 <h2 id="questions">Questions</h2>
 <ul>
-<li>What is the primary difference in data scope between a Calculated Item and an
-  Aggregated Item?</li>
-<li>If you wanted to track the rate of change (the difference between the last two
-  readings) of a host's disk space, which type of Zabbix item would you use, and why?</li>
-<li>Explain the purpose of the foreach function in Zabbix aggregation. How does it
+<li>Explain the purpose of the foreach functions in Zabbix aggregation. How does it
   allow you to achieve a goal that a simple avg or sum function cannot?</li>
 <li>You need to calculate the total incoming network traffic for all devices in
-  the "Core Routers" host group. Write the correct Aggregated Item key using the
+  the "Core Routers" host group. Write the correct formula using the
   sum function, assuming the item key for incoming traffic is net.if.in[eth0]</li>
 </ul>
 <h2 id="useful-urls">Useful URLs</h2>
 <ul>
-<li><a href="https://www.zabbix.com/documentation/current/en/manual/appendix/functions/aggregate#aggregate-functions-1">https://www.zabbix.com/documentation/current/en/manual/appendix/functions/aggregate#aggregate-functions-1</a></li>
 <li><a href="https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/calculated">https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/calculated</a></li>
+<li><a href="https://www.zabbix.com/documentation/current/en/manual/config/triggers/expression/aggregate">https://www.zabbix.com/documentation/current/en/manual/config/triggers/expression/aggregate</a></li>
 </ul>
 
 

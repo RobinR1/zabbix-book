@@ -2288,6 +2288,8 @@ and content to ensure web services perform reliably and stay online.
       
         
       
+        
+      
     
     
     
@@ -2311,6 +2313,60 @@ and content to ensure web services perform reliably and stay online.
     
   
     Chapter 15 : Real world examples
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../ch16-windows/chapter/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 16 : Windows monitoring
   
 
     
@@ -3050,6 +3106,14 @@ the proxy's logs must be examined with increased logging.</p>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Starting with Zabbix 8.0, the list of allowed hosts for trapper items is predefined
+through the macro {$TRAPPER.ALLOWED_HOSTS}. By default, this macro is set to
+127.0.0.1,::1, allowing only connections from the local host over both IPv4
+and IPv6. Change this macro to include the IP addresses or networks of any
+external systems that need to send trapper data to the Zabbix server.</p>
+</div>
 <hr />
 <h2 id="conclusion">Conclusion</h2>
 <p>The HTTP agent item is one of the most powerful and misunderstood tools in Zabbix.

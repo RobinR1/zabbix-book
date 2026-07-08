@@ -2199,6 +2199,8 @@ for scripts, custom apps, or async systems sending real-time metrics.
       
         
       
+        
+      
     
     
     
@@ -2222,6 +2224,60 @@ for scripts, custom apps, or async systems sending real-time metrics.
     
   
     Chapter 15 : Real world examples
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../ch16-windows/chapter/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 16 : Windows monitoring
   
 
     
@@ -2804,7 +2860,14 @@ you will update this item:</p>
 <p>You will see the result in the Zabbix GUI <strong>Latest data</strong> section for the host 
 where the Zabbix trapper item resides:</p>
 <p><img alt="Zabbix trapper - API item result" src="../../../ch04-zabbix-collecting-data/zabbix-trapper/ch04.xx-trapper-api-item-result.png" /></p>
-<hr />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Starting with Zabbix 8.0, the list of allowed hosts for trapper items is predefined
+through the macro <code>{$TRAPPER.ALLOWED_HOSTS}</code>. By default, this macro is set to
+127.0.0.1,::1, allowing only connections from the local host over both IPv4
+and IPv6. Change this macro to include the IP addresses or networks of any
+external systems that need to send trapper data to the Zabbix server.</p>
+</div>
 <h2 id="conclusion">Conclusion</h2>
 <p>If you work with Zabbix long enough, you will start having this feeling of
 when to use "Zabbix trapper" items over classic "Zabbix agent" items. In some
