@@ -3364,20 +3364,22 @@ troubleshoot them when working with calculated items.</p>
 <p>This chapter marks a critical turning point in our monitoring journey. We moved
 beyond simply collecting raw data and focused on the true value of a robust system:
 <strong>data transformation and interpretation.</strong> </p>
-<p>Key Takeaways
-- <strong>Percentile Power:</strong> We established that relying on average metrics can
+<p>Key Takeaways:</p>
+<ul>
+<li><strong>Percentile Power:</strong> We established that relying on average metrics can
   dangerously obscure intermittent performance issues like microbursts and congestion.
   Techniques like calculating the <span class="arithmatex">\(99^{th}\)</span> percentile (<span class="arithmatex">\(P99\)</span>) with a Calculated
   Item provide a far more accurate representation of actual user experience and
-  true network quality.
-- <strong>Calculated Items:</strong> These tools allow us to apply complex mathematical logic,
+  true network quality.</li>
+<li><strong>Calculated Items:</strong> These tools allow us to apply complex mathematical logic,
   transformations, and filters to data collected from a single host, turning raw
-  response times into actionable quality scores.
-- <strong>Aggregate formulas:</strong> We extended our view beyond the individual host by using
+  response times into actionable quality scores.</li>
+<li><strong>Aggregate formulas:</strong> We extended our view beyond the individual host by using
   aggregate functions. Using functions like <code>avg</code>, <code>sum</code>, and the powerful conditional
   logic of foreach functions, we learned how to unify metrics from entire host groups or
   services to derive crucial metrics like service-wide free space or the total
-  count of unhealthy hosts.</p>
+  count of unhealthy hosts.</li>
+</ul>
 <p>By mastering <strong>Calculated items</strong>, you gain the ability to define metrics that
 directly correlate with your business objectives not just the underlying machine
 statistics. You can now build alerts and dashboards that clearly expose the health
