@@ -1638,10 +1638,14 @@ metrics to generate new insights without extra load or checks.
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Other Aggregate Functions">
-      <ul class="md-nav__list">
+</li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#troubleshooting-calculated-items" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1650,10 +1654,39 @@ metrics to generate new insights without extra load or checks.
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Troubleshooting Calculated Items">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unsupported-calculated-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unsupported Calculated Items
+      
+    </span>
+  </a>
+  
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#result-has-incorrect-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Result has incorrect values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-graphs-displaying" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        No Graphs Displaying
+      
+    </span>
+  </a>
   
 </li>
         
@@ -2621,10 +2654,14 @@ metrics to generate new insights without extra load or checks.
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Other Aggregate Functions">
-      <ul class="md-nav__list">
+</li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#troubleshooting-calculated-items" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2633,10 +2670,39 @@ metrics to generate new insights without extra load or checks.
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Troubleshooting Calculated Items">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unsupported-calculated-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unsupported Calculated Items
+      
+    </span>
+  </a>
+  
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#result-has-incorrect-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Result has incorrect values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-graphs-displaying" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        No Graphs Displaying
+      
+    </span>
+  </a>
   
 </li>
         
@@ -3124,7 +3190,7 @@ by adding a <em>foreach</em> function as the sole parameter to select the items 
 </span></code></pre></div>
 <p>However you can also list the required items explicitly in case you want to 
 aggregate only a fixed set of items. In that case the syntax looks like this:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>&lt;aggregate_function&gt;(&lt;function&gt;(/&lt;host&gt;/&lt;key&gt;,&lt;parameter&gt;),&lt;function&gt;(/&lt;host2&gt;/&lt;key2&gt;,&lt;parameter&gt;),...)
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>&lt;aggregate_function&gt;(&lt;function&gt;(/&lt;HOST&gt;/&lt;key&gt;,&lt;parameter&gt;),&lt;function&gt;(/&lt;host2&gt;/&lt;key2&gt;,&lt;parameter&gt;),...)
 </span></code></pre></div>
 <p>The foreach functions however are more flexible and will automatically include
 any new items that match the criteria in the future. So make sure to limit
@@ -3151,9 +3217,9 @@ the specified <code>timeperiod</code>.</p>
 <dd>
 <p>Filters the items to include in the aggregation and generaly has following 
 syntax:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>/&lt;host&gt;/&lt;key&gt;[&lt;parameters&gt;]?[&lt;conditions&gt;]
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>/&lt;HOST&gt;/&lt;key&gt;[&lt;parameters&gt;]?[&lt;conditions&gt;]
 </span></code></pre></div>
-Meaning that you can specify a specific <code>key</code> on a specific<code>host</code> or <code>*</code> to
+Meaning that you can specify a specific <code>key</code> on a specific <code>HOST</code> or <code>*</code> to
 select all hosts. 
 The selected <code>key</code> may or may not have <code>parameters</code>, make sure
 to use the exact item key. For example: <code>system.cpu.load[all,avg1]</code> or 
@@ -3169,7 +3235,7 @@ using logical operators <code>and</code>, <code>or</code> and <code>not</code>.<
 </dd>
 <dt><code>timeperiod</code></dt>
 <dd>
-<p>The time window to use for the <code>function</code>_foreach. For example, a <code>timeperiod</code>
+<p>The time window to use for the <code>function_foreach</code>. For example, a <code>timeperiod</code>
 of <code>5m</code> in the <code>avg_foreach</code> function would return the 5 minute average of
 each item in the set defined by the <code>item filter</code>. This parameter is optional
 for the <code>last_foreach</code> function and is not supported in <code>exists_foreach</code>.</p>
@@ -3177,10 +3243,10 @@ for the <code>last_foreach</code> function and is not supported in <code>exists_
 </dl>
 <div class="admonition warning">
 <p class="admonition-title">More parameters</p>
-<p>Some <code>function</code>_foreach functions support additional parameters. For example,
+<p>Some <code>function_foreach</code> functions support additional parameters. For example,
 <code>count_foreach</code> requires a comparison operator and a threshold value to count.
 Please refer to the Zabbix documentation for the specific syntax and parameters
-required for each <code>function</code>_foreach.</p>
+required for each <code>function_foreach</code>.</p>
 </div>
 <hr />
 <h3 id="practical-examples-of-aggregate-formulas">Practical Examples of aggregate formulas</h3>
@@ -3194,19 +3260,20 @@ global metrics:</p>
 <tr>
 <th style="text-align: left;">Field</th>
 <th style="text-align: left;">Configuration</th>
-<th style="text-align: left;">Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Formula</strong></td>
 <td style="text-align: left;"><code>sum(last_foreach(/*/vfs.fs.size[/,,free]?[group="Database Cluster"]))</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
 <td style="text-align: left;">This formula <strong>SUMS</strong> the free space (<code>vfs.fs.size[/,,free]</code>) from every host in the group.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Units</strong></td>
 <td style="text-align: left;"><code>B</code> (Bytes)</td>
-<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -3218,13 +3285,15 @@ service, which is running across the "Production Web" group.</p>
 <tr>
 <th style="text-align: left;">Field</th>
 <th style="text-align: left;">Configuration</th>
-<th style="text-align: left;">Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Formula</strong></td>
 <td style="text-align: left;"><code>avg(last_foreach(/*/system.cpu.load[all,avg1]?[group="Production Web"]))</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
 <td style="text-align: left;">This calculates the <strong>AVERAGE</strong> 1-minute CPU load across all servers in the group.</td>
 </tr>
 </tbody>
@@ -3237,24 +3306,24 @@ high CPU load (load average &gt; 4).</p>
 <tr>
 <th style="text-align: left;">Field</th>
 <th style="text-align: left;">Configuration</th>
-<th style="text-align: left;">Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Formula</strong></td>
 <td style="text-align: left;"><code>count(last_foreach(/*/system.cpu.load[all,avg1]?[group="All Servers"]), gt, 4)</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
 <td style="text-align: left;">This <strong>COUNTS</strong> the number of items with a last value &gt; 4 across all servers in the group.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Type of Information</strong></td>
 <td style="text-align: left;">Numeric (integer)</td>
-<td style="text-align: left;"></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Units</strong></td>
 <td style="text-align: left;"><code>hosts</code></td>
-<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -3267,34 +3336,35 @@ including statistics like standard deviation (<code>stddevpop</code>) and more s
 counting and filtering.</p>
 <p>For a complete list of all supported aggregate functions, including detailed syntax
 and examples for the foreach functions, consult the official Zabbix documentation.</p>
-<h4 id="troubleshooting-calculated-items">Troubleshooting Calculated Items</h4>
-<ol>
-<li>How to best troubleshoot unsupported calculated items.</li>
-</ol>
-<p><strong>Always Check first:</strong></p>
+<hr />
+<h2 id="troubleshooting-calculated-items">Troubleshooting Calculated Items</h2>
+<p>Here we list a few common issues and checks you can perform in order to 
+troubleshoot them when working with calculated items.</p>
+<h3 id="unsupported-calculated-items">Unsupported Calculated Items</h3>
+<p>Always Check first:</p>
 <ul>
-<li>Does the formula reference items that do not exist?</li>
+<li>Does the formula reference items that do not exist? Check each item in the 
+  formula to ensure the requested items exist and are returning valid values.</li>
 <li>Are value types compatible?</li>
-<li>Does the function return something numeric?</li>
 </ul>
-<ol start="2">
-<li>When you have incorrect values</li>
-</ol>
-<p><strong>Check :</strong></p>
+<h3 id="result-has-incorrect-values">Result has incorrect values</h3>
+<p>Check:</p>
 <ul>
 <li>Unit mismatch (bytes vs bits)</li>
 <li>Wrong interval compared to source data</li>
 <li>Missing parentheses in expression</li>
+<li>In case you are using aggregate functions, check the item filter and conditions
+  to ensure they are correctly selecting the intended items.</li>
 </ul>
-<ol start="3">
-<li>No Graphs Displaying</li>
-</ol>
-<p><strong>Ensure :</strong></p>
+<h3 id="no-graphs-displaying">No Graphs Displaying</h3>
+<p>Ensure:</p>
 <ul>
 <li>Value type is numeric</li>
 <li>Units are properly set</li>
 <li>History/trends retention is not zero</li>
+<li>Item interval is small enough to have data points for the data you want to graph</li>
 </ul>
+<hr />
 <h2 id="conclusion">Conclusion</h2>
 <p>This chapter marks a critical turning point in our monitoring journey. We moved
 beyond simply collecting raw data and focused on the true value of a robust system:
@@ -3318,14 +3388,16 @@ directly correlate with your business objectives not just the underlying machine
 statistics. You can now build alerts and dashboards that clearly expose the health
 of your entire infrastructure or service stack, replacing vague metrics with
 concrete, measurable KPIs.</p>
+<hr />
 <h2 id="questions">Questions</h2>
 <ul>
 <li>Explain the purpose of the foreach functions in Zabbix aggregation. How does it
-  allow you to achieve a goal that a simple avg or sum function cannot?</li>
+  allow you to achieve a goal that a simple <code>avg</code> or <code>sum</code> function cannot?</li>
 <li>You need to calculate the total incoming network traffic for all devices in
   the "Core Routers" host group. Write the correct formula using the
-  sum function, assuming the item key for incoming traffic is net.if.in[eth0]</li>
+  <code>sum</code> function, assuming the item key for incoming traffic is <code>net.if.in[eth0]</code>.</li>
 </ul>
+<hr />
 <h2 id="useful-urls">Useful URLs</h2>
 <ul>
 <li><a href="https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/calculated">https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/calculated</a></li>
